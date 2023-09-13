@@ -5,77 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="path/to/bootstrap.min.css">
     <style>
-        
-@media only screen and (max-width:1762px) {
-    /* .navbar-nav{
-        text-align: center;
-    }
-    .carousel-caption{
-        bottom: 125px;
-    }
-    .carousel-caption h2{
-        font-size: 17px;
-    }
-    .carousel-caption a {
-        padding: 10px 15px;
-    }
-    .carousel-caption p{
-        width: 100%;
-        line-height:  1.6;
-        font-size: 12px;
-    }
-    .card-sec{
-        margin-top: 30px;
-    }
-    .about-img-img{
-        padding-top: 30px;
-    } */
-    
-
-    .btn-primary {
+        .btn-primary {
             background-color: #f39c12 !important;
         }
 
         body {
             font-family: Arial, sans-serif;
             background-color: #f1f1f1;
-            width:100%;
+            width: 100%;
         }
 
         #providerregistraton {
             background-color: #F8802A;
             color: white;
             font-size: large;
-            
         }
 
-        .containers{
+        /* Navbar */
+        nav ul li a:hover {
+            color: #F8802A !important;
+        }
+
+        /* Form */
+        .formcss {
             background-color: #fff;
             padding: 30px;
             border-radius: 5px;
-            margin-left:450px; 
-            width: 40%;
-            /* align-items:center; */
-            margin-top: 50px;
-            justify-content:center;
-
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
         }
-        /* .center-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        } */
-      
-       
-        h2 {
+
+        @media screen and (max-width:576px) {
+            .formcss {
+                width: 280px;
+            }
+        }
+
+        .formcss h3 {
             text-align: center;
             margin-bottom: 30px;
-
             color: navy;
+        }
+
+        .formcss h4 {
+            margin-bottom: 20px;
+            color: #F8802A;
+            font-weight: 600;
         }
 
         .form-group {
@@ -91,14 +70,14 @@
             margin-top: 5px;
         }
 
-        
+
         .form-control {
             border-radius: 3px;
 
             padding: 10px;
         }
 
-        
+
         .btn-primary {
             background-color: #4285f4;
             border: none;
@@ -114,286 +93,13 @@
             padding: 12px;
             font-weight: bold;
         }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            z-index: 1000;
-            background-color: navy;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        header h2 {
-            color: white;
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 25%;
-            transform: translate(-50%, -50%);
-            color: white;
-        }
-
-        header nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-        }
-
-        header nav ul li {
-            display: inline-block;
-            margin-left: 50px;
-        }
-
-        header nav ul li a {
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        nav ul li a:hover {
-           
-            color:#F8802A !important;
-        }
-
-        .logo {
-            margin-top: 50px;
-        }
-
-        #tamil {
-            color: white;
-            margin-left: 30px;
-        }
-
-        h3 {
-            text-align: center;
-            margin-bottom: 30px;
-            margin-left: -20px;
-            color: navy;
-        }
-   
-   
-}
-
-/* 
-
-        .btn-primary {
-            background-color: #f39c12 !important;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
-            margin: 0;
-            padding: 10;
-          
-
-
-        }
-
-        #providerregistraton {
-            background-color: #F8802A;
-            color: white;
-            font-size: large;
-        }
-
-        .containers{
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 5px;
-            margin-left:410px;
-            width: 40%;
-
-            margin-top: 50px;
-
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-
-            color: navy;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        .error {
-            color: red;
-            margin-top: 5px;
-        }
-
-        
-        .form-control {
-            border-radius: 3px;
-
-            padding: 10px;
-        }
-
-        
-        .btn-primary {
-            background-color: #4285f4;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #2d76d9;
-        }
-
-        button[type="submit"] {
-            width: 100%;
-            margin-top: 20px;
-            padding: 12px;
-            font-weight: bold;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            z-index: 1000;
-            background-color: navy;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        header h2 {
-            color: white;
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 25%;
-            transform: translate(-50%, -50%);
-            color: white;
-        }
-
-        header nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-        }
-
-        header nav ul li {
-            display: inline-block;
-            margin-left: 50px;
-        }
-
-        header nav ul li a {
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        nav ul li a:hover {
-           
-            color:#F8802A !important;
-        }
-
-        .logo {
-            margin-top: 50px;
-        }
-
-        #tamil {
-            color: white;
-            margin-left: 30px;
-        }
-
-        h3 {
-            text-align: center;
-            margin-bottom: 30px;
-            margin-left: -20px;
-            color: navy;
-        } */
     </style>
 
 
 </head>
 
 <body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-
-<nav class="navbar navbar-expand-lg" style="background-color: navy; padding-top: 30px; padding-bottom: 30px;">
-  <div class="container">
-     <!-- <img src="logo 1.jpeg" alt="Arram Jobs" width="120" height="50"> -->
-     <h4 style="color: white">அறம் வேலைவாய்ப்பு</h4>
-      <!-- <a href="" style="color: white">ArramJobs</a> -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-            <!-- <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; padding-right: 40px;">Home</a>
-            </li> -->
-            <li class="nav-item">
-            <a class="nav-link" href="#about" style="color: white; padding-right: 40px;">About Us</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#provider" style="color: white; padding-right: 40px;">Provider</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#seeker" style="color: white; padding-right: 40px;">Seeker</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; padding-right: 40px;">BLOG</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; padding-right: 40px;">Contact</a>
-            </li>
-        </ul>
-    <div>
-    <!-- <form class="d-flex" role="search">
-     <button class="btn btn-danger btn-lg">LogIn</button>
-      </form> -->
-    <div class="dropdown" style="margin-left: 15px;">
-        <button class="btn btn-light dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
-            LogIn
-        </button>
-    </div>
-  </div>
-</nav> 
-
-    <!-- <header>
-        <div class="logo">
-            <h5 id="tamil"> அறம் வேலைவாய்ப்பு</h5>
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="#about-us">About Us</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#job-seekers">Seekers</a></li>
-                <li><a href="#job-providers">Providers</a></li>
-                <li><a href="#blog">Blog</a></li>
-              
-            </ul>
-        </nav>
-    </header>
-     -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <br>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> -->
 
     <!-- <div id="google_translate_element"></div>
     <script src="https://translate.Google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
@@ -404,27 +110,53 @@
             }, 'google_translate_element');
         }
     </script> -->
-    <br>
 
-    <div class="">
+    <nav class="navbar navbar-expand-lg" style="background-color: navy; padding-top: 30px; padding-bottom: 30px;">
+        <div class="container">
+            <!-- <img src="logo 1.jpeg" alt="Arram Jobs" width="120" height="50"> -->
+            <h4 style="color: white">அறம் வேலைவாய்ப்பு</h4>
+            <!-- <a href="" style="color: white">ArramJobs</a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- <li class="nav-item">
+            <a class="nav-link" href="#" style="color: white; padding-right: 40px;">Home</a>
+            </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" style="color: white; padding-right: 40px;">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#provider" style="color: white; padding-right: 40px;">Provider</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#seeker" style="color: white; padding-right: 40px;">Seeker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white; padding-right: 40px;">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white; padding-right: 40px;">Contact</a>
+                    </li>
+                </ul>
+                <div>
+                    <!-- <form class="d-flex" role="search">
+                        <button class="btn btn-danger btn-lg">LogIn</button>
+                    </form> -->
+                    <div class="dropdown" style="margin-left: 15px;">
+                        <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            LogIn
+                        </button>
+                    </div>
+                </div>
+    </nav>
+
+
+    <div class="containers formcss container-lg mt-5 mx-auto">
         <div class="">
-            <div class="">
 
-            </div>
-            <!-- <div class="col">
-        <div class=" text-light p-2 border bg-primary rounded-4 w-55 ">What Arram Do?</div>
-      </div> -->
-        </div>
-    </div>
-
-    <!-- <h2 class="text-white bg-secondary rounded-5 ms-5 me-5 shadow">Provider Registration Form</h2> -->
-    <!-- <h3 class="d-inline-flex p-2 ms-5 me-1 bg-info text-white rounded-3 shadow">Provider Registration Form</h3> -->
-    <br>
-
-
-    <div class="containers" >
-        <div class="">
-            <br>
             <!-- <h4 class="grid-text-center d-flex justify-content-start text-dark bg-secondary bg-opacity-5 rounded-3 ms-5 me-5 mt-3"><center>Company Details</center></h4> -->
             <div class="" style="font-size: x-large">
                 <h3>Provider Registration Form<h3>
@@ -434,11 +166,13 @@
             </div>
             <!-- <form  name="forms" action="Registrationcontroller.php" method="post"> -->
             <!-- <form id="h" name="forms" action="http://localhost/arramjobs/providerController/providerRegistration" method="post"> -->
-                <form id="h" name="forms" action="<?php echo baseUrl . "providerController/providerRegistration"?>" method="post">
+            <form id="h" name="forms" action="<?php echo baseUrl . "providerController/providerRegistration" ?>"
+                method="post">
 
                 <div class=" ">
                     <label for="name" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="enter name" onkeypress="return allowOnlyLetters(event, this)">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="enter name"
+                        onkeypress="return allowOnlyLetters(event, this)">
                     <p id="nameerr" style="color: red;"></p>
                 </div>
                 <div class=" ">
@@ -496,7 +230,8 @@
 
                 <div class=" ">
                     <label for="name1" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name1" name="name1" placeholder="enter name" onkeypress="return allowOnlyLetters1(event, this)">
+                    <input type="text" class="form-control" id="name1" name="name1" placeholder="enter name"
+                        onkeypress="return allowOnlyLetters1(event, this)">
                     <p id="nameerr1" style="color: red;"></p>
                 </div>
                 <div class="">
@@ -517,24 +252,23 @@
 
                 <div>
                     <!-- <button value="save" type="submit" name="save" id="providerregistraton" class="" onclick="return group()" ><center>Register</center></button>  -->
-                    <button value="save" type="Submit" name="save" onclick="return group()" id="providerregistraton" class="btn btn-primary">Register</button>
+                    <button value="save" type="Submit" name="save" onclick="return group()" id="providerregistraton"
+                        class="btn btn-primary">Register</button>
 
                 </div>
             </form>
             <br>
             <div id="sign" class="">
                 <!-- <p>Already have an account ? <a id="regis" href="http://localhost/arramjobs/provider/login">login</a></p> -->
-                <p>Already have an account ? <a id="regis" href="<?php echo baseUrl . "provider/login"?>">login</a></p>
+                <p>Already have an account ? <a id="regis" href="<?php echo baseUrl . "provider/login" ?>">login</a></p>
             </div>
-
 
 
         </div>
     </div>
 
     </div>
-    <br>
-    <br>
+
 
 
     <script type="text/javascript">
@@ -859,15 +593,14 @@
                     return false;
                 }
             }
-
-
         }
     </script>
 
-
-
-
     <!-- <script src="regvalid.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 
 </body>
 
