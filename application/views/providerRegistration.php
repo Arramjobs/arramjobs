@@ -123,8 +123,8 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <!-- <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; padding-right: 40px;">Home</a>
-            </li> -->
+                    <a class="nav-link" href="#" style="color: white; padding-right: 40px;">Home</a>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="#about" style="color: white; padding-right: 40px;">About Us</a>
                     </li>
