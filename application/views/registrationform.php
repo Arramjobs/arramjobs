@@ -5,6 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <!-- Google Fonts -->
   <style>
     .btn-primary {
       background-color: #f39c12 !important;
@@ -15,25 +20,51 @@
       background-color: #f1f1f1;
       margin: 0;
       padding: 0;
-      margin-left: -200px;
-      margin-right: 290px;
     }
 
-    .container {
+    /* Navbar */
+    .navcss {
+      color: white;
+      font-weight: bold;
+    }
+
+    .navbar-nav li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar-nav li a:hover {
+      color: #F8802A;
+      text-decoration: none;
+    }
+
+    .tamilcss {
+      padding-right: 15%;
+    }
+
+    @media screen and (max-width:576px) {
+      .tamilcss {
+        padding-right: 5%;
+      }
+    }
+
+    .formcss {
       background-color: #fff;
       padding: 30px;
       border-radius: 5px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      width: 30%;
-      margin-left: 700px;
-      margin-top: 50px;
-
+      width: 400px;
     }
 
-    h2 {
+    @media screen and (max-width:576px) {
+      .formcss {
+        width: 280px;
+      }
+    }
+
+    .formcss h2 {
       text-align: center;
       margin-bottom: 30px;
-      margin-left: -20px;
       color: navy;
     }
 
@@ -73,97 +104,51 @@
       padding: 12px;
       font-weight: bold;
     }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 120px;
-      z-index: 1000;
-      background-color: navy;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    header h2 {
-      color: white;
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 25%;
-      transform: translate(-50%, -50%);
-      color: white;
-    }
-
-    header nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-    }
-
-    header nav ul li {
-      display: inline-block;
-      margin-left: 50px;
-    }
-
-    header nav ul li a {
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-    }
-
-    nav ul li a:hover {
-      background-color: #f39c12 !important;
-      text-decoration: none;
-    }
-
-    .logo {
-      margin-top: 50px;
-    }
-
-    #tamil {
-      color: white;
-      margin-left: 30px;
-    }
   </style>
   <title>Registration Form</title>
 </head>
 
 <body>
-  <header>
-    <div class="logo">
-      <h5 id="tamil"> அறம் வேலைவாய்ப்பு</h5>
-    </div>
 
-    <nav>
-      <ul>
-        <li><a href="#about-us">About Us</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#job-seekers">Seekers</a></li>
-        <li><a href="#job-providers">Providers</a></li>
-        <li><a href="#blog">Blog</a></li>
+  <nav class="navcss navbar navbar-expand-lg sticky-top"
+    style="background-color: navy; padding-top: 40px; padding-bottom: 40px;">
+    <div class="container-fluid">
+      <h5 class="tamilcss mx=sm-4" style="color:white;">அறம் வேலைவாய்ப்பு</h5>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined text-light px-sm-4">menu</span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link mx-4" href="#about-us">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="#how-it-works">How It Works</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="#job-seekers">Seekers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="#job-providers">Providers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="#blog">Blog</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
 
-      </ul>
-    </nav>
-  </header>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div class="container">
+  <div class="formcss container container-lg mt-5 mx-auto">
     <h2>
       <center>Registration Form</center>
     </h2>
     <br>
+    <!-- <form name="registration_form" method="post" onsubmit="return validateForm()"
+      action="<?php echo baseUrl . "seekerController/registration" ?>"> -->
 
-    <form name="registration_form" method="post" onsubmit="return validateForm()" action="<?php echo baseUrl . "seekerController/seekerRegistration"?>">
+    <form name="registration_form" method="post" onsubmit="return validateForm()"
+      action="<?php echo baseUrl . "seekerController/seekerRegistration" ?>">
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Enter your username">
@@ -176,16 +161,19 @@
       </div>
       <div class="form-group">
         <label for="phonenumber">Phone number</label>
-        <input type="tel" class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter your phone number">
+        <input type="tel" class="form-control" id="phonenumber" name="phonenumber"
+          placeholder="Enter your phone number">
         <div id="phone_error" class="error"></div>
       </div>
       <button type="Submit" class="btn btn-primary">Register</button>
     </form>
     <br>
-    <div id="sign" class="d-flex justify-content-end align-items-center">
-      <p>Already have an account ? <a id="regis" href="<?php echo baseUrl . "seekerController"?>">login</a></p>
+    <div id="sign" class="d-flex justify-content-start align-items-center">
+      <p>Already have an account ? <a id="regis" href="<?php echo baseUrl . "seekerController" ?>">login</a></p>
     </div>
   </div>
+
+
   <script>
     function validateForm() {
       var username = document.getElementById('name').value;
@@ -247,6 +235,10 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
