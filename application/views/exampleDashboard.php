@@ -7,6 +7,11 @@
     <title>Dashboard with Sidebar</title>
     <!-- Link to Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <!-- Google Fonts -->
     <style>
         /* #education{
         color:
@@ -90,9 +95,33 @@
             background-color: #f1f1f1;
             margin: 0;
             padding: 0;
-            /* margin-left:-200px;
-  margin-right:290px; */
         }
+
+         /* Navbar */
+    .navcss {
+      color: white;
+      font-weight: bold;
+    }
+
+    .navbar-nav li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar-nav li a:hover {
+      color: #F8802A;
+      text-decoration: none;
+    }
+
+    .tamilcss {
+      padding-right: 15%;
+    }
+
+    @media screen and (max-width:576px) {
+      .tamilcss {
+        padding-right: 8%;
+      }
+    }
 
         .container {
             background-color: #fff;
@@ -177,67 +206,7 @@
             width: 50%;
         }
 
-        /* Update header background color to a darker navy */
-        /* Header styles */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            z-index: 1000;
-            background-color: navy;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        header h2 {
-            color: white;
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 25%;
-            transform: translate(-50%, -50%);
-            color: white;
-        }
-
-        header nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-
-        }
-
-        header nav ul li {
-            display: inline-block;
-            margin-left: 50px;
-        }
-
-        header nav ul li a {
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            /* background-color: #f39c12 ;  */
-        }
-
-        header nav ul li a:hover {
-            /* background-color: #007bff;
-    .btn-primary{ */
-            /* background-color: #f39c12 ; */
-            color: #F8802A;
-            text-decoration: none;
-            /* } */
-        }
-
-
-        .logo {
-            margin-top: 50px;
-        }
+    
 
         .sidebar {
             position: fixed;
@@ -367,31 +336,11 @@
     </style>
 
 </head>
-<header>
-    <div class="logo">
-        <h5 id="tamil"> அறம் வேலைவாய்ப்பு</h5>
-    </div>
 
-    <nav>
-        <ul>
-            <li><a href="<?php echo baseUrl; ?>">Home</a></li>
-            <li><a href="<?php echo baseUrl . "#about" ?>">About Us</a></li>
-            <!-- <li><a href="#how-it-works">How It Works</a></li> -->
-            <li><a href="<?php echo baseUrl . "#seeker" ?>">Seekers</a></li>
-            <li><a href="<?php echo baseUrl . "#provider" ?>">Providers</a></li>
-            <li><a href="">Blog</a></li>
-            <!-- <li><a href="#login">Login</a></li> -->
-        </ul>
-    </nav>
-</header>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
     <!-- <div id="google_translate_element"></div>
   <script src="https://translate.Google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
   <script>
@@ -399,6 +348,37 @@
       new google.translate.TranslateElement({pageLanguage: 'en'},'google_translate_element');
     }
     </script> -->
+
+<nav class="navcss navbar navbar-expand-lg sticky-top"
+    style="background-color: navy; padding-top: 40px; padding-bottom: 40px;">
+    <div class="container-fluid">
+      <h5 class="tamilcss mx-sm-4" style="color:white;">அறம் வேலைவாய்ப்பு</h5>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined text-light px-sm-4">menu</span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link mx-4" href="#about-us">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="#how-it-works">How It Works</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="#job-seekers">Seekers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="#job-providers">Providers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="#blog">Blog</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
