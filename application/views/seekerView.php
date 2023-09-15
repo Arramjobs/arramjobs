@@ -174,6 +174,7 @@
       float: right;
     }
     
+    /* Sidebar */
     .sidebar {
       width: 250px;
       height: 100vh;
@@ -256,7 +257,7 @@
       width: 400px;
     }
 
-    /* 2 Education Details table   3 Experience Details css  5 Area of interest css*/
+    /* 2 Education Details table   3 Experience Details table css  5 Area of interest table css*/
     .edutablecss , .exptablecss , .areacss{
       width: 80%;
       margin-left: 10%;
