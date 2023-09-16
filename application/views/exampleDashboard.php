@@ -188,6 +188,24 @@
         }
         }
 
+        .providerdashboardcontent{
+             text-align: justify;
+             text-indent: 50px;
+             letter-spacing: 0.5px;
+        }
+
+        @media screen and (max-width:768px) {
+        .providerdashboardcontent{
+            margin-left: 30%;
+        }
+        }
+        /* @media screen and (max-width:576px) {
+        .providerdashboardcontent{
+           margin-left: 60%;
+        }
+        } */
+
+
         .formcss1 {
             background-color: #fff;
             padding: 30px;
@@ -491,13 +509,16 @@
             </nav>
 
             <!-- Main content -->
-<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-<?php
-if ($this->data['method'] == "dashboard") {
-    ?>
-        <h1 class="providerdashboard mt-5" style="text-align:center">
+    <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <?php
+    if ($this->data['method'] == "dashboard") {
+        ?>
+        <h1 class="providerdashboard my-5" style="text-align:center;color:navy">
        Welcome To Job Provider Dashboard
         </h1>
+        <p class="providerdashboardcontent my-5 mx-md-5 px-5" >At Arram Job Providing, we firmly believe that the key to a prosperous organization lies in having the right people onboard. Be it team expansion, project initiation, or
+             the need for specialized skills, we serve as your dependable partner in talent acquisition. With our extensive network and expertise, we identify and connect you with top-notch professionals who fit your unique requirements. Our commitment to excellence ensures that you receive candidates who not only meet but exceed your expectations. We're dedicated to streamlining your recruitment process,
+             saving you time and resources, so you can focus on what you do best - achieving your business goals.</p>
 
 
         <!-- 2 providerjob form table ****************************************************************************************************** -->

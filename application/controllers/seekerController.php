@@ -67,7 +67,7 @@ class SeekerController extends CI_Controller
     }
 
    
-
+    
 
     public function basicDetails()
     {

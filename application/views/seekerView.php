@@ -214,10 +214,10 @@
       font-weight: 700;
     }
 
-    #w {
+    /* #w {
       margin-bottom: -100px;
       margin-top: 160px;
-    }
+    } */
 
     #regis {
       display: inline-block;
@@ -250,6 +250,24 @@
       background-color: transparent;
       color: red;
     }
+
+    @media screen and (max-width:768px) {
+        .seekerdashboard{
+            padding-left: 30%;
+        }
+        }
+
+        .seekerdashboardcontent{
+             text-align: justify;
+             text-indent: 50px;
+             letter-spacing: 0.5px;
+        }
+
+        @media screen and (max-width:768px) {
+        .seekerdashboardcontent{
+            margin-left: 30%;
+        }
+        }
 
 
     /* 1 basic detail css    2 1 education form css  3 1 Experience form css   5 1 Area form css  Resume css */
@@ -322,7 +340,9 @@
             <br>
 
             <li class="nav-item">
-              <h4>Create Profile</h4>
+              <h4 class="ms-1 mb-3">Create Profile</h4>
+              <a class="nav-link" href="<?php echo baseUrl . "seekerController/dash" ?>">
+              Seeker Dashboard
               </a>
             </li><br>
             <li class="nav-item">
@@ -377,9 +397,15 @@
         <?php
         if ($method == "dash") {
           ?>
-              <h1 class="" id="w">
-                <center>Welcome To Job Seeker Dashboard </center>
+
+              <h1 class="seekerdashboard my-5" style="text-align:center;color:navy" id="w">
+                Welcome To Job Seeker Dashboard
               </h1>
+              <p class="seekerdashboardcontent my-5 mx-md-5 px-5">At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're 
+              a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain
+               access to a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs.</p>
+
+
             <?php
         } else if ($method == 'basicdetails') {
           ?>
@@ -1063,7 +1089,7 @@
           ?>
 
 
-                      <div class="container">
+                      <div class="areaformcss container mt-5 mx-md-auto">
                         <h3>Area of Interest Form </h3>
                         <form method="post" onsubmit="return validateForm()" action="<?php echo baseUrl . "seekerController/updateInsertAreaOfIntrest" ?>">
 
