@@ -253,7 +253,7 @@
 
 
     /* 1 basic detail css    2 1 education form css  3 1 Experience form css   5 1 Area form css  Resume css */
-    .basicdetailcss ,  .eduformcss , .expdetailcss , .areaformcss , .resumecss {
+    .basicdetailcss ,  .eduformcss , .expdetailcss , .areaformcss , .resumecss , .expdetailsform {
       width: 400px;
     }
 
@@ -264,7 +264,7 @@
     }
 
     @media screen and (max-width:768px) {
-      .basicdetailcss,  .eduformcss , .expdetailcss , .areaformcss , .resumecss  {
+      .basicdetailcss,  .eduformcss , .expdetailcss , .areaformcss , .resumecss , .expdetailsform {
         width: 55%;
        margin-left: 40%;
       }
@@ -1857,8 +1857,8 @@
 
       <!-- 3 Experience Details ******************************************************************************************************************-->
 
-                          <div class="exptablecss mt-5">
-                            <h2 class="text-center">Experience Details </h2>
+                          <div class=" container exptablecss mt-5">
+                            <h3 class="text-center">Experience Details </h3>
                             <a id="regis" href="<?php echo baseUrl . "seekerController/addExperirenceForm" ?>">+ Add Experience Details</a>
 
                             <div class="clearfix"></div>
@@ -1929,7 +1929,7 @@
   <!-- 3 1 Experience details form ********************************************************************************************************************-->
 
                   <div class="expdetailcss container mt-5 mx-md-auto">
-                    <h3>Experience Details Form</h3>
+                    <h3 class="mx-auto" style="color:navy" >Experience Details Form</h3>
 
                     <form name="experienceform" method="post" onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "seekerController/insertExperienceForm" ?>">
 
@@ -1988,8 +1988,6 @@
 
 
 
-
-
                       <div class="form-group">
                         <label for="company name">Company Name</label>
                         <input type="text" class="form-control" id="companyname" name="companyname">
@@ -2002,7 +2000,7 @@
                         <div id="role_error" class="error"></div>
                       </div>
 
-                      <h4>Previous Employer details</h4>
+                      <h3 class="mx-auto py-3" style="color:navy" ">Previous Employer details</h3>
 
                       <div class="form-group">
                         <label for="Name">Name of employer*</label>
@@ -2440,8 +2438,8 @@
         if ($method == 'updateExperience') {
           ?>
 
-                  <div class="container">
-                    <h3>Experience Details Form</h3>
+                  <div class="expdetailsform container mt-5 mx-md-auto ">
+                    <h3>Experience Details Form </h3>
 
                     <form name="experienceform" method="post" onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "seekerController/updateInsertExperience" ?>">
                       <?php
@@ -2524,7 +2522,7 @@
                                     <div id="role_error" class="error"></div>
                                   </div>
 
-                                  <h1>Previous Employer details</h1>
+                                  <h3 class="pt-5">Previous Employer details</h3>
 
                                   <div class="form-group">
                                     <label for="Name">Name of employer*</label>
@@ -3253,8 +3251,8 @@
         } elseif ($method == 'educationTable') {
           ?>
 
-                    <div class=" edutablecss mt-5 ">
-                      <h2 class="text-center mx-auto">Educational Details</h2>
+                    <div class="container edutablecss mt-5 ">
+                      <h3 class="text-center mx-auto" style="color:navy" >Educational Details</h3>
                       <a id="regis" href="<?php echo baseUrl . "seekerController/addEducationForm" ?>">+ Add Educational Details</a>
 
                       <div class="clearfix"></div>
@@ -3491,7 +3489,9 @@
 
         } elseif ($method == 'updateEducation') {
           ?>
-                            <div class="container" id="education">
+
+<!-- 2 Educational details Update************************************************************************** -->
+                            <div class="container mt-5" id="education">
                               <h3>Education Form</h3>
 
                               <div id="educationFormsContainer">
@@ -3561,7 +3561,7 @@
                                                 </div>
 
                                         </div>
-                                        <button type="submit" id="educationsubmit" class="btn">Submit</button>
+                                        <button type="submit" id="educationsubmit" class="btn btn-primary">Submit</button>
 
                                         </form>
                                       <?php
@@ -3967,8 +3967,8 @@
                           
   <!-- Area of interest *****************************************************************************************-->
 
-                            <div class="areacss mt-5">
-                              <h2 class="text-center">Area Of Intrest Details</h2>
+                            <div class="container areacss mt-5">
+                              <h3 class="mx-auto" style="color:navy" >Area Of Interest Details</h3>
                               <a id="regis" href="<?php echo baseUrl . "seekerController/addAreaOfIntrestForm" ?>">+ Add Area Of Interest Details</a>
 
                               <div class="clearfix"></div>
