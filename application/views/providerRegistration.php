@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Employer Registration Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="path/to/bootstrap.min.css">
@@ -162,7 +162,7 @@
                 <h3>Provider Registration Form<h3>
             </div>
             <div class="">
-                <h4>Company Details</h4>
+                <h4 class="mx-auto">Company Details</h4>
             </div>
             <!-- <form  name="forms" action="Registrationcontroller.php" method="post"> -->
             <!-- <form id="h" name="forms" action="http://localhost/arramjobs/providerController/providerRegistration" method="post"> -->
@@ -171,49 +171,49 @@
 
                 <div class=" ">
                     <label for="name" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="enter name"
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name"
                         onkeypress="return allowOnlyLetters(event, this)">
                     <p id="nameerr" style="color: red;"></p>
                 </div>
                 <div class=" ">
                     <label for="phno" class="form-label">Number:</label>
-                    <input type="number" class="form-control" id="phno" name="mobile">
+                    <input type="number" class="form-control" id="phno" name="mobile" placeholder="Enter number">
                     <p id="pherr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="email" class="form-label">Email-ID:</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="enter email">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
                     <p id="mailerr" style="color: red;"></p>
                 </div>
                 <div class=" ">
-                    <label for="addr" class="form-label">Street address:</label>
-                    <input type="text" class="form-control" id="addr" name="address" placeholder="enter address">
+                    <label for="addr" class="form-label">Street Address:</label>
+                    <input type="text" class="form-control" id="addr" name="address" placeholder="Enter address">
                     <p id="adderr" style="color: red;"></p>
                 </div>
-                <div class=">
-                <label for=" addr" class="form-label">Landmark:</label>
-                    <input type="text" class="form-control" id="landmark" name="landmark" placeholder="enter address">
+                <div class="">
+                <label for="addr" class="form-label">Landmark:</label>
+                    <input type="text" class="form-control" id="landmark" name="landmark" placeholder="Enter landmark">
                     <p id="landerr" style="color: red;"></p>
                 </div>
                 <div class=" ">
                     <label for="addr" class="form-label">City:</label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="enter city">
+                    <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
                     <p id="cityerr" style="color: red;"></p>
                 </div>
                 <div class=" ">
                     <label for="addr" class="form-label">District:</label>
-                    <input type="text" class="form-control" id="district" name="district" placeholder="enter district">
+                    <input type="text" class="form-control" id="district" name="district" placeholder="Enter district">
                     <p id="diserr" style="color: red;"></p>
                 </div>
                 <div class=" ">
                     <label for="addr" class="form-label">State:</label>
-                    <input type="text" class="form-control" id="state" name="state" placeholder="enter state">
+                    <input type="text" class="form-control" id="state" name="state" placeholder="Enter state">
                     <p id="stateerr" style="color: red;"></p>
                 </div>
 
                 <div class=" ">
                     <label for="addr" class="form-label">Pincode:</label>
-                    <input type="number" class="form-control" id="pincode" name="pincode">
+                    <input type="number" class="form-control" id="pincode" name="pincode" placeholder="Enter pincode">
                     <p id="pinerr" style="color: red;"></p>
                 </div>
                 <div class="">
@@ -225,28 +225,28 @@
                 <!-- <h3 class=" grid-text-center d-flex justify-content-start text-dark bg-light bg-opacity-50 rounded-3 ms-5 me-5 mt-3"><center>Contact person details</center></h3> -->
                 <!-- <div class="grid-text-center p-2 border bg-light  rounded-1 ms-5 me-5">Contact person details</div> -->
                 <div class="">
-                    <h4>Contact person details</h4>
+                    <h4 class="mx-auto">Contact Person Details</h4>
                 </div>
 
                 <div class=" ">
                     <label for="name1" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name1" name="name1" placeholder="enter name"
+                    <input type="text" class="form-control" id="name1" name="name1" placeholder="Enter name"
                         onkeypress="return allowOnlyLetters1(event, this)">
                     <p id="nameerr1" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="role" class="form-label">Role:</label>
-                    <input type="text" class="form-control" id="role" name="role" placeholder="enter role">
+                    <input type="text" class="form-control" id="role" name="role" placeholder="Enter role">
                     <p id="rolerr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="phno1" class="form-label">Mobile Number:</label>
-                    <input type="number" class="form-control" id="phno1" name="mobile1">
+                    <input type="number" class="form-control" id="phno1" name="mobile1" placeholder="Enter number">
                     <p id="pherr1" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="mail1" class="form-label">Email-ID:</label>
-                    <input type="email" class="form-control" id="mail1" name="email1" placeholder="enter email">
+                    <input type="email" class="form-control" id="mail1" name="email1" placeholder="Enter Email">
                     <p id="mailerr1" style="color: red;"></p>
                 </div>
 

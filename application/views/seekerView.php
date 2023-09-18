@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<title>Employee Page</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -210,7 +211,8 @@
     .nav-item h4 {
       margin: 0;
       padding: 10px 10px;
-      color: #7b3503;
+      /* color: #7b3503; */
+      color:black;
       font-weight: 700;
     }
 
@@ -455,24 +457,24 @@
                               <div id="gender_error" class="error"></div>
                             </div>
 
-                            <h4> Address : </h4>
+                            <h4 class="py-3" style="color:navy"> Address : </h4>
                             <div class="form-group">
-                              <label for="Door no">Door no/building name </label>
+                              <label for="Door no">Door no / Building Name *</label>
                               <input type="text" class="form-control" id="doorno" value="<?php echo isset($value['buildingName']) ? $value['buildingName'] : ''; ?>" name="doorno">
                               <div id="doorno_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                              <label for="street address">street address </label>
+                              <label for="street address">Street Address *</label>
                               <input type="text" class="form-control" id="streetaddress" value="<?php echo isset($value['address']) ? $value['address'] : ''; ?>" name="streetaddress">
                               <div id="streetaddress_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                              <label for="landmark">Landmark </label>
+                              <label for="landmark">Landmark *</label>
                               <input type="text" class="form-control" id="landmark" value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" name="landmark">
                               <div id="landmark_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                              <label for="pincode">Pin Code</label>
+                              <label for="pincode">Pin Code *</label>
                               <input type="text" class="form-control" id="pincode" value="<?php echo isset($value['pincode']) ? $value['pincode'] : ''; ?>" name="pincode">
                               <div id="pincode_error" class="error"></div>
                             </div>
@@ -482,7 +484,7 @@
                               <div id="district_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                              <label for="maritalstatus">Marital Status*</label>
+                              <label for="maritalstatus">Marital Status *</label>
 
                               <select class="form-control" id="maritalstatus" value="<?php echo isset($value['maritalStatus']) ? $value['maritalStatus'] : ''; ?>" name="maritalstatus">
                                 <option value="">Select your marital status</option>
@@ -494,23 +496,23 @@
                               </select>
                               <div id="maritalstatus_error" class="error"></div>
                             </div>
-                            <h4>Identification Details :</h4>
+                            <h4  class="py-3" style="color:navy">Identification Details :</h4>
                             <div class="form-group">
-                              <label for="aadharfrontphoto">Aadhar front photo </label>
+                              <label for="aadharfrontphoto">Aadhar Front Photo *</label>
                               <input type="file" class="form-control" id="aadharfrontphoto" value="<?php echo isset($value['aadhar_front']) ? $value['aadhar_front'] : ''; ?>" name="aadharfrontphoto">
                               <div id="aadharfrontphoto_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                              <label for="aadharbackphoto">Aadhar back Photo</label>
+                              <label for="aadharbackphoto">Aadhar Back Photo *</label>
                               <input type="file" class="form-control" id="aadharbackphoto" value="<?php echo isset($value['aadhar_back']) ? $value['aadhar_back'] : ''; ?>" name="aadharbackphoto">
                               <div id="aadharbackphoto_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                              <label for="photo">Photo</label>
+                              <label for="photo">Photo *</label>
                               <input type="file" class="form-control" id="photo" value="<?php echo isset($value['photo']) ? $value['photo'] : ''; ?>" name="photo">
                               <div id="photo_error" class="error"></div>
                             </div>
-                            <button type="submit" name="submitBtn" class="btn btn-primary">submit</button>
+                            <button type="submit" name="submitBtn" class="btn btn-primary">Submit</button>
                         </form>
 
                   <?php
@@ -1103,7 +1105,7 @@
                                       <div id="educationFormsContainer">
                                         <div class="education-form-container">
                                           <div class="form-group">
-                                            <label for="category">Category *</label>
+                                            <label for="category">Category</label>
                                             <select class="form-control" id="category" name="category" value="<?php echo $value['other_interst_category']; ?>" onchange="toggleCategoryFields()">
                                               <option value="">Select a category</option>
 
@@ -1127,7 +1129,7 @@
                                             </select>
                                           </div>
                                           <div class="form-group">
-                                            <label for="subcategory">Subcategory *</label>
+                                            <label for="subcategory">Subcategory</label>
                                             <select class="form-control" id="subcategory" name="subcategory" value="<?php echo $value['other_sub_interst_category']; ?>">
                                               <option value="">Select a sub category </option>
                                             </select>
@@ -1149,7 +1151,7 @@
                                           </div>
 
                                           <div class="form-group">
-                                            <label for="preferred-location">Preferred Location to work</label>
+                                            <label for="preferred-location">Preferred Location to Work</label>
                                             <input type="text" class="form-control" id="preferred-location" name="preferred-location" value="<?php echo $value['prefered_location']; ?>">
 
                                             <!-- <select class="form-control" id="preferred-location" name="preferred-location">
@@ -1826,12 +1828,12 @@
       <!-- Upload resume ***********************************************************************************************************************-->
 
                           <div class="resumecss container mt-5">
-                            <h3>Upload resume</h3>
+                            <h3>Upload Resume</h3>
                             <form id="resumeForm" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()" action="<?php echo baseUrl . "seekerController/resume" ?>">
 
                               <div class="form-group">
                                 <label class="mb-3" for="file">Upload Resume</label>
-                                <input type="file" name="file" placeholder="upload file....">
+                                <input type="file" name="file" placeholder="upload file...." >
                               </div>
 
                               <!-- <input id="resumeButton" type="submit" value="submit"> -->
@@ -1900,10 +1902,10 @@
                                     <th>Job Category</th>
                                     <th>Job Subcategory</th>
                                     <th>Experience</th>
-                                    <th>Companyname</th>
+                                    <th>Company Name</th>
                                     <th>Role</th>
-                                    <th>Name Of Employer</th>
-                                    <th>Mobile Number Of Employer</th>
+                                    <th>Name of Employer</th>
+                                    <th>Mobile Number of Employer</th>
                                     <th>Email Id</th>
                                     <th>Action</th>
                                   </tr>
@@ -1932,7 +1934,7 @@
                                                   <!-- <button class="btn btn-warning">Update</button> -->
                                                   <!-- <button class="btn btn-danger">Delete</button> -->
                                                   <a id="regis" id="updates" href="<?php echo baseUrl . "seekerController/updateExperience" ?>/<?php echo $value['id'] ?>">Update</a>
-                                                  <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteExperience" ?>/<?php echo $value['id'] ?>">delete</a>
+                                                  <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteExperience" ?>/<?php echo $value['id'] ?>">Delete</a>
                                                 </div>
                                               </td>
                                             </tr>
@@ -1961,7 +1963,7 @@
 
 
                       <div class="form-group">
-                        <label for="category">Category:</label>
+                        <label for="category">Category</label>
                         <select class="form-control" id="category" name="category" onchange="updateSubcategories()">
 
                           <option value="">Select a Category</option>
@@ -1978,7 +1980,7 @@
                         <div id="category_error" class="error"></div>
                       </div>
                       <div class="form-group">
-                        <label for="subcategory">Subcategory:</label>
+                        <label for="subcategory">Subcategory</label>
                         <select class="form-control" id="subcategory" name="subcategory" disabled>
                           <option value="">Select a Subcategory</option>
                         </select>
@@ -2012,8 +2014,6 @@
                           <input type="text" class="form-control" id="othersubcategory" name="othersubcategory">
                       </div>
 
-
-
                       <div class="form-group">
                         <label for="company name">Company Name</label>
                         <input type="text" class="form-control" id="companyname" name="companyname">
@@ -2021,15 +2021,15 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="role">Role in the company</label>
+                        <label for="role">Role in the Company</label>
                         <input type="text" class="form-control" id="role" name="role">
                         <div id="role_error" class="error"></div>
                       </div>
 
-                      <h3 class="mx-auto py-3" style="color:navy" ">Previous Employer details</h3>
+                      <h3 class="mx-auto py-2" style="color:navy" ">Previous Company<br>Manager Details</h3>
 
                       <div class="form-group">
-                        <label for="Name">Name of employer*</label>
+                        <label for="Name">Name of Employer</label>
                         <input type="text" class="form-control" id="nameofemployer" name="nameofemployer">
                         <div id="name_error" class="error"></div>
                       </div>
@@ -2478,7 +2478,7 @@
 
 
                                   <div class="form-group">
-                                    <label for="category">Category:</label>
+                                    <label for="category">Category</label>
                                     <select class="form-control" id="category" name="category" onchange="updateSubcategories()">
                                       <option value="">Select a Category</option>
                                       <option value="architech" <?php if ($value['other_category'] === 'architech')
@@ -2504,7 +2504,7 @@
                                   </div>
 
                                   <div class="form-group">
-                                    <label for="subcategory">Subcategory:</label>
+                                    <label for="subcategory">Subcategory</label>
                                     <select class="form-control" id="subcategory" value="<?php echo $value['other_sub_category']; ?>" name="subcategory" disabled>
                                       <option value="">Select a Subcategory</option>
                                     </select>
@@ -2543,15 +2543,16 @@
                                   </div>
 
                                   <div class="form-group">
-                                    <label for="role">Role in the company</label>
+                                    <label for="role">Role in the Company</label>
                                     <input type="text" class="form-control" value="<?php echo $value['job_role']; ?>" id="role" name="role">
                                     <div id="role_error" class="error"></div>
                                   </div>
 
-                                  <h3 class="pt-5">Previous Employer details</h3>
+                                  <!-- <h3 class="pt-3">Previous Company<br>Manager Details</h3> -->
+                                  <h3 class="mx-auto py-2" style="color:navy" ">Previous Company<br>Manager Details</h3>
 
                                   <div class="form-group">
-                                    <label for="Name">Name of employer*</label>
+                                    <label for="Name">Name of Employer</label>
                                     <input type="text" class="form-control" value="<?php echo $value['previous_employer_name']; ?>" id="nameofemployer" name="nameofemployer">
                                     <div id="name_error" class="error"></div>
                                   </div>
@@ -3293,9 +3294,9 @@
                               <th>ID</th>
                               <th>Educational Qualification</th>
                               <th>Department</th>
-                              <th>School (OR) College Name</th>
+                              <th>School (or) College Name</th>
                               <th>Percentage</th>
-                              <th>YearOfPassing</th>
+                              <th>Year of Passing</th>
                               <th>Action</th>
                             </tr>
                         </thead>
@@ -3318,7 +3319,7 @@
                                         <td>
                                           <div class="btn-group" role="group">
                                             <a id="regis" href="<?php echo baseUrl . "seekerController/updateEducation" ?>/<?php echo $value['id'] ?>">Update</a>
-                                            <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteEducation" ?>/<?php echo $value['id'] ?>">delete</a>
+                                            <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/DeleteEducation" ?>/<?php echo $value['id'] ?>">Delete</a>
                                           </div>
                                         </td>
                                       </tr>
@@ -3339,7 +3340,7 @@
                                 <form name="educationform" action="<?php echo baseUrl . "seekerController/insertEducationForm" ?>" method="post" onsubmit="return validateForm()">
 
                                   <div class="form-group">
-                                    <label for="qualification">Educational Qualification*</label>
+                                    <label for="qualification">Educational Qualification</label>
                                     <select class="form-control" id="qualification" name="qualification" onchange="toggleFields()">
                                       <option value="">Select Qualification</option>
                                       <option value="below_8th">Below 8th</option>
@@ -3365,7 +3366,7 @@
                                     <div id="department_error" class="error"></div>
                                   </div>
                                   <div class="form-group" id="school-group">
-                                    <label for="school">School Name/collegename</label>
+                                    <label for="school">School Name / College Name</label>
                                     <input type="text" class="form-control" id="school" name="school">
                                   </div>
                                   <div class="form-group" id="percentage-group">
@@ -3532,7 +3533,7 @@
                                                 <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
                                                 <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id" placeholder="Enter your name">
                                                 <div class="form-group">
-                                                  <label for="qualification">Educational Qualification*</label>
+                                                  <label for="qualification">Educational Qualification</label>
                                                   <select class="form-control" id="qualification" value="<?php echo $value['educational_qualification']; ?>" name="qualification" onchange="toggleFields()">
                                                     <option value="">Select Qualification</option>
                                                     <option value="below_8th" <?php if ($value['educational_qualification'] === 'below_8th')
@@ -3572,7 +3573,7 @@
                                                 </div>
 
                                                 <div class="form-group" id="school-group">
-                                                  <label for="school">School Name/collegename</label>
+                                                  <label for="school">School Name / College Name</label>
                                                   <input type="text" class="form-control" id="school" value="<?php echo $value['school_college_name']; ?>" name="school">
                                                 </div>
                                                 <div class="form-group" id="percentage-group">
@@ -3597,7 +3598,7 @@
                                       ?>
                                   <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
                                   <div class="form-group">
-                                    <label for="qualification">Educational Qualification*</label>
+                                    <label for="qualification">Educational Qualification</label>
                                     <select class="form-control" id="qualification" name="qualification" onchange="toggleFields()">
                                       <option value="">Select Qualification</option>
                                       <option value="below_8th" <?php if ($value['educational_qualification'] === 'below_8th')
@@ -3633,7 +3634,7 @@
                                       </select>
                                       <div id="department_error" class="error"></div>
                                       <div class="form-group" id="school-group" style="display: none;">
-                                        <label for="school">School Name/collegename</label>
+                                        <label for="school">School Name / College Name</label>
                                         <input type="text" class="form-control" id="school" name="school">
                                       </div>
                                       <div class="form-group" id="percentage-group" style="display: none;">
@@ -3835,7 +3836,7 @@
                                         <td>
                                           <div class="btn-group" role="group">
                                             <a id="regis" href="<?php echo baseUrl . "seekerController/updateProject" ?>/<?php echo $value['id'] ?>">Update</a>
-                                            <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteProject" ?>/<?php echo $value['id'] ?>">delete</a>
+                                            <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteProject" ?>/<?php echo $value['id'] ?>">Delete</a>
                                           </div>
                                         </td>
                                       </tr>
@@ -4013,7 +4014,7 @@
                                       <th>Experience</th>
                                       <th>Job Type</th>
                                       <th>Description</th>
-                                      <th>Expected_salary</th>
+                                      <th>Expected Salary</th>
                                       <th>Action</th>
                                     </tr>
                                 </thead>
@@ -4026,7 +4027,6 @@
                               ?>
 
                                       <tr>
-
                                         <td><?php echo $value['id'] ?></td>
                                         <td><?php echo $value['other_interst_category'] ?></td>
                                         <td><?php echo $value['other_sub_interst_category'] ?></td>
@@ -4038,7 +4038,7 @@
                                         <td>
                                           <div class="btn-group" role="group">
                                             <a id="regis" href="<?php echo baseUrl . "seekerController/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>">Update</a>
-                                            <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteAreaOfIntrest" ?>/<?php echo $value['id'] ?>">delete</a>
+                                            <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteAreaOfIntrest" ?>/<?php echo $value['id'] ?>">Delete</a>
                                           </div>
                                         </td>
                                       </tr>
@@ -4059,7 +4059,7 @@
                               <div id="educationFormsContainer">
                                 <div class="education-form-container">
                                   <div class="form-group">
-                                    <label for="category">Category *</label>
+                                    <label for="category">Category</label>
                                     <select class="form-control" id="category" name="category" onchange="toggleCategoryFields()">
                                       <option value="">Select a category</option>
                                       <option value="architech">Architech</option>
@@ -4074,7 +4074,7 @@
                                     </select>
                                   </div>
                                   <div class="form-group"">
-                <label for=" subcategory">Subcategory *</label>
+                <label for=" subcategory">Subcategory</label>
                                     <select class="form-control" id="subcategory" name="subcategory">
                                       <option value="">Select a sub category </option>
                                     </select>
@@ -4096,7 +4096,7 @@
                                   </div>
 
                                   <div class="form-group">
-                                    <label for="preferred-location">Preferred Location to work</label>
+                                    <label for="preferred-location">Preferred Location to Work</label>
                                     <input type="text" class="form-control" id="preferred-location" name="preferred-location">
 
                                     <!-- <select class="form-control" id="preferred-location" name="preferred-location">
@@ -4607,7 +4607,7 @@
                                         <td>
                                           <div class="btn-group" role="group">
                                             <a id="regis" href="<?php echo baseUrl . "seekerController/updateSkill" ?>/<?php echo $value['id'] ?>">Update</a>
-                                            <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteSkill" ?>/<?php echo $value['id'] ?>">delete</a>
+                                            <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteSkill" ?>/<?php echo $value['id'] ?>">Delete</a>
                                           </div>
                                         </td>
                                       </tr>

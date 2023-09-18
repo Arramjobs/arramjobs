@@ -105,7 +105,7 @@
       font-weight: bold;
     }
   </style>
-  <title>provider Login Form</title>
+  <title>Employer Login Form</title>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
@@ -155,15 +155,15 @@
     <form name="login_form" method="post" action="<?php echo baseUrl . "providerController/viewDashboard" ?>"
       onsubmit="return validateForm()">
       <div class="form-group">
-        <label for="userID">Company Name</label>
+        <label for="userID">Company Name:</label>
         <!-- <input type="text" class="form-control" id="userID" name="userID" placeholder="Enter your user name"> -->
         <input type="text" class="form-control" id="userID" name="userName" placeholder="Enter your user name">
         <div id="userID_error" class="error"></div>
       </div>
       <div class="form-group">
-        <label for="password">Company Mobile Number</label>
+        <label for="password">Company Mobile Number:</label>
         <!-- <input type="password" class="form-control" id="password" name="password"> -->
-        <input type="number" class="form-control" id="password" name="number">
+        <input type="number" class="form-control" id="password" name="number"  placeholder="Enter your number">
         <div id="password_error" class="error"></div>
       </div>
       <button type="submit" class="btn btn-primary">Login</button>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard with Sidebar</title>
+    <title>Employer Page</title>
     <!-- Link to Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -614,10 +614,10 @@ foreach ($this->data['providerDetail'] as $key => $value) {
             <div class="text-center p-2 border bg-secondary rounded-3  bg-opacity-75 mx-sm-5 text-white fs-5">Company Details</div>
 
             <form name="forms" action="<?php echo baseUrl . "providerController/update_record" ?>" method="post">
-            <input type="hidden" class="form-control" value=<?php echo $value['id']; ?> id="id" name="id" placeholder="enter name" onkeypress="return allowOnlyLetters(event, this)">
+            <input type="hidden" class="form-control" value=<?php echo $value['id']; ?> id="id" name="id" placeholder="Enter name" onkeypress="return allowOnlyLetters(event, this)">
             <div class=" mb-3 mt-4  mx-sm-5 w-55  ">
             <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" value='<?php echo $value['company_name']; ?>' id="name" name="name" placeholder="enter name" onkeypress="return allowOnlyLetters(event, this)">
+            <input type="text" class="form-control" value='<?php echo $value['company_name']; ?>' id="name" name="name" placeholder="Enter name" onkeypress="return allowOnlyLetters(event, this)">
             <p id="nameerr" style="color: red;"></p>
             </div>
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
@@ -627,32 +627,32 @@ foreach ($this->data['providerDetail'] as $key => $value) {
             </div>
             <div class="mb-3 mt-4 mx-sm-5 w-55 ">
             <label for="email" class="form-label">Email-ID:</label>
-            <input type="email" class="form-control" value='<?php echo $value['company_email']; ?>' id="email" name="email" placeholder="enter email">
+            <input type="email" class="form-control" value='<?php echo $value['company_email']; ?>' id="email" name="email" placeholder="Enter Email-Id">
             <p id="mailerr" style="color: red;"></p>
             </div>
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
-            <label for="addr" class="form-label">street address:</label>
-            <input type="address" class="form-control" value='<?php echo $value['street_address']; ?>' id="addr" name="addr" placeholder="enter address">
+            <label for="addr" class="form-label">Street Address:</label>
+            <input type="address" class="form-control" value='<?php echo $value['street_address']; ?>' id="addr" name="addr" placeholder="Enter address">
             <p id="adderr" style="color: red;"></p>
             </div>
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
             <label for="addr" class="form-label">Landmark:</label>
-            <input type="address" class="form-control" value='<?php echo $value['Landmark']; ?>' id="landmark1" name="landmark1" placeholder="enter address">
+            <input type="address" class="form-control" value='<?php echo $value['Landmark']; ?>' id="landmark1" name="landmark1" placeholder="Enter landmark">
             <p id="landerr1" style="color: red;"></p>
             </div>
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
             <label for="addr" class="form-label">City:</label>
-            <input type="address" class="form-control" value='<?php echo $value['City']; ?>' id="city1" name="city1" placeholder="enter city">
+            <input type="address" class="form-control" value='<?php echo $value['City']; ?>' id="city1" name="city1" placeholder="Enter city">
             <p id="cityerr1" style="color: red;"></p>
             </div>
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
             <label for="addr" class="form-label">State:</label>
-            <input type="address" class="form-control" value='<?php echo $value['state']; ?>' id="state1" name="state1" placeholder="enter state">
+            <input type="address" class="form-control" value='<?php echo $value['state']; ?>' id="state1" name="state1" placeholder="Enter state">
             <p id="stateerr1" style="color: red;"></p>
             </div>
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
             <label for="addr" class="form-label">District:</label>
-            <input type="address" class="form-control" value='<?php echo $value['district']; ?>' id="district1" name="district1" placeholder="enter district">
+            <input type="address" class="form-control" value='<?php echo $value['district']; ?>' id="district1" name="district1" placeholder="Enter district">
             <p id="diserr1" style="color: red;"></p>
             </div>
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
@@ -673,12 +673,12 @@ foreach ($this->data['providerDetail'] as $key => $value) {
 
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
             <label for="name1" class="form-label">Name:</label>
-            <input type="text" class="form-control" value='<?php echo $value['name']; ?>' id="name1" name="name1" placeholder="enter name" onkeypress="return allowOnlyLetters1(event, this)">
+            <input type="text" class="form-control" value='<?php echo $value['name']; ?>' id="name1" name="name1" placeholder="Enter name" onkeypress="return allowOnlyLetters1(event, this)">
             <p id="nameerr1" style="color: red;"></p>
             </div>
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
             <label for="role" class="form-label">Role:</label>
-            <input type="text" class="form-control" value='<?php echo $value['role']; ?>' id="role" name="role" placeholder="enter role">
+            <input type="text" class="form-control" value='<?php echo $value['role']; ?>' id="role" name="role" placeholder="Enter role">
             <p id="rolerr" style="color: red;"></p>
             </div>
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
@@ -688,14 +688,13 @@ foreach ($this->data['providerDetail'] as $key => $value) {
             </div>
             <div class="mb-3 mt-4  mx-sm-5 w-55 ">
             <label for="mail1" class="form-label">Email-ID:</label>
-            <input type="email" class="form-control" value='<?php echo $value['email']; ?>' id="mail1" name="mail1" placeholder="enter email">
+            <input type="email" class="form-control" value='<?php echo $value['email']; ?>' id="mail1" name="mail1" placeholder="Enter Email-ID">
             <p id="mailerr1" style="color: red;"></p>
             </div>
 
             <div>
             <button class="btn  btn-primary rounded" id="updatesubmit" type="submit" onclick="return group()">
             <!-- <button  class=" btn-primary rounded">Submit</button> -->
-
             Submit
             </button>
 
@@ -1105,7 +1104,7 @@ foreach ($this->data['providerDetail'] as $key => $value) {
             </div>
 
             <div class="form-group">
-            <label for="no_of_openings">No Of Openingsr :</label>
+            <label for="no_of_openings">No of Openings :</label>
             <input type="number" class="form-control" id="no_of_openings" name="no_of_openings">
             <div id="no_of_openings_error" class="error"></div>
             </div>
@@ -1584,7 +1583,7 @@ foreach ($this->data['updateAddNew'] as $key => $value) {
 
                             <input type="hidden" class="form-control" value=<?php echo $value['id']; ?> id="id" name="id" placeholder="enter name" onkeypress="return allowOnlyLetters(event, this)">
                             <div class="form-group">
-                            <label for="company_name">Company Name*</label>
+                            <label for="company_name">Company Name:</label>
                             <input type="text" class="form-control" id="company_name" value=<?php echo $value['company_name']; ?> name="company_name">
                             <div id="company_name_error" class="error"></div>
                             </div>
@@ -1613,16 +1612,16 @@ foreach ($this->data['updateAddNew'] as $key => $value) {
                             <div id="category_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                            <label for="subcategory">Subcategory</label>
+                            <label for="subcategory">Subcategory:</label>
                             <select class="form-control" id="subcategory" value=<?php echo $value['jobSubCategory']; ?> name="subcategory" disabled>
                             <option value="">Select a Subcategory</option>
                             </select>
                             <div id="subcategory_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                            <label for="experience">Experience</label>
+                            <label for="experience">Experience:</label>
                             <select class="form-control" id="experience" value=<?php echo $value['experience']; ?> name="experience">
-                            <option value="">select your experience</option>
+                            <option value="">Select your experience</option>
                             <option value="fresher" <?php if ($value['experience'] === 'fresher')
                                 echo ' selected'; ?>>Fresher</option>
                             <option value="0-2" <?php if ($value['experience'] === '0-2')
@@ -1636,19 +1635,19 @@ foreach ($this->data['updateAddNew'] as $key => $value) {
                             <option value="15-20" <?php if ($value['experience'] === '15-20')
                                 echo ' selected'; ?>>15-20</option>
                             <option value="above 20 years" <?php if ($value['experience'] === 'above 20 years')
-                                echo ' selected'; ?>>above 20 years</option>
+                                echo ' selected'; ?>>Above 20 years</option>
                             </select>
                             <div id="experience_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                            <label for="preferred_location">Preferred Location*</label>
+                            <label for="preferred_location">Preferred Location:</label>
                             <input type="text" class="form-control" id="preferred_location" value=<?php echo $value['location']; ?> name="preferred_location">
                             <div id="preferred_location_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                            <label for="jobtype">Job Type :</label>
+                            <label for="jobtype">Job Type:</label>
                             <select class="form-control" id="jobtype" value=<?php echo $value['job_type']; ?> name="jobtype">
-                            <option value="">select your jobtype</option>
+                            <option value="">Select your jobtype</option>
                             <option value="FullTime" <?php if ($value['job_type'] === 'FullTime')
                                 echo ' selected'; ?>>Full Time</option>
                             <option value="PartTime" <?php if ($value['job_type'] === 'PartTime')
@@ -1658,18 +1657,18 @@ foreach ($this->data['updateAddNew'] as $key => $value) {
                             </div>
 
                             <div class="form-group">
-                            <label for="expected_salary">Salary</label>
+                            <label for="expected_salary">Salary:</label>
                             <input type="text" class="form-control" id="expected_salary" value=<?php echo $value['salary']; ?> name="expected_salary">
                             <div id="expected_salary_error" class="error"></div>
                             </div>
 
                             <div class="form-group">
-                            <label for="no_of_openings">No Of Openings</label>
+                            <label for="no_of_openings">No of Openings:</label>
                             <input type="number" class="form-control" id="no_of_openings" value=<?php echo $value['number_of_openings']; ?> name="no_of_openings">
                             <div id="no_of_openings_error" class="error"></div>
                             </div>
                             <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">Description:</label>
                             <input type="text" class="form-control" id="description" value=<?php echo $value['description']; ?> name="description">
                             <div id="description_error" class="error"></div>
                             </div>
