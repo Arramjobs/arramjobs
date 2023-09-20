@@ -326,8 +326,8 @@
         <li><a href="http://localhost/arramjobs/wordpress">Home</a></li>
         <li><a href="#about-us">About Us</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#job-seekers">Seekers</a></li>
-        <li><a href="#job-providers">Providers</a></li>
+        <li><a href="#job-seekers">Employee</a></li>
+        <li><a href="#job-providers">Employer</a></li>
         <li><a href="#blog">Blog</a></li>
 
       </ul>
@@ -368,24 +368,24 @@
                 Experience Details 
               </a>
             </li><br>
-            <li class="nav-item">
+            <!-- <li class="nav-item"> -->
               <!-- <a class="nav-link" href="http://localhost/arramjobs/seekerController/projectDetails"> -->
-              <a class="nav-link" href="<?php echo baseUrl . "seekerController/projectTable"?>">
-                project Details
-              </a>
-            </li><br>
+              <!-- <a class="nav-link" href="<?php echo baseUrl . "seekerController/projectTable"?>"> -->
+                <!-- project Details
+              </a> -->
+            <!-- </li><br> -->
             <li class="nav-item">
               <!-- <a class="nav-link" href="http://localhost/arramjobs/seekerController/areaOfInterest"> -->
               <a class="nav-link" href="<?php echo baseUrl . "seekerController/areaOfIntrestTable"?>">
-                Area Of Interest
+                Area Of Job Interest
               </a>
             </li><br>
-            <li class="nav-item">
+            <!-- <li class="nav-item"> -->
               <!-- <a class="nav-link" href="http://localhost/arramjobs/seekerController/skills"> -->
-              <a class="nav-link" href="<?php echo baseUrl . "seekerController/skillTable"?>">
+              <!-- <a class="nav-link" href="<?php echo baseUrl . "seekerController/skillTable"?>">
                 Skills
-              </a>
-            </li><br>
+              </a> -->
+            <!-- </li><br> -->
             <li class="nav-item">
               <!-- <a class="nav-link" href="http://localhost/arramjobs/seekerController/resume"> -->
               <a class="nav-link" href="<?php echo baseUrl . "seekerController/resume"?>">
@@ -401,7 +401,7 @@
         <?php
         if ($method == "dash") {
         ?>
-          <h1 class="" id="w"><center>Welcome To Job Seeker Dashboard </center></h1>
+          <h1 class="" id="w"><center>Welcome To Job Employee Dashboard </center></h1>
         <?php
         } else if ($method == 'basicdetails') {
         ?>
@@ -409,62 +409,69 @@
           <div class="container" id="page1" >
             <h3>Personal Details</h3>
            
-            <form name="applicationform"  enctype="multipart/form-data" method="post" onsubmit="return validateFormPage()" action='<?php echo baseUrl . "seekerController/updateBasicDetails"?>'>
+            <form name="applicationform"  enctype="multipart/form-data" method="post" onsubmit="return group()" action='<?php echo baseUrl . "seekerController/updateBasicDetails"?>'>
               <?php
                foreach ($basicDetails as $key => $value) {
               ?>
                 <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id" placeholder="Enter your name" onkeypress="return allowOnltLetters(event,this)">
-                <div class="form-group">
+
+                 <div class="form-group">
+                <label for="Name">Name *</label>
+                <input type="text" class="form-control" id="name" value="<?php echo $value['name']; ?>" name="name" placeholder="Enter your name" >
+                <div id="Name_error" class="error"></div>
+
+        </div>
+                <!-- <div class="form-group">
                   <label for="Name">Name *</label>
-                  <input type="text" class="form-control" id="name" value="<?php echo $value['name']; ?>" name="name" placeholder="Enter your name" required>
+                  <input type="text" class="form-control" id="name" value="<?php echo $value['name']; ?>" name="name" placeholder="Enter your name" >
                   <div id="Name_error" class="error"></div>
 
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label for="emailid">Email *</label><br>
-                  <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" name="email" placeholder="Enter your email" required>
+                  <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" name="email" placeholder="Enter your email" >
                   <div id="emailid_error" class="error"></div>
                 </div>
                 <div class="form-group">
                   <label for="phonenumber">Phone Number *</label>
-                  <input type="tel" class="form-control" id="phonenumber" value=<?php echo $value['phonenumber']; ?> name="phonenumber" placeholder="Enter your phonenumber" value="<?= isset($updateData['phonenumber']) ? $updateData['phonenumber'] : ''; ?>" required>
+                  <input type="tel" class="form-control" id="phonenumber" value=<?php echo $value['phonenumber']; ?> name="phonenumber" placeholder="Enter your phonenumber" value="<?= isset($updateData['phonenumber']) ? $updateData['phonenumber'] : ''; ?>" >
                   <div id="phonenumber_error" class="error"></div>
                 </div>
                 <div class="form-group">
                   <label for="dob">Date of Birth *</label>
-                  <input type="date" class="form-control" id="dateofbirth" value=<?php echo $value['dateofbirth']; ?> name="dateofbirth" required>
+                  <input type="date" class="form-control" id="dateofbirth" value=<?php echo $value['dateofbirth']; ?> name="dateofbirth" >
                   <div id="dob_error" class="error"></div>
                 </div>
-                <div class="form-group">
-  <label for="gender">Gender *</label>
-  <select class="form-control" id="gender" name="gender" required>
-    <option value="">Select your Gender</option>
-    <option value="male" <?php if (isset($value['gender']) && $value['gender'] === 'male') echo 'selected'; ?>>Male</option>
-    <option value="female" <?php if (isset($value['gender']) && $value['gender'] === 'female') echo 'selected'; ?>>Female</option>
-    <option value="others" <?php if (isset($value['gender']) && $value['gender'] === 'others') echo 'selected'; ?>>Others</option>
-  </select>
-  <div id="gender_error" class="error"></div>
-</div>
+              <div class="form-group">
+              <label for="gender">Gender *</label>
+              <select class="form-control" id="gender" name="gender" >
+                <option value="">Select your Gender</option>
+                <option value="male" <?php if (isset($value['gender']) && $value['gender'] === 'male') echo 'selected'; ?>>Male</option>
+                <option value="female" <?php if (isset($value['gender']) && $value['gender'] === 'female') echo 'selected'; ?>>Female</option>
+                <option value="others" <?php if (isset($value['gender']) && $value['gender'] === 'others') echo 'selected'; ?>>Others</option>
+              </select>
+              <div id="gender_error" class="error"></div>
+            </div>
 
                 <h4> Address : </h4>
                 <div class="form-group">
                   <label for="Door no">Door no/building name </label>
-                  <input type="text" class="form-control" id="doorno" value="<?php echo isset($value['buildingName']) ? $value['buildingName'] : ''; ?>" name="doorno">
+                  <input type="text" class="form-control" id="doorno" value="<?php echo isset($value['buildingName']) ? $value['buildingName'] : ''; ?>" name="doorno" >
                   <div id="doorno_error" class="error"></div>
                 </div>
                 <div class="form-group">
                   <label for="street address">street address </label>
-                  <input type="text" class="form-control" id="streetaddress" value="<?php echo isset($value['address']) ? $value['address'] : ''; ?>" name="streetaddress">
+                  <input type="text" class="form-control" id="streetaddress" value="<?php echo isset($value['address']) ? $value['address'] : ''; ?>" name="streetaddress" >
                   <div id="streetaddress_error" class="error"></div>
                 </div>
                 <div class="form-group">
                   <label for="landmark">Landmark </label>
-                  <input type="text" class="form-control" id="landmark" value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" name="landmark">
+                  <input type="text" class="form-control" id="landmark" value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" name="landmark" >
                   <div id="landmark_error" class="error"></div>
                 </div>
                 <div class="form-group">
                   <label for="pincode">Pin Code</label>
-                  <input type="text" class="form-control" id="pincode" value="<?php echo isset($value['pincode']) ? $value['pincode'] : ''; ?>" name="pincode">
+                  <input type="text" class="form-control" id="pincode" value="<?php echo isset($value['pincode']) ? $value['pincode'] : ''; ?>" name="pincode" >
                   <div id="pincode_error" class="error"></div>
                 </div>
                 <div class="form-group">
@@ -475,7 +482,7 @@
                 <div class="form-group">
                   <label for="maritalstatus">Marital Status*</label>
               
-                  <select class="form-control" id="maritalstatus" value="<?php echo isset($value['maritalStatus']) ? $value['maritalStatus'] : ''; ?>" name="maritalstatus">
+                  <select class="form-control" id="maritalstatus" value="<?php echo isset($value['maritalStatus']) ? $value['maritalStatus'] : ''; ?>" name="maritalstatus" >
                     <option value="">Select your marital status</option>
 
                     <option value="single"<?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'single') echo 'selected'; ?>>Single</option>
@@ -486,28 +493,226 @@
                 <h4>Identification Details :</h4>
                 <div class="form-group">
                   <label for="aadharfrontphoto">Aadhar front photo </label>
-                  <input type="file" class="form-control" id="aadharfrontphoto" value="<?php echo isset($value['aadhar_front']) ? $value['aadhar_front'] : ''; ?>" name="aadharfrontphoto">
+                  <input type="file" class="form-control" id="aadharfrontphoto" value="<?php echo isset($value['aadhar_front']) ? $value['aadhar_front'] : ''; ?>" name="aadharfrontphoto" >
                   <div id="aadharfrontphoto_error" class="error"></div>
                 </div>
                 <div class="form-group">
                   <label for="aadharbackphoto">Aadhar back Photo</label>
-                  <input type="file" class="form-control" id="aadharbackphoto" value="<?php echo isset($value['aadhar_back']) ? $value['aadhar_back'] : ''; ?>" name="aadharbackphoto">
+                  <input type="file" class="form-control" id="aadharbackphoto" value="<?php echo isset($value['aadhar_back']) ? $value['aadhar_back'] : ''; ?>" name="aadharbackphoto" >
                   <div id="aadharbackphoto_error" class="error"></div>
                 </div>
                 <div class="form-group">
                   <label for="photo">Photo</label>
-                  <input type="file" class="form-control" id="photo" value="<?php echo isset($value['photo']) ? $value['photo'] : ''; ?>" name="photo">
+                  <input type="file" class="form-control" id="photo" value="<?php echo isset($value['photo']) ? $value['photo'] : ''; ?>" name="photo" >
                   <div id="photo_error" class="error"></div>
                 </div>
-                <button type="submit" name="submitBtn" class="btn btn-primary">submit</button>
+                <button type="submit" name="submitBtn" class="btn btn-primary">Next-></button>
             </form>
            
           <?php
               }
           ?>
           </div>
+              <script>
+                
+     function group() {
+        var x = document.applicationform.name.value;
+        var y = document.applicationform.email.value;
+        var p = document.applicationform.phonenumber.value;
+        var d = document.applicationform.dateofbirth.value;
+        var g = document.applicationform.gender.value;
+        var b = document.applicationform.doorno.value;
+        var s = document.applicationform.streetaddress.value;
+        var l = document.applicationform.landmark.value;
+        var pin = document.applicationform.pincode.value;
+        var m = document.applicationform.maritalstatus.value;
+        var aa = document.applicationform.aadharfrontphoto.value;
+        var ab = document.applicationform.aadharbackphoto.value;
+        var photo = document.applicationform.photo.value;
 
-          <script>
+
+
+
+        if (x != "") {
+            if (x.length < 2) {
+
+                document.getElementById("Name_error").innerHTML = "* Name should be in atleast 4 characters";
+                alert("* Name should be in atleast 4 characters");
+                return false;
+            } else if (x.length > 50) {
+                document.getElementById("Name_error").innerHTML = "* Name should not exceed 50 characters";
+                alert("Name should not exceed 50 characters");
+                return false;
+            } else {
+                document.getElementById("Name_error").innerHTML = "";
+
+            }
+        } else if (x == "") {
+            var namesms1 = "* Name must be filled out";
+            // alert("* Name must be filled out");
+            document.getElementById("Name_error").innerHTML = namesms1;
+            document.applicationform.name.focus();
+            return false;
+        }
+
+        if (y == "") {
+                    var emailsms = "email must be filled out";
+                    // alert("email must be filled out");
+                    document.getElementById("emailid_error").innerHTML = emailsms;
+                    document.applicationform.email.focus();
+                    return false;
+                } else if (y != "") {
+                    document.getElementById("emailid_error").innerHTML="";
+                    /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
+                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(y)) {
+                        document.getElementById("emailid_error").innerHTML = "";
+                        // return (true);
+                    } else {
+                        document.getElementById("emailid_error").innerHTML = "you have entered an invalid email address";
+                        // alert("you have entered an invalid email address");
+                        return false;
+                    }
+                }
+                if (p != "") {
+                    if (p.length !== 10) {
+                        document.getElementById("phonenumber_error").innerHTML = "Phone number  must be in 10 digits";
+                        alert("Phone number  must be in 10 digits")
+                        return false;
+                    } else if (p.length > 11) {
+                        document.getElementById("phonenumber_error").innerHTML = "phone number should not exceed 10 digits";
+                        alert("phone number should not exceed 10 digits");
+                        return false;
+                    } else {
+                        document.getElementById("phonenumber_error").innerHTML = "";
+
+                    }
+                } else if (p == "") {
+                    var phsms = "phone number must be filled out";
+                    document.getElementById("phonenumber_error").innerHTML = phsms;
+                    document.applicationform.phonenumber.focus();
+                    return false;
+                  }
+
+                  if (d == "") {
+                    var namesms2 = "* Date of birth must be filled out";
+                    document.getElementById("dob_error").innerHTML = namesms2;
+                    document.applicationform.dateofbirth.focus();
+                    return false; 
+                }else {
+                        document.getElementById("dob_error").innerHTML = "";
+
+                    }
+
+                if (g == "") {
+                    var namesms2 = "* Gender must be filled out";
+                    document.getElementById("gender_error").innerHTML = namesms2;
+                    document.applicationform.gender.focus();
+                    return false; 
+                }
+                else {
+                        document.getElementById("gender_error").innerHTML = "";
+
+                    }
+
+                if (b == "") {
+                    var namesms2 = "* Door no & building name must be filled out";
+                    document.getElementById("doorno_error").innerHTML = namesms2;
+                    document.applicationform.gender.focus();
+                    return false; 
+                }else {
+                        document.getElementById("doorno_error").innerHTML = "";
+
+                    }
+
+                if (s == "") {
+                    var namesms2 = "* Street Address must be filled out";
+                    document.getElementById("streetaddress_error").innerHTML = namesms2;
+                    document.applicationform.streetaddress.focus();
+                    return false; 
+                }else {
+                        document.getElementById("streetaddress_error").innerHTML = "";
+
+                    }
+
+
+                if (l == "") {
+                    var namesms2 = "* Landmark must be filled out";
+                    document.getElementById("landmark_error").innerHTML = namesms2;
+                    document.applicationform.landmark.focus();
+                    return false; 
+                }else {
+                        document.getElementById("landmark_error").innerHTML = "";
+
+                    }
+
+
+                if (pin != "") {
+                    if (pin.length !== 6) {
+                        document.getElementById("pincode_error").innerHTML = "pincode  must be in 6 digits";
+                        return false;
+                    } else if (pin.length > 6) {
+                        document.getElementById("pincode_error").innerHTML = "pincode should not exceed 6 digits";
+                        return false;
+                    } else {
+                        document.getElementById("pincode_error").innerHTML = "";
+
+                    }
+                } else if (pin == "") {
+                    var pincode = "pincode must be filled out";
+                    document.getElementById("pincode_error").innerHTML = pincode;
+                    document.applicationform.pincode.focus();
+                    return false;
+
+                }
+
+
+                if (m == "") {
+                    var namesms2 = "* maritalstatus must be filled out";
+                    document.getElementById("maritalstatus_error").innerHTML = namesms2;
+                    document.applicationform.maritalstatus.focus();
+                    return false; 
+                }else {
+                        document.getElementById("maritalstatus_error").innerHTML = "";
+
+                    }
+
+                if (aa == "") {
+                    var namesms2 = "* Aadhar Front Photo must be filled out";
+                    document.getElementById("aadharfrontphoto_error").innerHTML = namesms2;
+                    document.applicationform.aadharfrontphoto.focus();
+                    return false; 
+                }else {
+                        document.getElementById("aadharfrontphoto_error").innerHTML = "";
+
+                    }
+
+                if (ab == "") {
+                    var namesms2 = "* Aadhar Back Photo must be filled out";
+                    document.getElementById("aadharbackphoto_error").innerHTML = namesms2;
+                    document.applicationform.aadharbackphoto.focus();
+                    return false; 
+                }else {
+                        document.getElementById("aadharbackphoto_error").innerHTML = "";
+
+                    }
+
+                if (photo == "") {
+                    var namesms2 = "* Aadhar Back Photo must be filled out";
+                    document.getElementById("photo_error").innerHTML = namesms2;
+                    document.applicationform.photo.focus();
+                    return false; 
+                }else {
+                        document.getElementById("photo_error").innerHTML = "";
+
+                    }
+
+
+
+    }
+  
+  
+              </script>
+          <!-- <script>
             function validateFormPage() {
 
               var Name = document.getElementById('name').value;
@@ -527,72 +732,88 @@
               clearErrorMessages();
 
               if (Name.trim() === '') {
-                displayError('Name is required.', 'Name_error');
+                alert('Name is required.');
                 return false;
               } else if (!nameRegex.test(Name)) {
-                displayError('Please enter a valid name.', 'Name_error');
+                alert("Please enter a valid name");
                 return false;
               }
 
+
               if (email.trim() === '') {
+                alert("Please enter a email id");
                 displayError('Email is required.', 'emailid_error');
                 return false;
               } else if (!validateEmail(email)) {
+                alert("Please enter a valid email address");
                 displayError('Please enter a valid email address.', 'emailid_error');
                 return false;
               }
 
               if (phoneNumber.trim() === '') {
+                alert("Please enter a phone number");
                 displayError('Phone Number is required.', 'phonenumber_error');
                 return false;
               } else if (!validatePhoneNumber(phoneNumber)) {
+                alert("Please enter a valid phone number");
                 displayError('Please enter a valid phone number.', 'phonenumber_error');
                 return false;
               }
 
               if (dob.trim() === '') {
+                alert("Please select your date of birth")
                 displayError('Date of Birth is required.', 'dob_error');
                 return false;
               }
               if (gender.trim() === '') {
+                alert("Please select your gender");
                 displayError('Gender is required.', 'gender_error');
                 return false;
               }
 
               if (doorno.trim() === '') {
-                displayError('First line is required.', 'firstline_error');
+                
+                alert("Please enter a door no or building name");
+                displayError('door no or building name is required.', 'firstline_error');
                 return false;
               }
 
               if (streetaddress.trim() === '') {
+                alert("Please enter your address");
                 displayError('Street address is required.', 'streetaddress_error');
                 return false;
               }
 
               if (landmark.trim() === '') {
+                alert("Please enter your city");
                 displayError('City is required.', 'city_error');
                 return false;
               }
 
               if (pincode.trim() === '') {
+                alert("Please enter your pincode");
                 displayError('Pin Code is required.', 'pincode_error');
                 return false;
               }
               if (maritalstatus.trim() === '') {
+                alert("Please select your marital status");
                 displayError('marital status is required.', 'maritalstatus_error');
                 return false;
               }
               if (aadharFrontPhoto.trim() === '') {
+                alert("Please upload your Aadhar front photo");
                 displayError('Aadhar front photo is required.', 'aadharfrontphoto_error');
                 return false;
               }
 
               if (aadharBackPhoto.trim() === '') {
+                alert("Please upload your Aadhar back photo");
                 displayError('Aadhar back photo is required.', 'aadharbackphoto_error');
                 return false;
               }
 
               if (photo.trim() === '') {
+                alert("Please upload your photo");
                 displayError('Photo is required.', 'photo_error');
                 return false;
               }
@@ -634,7 +855,7 @@
               document.getElementById('successMessage').textContent = '';
               document.getElementById('submitBtn').disabled = false;
             }
-          </script>
+          </script> -->
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -689,6 +910,7 @@
                   <div class="form-group" id="school-group" style="display: none;">
                     <label for="school">School Name/collegename</label>
                     <input type="text" class="form-control" id="school" value="<?php echo $value['school_college_name']; ?>" name="school">
+                    <div id="school_error" class="error"></div>
                   </div>
                   <div class="form-group" id="percentage-group" style="display: none;">
                     <label for="percentage">Percentage</label>
@@ -699,6 +921,11 @@
                     <label for="year_passed">Year of Passed Out</label>
                     <input type="number" class="form-control" id="year_passed" value="<?php echo $value['yearOfPassing']; ?>" name="year_passed">
                     <div id="year_error" class="error"></div>
+                  </div>
+                  <div class="form-group" id="tencertificate-group" style="display: none;">
+                    <label for="tencertificate">10 th certificate</label>
+                    <input type="file" class="form-control" id="tencertificate" value="<?php echo $value['tencertificate']; ?>" name="tencertificate">
+                    <div id="tencertificate_error" class="error"></div>
                   </div>
                   <!-- <button type="button" class="btn mt-3" id="educationadd" onclick="addEducationForm()">Add</button> -->
               </div>
@@ -738,6 +965,7 @@
                   <div class="form-group" id="school-group" style="display: none;">
                     <label for="school">School Name/collegename</label>
                     <input type="text" class="form-control" id="school"  name="school">
+                    <div id="school_error" class="error"></div>
                   </div>
                   <div class="form-group" id="percentage-group" style="display: none;">
                     <label for="percentage">Percentage</label>
@@ -748,6 +976,11 @@
                     <label for="year_passed">Year of Passed Out</label>
                     <input type="number" class="form-control" id="year_passed"   name="year_passed">
                     <div id="year_error" class="error"></div>
+                  </div>
+                  <div class="form-group" id="tencertificate-group" style="display: none;">
+                    <label for="tencertificate">10 th certificate</label>
+                    <input type="file" class="form-control" id="tencertificate" name="tencertificate">
+                    <div id="tencertificate_error" class="error"></div>
                   </div>
                   <!-- <button type="button" class="btn mt-3" id="educationadd" onclick="addEducationForm()">Add</button> -->
               </div>
@@ -798,6 +1031,7 @@
                 var school = document.getElementById('school').value;
                 var percentage = document.getElementById('percentage').value;
                 var yearPassed = document.getElementById('year_passed').value;
+                var tencertificate = document.getElementById('tencertificate').value;
 
 
                 // Basic qualification validation
@@ -813,28 +1047,39 @@
                   var school = document.getElementById('school').value;
                   var percentage = document.getElementById('percentage').value;
                   var yearPassed = document.getElementById('year_passed').value;
+                  var tencertificate = document.getElementById('tencertificate').value;
 
                   // Validate department
                   if (!department) {
+                    alert("Department is required for selected qualification");
                     displayError('Department is required for selected qualification', 'department_error');
                     return false;
                   }
 
                   // Validate school/collegename
                   if (!school) {
+                    alert("School/collegename is required");
                     displayError('School/collegename is required', 'school_error');
                     return false;
                   }
 
                   // Validate percentage
                   if (!percentage) {
+                    alert("Percentage is required");
                     displayError('Percentage is required', 'percentage_error');
                     return false;
                   }
 
                   // Validate year of passed out
                   if (!yearPassed) {
+                    alert("Year of Passed Out is required");
                     displayError('Year of Passed Out is required', 'year_error');
+                    return false;
+                  }
+
+                  if(!tencertificate){
+                    alert("10 th certificate is required");
+                    displayError('10 th certificate is required', 'tencertificate_error');
                     return false;
                   }
                 }
@@ -851,6 +1096,7 @@
                 var percentageGroup = document.getElementById('percentage-group');
                 var yearGroup = document.getElementById('year-group');
                 var addButton = document.getElementById('addButton');
+                var tencertificateGroup = document.getElementById('tencertificate-group').value;
 
                 // Show/hide the additional fields based on the selected qualification
                 if (selectedQualification === 'below_8th') {
@@ -859,11 +1105,14 @@
                   percentageGroup.style.display = 'none';
                   yearGroup.style.display = 'none';
                   addButton.style.display = 'none';
+                  tencertificateGroup.style.display = 'none';
+
                 } else {
                   // Show the school, percentage, and year fields by default
                   schoolGroup.style.display = 'block';
                   percentageGroup.style.display = 'block';
                   yearGroup.style.display = 'block';
+                  tencertificateGroup.style.display = 'block';
 
                   // Hide the department field for SSLC and HSC
                   if (selectedQualification === 'sslc' || selectedQualification === 'hsc') {
@@ -873,6 +1122,8 @@
                     // Show the department field for other qualifications
                     departmentGroup.style.display = 'block';
                     addButton.style.display = 'block';
+                    tencertificateGroup.style.display = 'block';
+
                   }
                 }
               }
@@ -1003,25 +1254,31 @@
                     return false;
                   }
                   if (durationofproject.value === '') {
+                    alert("please enter a project duration");
                     displayError('please enter a project duration', 'durationofproject_error');
                     return false;
                   }
                   if (roleofproject.value === '') {
+                    alert("Please enter a role of projec");
                     displayError('please enter a role of project', 'roleofproject_error');
                   }
                   if (startdate.value === '') {
+                    alert("please select a start date");
                     displayError('please select a start date', 'startdate_error');
                     return false;
                   }
                   if (enddate.value === '') {
+                    alert("please select a end date'");
                     displayError('please select a end date', 'enddate_error');
                     return false;
                   }
                   if (responsibilty.value === '') {
+                    alert("This Field is required!");
                     displayError('This Field is required!', 'responsibility_error');
                     return false;
                   }
                   if (skillsused.value === '') {
+                    alert("please enter a Skills used in the project");
                     displayError('please enter a Skills used in the project', 'skillsused_error');
                     return false;
                   }
@@ -1081,7 +1338,7 @@
 
 
               <div class="container">
-                <h3>Area of Interest Form</h3>
+                <h3>Update Area of Job Interest</h3>
                 <form method="post" onsubmit="return validateForm()" action="<?php echo baseUrl . "seekerController/updateInsertAreaOfIntrest"?>">
 
                 <?php
@@ -1163,6 +1420,34 @@
                       <div class="form-group">
                         <label for="expected-salary">Expected Salary</label>
                         <input type="text" class="form-control" id="expected-salary" name="expected-salary" value="<?php echo $value['expected_salary']; ?>">
+                      </div>
+                      
+                      <div class="form-group">
+                        <h4>Your Strength :</h4>
+                      </div>
+
+                      <div class="form-group">
+                        <br><label for="skillName">Skill Name</label>
+                        <input type="text" class="form-control" value="<?php echo $value['skill']; ?>" id="skillname" name="skillname" >
+                      </div>
+                      <div class="form-group">
+                        <br><label for="experience">Experience</label>
+                        <select class="form-control" name="skillExperience" value="<?php echo $value['skillExperience']; ?>" id="experience" ><br>
+                          <option value="fresher">Fresher</option>
+                          <option value="0-2">0-2 years</option>
+                          <option value="2-5">2-5 years</option>
+                          <option value="5-10">5-10 years</option>
+                          <option value="10-20">10-20 years</option>
+                          <option value="20-above">20 years above</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <br><label for="skillLevel">Skill Level</label>
+                        <select class="form-control" name="skilllevel" value="<?php echo $value['skillLevel']; ?>" id="skilllevel" >
+                          <option value="beginner">Beginner</option>
+                          <option value="intermediate">Intermediate</option>
+                          <option value="advanced">Advanced</option>
+                        </select>
                       </div>
                       <!-- <button type="button" class="btn btn-secondary mt-3" onclick="addEducationForm()">Add</button> -->
                     </div>
@@ -1246,6 +1531,34 @@
                         <label for="expected-salary">Expected Salary</label>
                         <input type="text" class="form-control" id="expected-salary" name="expected-salary">
                       </div>
+                      
+                     
+                        <h4>Your Strength :</h4>
+                      
+
+                      <div class="form-group">
+                        <br><label for="skillName">Skill Name</label>
+                        <input type="text" class="form-control" id="skillname" name="skillname" >
+                      </div>
+                      <div class="form-group">
+                        <br><label for="experience">Experience</label>
+                        <select class="form-control" name="skillExperience"  id="experience" ><br>
+                          <option value="fresher">Fresher</option>
+                          <option value="0-2">0-2 years</option>
+                          <option value="2-5">2-5 years</option>
+                          <option value="5-10">5-10 years</option>
+                          <option value="10-20">10-20 years</option>
+                          <option value="20-above">20 years above</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <br><label for="skillLevel">Skill Level</label>
+                        <select class="form-control" name="skilllevel"  id="skilllevel" >
+                          <option value="beginner">Beginner</option>
+                          <option value="intermediate">Intermediate</option>
+                          <option value="advanced">Advanced</option>
+                        </select>
+                      </div>
                       <!-- <button type="button" class="btn btn-secondary mt-3" onclick="addEducationForm()">Add</button> -->
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -1303,320 +1616,327 @@
                   subcategorySelect.innerHTML = "";
                   otherCategoryFields.style.display = "none";
 
-                  // if (category === "architech") {
-                  //   addSubcategoryOption("Architect", subcategorySelect);
-                    if (category === "architech") {
-                    addSubcategoryOption("Architect",subcategorySelect);
-                    addSubcategoryOption("Senior ",subcategorySelect);
-                    addSubcategoryOption("Design ",subcategorySelect);
-                    addSubcategoryOption("Project ",subcategorySelect);
-                    addSubcategoryOption("Principal ",subcategorySelect);
-                    addSubcategoryOption("Landscape",subcategorySelect);
-                    addSubcategoryOption("Urban Planner",subcategorySelect);
-                    addSubcategoryOption("Interior Designer",subcategorySelect);
-                    addSubcategoryOption("Architectural Technologist",subcategorySelect);
-                    addSubcategoryOption("BIM (Building Information Modeling) Specialist",subcategorySelect);
-                    addSubcategoryOption("Sustainable Design Consultant",subcategorySelect);
-                    addSubcategoryOption("Architectural Drafter",subcategorySelect);
-                    addSubcategoryOption("Architectural Visualization Artist",subcategorySelect);
-                    addSubcategoryOption("Urban Designer",subcategorySelect);
-                    addSubcategoryOption("Historic Preservation",subcategorySelect);
-                    addSubcategoryOption("Residential Architect",subcategorySelect);
-                    addSubcategoryOption("CAD (Computer-Aided Design) Technician",subcategorySelect);
-                    addSubcategoryOption("Architectural Educator",subcategorySelect);
-                    addSubcategoryOption("Construction Project Manage",subcategorySelect);
-                    addSubcategoryOption("Industrial Designer",subcategorySelect);
-                    addSubcategoryOption("Healthcare Facility Planner",subcategorySelect);
-                    addSubcategoryOption("Retail Space Designer",subcategorySelect);
-
-                    addSubcategoryOption()
-                } else if (category === "developer") {
-                    addSubcategoryOption("Python Software Engineer",subcategorySelect);
-                    addSubcategoryOption("Python",subcategorySelect);
-                    addSubcategoryOption("Python Data Scientist",subcategorySelect);
-                    addSubcategoryOption("Python Machine Learning Engineer",subcategorySelect);
-                    addSubcategoryOption("Python Automation",subcategorySelect);
-                    addSubcategoryOption("Java Software ",subcategorySelect);
-                    addSubcategoryOption("Java",subcategorySelect);
-                    addSubcategoryOption("Java Full Stack ",subcategorySelect);
-                    addSubcategoryOption("Java Android ",subcategorySelect);
-                    addSubcategoryOption("Java Spring ",subcategorySelect);
-                    addSubcategoryOption("Java Microservices ",subcategorySelect);
-                    addSubcategoryOption("JavaScript ",subcategorySelect);
-                    addSubcategoryOption("Front-end ",subcategorySelect);
-                    addSubcategoryOption("Node.js ",subcategorySelect);
-                    addSubcategoryOption("React ",subcategorySelect);
-                    addSubcategoryOption("Angular ",subcategorySelect);
-                    addSubcategoryOption("Vue.js ",subcategorySelect);
-                    addSubcategoryOption("Full Stack JavaScript ",subcategorySelect);
-                    addSubcategoryOption("C#  ",subcategorySelect);
-                    addSubcategoryOption(".NET ",subcategorySelect);
-                    addSubcategoryOption("ASP.NET ",subcategorySelect);
-                    addSubcategoryOption("Unity ",subcategorySelect);
-                    addSubcategoryOption("Xamarin ",subcategorySelect);
-                    addSubcategoryOption("C++  ",subcategorySelect);
-                    addSubcategoryOption("Game(using C++)",subcategorySelect);
-                    addSubcategoryOption("C++ Systems ",subcategorySelect);
-                    addSubcategoryOption("PHP",subcategorySelect);
-                    addSubcategoryOption("WordPress",subcategorySelect);
-                    addSubcategoryOption("Laravel ",subcategorySelect);
-                    addSubcategoryOption("Symfony ",subcategorySelect);
-                    addSubcategoryOption("Ruby ",subcategorySelect);
-                    addSubcategoryOption("Ruby on Rails ",subcategorySelect);
-                    addSubcategoryOption("Swift ",subcategorySelect);
-                    addSubcategoryOption("iOS (using Swift)",subcategorySelect);
-                    addSubcategoryOption("macOS (using Swift)",subcategorySelect);
-                    addSubcategoryOption("Kotlin ",subcategorySelect);
-                    addSubcategoryOption("Android  (using Kotlin)",subcategorySelect);
-                    addSubcategoryOption("Go  ",subcategorySelect);
-                    addSubcategoryOption("Rust  ",subcategorySelect);
-                    addSubcategoryOption("Systems  (using Rust",subcategorySelect);
-                    addSubcategoryOption("TypeScript  ",subcategorySelect);
-                    addSubcategoryOption("Front-end  (using TypeScript)",subcategorySelect);
-                    addSubcategoryOption("SQL ",subcategorySelect);
-                    addSubcategoryOption("Database ",subcategorySelect);
-                    addSubcategoryOption("Scala  ",subcategorySelect);
-                    addSubcategoryOption("Haskell  ",subcategorySelect);
-                    addSubcategoryOption("Perl   ",subcategorySelect);
-                    addSubcategoryOption("Lua   ",subcategorySelect);
-                    addSubcategoryOption("Game  (using Lua) ",subcategorySelect);
-                    addSubcategoryOption("MATLAB   ",subcategorySelect);
-                    addSubcategoryOption("Data Analyst (using MATLAB) ",subcategorySelect);
-                } else if (category === "tester") {
-                    addSubcategoryOption("Software ",subcategorySelect);
-                    addSubcategoryOption("Test Engineer",subcategorySelect);
-                    addSubcategoryOption("QA Analyst (Quality Assurance Analyst)",subcategorySelect);
-                    addSubcategoryOption("Test Automation Engineer",subcategorySelect);
-                    addSubcategoryOption("Manual ",subcategorySelect);
-                    addSubcategoryOption("QA Lead (Quality Assurance Lead)",subcategorySelect);
-                    addSubcategoryOption("Test Manager",subcategorySelect);
-                    addSubcategoryOption("Performance ",subcategorySelect);
-                    addSubcategoryOption("Usability ",subcategorySelect);
-                    addSubcategoryOption("Regression ",subcategorySelect);
-                    addSubcategoryOption("User Acceptance ",subcategorySelect);
-                    addSubcategoryOption("Security ",subcategorySelect);
-                    addSubcategoryOption("Mobile App ",subcategorySelect);
-                    addSubcategoryOption("Game ",subcategorySelect);
-                    addSubcategoryOption("Functional ",subcategorySelect);
-                    addSubcategoryOption("Test Architect",subcategorySelect);
-                    addSubcategoryOption("Test Coordinator",subcategorySelect);
-                    addSubcategoryOption("Continuous Integration ",subcategorySelect);
-                    addSubcategoryOption("Load ",subcategorySelect);
-                    addSubcategoryOption("Test Designer",subcategorySelect);
-                    addSubcategoryOption("Test Technician",subcategorySelect);
-                    addSubcategoryOption("QA Inspector (Quality Assurance Inspector)",subcategorySelect);
-                    addSubcategoryOption("Test Coordinator",subcategorySelect);
-                    addSubcategoryOption("Compliance ",subcategorySelect);
-                } else if (selectedCategory === "uiux") {
-                    addSubcategoryOption("UI/UX Designer",subcategorySelect);
-                    addSubcategoryOption("User Experience Designer",subcategorySelect);
-                    addSubcategoryOption("User Interface Designer",subcategorySelect);
-                    addSubcategoryOption("Interaction Designer",subcategorySelect);
-                    addSubcategoryOption("Visual Designer",subcategorySelect);
-                    addSubcategoryOption("UX Researcher",subcategorySelect);
-                    addSubcategoryOption("UI/UX Architect",subcategorySelect);
-                    addSubcategoryOption("Information Architect",subcategorySelect);
-                    addSubcategoryOption("UX Strategist",subcategorySelect);
-                    addSubcategoryOption("Product Designer",subcategorySelect);
-                    addSubcategoryOption("User-Centered Design Specialist",subcategorySelect);
-                    addSubcategoryOption("Usability Analyst",subcategorySelect);
-                    addSubcategoryOption("UI/UX Developer",subcategorySelect);
-                    addSubcategoryOption("Mobile App Designer",subcategorySelect);
-                    addSubcategoryOption("Web Designer",subcategorySelect);
-                    addSubcategoryOption("Visual Experience Designer",subcategorySelect);
-                    addSubcategoryOption("UX Content Strategist",subcategorySelect);
-                    addSubcategoryOption("Interaction Architect",subcategorySelect);
-                    addSubcategoryOption("UX/UI Illustrator",subcategorySelect);
-                    addSubcategoryOption("User Interface Animator",subcategorySelect);
-                    addSubcategoryOption("Conversion Rate Optimization (CRO) Specialist",subcategorySelect);
-                    addSubcategoryOption("Accessibility Designer ",subcategorySelect);
-                    addSubcategoryOption("Prototype Designer ",subcategorySelect);
-                    addSubcategoryOption("UI/UX Lead ",subcategorySelect);
-                    addSubcategoryOption("Design Systems Manager ",subcategorySelect);
-
-                } else if (category === "datascience") {
-                    addSubcategoryOption("Data Scientist",subcategorySelect);
-                    addSubcategoryOption("Senior",subcategorySelect);
-                    addSubcategoryOption("Machine Learning Engineer",subcategorySelect);
-                    addSubcategoryOption("Data Analyst",subcategorySelect);
-                    addSubcategoryOption("Senior Data Analyst",subcategorySelect);
-                    addSubcategoryOption("Statistician",subcategorySelect);
-                    addSubcategoryOption("Business Intelligence Analyst",subcategorySelect);
-                    addSubcategoryOption("Quantitative Analyst (Quant)",subcategorySelect);
-                    addSubcategoryOption("Data Engineer",subcategorySelect);
-                    addSubcategoryOption("Data Architect",subcategorySelect);
-                    addSubcategoryOption("AI Research Scientist",subcategorySelect);
-                    addSubcategoryOption("Predictive Modeler",subcategorySelect);
-                    addSubcategoryOption("Natural Language Processing (NLP) Engineer",subcategorySelect);
-                    addSubcategoryOption("Computer Vision Engineer",subcategorySelect);
-                    addSubcategoryOption("Big Data Engineer",subcategorySelect);
-                    addSubcategoryOption("Analytics Manager",subcategorySelect);
-                    addSubcategoryOption("Data Science Manager",subcategorySelect);
-                    addSubcategoryOption("Chief Data Officer (CDO)",subcategorySelect);
-                    addSubcategoryOption("Research Scientist (AI/ML)",subcategorySelect);
-                    addSubcategoryOption("Decision Scientist",subcategorySelect);
-                    addSubcategoryOption("Marketing Analyst",subcategorySelect);
-                    addSubcategoryOption("Operations Research Analyst",subcategorySelect);
-                    addSubcategoryOption("Data Visualization Specialist",subcategorySelect);
-                    addSubcategoryOption("Customer Insights Analyst",subcategorySelect);
-                    addSubcategoryOption("Fraud Analyst",subcategorySelect);
-
-                } else if (category === "databaseadmin") {
-                    addSubcategoryOption("Database  (DBA)",subcategorySelect);
-                    addSubcategoryOption("Senior  Administrator",subcategorySelect);
-                    addSubcategoryOption("Database Engineer",subcategorySelect);
-                    addSubcategoryOption("Database Architect",subcategorySelect);
-                    addSubcategoryOption("Database Analyst",subcategorySelect);
-                    addSubcategoryOption("Data Warehouse ",subcategorySelect);
-                    addSubcategoryOption("SQL Server",subcategorySelect);
-                    addSubcategoryOption("Oracle Database Administrator",subcategorySelect);
-                    addSubcategoryOption("MySQL Database Administrator",subcategorySelect);
-                    addSubcategoryOption("PostgreSQL Database Administrator",subcategorySelect);
-                    addSubcategoryOption("MongoDB Administrator",subcategorySelect);
-                    addSubcategoryOption("NoSQL Database Administrator",subcategorySelect);
-                    addSubcategoryOption("DBMS Administrator (Database Management System)",subcategorySelect);
-                    addSubcategoryOption("Database Operations Manager",subcategorySelect);
-                    addSubcategoryOption("Database Performance Tuning Specialist",subcategorySelect);
-                    addSubcategoryOption("Data Migration Specialist",subcategorySelect);
-                    addSubcategoryOption("Database Security Administrator",subcategorySelect);
-                    addSubcategoryOption("Database Backup and Recovery Specialist",subcategorySelect);
-                    addSubcategoryOption("Cloud Database Administrator (e.g., AWS, Azure, Google Cloud)",subcategorySelect);
-                    addSubcategoryOption("Database Compliance Officer",subcategorySelect);
-                    addSubcategoryOption("Database DevOps Engineer",subcategorySelect);
-                    addSubcategoryOption("Database Automation Engineer",subcategorySelect);
-                    addSubcategoryOption("Database Replication Specialist",subcategorySelect);
-                    addSubcategoryOption("Data Governance Manager",subcategorySelect);
-                    addSubcategoryOption("Data Steward",subcategorySelect);
-                } else if (category === "teacher") {
-                    addSubcategoryOption("Tamil",subcategorySelect);
-                    addSubcategoryOption("Mathematics ",subcategorySelect);
-                    addSubcategoryOption("Math Instructor",subcategorySelect);
-                    addSubcategoryOption("Algebra ",subcategorySelect);
-                    addSubcategoryOption("Geometry ",subcategorySelect);
-                    addSubcategoryOption("Calculus ",subcategorySelect);
-                    addSubcategoryOption("Statistics ",subcategorySelect);
-                    addSubcategoryOption("Math Tutor",subcategorySelect);
-                    addSubcategoryOption("Math Coach",subcategorySelect);
-                    addSubcategoryOption("Math Curriculum Specialist",subcategorySelect);
-                    addSubcategoryOption("Math Department Chair",subcategorySelect);
-                    addSubcategoryOption("English ",subcategorySelect);
-                    addSubcategoryOption("Language Arts ",subcategorySelect);
-                    addSubcategoryOption("Literature ",subcategorySelect);
-                    addSubcategoryOption("Writing Instructor",subcategorySelect);
-                    addSubcategoryOption("Creative Writing ",subcategorySelect);
-                    addSubcategoryOption("English as a Second Language (ESL) ",subcategorySelect);
-                    addSubcategoryOption("Reading Specialist",subcategorySelect);
-                    addSubcategoryOption("English Tutor",subcategorySelect);
-                    addSubcategoryOption("English Department Chair",subcategorySelect);
-                    addSubcategoryOption("Science ",subcategorySelect);
-                    addSubcategoryOption("Biology ",subcategorySelect);
-                    addSubcategoryOption("Chemistry ",subcategorySelect);
-                    addSubcategoryOption("Physics ",subcategorySelect);
-                    addSubcategoryOption("Environmental Science ",subcategorySelect);
-                    addSubcategoryOption("Earth Science ",subcategorySelect);
-                    addSubcategoryOption("Anatomy and Physiology ",subcategorySelect);
-                    addSubcategoryOption("Science Lab Instructor",subcategorySelect);
-                    addSubcategoryOption("Science Curriculum Specialist",subcategorySelect);
-                    addSubcategoryOption("Social Studies ",subcategorySelect);
-                    addSubcategoryOption("History ",subcategorySelect);
-                    addSubcategoryOption("Geography ",subcategorySelect);
-                    addSubcategoryOption("Civics ",subcategorySelect);
-                    addSubcategoryOption("Government ",subcategorySelect);
-                    addSubcategoryOption("Economics ",subcategorySelect);
-                    addSubcategoryOption("World History ",subcategorySelect);
-                    addSubcategoryOption("Social Studies Department Chair",subcategorySelect);
-                    addSubcategoryOption("Foreign Language ",subcategorySelect);
-                    addSubcategoryOption("Language Instructor",subcategorySelect);
-                    addSubcategoryOption("Spanish ",subcategorySelect);
-                    addSubcategoryOption("French ",subcategorySelect);
-                    addSubcategoryOption("German ",subcategorySelect);
-                    addSubcategoryOption("Chinese ",subcategorySelect);
-                    addSubcategoryOption("Language Lab Coordinator",subcategorySelect);
-                    addSubcategoryOption("Physical Education ",subcategorySelect);
-                    addSubcategoryOption("PE Instructor",subcategorySelect);
-                    addSubcategoryOption("Fitness Coach",subcategorySelect);
-                    addSubcategoryOption("Health Education ",subcategorySelect);
-                    addSubcategoryOption("Sports Coach",subcategorySelect);
-                    addSubcategoryOption("Physical Education Department Chair",subcategorySelect);
-                    addSubcategoryOption("Art ",subcategorySelect);
-                    addSubcategoryOption("Music ",subcategorySelect);
-                    addSubcategoryOption("Drama ",subcategorySelect);
-                    addSubcategoryOption("Visual Arts ",subcategorySelect);
-                    addSubcategoryOption("Choir Director",subcategorySelect);
-                    addSubcategoryOption("Band ",subcategorySelect);
-                    addSubcategoryOption("Art History ",subcategorySelect);
-                    addSubcategoryOption("Special Education ",subcategorySelect);
-                    addSubcategoryOption("Learning Support ",subcategorySelect);
-                    addSubcategoryOption("Resource ",subcategorySelect);
-                    addSubcategoryOption("Inclusion ",subcategorySelect);
-                    addSubcategoryOption("Autism Specialist",subcategorySelect);
-                    addSubcategoryOption("Behavioral Interventionist",subcategorySelect);
-                    addSubcategoryOption("Vocational Teacher",subcategorySelect);
-                    addSubcategoryOption("Career and Technical Education (CTE) Instructor",subcategorySelect);
-                    addSubcategoryOption("Culinary Arts Instructor",subcategorySelect);
-                    addSubcategoryOption("Automotive Technology ",subcategorySelect);
-                    addSubcategoryOption("Computer Science ",subcategorySelect);
-                    addSubcategoryOption("Digital Media Instructor",subcategorySelect);
-                } else if (category === "professor") {
-                    addSubcategoryOption("University ",subcategorySelect);
-                    addSubcategoryOption("Assistant ",subcategorySelect);
-                    addSubcategoryOption("Associate ",subcategorySelect);
+                  if (category === "architech") {
+                    addSubcategoryOption("Architect", subcategorySelect);
+                    addSubcategoryOption("Senior", subcategorySelect);
+                    addSubcategoryOption("Design", subcategorySelect);
+                    addSubcategoryOption("Project", subcategorySelect);
+                    addSubcategoryOption("Principal", subcategorySelect);
+                    addSubcategoryOption("Landscape", subcategorySelect);
+                    addSubcategoryOption("Urban Planner", subcategorySelect);
+                    addSubcategoryOption("Interior Designer", subcategorySelect);
+                    addSubcategoryOption("Architectural Technologist", subcategorySelect);
+                    addSubcategoryOption("BIM (Building Information Modeling) Specialist", subcategorySelect);
+                    addSubcategoryOption("Sustainable Design Consultant", subcategorySelect);
+                    addSubcategoryOption("Architectural Drafter", subcategorySelect);
+                    addSubcategoryOption("Architectural Visualization Artist", subcategorySelect);
+                    addSubcategoryOption("Urban Designer", subcategorySelect);
+                    addSubcategoryOption("Historic Preservation", subcategorySelect);
+                    addSubcategoryOption("Residential Architect", subcategorySelect);
+                    addSubcategoryOption("CAD (Computer-Aided Design) Technician", subcategorySelect);
+                    addSubcategoryOption("Architectural Educator", subcategorySelect);
+                    addSubcategoryOption("Construction Project Manage", subcategorySelect);
+                    addSubcategoryOption("Industrial Designer", subcategorySelect);
+                    addSubcategoryOption("Healthcare Facility Planner", subcategorySelect);
+                    addSubcategoryOption("Retail Space Designer", subcategorySelect);
+                  } else if (category === "developer") {
+                    addSubcategoryOption("Python Software Engineer", subcategorySelect);
+                    addSubcategoryOption("Python", subcategorySelect);
+                    addSubcategoryOption("Python Data Scientist", subcategorySelect);
+                    addSubcategoryOption("Python Machine Learning Engineer", subcategorySelect);
+                    addSubcategoryOption("Python Automation", subcategorySelect);
+                    addSubcategoryOption("Java Software ", subcategorySelect);
+                    addSubcategoryOption("Java", subcategorySelect);
+                    addSubcategoryOption("Java Full Stack ", subcategorySelect);
+                    addSubcategoryOption("Java Android ", subcategorySelect);
+                    addSubcategoryOption("Java Spring ", subcategorySelect);
+                    addSubcategoryOption("Java Microservices ", subcategorySelect);
+                    addSubcategoryOption("JavaScript", subcategorySelect);
+                    addSubcategoryOption("Front-end ", subcategorySelect);
+                    addSubcategoryOption("Node.js ", subcategorySelect);
+                    addSubcategoryOption("React ", subcategorySelect);
+                    addSubcategoryOption("Angular", subcategorySelect);
+                    addSubcategoryOption("Vue.js ", subcategorySelect);
+                    addSubcategoryOption("Full Stack JavaScript ", subcategorySelect);
+                    addSubcategoryOption("C#  ", subcategorySelect);
+                    addSubcategoryOption(".NET ", subcategorySelect);
+                    addSubcategoryOption("ASP.NET ", subcategorySelect);
+                    addSubcategoryOption("Unity ", subcategorySelect);
+                    addSubcategoryOption("Xamarin ", subcategorySelect);
+                    addSubcategoryOption("C++  ", subcategorySelect);
+                    addSubcategoryOption("Game(using C++)", subcategorySelect);
+                    addSubcategoryOption("C++ Systems ", subcategorySelect);
+                    addSubcategoryOption("PHP", subcategorySelect);
+                    addSubcategoryOption("WordPress", subcategorySelect);
+                    addSubcategoryOption("Laravel ", subcategorySelect);
+                    addSubcategoryOption("Symfony ", subcategorySelect);
+                    addSubcategoryOption("Ruby ", subcategorySelect);
+                    addSubcategoryOption("Ruby on Rails ", subcategorySelect);
+                    addSubcategoryOption("Swift ", subcategorySelect);
+                    addSubcategoryOption("iOS (using Swift)", subcategorySelect);
+                    addSubcategoryOption("macOS (using Swift)", subcategorySelect);
+                    addSubcategoryOption("Kotlin ", subcategorySelect);
+                    addSubcategoryOption("Android  (using Kotlin)", subcategorySelect);
+                    addSubcategoryOption("Go  ", subcategorySelect);
+                    addSubcategoryOption("Rust  ", subcategorySelect);
+                    addSubcategoryOption("Systems  (using Rust", subcategorySelect);
+                     addSubcategoryOption("TypeScript  ", subcategorySelect);
+                     addSubcategoryOption("Front-end  (using TypeScript)", subcategorySelect);
+                     addSubcategoryOption("SQL ", subcategorySelect);
+                     addSubcategoryOption("Database ", subcategorySelect);
+                     addSubcategoryOption("Scala  ", subcategorySelect);
+                     addSubcategoryOption("Haskell  ", subcategorySelect);
+                     addSubcategoryOption("Perl   ", subcategorySelect);
+                     addSubcategoryOption("Lua   ", subcategorySelect);
+                     addSubcategoryOption("Game  (using Lua) ", subcategorySelect);
+                     addSubcategoryOption("MATLAB   ", subcategorySelect);
+                     addSubcategoryOption("Data Analyst (using MATLAB) ", subcategorySelect);
+                     
+                  } else if (category === "tester") {
+                    addSubcategoryOption("Software ", subcategorySelect);
+                    addSubcategoryOption("Test Engineer", subcategorySelect);
+                    addSubcategoryOption("QA Analyst (Quality Assurance Analyst)", subcategorySelect);
+                    addSubcategoryOption("Test Automation Engineer", subcategorySelect);
+                    addSubcategoryOption("Manual ", subcategorySelect);
+                    addSubcategoryOption("QA Lead (Quality Assurance Lead)", subcategorySelect);
+                    addSubcategoryOption("Test Manager", subcategorySelect);
+                    addSubcategoryOption("Performance ", subcategorySelect);
+                    addSubcategoryOption("Usability ", subcategorySelect);
+                    addSubcategoryOption("Regression ", subcategorySelect);
+                    addSubcategoryOption("User Acceptance ", subcategorySelect);
+                    addSubcategoryOption("Security ", subcategorySelect);
+                    addSubcategoryOption("Mobile App ", subcategorySelect);
+                    addSubcategoryOption("Game ", subcategorySelect);
+                    addSubcategoryOption("Functional ", subcategorySelect);
+                    addSubcategoryOption("Test Architect", subcategorySelect);
+                    addSubcategoryOption("Test Coordinator", subcategorySelect);
+                    addSubcategoryOption("Continuous Integration", subcategorySelect);
+                    addSubcategoryOption("Load ", subcategorySelect);
+                    addSubcategoryOption("Test Designer", subcategorySelect);
+                    addSubcategoryOption("Test Technician", subcategorySelect);
+                    addSubcategoryOption("QA Inspector (Quality Assurance Inspector)", subcategorySelect);
+                    addSubcategoryOption("Test Coordinator", subcategorySelect);
+                    addSubcategoryOption("Compliance ", subcategorySelect);
+                    // addSubcategoryOption("Load", subcategorySelect);
+                    // otherCategoryFields.style.display = "block";
+                  } 
+                  else if (category === "uiux") {
+                    addSubcategoryOption("UI/UX Designer", subcategorySelect);
+                    addSubcategoryOption("User Experience Designer", subcategorySelect);
+                    addSubcategoryOption("User Interface Designer", subcategorySelect);
+                    addSubcategoryOption("Interaction Designer", subcategorySelect);
+                    addSubcategoryOption("Visual Designer", subcategorySelect);
+                    addSubcategoryOption("UX Researcher", subcategorySelect);
+                    addSubcategoryOption("UI/UX Architect", subcategorySelect);
+                    addSubcategoryOption("Information Architect", subcategorySelect);
+                    addSubcategoryOption("UX Strategist", subcategorySelect);
+                    addSubcategoryOption("Product Designer", subcategorySelect);
+                    addSubcategoryOption("User-Centered Design Specialist", subcategorySelect);
+                    addSubcategoryOption("Usability Analyst", subcategorySelect);
+                    addSubcategoryOption("UI/UX Developer", subcategorySelect);
+                    addSubcategoryOption("Mobile App Designer", subcategorySelect);
+                    addSubcategoryOption("Web Designer", subcategorySelect);
+                    addSubcategoryOption("Visual Experience Designer", subcategorySelect);
+                    addSubcategoryOption("UX Content Strategist", subcategorySelect);
+                    addSubcategoryOption("Interaction Architect", subcategorySelect);
+                    addSubcategoryOption("UX/UI Illustrator", subcategorySelect);
+                    addSubcategoryOption("User Interface Animator", subcategorySelect);
+                    addSubcategoryOption("Conversion Rate Optimization (CRO) Specialist", subcategorySelect);
+                    addSubcategoryOption("Accessibility Designer ", subcategorySelect);
+                    addSubcategoryOption("Prototype Designer ", subcategorySelect);
+                    addSubcategoryOption("UI/UX Lead ", subcategorySelect);
+                    addSubcategoryOption("Design Systems Manager ", subcategorySelect);
+                    // addSubcategoryOption("Software", subcategorySelect);
+                    
+                  } else if (category === "datascience") {
+                    addSubcategoryOption("Data Scientist", subcategorySelect);
+                    addSubcategoryOption("Senior", subcategorySelect);
+                    addSubcategoryOption("Machine Learning Engineer", subcategorySelect);
+                    addSubcategoryOption("Data Analyst", subcategorySelect);
+                    addSubcategoryOption("Senior Data Analyst", subcategorySelect);
+                    addSubcategoryOption("Statistician", subcategorySelect);
+                    addSubcategoryOption("Business Intelligence Analyst", subcategorySelect);
+                    addSubcategoryOption("Quantitative Analyst (Quant)", subcategorySelect);
+                    addSubcategoryOption("Data Engineer", subcategorySelect);
+                    addSubcategoryOption("Data Architect", subcategorySelect);
+                    addSubcategoryOption("AI Research Scientist", subcategorySelect);
+                    addSubcategoryOption("Predictive Modeler", subcategorySelect);
+                    addSubcategoryOption("Natural Language Processing (NLP) Engineer", subcategorySelect);
+                    addSubcategoryOption("Computer Vision Engineer", subcategorySelect);
+                    addSubcategoryOption("Big Data Engineer", subcategorySelect);
+                    addSubcategoryOption("Analytics Manager", subcategorySelect);
+                    addSubcategoryOption("Data Science Manager", subcategorySelect);
+                    addSubcategoryOption("Chief Data Officer (CDO)", subcategorySelect);
+                    addSubcategoryOption("Research Scientist (AI/ML)", subcategorySelect);
+                    addSubcategoryOption("Decision Scientist", subcategorySelect);
+                    addSubcategoryOption("Marketing Analyst", subcategorySelect);
+                    addSubcategoryOption("Operations Research Analyst", subcategorySelect);
+                    addSubcategoryOption("Data Visualization Specialist", subcategorySelect);
+                    addSubcategoryOption("Customer Insights Analyst", subcategorySelect);
+                    addSubcategoryOption("Fraud Analyst", subcategorySelect);
+                  
+                  }else if (category === "databaseadmin") {
+                    addSubcategoryOption("Database  (DBA)", subcategorySelect);
+                    addSubcategoryOption("Senior  Administrator", subcategorySelect);
+                    addSubcategoryOption("Database Engineer", subcategorySelect);
+                    addSubcategoryOption("Database Architect", subcategorySelect);
+                    addSubcategoryOption("Database Analyst", subcategorySelect);
+                    addSubcategoryOption("Data Warehouse ", subcategorySelect);
+                    addSubcategoryOption("SQL Server", subcategorySelect);
+                    addSubcategoryOption("Oracle Database Administrator", subcategorySelect);
+                    addSubcategoryOption("MySQL Database Administrator", subcategorySelect);
+                    addSubcategoryOption("PostgreSQL Database Administrator", subcategorySelect);
+                    addSubcategoryOption("MongoDB Administrator", subcategorySelect);
+                    addSubcategoryOption("NoSQL Database Administrator", subcategorySelect);
+                    addSubcategoryOption("DBMS Administrator (Database Management System)", subcategorySelect);
+                    addSubcategoryOption("Database Operations Manager", subcategorySelect);
+                    addSubcategoryOption("Database Performance Tuning Specialist", subcategorySelect);
+                    addSubcategoryOption("Data Migration Specialist", subcategorySelect);
+                    addSubcategoryOption("Database Security Administrator", subcategorySelect);
+                    addSubcategoryOption("Database Backup and Recovery Specialist", subcategorySelect);
+                    addSubcategoryOption("Cloud Database Administrator (e.g., AWS, Azure, Google Cloud)", subcategorySelect);
+                    addSubcategoryOption("Database Compliance Officer", subcategorySelect);
+                    addSubcategoryOption("Database DevOps Engineer", subcategorySelect);
+                    addSubcategoryOption("Database Automation Engineer", subcategorySelect);
+                    addSubcategoryOption("Database Replication Specialist", subcategorySelect);
+                    addSubcategoryOption("Data Governance Manager", subcategorySelect);
+                    addSubcategoryOption("Data Steward", subcategorySelect);
+                    // addSubcategoryOption("", subcategorySelect);
+                    // addSubcategoryOption("", subcategorySelect);
+                  }
+                  else if (category === "teacher") {
+                    addSubcategoryOption("Tamil", subcategorySelect);
+                    addSubcategoryOption("Mathematics ", subcategorySelect);
+                    addSubcategoryOption("Math Instructor", subcategorySelect);
+                    addSubcategoryOption("Algebra ", subcategorySelect);
+                    addSubcategoryOption("Geometry ", subcategorySelect);
+                    addSubcategoryOption("Calculus ", subcategorySelect);
+                    addSubcategoryOption("Statistics ", subcategorySelect);
+                    addSubcategoryOption("Math Tutor", subcategorySelect);
+                    addSubcategoryOption("Math Coach", subcategorySelect);
+                    addSubcategoryOption("Math Curriculum Specialist", subcategorySelect);
+                    addSubcategoryOption("Math Department Chair", subcategorySelect);
+                    addSubcategoryOption("English ", subcategorySelect);
+                    addSubcategoryOption("Language Arts ", subcategorySelect);
+                    addSubcategoryOption("Literature ", subcategorySelect);
+                    addSubcategoryOption("Writing Instructor", subcategorySelect);
+                    addSubcategoryOption("Creative Writing ", subcategorySelect);
+                    addSubcategoryOption("English as a Second Language (ESL) ", subcategorySelect);
+                    addSubcategoryOption("Reading Specialist", subcategorySelect);
+                    addSubcategoryOption("English Tutor", subcategorySelect);
+                    addSubcategoryOption("English Department Chair", subcategorySelect);
+                    addSubcategoryOption("Science ", subcategorySelect);
+                    addSubcategoryOption("Biology ", subcategorySelect);
+                    addSubcategoryOption("Chemistry ", subcategorySelect);
+                    addSubcategoryOption("Physics ", subcategorySelect);
+                    addSubcategoryOption("Environmental Science ", subcategorySelect);
+                    addSubcategoryOption("Earth Science ", subcategorySelect);
+                    addSubcategoryOption("Anatomy and Physiology ", subcategorySelect);
+                    addSubcategoryOption("Science Lab Instructor", subcategorySelect);
+                    addSubcategoryOption("Science Curriculum Specialist", subcategorySelect);
+                    addSubcategoryOption("Social Studies ", subcategorySelect);
+                    addSubcategoryOption("History ", subcategorySelect);
+                    addSubcategoryOption("Geography ", subcategorySelect);
+                    addSubcategoryOption("Civics ", subcategorySelect);
+                    addSubcategoryOption("Government ", subcategorySelect);
+                    addSubcategoryOption("Economics ", subcategorySelect);
+                    addSubcategoryOption("World History ", subcategorySelect);
+                    addSubcategoryOption("Social Studies Department Chair", subcategorySelect);
+                    addSubcategoryOption("Foreign Language ", subcategorySelect);
+                    addSubcategoryOption("Language Instructor", subcategorySelect);
+                    addSubcategoryOption("Spanish ", subcategorySelect);
+                    addSubcategoryOption("French ", subcategorySelect);
+                    addSubcategoryOption("German ", subcategorySelect);
+                    addSubcategoryOption("Chinese ", subcategorySelect);
+                    addSubcategoryOption("Language Lab Coordinator", subcategorySelect);
+                    addSubcategoryOption("Physical Education ", subcategorySelect);
+                    addSubcategoryOption("PE Instructor", subcategorySelect);
+                    addSubcategoryOption("Fitness Coach", subcategorySelect);
+                    addSubcategoryOption("Health Education ", subcategorySelect);
+                    addSubcategoryOption("Sports Coach", subcategorySelect);
+                    addSubcategoryOption("Physical Education Department Chair", subcategorySelect);
+                    addSubcategoryOption("Art ", subcategorySelect);
+                    addSubcategoryOption("Music ", subcategorySelect);
+                    addSubcategoryOption("Drama ", subcategorySelect);
+                    addSubcategoryOption("Visual Arts ", subcategorySelect);
+                    addSubcategoryOption("Choir Director", subcategorySelect);
+                    addSubcategoryOption("Band ", subcategorySelect);
+                    addSubcategoryOption("Art History ", subcategorySelect);
+                    addSubcategoryOption("Special Education ", subcategorySelect);
+                    addSubcategoryOption("Learning Support ", subcategorySelect);
+                    addSubcategoryOption("Resource ", subcategorySelect);
+                    addSubcategoryOption("Inclusion ", subcategorySelect);
+                    addSubcategoryOption("Autism Specialist", subcategorySelect);
+                    addSubcategoryOption("Behavioral Interventionist", subcategorySelect);
+                    addSubcategoryOption("Vocational Teacher", subcategorySelect);
+                    addSubcategoryOption("Career and Technical Education (CTE) Instructor", subcategorySelect);
+                    addSubcategoryOption("Culinary Arts Instructor", subcategorySelect);
+                    addSubcategoryOption("Automotive Technology ", subcategorySelect);
+                    addSubcategoryOption("Computer Science ", subcategorySelect);
+                    addSubcategoryOption("Digital Media Instructor", subcategorySelect);
+            
+                  }
+                  else if (category === "professor") {
+                    addSubcategoryOption("University ", subcategorySelect);
+                    addSubcategoryOption("Assistant ", subcategorySelect);
+                    addSubcategoryOption("Associate ", subcategorySelect);
                     addSubcategoryOption("Full ",subcategorySelect);
-                    addSubcategoryOption("Distinguished ",subcategorySelect);
-                    addSubcategoryOption("Adjunct ",subcategorySelect);
-                    addSubcategoryOption("Visiting ",subcategorySelect);
-                    addSubcategoryOption("Research ",subcategorySelect);
-                    addSubcategoryOption("Clinical ",subcategorySelect);
-                    addSubcategoryOption("Philosophy",subcategorySelect);
-                    addSubcategoryOption("Professor of History",subcategorySelect);
-                    addSubcategoryOption("English",subcategorySelect);
-                    addSubcategoryOption("Psychology",subcategorySelect);
-                    addSubcategoryOption("Sociology",subcategorySelect);
-                    addSubcategoryOption("Political Science",subcategorySelect);
-                    addSubcategoryOption("Anthropology",subcategorySelect);
-                    addSubcategoryOption("Linguistics",subcategorySelect);
-                    addSubcategoryOption("Biology",subcategorySelect);
-                    addSubcategoryOption("Chemistry",subcategorySelect);
-                    addSubcategoryOption("Physics",subcategorySelect);
-                    addSubcategoryOption("Mathematics",subcategorySelect);
-                    addSubcategoryOption("Geology",subcategorySelect);
-                    addSubcategoryOption("Astronomy",subcategorySelect);
-                    addSubcategoryOption(" Environmental Science",subcategorySelect);
-                    addSubcategoryOption("Computer Science",subcategorySelect);
-                    addSubcategoryOption("Electrical Engineering",subcategorySelect);
-                    addSubcategoryOption("Mechanical Engineering",subcategorySelect);
-                    addSubcategoryOption("Civil Engineering",subcategorySelect);
-                    addSubcategoryOption("Chemical Engineering",subcategorySelect);
-                    addSubcategoryOption("Information Technology",subcategorySelect);
-                    addSubcategoryOption("Business Administration",subcategorySelect);
-                    addSubcategoryOption("Economics",subcategorySelect);
-                    addSubcategoryOption("Finance",subcategorySelect);
-                    addSubcategoryOption("Marketing",subcategorySelect);
-                    addSubcategoryOption("Management",subcategorySelect);
-                    addSubcategoryOption("Accounting",subcategorySelect);
-                    addSubcategoryOption("Fine Arts",subcategorySelect);
-                    addSubcategoryOption("Music",subcategorySelect);
-                    addSubcategoryOption("Visual Arts",subcategorySelect);
-                    addSubcategoryOption("Theater",subcategorySelect);
-                    addSubcategoryOption("Dance",subcategorySelect);
-                    addSubcategoryOption("Film Studies",subcategorySelect);
-                    addSubcategoryOption("Educational Psychology",subcategorySelect);
-                    addSubcategoryOption("Medicine",subcategorySelect);
-                    addSubcategoryOption("Nursing",subcategorySelect);
-                    addSubcategoryOption("Public Health",subcategorySelect);
-                    addSubcategoryOption("Pharmacy",subcategorySelect);
-                    addSubcategoryOption("Dentistry",subcategorySelect);
-                    addSubcategoryOption("Law",subcategorySelect);
-                    addSubcategoryOption("Constitutional Law",subcategorySelect);
-                    addSubcategoryOption("Criminal Law",subcategorySelect);
-                    addSubcategoryOption("International Law",subcategorySelect);
-                    addSubcategoryOption("Environmental Law",subcategorySelect);
-                    addSubcategoryOption("Social Work",subcategorySelect);
-                    addSubcategoryOption("Social Welfare",subcategorySelect);
-                    addSubcategoryOption("Clinical Social Work",subcategorySelect);
-                    addSubcategoryOption("Library Science",subcategorySelect);
-                    addSubcategoryOption("Information Studies",subcategorySelect);
-                }
+                    addSubcategoryOption("Distinguished ", subcategorySelect);
+                    addSubcategoryOption("Adjunct ", subcategorySelect);
+                    addSubcategoryOption("Visiting ", subcategorySelect);
+                    addSubcategoryOption("Research ", subcategorySelect);
+                    addSubcategoryOption("Clinical ", subcategorySelect);
+                    addSubcategoryOption("Philosophy", subcategorySelect);
+                    addSubcategoryOption("Professor of History", subcategorySelect);
+                    addSubcategoryOption("English", subcategorySelect);
+                    addSubcategoryOption("Psychology", subcategorySelect);
+                    addSubcategoryOption("Sociology", subcategorySelect);
+                    addSubcategoryOption("Political Science", subcategorySelect);
+                    addSubcategoryOption("Anthropology", subcategorySelect);
+                    addSubcategoryOption("Linguistics", subcategorySelect);
+                    addSubcategoryOption("Biology", subcategorySelect);
+                    addSubcategoryOption("Chemistry", subcategorySelect);
+                    addSubcategoryOption("Physics", subcategorySelect);
+                    addSubcategoryOption("Mathematics", subcategorySelect);
+                    addSubcategoryOption("Geology", subcategorySelect);
+                    addSubcategoryOption("Astronomy", subcategorySelect);
+                    addSubcategoryOption(" Environmental Science", subcategorySelect);
+                    addSubcategoryOption("Computer Science", subcategorySelect);
+                    addSubcategoryOption("Electrical Engineering", subcategorySelect);
+                    addSubcategoryOption("Mechanical Engineering", subcategorySelect);
+                    addSubcategoryOption("Civil Engineering", subcategorySelect);
+                    addSubcategoryOption("Chemical Engineering", subcategorySelect);
+                    addSubcategoryOption("Information Technology", subcategorySelect);
+                    addSubcategoryOption("Business Administration", subcategorySelect);
+                    addSubcategoryOption("Economics", subcategorySelect);
+                    addSubcategoryOption("Finance", subcategorySelect);
+                    addSubcategoryOption("Marketing", subcategorySelect);
+                    addSubcategoryOption("Management", subcategorySelect);
+                    addSubcategoryOption("Accounting", subcategorySelect);
+                    addSubcategoryOption("Fine Arts", subcategorySelect);
+                    addSubcategoryOption("Music", subcategorySelect);
+                    addSubcategoryOption("Visual Arts", subcategorySelect);
+                    addSubcategoryOption("Theater", subcategorySelect);
+                    addSubcategoryOption("Dance", subcategorySelect);
+                    addSubcategoryOption("Film Studies", subcategorySelect);
+                    addSubcategoryOption("Educational Psychology", subcategorySelect);
+                    addSubcategoryOption("Medicine", subcategorySelect);
+                    addSubcategoryOption("Nursing", subcategorySelect);
+                    addSubcategoryOption("Public Health", subcategorySelect);
+                    addSubcategoryOption("Pharmacy", subcategorySelect);
+                    addSubcategoryOption("Dentistry", subcategorySelect);
+                    addSubcategoryOption("Law", subcategorySelect);
+                     addSubcategoryOption("Constitutional Law", subcategorySelect);
+                     addSubcategoryOption("Criminal Law",subcategorySelect);
+                     addSubcategoryOption("International Law", subcategorySelect);
+                     addSubcategoryOption("Environmental Law", subcategorySelect);
+                     addSubcategoryOption("Social Work", subcategorySelect);
+                     addSubcategoryOption("Social Welfare", subcategorySelect);
+                     addSubcategoryOption("Clinical Social Work", subcategorySelect);
+                     addSubcategoryOption("Library Science", subcategorySelect);
+                     addSubcategoryOption("Information Studies", subcategorySelect);
+                     
+                  }
                   else {
                     // Handle other categories here
                     addSubcategoryOption("Other Subcategory", subcategorySelect);
@@ -1631,6 +1951,10 @@
                   var jobtype = document.getElementById("jobtype").value;
                   var experience = document.getElementById("experience").value;
                   var description = document.getElementById("description").value;
+                  var expectedSalary = document.getElementById("expected-salary").value;
+                  // var skillExperience = document.getElementById("skillExperience").value;
+                  // var skillName = docment.getElementById("skillname").value;
+                  // var skillLevel = document.getElementById("skilllevel").value; 
 
                   if (category === "") {
                     alert("Please select a category.");
@@ -1650,17 +1974,30 @@
                     alert("Please provide your experience.");
                     return false;
                   }
+                  if (description.trim() === "") {
+                    alert("Please provide a description.");
+                    return false;
+                  }
 
                   if (jobtype.trim() === "") {
                     alert("Please select your job type.");
                     return false;
                   }
-
-
-                  if (description.trim() === "") {
-                    alert("Please provide a description.");
+                  if (expectedSalary.trim() === "") {
+                    alert("Please select your expected-salary.");
                     return false;
                   }
+                  // if (skillExperience.trim() === "") {
+                  //   alert("Please provide a skillExperience.");
+                  //   return false;
+                  // }
+                  // if (skillName.trim() === "") {
+                  //   alert("Please provide a skillExperience.");
+                  //   return false;
+                  // }
+
+
+                 
 
                   return true;
                 }
@@ -2376,39 +2713,47 @@
                 var email = document.getElementById("email");
 
                 if (category.value === '') {
+                  alert("Category is required");
                   displayError('Category is required.', 'category_error');
                   return false;
                 }
 
                 if (subcategory.value === '') {
+                  alert("Please select a subcategory");
                   displayError('Please select a subcategory.', 'subcategory_error');
                   return false;
                 }
                 if (experience.value === 'fresher') {
                   hideFields();
               } else if (experience.value === '') {
+                alert("Please select an experience.");
                   displayError('Please select an experience.', 'experience_error');
                   return false;
               }
                 if (companyname.value === '') {
+                  alert("'Please enter a company name");
                   displayError('Please enter a company name.', 'companyname_error');
                   return false;
                 }
 
                 if (role.value === '') {
+                  alert("Please enter a role.");
                   displayError('Please enter a role.', 'role_error');
                   return false;
                 }
 
                 if (companyname.value === '') {
+                  alert("please enter a company name");
                   displayError('please enter a company name', 'companyname_error');
                   return false;
                 }
                 if (role.value === '') {
+                  alert("please enter a role");
                   displayError('please enter a role', 'role_error');
                   return false;
                 }
                 if (name.value === '') {
+                  alert("please enter a employer name");
                   displayError('please enter a employer name', 'name_error');
                   return false;
                 }
@@ -2974,39 +3319,47 @@
                 var email = document.getElementById("email");
 
                 if (category.value === '') {
+                  alert("Category is required");
                   displayError('Category is required.', 'category_error');
-                  return false;
+                  return true;
                 }
 
                 if (subcategory.value === '') {
+                  alert("Please select a subcategory");
                   displayError('Please select a subcategory.', 'subcategory_error');
                   return false;
                 }
                 if (experience.value === 'fresher') {
                   hideFields();
               } else if (experience.value === '') {
+                alert("Please select an experience");
                   displayError('Please select an experience.', 'experience_error');
                   return false;
               }
                 if (companyname.value === '') {
+                  alert("Please enter a company name.");
                   displayError('Please enter a company name.', 'companyname_error');
                   return false;
                 }
 
                 if (role.value === '') {
+                  alert("Please enter a role.");
                   displayError('Please enter a role.', 'role_error');
                   return false;
                 }
 
                 if (companyname.value === '') {
+                  alert("please enter a company name");
                   displayError('please enter a company name', 'companyname_error');
                   return false;
                 }
                 if (role.value === '') {
+                  alert("please enter a role");
                   displayError('please enter a role', 'role_error');
                   return false;
                 }
                 if (name.value === '') {
+                  alert("please enter a employer name");
                   displayError('please enter a employer name', 'name_error');
                   return false;
                 }
@@ -3079,6 +3432,7 @@
                   <div class="form-group" id="school-group" style="display: none;">
                     <label for="school">School Name/collegename</label>
                     <input type="text" class="form-control" id="school"  name="school">
+                    <div id="school_error" class="error"></div>
                   </div>
                   <div class="form-group" id="percentage-group" style="display: none;">
                     <label for="percentage">Percentage</label>
@@ -3090,6 +3444,12 @@
                     <input type="number" class="form-control" id="year_passed"  name="year_passed">
                     <div id="year_error" class="error"></div>
                   </div>
+                  <div class="form-group" id="tencertificate-group" style="display: none;">
+                    <label for="tencertificate">10 th certificate</label>
+                    <input type="file" class="form-control" id="tencertificate" name="tencertificate">
+                    <div id="tencertificate_error" class="error"></div>
+                  </div>
+                  
                   <!-- <button type="button" class="btn mt-3" id="educationadd" onclick="addEducationForm()">Add</button> -->
               </div>
               <button type="submit" id="educationsubmit" class="btn">Submit</button>
@@ -3140,6 +3500,7 @@
                 var school = document.getElementById('school').value;
                 var percentage = document.getElementById('percentage').value;
                 var yearPassed = document.getElementById('year_passed').value;
+                var tencertificate = document.getElementById('tencertificate').value;
 
 
                 // Basic qualification validation
@@ -3155,27 +3516,32 @@
                   var school = document.getElementById('school').value;
                   var percentage = document.getElementById('percentage').value;
                   var yearPassed = document.getElementById('year_passed').value;
+                  var tencertificate = document.getElementById('tencertificate').value;
 
                   // Validate department
                   if (!department) {
-                    displayError('Department is required for selected qualification', 'department_error');
+                    alert("Department is required for selected qualification");
+                    displayError('Department is required for selected qualification');
                     return false;
                   }
 
                   // Validate school/collegename
                   if (!school) {
+                    alert("School/collegename is required");
                     displayError('School/collegename is required', 'school_error');
                     return false;
                   }
 
                   // Validate percentage
                   if (!percentage) {
+                    alert("Percentage is required");
                     displayError('Percentage is required', 'percentage_error');
                     return false;
                   }
 
                   // Validate year of passed out
                   if (!yearPassed) {
+                    alert("Year of Passed Out is required");
                     displayError('Year of Passed Out is required', 'year_error');
                     return false;
                   }
@@ -3292,7 +3658,7 @@
         } elseif ($method == 'addEducationForm') {
         ?>
           <div class="container" id="education">
-            <h3>Education Form</h3>
+            <h3>Add Education</h3>
 
             <div id="educationFormsContainer">
               <div class="education-form-container">
@@ -3301,7 +3667,7 @@
 
                   <div class="form-group">
                     <label for="qualification">Educational Qualification*</label>
-                    <select class="form-control" id="qualification"  name="qualification"  onchange="toggleFields()">
+                    <select class="form-control" id="qualification"  name="qualification"  onchange="toggleFields()" >
                       <option value="">Select Qualification</option>
                       <option value="below_8th">Below 8th</option>
                       <option value="sslc">SSLC</option>
@@ -3312,9 +3678,10 @@
                     </select>
                     <div id="qualification_error" class="error"></div>
                   </div>
-                  <div class="form-group" id="department-group" >
+                
+                  <div class="form-group" id="department-group">
                     <label for="department">Department</label>
-                    <select class="form-control" id="department" name="department" ">
+                    <select class="form-control" id="department" name="department" >
                       <option value="">Select Department</option>
                       <option value="Tamil">Tamil</option>
                       <option value="english">English</option>
@@ -3322,114 +3689,316 @@
                       <option value="physics">Physics</option>
                       <option value="chemistry">Chemistry</option>
                       <option value="computer_science">Computer Science</option>
+                      <option value="Engineering">Engineering</option>
                     </select>
                     <div id="department_error" class="error"></div>
                   </div>
                   <div class="form-group" id="school-group" >
                     <label for="school">School Name/collegename</label>
-                    <input type="text" class="form-control" id="school"  name="school">
+                    <input type="text" class="form-control" id="school"  name="school" >
+                    <div id="school_error" class="error"></div>
                   </div>
                   <div class="form-group" id="percentage-group" >
                     <label for="percentage">Percentage</label>
-                    <input type="text" class="form-control" id="percentage" id="school"  name="percentage">
+                    <input type="text" class="form-control" id="percentage" id="school"  name="percentage" >
                     <div id="percentage_error" class="error"></div>
                   </div>
                   <div class="form-group" id="year-group" >
                     <label for="year_passed">Year of Passed Out</label>
-                    <input type="number" class="form-control" id="year_passed"  name="year_passed">
+                    <input type="number" class="form-control" id="year_passed"  name="year_passed" >
                     <div id="year_error" class="error"></div>
                   </div>
+                  <div class="form-group" id="certificate_10th-group" style="display: none;">
+                    <label for="certificate_10th">10th Certificate Upload*</label>
+                    <input type="file" class="form-control" id="certificate_10th" name="certificate_10th" >
+                    <div id="certificate_10th_error" class="error"></div>
+                </div>
+
+                <div class="form-group" id="certificate_12th-group" style="display: none;">
+                    <label for="certificate_12th">12th Certificate Upload*</label>
+                    <input type="file" class="form-control" id="certificate_12th" name="certificate_12th" >
+                    <div id="certificate_12th_error" class="error"></div>
+                </div>
+
+                <div class="form-group" id="certificate_ug-group" style="display: none;">
+                <label for="certificate_ug">UG Degree Certificate Upload*</label>
+                <input type="file" class="form-control" id="certificate_ug" name="certificate_ug" >
+                <div id="certificate_ug_error" class="error"></div>
+            </div>
+
+            <div class="form-group" id="certificate_pg-group" style="display: none;">
+                <label for="certificate_pg">PG Certificate Upload*</label>
+                <input type="file" class="form-control" id="certificate_pg" name="certificate_pg" >
+                <div id="certificate_pg_error" class="error"></div>
+            </div>
+            <div class="form-group" id="certificate_doctorate-group" style="display: none;">
+            <label for="certificate_doctorate">Doctorate Certificate Upload*</label>
+            <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate" >
+            <div id="certificate_doctorate_error" class="error"></div>
+            </div>
+
+            </div>
+            
+
+                
+
                   
-              </div>
-              <button type="submit" id="educationsubmit" class="btn">Submit</button>
+                  
+              
+              <button type="submit" id="educationsubmit" class="btn" onclick="return validateForm()">Submit</button>
             
               </form>
              
             </div>
             <script>
-              var educationFormCount = 1;
+              // var educationFormCount = 1;
 
-              function addEducationForm(button) {
-                educationFormCount++;
-                var newEducationFormContainer = document.createElement('div');
-                newEducationFormContainer.className = 'education-form-container';
+              // function addEducationForm(button) {
+              //   educationFormCount++;
+              //   var newEducationFormContainer = document.createElement('div');
+              //   newEducationFormContainer.className = 'education-form-container';
 
-                // Clone the original form
-                var originalForm = document.querySelector('.education-form-container');
-                var newForm = originalForm.cloneNode(true);
-                newForm.id = 'educationform_' + educationFormCount;
+              //   // Clone the original form
+              //   var originalForm = document.querySelector('.education-form-container');
+              //   var newForm = originalForm.cloneNode(true);
+              //   newForm.id = 'educationform_' + educationFormCount;
 
-                // Clear the values in the new form
-                clearFormFields(newForm);
+              //   // Clear the values in the new form
+              //   clearFormFields(newForm);
 
-                // Append the new form to the container
-                newEducationFormContainer.appendChild(newForm);
-                document.querySelector('#educationFormsContainer').appendChild(newEducationFormContainer);
+              //   // Append the new form to the container
+              //   newEducationFormContainer.appendChild(newForm);
+              //   document.querySelector('#educationFormsContainer').appendChild(newEducationFormContainer);
 
-                // Move the "Submit" button to the new form
-                var submitButton = document.querySelector('button[type="submit"]');
-                newForm.appendChild(submitButton);
+              //   // Move the "Submit" button to the new form
+              //   var submitButton = document.querySelector('button[type="submit"]');
+              //   newForm.appendChild(submitButton);
 
-                // Hide the "Add" button in the previous form
-                button.style.display = "none";
-              }
-              // Function to clear the form fields in a given education form
-              function clearFormFields(educationForm) {
-                var fieldsToClear = educationForm.querySelectorAll('input, select');
-                for (var i = 0; i < fieldsToClear.length; i++) {
-                  fieldsToClear[i].value = '';
-                }
-              }
+              //   // Hide the "Add" button in the previous form
+              //   button.style.display = "none";
+              // }
+              // // Function to clear the form fields in a given education form
+              // function clearFormFields(educationForm) {
+              //   var fieldsToClear = educationForm.querySelectorAll('input, select');
+              //   for (var i = 0; i < fieldsToClear.length; i++) {
+              //     fieldsToClear[i].value = '';
+              //   }
+              // }
 
               function validateForm() {
-                var qualification = document.getElementById('qualification').value;
-                var department = document.getElementById('department').value;
-                var school = document.getElementById('school').value;
-                var percentage = document.getElementById('percentage').value;
-                var yearPassed = document.getElementById('year_passed').value;
+                var q = document.educationform.qualification.value;
+                var dep = document.educationform.department.value;
+                var scl = document.educationform.school.value;
+                var per = document.educationform.percentage.value;
+                var yop = document.educationform.year_passed.value;
+                var tenth = document.educationform.certificate_10th.value;
+                var tweleth = document.educationform.certificate_12th.value;
+                var ug = document.educationform.certificate_ug.value;
+                var pg = document.educationform.certificate_pg.value;
+                var dc = document.educationform.certificate_doctorate.value;
 
 
-                // Basic qualification validation
-                if (!qualification) {
-                  displayError('Please select a qualification', 'qualification_error');
-                  return false;
-                }
 
-
-                // Additional validation for "Bachelors," "Masters," and "Doctorate"
-                if (qualification === 'bachelors' || qualification === 'masters' || qualification === 'doctorate') {
-                  var department = document.getElementById('department').value;
-                  var school = document.getElementById('school').value;
-                  var percentage = document.getElementById('percentage').value;
-                  var yearPassed = document.getElementById('year_passed').value;
-
-                  // Validate department
-                  if (!department) {
-                    displayError('Department is required for selected qualification', 'department_error');
+                if (q == "") {
+                    var namesms2 = "* Qualification must be filled out";
+                    document.getElementById("qualification_error").innerHTML = namesms2;
+                    document.educationform.qualification.focus();
                     return false;
-                  }
+                }else {
+                        document.getElementById("qualification_error").innerHTML = "";
+                      }
 
-                  // Validate school/collegename
-                  if (!school) {
-                    displayError('School/collegename is required', 'school_error');
+                
+                if (dep == "") {
+                    var namesms2 = "* Department must be filled out";
+                    document.getElementById("department_error").innerHTML = namesms2;
+                    document.educationform.department.focus();
                     return false;
-                  }
+                }else {
+                        document.getElementById("department_error").innerHTML = "";
+                       }
 
-                  // Validate percentage
-                  if (!percentage) {
-                    displayError('Percentage is required', 'percentage_error');
+
+                if (scl == "") {
+                    var namesms2 = "* school or college must be filled out";
+                    document.getElementById("school_error").innerHTML = namesms2;
+                    document.educationform.school.focus();
                     return false;
-                  }
+                }else {
+                        document.getElementById("school_error").innerHTML = "";
+                       }
 
-                  // Validate year of passed out
-                  if (!yearPassed) {
-                    displayError('Year of Passed Out is required', 'year_error');
+
+                if (per == "") {
+                    var namesms2 = "* Percentage must be filled out";
+                    document.getElementById("percentage_error").innerHTML = namesms2;
+                    document.educationform.percentage.focus();
                     return false;
-                  }
-                }
+                }else {
+                        document.getElementById("percentage_error").innerHTML = "";
+                       }
 
 
-                // Form is valid
+                if (yop == "") {
+                    var namesms2 = "* Year of passed out must be filled out";
+                    document.getElementById("year_error").innerHTML = namesms2;
+                    document.educationform.year_passed.focus();
+                    return false;
+                }else {
+                        document.getElementById("year_error").innerHTML = "";
+                       }
+
+
+               if (tenth == "") {
+                    var namesms2 = "* 10 th certificate must be filled out";
+                    document.getElementById("certificate_10th_error").innerHTML = namesms2;
+                    document.educationform.certificate_10th.focus();
+                    return false;
+                }else {
+                        document.getElementById("certificate_10th_error").innerHTML = "";
+                       }
+
+               if (tweleth == "") {
+                    var namesms2 = "* 12 th certificate must be filled out";
+                    document.getElementById("certificate_12th_error").innerHTML = namesms2;
+                    document.educationform.certificate_12th.focus();
+                    return false;
+                }else {
+                        document.getElementById("certificate_12th_error").innerHTML = "";
+                       }
+
+
+               if (ug == "") {
+                    var namesms2 = "* UG certificate must be filled out";
+                    document.getElementById("certificate_ug_error").innerHTML = namesms2;
+                    document.educationform.certificate_ug.focus();
+                    return false;
+                }else {
+                        document.getElementById("certificate_ug_error").innerHTML = "";
+                       }
+
+
+                
+               if (pg == "") {
+                    var namesms2 = "* PG certificate must be filled out";
+                    document.getElementById("certificate_pg_error").innerHTML = namesms2;
+                    document.educationform.certificate_pg.focus();
+                    return false;
+                }else {
+                        document.getElementById("certificate_pg_error").innerHTML = "";
+                       }
+
+
+              if (dc == "") {
+                    var namesms2 = "* PG certificate must be filled out";
+                    document.getElementById("certificate_doctorate_error").innerHTML = namesms2;
+                    document.educationform.certificate_doctorate.focus();
+                    return false;
+                }else {
+                        document.getElementById("certificate_doctorate_error").innerHTML = "";
+                       }
+
+
+
+
+
+
+
+
+
+     //             var qualification = document.getElementById('qualification').value;
+    //             var department = document.getElementById('department').value;
+    //             var school = document.getElementById('school').value;
+    //             var percentage = document.getElementById('percentage').value;
+    //             var yearPassed = document.getElementById('year_passed').value;
+    //             var certificate10th = document.getElementById('certificate_10th').value;
+    //             var certificate12th = document.getElementById('certificate_12th').value;
+    //             var certificateUg = document.getElementById('certificate_ug').value;
+    //             var certificatePg = document.getElementById('certificate_pg').value;
+    //             var certificate_doctorate = document.getElementById('certificate_doctorate').value;
+               
+
+    //             // Basic qualification validation
+    //             if (!qualification) {
+    //               alert("Please select a qualification");
+    //               displayError('Please select a qualification', 'qualification_error');
+    //               return false;
+    //             }
+
+
+    //             // Additional validation for "Bachelors," "Masters," and "Doctorate"
+    //             if (qualification === 'bachelors' || qualification === 'masters' || qualification === 'doctorate') {
+    //               var department = document.getElementById('department').value;
+    //               var school = document.getElementById('school').value;
+    //               var percentage = document.getElementById('percentage').value;
+    //               var yearPassed = document.getElementById('year_passed').value;
+                 
+
+    //               // Validate department
+    //               if (!department) {
+    //                 alert("Department is required for selected qualification");
+    //                 displayError('Department is required for selected qualification', 'department_error');
+    //                 return false;
+    //               }
+
+    //               // Validate school/collegename
+    //               if (!school) {
+    //                 alert("School/collegename is required");
+    //                 displayError('School/collegename is required', 'school_error');
+    //                 return false;
+    //               }
+
+    //               // Validate percentage
+    //               if (!percentage) {
+    //                 alert("Percentage is required");
+    //                 displayError('Percentage is required', 'percentage_error');
+    //                 return false;
+    //               }
+
+    //               // Validate year of passed out
+    //               if (!yearPassed) {
+    //                 alert("Year of Passed Out is required");
+    //                 displayError('Year of Passed Out is required', 'year_error');
+    //                 return false;
+    //               }
+
+    //                 // Validate 10th Certificate Upload
+    //             if (!certificate10th) {
+    //                 alert("Please upload your 10th certificate");
+    //                 displayError('Please upload your 10th certificate', 'certificate_10th_error');
+    //                 return false;
+    //             }
+
+    //             // Validate 12th Certificate Upload
+    //             if (!certificate12th) {
+    //                 alert("Please upload your 12th certificate");
+    //                 displayError('Please upload your 12th certificate', 'certificate_12th_error');
+    //                 return false;
+    //     }
+    //     // Validate UG Degree Certificate Upload
+    //     if (!certificateUg) {
+    //         alert("Please upload your UG degree certificate");
+    //         displayError('Please upload your UG degree certificate', 'certificate_ug_error');
+    //         return false;
+    //     }
+
+    //     // Validate PG Certificate Upload
+    //     if (!certificatePg) {
+    //         alert("Please upload your PG certificate");
+    //         displayError('Please upload your PG certificate', 'certificate_pg_error');
+    //         return false;
+    //     }
+    //     if (!certificateDoctorate) {
+    //     alert("Please upload your Doctorate certificate");
+    //     displayError('Please upload your Doctorate certificate', 'certificate_doctorate_error');
+    //     return false;
+    // }
+
+                
+    //             }
+
+
+    //             // Form is valid
                 return true;
               }
 
@@ -3439,7 +4008,13 @@
                 var schoolGroup = document.getElementById('school-group');
                 var percentageGroup = document.getElementById('percentage-group');
                 var yearGroup = document.getElementById('year-group');
+                var certificate10thGroup = document.getElementById('certificate_10th-group');
+                 var certificate12thGroup = document.getElementById('certificate_12th-group');
+                 var certificateUgGroup = document.getElementById('certificate_ug-group');
+                  var certificatePgGroup = document.getElementById('certificate_pg-group');
+                  var certificatedcGroup = document.getElementById('certificate_doctorate-group');
                 var addButton = document.getElementById('addButton');
+               
 
                 // Show/hide the additional fields based on the selected qualification
                 if (selectedQualification === 'below_8th') {
@@ -3447,23 +4022,77 @@
                   schoolGroup.style.display = 'none';
                   percentageGroup.style.display = 'none';
                   yearGroup.style.display = 'none';
+                  certificate10thGroup.style.display = 'none';
+                  certificate12thGroup.style.display = 'none';
+                  certificateUgGroup.style.display = 'none';
+                  certificatePgGroup.style.display = 'none';
+                  certificatedcGroup.style.display = 'none';
                   addButton.style.display = 'none';
+                 
                 } else {
                   // Show the school, percentage, and year fields by default
                   schoolGroup.style.display = 'block';
                   percentageGroup.style.display = 'block';
+                  certificate10thGroup.style.display = 'block';
+                  certificate12thGroup.style.display = 'block';
+                  certificateUgGroup.style.display = 'block';
+                  certificatePgGroup.style.display = 'block';
+                  certificatedcGroup.style.display = 'block';
                   yearGroup.style.display = 'block';
-
-                  // Hide the department field for SSLC and HSC
-                  if (selectedQualification === 'sslc' || selectedQualification === 'hsc') {
-                    departmentGroup.style.display = 'none';
-                    addButton.style.display = 'none';
-                  } else {
-                    // Show the department field for other qualifications
-                    departmentGroup.style.display = 'block';
-                    addButton.style.display = 'block';
-                  }
+                 
                 }
+                  // Hide the department field for SSLC and HSC
+                  if (selectedQualification === 'sslc') {
+                    departmentGroup.style.display = 'none';
+                    certificate12thGroup.style.display = 'none';
+                    certificateUgGroup.style.display = 'none';
+                    certificatePgGroup.style.display = 'none';
+                    certificatedcGroup.style.display = 'none';
+                    // addButton.style.display = 'none';
+                    
+                  // } else {
+                    // Show the department field for other qualifications
+                    // departmentGroup.style.display = 'block';
+                   
+                  
+                    // addButton.style.display = 'block';
+                  }
+                  else if (selectedQualification === 'hsc') {
+                    departmentGroup.style.display = 'none';
+                    certificate10thGroup.style.display = 'none';
+                    certificateUgGroup.style.display = 'none';
+                    certificatePgGroup.style.display = 'none';
+                    certificatedcGroup.style.display = 'none';
+                    // addButton.style.display = 'none';
+                    
+                  } 
+                  else if(selectedQualification === 'bachelors')
+                  {
+                    departmentGroup.style.display = 'block';
+                    certificate10thGroup.style.display = 'none';
+                    certificate12thGroup.style.display = 'none';
+                    certificatedcGroup.style.display = 'none';
+                    certificatePgGroup.style.display = 'none';
+                    // addButton.style.display = 'none';
+                  }
+                  else if(selectedQualification === 'masters'){
+                    certificate10thGroup.style.display = 'none';
+                    certificate12thGroup.style.display = 'none';
+                    certificateUgGroup.style.display = 'none';
+                    certificatedcGroup.style.display = 'none';
+
+                  }
+                  else if(selectedQualification === 'doctorate'){
+                    certificate10thGroup.style.display = 'none';
+                    certificate12thGroup.style.display = 'none';
+                    certificateUgGroup.style.display = 'none';
+                    certificatePgGroup.style.display = 'none';
+                   
+
+                  }
+
+
+                
               }
             </script>
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -3521,6 +4150,7 @@
                     <div class="form-group" id="school-group" >
                     <label for="school">School Name/collegename</label>
                     <input type="text" class="form-control" id="school" value="<?php echo $value['school_college_name']; ?>"  name="school">
+                    <div id="school_error" class="error"></div>
                   </div>
                   <div class="form-group" id="percentage-group">
                     <label for="percentage">Percentage</label>
@@ -3532,6 +4162,35 @@
                     <input type="number" class="form-control" id="year_passed" value="<?php echo $value['yearOfPassing']; ?>"  name="year_passed">
                     <div id="year_error" class="error"></div>
                   </div>
+                  </div>
+                  <div class="form-group" id="certificate_10th-group" style="display: none;">
+                    <label for="certificate_10th">10th Certificate Upload*</label>
+                    <input type="file" class="form-control" id="certificate_10th" name="certificate_10th" >
+                    <div id="certificate_10th_error" class="error"></div>
+                </div>
+
+                <div class="form-group" id="certificate_12th-group" style="display: none;">
+                    <label for="certificate_12th">12th Certificate Upload*</label>
+                    <input type="file" class="form-control" id="certificate_12th" name="certificate_12th" >
+                    <div id="certificate_12th_error" class="error"></div>
+                </div>
+
+                <div class="form-group" id="certificate_ug-group" style="display: none;">
+                <label for="certificate_ug">UG Degree Certificate Upload*</label>
+                <input type="file" class="form-control" id="certificate_ug" name="certificate_ug">
+                <div id="certificate_ug_error" class="error"></div>
+            </div>
+
+            <div class="form-group" id="certificate_pg-group" style="display: none;">
+                <label for="certificate_pg">PG Certificate Upload*</label>
+                <input type="file" class="form-control" id="certificate_pg" name="certificate_pg">
+                <div id="certificate_pg_error" class="error"></div>
+            </div>
+            <div class="form-group" id="certificate_doctorate-group" style="display: none;">
+            <label for="certificate_doctorate">Doctorate Certificate Upload*</label>
+            <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate">
+            <div id="certificate_doctorate_error" class="error"></div>
+            </div>
                   
               </div>
               <button type="submit" id="educationsubmit" class="btn">Submit</button>
@@ -3547,24 +4206,24 @@
                 <label for="qualification">Educational Qualification*</label>
                 <select class="form-control" id="qualification" name="qualification" onchange="toggleFields()">
                     <option value="">Select Qualification</option>
-                    <option value="below_8th"<?php if ($value['educational_qualification'] === 'below_8th') echo ' selected'; ?>>Below 8th</option>
-                    <option value="sslc"<?php if ($value['educational_qualification'] === 'sslc') echo ' selected'; ?>>SSLC</option>
-                    <option value="hsc"<?php if ($value['educational_qualification'] === 'hsc') echo ' selected'; ?>>HSC</option>
-                    <option value="bachelors"<?php if ($value['educational_qualification'] === 'bachelors') echo ' selected'; ?>>Bachelors</option>
-                    <option value="masters"<?php if ($value['educational_qualification'] === 'masters') echo ' selected'; ?>>Masters</option>
-                    <option value="doctorate"<?php if ($value['educational_qualification'] === 'doctorate') echo ' selected'; ?>>Doctorate</option>
+                    <option value="below_8th">Below 8th</option>
+                    <option value="sslc">SSLC</option>
+                    <option value="hsc">HSC</option>
+                    <option value="bachelors">Bachelors</option>
+                    <option value="masters">Masters</option>
+                    <option value="doctorate">Doctorate</option>
                 </select>
                 <div id="qualification_error" class="error"></div>
                                   <div class="form-group" id="department-group" style="display: none;">
                 <label for="department">Department</label>
                 <select class="form-control" id="department" name="department">
                     <option value="">Select Department</option>
-                    <option value="Tamil"<?php if ($value['department'] === 'Tamil') echo ' selected'; ?>>Tamil</option>
-                    <option value="english"<?php if ($value['department'] === 'english') echo ' selected'; ?>>English</option>
-                    <option value="maths"<?php if ($value['department'] === 'maths') echo ' selected'; ?>>Maths</option>
-                    <option value="physics"<?php if ($value['department'] === 'physics') echo ' selected'; ?>>Physics</option>
-                    <option value="chemistry"<?php if ($value['department'] === 'chemistry') echo ' selected'; ?>>Chemistry</option>
-                    <option value="computer_science"<?php if ($value['department'] === 'computer_science') echo ' selected'; ?>>Computer Science</option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="english">English</option>
+                    <option value="maths">Maths</option>
+                    <option value="physics">Physics</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="computer_science">Computer Science</option>
                 </select>
                 <div id="department_error" class="error"></div>
                   <div class="form-group" id="school-group" style="display: none;">
@@ -3581,6 +4240,36 @@
                     <input type="number" class="form-control" id="year_passed"  name="year_passed">
                     <div id="year_error" class="error"></div>
                   </div>
+                  <div class="form-group" id="certificate_10th-group" style="display: none;">
+                    <label for="certificate_10th">10th Certificate Upload*</label>
+                    <input type="file" class="form-control" id="certificate_10th" name="certificate_10th" >
+                    <div id="certificate_10th_error" class="error"></div>
+                </div>
+
+                <div class="form-group" id="certificate_12th-group" style="display: none;">
+                    <label for="certificate_12th">12th Certificate Upload*</label>
+                    <input type="file" class="form-control" id="certificate_12th" name="certificate_12th" >
+                    <div id="certificate_12th_error" class="error"></div>
+                </div>
+
+                <div class="form-group" id="certificate_ug-group" style="display: none;">
+                <label for="certificate_ug">UG Degree Certificate Upload*</label>
+                <input type="file" class="form-control" id="certificate_ug" name="certificate_ug">
+                <div id="certificate_ug_error" class="error"></div>
+            </div>
+
+            <div class="form-group" id="certificate_pg-group" style="display: none;">
+                <label for="certificate_pg">PG Certificate Upload*</label>
+                <input type="file" class="form-control" id="certificate_pg" name="certificate_pg">
+                <div id="certificate_pg_error" class="error"></div>
+            </div>
+            <div class="form-group" id="certificate_doctorate-group" style="display: none;">
+            <label for="certificate_doctorate">Doctorate Certificate Upload*</label>
+            <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate">
+            <div id="certificate_doctorate_error" class="error"></div>
+            </div>
+
+            
                   
               </div>
               <button type="submit" id="educationsubmit" class="btn">Submit</button>
@@ -3622,54 +4311,213 @@
               }
 
               function validateForm() {
-                var qualification = document.getElementById('qualification').value;
-                var department = document.getElementById('department').value;
-                var school = document.getElementById('school').value;
-                var percentage = document.getElementById('percentage').value;
-                var yearPassed = document.getElementById('year_passed').value;
+
+                var q = document.educationform.qualification.value;
+                var dep = document.educationform.department.value;
+                var scl = document.educationform.school.value;
+                var per = document.educationform.percentage.value;
+                var yop = document.educationform.year_passed.value;
+                var tenth = document.educationform.certificate_10th.value;
+                var tweleth = document.educationform.certificate_12th.value;
+                var ug = document.educationform.certificate_ug.value;
+                var pg = document.educationform.certificate_pg.value;
+                var dc = document.educationform.certificate_doctorate.value;
 
 
-                // Basic qualification validation
-                if (!qualification) {
-                  displayError('Please select a qualification', 'qualification_error');
-                  return false;
-                }
 
-
-                // Additional validation for "Bachelors," "Masters," and "Doctorate"
-                if (qualification === 'bachelors' || qualification === 'masters' || qualification === 'doctorate') {
-                  var department = document.getElementById('department').value;
-                  var school = document.getElementById('school').value;
-                  var percentage = document.getElementById('percentage').value;
-                  var yearPassed = document.getElementById('year_passed').value;
-
-                  // Validate department
-                  if (!department) {
-                    displayError('Department is required for selected qualification', 'department_error');
+                if (q == "") {
+                    var namesms2 = "* Qualification must be filled out";
+                    document.getElementById("qualification_error").innerHTML = namesms2;
+                    document.educationform.qualification.focus();
                     return false;
-                  }
+                }else {
+                        document.getElementById("qualification_error").innerHTML = "";
+                      }
 
-                  // Validate school/collegename
-                  if (!school) {
-                    displayError('School/collegename is required', 'school_error');
+                
+                if (dep == "") {
+                    var namesms2 = "* Department must be filled out";
+                    document.getElementById("department_error").innerHTML = namesms2;
+                    document.educationform.department.focus();
                     return false;
-                  }
+                }else {
+                        document.getElementById("department_error").innerHTML = "";
+                       }
 
-                  // Validate percentage
-                  if (!percentage) {
-                    displayError('Percentage is required', 'percentage_error');
+
+                if (scl == "") {
+                    var namesms2 = "* school or college must be filled out";
+                    document.getElementById("school_error").innerHTML = namesms2;
+                    document.educationform.school.focus();
                     return false;
-                  }
+                }else {
+                        document.getElementById("school_error").innerHTML = "";
+                       }
 
-                  // Validate year of passed out
-                  if (!yearPassed) {
-                    displayError('Year of Passed Out is required', 'year_error');
+
+                if (per == "") {
+                    var namesms2 = "* Percentage must be filled out";
+                    document.getElementById("percentage_error").innerHTML = namesms2;
+                    document.educationform.percentage.focus();
                     return false;
-                  }
-                }
+                }else {
+                        document.getElementById("percentage_error").innerHTML = "";
+                       }
 
 
-                // Form is valid
+                if (yop == "") {
+                    var namesms2 = "* Year of passed out must be filled out";
+                    document.getElementById("year_error").innerHTML = namesms2;
+                    document.educationform.year_passed.focus();
+                    return false;
+                }else {
+                        document.getElementById("year_error").innerHTML = "";
+                       }
+
+
+               if (tenth == "") {
+                    var namesms2 = "* 10 th certificate must be filled out";
+                    document.getElementById("certificate_10th_error").innerHTML = namesms2;
+                    document.educationform.certificate_10th.focus();
+                    return false;
+                }else {
+                        document.getElementById("certificate_10th_error").innerHTML = "";
+                       }
+
+               if (tweleth == "") {
+                    var namesms2 = "* 12 th certificate must be filled out";
+                    document.getElementById("certificate_12th_error").innerHTML = namesms2;
+                    document.educationform.certificate_12th.focus();
+                    return false;
+                }else {
+                        document.getElementById("certificate_12th_error").innerHTML = "";
+                       }
+
+
+               if (ug == "") {
+                    var namesms2 = "* UG certificate must be filled out";
+                    document.getElementById("certificate_ug_error").innerHTML = namesms2;
+                    document.educationform.certificate_ug.focus();
+                    return false;
+                }else {
+                        document.getElementById("certificate_ug_error").innerHTML = "";
+                       }
+
+
+                
+               if (pg == "") {
+                    var namesms2 = "* PG certificate must be filled out";
+                    document.getElementById("certificate_pg_error").innerHTML = namesms2;
+                    document.educationform.certificate_pg.focus();
+                    return false;
+                }else {
+                        document.getElementById("certificate_pg_error").innerHTML = "";
+                       }
+
+
+              if (dc == "") {
+                    var namesms2 = "* PG certificate must be filled out";
+                    document.getElementById("certificate_doctorate_error").innerHTML = namesms2;
+                    document.educationform.certificate_doctorate.focus();
+                    return false;
+                }else {
+                        document.getElementById("certificate_doctorate_error").innerHTML = "";
+                       }
+
+
+    //             var qualification = document.getElementById('qualification').value;
+    //             var department = document.getElementById('department').value;
+    //             var school = document.getElementById('school').value;
+    //             var percentage = document.getElementById('percentage').value;
+    //             var yearPassed = document.getElementById('year_passed').value;
+    //             var certificate10th = document.getElementById('certificate_10th').value;
+    //             var certificate12th = document.getElementById('certificate_12th').value;
+    //             var certificateUg = document.getElementById('certificate_ug').value;
+    //             var certificatePg = document.getElementById('certificate_pg').value;
+    //             var certificate_doctorate = document.getElementById('certificate_doctorate').value;
+               
+
+    //             // Basic qualification validation
+    //             if (!qualification) {
+    //               alert("Please select a qualification");
+    //               displayError('Please select a qualification', 'qualification_error');
+    //               return false;
+    //             }
+
+
+    //             // Additional validation for "Bachelors," "Masters," and "Doctorate"
+    //             if (qualification === 'bachelors' || qualification === 'masters' || qualification === 'doctorate') {
+    //               var department = document.getElementById('department').value;
+    //               var school = document.getElementById('school').value;
+    //               var percentage = document.getElementById('percentage').value;
+    //               var yearPassed = document.getElementById('year_passed').value;
+                 
+
+    //               // Validate department
+    //               if (!department) {
+    //                 alert("Department is required for selected qualification");
+    //                 displayError('Department is required for selected qualification', 'department_error');
+    //                 return false;
+    //               }
+
+    //               // Validate school/collegename
+    //               if (!school) {
+    //                 alert("School/collegename is required");
+    //                 displayError('School/collegename is required', 'school_error');
+    //                 return false;
+    //               }
+
+    //               // Validate percentage
+    //               if (!percentage) {
+    //                 alert("Percentage is required");
+    //                 displayError('Percentage is required', 'percentage_error');
+    //                 return false;
+    //               }
+
+    //               // Validate year of passed out
+    //               if (!yearPassed) {
+    //                 alert("Year of Passed Out is required");
+    //                 displayError('Year of Passed Out is required', 'year_error');
+    //                 return false;
+    //               }
+
+    //                 // Validate 10th Certificate Upload
+    //             if (!certificate10th) {
+    //                 alert("Please upload your 10th certificate");
+    //                 displayError('Please upload your 10th certificate', 'certificate_10th_error');
+    //                 return false;
+    //             }
+
+    //             // Validate 12th Certificate Upload
+    //             if (!certificate12th) {
+    //                 alert("Please upload your 12th certificate");
+    //                 displayError('Please upload your 12th certificate', 'certificate_12th_error');
+    //                 return false;
+    //     }
+    //     // Validate UG Degree Certificate Upload
+    //     if (!certificateUg) {
+    //         alert("Please upload your UG degree certificate");
+    //         displayError('Please upload your UG degree certificate', 'certificate_ug_error');
+    //         return false;
+    //     }
+
+    //     // Validate PG Certificate Upload
+    //     if (!certificatePg) {
+    //         alert("Please upload your PG certificate");
+    //         displayError('Please upload your PG certificate', 'certificate_pg_error');
+    //         return false;
+    //     }
+    //     if (!certificateDoctorate) {
+    //     alert("Please upload your Doctorate certificate");
+    //     displayError('Please upload your Doctorate certificate', 'certificate_doctorate_error');
+    //     return false;
+    // }
+
+                
+    //             }
+
+
+    //             // Form is valid
                 return true;
               }
 
@@ -3679,7 +4527,13 @@
                 var schoolGroup = document.getElementById('school-group');
                 var percentageGroup = document.getElementById('percentage-group');
                 var yearGroup = document.getElementById('year-group');
+                var certificate10thGroup = document.getElementById('certificate_10th-group');
+                 var certificate12thGroup = document.getElementById('certificate_12th-group');
+                 var certificateUgGroup = document.getElementById('certificate_ug-group');
+                  var certificatePgGroup = document.getElementById('certificate_pg-group');
+                  var certificatedcGroup = document.getElementById('certificate_doctorate-group');
                 var addButton = document.getElementById('addButton');
+               
 
                 // Show/hide the additional fields based on the selected qualification
                 if (selectedQualification === 'below_8th') {
@@ -3687,24 +4541,60 @@
                   schoolGroup.style.display = 'none';
                   percentageGroup.style.display = 'none';
                   yearGroup.style.display = 'none';
+                  certificate10thGroup.style.display = 'none';
+                  certificate12thGroup.style.display = 'none';
+                  certificateUgGroup.style.display = 'none';
+                  certificatePgGroup.style.display = 'none';
+                  certificatedcGroup.style.display = 'none';
                   addButton.style.display = 'none';
+                 
                 } else {
                   // Show the school, percentage, and year fields by default
                   schoolGroup.style.display = 'block';
                   percentageGroup.style.display = 'block';
+                  certificate10thGroup.style.display = 'block';
+                  certificate12thGroup.style.display = 'block';
+                  certificateUgGroup.style.display = 'block';
+                  certificatePgGroup.style.display = 'block';
+                  certificatedcGroup.style.display = 'block';
                   yearGroup.style.display = 'block';
-
-                  // Hide the department field for SSLC and HSC
-                  if (selectedQualification === 'sslc' || selectedQualification === 'hsc') {
-                    departmentGroup.style.display = 'none';
-                    addButton.style.display = 'none';
-                  } else {
-                    // Show the department field for other qualifications
-                    departmentGroup.style.display = 'block';
-                    addButton.style.display = 'block';
-                  }
+                 
                 }
-              }
+                  // Hide the department field for SSLC and HSC
+                  if (selectedQualification === 'sslc') {
+                    departmentGroup.style.display = 'none';
+                    certificate12thGroup.style.display = 'none';
+                    certificateUgGroup.style.display = 'none';
+                    certificatePgGroup.style.display = 'none';
+                    certificatedcGroup.style.display = 'none';
+                    // addButton.style.display = 'none';
+                    
+                  // } else {
+                    // Show the department field for other qualifications
+                    // departmentGroup.style.display = 'block';
+                   
+                  
+                    // addButton.style.display = 'block';
+                  }
+                  else if (selectedQualification === 'hsc') {
+                    departmentGroup.style.display = 'none';
+                    certificateUgGroup.style.display = 'none';
+                    certificatePgGroup.style.display = 'none';
+                    certificatedcGroup.style.display = 'none';
+                    // addButton.style.display = 'none';
+                    
+                  } 
+                  else if(selectedQualification === 'bachelors')
+                  {
+                    certificatedcGroup.style.display = 'none';
+                    certificatePgGroup.style.display = 'none';
+                    // addButton.style.display = 'none';
+                  }
+                  else if(selectedQualification === 'masters'){
+                    certificatedcGroup.style.display = 'none';
+
+                  }
+            }
             </script>
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -3844,25 +4734,31 @@
                     return false;
                   }
                   if (durationofproject.value === '') {
+                    alert("please enter a project duration");
                     displayError('please enter a project duration', 'durationofproject_error');
                     return false;
                   }
                   if (roleofproject.value === '') {
+                    alert("please enter a role of project");
                     displayError('please enter a role of project', 'roleofproject_error');
                   }
                   if (startdate.value === '') {
+                    alert("please select a start date");
                     displayError('please select a start date', 'startdate_error');
                     return false;
                   }
                   if (enddate.value === '') {
+                    alert("please select a end date");
                     displayError('please select a end date', 'enddate_error');
                     return false;
                   }
                   if (responsibilty.value === '') {
+                    alert("This Field is required!");
                     displayError('This Field is required!', 'responsibility_error');
                     return false;
                   }
                   if (skillsused.value === '') {
+                    alert("please enter a Skills used in the project");
                     displayError('please enter a Skills used in the project', 'skillsused_error');
                     return false;
                   }
@@ -3931,8 +4827,8 @@
             <br>
             <br>
              <div class="">
-        <h2 class="text-center">Area Of Intrest Details</h2>
-        <a id="regis" href="<?php echo baseUrl . "seekerController/addAreaOfIntrestForm"?>">+ Add Area Of Interest Details</a>
+        <h2 class="text-center">Area of Job Interest</h2>
+        <a id="regis" href="<?php echo baseUrl . "seekerController/addAreaOfIntrestForm"?>">+ Add Area of Job Interest</a>
        
         <div class="clearfix"></div>
         <br>
@@ -3951,6 +4847,9 @@
                         <th>Job Type</th>
                         <th>Description</th>
                         <th>Expected_salary</th>
+                        <!-- <th>skill</th>
+                        <th>Skill Experience</th>
+                        <th>Skill Level</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -3972,6 +4871,9 @@
                         <td><?php echo $value['job_type']?></td>
                         <td><?php echo $value['description']?></td>
                         <td><?php echo $value['expected_salary']?></td>
+                        <!-- <td><?php echo $value['skill']?></td>
+                        <td><?php echo $value['skillExperience'] ?></td>
+                        <td><?php echo $value['skillLevel']?></td> -->
                         <td>
                             <div class="btn-group" role="group">
                                 <a id="regis" href="<?php echo baseUrl . "seekerController/updateAreaOfIntrest"?>/<?php echo $value['id'] ?>">Update</a>
@@ -3988,7 +4890,7 @@
 
 
               <div class="container">
-                <h3>Area of Interest Form</h3>
+                <h3>Add Area of Interest</h3>
                 <form method="post" onsubmit="return validateForm()" action="<?php echo baseUrl . "seekerController/insertAreaOfIntrest"?>">
 
                
@@ -4065,8 +4967,37 @@
                         <label for="expected-salary">Expected Salary</label>
                         <input type="text" class="form-control" id="expected-salary" name="expected-salary" >
                       </div>
+
+                      <div class="form-group">
+                        <h4>Your Strength :</h4>
+                      </div>
+
+                      <div class="form-group">
+                        <br><label for="skillName">Skill Name</label>
+                        <input type="text" class="form-control" id="skillname" name="skillname" >
+                      </div>
+                      <div class="form-group">
+                        <br><label for="experience">Experience</label>
+                        <select class="form-control" name="skillExperience"  id="experience" ><br>
+                          <option value="fresher">Fresher</option>
+                          <option value="0-2">0-2 years</option>
+                          <option value="2-5">2-5 years</option>
+                          <option value="5-10">5-10 years</option>
+                          <option value="10-20">10-20 years</option>
+                          <option value="20-above">20 years above</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <br><label for="skillLevel">Skill Level</label>
+                        <select class="form-control" name="skilllevel"  id="skilllevel" >
+                          <option value="beginner">Beginner</option>
+                          <option value="intermediate">Intermediate</option>
+                          <option value="advanced">Advanced</option>
+                        </select>
+                      </div>
                       <!-- <button type="button" class="btn btn-secondary mt-3" onclick="addEducationForm()">Add</button> -->
                     </div>
+                    
                     <button type="submit" class="btn btn-primary">Submit</button>
                    
                 </form>
@@ -4455,9 +5386,16 @@
                   var jobtype = document.getElementById("jobtype").value;
                   var experience = document.getElementById("experience").value;
                   var description = document.getElementById("description").value;
+                  var expectedSalary = document.getElementById("expected-salary").value;
+                  // var skillExperience = document.getElementById("skillExperience").value;
+                  // var skillName = docment.getElementById("skillname").value;
+                  // var skillLevel = document.getElementById("skilllevel").value; 
+                  
+
 
                   if (category === "") {
                     alert("Please select a category.");
+                    
                     return false;
                   }
 
@@ -4474,17 +5412,36 @@
                     alert("Please provide your experience.");
                     return false;
                   }
+                  if (description.trim() === "") {
+                    alert("Please provide a description.");
+                    return false;
+                  }
 
                   if (jobtype.trim() === "") {
                     alert("Please select your job type.");
                     return false;
                   }
-
-
                   if (description.trim() === "") {
                     alert("Please provide a description.");
                     return false;
                   }
+                  if (expectedSalary.trim() === "") {
+                    alert("Please provide a expected Salary.");
+                    return false;
+                  }
+                  
+                  // if (skillName.trim() === "") {
+                  //   alert("Please provide a skillname");
+                  //   return false;
+                  // }
+                  // if (skillExperience.trim() === "") {
+                  //   alert("Please provide a experience");
+                  //   return false;
+                  // }
+                  // if (skillLevel.trim() === "") {
+                  //   alert("Please provide a skillLevel");
+                  //   return false;
+                  // }
 
                   return true;
                 }
@@ -4750,72 +5707,88 @@
               clearErrorMessages();
 
               if (Name.trim() === '') {
+                alert("Name is required");
                 displayError('Name is required.', 'Name_error');
                 return false;
               } else if (!nameRegex.test(Name)) {
+                alert("Please enter a valid name");
                 displayError('Please enter a valid name.', 'Name_error');
                 return false;
               }
 
               if (email.trim() === '') {
+                alert("Email is required");
                 displayError('Email is required.', 'emailid_error');
                 return false;
               } else if (!validateEmail(email)) {
+                alert("Please enter a valid email address");
                 displayError('Please enter a valid email address.', 'emailid_error');
                 return false;
               }
 
               if (phoneNumber.trim() === '') {
+                alert("Phone Number is required");
                 displayError('Phone Number is required.', 'phonenumber_error');
                 return false;
               } else if (!validatePhoneNumber(phoneNumber)) {
+                alert("Please enter a valid phone number");
                 displayError('Please enter a valid phone number.', 'phonenumber_error');
                 return false;
               }
 
               if (dob.trim() === '') {
+                alert("Date of Birth is required");
                 displayError('Date of Birth is required.', 'dob_error');
                 return false;
               }
               if (gender.trim() === '') {
+                alert("Gender is required");
                 displayError('Gender is required.', 'gender_error');
                 return false;
               }
 
               if (doorno.trim() === '') {
+                alert("First line is required");
                 displayError('First line is required.', 'firstline_error');
                 return false;
               }
 
               if (streetaddress.trim() === '') {
+                alert("Street address is required");
                 displayError('Street address is required.', 'streetaddress_error');
                 return false;
               }
 
               if (landmark.trim() === '') {
+                alert("City is required");
                 displayError('City is required.', 'city_error');
                 return false;
               }
 
               if (pincode.trim() === '') {
+                alert("Pin Code is required");
                 displayError('Pin Code is required.', 'pincode_error');
                 return false;
               }
               if (maritalstatus.trim() === '') {
+                alert("marital status is required");
                 displayError('marital status is required.', 'maritalstatus_error');
                 return false;
               }
               if (aadharFrontPhoto.trim() === '') {
+                alert("Aadhar front photo is required");
                 displayError('Aadhar front photo is required.', 'aadharfrontphoto_error');
                 return false;
               }
 
               if (aadharBackPhoto.trim() === '') {
+                alert("Aadhar back photo is required");
                 displayError('Aadhar back photo is required.', 'aadharbackphoto_error');
                 return false;
               }
 
               if (photo.trim() === '') {
+                alert("Photo is required");
                 displayError('Photo is required.', 'photo_error');
                 return false;
               }
