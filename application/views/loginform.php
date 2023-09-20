@@ -156,8 +156,8 @@
       <ul>
         <li><a href="#about-us">About Us</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#job-seekers">Seekers</a></li>
-        <li><a href="#job-providers">Providers</a></li>
+        <li><a href="#job-seekers">Employee</a></li>
+        <li><a href="#job-providers">Employers</a></li>
         <li><a href="#blog">Blog</a></li>
         <!-- <li><a href="#login">Login</a></li> -->
       </ul>
@@ -171,7 +171,7 @@
 
 
   <div class="container">
-    <h2>Seeker Login </h2>
+    <h2>Employee Login </h2>
     <form id="phoneForm" action="<?php echo baseUrl . "seekerController/seekerLogin"?>" method="post" onsubmit="return validateForm()">
       <div class="form-group">
         <label for="phone">Username</label>

@@ -132,7 +132,7 @@
       margin-left: 30px;
     }
   </style>
-  <title>Registration Form</title>
+  <title>Employee Registration </title>
 </head>
 
 <body>
@@ -159,7 +159,7 @@
   <br>
   <div class="container">
     <h2>
-      <center>Registration Form</center>
+      <center>Employee Registration </center>
     </h2>
     <br>
 
@@ -195,11 +195,13 @@
       clearErrors();
 
       if (!username.trim()) {
+        alert("Please enter a username");
         displayError('Username is required', 'username_error');
         return false;
       }
 
       if (!email.trim()) {
+        alert("Please enter a Email ID")
         displayError('Email is required', 'email_error');
         return false;
       } else if (!validateEmail(email)) {
@@ -208,9 +210,11 @@
       }
 
       if (!phone.trim()) {
+        alert("Please enter a phone number");
         displayError('Phone number is required', 'phone_error');
         return false;
       } else if (!validatePhone(phone)) {
+        alert("Please enter a Valid phone number");
         displayError('Please enter a valid phone number', 'phone_error');
         return false;
       }
