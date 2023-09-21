@@ -694,7 +694,7 @@
 
                             <div>
                             <button class="btn  btn-primary rounded" id="updatesubmit" type="submit" onclick="return group()">
-                            <!-- <button  class=" btn-primary rounded">Submit</button> -->
+                            <!-- <button  class=" btn-primary rounded">Submit</button> --> 
                             Submit
                             </button>
 
