@@ -345,25 +345,30 @@
 
             if (x != "") {
                 if (x.length < 2) {
+
                     document.getElementById("nameerr").innerHTML = "Name should be in atleast 2 characters";
                     document.forms.name.focus();
                     return false;
                 } else if (x.length > 50) {
                     document.getElementById("nameerr").innerHTML = "Name should not exceed 50 characters";
                     document.forms.name.focus();
+
                     return false;
                 } else {
                     document.getElementById("nameerr").innerHTML = "";
 
                 }
             } else if (x == "") {
+
                 var namesms1 = "Name must be filled out";
+
                 document.getElementById("nameerr").innerHTML = namesms1;
                 document.forms.name.focus();
                 return false;
             }
 
             if (p != "") {
+
                 if (p.length < 10) {
                     document.getElementById("pherr").innerHTML = "Mobile number must be in 10 digits";
                     document.forms.phno.focus();
@@ -371,19 +376,24 @@
                 } else if (p.length > 11) {
                     document.getElementById("pherr").innerHTML = "Mobile number should not exceed 10 digits";
                     document.forms.phno.focus();
+
                     return false;
                 } else {
                     document.getElementById("pherr").innerHTML = "";
                 }
             } else if (p == "") {
+
                 var phsms = "Mobile number must be filled out";
+
                 document.getElementById("pherr").innerHTML = phsms;
                 document.forms.phno.focus();
                 return false;
             }
 
             if (a == "") {
+
                 var emailsms = "Email must be filled out";
+
                 document.getElementById("mailerr").innerHTML = emailsms;
                 document.forms.email.focus();
                 return false;
@@ -394,8 +404,10 @@
                     document.getElementById("mailerr").innerHTML = "";
                     // return (true);
                 } else {
+
                     document.getElementById("mailerr").innerHTML = "You have entered an invalid email address";
                     document.forms.email.focus();
+
                     return false;
                 }
             }
@@ -403,18 +415,22 @@
 
             if (y != "") {
                 if (y.length < 4) {
+
                     document.getElementById("adderr").innerHTML = "Address should be in atleast 4 characters";
                     document.forms.addr.focus();
                     return false;
                 } else if (y.length > 35) {
                     document.getElementById("adderr").innerHTML = "Address should not exceed 35 characters";
                     document.forms.addr.focus();
+
                     return false;
                 } else {
                     document.getElementById("adderr").innerHTML = "";
                 }
             } else {
+
                 var adderr = "Address must be in filled out";
+
                 document.getElementById("adderr").innerHTML = adderr;
                 document.forms.addr.focus();
                 return false;
@@ -423,19 +439,23 @@
 
             if (y1 != "") {
                 if (y1.length < 2) {
+
                     document.getElementById("landerr").innerHTML = "Landmark should be in atleast 2 characters";
                     document.forms.landmark.focus();
                     return false;
                 } else if (y1.length > 50) {
                     document.getElementById("landerr").innerHTML = "Landmark should not exceed 50 characters";
                     document.forms.landmark.focus();
+
                     return false;
                 } else {
                     document.getElementById("landerr").innerHTML = "";
 
                 }
             } else if (y1 == "") {
+
                 var landmark = "Landmark must be filled out";
+
                 document.getElementById("landerr").innerHTML = landmark;
                 document.forms.landmark.focus();
                 return false;
@@ -444,19 +464,23 @@
 
             if (y2 != "") {
                 if (y2.length < 2) {
+
                     document.getElementById("errerr").innerHTML = "City should be in atleast 2 characters";
                     document.forms.city.focus();
                     return false;
                 } else if (y2.length > 50) {
                     document.getElementById("cityerr").innerHTML = "City should not exceed 50 characters";
                     document.forms.city.focus();
+
                     return false;
                 } else {
                     document.getElementById("cityerr").innerHTML = "";
 
                 }
             } else if (y2 == "") {
+
                 var city = "City must be filled out";
+
                 document.getElementById("cityerr").innerHTML = city;
                 document.forms.city.focus();
                 return false;
@@ -466,19 +490,23 @@
 
             if (y5 != "") {
                 if (y5.length < 2) {
+
                     document.getElementById("diserr").innerHTML = "District should be in atleast 2 characters";
                     document.forms.district.focus();
                     return false;
                 } else if (y5.length > 50) {
                     document.getElementById("diserr").innerHTML = "District should not exceed 50 characters";
                     document.forms.district.focus();
+
                     return false;
                 } else {
                     document.getElementById("diserr").innerHTML = "";
 
                 }
             } else if (y5 == "") {
+
                 var district = "District must be filled out";
+
                 document.getElementById("diserr").innerHTML = district;
                 document.forms.district.focus();
                 return false;
@@ -486,19 +514,23 @@
 
             if (y4 != "") {
                 if (y4.length < 2) {
+
                     document.getElementById("stateerr").innerHTML = "State should be in atleast 2 characters";
                     document.forms.state.focus();
                     return false;
                 } else if (y4.length > 50) {
                     document.getElementById("stateerr").innerHTML = "State should not exceed 50 characters";
                     document.forms.state.focus();
+
                     return false;
                 } else {
                     document.getElementById("stateerr").innerHTML = "";
 
                 }
             } else if (y4 == "") {
+
                 var state = "State must be filled out";
+
                 document.getElementById("stateerr").innerHTML = state;
                 document.forms.state.focus();
                 return false;
@@ -506,8 +538,10 @@
 
             if (y3 != "") {
                 if (y3.length !== 6) {
+
                     document.getElementById("pinerr").innerHTML = "Pincode  must be in 6 digits";
                     document.forms.pincode.focus();
+
                     return false;
                 }
                 // else if(y3.length>11)
@@ -520,7 +554,9 @@
 
                 }
             } else if (y3 == "") {
+
                 var pincode = "Pincode must be filled out";
+
                 document.getElementById("pinerr").innerHTML = pincode;
                 document.forms.pincode.focus();
                 return false;
@@ -530,6 +566,7 @@
 
 
             if (x1 != "") {
+
                 if (x1.length < 3) {
                     document.getElementById("nameerr1").innerHTML = "Name should be in atleast 3 characters";
                     document.forms.name1.focus();
@@ -537,6 +574,7 @@
                 } else if (x1.length > 50) {
                     document.getElementById("nameerr1").innerHTML = "Name should not exceed 500 characters";
                     document.forms.name1.focus();
+
                     return false;
                 } else {
                     document.getElementById("nameerr1").innerHTML = "";
@@ -555,7 +593,9 @@
 
             // }
             if (x1 == "") {
+
                 var namesms2 = "Name must be filled out";
+
                 document.getElementById("nameerr1").innerHTML = namesms2;
                 document.forms.name1.focus();
                 return false;
@@ -565,14 +605,18 @@
 
             if (r != "") {
                 if (y.length > 50) {
+
                     document.getElementById("rolerr").innerHTML = "Address should not exceed 50 characters";
                     document.forms.role.focus();
+
                     return false;
                 } else {
                     document.getElementById("rolerr").innerHTML = "";
                 }
             } else {
+
                 var adderr = "Role must be in filled out";
+
                 document.getElementById("rolerr").innerHTML = adderr;
                 document.forms.role.focus();
                 return false;
@@ -580,19 +624,23 @@
 
             if (p1 != "") {
                 if (p1.length !== 10) {
+
                     document.getElementById("pherr1").innerHTML = "Mobile number must be in 10 digits";
                     document.forms.phno1.focus();
                     return false;
                 } else if (p1.length > 11) {
                     document.getElementById("pherr1").innerHTML = "Mobile number should not exceed 10 digits";
                     document.forms.phno1.focus();
+
                     return false;
                 } else {
                     document.getElementById("pherr1").innerHTML = "";
 
                 }
             } else if (p1 == "") {
+
                 var phsms1 = "Mobile number must be filled out";
+
                 document.getElementById("pherr1").innerHTML = phsms1;
                 document.forms.phno1.focus();
                 return false;
@@ -601,7 +649,9 @@
 
 
             if (a1 == "") {
+
                 var emailsms1 = "mail must be filled out";
+
                 document.getElementById("mailerr1").innerHTML = emailsms1;
                 document.forms.mail1.focus();
                 return false;
@@ -612,8 +662,10 @@
                     document.getElementById("mailerr1").innerHTML = "";
                     // return (true);
                 } else {
+
                     document.getElementById("mailerr1").innerHTML = "You have entered an invalid email address";
                     document.forms.mail1.focus();
+
                     return false;
                 }
             }

@@ -195,10 +195,10 @@ body{
 				<a class="nav-link" href="#about" style="color: white; padding-right: 40px;">About Us</a>
 				</li>
 				<li class="nav-item">
-				<a class="nav-link" href="#provider" style="color: white; padding-right: 40px;">Provider</a>
+				<a class="nav-link" href="#provider" style="color: white; padding-right: 40px;">Employer</a>
 				</li>
 				<li class="nav-item">
-				<a class="nav-link" href="#seeker" style="color: white; padding-right: 40px;">Seeker</a>
+				<a class="nav-link" href="#seeker" style="color: white; padding-right: 40px;">Employee</a>
 				</li>
 				<li class="nav-item">
 				<a class="nav-link" href="#" style="color: white; padding-right: 40px;">BLOG</a>
@@ -216,8 +216,8 @@ body{
 				LogIn
 			</button>
 			<ul class="dropdown-menu">
-				<li><a class="dropdown-item" href="<?php echo baseUrl . "provider/login"?>">Provider LogIn</a></li>
-				<li><a class="dropdown-item" href="<?php echo baseUrl . "seekerController"?>">Seeker LogIn</a></li>
+				<li><a class="dropdown-item" href="<?php echo baseUrl . "provider/login"?>">Employer LogIn</a></li>
+				<li><a class="dropdown-item" href="<?php echo baseUrl . "seekerController"?>">Employee LogIn</a></li>
 			</ul>
 		</div>
 	  </div>
@@ -268,7 +268,7 @@ body{
 			<div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify; font-size: medium;">
 				<div class="about-text">
 					<h2><b>About Arramjobs</b></h2>
-					<p>At Arram Jobs, we're committed to providing comprehensive solutions that cater to the unique needs of both job seekers and employers. Our platform is designed to offer a range of valuable services and benefits, ensuring a seamless and rewarding experience for all.</p>
+					<p>At Arram Jobs, we're committed to providing comprehensive solutions that cater to the unique needs of both job employee and employers. Our platform is designed to offer a range of valuable services and benefits, ensuring a seamless and rewarding experience for all.</p>
 					<p>At Arram Jobs, we are on a mission to connect talented individuals with the career opportunities that align with their aspirations. We believe that the right job can transform lives, foster personal growth, and drive organizational success. With our innovative approach to recruitment, we aim to bridge the gap between exceptional talent and top-tier employers, creating a brighter future for both.</p>
 					<!-- <a href="#" class="btn btn-warning">Learn More</a> -->
 				</div>
@@ -369,7 +369,7 @@ body{
 						<div class="card-body-s" style="padding-top: 30px;">
                             <i class="bi bi-book-fill" style="color: black; font-size: 30px;"></i>
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;"> Accredited</h4>
-							<p class="lead" style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">An accredited job portal connects job seekers and employers after obtaining official recognition and certification from accrediting bodies. Accreditation involves evaluating the portal's operations, features, and compliance with industry standards, legal regulations, and ethics.</p>
+							<p class="lead" style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">An accredited job portal connects job employees and employers after obtaining official recognition and certification from accrediting bodies. Accreditation involves evaluating the portal's operations, features, and compliance with industry standards, legal regulations, and ethics.</p>
 
 						</div>             
 					</div>
@@ -379,7 +379,7 @@ body{
 						<div class="card-body-s" style="padding-top: 30px;">
                             <i class="bi bi-laptop-fill" style="color: black; font-size: 30px;"></i>
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 38px; color: black;">User-friendly Interface</h4>
-							<p class="lead" style="color: black; font-size: 16px; padding-bottom: 20px; padding-left: 20px; padding-right: 20px; text-align: justify;">A job portal's user-friendly interface prioritizes easy navigation, clarity, and effectiveness, benefiting the job seekers and the employers by simplifying the search for their employment opportunities and hiring processes.</p>
+							<p class="lead" style="color: black; font-size: 16px; padding-bottom: 20px; padding-left: 20px; padding-right: 20px; text-align: justify;">A job portal's user-friendly interface prioritizes easy navigation, clarity, and effectiveness, benefiting the job employeers and the employers by simplifying the search for their employment opportunities and hiring processes.</p>
 
 						</div>             
 					</div>
@@ -394,7 +394,7 @@ body{
 						<div class="card-body-s" style="padding-top: 30px;">                            
                             <i class="bi bi-subtract" style="color: black;  font-size: 30px;"></i>
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Extensive Job opportunities</h4>
-							<p class="lead" style="color: black; font-size: 16px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; text-align: justify;">An abundance of 'extensive job opportunities' signifies a robust job market, offering plentiful prospects. This is highly advantageous for job seekers, career changers, and professionals aiming to explore new roles or industries, facilitating diverse career growth.</p>
+							<p class="lead" style="color: black; font-size: 16px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; text-align: justify;">An abundance of 'extensive job opportunities' signifies a robust job market, offering plentiful prospects. This is highly advantageous for job employees, career changers, and professionals aiming to explore new roles or industries, facilitating diverse career growth.</p>
 
 						</div>             
 					</div>
@@ -404,7 +404,7 @@ body{
 						<div class="card-body-s" style="padding-top: 30px;">
 							<i class="bi bi-shield-shaded" style="color: black; font-size: 30px;"></i>
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Quick Response</h4>
-							<p class="lead" style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">Quick response" in a job portal refers to the prompt and timely feedback or acknowledgment provided to job seekers or employers when they take certain actions or submit applications within the platform. This feature is designed to enhance the user experience by ensuring that users receive immediate confirmation. </p>
+							<p class="lead" style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">Quick response" in a job portal refers to the prompt and timely feedback or acknowledgment provided to job employees or employers when they take certain actions or submit applications within the platform. This feature is designed to enhance the user experience by ensuring that users receive immediate confirmation. </p>
 
 						</div>             
 					</div>
@@ -414,7 +414,7 @@ body{
 						<div class="card-body-s" style="padding-top: 30px;">
 							<i class="bi bi-tablet-landscape" style="color: black; font-size: 30px;"></i>
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Advanced search and filtering </h4>
-							<p class="lead" style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">The goal of advanced search and filtering features in a jobs portal is to empower job seekers to pinpoint job listings that align closely with their unique preferences and qualifications, saving time and increasing the likelihood of finding the most suitable job opportunities. </p>
+							<p class="lead" style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">The goal of advanced search and filtering features in a jobs portal is to empower job employees to pinpoint job listings that align closely with their unique preferences and qualifications, saving time and increasing the likelihood of finding the most suitable job opportunities. </p>
 
 						</div>             
 					</div>
@@ -457,7 +457,7 @@ body{
 			</div>
 			<div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify; font-size: medium;">
 				<div class="about-text">
-					<p class="fs-1">Seeker</p>
+					<p class="fs-1">Employee</p>
 					<p>At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain access to a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs. </p>
 					<a href="#" class="btn btn-warning">Learn More</a>
 				</div>
@@ -643,7 +643,7 @@ body{
             <a href="#about" class="text-reset" style="text-decoration: none;">About Us</a>
           </p>
           <p style="color: white;">
-            <a href="#seeker" class="text-reset" style="text-decoration: none;">Seeker</a>
+            <a href="#seeker" class="text-reset" style="text-decoration: none;">Employee</a>
           </p>
           <p style="color: white;">
             <a href="#provider" class="text-reset" style="text-decoration: none;">Provider</a>

@@ -105,7 +105,7 @@
       font-weight: bold;
     }
   </style>
-  <title>Registration Form</title>
+  <title>Employee Registration </title>
 </head>
 
 <body>
@@ -141,7 +141,7 @@
 
   <div class="formcss container container-lg mt-5 mx-auto">
     <h2>
-      <center>Registration Form</center>
+      <center>Employee Registration </center>
     </h2>
     <br>
     <!-- <form name="registration_form" method="post" onsubmit="return validateForm()"
@@ -183,12 +183,16 @@
       clearErrors();
 
       if (!username.trim()) {
+
         displayError('Name must be filled out', 'username_error');
+
         return false;
       }
 
       if (!email.trim()) {
+
         displayError('Email must be filled out', 'email_error');
+
         return false;
       } else if (!validateEmail(email)) {
         displayError('Please enter a valid email address', 'email_error');
@@ -196,10 +200,12 @@
       }
 
       if (!phone.trim()) {
+
         displayError('Mobile number must be filled out', 'phone_error');
         return false;
       } else if (!validatePhone(phone)) {
         displayError('Please enter a valid mobile number', 'phone_error');
+
         return false;
       }
 

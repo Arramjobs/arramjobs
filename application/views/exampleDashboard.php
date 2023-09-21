@@ -508,6 +508,7 @@
             </nav>
 
             <!-- Main content -->
+
     <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
     <?php
     if ($this->data['method'] == "dashboard") {
@@ -528,9 +529,12 @@
         ?>
                         <div class="formcss2 container mt-5">
                         <h3 class="text-center " style="color:navy;text-align:center">Jobs</h3>
+
                         <!-- <input type="button" class="btn btn-primary float-end" value="+ Add" onclick="registration/provider_addjob"> -->
                         <!-- <a id="regis" href="provider_addjob">+ Add</a></p>> -->
-                        <a id="regis" href="<?php echo baseUrl . "providerController/providerAddJob" ?>">+ Add jobs</a>
+
+                        <a id="regis" href="<?php echo baseUrl . "providerController/providerAddJob"?>">+ Add job Requirements</a>
+
 
                         <div class="clearfix"></div>
                         <br>
@@ -725,6 +729,7 @@
                 document.forms.phno.focus();
                 return true;
                 } else if (((charCode > 48) && (charCode < 57))) {
+                    alert("Numbers not allowed Please enter only letters");
 
                 document.getElementById("nameerr").innerHTML = "Numbers not allowed Please enter only letters";
                 document.forms.name.focus();
@@ -753,6 +758,7 @@
                 document.forms.name1.focus();
                 return false;
 
+
                 }
                 }
 
@@ -774,6 +780,7 @@
                 var r = document.forms.role.value;
 
                 if (x != "") {
+
                 if (x.length < 2) {
                 document.getElementById("nameerr").innerHTML = "* Name should be in atleast 3 characters";
                 return false;
@@ -808,9 +815,11 @@
                 document.forms.phno.focus();
                 return false;
 
+
                 }
 
                 if (a == "") {
+
                 var emailsms = "Email must be filled out";
                 document.getElementById("mailerr").innerHTML = emailsms;
                 document.forms.email.focus();
@@ -859,10 +868,12 @@
                 document.getElementById("landerr1").innerHTML = landmark;
                 document.forms.landmark1.focus();
                 return false;
+
                 }
 
 
                 if (y2 != "") {
+
                 if (y2.length < 3) {
                 document.getElementById("cityerr1").innerHTML = "City should be in atleast 3 characters";
                 return false;
@@ -894,11 +905,13 @@
                 document.getElementById("stateerr1").innerHTML = state;
                 document.forms.state1.focus();
                 return false;
+
                 }
 
 
 
                 if (y5 != "") {
+
                 if (y5.length < 3) {
                 document.getElementById("diserr1").innerHTML = "District should be in atleast 3 characters";
                 return false;
@@ -913,6 +926,7 @@
                 document.getElementById("diserr1").innerHTML = district;
                 document.forms.district1.focus();
                 return false;
+
                 }
 
 
@@ -920,6 +934,7 @@
 
 
                 if (y3 != "") {
+
                 if (y3.length !== 6) {
                 document.getElementById("pinerr1").innerHTML = "Pincode  must be in 6 digits";
                 return false;
@@ -936,10 +951,12 @@
                 document.forms.pincode1.focus();
                 return false;
 
+
                 }
 
 
                 if (x1 != "") {
+
                 if (x1.length < 2) {
                 document.getElementById("nameerr1").innerHTML = "Name should be in atleast 3 characters";
                 return false;
@@ -948,6 +965,7 @@
                 return false;
                 } else {
                 document.getElementById("nameerr1").innerHTML = "";
+
 
                 }
                 }
@@ -964,14 +982,17 @@
 
                 // }
                 if (x1 == "") {
+
                 var namesms2 = "Name must be filled out";
                 document.getElementById("nameerr1").innerHTML = namesms2;
                 document.forms.name1.focus();
                 return false;
+
                 }
 
 
                 if (r != "") {
+
                 if (y.length > 50) {
                 document.getElementById("rolerr").innerHTML = "Address should not exceed 50 characters";
                 return false;
@@ -1002,27 +1023,560 @@
                 document.forms.phno1.focus();
                 return false;
 
+
                 }
 
 
                 if (a1 == "") {
-                var emailsms1 = "Email must be filled out";
-                document.getElementById("mailerr1").innerHTML = emailsms1;
-                document.forms.mail1.focus();
-                return false;
+
+                    var emailsms1 = "email must be filled out";
+                    alert("email must be filled out");
+                    document.getElementById("mailerr1").innerHTML = emailsms1;
+                    document.forms.mail1.focus();
+                    return false;
                 } else if (a1 != "") {
-                // document.getElementById("mailerr").innerHTML="";
-                /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(a1)) {
-                document.getElementById("mailerr1").innerHTML = "";
-                // return (true);
-                } else {
-                document.getElementById("mailerr1").innerHTML = "You have entered an invalid email address";
-                return false;
+                    document.getElementById("mailerr").innerHTML="";
+                    /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
+                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(a1)) {
+                        document.getElementById("mailerr1").innerHTML = "";
+                        // return (true);
+                    } else {
+                        document.getElementById("mailerr1").innerHTML = "you have entered an invalid email address";
+                        alert("you have entered an invalid email address");
+                        return false;
+                    }
                 }
+
+            }
+        </script>
+    <?php
+                } else if ($this->data['method'] == "addnew") {
+    ?>
+        <div class="container" id="addnew">
+            <h3>Add New Jobs</h3>
+            <form name="experienceform" method="post" onsubmit="return validateForm()" action="<?php echo baseUrl . "providerController/insertJob" ?>">
+
+                <div class="form-group">
+                    <label for="company_name">Company Name:</label>
+                    <input type="text" class="form-control" id="company_name" name="company_name">
+                    <div id="company_name_error" class="error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select class="form-control" id="category" name="category" onchange="updateSubcategories()">
+                        <option value="">Select a Category</option>
+                        <option value="architech">Architech</option>
+                        <option value="developer">Developer</option>
+                        <option value="tester">Tester</option>
+                        <option value="uiux">UI/UX Design</option>
+                        <option value="datascience">Data Scientist</option>
+                        <option value="databaseadmin">Database Admin</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="professor">Professor</option>
+
+                    </select>
+                    <div id="category_error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="subcategory">Subcategory:</label>
+                    <select class="form-control" id="subcategory" name="subcategory" disabled>
+                        <option value="">Select a Subcategory</option>
+                    </select>
+                    <div id="subcategory_error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Experience:</label>
+                    <select class="form-control" id="experience" name="experience">
+                        <option value="">select your experience</option>
+                        <option value="fresher">Fresher</option>
+                        <option value="0-2">0-2</option>
+                        <option value="3-5">3-5</option>
+                        <option value="5-10">5-10</option>
+                        <option value="10-15">10-15</option>
+                        <option value="15-20">15-20</option>
+                        <option value="above 20 years">above 20 years</option>
+                    </select>
+                    <div id="experience_error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="preferred_location">Location:</label>
+                    <input type="text" class="form-control" id="preferred_location" name="preferred_location">
+                    <div id="preferred_location_error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="jobtype">Job Type :</label>
+                    <select class="form-control" id="jobtype" name="jobtype">
+                        <option value="">select your jobtype</option>
+                        <option value="0">Full Time</option>
+                        <option value="1">Part Time</option>
+                    </select>
+                    <div id="jobtype_error" class="error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="expected_salary">Salary:</label>
+                    <input type="number" class="form-control" id="expected_salary" name="expected_salary">
+                    <div id="expected_salary_error" class="error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="no_of_openings">No Of Openingsr :</label>
+                    <input type="number" class="form-control" id="no_of_openings" name="no_of_openings">
+                    <div id="no_of_openings_error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" id="description" name="description">
+                    <div id="description_error" class="error"></div>
+                </div>
+                <button type="submit" class="btn-primary">Submit</button>
+            </form>
+        </div>
+        <script>
+            function updateSubcategories() {
+                var categorySelect = document.getElementById("category");
+                var subcategorySelect = document.getElementById("subcategory");
+                var selectedCategory = categorySelect.value;
+
+                // Reset subcategory options
+                subcategorySelect.innerHTML = '<option value="">Select a Subcategory</option>';
+
+                if (selectedCategory === "architech") {
+                    addSubcategoryOption("Architect");
+                    addSubcategoryOption("Senior ");
+                    addSubcategoryOption("Design ");
+                    addSubcategoryOption("Project ");
+                    addSubcategoryOption("Principal ");
+                    addSubcategoryOption("Landscape");
+                    addSubcategoryOption("Urban Planner");
+                    addSubcategoryOption("Interior Designer");
+                    addSubcategoryOption("Architectural Technologist");
+                    addSubcategoryOption("BIM (Building Information Modeling) Specialist");
+                    addSubcategoryOption("Sustainable Design Consultant");
+                    addSubcategoryOption("Architectural Drafter");
+                    addSubcategoryOption("Architectural Visualization Artist");
+                    addSubcategoryOption("Urban Designer");
+                    addSubcategoryOption("Historic Preservation");
+                    addSubcategoryOption("Residential Architect");
+                    addSubcategoryOption("CAD (Computer-Aided Design) Technician");
+                    addSubcategoryOption("Architectural Educator");
+                    addSubcategoryOption("Construction Project Manage");
+                    addSubcategoryOption("Industrial Designer");
+                    addSubcategoryOption("Healthcare Facility Planner");
+                    addSubcategoryOption("Retail Space Designer");
+
+                    addSubcategoryOption()
+                } else if (selectedCategory === "developer") {
+                    addSubcategoryOption("Python Software Engineer");
+                    addSubcategoryOption("Python");
+                    addSubcategoryOption("Python Data Scientist");
+                    addSubcategoryOption("Python Machine Learning Engineer");
+                    addSubcategoryOption("Python Automation");
+                    addSubcategoryOption("Java Software ");
+                    addSubcategoryOption("Java");
+                    addSubcategoryOption("Java Full Stack ");
+                    addSubcategoryOption("Java Android ");
+                    addSubcategoryOption("Java Spring ");
+                    addSubcategoryOption("Java Microservices ");
+                    addSubcategoryOption("JavaScript ");
+                    addSubcategoryOption("Front-end ");
+                    addSubcategoryOption("Node.js ");
+                    addSubcategoryOption("React ");
+                    addSubcategoryOption("Angular ");
+                    addSubcategoryOption("Vue.js ");
+                    addSubcategoryOption("Full Stack JavaScript ");
+                    addSubcategoryOption("C#  ");
+                    addSubcategoryOption(".NET ");
+                    addSubcategoryOption("ASP.NET ");
+                    addSubcategoryOption("Unity ");
+                    addSubcategoryOption("Xamarin ");
+                    addSubcategoryOption("C++  ");
+                    addSubcategoryOption("Game(using C++)");
+                    addSubcategoryOption("C++ Systems ");
+                    addSubcategoryOption("PHP");
+                    addSubcategoryOption("WordPress");
+                    addSubcategoryOption("Laravel ");
+                    addSubcategoryOption("Symfony ");
+                    addSubcategoryOption("Ruby ");
+                    addSubcategoryOption("Ruby on Rails ");
+                    addSubcategoryOption("Swift ");
+                    addSubcategoryOption("iOS (using Swift)");
+                    addSubcategoryOption("macOS (using Swift)");
+                    addSubcategoryOption("Kotlin ");
+                    addSubcategoryOption("Android  (using Kotlin)");
+                    addSubcategoryOption("Go  ");
+                    addSubcategoryOption("Rust  ");
+                    addSubcategoryOption("Systems  (using Rust");
+                    addSubcategoryOption("TypeScript  ");
+                    addSubcategoryOption("Front-end  (using TypeScript)");
+                    addSubcategoryOption("SQL ");
+                    addSubcategoryOption("Database ");
+                    addSubcategoryOption("Scala  ");
+                    addSubcategoryOption("Haskell  ");
+                    addSubcategoryOption("Perl   ");
+                    addSubcategoryOption("Lua   ");
+                    addSubcategoryOption("Game  (using Lua) ");
+                    addSubcategoryOption("MATLAB   ");
+                    addSubcategoryOption("Data Analyst (using MATLAB) ");
+                } else if (selectedCategory === "tester") {
+                    addSubcategoryOption("Software ");
+                    addSubcategoryOption("Test Engineer");
+                    addSubcategoryOption("QA Analyst (Quality Assurance Analyst)");
+                    addSubcategoryOption("Test Automation Engineer");
+                    addSubcategoryOption("Manual ");
+                    addSubcategoryOption("QA Lead (Quality Assurance Lead)");
+                    addSubcategoryOption("Test Manager");
+                    addSubcategoryOption("Performance ");
+                    addSubcategoryOption("Usability ");
+                    addSubcategoryOption("Regression ");
+                    addSubcategoryOption("User Acceptance ");
+                    addSubcategoryOption("Security ");
+                    addSubcategoryOption("Mobile App ");
+                    addSubcategoryOption("Game ");
+                    addSubcategoryOption("Functional ");
+                    addSubcategoryOption("Test Architect");
+                    addSubcategoryOption("Test Coordinator");
+                    addSubcategoryOption("Continuous Integration ");
+                    addSubcategoryOption("Load ");
+                    addSubcategoryOption("Test Designer");
+                    addSubcategoryOption("Test Technician");
+                    addSubcategoryOption("QA Inspector (Quality Assurance Inspector)");
+                    addSubcategoryOption("Test Coordinator");
+                    addSubcategoryOption("Compliance ");
+                } else if (selectedCategory === "uiux") {
+                    addSubcategoryOption("UI/UX Designer");
+                    addSubcategoryOption("User Experience Designer");
+                    addSubcategoryOption("User Interface Designer");
+                    addSubcategoryOption("Interaction Designer");
+                    addSubcategoryOption("Visual Designer");
+                    addSubcategoryOption("UX Researcher");
+                    addSubcategoryOption("UI/UX Architect");
+                    addSubcategoryOption("Information Architect");
+                    addSubcategoryOption("UX Strategist");
+                    addSubcategoryOption("Product Designer");
+                    addSubcategoryOption("User-Centered Design Specialist");
+                    addSubcategoryOption("Usability Analyst");
+                    addSubcategoryOption("UI/UX Developer");
+                    addSubcategoryOption("Mobile App Designer");
+                    addSubcategoryOption("Web Designer");
+                    addSubcategoryOption("Visual Experience Designer");
+                    addSubcategoryOption("UX Content Strategist");
+                    addSubcategoryOption("Interaction Architect");
+                    addSubcategoryOption("UX/UI Illustrator");
+                    addSubcategoryOption("User Interface Animator");
+                    addSubcategoryOption("Conversion Rate Optimization (CRO) Specialist");
+                    addSubcategoryOption("Accessibility Designer ");
+                    addSubcategoryOption("Prototype Designer ");
+                    addSubcategoryOption("UI/UX Lead ");
+                    addSubcategoryOption("Design Systems Manager ");
+
+                } else if (selectedCategory === "datascience") {
+                    addSubcategoryOption("Data Scientist");
+                    addSubcategoryOption("Senior");
+                    addSubcategoryOption("Machine Learning Engineer");
+                    addSubcategoryOption("Data Analyst");
+                    addSubcategoryOption("Senior Data Analyst");
+                    addSubcategoryOption("Statistician");
+                    addSubcategoryOption("Business Intelligence Analyst");
+                    addSubcategoryOption("Quantitative Analyst (Quant)");
+                    addSubcategoryOption("Data Engineer");
+                    addSubcategoryOption("Data Architect");
+                    addSubcategoryOption("AI Research Scientist");
+                    addSubcategoryOption("Predictive Modeler");
+                    addSubcategoryOption("Natural Language Processing (NLP) Engineer");
+                    addSubcategoryOption("Computer Vision Engineer");
+                    addSubcategoryOption("Big Data Engineer");
+                    addSubcategoryOption("Analytics Manager");
+                    addSubcategoryOption("Data Science Manager");
+                    addSubcategoryOption("Chief Data Officer (CDO)");
+                    addSubcategoryOption("Research Scientist (AI/ML)");
+                    addSubcategoryOption("Decision Scientist");
+                    addSubcategoryOption("Marketing Analyst");
+                    addSubcategoryOption("Operations Research Analyst");
+                    addSubcategoryOption("Data Visualization Specialist");
+                    addSubcategoryOption("Customer Insights Analyst");
+                    addSubcategoryOption("Fraud Analyst");
+
+                } else if (selectedCategory === "databaseadmin") {
+                    addSubcategoryOption("Database  (DBA)");
+                    addSubcategoryOption("Senior  Administrator");
+                    addSubcategoryOption("Database Engineer");
+                    addSubcategoryOption("Database Architect");
+                    addSubcategoryOption("Database Analyst");
+                    addSubcategoryOption("Data Warehouse ");
+                    addSubcategoryOption("SQL Server");
+                    addSubcategoryOption("Oracle Database Administrator");
+                    addSubcategoryOption("MySQL Database Administrator");
+                    addSubcategoryOption("PostgreSQL Database Administrator");
+                    addSubcategoryOption("MongoDB Administrator");
+                    addSubcategoryOption("NoSQL Database Administrator");
+                    addSubcategoryOption("DBMS Administrator (Database Management System)");
+                    addSubcategoryOption("Database Operations Manager");
+                    addSubcategoryOption("Database Performance Tuning Specialist");
+                    addSubcategoryOption("Data Migration Specialist");
+                    addSubcategoryOption("Database Security Administrator");
+                    addSubcategoryOption("Database Backup and Recovery Specialist");
+                    addSubcategoryOption("Cloud Database Administrator (e.g., AWS, Azure, Google Cloud)");
+                    addSubcategoryOption("Database Compliance Officer");
+                    addSubcategoryOption("Database DevOps Engineer");
+                    addSubcategoryOption("Database Automation Engineer");
+                    addSubcategoryOption("Database Replication Specialist");
+                    addSubcategoryOption("Data Governance Manager");
+                    addSubcategoryOption("Data Steward");
+                } else if (selectedCategory === "teacher") {
+                    addSubcategoryOption("Tamil");
+                    addSubcategoryOption("Mathematics ");
+                    addSubcategoryOption("Math Instructor");
+                    addSubcategoryOption("Algebra ");
+                    addSubcategoryOption("Geometry ");
+                    addSubcategoryOption("Calculus ");
+                    addSubcategoryOption("Statistics ");
+                    addSubcategoryOption("Math Tutor");
+                    addSubcategoryOption("Math Coach");
+                    addSubcategoryOption("Math Curriculum Specialist");
+                    addSubcategoryOption("Math Department Chair");
+                    addSubcategoryOption("English ");
+                    addSubcategoryOption("Language Arts ");
+                    addSubcategoryOption("Literature ");
+                    addSubcategoryOption("Writing Instructor");
+                    addSubcategoryOption("Creative Writing ");
+                    addSubcategoryOption("English as a Second Language (ESL) ");
+                    addSubcategoryOption("Reading Specialist");
+                    addSubcategoryOption("English Tutor");
+                    addSubcategoryOption("English Department Chair");
+                    addSubcategoryOption("Science ");
+                    addSubcategoryOption("Biology ");
+                    addSubcategoryOption("Chemistry ");
+                    addSubcategoryOption("Physics ");
+                    addSubcategoryOption("Environmental Science ");
+                    addSubcategoryOption("Earth Science ");
+                    addSubcategoryOption("Anatomy and Physiology ");
+                    addSubcategoryOption("Science Lab Instructor");
+                    addSubcategoryOption("Science Curriculum Specialist");
+                    addSubcategoryOption("Social Studies ");
+                    addSubcategoryOption("History ");
+                    addSubcategoryOption("Geography ");
+                    addSubcategoryOption("Civics ");
+                    addSubcategoryOption("Government ");
+                    addSubcategoryOption("Economics ");
+                    addSubcategoryOption("World History ");
+                    addSubcategoryOption("Social Studies Department Chair");
+                    addSubcategoryOption("Foreign Language ");
+                    addSubcategoryOption("Language Instructor");
+                    addSubcategoryOption("Spanish ");
+                    addSubcategoryOption("French ");
+                    addSubcategoryOption("German ");
+                    addSubcategoryOption("Chinese ");
+                    addSubcategoryOption("Language Lab Coordinator");
+                    addSubcategoryOption("Physical Education ");
+                    addSubcategoryOption("PE Instructor");
+                    addSubcategoryOption("Fitness Coach");
+                    addSubcategoryOption("Health Education ");
+                    addSubcategoryOption("Sports Coach");
+                    addSubcategoryOption("Physical Education Department Chair");
+                    addSubcategoryOption("Art ");
+                    addSubcategoryOption("Music ");
+                    addSubcategoryOption("Drama ");
+                    addSubcategoryOption("Visual Arts ");
+                    addSubcategoryOption("Choir Director");
+                    addSubcategoryOption("Band ");
+                    addSubcategoryOption("Art History ");
+                    addSubcategoryOption("Special Education ");
+                    addSubcategoryOption("Learning Support ");
+                    addSubcategoryOption("Resource ");
+                    addSubcategoryOption("Inclusion ");
+                    addSubcategoryOption("Autism Specialist");
+                    addSubcategoryOption("Behavioral Interventionist");
+                    addSubcategoryOption("Vocational Teacher");
+                    addSubcategoryOption("Career and Technical Education (CTE) Instructor");
+                    addSubcategoryOption("Culinary Arts Instructor");
+                    addSubcategoryOption("Automotive Technology ");
+                    addSubcategoryOption("Computer Science ");
+                    addSubcategoryOption("Digital Media Instructor");
+                } else if (selectedCategory === "professor") {
+                    addSubcategoryOption("University ");
+                    addSubcategoryOption("Assistant ");
+                    addSubcategoryOption("Associate ");
+                    addSubcategoryOption("Full ");
+                    addSubcategoryOption("Distinguished ");
+                    addSubcategoryOption("Adjunct ");
+                    addSubcategoryOption("Visiting ");
+                    addSubcategoryOption("Research ");
+                    addSubcategoryOption("Clinical ");
+                    addSubcategoryOption("Philosophy");
+                    addSubcategoryOption("Professor of History");
+                    addSubcategoryOption("English");
+                    addSubcategoryOption("Psychology");
+                    addSubcategoryOption("Sociology");
+                    addSubcategoryOption("Political Science");
+                    addSubcategoryOption("Anthropology");
+                    addSubcategoryOption("Linguistics");
+                    addSubcategoryOption("Biology");
+                    addSubcategoryOption("Chemistry");
+                    addSubcategoryOption("Physics");
+                    addSubcategoryOption("Mathematics");
+                    addSubcategoryOption("Geology");
+                    addSubcategoryOption("Astronomy");
+                    addSubcategoryOption(" Environmental Science");
+                    addSubcategoryOption("Computer Science");
+                    addSubcategoryOption("Electrical Engineering");
+                    addSubcategoryOption("Mechanical Engineering");
+                    addSubcategoryOption("Civil Engineering");
+                    addSubcategoryOption("Chemical Engineering");
+                    addSubcategoryOption("Information Technology");
+                    addSubcategoryOption("Business Administration");
+                    addSubcategoryOption("Economics");
+                    addSubcategoryOption("Finance");
+                    addSubcategoryOption("Marketing");
+                    addSubcategoryOption("Management");
+                    addSubcategoryOption("Accounting");
+                    addSubcategoryOption("Fine Arts");
+                    addSubcategoryOption("Music");
+                    addSubcategoryOption("Visual Arts");
+                    addSubcategoryOption("Theater");
+                    addSubcategoryOption("Dance");
+                    addSubcategoryOption("Film Studies");
+                    addSubcategoryOption("Educational Psychology");
+                    addSubcategoryOption("Medicine");
+                    addSubcategoryOption("Nursing");
+                    addSubcategoryOption("Public Health");
+                    addSubcategoryOption("Pharmacy");
+                    addSubcategoryOption("Dentistry");
+                    addSubcategoryOption("Law");
+                    addSubcategoryOption("Constitutional Law");
+                    addSubcategoryOption("Criminal Law");
+                    addSubcategoryOption("International Law");
+                    addSubcategoryOption("Environmental Law");
+                    addSubcategoryOption("Social Work");
+                    addSubcategoryOption("Social Welfare");
+                    addSubcategoryOption("Clinical Social Work");
+                    addSubcategoryOption("Library Science");
+                    addSubcategoryOption("Information Studies");
                 }
-                }
-                </script>
+                subcategorySelect.disabled = false;
+            }
+
+            function addSubcategoryOption(subcategory) {
+                var subcategorySelect = document.getElementById("subcategory");
+                var option = document.createElement("option");
+                option.value = subcategory;
+                option.text = subcategory;
+                subcategorySelect.appendChild(option);
+            }
+
+            function validateForm() {
+
+                var company_name = document.getElementById("company_name");
+                var company_nameError = document.getElementById('company_name_error');
+
+                var category = document.getElementById("category");
+                var categoryError = document.getElementById('category_error');
+
+                var subcategory = document.getElementById("subcategory");
+                var subcategoryError = document.getElementById('subcategory_error');
+
+                var experience = document.getElementById("experience");
+                var experienceError = document.getElementById('experience_error');
+
+                var jobtype = document.getElementById("jobtype");
+                var jobtypeError = document.getElementById('jobtype_error')
+
+                var preferred_location = document.getElementById("preferred_location");
+                var preferred_locationError = document.getElementById("preferred_location_error");
+
+                var expected_salary = document.getElementById("expected_salary");
+                var expected_salaryError = document.getElementById('expected_salary_error');
+
+
+                var no_of_openings = document.getElementById("no_of_openings");
+                var no_of_openingsError = document.getElementById('no_of_openings_error');
+
+                var description = document.getElementById("description");
+                var descriptionError = document.getElementById('description_error');
+
+
+                if (company_name.value === '') {
+                    alert("Please enter a Company Name");
+                    displayError('Company Name must be filled out.', 'company_name_error');
+                    return false;
+                } else if (company_name.value !== '') {
+                    company_nameError.innerHTML = '';
+
+
+                    if (category.value === '') {
+                        alert("Please Select a Category");
+                        displayError('Please Select a Category.', 'category_error');
+                        return false;
+                    } else if (category.value !== '') {
+                        categoryError.innerHTML = '';
+                    }
+
+
+                    if (subcategory.value === "") {
+                        alert("Please Select a subcategory");
+                        displayError('Please select a subcategory.', 'subcategory_error');
+                        return false;
+                    } else if (subcategory.value !== '') {
+                        subcategoryError.innerHTML = '';
+                    }
+
+
+                    if (experience.value.trim() === "") {
+                        alert("Please enter a experience")
+                        displayError('Experience must be filled out.', 'experience_error');
+                        return false;
+                    } else if (experience.value !== '') {
+                        experienceError.innerHTML = '';
+                    }
+
+
+
+                    if (preferred_location.value.trim() === "") {
+                        alert("Please enter a preferred location")
+                        displayError('Preferred location must be filled out  .', 'preferred_location_error');
+                        return false;
+                    } else if (preferred_location.value !== '') {
+                        preferred_locationError.innerHTML = '';
+                    }
+
+
+
+                    if (jobtype.value.trim() === "") {
+                        alert("Please enter a job type")
+                        displayError('Please enter a jobtype.', 'jobtype_error');
+                        return false;
+                    } else if (jobtype.value !== '') {
+                        jobtype_error.innerHTML = '';
+                    }
+
+
+
+                    if (expected_salary.value.trim() === "") {
+                        alert("Please enter a expected salary");
+                        displayError('Please enter a expected_salary.', 'expected_salary_error');
+                        return false;
+                    } else if (expected_salary.value !== '') {
+                        expected_salary_error.innerHTML = '';
+                    }
+
+                    if (no_of_openings.value.trim() === "") {
+                        alert("Please enter a No O Openings")
+                        displayError('Please enter a no_of_openings.', 'no_of_openings_error');
+                        return false;
+                    } else if (no_of_openings.value !== '') {
+                        no_of_openings_error.innerHTML = '';
+                    }
+
+
+
+                    if (description.value.trim() === "") {
+                        alert("Please enter a description")
+                        displayError('Please enter a description.', 'description_error');
+                        return false;
+                    } else if (description.value !== '') {
+                        description_error.innerHTML = '';
+                    }
 
 
 
@@ -1087,11 +1641,413 @@
                             <label for="jobtype">Job Type :</label>
                             <select class="form-control" id="jobtype" name="jobtype">
                             <option value="">select your jobtype</option>
-                            <option value="0">Full Time</option>
-                            <option value="1">Part Time</option>
-                            </select>
-                            <div id="jobtype_error" class="error"></div>
-                            </div>
+
+                            <option value="FullTime" <?php if ($value['job_type'] === 'FullTime') echo ' selected'; ?>>Full Time</option>
+                            <option value="PartTime" <?php if ($value['job_type'] === 'PartTime') echo ' selected'; ?>>Part Time</option>
+                        </select>
+                        <div id="jobtype_error" class="error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expected_salary">Salary</label>
+                        <input type="number" class="form-control" id="expected_salary" value=<?php echo $value['salary']; ?> name="expected_salary">
+                        <div id="expected_salary_error" class="error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="no_of_openings">No Of Openings</label>
+                        <input type="number" class="form-control" id="no_of_openings" value=<?php echo $value['number_of_openings']; ?> name="no_of_openings">
+                        <div id="no_of_openings_error" class="error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" id="description" value=<?php echo $value['description']; ?> name="description">
+                        <div id="description_error" class="error"></div>
+                    </div>
+                    <!-- <div class="form-group">
+            <label for="Duration of project">Duration of Project</label>
+            <input type="text" class="form-control" id="durationofproject" name="durationofproject">
+            <div id="durationofproject_error" class="error"></div>
+        </div> -->
+                    <!-- <div class="form-group">
+            <label for="">start date of project*</label>
+            <input type="date" class="form-control" id="startdate" name="startdate" >
+            <div id="startdate_error" class="error"></div>
+            <label for="">End date of the project*</label>
+            <input type="date" class="form-control" id="enddate" name="enddate" >
+            <div id="enddate_error" class="error"></div>
+        </div> -->
+                    <!-- <div class="form-group">
+            <label for="Responsibity">My responsibility in project*</label>
+            <textarea class="form-control" rows="3" class="form-control" id="responsibility" name="responsibility" ></textarea>
+            <div id="responsibility_error" class="error"></div>
+        </div> -->
+                    <!-- <div class="form-group">
+            <label for="Skills used in project">Skills used in porject*</label>
+            <input type="text" class="form-control" id="skillsused" name="skillsused" >
+            <div id="skills_error" class="error"></div>
+        </div> -->
+                    <!-- <h1>Previous Employer details</h1>
+        <div class="form-group">
+            <label for="Name">Name of employer*</label>
+            <input type="text" class="form-control" id="name" name="name" >
+            <div id="name_error" class="error"></div>
+        </div>
+        <div class="form-group">
+            <label for="phone number">Phone Number</label>
+            <input type="text" class="form-control" id="phonenumber" name="phonenumber" >
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input type="text" class="form-control" id="email" name="email">
+        </div> -->
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        <?php
+                    }
+        ?>
+        </div>
+        <script>
+            function updateSubcategories() {
+                var categorySelect = document.getElementById("category");
+                var subcategorySelect = document.getElementById("subcategory");
+                var selectedCategory = categorySelect.value;
+
+                // Reset subcategory options
+                subcategorySelect.innerHTML = '<option value="">Select a Subcategory</option>';
+
+                if (selectedCategory === "architech") {
+                    addSubcategoryOption("Architect");
+                    addSubcategoryOption("Senior ");
+                    addSubcategoryOption("Design ");
+                    addSubcategoryOption("Project ");
+                    addSubcategoryOption("Principal ");
+                    addSubcategoryOption("Landscape");
+                    addSubcategoryOption("Urban Planner");
+                    addSubcategoryOption("Interior Designer");
+                    addSubcategoryOption("Architectural Technologist");
+                    addSubcategoryOption("BIM (Building Information Modeling) Specialist");
+                    addSubcategoryOption("Sustainable Design Consultant");
+                    addSubcategoryOption("Architectural Drafter");
+                    addSubcategoryOption("Architectural Visualization Artist");
+                    addSubcategoryOption("Urban Designer");
+                    addSubcategoryOption("Historic Preservation");
+                    addSubcategoryOption("Residential Architect");
+                    addSubcategoryOption("CAD (Computer-Aided Design) Technician");
+                    addSubcategoryOption("Architectural Educator");
+                    addSubcategoryOption("Construction Project Manage");
+                    addSubcategoryOption("Industrial Designer");
+                    addSubcategoryOption("Healthcare Facility Planner");
+                    addSubcategoryOption("Retail Space Designer");
+
+                    addSubcategoryOption()
+                } else if (selectedCategory === "developer") {
+                    addSubcategoryOption("Python Software Engineer");
+                    addSubcategoryOption("Python");
+                    addSubcategoryOption("Python Data Scientist");
+                    addSubcategoryOption("Python Machine Learning Engineer");
+                    addSubcategoryOption("Python Automation");
+                    addSubcategoryOption("Java Software ");
+                    addSubcategoryOption("Java");
+                    addSubcategoryOption("Java Full Stack ");
+                    addSubcategoryOption("Java Android ");
+                    addSubcategoryOption("Java Spring ");
+                    addSubcategoryOption("Java Microservices ");
+                    addSubcategoryOption("JavaScript ");
+                    addSubcategoryOption("Front-end ");
+                    addSubcategoryOption("Node.js ");
+                    addSubcategoryOption("React ");
+                    addSubcategoryOption("Angular ");
+                    addSubcategoryOption("Vue.js ");
+                    addSubcategoryOption("Full Stack JavaScript ");
+                    addSubcategoryOption("C#  ");
+                    addSubcategoryOption(".NET ");
+                    addSubcategoryOption("ASP.NET ");
+                    addSubcategoryOption("Unity ");
+                    addSubcategoryOption("Xamarin ");
+                    addSubcategoryOption("C++  ");
+                    addSubcategoryOption("Game(using C++)");
+                    addSubcategoryOption("C++ Systems ");
+                    addSubcategoryOption("PHP");
+                    addSubcategoryOption("WordPress");
+                    addSubcategoryOption("Laravel ");
+                    addSubcategoryOption("Symfony ");
+                    addSubcategoryOption("Ruby ");
+                    addSubcategoryOption("Ruby on Rails ");
+                    addSubcategoryOption("Swift ");
+                    addSubcategoryOption("iOS (using Swift)");
+                    addSubcategoryOption("macOS (using Swift)");
+                    addSubcategoryOption("Kotlin ");
+                    addSubcategoryOption("Android  (using Kotlin)");
+                    addSubcategoryOption("Go  ");
+                    addSubcategoryOption("Rust  ");
+                    addSubcategoryOption("Systems  (using Rust");
+                    addSubcategoryOption("TypeScript  ");
+                    addSubcategoryOption("Front-end  (using TypeScript)");
+                    addSubcategoryOption("SQL ");
+                    addSubcategoryOption("Database ");
+                    addSubcategoryOption("Scala  ");
+                    addSubcategoryOption("Haskell  ");
+                    addSubcategoryOption("Perl   ");
+                    addSubcategoryOption("Lua   ");
+                    addSubcategoryOption("Game  (using Lua) ");
+                    addSubcategoryOption("MATLAB   ");
+                    addSubcategoryOption("Data Analyst (using MATLAB) ");
+                } else if (selectedCategory === "tester") {
+                    addSubcategoryOption("Software ");
+                    addSubcategoryOption("Test Engineer");
+                    addSubcategoryOption("QA Analyst (Quality Assurance Analyst)");
+                    addSubcategoryOption("Test Automation Engineer");
+                    addSubcategoryOption("Manual ");
+                    addSubcategoryOption("QA Lead (Quality Assurance Lead)");
+                    addSubcategoryOption("Test Manager");
+                    addSubcategoryOption("Performance ");
+                    addSubcategoryOption("Usability ");
+                    addSubcategoryOption("Regression ");
+                    addSubcategoryOption("User Acceptance ");
+                    addSubcategoryOption("Security ");
+                    addSubcategoryOption("Mobile App ");
+                    addSubcategoryOption("Game ");
+                    addSubcategoryOption("Functional ");
+                    addSubcategoryOption("Test Architect");
+                    addSubcategoryOption("Test Coordinator");
+                    addSubcategoryOption("Continuous Integration ");
+                    addSubcategoryOption("Load ");
+                    addSubcategoryOption("Test Designer");
+                    addSubcategoryOption("Test Technician");
+                    addSubcategoryOption("QA Inspector (Quality Assurance Inspector)");
+                    addSubcategoryOption("Test Coordinator");
+                    addSubcategoryOption("Compliance ");
+                } else if (selectedCategory === "uiux") {
+                    addSubcategoryOption("UI/UX Designer");
+                    addSubcategoryOption("User Experience Designer");
+                    addSubcategoryOption("User Interface Designer");
+                    addSubcategoryOption("Interaction Designer");
+                    addSubcategoryOption("Visual Designer");
+                    addSubcategoryOption("UX Researcher");
+                    addSubcategoryOption("UI/UX Architect");
+                    addSubcategoryOption("Information Architect");
+                    addSubcategoryOption("UX Strategist");
+                    addSubcategoryOption("Product Designer");
+                    addSubcategoryOption("User-Centered Design Specialist");
+                    addSubcategoryOption("Usability Analyst");
+                    addSubcategoryOption("UI/UX Developer");
+                    addSubcategoryOption("Mobile App Designer");
+                    addSubcategoryOption("Web Designer");
+                    addSubcategoryOption("Visual Experience Designer");
+                    addSubcategoryOption("UX Content Strategist");
+                    addSubcategoryOption("Interaction Architect");
+                    addSubcategoryOption("UX/UI Illustrator");
+                    addSubcategoryOption("User Interface Animator");
+                    addSubcategoryOption("Conversion Rate Optimization (CRO) Specialist");
+                    addSubcategoryOption("Accessibility Designer ");
+                    addSubcategoryOption("Prototype Designer ");
+                    addSubcategoryOption("UI/UX Lead ");
+                    addSubcategoryOption("Design Systems Manager ");
+
+                } else if (selectedCategory === "datascience") {
+                    addSubcategoryOption("Data Scientist");
+                    addSubcategoryOption("Senior");
+                    addSubcategoryOption("Machine Learning Engineer");
+                    addSubcategoryOption("Data Analyst");
+                    addSubcategoryOption("Senior Data Analyst");
+                    addSubcategoryOption("Statistician");
+                    addSubcategoryOption("Business Intelligence Analyst");
+                    addSubcategoryOption("Quantitative Analyst (Quant)");
+                    addSubcategoryOption("Data Engineer");
+                    addSubcategoryOption("Data Architect");
+                    addSubcategoryOption("AI Research Scientist");
+                    addSubcategoryOption("Predictive Modeler");
+                    addSubcategoryOption("Natural Language Processing (NLP) Engineer");
+                    addSubcategoryOption("Computer Vision Engineer");
+                    addSubcategoryOption("Big Data Engineer");
+                    addSubcategoryOption("Analytics Manager");
+                    addSubcategoryOption("Data Science Manager");
+                    addSubcategoryOption("Chief Data Officer (CDO)");
+                    addSubcategoryOption("Research Scientist (AI/ML)");
+                    addSubcategoryOption("Decision Scientist");
+                    addSubcategoryOption("Marketing Analyst");
+                    addSubcategoryOption("Operations Research Analyst");
+                    addSubcategoryOption("Data Visualization Specialist");
+                    addSubcategoryOption("Customer Insights Analyst");
+                    addSubcategoryOption("Fraud Analyst");
+
+                } else if (selectedCategory === "databaseadmin") {
+                    addSubcategoryOption("Database  (DBA)");
+                    addSubcategoryOption("Senior  Administrator");
+                    addSubcategoryOption("Database Engineer");
+                    addSubcategoryOption("Database Architect");
+                    addSubcategoryOption("Database Analyst");
+                    addSubcategoryOption("Data Warehouse ");
+                    addSubcategoryOption("SQL Server");
+                    addSubcategoryOption("Oracle Database Administrator");
+                    addSubcategoryOption("MySQL Database Administrator");
+                    addSubcategoryOption("PostgreSQL Database Administrator");
+                    addSubcategoryOption("MongoDB Administrator");
+                    addSubcategoryOption("NoSQL Database Administrator");
+                    addSubcategoryOption("DBMS Administrator (Database Management System)");
+                    addSubcategoryOption("Database Operations Manager");
+                    addSubcategoryOption("Database Performance Tuning Specialist");
+                    addSubcategoryOption("Data Migration Specialist");
+                    addSubcategoryOption("Database Security Administrator");
+                    addSubcategoryOption("Database Backup and Recovery Specialist");
+                    addSubcategoryOption("Cloud Database Administrator (e.g., AWS, Azure, Google Cloud)");
+                    addSubcategoryOption("Database Compliance Officer");
+                    addSubcategoryOption("Database DevOps Engineer");
+                    addSubcategoryOption("Database Automation Engineer");
+                    addSubcategoryOption("Database Replication Specialist");
+                    addSubcategoryOption("Data Governance Manager");
+                    addSubcategoryOption("Data Steward");
+                } else if (selectedCategory === "teacher") {
+                    addSubcategoryOption("Tamil");
+                    addSubcategoryOption("Mathematics ");
+                    addSubcategoryOption("Math Instructor");
+                    addSubcategoryOption("Algebra ");
+                    addSubcategoryOption("Geometry ");
+                    addSubcategoryOption("Calculus ");
+                    addSubcategoryOption("Statistics ");
+                    addSubcategoryOption("Math Tutor");
+                    addSubcategoryOption("Math Coach");
+                    addSubcategoryOption("Math Curriculum Specialist");
+                    addSubcategoryOption("Math Department Chair");
+                    addSubcategoryOption("English ");
+                    addSubcategoryOption("Language Arts ");
+                    addSubcategoryOption("Literature ");
+                    addSubcategoryOption("Writing Instructor");
+                    addSubcategoryOption("Creative Writing ");
+                    addSubcategoryOption("English as a Second Language (ESL) ");
+                    addSubcategoryOption("Reading Specialist");
+                    addSubcategoryOption("English Tutor");
+                    addSubcategoryOption("English Department Chair");
+                    addSubcategoryOption("Science ");
+                    addSubcategoryOption("Biology ");
+                    addSubcategoryOption("Chemistry ");
+                    addSubcategoryOption("Physics ");
+                    addSubcategoryOption("Environmental Science ");
+                    addSubcategoryOption("Earth Science ");
+                    addSubcategoryOption("Anatomy and Physiology ");
+                    addSubcategoryOption("Science Lab Instructor");
+                    addSubcategoryOption("Science Curriculum Specialist");
+                    addSubcategoryOption("Social Studies ");
+                    addSubcategoryOption("History ");
+                    addSubcategoryOption("Geography ");
+                    addSubcategoryOption("Civics ");
+                    addSubcategoryOption("Government ");
+                    addSubcategoryOption("Economics ");
+                    addSubcategoryOption("World History ");
+                    addSubcategoryOption("Social Studies Department Chair");
+                    addSubcategoryOption("Foreign Language ");
+                    addSubcategoryOption("Language Instructor");
+                    addSubcategoryOption("Spanish ");
+                    addSubcategoryOption("French ");
+                    addSubcategoryOption("German ");
+                    addSubcategoryOption("Chinese ");
+                    addSubcategoryOption("Language Lab Coordinator");
+                    addSubcategoryOption("Physical Education ");
+                    addSubcategoryOption("PE Instructor");
+                    addSubcategoryOption("Fitness Coach");
+                    addSubcategoryOption("Health Education ");
+                    addSubcategoryOption("Sports Coach");
+                    addSubcategoryOption("Physical Education Department Chair");
+                    addSubcategoryOption("Art ");
+                    addSubcategoryOption("Music ");
+                    addSubcategoryOption("Drama ");
+                    addSubcategoryOption("Visual Arts ");
+                    addSubcategoryOption("Choir Director");
+                    addSubcategoryOption("Band ");
+                    addSubcategoryOption("Art History ");
+                    addSubcategoryOption("Special Education ");
+                    addSubcategoryOption("Learning Support ");
+                    addSubcategoryOption("Resource ");
+                    addSubcategoryOption("Inclusion ");
+                    addSubcategoryOption("Autism Specialist");
+                    addSubcategoryOption("Behavioral Interventionist");
+                    addSubcategoryOption("Vocational Teacher");
+                    addSubcategoryOption("Career and Technical Education (CTE) Instructor");
+                    addSubcategoryOption("Culinary Arts Instructor");
+                    addSubcategoryOption("Automotive Technology ");
+                    addSubcategoryOption("Computer Science ");
+                    addSubcategoryOption("Digital Media Instructor");
+                } else if (selectedCategory === "professor") {
+                    addSubcategoryOption("University ");
+                    addSubcategoryOption("Assistant ");
+                    addSubcategoryOption("Associate ");
+                    addSubcategoryOption("Full ");
+                    addSubcategoryOption("Distinguished ");
+                    addSubcategoryOption("Adjunct ");
+                    addSubcategoryOption("Visiting ");
+                    addSubcategoryOption("Research ");
+                    addSubcategoryOption("Clinical ");
+                    addSubcategoryOption("Philosophy");
+                    addSubcategoryOption("Professor of History");
+                    addSubcategoryOption("English");
+                    addSubcategoryOption("Psychology");
+                    addSubcategoryOption("Sociology");
+                    addSubcategoryOption("Political Science");
+                    addSubcategoryOption("Anthropology");
+                    addSubcategoryOption("Linguistics");
+                    addSubcategoryOption("Biology");
+                    addSubcategoryOption("Chemistry");
+                    addSubcategoryOption("Physics");
+                    addSubcategoryOption("Mathematics");
+                    addSubcategoryOption("Geology");
+                    addSubcategoryOption("Astronomy");
+                    addSubcategoryOption(" Environmental Science");
+                    addSubcategoryOption("Computer Science");
+                    addSubcategoryOption("Electrical Engineering");
+                    addSubcategoryOption("Mechanical Engineering");
+                    addSubcategoryOption("Civil Engineering");
+                    addSubcategoryOption("Chemical Engineering");
+                    addSubcategoryOption("Information Technology");
+                    addSubcategoryOption("Business Administration");
+                    addSubcategoryOption("Economics");
+                    addSubcategoryOption("Finance");
+                    addSubcategoryOption("Marketing");
+                    addSubcategoryOption("Management");
+                    addSubcategoryOption("Accounting");
+                    addSubcategoryOption("Fine Arts");
+                    addSubcategoryOption("Music");
+                    addSubcategoryOption("Visual Arts");
+                    addSubcategoryOption("Theater");
+                    addSubcategoryOption("Dance");
+                    addSubcategoryOption("Film Studies");
+                    addSubcategoryOption("Educational Psychology");
+                    addSubcategoryOption("Medicine");
+                    addSubcategoryOption("Nursing");
+                    addSubcategoryOption("Public Health");
+                    addSubcategoryOption("Pharmacy");
+                    addSubcategoryOption("Dentistry");
+                    addSubcategoryOption("Law");
+                    addSubcategoryOption("Constitutional Law");
+                    addSubcategoryOption("Criminal Law");
+                    addSubcategoryOption("International Law");
+                    addSubcategoryOption("Environmental Law");
+                    addSubcategoryOption("Social Work");
+                    addSubcategoryOption("Social Welfare");
+                    addSubcategoryOption("Clinical Social Work");
+                    addSubcategoryOption("Library Science");
+                    addSubcategoryOption("Information Studies");
+                }
+
+                subcategorySelect.disabled = false;
+            }
+
+            function addSubcategoryOption(subcategory) {
+                var subcategorySelect = document.getElementById("subcategory");
+                var option = document.createElement("option");
+                option.value = subcategory;
+                option.text = subcategory;
+                subcategorySelect.appendChild(option);
+            }
+
+            function validateForm() {
+
+                var company_name = document.getElementById("company_name");
+                var company_nameError = document.getElementById('company_name_error');
+
+                var category = document.getElementById("category");
+                var categoryError = document.getElementById('category_error');
 
                             <div class="form-group">
                             <label for="expected_salary">Salary:</label>
@@ -1461,15 +2417,29 @@
                             var jobtype = document.getElementById("jobtype");
                             var jobtypeError = document.getElementById('jobtype_error')
 
-                            var preferred_location = document.getElementById("preferred_location");
-                            var preferred_locationError = document.getElementById("preferred_location_error");
+                if (company_name.value === '') {
+                    alert("Please Enter a Company Name");
+                    displayError('company_name is required.', 'company_name_error');
+                    return false;
+                } else if (company_name.value !== '') {
+                    company_nameError.innerHTML = '';
 
                             var expected_salary = document.getElementById("expected_salary");
                             var expected_salaryError = document.getElementById('expected_salary_error');
 
 
+                    if (category.value === '') {
+                        alert("Please select a category");
+                        displayError('Category is required.', 'category_error');
+                        return false;
+                    } else if (category.value !== '') {
+                        categoryError.innerHTML = '';
+                    }
+
+
                             var no_of_openings = document.getElementById("no_of_openings");
                             var no_of_openingsError = document.getElementById('no_of_openings_error');
+
 
                             var description = document.getElementById("description");
                             var descriptionError = document.getElementById('description_error');
@@ -1490,6 +2460,15 @@
                             }
 
 
+                    if (preferred_location.value.trim() === "") {
+                        alert("Please enter a preferred location");
+                        displayError('Please enter a preferred_location.', 'preferred_location_error');
+                        return false;
+                    } else if (preferred_location.value !== '') {
+                        preferred_locationError.innerHTML = '';
+                    }
+
+
                             if (subcategory.value === "") {
                             displayError('Please select a subcategory.', 'subcategory_error');
                             return false;
@@ -1498,21 +2477,31 @@
                             }
 
 
-                            if (experience.value.trim() === "") {
-                            displayError('Please enter a experience.', 'experience_error');
-                            return false;
-                            } else if (experience.value !== '') {
-                            experienceError.innerHTML = '';
-                            }
+                    if (jobtype.value.trim() === "") {
+                        alert("Please enter a job type");
+                        displayError('Please enter a jobtype.', 'jobtype_error');
+                        return false;
+                    } else if (jobtype.value !== '') {
+                        jobtype_error.innerHTML = '';
+                    }
 
 
 
-                            if (preferred_location.value.trim() === "") {
-                            displayError('Please enter a preferred_location.', 'preferred_location_error');
-                            return false;
-                            } else if (preferred_location.value !== '') {
-                            preferred_locationError.innerHTML = '';
-                            }
+                    if (expected_salary.value.trim() === "") {
+                        alert("Please enter a expected salary");
+                        displayError('Please enter a expected_salary.', 'expected_salary_error');
+                        return false;
+                    } else if (expected_salary.value !== '') {
+                        expected_salary_error.innerHTML = '';
+                    }
+
+                    if (no_of_openings.value.trim() === "") {
+                        alert("Please enter a No Of Openings");
+                        displayError('Please enter a no_of_openings.', 'no_of_openings_error');
+                        return false;
+                    } else if (no_of_openings.value !== '') {
+                        no_of_openings_error.innerHTML = '';
+                    }
 
 
 
@@ -1522,6 +2511,14 @@
                             } else if (jobtype.value !== '') {
                             jobtype_error.innerHTML = '';
                             }
+
+                    if (description.value.trim() === "") {
+                        alert("Please enter a description");
+                        displayError('Please enter a description.', 'description_error');
+                        return false;
+                    } else if (description.value !== '') {
+                        description_error.innerHTML = '';
+                    }
 
 
 
@@ -2106,14 +3103,43 @@
                                         experienceError.innerHTML = '';
                                         }
 
+                if (category.value === '') {
+                    alert("Please select a category");
+                    displayError('Category is required.', 'category_error');
+                    return false;
+                } else if (category.value !== '') {
+                    categoryError.innerHTML = '';
+                }
 
 
-                                        if (preferred_location.value.trim() === "") {
-                                        displayError('Please enter a preferred_location.', 'preferred_location_error');
-                                        return false;
-                                        } else if (preferred_location.value !== '') {
-                                        preferred_locationError.innerHTML = '';
-                                        }
+                if (subcategory.value === "") {
+                    alert("Please select a subcategory");
+                    displayError('Please select a subcategory.', 'subcategory_error');
+                    return false;
+                } else if (subcategory.value !== '') {
+                    subcategoryError.innerHTML = '';
+                }
+            }
+        </script>
+    <?php
+                } else if ($this->data['method'] == "wishlist") {
+    ?>
+        <div class="container mt-5">
+            <h2 class="text-center">Wishlist Candidate</h2>
+            <!-- <input type="button" class="btn btn-primary float-end" value="+ Add"> -->
+            <div class="clearfix"></div>
+            <br>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Degree</th>
+                            <th>Percentage</th>
+                            <th>Fresher/Experience</th>
+                            <th>Skills</th>
+
 
 
 
@@ -2874,6 +3900,7 @@
                                                                             </thead>
                                                                             <tbody>
 
+
         <?php
         foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
             ?>
@@ -2887,6 +3914,7 @@
                                                                                         <td> <?php echo $avalue['expected_salary'] ?></td>
                                                                                         </tr>
 
+
         <?php
         }
         ?>
@@ -2899,8 +3927,15 @@
 
 
 
-                                                                            <h3 class="mb-5">Experience Details</h3>
-                                                                            <ul>
+
+                if (category.value === '') {
+                    alert("Please select a category");
+                    displayError('Category is required.', 'category_error');
+                    return false;
+                } else if (category.value !== '') {
+                    categoryError.innerHTML = '';
+                }
+
 
                                                                             <div class="table-responsive">
                                                                             <table class="table table-bordered table-striped">
@@ -2917,19 +3952,432 @@
                                                                             </thead>
                                                                             <tbody>
 
-        <?php
-        foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
-            ?>
-                                                                                        <tr>
-                                                                                        <td><?php echo $ivalue['other_category'] ?> </td>
-                                                                                        <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                                                                        <td> <?php echo $ivalue['company_name'] ?></td>
-                                                                                        <td> <?php echo $ivalue['job_role'] ?></td>
-                                                                                        <td> <?php echo $ivalue['previous_employer_name'] ?></td>
-                                                                                        <td> <?php echo $ivalue['previous_employer_mobile'] ?></td>
-                                                                                        <td> <?php echo $ivalue['previous_employer_email'] ?></td>
-                                                                                        </tr>
-        <?php
+
+                if (subcategory.value === "") {
+                    alert("Please select a subcategory");
+                    displayError('Please select a subcategory.', 'subcategory_error');
+                    return false;
+                } else if (subcategory.value !== '') {
+                    subcategoryError.innerHTML = '';
+                }
+
+            }
+    </script>
+<?php
+                } else if ($this->data['method'] == "filltercandidate") {
+?>
+
+    <div class="container mt-5">
+        <h3 class="text-center">Job Matched Candidates</h3>
+        <div>
+
+            <div class="input-group">
+            </div>
+        </div>
+        <tbody>
+            <br>
+            <form action="<?php echo baseUrl . "providerController/filterAllCandidate" ?>" method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="category" id="lab1">Category:</label>
+                            <select class="form-control" id="category" name="category" onchange="updateSubcategories()">
+                                <option value="">Selest a Category</option>
+                                <option value="architech">Architech</option>
+                                <option value="developer">Developer</option>
+                                <option value="tester">Tester</option>
+                                <option value="uiux">UI/UX Design</option>
+                                <option value="datascience">Data Scientist</option>
+                                <option value="databaseadmin">Database Admin</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="professor">Professor</option>
+                            </select>
+                            <div id="category_error" class="error"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="subcategory" id="lab">Subcategory:</label>
+                            <select class="form-control" id="subcategory" name="subcategory" disabled>
+                                <option value="">Select a Subcategory</option>
+                            </select>
+                            <div id="subcategory_error" class="error"></div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="submit" id="search" onclick="">Search</button>
+                    </div>
+            </form>
+    </div>
+    <br>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Degree</th>
+                    <th>Percentage</th>
+                    <th>Fresher/Experience</th>
+                    <th>Skills</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php
+                    foreach ($this->data['filtercandidate'] as $key => $value) {
+                ?>
+                    <tr>
+                        <td><?php echo $value['name'] ?></td>
+                        <td><?php echo $value['eq'] ?></td>
+                        <td><?php echo $value['per'] ?></td>
+                        <td><?php echo $value['exp'] ?></td>
+                        <td><?php echo $value['skill'] ?></td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <!-- <button class="btn btn-primary">View</button> -->
+                                <a href="<?php echo baseUrl . "providerController/resumeCard" ?>/<?php echo $value['id'] ?>">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                <?php
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <script>
+        function updateSubcategories() {
+            var categorySelect = document.getElementById("category");
+            var subcategorySelect = document.getElementById("subcategory");
+            var selectedCategory = categorySelect.value;
+
+            // Reset subcategory options
+            subcategorySelect.innerHTML = '<option value="">Select a Subcategory</option>';
+
+            if (selectedCategory === "architech") {
+                addSubcategoryOption("Architect");
+                addSubcategoryOption("Senior ");
+                addSubcategoryOption("Design ");
+                addSubcategoryOption("Project ");
+                addSubcategoryOption("Principal ");
+                addSubcategoryOption("Landscape");
+                addSubcategoryOption("Urban Planner");
+                addSubcategoryOption("Interior Designer");
+                addSubcategoryOption("Architectural Technologist");
+                addSubcategoryOption("BIM (Building Information Modeling) Specialist");
+                addSubcategoryOption("Sustainable Design Consultant");
+                addSubcategoryOption("Architectural Drafter");
+                addSubcategoryOption("Architectural Visualization Artist");
+                addSubcategoryOption("Urban Designer");
+                addSubcategoryOption("Historic Preservation");
+                addSubcategoryOption("Residential Architect");
+                addSubcategoryOption("CAD (Computer-Aided Design) Technician");
+                addSubcategoryOption("Architectural Educator");
+                addSubcategoryOption("Construction Project Manage");
+                addSubcategoryOption("Industrial Designer");
+                addSubcategoryOption("Healthcare Facility Planner");
+                addSubcategoryOption("Retail Space Designer");
+
+                addSubcategoryOption()
+            } else if (selectedCategory === "developer") {
+                addSubcategoryOption("Python Software Engineer");
+                addSubcategoryOption("Python");
+                addSubcategoryOption("Python Data Scientist");
+                addSubcategoryOption("Python Machine Learning Engineer");
+                addSubcategoryOption("Python Automation");
+                addSubcategoryOption("Java Software ");
+                addSubcategoryOption("Java");
+                addSubcategoryOption("Java Full Stack ");
+                addSubcategoryOption("Java Android ");
+                addSubcategoryOption("Java Spring ");
+                addSubcategoryOption("Java Microservices ");
+                addSubcategoryOption("JavaScript ");
+                addSubcategoryOption("Front-end ");
+                addSubcategoryOption("Node.js ");
+                addSubcategoryOption("React ");
+                addSubcategoryOption("Angular ");
+                addSubcategoryOption("Vue.js ");
+                addSubcategoryOption("Full Stack JavaScript ");
+                addSubcategoryOption("C#  ");
+                addSubcategoryOption(".NET ");
+                addSubcategoryOption("ASP.NET ");
+                addSubcategoryOption("Unity ");
+                addSubcategoryOption("Xamarin ");
+                addSubcategoryOption("C++  ");
+                addSubcategoryOption("Game(using C++)");
+                addSubcategoryOption("C++ Systems ");
+                addSubcategoryOption("PHP");
+                addSubcategoryOption("WordPress");
+                addSubcategoryOption("Laravel ");
+                addSubcategoryOption("Symfony ");
+                addSubcategoryOption("Ruby ");
+                addSubcategoryOption("Ruby on Rails ");
+                addSubcategoryOption("Swift ");
+                addSubcategoryOption("iOS (using Swift)");
+                addSubcategoryOption("macOS (using Swift)");
+                addSubcategoryOption("Kotlin ");
+                addSubcategoryOption("Android  (using Kotlin)");
+                addSubcategoryOption("Go  ");
+                addSubcategoryOption("Rust  ");
+                addSubcategoryOption("Systems  (using Rust");
+                addSubcategoryOption("TypeScript  ");
+                addSubcategoryOption("Front-end  (using TypeScript)");
+                addSubcategoryOption("SQL ");
+                addSubcategoryOption("Database ");
+                addSubcategoryOption("Scala  ");
+                addSubcategoryOption("Haskell  ");
+                addSubcategoryOption("Perl   ");
+                addSubcategoryOption("Lua   ");
+                addSubcategoryOption("Game  (using Lua) ");
+                addSubcategoryOption("MATLAB   ");
+                addSubcategoryOption("Data Analyst (using MATLAB) ");
+            } else if (selectedCategory === "tester") {
+                addSubcategoryOption("Software ");
+                addSubcategoryOption("Test Engineer");
+                addSubcategoryOption("QA Analyst (Quality Assurance Analyst)");
+                addSubcategoryOption("Test Automation Engineer");
+                addSubcategoryOption("Manual ");
+                addSubcategoryOption("QA Lead (Quality Assurance Lead)");
+                addSubcategoryOption("Test Manager");
+                addSubcategoryOption("Performance ");
+                addSubcategoryOption("Usability ");
+                addSubcategoryOption("Regression ");
+                addSubcategoryOption("User Acceptance ");
+                addSubcategoryOption("Security ");
+                addSubcategoryOption("Mobile App ");
+                addSubcategoryOption("Game ");
+                addSubcategoryOption("Functional ");
+                addSubcategoryOption("Test Architect");
+                addSubcategoryOption("Test Coordinator");
+                addSubcategoryOption("Continuous Integration ");
+                addSubcategoryOption("Load ");
+                addSubcategoryOption("Test Designer");
+                addSubcategoryOption("Test Technician");
+                addSubcategoryOption("QA Inspector (Quality Assurance Inspector)");
+                addSubcategoryOption("Test Coordinator");
+                addSubcategoryOption("Compliance ");
+            } else if (selectedCategory === "uiux") {
+                addSubcategoryOption("UI/UX Designer");
+                addSubcategoryOption("User Experience Designer");
+                addSubcategoryOption("User Interface Designer");
+                addSubcategoryOption("Interaction Designer");
+                addSubcategoryOption("Visual Designer");
+                addSubcategoryOption("UX Researcher");
+                addSubcategoryOption("UI/UX Architect");
+                addSubcategoryOption("Information Architect");
+                addSubcategoryOption("UX Strategist");
+                addSubcategoryOption("Product Designer");
+                addSubcategoryOption("User-Centered Design Specialist");
+                addSubcategoryOption("Usability Analyst");
+                addSubcategoryOption("UI/UX Developer");
+                addSubcategoryOption("Mobile App Designer");
+                addSubcategoryOption("Web Designer");
+                addSubcategoryOption("Visual Experience Designer");
+                addSubcategoryOption("UX Content Strategist");
+                addSubcategoryOption("Interaction Architect");
+                addSubcategoryOption("UX/UI Illustrator");
+                addSubcategoryOption("User Interface Animator");
+                addSubcategoryOption("Conversion Rate Optimization (CRO) Specialist");
+                addSubcategoryOption("Accessibility Designer ");
+                addSubcategoryOption("Prototype Designer ");
+                addSubcategoryOption("UI/UX Lead ");
+                addSubcategoryOption("Design Systems Manager ");
+
+            } else if (selectedCategory === "datascience") {
+                addSubcategoryOption("Data Scientist");
+                addSubcategoryOption("Senior");
+                addSubcategoryOption("Machine Learning Engineer");
+                addSubcategoryOption("Data Analyst");
+                addSubcategoryOption("Senior Data Analyst");
+                addSubcategoryOption("Statistician");
+                addSubcategoryOption("Business Intelligence Analyst");
+                addSubcategoryOption("Quantitative Analyst (Quant)");
+                addSubcategoryOption("Data Engineer");
+                addSubcategoryOption("Data Architect");
+                addSubcategoryOption("AI Research Scientist");
+                addSubcategoryOption("Predictive Modeler");
+                addSubcategoryOption("Natural Language Processing (NLP) Engineer");
+                addSubcategoryOption("Computer Vision Engineer");
+                addSubcategoryOption("Big Data Engineer");
+                addSubcategoryOption("Analytics Manager");
+                addSubcategoryOption("Data Science Manager");
+                addSubcategoryOption("Chief Data Officer (CDO)");
+                addSubcategoryOption("Research Scientist (AI/ML)");
+                addSubcategoryOption("Decision Scientist");
+                addSubcategoryOption("Marketing Analyst");
+                addSubcategoryOption("Operations Research Analyst");
+                addSubcategoryOption("Data Visualization Specialist");
+                addSubcategoryOption("Customer Insights Analyst");
+                addSubcategoryOption("Fraud Analyst");
+
+            } else if (selectedCategory === "databaseadmin") {
+                addSubcategoryOption("Database  (DBA)");
+                addSubcategoryOption("Senior  Administrator");
+                addSubcategoryOption("Database Engineer");
+                addSubcategoryOption("Database Architect");
+                addSubcategoryOption("Database Analyst");
+                addSubcategoryOption("Data Warehouse ");
+                addSubcategoryOption("SQL Server");
+                addSubcategoryOption("Oracle Database Administrator");
+                addSubcategoryOption("MySQL Database Administrator");
+                addSubcategoryOption("PostgreSQL Database Administrator");
+                addSubcategoryOption("MongoDB Administrator");
+                addSubcategoryOption("NoSQL Database Administrator");
+                addSubcategoryOption("DBMS Administrator (Database Management System)");
+                addSubcategoryOption("Database Operations Manager");
+                addSubcategoryOption("Database Performance Tuning Specialist");
+                addSubcategoryOption("Data Migration Specialist");
+                addSubcategoryOption("Database Security Administrator");
+                addSubcategoryOption("Database Backup and Recovery Specialist");
+                addSubcategoryOption("Cloud Database Administrator (e.g., AWS, Azure, Google Cloud)");
+                addSubcategoryOption("Database Compliance Officer");
+                addSubcategoryOption("Database DevOps Engineer");
+                addSubcategoryOption("Database Automation Engineer");
+                addSubcategoryOption("Database Replication Specialist");
+                addSubcategoryOption("Data Governance Manager");
+                addSubcategoryOption("Data Steward");
+            } else if (selectedCategory === "teacher") {
+                addSubcategoryOption("Tamil");
+                addSubcategoryOption("Mathematics ");
+                addSubcategoryOption("Math Instructor");
+                addSubcategoryOption("Algebra ");
+                addSubcategoryOption("Geometry ");
+                addSubcategoryOption("Calculus ");
+                addSubcategoryOption("Statistics ");
+                addSubcategoryOption("Math Tutor");
+                addSubcategoryOption("Math Coach");
+                addSubcategoryOption("Math Curriculum Specialist");
+                addSubcategoryOption("Math Department Chair");
+                addSubcategoryOption("English ");
+                addSubcategoryOption("Language Arts ");
+                addSubcategoryOption("Literature ");
+                addSubcategoryOption("Writing Instructor");
+                addSubcategoryOption("Creative Writing ");
+                addSubcategoryOption("English as a Second Language (ESL) ");
+                addSubcategoryOption("Reading Specialist");
+                addSubcategoryOption("English Tutor");
+                addSubcategoryOption("English Department Chair");
+                addSubcategoryOption("Science ");
+                addSubcategoryOption("Biology ");
+                addSubcategoryOption("Chemistry ");
+                addSubcategoryOption("Physics ");
+                addSubcategoryOption("Environmental Science ");
+                addSubcategoryOption("Earth Science ");
+                addSubcategoryOption("Anatomy and Physiology ");
+                addSubcategoryOption("Science Lab Instructor");
+                addSubcategoryOption("Science Curriculum Specialist");
+                addSubcategoryOption("Social Studies ");
+                addSubcategoryOption("History ");
+                addSubcategoryOption("Geography ");
+                addSubcategoryOption("Civics ");
+                addSubcategoryOption("Government ");
+                addSubcategoryOption("Economics ");
+                addSubcategoryOption("World History ");
+                addSubcategoryOption("Social Studies Department Chair");
+                addSubcategoryOption("Foreign Language ");
+                addSubcategoryOption("Language Instructor");
+                addSubcategoryOption("Spanish ");
+                addSubcategoryOption("French ");
+                addSubcategoryOption("German ");
+                addSubcategoryOption("Chinese ");
+                addSubcategoryOption("Language Lab Coordinator");
+                addSubcategoryOption("Physical Education ");
+                addSubcategoryOption("PE Instructor");
+                addSubcategoryOption("Fitness Coach");
+                addSubcategoryOption("Health Education ");
+                addSubcategoryOption("Sports Coach");
+                addSubcategoryOption("Physical Education Department Chair");
+                addSubcategoryOption("Art ");
+                addSubcategoryOption("Music ");
+                addSubcategoryOption("Drama ");
+                addSubcategoryOption("Visual Arts ");
+                addSubcategoryOption("Choir Director");
+                addSubcategoryOption("Band ");
+                addSubcategoryOption("Art History ");
+                addSubcategoryOption("Special Education ");
+                addSubcategoryOption("Learning Support ");
+                addSubcategoryOption("Resource ");
+                addSubcategoryOption("Inclusion ");
+                addSubcategoryOption("Autism Specialist");
+                addSubcategoryOption("Behavioral Interventionist");
+                addSubcategoryOption("Vocational Teacher");
+                addSubcategoryOption("Career and Technical Education (CTE) Instructor");
+                addSubcategoryOption("Culinary Arts Instructor");
+                addSubcategoryOption("Automotive Technology ");
+                addSubcategoryOption("Computer Science ");
+                addSubcategoryOption("Digital Media Instructor");
+            } else if (selectedCategory === "professor") {
+                addSubcategoryOption("University ");
+                addSubcategoryOption("Assistant ");
+                addSubcategoryOption("Associate ");
+                addSubcategoryOption("Full ");
+                addSubcategoryOption("Distinguished ");
+                addSubcategoryOption("Adjunct ");
+                addSubcategoryOption("Visiting ");
+                addSubcategoryOption("Research ");
+                addSubcategoryOption("Clinical ");
+                addSubcategoryOption("Philosophy");
+                addSubcategoryOption("Professor of History");
+                addSubcategoryOption("English");
+                addSubcategoryOption("Psychology");
+                addSubcategoryOption("Sociology");
+                addSubcategoryOption("Political Science");
+                addSubcategoryOption("Anthropology");
+                addSubcategoryOption("Linguistics");
+                addSubcategoryOption("Biology");
+                addSubcategoryOption("Chemistry");
+                addSubcategoryOption("Physics");
+                addSubcategoryOption("Mathematics");
+                addSubcategoryOption("Geology");
+                addSubcategoryOption("Astronomy");
+                addSubcategoryOption(" Environmental Science");
+                addSubcategoryOption("Computer Science");
+                addSubcategoryOption("Electrical Engineering");
+                addSubcategoryOption("Mechanical Engineering");
+                addSubcategoryOption("Civil Engineering");
+                addSubcategoryOption("Chemical Engineering");
+                addSubcategoryOption("Information Technology");
+                addSubcategoryOption("Business Administration");
+                addSubcategoryOption("Economics");
+                addSubcategoryOption("Finance");
+                addSubcategoryOption("Marketing");
+                addSubcategoryOption("Management");
+                addSubcategoryOption("Accounting");
+                addSubcategoryOption("Fine Arts");
+                addSubcategoryOption("Music");
+                addSubcategoryOption("Visual Arts");
+                addSubcategoryOption("Theater");
+                addSubcategoryOption("Dance");
+                addSubcategoryOption("Film Studies");
+                addSubcategoryOption("Educational Psychology");
+                addSubcategoryOption("Medicine");
+                addSubcategoryOption("Nursing");
+                addSubcategoryOption("Public Health");
+                addSubcategoryOption("Pharmacy");
+                addSubcategoryOption("Dentistry");
+                addSubcategoryOption("Law");
+                addSubcategoryOption("Constitutional Law");
+                addSubcategoryOption("Criminal Law");
+                addSubcategoryOption("International Law");
+                addSubcategoryOption("Environmental Law");
+                addSubcategoryOption("Social Work");
+                addSubcategoryOption("Social Welfare");
+                addSubcategoryOption("Clinical Social Work");
+                addSubcategoryOption("Library Science");
+                addSubcategoryOption("Information Studies");
+            }
+            subcategorySelect.disabled = false;
+        }
+
+        function addSubcategoryOption(subcategory) {
+            var subcategorySelect = document.getElementById("subcategory");
+            var option = document.createElement("option");
+            option.value = subcategory;
+            option.text = subcategory;
+            subcategorySelect.appendChild(option);
         }
         ?>
                                                                             </tbody>
@@ -3004,6 +4452,7 @@
                                                                                         </tr>
                                                                                         </thead>
                                                                                         <tbody>
+
 
         <?php
         foreach ($this->data['candidateView'] as $key => $value) {
@@ -3385,6 +4834,7 @@
 
                                                                                         }
 
+
     <?php
     } else if ($this->data['method'] == "allCandidate") {
         ?>
@@ -3460,6 +4910,7 @@
                                                                                                     < /tr > 
                                                                                                     < /thead>
                                                                                                     < tbody >
+
 
         <?php
         foreach ($this->data['candidateView'] as $key => $value) {

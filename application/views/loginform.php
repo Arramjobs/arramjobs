@@ -113,6 +113,7 @@
 
 <body>
 
+
   <nav class="navcss navbar navbar-expand-lg sticky-top"
     style="background-color: navy; padding-top: 40px; padding-bottom: 40px;">
     <div class="container-fluid">
@@ -146,6 +147,7 @@
     <h2>Seeker Login </h2>
     <form id="phoneForm" action="<?php echo baseUrl . "seekerController/seekerLogin" ?>" method="post"
       onsubmit="return validateForm()">
+
       <div class="form-group">
         <label for="phone">Name</label>
         <input type="text" class="form-control" id="username" name="username" placeholder="Enter your name" required>
