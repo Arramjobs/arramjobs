@@ -16,7 +16,7 @@
       font-family: Arial, sans-serif;
       background-color: #f1f1f1;
       margin: 0;
-      padding: 0;
+      padding: 0; 
     }
 
   /* Navbar */
@@ -99,9 +99,9 @@
     .form-control {
       border-radius: 3px;
       border: 1px solid #ccc;
-      padding: 10px;
+      /* padding: 10px; */
       width: 100%;
-      margin-right: 10px;
+      /* margin-right: 10px; */
 
     }
 
@@ -3079,7 +3079,7 @@
         } elseif ($method == 'insertEducationDetails') {
           ?>
                   <div class="container" id="education">
-                    <h3>Education Form</h3>
+                    <h3>Education Form2</h3>
 
                     <div id="educationFormsContainer">
                       <div class="education-form-container">
@@ -3329,7 +3329,7 @@
                           }
         } elseif ($method == 'addEducationForm') {
           ?>
-            <!-- 2 1 Education form ***********************************************************************************************************-->
+            <!-- 2 1 Education form insert ***********************************************************************************************************-->
 
                           <div class="eduformcss container mt-5 mx-md-auto" id="education">
                             <h3>Education Form</h3>
@@ -3518,7 +3518,7 @@
           ?>
 
 <!-- 2 Educational details Update************************************************************************** -->
-                            <div class="container mt-5" id="education">
+                            <div class="eduformcss container mt-5 mx-md-auto" id="education">
                               <h3>Education Form</h3>
 
                               <div id="educationFormsContainer">
@@ -3780,17 +3780,19 @@
                       </div>
                     </div>
 
+
+                    
                   <?php
         } elseif ($method == 'projectTable') {
           ?>
+                    <!-- <br>
                     <br>
                     <br>
                     <br>
                     <br>
                     <br>
                     <br>
-                    <br>
-                    <br>
+                    <br> -->
                     <div class="">
                       <h2 class="text-center">Project Details</h2>
                       <a id="regis" href="<?php echo baseUrl . "seekerController/addProjectForm" ?>">+ Add Project Details</a>
