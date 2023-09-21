@@ -147,14 +147,13 @@
     <form id="phoneForm" action="<?php echo baseUrl . "seekerController/seekerLogin" ?>" method="post"
       onsubmit="return validateForm()">
       <div class="form-group">
-        <label for="phone">Username</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username"
-          required>
+        <label for="phone">Name</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your name" required>
       </div>
       <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter your phone number"
-          required>
+        <label for="phone">Mobile Number</label>
+        <input type="tel" class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter your mobile number" required>
+          <p id="pherr" style="color: red;"></p>
       </div>
       <!--  <button type="button" class="btn btn-link">New User</a> -->
       <button type="submit" class="btn btn-primary">Submit</button>
@@ -174,13 +173,32 @@
   <script>
     function validateForm() {
       var phoneNumber = document.getElementById("phonenumber").value;
-      var phoneRegex = /^\d{10}$/;
+      // var phoneRegex = /^\d{10}$/;
 
-      if (!phoneRegex.test(phoneNumber)) {
-        alert("Please enter a valid 10-digit phone number.");
-        return false;
-      }
+      // if (!phoneRegex.test(phoneNumber)) {
+      //   alert("Please enter a valid 10-digit mobile number.");
+      //   return false;
+      // }
 
+
+      if (phoneNumber != "") {
+                if (phoneNumber.length < 10) {
+                    document.getElementById("pherr").innerHTML = "Mobile number must be in 10 digits";
+                    // document.forms.phno.focus();
+                    return false;
+                } else if (phoneNumber.length > 11) {
+                    document.getElementById("pherr").innerHTML = "Mobile number should not exceed 10 digits";
+                    // document.forms.phno.focus();
+                    return false;
+                } else {
+                    document.getElementById("pherr").innerHTML = "";
+                }
+            } else if (phoneNumber == "") {
+                var phsms = "Mobile number must be filled out";
+                document.getElementById("pherr").innerHTML = phsms;
+                // document.forms.phno.focus();
+                return false;
+            }
       return true;
     }
   </script>

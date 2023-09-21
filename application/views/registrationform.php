@@ -150,8 +150,8 @@
     <form name="registration_form" method="post" onsubmit="return validateForm()"
       action="<?php echo baseUrl . "seekerController/seekerRegistration" ?>">
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your username">
+        <label for="username">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
         <div id="username_error" class="error"></div>
       </div>
       <div class="form-group">
@@ -160,9 +160,9 @@
         <div id="email_error" class="error"></div>
       </div>
       <div class="form-group">
-        <label for="phonenumber">Phone number</label>
+        <label for="phonenumber">Mobile number</label>
         <input type="tel" class="form-control" id="phonenumber" name="phonenumber"
-          placeholder="Enter your phone number">
+          placeholder="Enter your mobile number">
         <div id="phone_error" class="error"></div>
       </div>
       <button type="Submit" class="btn btn-primary">Register</button>
@@ -183,12 +183,12 @@
       clearErrors();
 
       if (!username.trim()) {
-        displayError('Username is required', 'username_error');
+        displayError('Name must be filled out', 'username_error');
         return false;
       }
 
       if (!email.trim()) {
-        displayError('Email is required', 'email_error');
+        displayError('Email must be filled out', 'email_error');
         return false;
       } else if (!validateEmail(email)) {
         displayError('Please enter a valid email address', 'email_error');
@@ -196,10 +196,10 @@
       }
 
       if (!phone.trim()) {
-        displayError('Phone number is required', 'phone_error');
+        displayError('Mobile number must be filled out', 'phone_error');
         return false;
       } else if (!validatePhone(phone)) {
-        displayError('Please enter a valid phone number', 'phone_error');
+        displayError('Please enter a valid mobile number', 'phone_error');
         return false;
       }
 

@@ -157,13 +157,13 @@
       <div class="form-group">
         <label for="userID">Company Name:</label>
         <!-- <input type="text" class="form-control" id="userID" name="userID" placeholder="Enter your user name"> -->
-        <input type="text" class="form-control" id="userID" name="userName" placeholder="Enter your user name">
+        <input type="text" class="form-control" id="userID" name="userName" placeholder="Enter company name">
         <div id="userID_error" class="error"></div>
       </div>
       <div class="form-group">
         <label for="password">Company Mobile Number:</label>
         <!-- <input type="password" class="form-control" id="password" name="password"> -->
-        <input type="number" class="form-control" id="password" name="number"  placeholder="Enter your number">
+        <input type="tel" class="form-control" id="password" name="number"  placeholder="Enter mobile number">    <!-- input type changed number to tel -->
         <div id="password_error" class="error"></div>
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
@@ -182,12 +182,14 @@
       var password = document.getElementById('password').value;
 
       if (userID.trim() === '') {
-        displayError('User ID is required.', 'userID_error');
+         displayError('Company name must be filled out', 'userID_error');
+        //  document.getElementById("userID_error").innerHTML = "Name should be in atleast 2 characters";
+
         return false;
       }
 
       if (password.trim() === '') {
-        displayError('Password is required.', 'password_error');
+        displayError('Mobile number must be filled out', 'password_error');
         return false;
       }
 
