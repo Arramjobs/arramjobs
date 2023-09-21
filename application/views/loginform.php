@@ -10,7 +10,7 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <!-- Google Fonts -->
-  <title>Login Form</title>
+  <title>Employee Login Page</title>
   <style>
     .btn-primary {
       background-color: #f39c12 !important;
@@ -64,10 +64,9 @@
       }
     }
 
-    .formcss h2 {
+    .formcss h3 {
       text-align: center;
       margin-bottom: 30px;
-      margin-left: -40px;
       color: navy;
     }
 
@@ -131,10 +130,10 @@
             <a class="nav-link mx-4" href="#how-it-works">How It Works</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#job-seekers">Seekers</a>
+            <a class="nav-link mx-4" href="#job-providers">Employer</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#job-providers">Providers</a>
+            <a class="nav-link mx-4" href="#job-seekers">Employee</a>
           </li>
           <li class="nav-item">
             <a class="nav-link mx-4" href="#blog">Blog</a>
@@ -144,7 +143,7 @@
   </nav>
 
   <div class="formcss container-lg mt-5 mx-auto">
-    <h2>Seeker Login </h2>
+    <h3>Employee Login</h3>
     <form id="phoneForm" action="<?php echo baseUrl . "seekerController/seekerLogin" ?>" method="post"
       onsubmit="return validateForm()">
 
@@ -154,8 +153,9 @@
       </div>
       <div class="form-group">
         <label for="phone">Mobile Number</label>
-        <input type="tel" class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter your mobile number" required>
-          <p id="pherr" style="color: red;"></p>
+        <input type="tel" class="form-control" id="phonenumber" name="phonenumber"
+          placeholder="Enter your mobile number" required>
+        <p id="pherr" style="color: red;"></p>
       </div>
       <!--  <button type="button" class="btn btn-link">New User</a> -->
       <button type="submit" class="btn btn-primary">Submit</button>
@@ -176,7 +176,7 @@
     function validateForm() {
       var phoneNumber = document.getElementById("phonenumber").value;
       // var phoneRegex = /^\d{10}$/;
- 
+
       // if (!phoneRegex.test(phoneNumber)) {
       //   alert("Please enter a valid 10-digit mobile number.");
       //   return false;
@@ -184,23 +184,23 @@
 
 
       if (phoneNumber != "") {
-                if (phoneNumber.length < 10) {
-                    document.getElementById("pherr").innerHTML = "Mobile number must be in 10 digits";
-                    // document.forms.phno.focus();
-                    return false;
-                } else if (phoneNumber.length > 11) {
-                    document.getElementById("pherr").innerHTML = "Mobile number should not exceed 10 digits";
-                    // document.forms.phno.focus();
-                    return false;
-                } else {
-                    document.getElementById("pherr").innerHTML = "";
-                }
-            } else if (phoneNumber == "") {
-                var phsms = "Mobile number must be filled out";
-                document.getElementById("pherr").innerHTML = phsms;
-                // document.forms.phno.focus();
-                return false;
-            }
+        if (phoneNumber.length < 10) {
+          document.getElementById("pherr").innerHTML = "Mobile number must be in 10 digits";
+          // document.forms.phno.focus();
+          return false;
+        } else if (phoneNumber.length > 11) {
+          document.getElementById("pherr").innerHTML = "Mobile number should not exceed 10 digits";
+          // document.forms.phno.focus();
+          return false;
+        } else {
+          document.getElementById("pherr").innerHTML = "";
+        }
+      } else if (phoneNumber == "") {
+        var phsms = "Mobile number must be filled out";
+        document.getElementById("pherr").innerHTML = phsms;
+        // document.forms.phno.focus();
+        return false;
+      }
       return true;
     }
   </script>
