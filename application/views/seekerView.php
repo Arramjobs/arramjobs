@@ -20,7 +20,7 @@
     }
 
   /* Navbar */
-  .navcss {
+   .navcss {
       color: white;
       font-weight: bold;
     }

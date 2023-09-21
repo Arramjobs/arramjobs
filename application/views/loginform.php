@@ -174,7 +174,7 @@
     function validateForm() {
       var phoneNumber = document.getElementById("phonenumber").value;
       // var phoneRegex = /^\d{10}$/;
-
+ 
       // if (!phoneRegex.test(phoneNumber)) {
       //   alert("Please enter a valid 10-digit mobile number.");
       //   return false;
