@@ -456,7 +456,7 @@
                         <!-- <input type="button" class="btn btn-primary float-end" value="+ Add" onclick="registration/provider_addjob"> -->
                         <!-- <a id="regis" href="provider_addjob">+ Add</a></p>> -->
 
-                        <a id="regis" href="<?php echo baseUrl . "providerController/providerAddJob"?>">+ Add job Requirements</a>
+                        <a id="regis" href="<?php echo baseUrl . "providerController/providerAddJob" ?>">+ Add job Requirements</a>
 
 
                         <div class="clearfix"></div>
@@ -760,7 +760,7 @@
                     document.forms.email.focus();
                     return false;
                 } else if (a != "") {
-                    document.getElementById("mailerr").innerHTML="";
+                    document.getElementById("mailerr").innerHTML = "";
                     /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
                     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(a)) {
                         document.getElementById("mailerr").innerHTML = "";
@@ -984,7 +984,7 @@
                     document.forms.mail1.focus();
                     return false;
                 } else if (a1 != "") {
-                    document.getElementById("mailerr").innerHTML="";
+                    document.getElementById("mailerr").innerHTML = "";
                     /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
                     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(a1)) {
                         document.getElementById("mailerr1").innerHTML = "";

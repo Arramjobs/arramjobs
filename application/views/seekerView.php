@@ -456,7 +456,6 @@
                   <input type="date" class="form-control" id="dateofbirth" value=<?php echo $value['dateofbirth']; ?> name="dateofbirth" >
                   <div id="dob_error" class="error"></div>
                 </div>
-<<<
               <div class="form-group">
               <label for="gender">Gender *</label>
               <select class="form-control" id="gender" name="gender" >
@@ -467,7 +466,7 @@
               </select>
               <div id="gender_error" class="error"></div>
             </div>
-===
+
 
                 <h4> Address : </h4>
                 <div class="form-group">
