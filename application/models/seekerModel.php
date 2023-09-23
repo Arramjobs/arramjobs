@@ -322,6 +322,9 @@
                         'prefered_location' => $post['preferred-location'], 'experience' => $post['experience'],
                         'job_type' => $post['jobtype'], 'description' => $post['description'],
                         'expected_salary' => $post['expected-salary'],
+                        'skillname' => $post['skillname'], 
+                        'skillexperience' => $post['skillexperience'], 
+                        'skilllevel' => $post['skilllevel']
                         );
         
                         $this->db->insert('seeker_area_of_interst', $add);
@@ -342,7 +345,10 @@
                              'other_interst_category' => $post['category'], 'other_sub_interst_category' =>  $post['subcategory'],
                                 'prefered_location' => $post['preferred-location'], 'experience' => $post['experience'],
                                 'job_type' => $post['jobtype'], 'description' => $post['description'],
-                                'expected_salary' => $post['expected-salary']
+                                'expected_salary' => $post['expected-salary'], 
+                                'skillname' => $post['skillname'], 
+                                'skillexperience' => $post['skillexperience'], 
+                                'skilllevel' => $post['skilllevel']
                                  );
                              
                              $this->db->where('id', $areaOfIntrest);
