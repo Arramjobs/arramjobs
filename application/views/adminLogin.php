@@ -2,211 +2,132 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Arran Jobs Admin Dashboard</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
     <!-- Google Fonts -->
-    <title>Login Form</title>
-    <style>
-        .btn-primary {
-            background-color: #f39c12 !important;
-        }
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
-            margin: 0;
-            padding: 0;
-        }
+    <!-- Vendor CSS Files -->
+    <link href="<?php echo baseUrl; ?>/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo baseUrl; ?>/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="<?php echo baseUrl; ?>/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="<?php echo baseUrl; ?>/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="<?php echo baseUrl; ?>/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="<?php echo baseUrl; ?>/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="<?php echo baseUrl; ?>/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-        /* Navbar */
-        .navcss {
-            color: white;
-            font-weight: bold;
-        }
+    <!-- Template Main CSS File -->
+    <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
 
-        .navbar-nav li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .navbar-nav li a:hover {
-            color: #F8802A;
-            text-decoration: none;
-        }
-
-        .tamilcss {
-            padding-right: 15%;
-        }
-
-        @media screen and (max-width:576px) {
-            .tamilcss {
-                padding-right: 8%;
-            }
-        }
-
-        /* Form */
-        .formcss {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            width: 400px;
-        }
-
-        @media screen and (max-width:576px) {
-            .formcss {
-                width: 280px;
-            }
-        }
-
-        .formcss h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            margin-left: -40px;
-            color: navy;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        .error {
-            color: red;
-            margin-top: 5px;
-        }
-
-        /* Form input styles */
-        .form-control {
-            border-radius: 3px;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        /* Form button style */
-        .btn-primary {
-            background-color: #4285f4;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #2d76d9;
-        }
-
-        button[type="submit"] {
-            width: 100%;
-            margin-top: 20px;
-            padding: 12px;
-            font-weight: bold;
-        }
-    </style>
-
+    <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
 
+    <main>
+        <div class="container">
 
-    <nav class="navcss navbar navbar-expand-lg sticky-top" style="background-color: navy; padding-top: 40px; padding-bottom: 40px;">
-        <div class="container-fluid">
-            <h5 class="tamilcss mx-sm-4" style="color:white;">அறம் வேலைவாய்ப்பு</h5>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="material-symbols-outlined text-light px-sm-4">menu</span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item ">
-                        <a class="nav-link mx-4" href="#about-us">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-4" href="#how-it-works">How It Works</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-4" href="#job-seekers">Seekers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-4" href="#job-providers">Providers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-4" href="#blog">Blog</a>
-                    </li>
-                </ul>
-            </div>
-    </nav>
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-    <div class="formcss container-lg mt-5 mx-auto">
-        <h2>Admin Login </h2>
-        <form id="phoneForm" action="<?php echo baseUrl . "seekerController/seekerLogin" ?>" method="post" onsubmit="return validateForm()">
+                            <div class="d-flex justify-content-center py-4">
+                                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                    <!-- <img src="assets/img/logo.png" alt=""> -->
+                                    <span class="d-none d-lg-block">ArramjobsAdmin</span>
+                                </a>
+                            </div><!-- End Logo -->
 
-            <div class="form-group">
-                <label for="phone">User Name</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your user name">
-                <p id="pherr" style="color: red;"></p>
-            </div>
-            <div class="form-group">
-                <label for="phone">Password</label>
-                <input type="tel" class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter your password">
-                <p id="pherr" style="color: red;"></p>
-            </div>
-            <!--  <button type="button" class="btn btn-link">New User</a> -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="card mb-3">
 
-        </form>
-        <br>
-        <!-- <div id="sign">
-            <p>Create an account ? <a id="regis" href="<?php echo baseUrl . "seekerController/registration" ?>">Register</a>
-            </p>
-        </div> -->
-        <div class="error">
-            <?php if (isset($login_error))
-                echo $login_error; ?>
+                                <div class="card-body">
+
+                                    <div class="pt-4 pb-2">
+                                        <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                                        <p class="text-center small">Enter your username & password to login</p>
+                                    </div>
+
+                                    <form class="row g-3 needs-validation" novalidate>
+
+                                        <div class="col-12">
+                                            <label for="yourUsername" class="form-label">Username</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                <input type="text" name="username" class="form-control" id="yourUsername" required>
+                                                <div class="invalid-feedback">Please enter your username.</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="yourPassword" class="form-label">Password</label>
+                                            <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                            <div class="invalid-feedback">Please enter your password!</div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100" type="submit">Login</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                            <!-- <div class="credits">
+                                <!-- All the links in the footer should remain intact. -->
+                                <!-- You can delete the links only if you purchased the pro version. -->
+                                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+                                <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
         </div>
-    </div>
-
-    <script>
-        function validateForm() {
-            var phoneNumber = document.getElementById("phonenumber").value;
-            // var phoneRegex = /^\d{10}$/;
-
-            // if (!phoneRegex.test(phoneNumber)) {
-            //   alert("Please enter a valid 10-digit mobile number.");
-            //   return false;
-            // }
+    </main><!-- End #main -->
 
 
-            if (phoneNumber != "") {
-                if (phoneNumber.length < 10) {
-                    document.getElementById("pherr").innerHTML = "Mobile number must be in 10 digits";
-                    // document.forms.phno.focus();
-                    return false;
-                } else if (phoneNumber.length > 11) {
-                    document.getElementById("pherr").innerHTML = "Mobile number should not exceed 10 digits";
-                    // document.forms.phno.focus();
-                    return false;
-                } else {
-                    document.getElementById("pherr").innerHTML = "";
-                }
-            } else if (phoneNumber == "") {
-                var phsms = "Mobile number must be filled out";
-                document.getElementById("pherr").innerHTML = phsms;
-                // document.forms.phno.focus();
-                return false;
-            }
-            return true;
-        }
-    </script>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+    <!-- Vendor JS Files -->
+    <script src="<?php echo baseUrl; ?>/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="<?php echo baseUrl; ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo baseUrl; ?>/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="<?php echo baseUrl; ?>/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="<?php echo baseUrl; ?>/assets/vendor/quill/quill.min.js"></script>
+    <script src="<?php echo baseUrl; ?>/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="<?php echo baseUrl; ?>/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="<?php echo baseUrl; ?>/assets/vendor/php-email-form/validate.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

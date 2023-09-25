@@ -22,7 +22,7 @@ class RegistrationModel extends CI_Model
       'role' => $postData['role'],
       'mobile_number' => $postData['mobile1'], 'email' => $postData['email1'],
     );
-    
+
 
     $this->db->insert('provider_registration_form', $insert);
   }
@@ -41,7 +41,7 @@ class RegistrationModel extends CI_Model
   //   return $count->result_array();
   // }
 
-  
+
   public function providerLogin()
   {
     $postData = $this->input->post(null, true);
@@ -57,7 +57,7 @@ class RegistrationModel extends CI_Model
 
   public function provider_detail()
   {
-    $jobProviderId=$_SESSION['jobProviderId'];
+    $jobProviderId = $_SESSION['jobProviderId'];
     $provider = "SELECT * FROM `provider_registration_form` Where `id`= $jobProviderId";
     $select = $this->db->query($provider);
     return $select->result_array();
@@ -97,11 +97,11 @@ class RegistrationModel extends CI_Model
 
   public function addNew()
   {
-    $jobProviderId=$_SESSION['jobProviderId'];
+    $jobProviderId = $_SESSION['jobProviderId'];
     $post = $this->input->post(null, true);
 
     $add = array(
-       'jobProviderId' =>  $jobProviderId, 'company_name' => $post['company_name'], 'job_category_id' =>  $post['category'],
+      'jobProviderId' =>  $jobProviderId, 'company_name' => $post['company_name'], 'job_category_id' =>  $post['category'],
       'jobCategory' => $post['category'], 'jobSubCategory' => $post['subcategory'],
       'job_sub_category_id' => $post['subcategory'], 'location' => $post['preferred_location'],
       'job_type' => $post['jobtype'], 'salary' => $post['expected_salary'],
@@ -115,7 +115,7 @@ class RegistrationModel extends CI_Model
 
   public function addTab()
   {
-    $jobProviderId=$_SESSION['jobProviderId'];
+    $jobProviderId = $_SESSION['jobProviderId'];
     $providerAdd = "SELECT * FROM `provider_job` Where `jobProviderId`= $jobProviderId";
     $addtab = $this->db->query($providerAdd);
     return $addtab->result_array();
@@ -134,8 +134,6 @@ class RegistrationModel extends CI_Model
     $update = "SELECT * FROM `provider_job` Where `id`=$id";
     $add = $this->db->query($update);
     return $add->result_array();
-
-    
   }
 
   public function update_job()

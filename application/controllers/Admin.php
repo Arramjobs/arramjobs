@@ -48,4 +48,52 @@ class Admin extends CI_Controller
         $this->data['method'] = "dash";
         $this->load->view('admindashboard.php', $this->data);
     }
+
+    public function createAdminUser()
+    {
+        $this->data['method'] = "dash";
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function adminUsers()
+    {
+        $this->data['method'] = "adminUsers";
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function createEmployer()
+    {
+        $this->data['method'] = "createEmployer";
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function verifiedEmployers()
+    {
+        $this->data['method'] = "verifiedEmployers";
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function unVerifiedEmployers()
+    {
+        $this->data['method'] = "unVerifiedEmployers";
+        $this->load->view('admindashboard.php', $this->data);
+    }
+    
+    public function createCandidates()
+    {
+        $this->data['method'] = "createCandidates";
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function verifiedCandidates()
+    {
+        $this->data['method'] = "verifiedCandidates";
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function unVerifiedCandidates()
+    {
+        $this->data['method'] = "unVerifiedCandidates";
+        $this->load->view('admindashboard.php', $this->data);
+    }
 }
