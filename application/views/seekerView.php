@@ -1626,6 +1626,9 @@
                               subcategorySelect.innerHTML = "";
                               otherCategoryFields.style.display = "none";
 
+                              subcategorySelect.innerHTML = '<option value="">Select a Subcategory</option>';
+
+
                               if (category === "architech") {
                                 addSubcategoryOption("Architect", subcategorySelect);
                                 addSubcategoryOption("Senior", subcategorySelect);
@@ -4947,9 +4950,9 @@
                                 <!-- <option value="others">Others</option> -->
                               </select>
                             </div>
-                            <div class="form-group"">
-                <label for=" subcategory">Subcategory</label>
-                              <select class="form-control" id="subcategory" name="subcategory"  >
+                            <div class="form-group">
+                              <label for=" subcategory">Subcategory</label>
+                              <select class="form-control" id="subcategory" name="subcategory" >
                                 <option value="">Select a Subcategory </option>
                               </select>
                             </div>
@@ -5087,6 +5090,9 @@
                         // Clear existing options and hide the otherCategoryFields
                         subcategorySelect.innerHTML = "";
                         otherCategoryFields.style.display = "none";
+
+                        subcategorySelect.innerHTML = '<option value="">Select a Subcategory</option>';
+
 
                         if (category === "architech") {
                           addSubcategoryOption("Architect", subcategorySelect);
