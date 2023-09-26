@@ -597,6 +597,22 @@
                                         <input type="file" class="form-control" value='<?php echo $value['company_logo']; ?>' id="file" name="file">
                                         <p id="logerr" style="color: red;"></p>
                                     </div>
+
+                                    <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
+                                    <label for="cwebsite" class="form-label">Company Website:</label>
+                                    <input type="text" class="form-control" value='<?php echo $value['companywebsite']; ?>' id="cwebsite1" name="cwebsite1">
+                                    <p id="weberr" style="color: red;"></p>
+                                    </div>
+                                    <div class="mb-3 mt-4  ms-5 me-5 w-55">
+                                    <label for="cpan" class="form-label">Company Pan Number:</label>
+                                    <input type="text" class="form-control" value='<?php echo $value['companypan']; ?>' id="cpan1" name="cpan1">
+                                    <p id="weberr" style="color: red;"></p>
+                                    </div>
+                                    <div class="mb-3 mt-4  ms-5 me-5 w-55">
+                                    <label for="cgst" class="form-label">Company GST Number:</label>
+                                    <input type="text" class="form-control" value='<?php echo $value['companygst']; ?>' id="cgst1" name="cgst1">
+                                    <p id="weberr" style="color: red;"></p>
+                                    </div>
                                     <br>
 
                                     <!-- <h3 class=" grid-text-center d-flex justify-content-start text-dark bg-light bg-opacity-50 rounded-3 ms-5 me-5 mt-3"><center>Contact person details</center></h3> -->
