@@ -2289,7 +2289,7 @@
                   <div class="expdetailcss container mt-5 mx-md-auto">
                   <h3 class="mx-auto" style="color:navy" > Add Experience Details</h3>
               
-                    <form name="experienceform" method="post" onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "seekerController/insertExperienceForm" ?>">
+                    <form name="experienceform" method="post" onsubmit="return expvalidate()" action=" <?php echo baseUrl . "seekerController/insertExperienceForm" ?>">
                
                   
                         <div class="form-group">
@@ -2309,13 +2309,14 @@
                           </select>
                           <div id="category_error" class="error"></div>
                         </div>
-                        <div class="form-group">
+
+                        <!-- <div class="form-group">
                           <label for="subcategory">Subcategory</label>
                           <select class="form-control" id="subcategory" name="subcategory" disabled>
                             <option value="">Select a Subcategory</option>
                           </select>
                           <div id="subcategory_error" class="error"></div>
-                        </div>
+                        </div> -->
 
 
                         <div class="form-group">
@@ -2332,17 +2333,18 @@
                           </select>
                           <div id="experienceexp_error" class="error"></div>
                         </div>
-                        <div class="form-group" id="otherCategoryField" style="display: none;" >
+
+
+                        <!-- <div class="form-group" id="otherCategoryField" style="display: none;" >
                           <label for="othercategory">Other Category:</label>
                           <select class="form-control" id="experience" name="experience"  >
                           <input type="text" class="form-control" id="othercategory" name="othercategory" >
                         </div>
-
                         <div class="form-group" id="otherSubcategoryField" style="display: none;">
                           <label for="othersubcategory">Other Subcategory:</label>
                           <select class="form-control" id="experience" name="experience" >
                           <input type="text" class="form-control" id="othersubcategory" name="othersubcategory" >
-                        </div>
+                        </div> -->
 
 
                         <div class="form-group">
@@ -2362,19 +2364,19 @@
                         <div class="form-group">
                           <label for="Name">Name of Employer</label>
                           <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" placeholder="Enter employer name">
-                          <div id="name_error" class="error"></div>
+                          <div id="empname_error" class="error"></div>
                         </div>
 
                         <div class="form-group">
                           <label for="number">Mobile Number</label>
                           <input type="text" class="form-control" id="number" name="number" placeholder="Enter mobile number">
-                          <div id="mobilenum_error" class="error"></div>
+                          <div id="empmobilenum_error" class="error"></div>
                         </div>
 
                         <div class="form-group">
                           <label for="email">Email-Id</label>
                           <input type="text" class="form-control" id="emailid" name="emailid" placeholder="Enter Email">
-                          <div id="emailid_error" class="error"></div>
+                          <div id="empemailid_error" class="error"></div>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -2725,100 +2727,150 @@
                       document.getElementById("otherSubcategoryField").style.display = "none";
                     }
 
-                    function validateexpForm() {
-                      var category = document.getElementById("category");
-                      var subcategory = document.getElementById("subcategory");
-                      var experience = document.getElementById("experience");
-                      var companyname = document.getElementById("companyname");
-                      var role = document.getElementById("role");
-                      var name = document.getElementById("nameofemployer");
-                      var phonenumber1 = document.getElementById("number");
-                      var email1 = document.getElementById("emailid");
+                    // function validateexpForm() {
+                    //   var category = document.getElementById("category");
+                    //   var subcategory = document.getElementById("subcategory");
+                    //   var experience = document.getElementById("experience");
+                    //   var companyname = document.getElementById("companyname");
+                    //   var role = document.getElementById("role");
+                    //   var name = document.getElementById("nameofemployer");
+                    //   var phonenumber1 = document.getElementById("number");
+                    //   var email1 = document.getElementById("emailid");
 
-                      if (category.value === '') {
-                        alert("Please select a Category.");
-                        // displayError('Category is required.', 'category_error');
-                        // document.experienceform.category.focus();
-                        return false;
-                      }
+                    //   if (category.value === '') {
+                    //     alert("Please select a Category.");
+                    //     // displayError('Category is required.', 'category_error');
+                    //     // document.experienceform.category.focus();
+                    //     return false;
+                    //   }
 
-                      if (subcategory.value === '') {
-                        alert("Please select a subcategory.");
-                        // displayError('Please select a subcategory.', 'subcategory_error');
-                        // document.experienceform.subcategory.focus();
-                        return false;
-                      }
+                    //   if (subcategory.value === '') {
+                    //     alert("Please select a subcategory.");
+                    //     // displayError('Please select a subcategory.', 'subcategory_error');
+                    //     // document.experienceform.subcategory.focus();
+                    //     return false;
+                    //   }
 
-                      // if (experience.value === 'fresher') {
-                      //   hideFields();
-                      // } else if (experience.value === '') {
-                      //   // alert("Please select an experience.");
-                      //   displayError('Please select an experience.', 'experience_error');
-                      //   document.experienceform.experience.focus();
-                      //   return false;
-                      // }
-                      if (experience.value === '') {
-                        alert("Please select an experience.");
-                        // displayError('Please select an experience.', 'experienceexp_error');
-                        // document.experienceform.experience.focus();
-                        return false;
-                      }
+                    //   // if (experience.value === 'fresher') {
+                    //   //   hideFields();
+                    //   // } else if (experience.value === '') {
+                    //   //   // alert("Please select an experience.");
+                    //   //   displayError('Please select an experience.', 'experience_error');
+                    //   //   document.experienceform.experience.focus();
+                    //   //   return false;
+                    //   // }
+                    //   if (experience.value === '') {
+                    //     alert("Please select an experience.");
+                    //     // displayError('Please select an experience.', 'experienceexp_error');
+                    //     // document.experienceform.experience.focus();
+                    //     return false;
+                    //   }
 
-                      if (companyname.value === '') {
-                        alert("Company name must be filled out.");
-                        // displayError('Please enter a company name.', 'companyname_error');
-                        // document.experienceform.companyname.focus();
-                        return false;
-                      }
+                    //   if (companyname.value === '') {
+                    //     alert("Company name must be filled out.");
+                    //     // displayError('Please enter a company name.', 'companyname_error');
+                    //     // document.experienceform.companyname.focus();
+                    //     return false;
+                    //   }
 
-                      if (role.value === '') {
-                        alert("Role must be filled out.");
-                        // displayError('Please enter a role.', 'role_error');
-                        // document.experienceform.role.focus();
-                        return false;
-                      }
+                    //   if (role.value === '') {
+                    //     alert("Role must be filled out.");
+                    //     // displayError('Please enter a role.', 'role_error');
+                    //     // document.experienceform.role.focus();
+                    //     return false;
+                    //   }
 
 
-                      // if (companyname.value === '') {
-                      //   alert("Company ");
-                      //   // displayError('please enter a company name', 'companyname_error');
-                      //   return false;
-                      // }
-                      // if (role.value === '') {
-                      //   alert("please enter a role");
-                      //   // displayError('please enter a role', 'role_error');
-                      //   return false;
-                      // }
-                      if (name.value === '') {
-                        alert("Name must be filled out.");
-                        // displayError('please enter a employer name', 'name_error');
+                    //   // if (companyname.value === '') {
+                    //   //   alert("Company ");
+                    //   //   // displayError('please enter a company name', 'companyname_error');
+                    //   //   return false;
+                    //   // }
+                    //   // if (role.value === '') {
+                    //   //   alert("please enter a role");
+                    //   //   // displayError('please enter a role', 'role_error');
+                    //   //   return false;
+                    //   // }
+                    //   if (name.value === '') {
+                    //     alert("Name must be filled out.");
+                    //     // displayError('please enter a employer name', 'name_error');
+                    //     return false;
+                    //   }
+                    //   if (phonenumber1.value === '') {
+                    //     alert("Mobile number must be filled out.");
+                    //     // displayError('please enter a employer name', 'name_error');
+                    //     return false;
+                    //   }
+                    //   if (email1.value === '') {
+                    //     alert("Email must be filled out.");
+                    //     // displayError('please enter a employer name', 'name_error');
+                    //     return false;
+                    //   }
+                    //   return true;
+                    // }
+
+                    // function clearErrorMessages() {
+                    //   var errorElements = document.querySelectorAll('.error');
+                    //   errorElements.forEach(function(errorElement) {
+                    //     errorElement.textContent = '';
+                    //   });
+                    // }
+
+                    // function displayError(message, elementId) {
+                    //   var errorElement = document.getElementById(elementId);
+                    //   errorElement.innerHTML = message;
+                    //   errorElement.style.color = 'red';
+                    // }
+// ********************************************************************************************************************************
+function expvalidate() {
+                      // var expcat = document.experienceform.category.value;
+                      // var expsubcat = document.experienceform.subcategory.value;
+                      // var expexp = document.experienceform.experience.value;
+                      // var expcname = document.experienceform.companyname.value;
+                      // var exprole = document.experienceform.role.value;
+                      // var expname = document.experienceform.nameofemployer.value;
+                      // var expphnum = document.experienceform.number.value;
+                      // var expemail = document.experienceform.emailid.value;
+                      var categorySelect = document.getElementById("category");
+                      var subcategorySelect = document.getElementById("subcategory");
+                      var experienceSelect = document.getElementById("experience");
+                      var companynameSelect = document.getElementById("companyname");
+
+                     if (categorySelect.value == "") {
+                        var expcaterr = "Category must be filled out";
+                        // alert("* Name must be filled out");
+                        document.getElementById("category_error").innerHTML = expcaterr;
+                        document.getElementById("category").focus();
                         return false;
-                      }
-                      if (phonenumber1.value === '') {
-                        alert("Mobile number must be filled out.");
-                        // displayError('please enter a employer name', 'name_error');
-                        return false;
-                      }
-                      if (email1.value === '') {
-                        alert("Email must be filled out.");
-                        // displayError('please enter a employer name', 'name_error');
-                        return false;
-                      }
-                      return true;
                     }
 
-                    function clearErrorMessages() {
-                      var errorElements = document.querySelectorAll('.error');
-                      errorElements.forEach(function(errorElement) {
-                        errorElement.textContent = '';
-                      });
+                    // if (subcategorySelect.value == "") {
+                    //     var expsubcaterr = "Subcategory must be filled out";
+                    //     // alert("* Name must be filled out");
+                    //     document.getElementById("subcategory_error").innerHTML = expsubcaterr;
+                    //     document.getElementById("subcategory").focus();
+                    //     return false;
+                    // }
+
+                    if (experienceSelect.value == "") {
+                        var expexperr = "Experience must be filled out";
+                        // alert("* Name must be filled out");
+                        document.getElementById("experienceexp_error").innerHTML = expexperr;
+                        document.experienceform.experience.focus();
+                        return false;
                     }
 
-                    function displayError(message, elementId) {
-                      var errorElement = document.getElementById(elementId);
-                      errorElement.innerHTML = message;
-                      errorElement.style.color = 'red';
+                    if (companynameSelect.value == "") {
+                        var expcnameerr = "Company name must be filled out";
+                        // alert("* Name must be filled out");
+                        document.getElementById("companyname_error").innerHTML = expcnameerr;
+                        document.experienceform.companyname.focus();
+                        return false;
                     }
+                    
+                      }
+// ********************************************************************************************************************************
+
                   </script>
 
       <?php
@@ -3782,21 +3834,25 @@
                       <input type="file" class="form-control" id="certificate_pg" name="certificate_pg" >
                       <div id="certificate_pg_error" class="error"></div>
                   </div>
+
                   <div class="form-group" id="certificate_doctorate-group" style="display: none;">
                   <label for="certificate_doctorate">Doctorate Certificate Upload</label>
                   <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate" >
                   <div id="certificate_doctorate_error" class="error"></div>
                   </div>
 
-                  </div>
             
+                  </div>
 
               
                     <button type="submit" id="educationsubmit" class="btn btn-primary">Submit</button>
             
                     </form>
-             
+                    </div>
+
                   </div>
+                 
+<!-- ********************************************************************************************************************************************************************************************************* -->
                   <script>
                     // var educationFormCount = 1;
 
@@ -3832,222 +3888,6 @@
                     //   }
                     // }
 
-                    function validateForm() {
-                      var q = document.educationform.qualification.value;
-                      var dep = document.educationform.department.value;
-                      var scl = document.educationform.school.value;
-                      var per = document.educationform.percentage.value;
-                      var yop = document.educationform.year_passed.value;
-                      var tenth = document.educationform.certificate_10th.value;
-                      var tweleth = document.educationform.certificate_12th.value;
-                      var ug = document.educationform.certificate_ug.value;
-                      var pg = document.educationform.certificate_pg.value;
-                      var dc = document.educationform.certificate_doctorate.value;
-
-
-
-                      if (q == "") {
-                          var namesms2 = "* Qualification must be filled out";
-                          document.getElementById("qualification_error").innerHTML = namesms2;
-                          document.educationform.qualification.focus();
-                          return false;
-                      }else {
-                              document.getElementById("qualification_error").innerHTML = "";
-                            }
-
-                
-                      if (dep == "") {
-                          var namesms2 = "* Department must be filled out";
-                          document.getElementById("department_error").innerHTML = namesms2;
-                          document.educationform.department.focus();
-                          return false;
-                      }else {
-                              document.getElementById("department_error").innerHTML = "";
-                             }
-
-
-                      if (scl == "") {
-                          var namesms2 = "* school or college must be filled out";
-                          document.getElementById("school_error").innerHTML = namesms2;
-                          document.educationform.school.focus();
-                          return false;
-                      }else {
-                              document.getElementById("school_error").innerHTML = "";
-                             }
-
-
-                      if (per == "") {
-                          var namesms2 = "* Percentage must be filled out";
-                          document.getElementById("percentage_error").innerHTML = namesms2;
-                          document.educationform.percentage.focus();
-                          return false;
-                      }else {
-                              document.getElementById("percentage_error").innerHTML = "";
-                             }
-
-
-                      if (yop == "") {
-                          var namesms2 = "* Year of passed out must be filled out";
-                          document.getElementById("year_error").innerHTML = namesms2;
-                          document.educationform.year_passed.focus();
-                          return false;
-                      }else {
-                              document.getElementById("year_error").innerHTML = "";
-                             }
-
-
-                     if (tenth == "") {
-                          var namesms2 = "* 10 th certificate must be filled out";
-                          document.getElementById("certificate_10th_error").innerHTML = namesms2;
-                          document.educationform.certificate_10th.focus();
-                          return false;
-                      }else {
-                              document.getElementById("certificate_10th_error").innerHTML = "";
-                             }
-
-                     if (tweleth == "") {
-                          var namesms2 = "* 12 th certificate must be filled out";
-                          document.getElementById("certificate_12th_error").innerHTML = namesms2;
-                          document.educationform.certificate_12th.focus();
-                          return false;
-                      }else {
-                              document.getElementById("certificate_12th_error").innerHTML = "";
-                             }
-
-
-                     if (ug == "") {
-                          var namesms2 = "* UG certificate must be filled out";
-                          document.getElementById("certificate_ug_error").innerHTML = namesms2;
-                          document.educationform.certificate_ug.focus();
-                          return false;
-                      }else {
-                              document.getElementById("certificate_ug_error").innerHTML = "";
-                             }
-
-
-                
-                     if (pg == "") {
-                          var namesms2 = "* PG certificate must be filled out";
-                          document.getElementById("certificate_pg_error").innerHTML = namesms2;
-                          document.educationform.certificate_pg.focus();
-                          return false;
-                      }else {
-                              document.getElementById("certificate_pg_error").innerHTML = "";
-                             }
-
-
-                    if (dc == "") {
-                          var namesms2 = "* PG certificate must be filled out";
-                          document.getElementById("certificate_doctorate_error").innerHTML = namesms2;
-                          document.educationform.certificate_doctorate.focus();
-                          return false;
-                      }else {
-                              document.getElementById("certificate_doctorate_error").innerHTML = "";
-                             }
-
-
-
-
-
-
-
-
-
-           //             var qualification = document.getElementById('qualification').value;
-          //             var department = document.getElementById('department').value;
-          //             var school = document.getElementById('school').value;
-          //             var percentage = document.getElementById('percentage').value;
-          //             var yearPassed = document.getElementById('year_passed').value;
-          //             var certificate10th = document.getElementById('certificate_10th').value;
-          //             var certificate12th = document.getElementById('certificate_12th').value;
-          //             var certificateUg = document.getElementById('certificate_ug').value;
-          //             var certificatePg = document.getElementById('certificate_pg').value;
-          //             var certificate_doctorate = document.getElementById('certificate_doctorate').value;
-               
-
-          //             // Basic qualification validation
-          //             if (!qualification) {
-          //               alert("Please select a qualification");
-          //               displayError('Please select a qualification', 'qualification_error');
-          //               return false;
-          //             }
-
-
-          //             // Additional validation for "Bachelors," "Masters," and "Doctorate"
-          //             if (qualification === 'bachelors' || qualification === 'masters' || qualification === 'doctorate') {
-          //               var department = document.getElementById('department').value;
-          //               var school = document.getElementById('school').value;
-          //               var percentage = document.getElementById('percentage').value;
-          //               var yearPassed = document.getElementById('year_passed').value;
-                 
-
-          //               // Validate department
-          //               if (!department) {
-          //                 alert("Department is required for selected qualification");
-          //                 displayError('Department is required for selected qualification', 'department_error');
-          //                 return false;
-          //               }
-
-          //               // Validate school/collegename
-          //               if (!school) {
-          //                 alert("School/collegename is required");
-          //                 displayError('School/collegename is required', 'school_error');
-          //                 return false;
-          //               }
-
-          //               // Validate percentage
-          //               if (!percentage) {
-          //                 alert("Percentage is required");
-          //                 displayError('Percentage is required', 'percentage_error');
-          //                 return false;
-          //               }
-
-          //               // Validate year of passed out
-          //               if (!yearPassed) {
-          //                 alert("Year of Passed Out is required");
-          //                 displayError('Year of Passed Out is required', 'year_error');
-          //                 return false;
-          //               }
-
-          //                 // Validate 10th Certificate Upload
-          //             if (!certificate10th) {
-          //                 alert("Please upload your 10th certificate");
-          //                 displayError('Please upload your 10th certificate', 'certificate_10th_error');
-          //                 return false;
-          //             }
-
-          //             // Validate 12th Certificate Upload
-          //             if (!certificate12th) {
-          //                 alert("Please upload your 12th certificate");
-          //                 displayError('Please upload your 12th certificate', 'certificate_12th_error');
-          //                 return false;
-          //     }
-          //     // Validate UG Degree Certificate Upload
-          //     if (!certificateUg) {
-          //         alert("Please upload your UG degree certificate");
-          //         displayError('Please upload your UG degree certificate', 'certificate_ug_error');
-          //         return false;
-          //     }
-
-          //     // Validate PG Certificate Upload
-          //     if (!certificatePg) {
-          //         alert("Please upload your PG certificate");
-          //         displayError('Please upload your PG certificate', 'certificate_pg_error');
-          //         return false;
-          //     }
-          //     if (!certificateDoctorate) {
-          //     alert("Please upload your Doctorate certificate");
-          //     displayError('Please upload your Doctorate certificate', 'certificate_doctorate_error');
-          //     return false;
-          // }
-
-                
-          //             }
-
-
-          //             // Form is valid
-                      return true;
-                    }
 
                     function toggleFields() {
                       var selectedQualification = document.getElementById('qualification').value;
@@ -4127,20 +3967,228 @@
                           certificate12thGroup.style.display = 'none';
                           certificateUgGroup.style.display = 'none';
                           certificatedcGroup.style.display = 'none';
-
                         }
                         else if(selectedQualification === 'doctorate'){
                           certificate10thGroup.style.display = 'none';
                           certificate12thGroup.style.display = 'none';
                           certificateUgGroup.style.display = 'none';
                           certificatePgGroup.style.display = 'none';
-                   
-
+                  
                         }
-
-
                 
                     }
+
+
+
+    // ************************************************************************************************************************************
+                    function validateForm() {
+                      var q = document.educationform.qualification.value;
+                      var dep = document.educationform.department.value;
+                      var scl = document.educationform.school.value;
+                      var per = document.educationform.percentage.value;
+                      var yop = document.educationform.year_passed.value;
+                      var tenth = document.educationform.certificate_10th.value;
+                      var tweleth = document.educationform.certificate_12th.value;
+                      var ug = document.educationform.certificate_ug.value;
+                      var pg = document.educationform.certificate_pg.value;
+                      var dc = document.educationform.certificate_doctorate.value;
+
+
+
+                      if (q == "") {
+                          var namesms2 = "* Qualification must be filled out";
+                          document.getElementById("qualification_error").innerHTML = namesms2;
+                          document.educationform.qualification.focus();
+                          return false;
+                      }else {
+                              document.getElementById("qualification_error").innerHTML = "";
+                            }
+
+                
+                    //   if (dep == "") {
+                    //       var namesms2 = "* Department must be filled out";
+                    //       document.getElementById("department_error").innerHTML = namesms2;
+                    //       document.educationform.department.focus();
+                    //       return false;
+                    //   }else {
+                    //           document.getElementById("department_error").innerHTML = "";
+                    //          }
+
+
+                      if (scl == "") {
+                          var namesms2 = "* school or college must be filled out";
+                          document.getElementById("school_error").innerHTML = namesms2;
+                          document.educationform.school.focus();
+                          return false;
+                      }else {
+                              document.getElementById("school_error").innerHTML = "";
+                             }
+
+
+                      // if (per == "") {
+                      //     var namesms2 = "* Percentage must be filled out";
+                      //     document.getElementById("percentage_error").innerHTML = namesms2;
+                      //     document.educationform.percentage.focus();
+                      //     return false;
+                      // }else {
+                      //         document.getElementById("percentage_error").innerHTML = "";
+                      //        }
+
+
+                    //   if (yop == "") {
+                    //       var namesms2 = "* Year of passed out must be filled out";
+                    //       document.getElementById("year_error").innerHTML = namesms2;
+                    //       document.educationform.year_passed.focus();
+                    //       return false;
+                    //   }else {
+                    //           document.getElementById("year_error").innerHTML = "";
+                    //          }
+
+
+                    //  if (tenth == "") {
+                    //       var namesms2 = "* 10 th certificate must be filled out";
+                    //       document.getElementById("certificate_10th_error").innerHTML = namesms2;
+                    //       document.educationform.certificate_10th.focus();
+                    //       return false;
+                    //   }else {
+                    //           document.getElementById("certificate_10th_error").innerHTML = "";
+                    //          }
+
+                    //  if (tweleth == "") {
+                    //       var namesms2 = "* 12 th certificate must be filled out";
+                    //       document.getElementById("certificate_12th_error").innerHTML = namesms2;
+                    //       document.educationform.certificate_12th.focus();
+                    //       return false;
+                    //   }else {
+                    //           document.getElementById("certificate_12th_error").innerHTML = "";
+                    //          }
+
+
+                    //  if (ug == "") {
+                    //       var namesms2 = "* UG certificate must be filled out";
+                    //       document.getElementById("certificate_ug_error").innerHTML = namesms2;
+                    //       document.educationform.certificate_ug.focus();
+                    //       return false;
+                    //   }else {
+                    //           document.getElementById("certificate_ug_error").innerHTML = "";
+                    //          }
+
+                
+                    //  if (pg == "") {
+                    //       var namesms2 = "* PG certificate must be filled out";
+                    //       document.getElementById("certificate_pg_error").innerHTML = namesms2;
+                    //       document.educationform.certificate_pg.focus();
+                    //       return false;
+                    //   }else {
+                    //           document.getElementById("certificate_pg_error").innerHTML = "";
+                    //          }
+
+
+                    // if (dc == "") {
+                    //       var namesms2 = "* PG certificate must be filled out";
+                    //       document.getElementById("certificate_doctorate_error").innerHTML = namesms2;
+                    //       document.educationform.certificate_doctorate.focus();
+                    //       return false;
+                    //   }else {
+                    //           document.getElementById("certificate_doctorate_error").innerHTML = "";
+                    //          }
+
+// ***********************************************************************************************************************************
+
+
+
+           //            var qualification = document.getElementById('qualification').value;
+          //             var department = document.getElementById('department').value;
+          //             var school = document.getElementById('school').value;
+          //             var percentage = document.getElementById('percentage').value;
+          //             var yearPassed = document.getElementById('year_passed').value;
+          //             var certificate10th = document.getElementById('certificate_10th').value;
+          //             var certificate12th = document.getElementById('certificate_12th').value;
+          //             var certificateUg = document.getElementById('certificate_ug').value;
+          //             var certificatePg = document.getElementById('certificate_pg').value;
+          //             var certificate_doctorate = document.getElementById('certificate_doctorate').value;
+               
+
+          //             // Basic qualification validation
+          //             if (!qualification) {
+          //               alert("Please select a qualification");
+          //               displayError('Please select a qualification', 'qualification_error');
+          //               return false;
+          //             }
+
+          //             // Additional validation for "Bachelors," "Masters," and "Doctorate"
+          //             if (qualification === 'bachelors' || qualification === 'masters' || qualification === 'doctorate') {
+          //               var department = document.getElementById('department').value;
+          //               var school = document.getElementById('school').value;
+          //               var percentage = document.getElementById('percentage').value;
+          //               var yearPassed = document.getElementById('year_passed').value;
+                 
+
+          //               // Validate department
+          //               if (!department) {
+          //                 alert("Department is required for selected qualification");
+          //                 displayError('Department is required for selected qualification', 'department_error');
+          //                 return false;
+          //               }
+
+          //               // Validate school/collegename
+          //               if (!school) {
+          //                 alert("School/collegename is required");
+          //                 displayError('School/collegename is required', 'school_error');
+          //                 return false;
+          //               }
+
+          //               // Validate percentage
+          //               if (!percentage) {
+          //                 alert("Percentage is required");
+          //                 displayError('Percentage is required', 'percentage_error');
+          //                 return false;
+          //               }
+
+          //               // Validate year of passed out
+          //               if (!yearPassed) {
+          //                 alert("Year of Passed Out is required");
+          //                 displayError('Year of Passed Out is required', 'year_error');
+          //                 return false;
+          //               }
+
+          //                 // Validate 10th Certificate Upload
+          //             if (!certificate10th) {
+          //                 alert("Please upload your 10th certificate");
+          //                 displayError('Please upload your 10th certificate', 'certificate_10th_error');
+          //                 return false;
+          //             }
+
+          //             // Validate 12th Certificate Upload
+          //             if (!certificate12th) {
+          //                 alert("Please upload your 12th certificate");
+          //                 displayError('Please upload your 12th certificate', 'certificate_12th_error');
+          //                 return false;
+          //     }
+          //     // Validate UG Degree Certificate Upload
+          //     if (!certificateUg) {
+          //         alert("Please upload your UG degree certificate");
+          //         displayError('Please upload your UG degree certificate', 'certificate_ug_error');
+          //         return false;
+          //     }
+
+          //     // Validate PG Certificate Upload
+          //     if (!certificatePg) {
+          //         alert("Please upload your PG certificate");
+          //         displayError('Please upload your PG certificate', 'certificate_pg_error');
+          //         return false;
+          //     }
+          //     if (!certificateDoctorate) {
+          //     alert("Please upload your Doctorate certificate");
+          //     displayError('Please upload your Doctorate certificate', 'certificate_doctorate_error');
+          //     return false;
+          // }
+          //             }
+          //             // Form is valid
+
+                      return true;
+                    }
+
                   </script>
                   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
