@@ -242,7 +242,7 @@
         }
         }
 
-        .seekerdashboardcontent{
+        .seekerdashboardcontent{ 
              text-align: justify;
              text-indent: 50px;
              letter-spacing: 0.5px;
