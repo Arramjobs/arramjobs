@@ -1086,7 +1086,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="no_of_openings">No Of Openingsr :</label>
+                    <label for="no_of_openings">No of Openings :</label>
                     <input type="number" class="form-control" id="no_of_openings" name="no_of_openings">
                     <div id="no_of_openings_error" class="error"></div>
                 </div>
@@ -1462,7 +1462,7 @@
 
 
                 if (company_name.value === '') {
-                    alert("Please enter a Company Name");
+                    // alert("Please enter a Company Name");
                     displayError('Company Name must be filled out.', 'company_name_error');
                     return false;
                 } else if (company_name.value !== '') {
@@ -1470,7 +1470,7 @@
 
 
                     if (category.value === '') {
-                        alert("Please Select a Category");
+                        // alert("Please Select a Category");
                         displayError('Please Select a Category.', 'category_error');
                         return false;
                     } else if (category.value !== '') {
@@ -1479,7 +1479,7 @@
 
 
                     if (subcategory.value === "") {
-                        alert("Please Select a subcategory");
+                        // alert("Please Select a subcategory");
                         displayError('Please select a subcategory.', 'subcategory_error');
                         return false;
                     } else if (subcategory.value !== '') {
@@ -1488,7 +1488,7 @@
 
 
                     if (experience.value.trim() === "") {
-                        alert("Please enter a experience")
+                        // alert("Please enter a experience")
                         displayError('Experience must be filled out.', 'experience_error');
                         return false;
                     } else if (experience.value !== '') {
@@ -1498,7 +1498,7 @@
 
 
                     if (preferred_location.value.trim() === "") {
-                        alert("Please enter a preferred location")
+                        // alert("Please enter a preferred location")
                         displayError('Preferred location must be filled out  .', 'preferred_location_error');
                         return false;
                     } else if (preferred_location.value !== '') {
@@ -1508,7 +1508,7 @@
 
 
                     if (jobtype.value.trim() === "") {
-                        alert("Please enter a job type")
+                        // alert("Please enter a job type")
                         displayError('Please enter a jobtype.', 'jobtype_error');
                         return false;
                     } else if (jobtype.value !== '') {
@@ -1518,7 +1518,7 @@
 
 
                     if (expected_salary.value.trim() === "") {
-                        alert("Please enter a expected salary");
+                        // alert("Please enter a expected salary");
                         displayError('Please enter a expected_salary.', 'expected_salary_error');
                         return false;
                     } else if (expected_salary.value !== '') {
@@ -1526,7 +1526,7 @@
                     }
 
                     if (no_of_openings.value.trim() === "") {
-                        alert("Please enter a No O Openings")
+                        // alert("Please enter a No O Openings")
                         displayError('Please enter a no_of_openings.', 'no_of_openings_error');
                         return false;
                     } else if (no_of_openings.value !== '') {
@@ -1536,7 +1536,7 @@
 
 
                     if (description.value.trim() === "") {
-                        alert("Please enter a description")
+                        // alert("Please enter a description")
                         displayError('Please enter a description.', 'description_error');
                         return false;
                     } else if (description.value !== '') {
@@ -2049,7 +2049,7 @@
 
 
                 if (company_name.value === '') {
-                    alert("Please Enter a Company Name");
+                    // alert("Please Enter a Company Name");
                     displayError('company_name is required.', 'company_name_error');
                     return false;
                 } else if (company_name.value !== '') {
@@ -2057,7 +2057,7 @@
 
 
                     if (category.value === '') {
-                        alert("Please select a category");
+                        // alert("Please select a category");
                         displayError('Category is required.', 'category_error');
                         return false;
                     } else if (category.value !== '') {
@@ -2066,7 +2066,7 @@
 
 
                     if (subcategory.value === "") {
-                        alert("Please select a subcategory")
+                        // alert("Please select a subcategory")
                         displayError('Please select a subcategory.', 'subcategory_error');
                         return false;
                     } else if (subcategory.value !== '') {
@@ -2075,7 +2075,7 @@
 
 
                     if (experience.value.trim() === "") {
-                        alert("Please enter a experience");
+                        // alert("Please enter a experience");
                         displayError('Please enter a experience.', 'experience_error');
                         return false;
                     } else if (experience.value !== '') {
@@ -2085,7 +2085,7 @@
 
 
                     if (preferred_location.value.trim() === "") {
-                        alert("Please enter a preferred location");
+                        // alert("Please enter a preferred location");
                         displayError('Please enter a preferred_location.', 'preferred_location_error');
                         return false;
                     } else if (preferred_location.value !== '') {
@@ -2095,7 +2095,7 @@
 
 
                     if (jobtype.value.trim() === "") {
-                        alert("Please enter a job type");
+                        // alert("Please enter a job type");
                         displayError('Please enter a jobtype.', 'jobtype_error');
                         return false;
                     } else if (jobtype.value !== '') {
@@ -2105,7 +2105,7 @@
 
 
                     if (expected_salary.value.trim() === "") {
-                        alert("Please enter a expected salary");
+                        // alert("Please enter a expected salary");
                         displayError('Please enter a expected_salary.', 'expected_salary_error');
                         return false;
                     } else if (expected_salary.value !== '') {
@@ -2113,7 +2113,7 @@
                     }
 
                     if (no_of_openings.value.trim() === "") {
-                        alert("Please enter a No Of Openings");
+                        // alert("Please enter a No Of Openings");
                         displayError('Please enter a no_of_openings.', 'no_of_openings_error');
                         return false;
                     } else if (no_of_openings.value !== '') {
@@ -2123,7 +2123,7 @@
 
 
                     if (description.value.trim() === "") {
-                        alert("Please enter a description");
+                        // alert("Please enter a description");
                         displayError('Please enter a description.', 'description_error');
                         return false;
                     } else if (description.value !== '') {
