@@ -2734,16 +2734,16 @@
                       var email = document.getElementById("email");
 
                       if (category.value === '') {
-                        // alert("Category is required");
-                        displayError('Category is required.', 'category_error');
+                        alert("Please select a category");
+                        // displayError('Category is required.', 'category_error');
                         document.experienceform.category.focus();
                         return false;
                       }
 
                       if (subcategory.value === '') {
-                        // alert("Please select a subcategory");
-                        displayError('Please select a subcategory.', 'subcategory_error');
-                        document.experienceform.subcategory.focus();
+                        alert("Please select a subcategory");
+                        // displayError('Please select a subcategory.', 'subcategory_error');
+                        // document.experienceform.subcategory.focus();
                         return false;
                       }
 
@@ -2757,39 +2757,39 @@
                       // }
                       if (experience.value === '') {
                         alert("Please select an experience.");
-                        displayError('Please select an experience.', 'experienceexp_error');
-                        document.experienceform.experience.focus();
+                        // displayError('Please select an experience.', 'experienceexp_error');
+                        // document.experienceform.experience.focus();
                         return false;
                       }
 
                       if (companyname.value === '') {
-                        // alert("'Please enter a company name");
-                        displayError('Please enter a company name.', 'companyname_error');
-                        document.experienceform.companyname.focus();
+                        alert("Please enter a company name");
+                        // displayError('Please enter a company name.', 'companyname_error');
+                        // document.experienceform.companyname.focus();
                         return false;
                       }
 
                       if (role.value === '') {
-                        // alert("Please enter a role.");
-                        displayError('Please enter a role.', 'role_error');
-                        document.experienceform.role.focus();
+                        alert("Please enter a role.");
+                        // displayError('Please enter a role.', 'role_error');
+                        // document.experienceform.role.focus();
                         return false;
                       }
 
 
                       if (companyname.value === '') {
                         alert("please enter a company name");
-                        displayError('please enter a company name', 'companyname_error');
+                        // displayError('please enter a company name', 'companyname_error');
                         return false;
                       }
                       if (role.value === '') {
                         alert("please enter a role");
-                        displayError('please enter a role', 'role_error');
+                        // displayError('please enter a role', 'role_error');
                         return false;
                       }
                       if (name.value === '') {
                         alert("please enter a employer name");
-                        displayError('please enter a employer name', 'name_error');
+                        // displayError('please enter a employer name', 'name_error');
                         return false;
                       }
 
