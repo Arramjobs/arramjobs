@@ -480,6 +480,8 @@
                                         echo 'selected'; ?>>Single</option>
                                       <option value="married"<?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'married')
                                         echo 'selected'; ?>>Married</option>
+                                        <option value="widow"<?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'widow')
+                                        echo 'selected'; ?>>Widow</option>
                                     </select>
                                     <div id="maritalstatus_error" class="error"></div>
                                   </div>
@@ -548,7 +550,7 @@
                     }
 
                     if (y == "") {
-                                var emailsms = "email must be filled out";
+                                var emailsms = "Email must be filled out";
                                 // alert("email must be filled out");
                                 document.getElementById("emailid_error").innerHTML = emailsms;
                                 document.applicationform.email.focus();
@@ -2261,7 +2263,7 @@
                                                               <!-- <button class="btn btn-primary">View</button> -->
                                                               <!-- <button class="btn btn-warning">Update</button> -->
                                                               <!-- <button class="btn btn-danger">Delete</button> -->
-                                                              <a id="regis"id="updates" href="<?php echo baseUrl . "seekerController/updateExperience" ?>/<?php echo $value['id'] ?>">Update</a>
+                                                              <a id="regis"id="updates" href="<?php echo baseUrl . "seekerController/updateExperience" ?>/<?php echo $value['id'] ?>">Edit</a>
                                                               <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteExperience" ?>/<?php echo $value['id'] ?>">Delete</a>
                                                           </div>
                                                       </td>
@@ -2364,7 +2366,7 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="phone number">Mobile Number</label>
+                          <label for="number">Mobile Number</label>
                           <input type="text" class="form-control" id="number" name="number" placeholder="Enter mobile number">
                           <div id="mobilenum_error" class="error"></div>
                         </div>
@@ -2730,20 +2732,20 @@
                       var companyname = document.getElementById("companyname");
                       var role = document.getElementById("role");
                       var name = document.getElementById("nameofemployer");
-                      var phonenumber = document.getElementById("phonenumber");
-                      var email = document.getElementById("email");
+                      var phonenumber1 = document.getElementById("number");
+                      var email1 = document.getElementById("emailid");
 
                       if (category.value === '') {
-                        // alert("Category is required");
-                        displayError('Category is required.', 'category_error');
-                        document.experienceform.category.focus();
+                        alert("Please select a Category.");
+                        // displayError('Category is required.', 'category_error');
+                        // document.experienceform.category.focus();
                         return false;
                       }
 
                       if (subcategory.value === '') {
-                        // alert("Please select a subcategory");
-                        displayError('Please select a subcategory.', 'subcategory_error');
-                        document.experienceform.subcategory.focus();
+                        alert("Please select a subcategory.");
+                        // displayError('Please select a subcategory.', 'subcategory_error');
+                        // document.experienceform.subcategory.focus();
                         return false;
                       }
 
@@ -2757,42 +2759,51 @@
                       // }
                       if (experience.value === '') {
                         alert("Please select an experience.");
-                        displayError('Please select an experience.', 'experienceexp_error');
-                        document.experienceform.experience.focus();
+                        // displayError('Please select an experience.', 'experienceexp_error');
+                        // document.experienceform.experience.focus();
                         return false;
                       }
 
                       if (companyname.value === '') {
-                        // alert("'Please enter a company name");
-                        displayError('Please enter a company name.', 'companyname_error');
-                        document.experienceform.companyname.focus();
+                        alert("Company name must be filled out.");
+                        // displayError('Please enter a company name.', 'companyname_error');
+                        // document.experienceform.companyname.focus();
                         return false;
                       }
 
                       if (role.value === '') {
-                        // alert("Please enter a role.");
-                        displayError('Please enter a role.', 'role_error');
-                        document.experienceform.role.focus();
+                        alert("Role must be filled out.");
+                        // displayError('Please enter a role.', 'role_error');
+                        // document.experienceform.role.focus();
                         return false;
                       }
 
 
-                      if (companyname.value === '') {
-                        alert("please enter a company name");
-                        displayError('please enter a company name', 'companyname_error');
-                        return false;
-                      }
-                      if (role.value === '') {
-                        alert("please enter a role");
-                        displayError('please enter a role', 'role_error');
-                        return false;
-                      }
+                      // if (companyname.value === '') {
+                      //   alert("Company ");
+                      //   // displayError('please enter a company name', 'companyname_error');
+                      //   return false;
+                      // }
+                      // if (role.value === '') {
+                      //   alert("please enter a role");
+                      //   // displayError('please enter a role', 'role_error');
+                      //   return false;
+                      // }
                       if (name.value === '') {
-                        alert("please enter a employer name");
-                        displayError('please enter a employer name', 'name_error');
+                        alert("Name must be filled out.");
+                        // displayError('please enter a employer name', 'name_error');
                         return false;
                       }
-
+                      if (phonenumber1.value === '') {
+                        alert("Mobile number must be filled out.");
+                        // displayError('please enter a employer name', 'name_error');
+                        return false;
+                      }
+                      if (email1.value === '') {
+                        alert("Email must be filled out.");
+                        // displayError('please enter a employer name', 'name_error');
+                        return false;
+                      }
                       return true;
                     }
 
@@ -3684,7 +3695,7 @@
                                           <td><?php echo $value['yearOfPassing'] ?></td>
                                           <td>
                                               <div class="btn-group" role="group">
-                                                  <a id="regis" href="<?php echo baseUrl . "seekerController/updateEducation" ?>/<?php echo $value['id'] ?>">Update</a>
+                                                  <a id="regis" href="<?php echo baseUrl . "seekerController/updateEducation" ?>/<?php echo $value['id'] ?>">Edit</a>
                                                   <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteEducation" ?>/<?php echo $value['id'] ?>">Delete</a>
                                               </div>
                                           </td>
@@ -4916,7 +4927,7 @@
                         <td><?php echo $value['skilllevel'] ?></td> -->
                                           <td>
                                               <div class="btn-group" role="group">
-                                                  <a id="regis" href="<?php echo baseUrl . "seekerController/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>">Update</a>
+                                                  <a id="regis" href="<?php echo baseUrl . "seekerController/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>">Edit</a>
                                                   <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "seekerController/deleteAreaOfIntrest" ?>/<?php echo $value['id'] ?>">Delete</a>
                                               </div>
                                           </td>
@@ -5447,31 +5458,31 @@
                         }
 
                         if (preferredLocation.trim() === "") {
-                          alert("Please provide a preferred location.");
+                          alert("Preferred location must be filled out.");
                           return false;
                         }
 
                         if (experience.trim() === "") {
-                          alert("Please provide your experience.");
+                          alert("Experience must be filled out.");
                           return false;
                         }
 
-                        if (description.trim() === "") {
-                          alert("Please provide a description.");
-                          return false;
-                        }
+                        // if (description.trim() === "") {
+                        //   alert("Description must be filled out");
+                        //   return false;
+                        // }
 
                         if (jobtype.trim() === "") {
                           alert("Please select your job type.");
                           return false;
                         }
                         if (description.trim() === "") {
-                          alert("Please provide a description.");
+                          alert("Description must be filled out.");
                           return false;
                         }
                         
                         if (expectedSalary.trim() === "") {
-                          alert("Please provide a expected Salary.");
+                          alert("Expected salary must be filled out.");
                           return false;
                         }
                   
