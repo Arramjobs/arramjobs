@@ -7,7 +7,7 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-   <!-- Google Fonts -->
+  <!-- Google Fonts -->
 
   <style>
     .btn-primary {
@@ -105,7 +105,7 @@
       font-weight: bold;
     }
   </style>
-  <title>Employer Login Form</title>
+  <title>Employer Login Page</title>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
@@ -138,10 +138,10 @@
             <a class="nav-link mx-4" href="#how-it-works">How It Works</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#job-seekers">Seekers</a>
+            <a class="nav-link mx-4" href="#job-providers">Employer</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#job-providers">Providers</a>
+            <a class="nav-link mx-4" href="#job-seekers">Employee</a>
           </li>
           <li class="nav-item">
             <a class="nav-link mx-4" href="#blog">Blog</a>
@@ -151,7 +151,7 @@
   </nav>
 
   <div class="formcss container container-lg mt-5 mx-auto ">
-    <h3>Provider Login </h3>
+    <h3>Employer Login </h3>
     <form name="login_form" method="post" action="<?php echo baseUrl . "providerController/viewDashboard" ?>"
       onsubmit="return validateForm()">
       <div class="form-group">
@@ -163,7 +163,8 @@
       <div class="form-group">
         <label for="password">Company Mobile Number:</label>
         <!-- <input type="password" class="form-control" id="password" name="password"> -->
-        <input type="tel" class="form-control" id="password" name="number"  placeholder="Enter mobile number">    <!-- input type changed number to tel -->
+        <input type="tel" class="form-control" id="password" name="number" placeholder="Enter mobile number">
+        <!-- input type changed number to tel -->
         <div id="password_error" class="error"></div>
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
@@ -182,7 +183,7 @@
       var password = document.getElementById('password').value;
 
       if (userID.trim() === '') {
-         displayError('Company name must be filled out', 'userID_error');
+        displayError('Company name must be filled out', 'userID_error');
         //  document.getElementById("userID_error").innerHTML = "Name should be in atleast 2 characters";
 
         return false;
