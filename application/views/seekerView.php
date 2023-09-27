@@ -416,7 +416,7 @@
                                   </div>
                                   <div class="form-group">
                                     <label for="district">District *</label>
-                                    <input type="text" class="form-control" id="district" name="district" value="Erode" disabled>
+                                    <input type="text" class="form-control" id="district" name="district" value="Erode" readonly>
                                     <div id="district_error" class="error"></div>
                                   </div>
                                   <div class="form-group">
@@ -1046,7 +1046,7 @@
                                     <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id" placeholder="Enter your name">
                                   <div class="form-group">
                                   <label for="qualification">Educational Qualification</label>
-                                  <select class="form-control" id="qualification" value="<?php echo $value['educational_qualification'] ; ?>" name="qualification"  onchange="toggleFields()">
+                                  <select class="form-control" id="qualification" value="<?php echo $value['educational_qualification'] ; ?>" name="qualification"  onchange="toggleFields()" readonly>
                                       <option value="">Select Qualification</option>
                                       <option value="below_8th"<?php if ($value['educational_qualification'] === 'below_8th')
                                         echo ' selected'; ?>>Below 8th</option>
