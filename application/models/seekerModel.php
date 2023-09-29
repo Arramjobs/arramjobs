@@ -98,6 +98,7 @@
                 'address' => $postData['streetaddress'],
                 'landmark' => $postData['landmark'],
                 'pincode' => $postData['pincode'],
+                'district'=> $postData['district'],
                 'maritalstatus' => $postData['maritalstatus'],
                 // 'aadhar_front' => $postData['aadharfrontphoto'],
                 // 'aadhar_back' => $postData['aadharbackphoto'],

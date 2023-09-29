@@ -396,27 +396,27 @@
 
                                   <div class="form-group">
                                     <label for="Door no">Door no / Building Name *</label>
-                                    <input type="text" class="form-control" id="doorno" value="<?php echo isset($value['buildingName']) ? $value['buildingName'] : ''; ?>" name="doorno" >
+                                    <input type="text" class="form-control" id="doorno" value="<?php echo isset($value['buildingName']) ? $value['buildingName'] : ''; ?>" name="doorno" placeholder="Enter door no / building name">
                                     <div id="doorno_error" class="error"></div>
                                   </div>
                                   <div class="form-group">
                                     <label for="street address">Street Address *</label>
-                                    <input type="text" class="form-control" id="streetaddress" value="<?php echo isset($value['address']) ? $value['address'] : ''; ?>" name="streetaddress" >
+                                    <input type="text" class="form-control" id="streetaddress" value="<?php echo isset($value['address']) ? $value['address'] : ''; ?>" name="streetaddress" placeholder="Enter street address">
                                     <div id="streetaddress_error" class="error"></div>
                                   </div>
                                   <div class="form-group">
                                     <label for="landmark">Landmark *</label>
-                                    <input type="text" class="form-control" id="landmark" value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" name="landmark" >
+                                    <input type="text" class="form-control" id="landmark" value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" name="landmark" placeholder="Enter landmark">
                                     <div id="landmark_error" class="error"></div>
                                   </div>
                                   <div class="form-group">
                                     <label for="pincode">Pincode *</label>
-                                    <input type="text" class="form-control" id="pincode" value="<?php echo isset($value['pincode']) ? $value['pincode'] : ''; ?>" name="pincode" >
+                                    <input type="number" class="form-control" id="pincode" value="<?php echo isset($value['pincode']) ? $value['pincode'] : ''; ?>" name="pincode" placeholder="Enter pincode">
                                     <div id="pincode_error" class="error"></div>
                                   </div>
                                   <div class="form-group">
                                     <label for="district">District *</label>
-                                    <input type="text" class="form-control" id="district" name="district" value="Erode" readonly>
+                                    <input type="text" class="form-control" id="district"  value="Erode" name="district" readonly>
                                     <div id="district_error" class="error"></div>
                                   </div>
                                   <div class="form-group">
