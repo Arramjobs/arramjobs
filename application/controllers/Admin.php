@@ -8,6 +8,8 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->model('AdminModel');
         $this->load->library('session');
+        $this->load->model('RegistrationModel');
+        $this->load->model('SeekerModel');
     }
 
     public function index()
@@ -39,11 +41,14 @@ class Admin extends CI_Controller
     public function insertAdminUser(){
         $postData = $this->input->post(null, true);
         $register = $this->AdminModel->createAdminUser();
+        $this->adminUsers();
     }
 
     public function adminUsers()
     {
         $this->data['method'] = "adminUsers";
+        $adminUsers = $this->AdminModel->adminUsers();
+        $this->data['adminUsers'] = $adminUsers;
         $this->load->view('admindashboard.php', $this->data);
     }
 
@@ -53,15 +58,25 @@ class Admin extends CI_Controller
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function verifiedEmployers()
-    {
-        $this->data['method'] = "verifiedEmployers";
-        $this->load->view('admindashboard.php', $this->data);
+    public function insertEmployer(){
+        $postData = $this->input->post(null, true);
+        $responses = $this->RegistrationModel->register();
+        $this->unVerifiedEmployers();
     }
 
     public function unVerifiedEmployers()
     {
         $this->data['method'] = "unVerifiedEmployers";
+        $unVerifiedEmployers = $this->AdminModel->unVerifiedEmployers();
+        $this->data['unVerifiedEmployers'] = $unVerifiedEmployers;
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function verifiedEmployers()
+    {
+        $this->data['method'] = "verifiedEmployers";
+        $verifiedEmployers = $this->AdminModel->verifiedEmployers();
+        $this->data['verifiedEmployers'] = $verifiedEmployers;
         $this->load->view('admindashboard.php', $this->data);
     }
     
@@ -71,15 +86,25 @@ class Admin extends CI_Controller
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function verifiedCandidates()
-    {
-        $this->data['method'] = "verifiedCandidates";
-        $this->load->view('admindashboard.php', $this->data);
+    public function candidateRegistration(){
+        $postData = $this->input->post(null, true);
+        $register = $this->SeekerModel->register();
     }
 
     public function unVerifiedCandidates()
     {
         $this->data['method'] = "unVerifiedCandidates";
+        $unVerifiedCandidates = $this->AdminModel->unVerifiedCandidates();
+        $this->data['unVerifiedCandidates'] = $unVerifiedCandidates;
         $this->load->view('admindashboard.php', $this->data);
     }
+
+    public function verifiedCandidates()
+    {
+        $this->data['method'] = "verifiedCandidates";
+        $verifiedCandidates = $this->AdminModel->verifiedCandidates();
+        $this->data['verifiedCandidates'] = $verifiedCandidates;
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
 }

@@ -1157,7 +1157,7 @@
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
 
-                        <div class="filter">
+                        <!-- <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
@@ -1168,57 +1168,40 @@
                                 <li><a class="dropdown-item" href="#">This Month</a></li>
                                 <li><a class="dropdown-item" href="#">This Year</a></li>
                             </ul>
-                        </div>
+                        </div> -->
 
                         <div class="card-body">
-                            <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                            <h5 class="card-title">User List<span></span></h5>
 
-                            <table class="table table-borderless datatable">
+                            <!-- <table class="table table-borderless datatable"> -->
+                            <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Customer</th>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">S.No</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Mobile Number</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">User Role</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2457</a></th>
-                                        <td>Brandon Jacob</td>
-                                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                        <td>$64</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2147</a></th>
-                                        <td>Bridie Kessler</td>
-                                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                        <td>$47</td>
-                                        <td><span class="badge bg-warning">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2049</a></th>
-                                        <td>Ashleigh Langosh</td>
-                                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                        <td>$147</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2644</a></th>
-                                        <td>Angus Grady</td>
-                                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                        <td>$67</td>
-                                        <td><span class="badge bg-danger">Rejected</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2644</a></th>
-                                        <td>Raheem Lehner</td>
-                                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                        <td>$165</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
-                                    </tr>
+                                    <?php
+                                    $loopcount = 1;
+                                    foreach ($this->data['adminUsers'] as $key => $value) {
+                                    ?>
+                                        <tr>
+                                            <td><a href="#"><?php echo $loopcount; ?></a></td>
+                                            <td><?php echo $value['name']; ?></td>
+                                            <td><a href="#" class="text-primary"><?php echo $value['mobileNumber']; ?></a></td>
+                                            <td><?php echo $value['email']; ?></td>
+                                            <td><?php echo $value['userRole']; ?></td>
+                                            <td><span class="badge bg-success">Approved</span></td>
+                                        </tr>
+                                    <?php
+                                        $loopcount++;
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
 
@@ -1232,62 +1215,83 @@
         ?>
             <section class="Multi Columns Form">
                 <div class="pagetitle">
-                    <h1>Dashboard</h1>
+                    <h1>Create Employer</h1>
                     <nav>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item"><a href="">Home</a></li>
+                            <li class="breadcrumb-item active">Create Employer</li>
                         </ol>
                     </nav>
                 </div><!-- End Page Title -->
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Multi Columns Form</h5>
+                        <h5 class="card-title">Employer Registration Form</h5>
 
                         <!-- Multi Columns Form -->
-                        <form class="row g-3">
+                        <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/insertEmployer" ?>" method="post">
                             <div class="col-md-12">
-                                <label for="inputName5" class="form-label">Your Name</label>
-                                <input type="text" class="form-control" id="inputName5">
+                                <label for="inputName5" class="form-label">Company Name</label>
+                                <input type="text" class="form-control" id="inputName5" name="name" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputEmail5" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="inputEmail5">
+                                <label for="inputNumber5" class="form-label">Company Number</label>
+                                <input type="number" class="form-control" id="inputNumber5" name="mobile" required>
                             </div>
                             <div class="col-md-6">
+                                <label for="inputEmail5" class="form-label">Company Email</label>
+                                <input type="email" class="form-control" id="inputEmail5" name="email" required>
+                            </div>
+                            <!-- <div class="col-md-6">
                                 <label for="inputPassword5" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="inputPassword5">
+                            </div> -->
+                            <div class="col-12">
+                                <label for="inputAddress5" class="form-label">Street Address</label>
+                                <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address" required>
                             </div>
                             <div class="col-12">
-                                <label for="inputAddress5" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
-                            </div>
-                            <div class="col-12">
-                                <label for="inputAddress2" class="form-label">Address 2</label>
-                                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                <label for="inputAddress2" class="form-label">Landmark</label>
+                                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="landmark" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="inputCity" class="form-label">City</label>
-                                <input type="text" class="form-control" id="inputCity">
+                                <input type="text" class="form-control" id="inputCity" name="city" required>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
+                                <label for="inputCity" class="form-label">District</label>
+                                <input type="text" class="form-control" id="inputDistrict" name="district" required>
+                            </div>
+                            <div class="col-md-6">
                                 <label for="inputState" class="form-label">State</label>
-                                <select id="inputState" class="form-select">
-                                    <option selected>Choose...</option>
+                                <select id="inputState" class="form-select" name="state">
+                                    <option selected value="tamil nadu">Tamil Nadu</option>
                                     <option>...</option>
                                 </select>
                             </div>
-                            <div class="col-md-2">
-                                <label for="inputZip" class="form-label">Zip</label>
-                                <input type="text" class="form-control" id="inputZip">
+                            <div class="col-md-6">
+                                <label for="inputZip" class="form-label">Pincode</label>
+                                <input type="text" class="form-control" id="inputPincode" name="pincode">
                             </div>
-                            <div class="col-12">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">
-                                        Check me out
-                                    </label>
-                                </div>
+                            <div class="col-md-6">
+                                <label for="inputFile" class="form-label">Logo</label>
+                                <input type="file" class="form-control" id="inputFile" name="logo">
+                            </div>
+                            <h5 class="card-title">Contact Person Details</h5>
+                            <div class="col-md-6">
+                                <label for="inputEmail5" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="inputEmail5" name="name1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail5" class="form-label">Role</label>
+                                <input type="text" class="form-control" id="inputEmail5" name="role" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputNumber5" class="form-label">Mobile Number</label>
+                                <input type="number" class="form-control" id="inputNumber5" name="mobile1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail5" class="form-label">Email-ID</label>
+                                <input type="email" class="form-control" id="inputEmail5" name="email1" required>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -1303,71 +1307,71 @@
         ?>
             <section class="usertable">
                 <div class="pagetitle">
-                    <h1>unVerifiedEmployers</h1>
+                    <h1>Un Verified Employers</h1>
                     <nav>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">unVerifiedEmployers</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Un Verified Employers</a></li>
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                     </nav>
                 </div><!-- End Page Title -->
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Table with stripped rows</h5>
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
 
-                        <!-- Table with stripped rows -->
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Position</th>
-                                    <th scope="col">Age</th>
-                                    <th scope="col">Start Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Brandon Jacob</td>
-                                    <td>Designer</td>
-                                    <td>28</td>
-                                    <td>2016-05-25</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Bridie Kessler</td>
-                                    <td>Developer</td>
-                                    <td>35</td>
-                                    <td>2014-12-05</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Ashleigh Langosh</td>
-                                    <td>Finance</td>
-                                    <td>45</td>
-                                    <td>2011-08-12</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Angus Grady</td>
-                                    <td>HR</td>
-                                    <td>34</td>
-                                    <td>2012-06-11</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Raheem Lehner</td>
-                                    <td>Dynamic Division Officer</td>
-                                    <td>47</td>
-                                    <td>2011-04-19</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- End Table with stripped rows -->
+                        <!-- <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Filter</h6>
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">Today</a></li>
+                                <li><a class="dropdown-item" href="#">This Month</a></li>
+                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                            </ul>
+                        </div> -->
+
+                        <div class="card-body">
+                            <h5 class="card-title">Un Verified Employers<span></span></h5>
+
+                            <!-- <table class="table table-borderless datatable"> -->
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">S.No</th>
+                                        <th scope="col">Company Name</th>
+                                        <th scope="col"> Company Number</th>
+                                        <th scope="col">Contact Person Name</th>
+                                        <th scope="col">Contact Person Role</th>
+                                        <th scope="col">Contact Person Mobile</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $loopcount = 1;
+                                    foreach ($this->data['unVerifiedEmployers'] as $key => $value) {
+                                    ?>
+                                        <tr>
+                                            <td><a href="#"><?php echo $loopcount; ?></a></td>
+                                            <td><?php echo $value['company_name']; ?></td>
+                                            <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
+                                            <td><?php echo $value['name']; ?></td>
+                                            <td><?php echo $value['role']; ?></td>
+                                            <td><?php echo $value['mobile_number']; ?></td>
+                                            <td><span class="badge bg-success">Approved</span></td>
+                                        </tr>
+                                    <?php
+                                        $loopcount++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+
+                        </div>
 
                     </div>
-                </div>
+                </div><!-- End Recent Sales -->
             </section>
         <?php
         } elseif ($method == "verifiedEmployers") {
@@ -1382,63 +1386,63 @@
                         </ol>
                     </nav>
                 </div><!-- End Page Title -->
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Table with stripped rows</h5>
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
 
-                        <!-- Table with stripped rows -->
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Position</th>
-                                    <th scope="col">Age</th>
-                                    <th scope="col">Start Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Brandon Jacob</td>
-                                    <td>Designer</td>
-                                    <td>28</td>
-                                    <td>2016-05-25</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Bridie Kessler</td>
-                                    <td>Developer</td>
-                                    <td>35</td>
-                                    <td>2014-12-05</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Ashleigh Langosh</td>
-                                    <td>Finance</td>
-                                    <td>45</td>
-                                    <td>2011-08-12</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Angus Grady</td>
-                                    <td>HR</td>
-                                    <td>34</td>
-                                    <td>2012-06-11</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Raheem Lehner</td>
-                                    <td>Dynamic Division Officer</td>
-                                    <td>47</td>
-                                    <td>2011-04-19</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- End Table with stripped rows -->
+                        <!-- <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Filter</h6>
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">Today</a></li>
+                                <li><a class="dropdown-item" href="#">This Month</a></li>
+                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                            </ul>
+                        </div> -->
+
+                        <div class="card-body">
+                            <h5 class="card-title">Verified Employers<span></span></h5>
+
+                            <!-- <table class="table table-borderless datatable"> -->
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">S.No</th>
+                                        <th scope="col">Company Name</th>
+                                        <th scope="col"> Company Number</th>
+                                        <th scope="col">Contact Person Name</th>
+                                        <th scope="col">Contact Person Role</th>
+                                        <th scope="col">Contact Person Mobile</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $loopcount = 1;
+                                    foreach ($this->data['verifiedEmployers'] as $key => $value) {
+                                    ?>
+                                        <tr>
+                                            <td><a href="#"><?php echo $loopcount; ?></a></td>
+                                            <td><?php echo $value['company_name']; ?></td>
+                                            <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
+                                            <td><?php echo $value['name']; ?></td>
+                                            <td><?php echo $value['role']; ?></td>
+                                            <td><?php echo $value['mobile_number']; ?></td>
+                                            <td><span class="badge bg-success">Approved</span></td>
+                                        </tr>
+                                    <?php
+                                        $loopcount++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+
+                        </div>
 
                     </div>
-                </div>
+                </div><!-- End Recent Sales -->
             </section>
         <?php
         } elseif ($method == "createCandidates") {
@@ -1448,65 +1452,49 @@
                     <h1>createCandidates</h1>
                     <nav>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">createCandidates</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Create Candidates</a></li>
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                     </nav>
                 </div><!-- End Page Title -->
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Multi Columns Form</h5>
+                <div class="card mb-3">
 
-                        <!-- Multi Columns Form -->
-                        <form class="row g-3">
-                            <div class="col-md-12">
-                                <label for="inputName5" class="form-label">Your Name</label>
-                                <input type="text" class="form-control" id="inputName5">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputEmail5" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="inputEmail5">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputPassword5" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="inputPassword5">
-                            </div>
+                    <div class="card-body">
+
+                        <div class="pt-4 pb-2">
+                            <h5 class="card-title text-center pb-0 fs-4">Create New Candidate</h5>
+                        </div>
+
+                        <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/candidateRegistration" ?>" method="post">
                             <div class="col-12">
-                                <label for="inputAddress5" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
+                                <label for="yourName" class="form-label">Candidate Name</label>
+                                <input type="text" name="name" class="form-control" id="yourName" required>
+                                <div class="invalid-feedback">Please, enter your name!</div>
                             </div>
+
                             <div class="col-12">
-                                <label for="inputAddress2" class="form-label">Address 2</label>
-                                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                <label for="yourEmail" class="form-label">Candidate Email</label>
+                                <input type="email" name="email" class="form-control" id="yourEmail" required>
+                                <div class="invalid-feedback">Please, enter a valid Email adddress!</div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="inputCity" class="form-label">City</label>
-                                <input type="text" class="form-control" id="inputCity">
+
+                            <div class="col-12">
+                                <label for="yourEmail" class="form-label">Candidate Mobile</label>
+                                <input type="number" name="phonenumber" class="form-control" id="yourEmail" required>
+                                <div class="invalid-feedback">Please, enter mobile number!</div>
                             </div>
-                            <div class="col-md-4">
-                                <label for="inputState" class="form-label">State</label>
-                                <select id="inputState" class="form-select">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <label for="inputZip" class="form-label">Zip</label>
-                                <input type="text" class="form-control" id="inputZip">
-                            </div>
+
                             <div class="col-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">
-                                        Check me out
-                                    </label>
+                                    <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                                    <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                                    <div class="invalid-feedback">You must agree before submitting.</div>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100" type="submit">Create Account</button>
                             </div>
-                        </form><!-- End Multi Columns Form -->
+                        </form>
 
                     </div>
                 </div>
