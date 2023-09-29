@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Login Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="path/to/bootstrap.min.css"> -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <!-- Google Fonts -->
-
   <style>
     .btn-primary {
       background-color: #f39c12 !important;
@@ -17,8 +19,7 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f1f1f1;
-      margin: 0;
-      padding: 0;
+      width: 100%;
     }
 
     /* Navbar */
@@ -41,12 +42,6 @@
       padding-right: 15%;
     }
 
-    @media screen and (max-width:576px) {
-      .tamilcss {
-        padding-right: 8%;
-      }
-    }
-
     /* Form */
     .formcss {
       background-color: #fff;
@@ -59,6 +54,10 @@
     @media screen and (max-width:576px) {
       .formcss {
         width: 280px;
+      }
+
+      .tamilcss {
+        padding-right: 8%;
       }
     }
 
@@ -74,21 +73,14 @@
 
     label {
       font-weight: bold;
+      padding-bottom: 10px;
     }
 
-    .error {
-      color: red;
-      margin-top: 5px;
-    }
-
-    /* Form input styles */
     .form-control {
       border-radius: 3px;
-      border: 1px solid #ccc;
       padding: 10px;
     }
 
-    /* Form button style */
     .btn-primary {
       background-color: #4285f4;
       border: none;
@@ -103,24 +95,20 @@
       margin-top: 20px;
       padding: 12px;
       font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* to hide arrows in number */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
   </style>
-  <title>Employer Login Page</title>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
-  <!-- <div id="google_translate_element"></div>
-  <script src="https://translate.Google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en'
-      }, 'google_translate_element');
-    }
-  </script> -->
 </head>
 
 <body>
+
   <nav class="navcss navbar navbar-expand-lg sticky-top"
     style="background-color: navy; padding-top: 40px; padding-bottom: 40px;">
     <div class="container-fluid">
@@ -150,61 +138,73 @@
       </div>
   </nav>
 
-  <div class="formcss container container-lg mt-5 mx-auto ">
-    <h3>Employer Login </h3>
+
+  <div class="containers formcss container-lg mt-5 mx-auto">
+
+    <div class="" style="font-size: x-large">
+      <h3>Employer Login<h3>
+    </div>
     <form name="login_form" method="post" action="<?php echo baseUrl . "providerController/viewDashboard" ?>"
       onsubmit="return validateForm()">
       <div class="form-group">
         <label for="userID">Company Name:</label>
-        <!-- <input type="text" class="form-control" id="userID" name="userID" placeholder="Enter your user name"> -->
         <input type="text" class="form-control" id="userID" name="userName" placeholder="Enter company name">
-        <div id="userID_error" class="error"></div>
+        <p id="nameerr" style="color: red;"></p>
       </div>
       <div class="form-group">
         <label for="password">Company Mobile Number:</label>
-        <!-- <input type="password" class="form-control" id="password" name="password"> -->
         <input type="tel" class="form-control" id="password" name="number" placeholder="Enter mobile number">
-        <!-- input type changed number to tel -->
-        <div id="password_error" class="error"></div>
+        <p id="pherr" style="color: red;"></p>
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
-      <br>
-      <br>
     </form>
     <div id="sign">
       <p>Create an account ? <a id="regis" href="<?php echo baseUrl . "provider/registration" ?>">Register</a></p>
     </div>
   </div>
-  <br>
-  <br>
+
   <script>
     function validateForm() {
-      var userID = document.getElementById('userID').value;
-      var password = document.getElementById('password').value;
+      var x = document.login_form.userID.value;
+      var p = document.login_form.password.value;
 
-      if (userID.trim() === '') {
-        displayError('Company name must be filled out', 'userID_error');
-        //  document.getElementById("userID_error").innerHTML = "Name should be in atleast 2 characters";
-
+      if (x != "") {
+        if (x.length < 2) {
+          document.getElementById("nameerr").innerHTML = "Name should be in atleast 2 characters";
+          return false;
+        } else if (x.length > 50) {
+          document.getElementById("nameerr").innerHTML = "Name should not exceed 50 characters";
+          return false;
+        } else {
+          document.getElementById("nameerr").innerHTML = "";
+        }
+      } else if (x == "") {
+        var namesms1 = "Name must be filled out";
+        document.getElementById("nameerr").innerHTML = namesms1;
         return false;
       }
 
-      if (password.trim() === '') {
-        displayError('Mobile number must be filled out', 'password_error');
+      if (p != "") {
+        if (p.length < 10) {
+          document.getElementById("pherr").innerHTML = "Mobile number must be in 10 digits";
+          return false;
+        } else if (p.length > 11) {
+          document.getElementById("pherr").innerHTML = "Mobile number should not exceed 10 digits";
+          return false;
+        } else {
+          document.getElementById("pherr").innerHTML = "";
+        }
+      } else if (p == "") {
+        var phsms = "Mobile number must be filled out";
+        document.getElementById("pherr").innerHTML = phsms;
         return false;
       }
-
-      return true;
-    }
-
-    function displayError(errorMessage, errorElementId) {
-      var errorElement = document.getElementById(errorElementId);
-      errorElement.innerText = errorMessage;
     }
   </script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
 </body>
 
 </html>

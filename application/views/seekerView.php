@@ -1968,6 +1968,7 @@
                       var experience = document.getElementById("experience");
                       var companyname = document.getElementById("companyname");
                       var role = document.getElementById("role");
+
                       var ename = document.getElementById("nameofemployer");
                       var phonenumber1 = document.getElementById("number");
                       var email1 = document.getElementById("emailid");
@@ -1982,6 +1983,7 @@
                       if (subcategory.value == '') {
                         // alert("Please select a subcategory.");
                         displayError('Please select a subcategory', 'subcategory_error');
+
                         // document.experienceform.subcategory.focus();
                         return false;
                       }
@@ -1995,25 +1997,33 @@
                       //   return false;
                       // }
                       if (experience.value === '') {
+
                         // alert("Please select an experience.");
                         displayError('Please select an experience', 'experienceexp_error');
+
                         // document.experienceform.experience.focus();
                         return false;
                       }
 
                       if (companyname.value === '') {
+
                         // alert("Company name must be filled out.");
                         displayError('Company name must be filled out', 'companyname_error');
+
                         // document.experienceform.companyname.focus();
                         return false;
                       }
 
                       if (role.value === '') {
+            // displayError('Please enter a role.', 'role_error');
+
                         // alert("Role must be filled out.");
                         displayError('Role must be filled out', 'role_error');
+
                         // document.experienceform.role.focus();
                         return false;
                       }
+
 
  
                       if (ename.value === '') {
@@ -2029,6 +2039,7 @@
                       if (email1.value === '') {
                         // alert("Email must be filled out.");
                         displayError('Email id must be filled out', 'emailid_error');
+
                         return false;
                       }
                       return true;

@@ -14,15 +14,25 @@ class RegistrationModel extends CI_Model
     $postData = $this->input->post(null, true);
 
     $insert = array(
-      'company_name' => $postData['name'], 'company_mobile_number' => $postData['mobile'],
-      'company_email' => $postData['email'], 'street_address' => $postData['address'],
-      'Landmark' => $postData['landmark'], 'City' => $postData['city'], 'district' => $postData['district'],
-      'state' => $postData['state'], 'pincode' => $postData['pincode'],
-      'company_logo' => $postData['logo'], 'name' => $postData['name1'],
+      'company_name' => $postData['name'],
+      'company_mobile_number' => $postData['mobile'],
+      'company_email' => $postData['email'],
+      'street_address' => $postData['address'],
+      'Landmark' => $postData['landmark'],
+      'City' => $postData['city'],
+      'district' => $postData['district'],
+      'state' => $postData['state'],
+      'pincode' => $postData['pincode'],
+      'company_logo' => $postData['logo'],
+      'companywebsite' => $postData['cwebsite'],
+      'companypan' => $postData['cpan'],
+      'companygst' => $postData['cgst'],
+      'name' => $postData['name1'],
       'role' => $postData['role'],
-      'mobile_number' => $postData['mobile1'], 'email' => $postData['email1'],
+      'mobile_number' => $postData['mobile1'],
+      'email' => $postData['email1'],
     );
-    
+
 
     $this->db->insert('provider_registration_form', $insert);
   }
@@ -41,7 +51,7 @@ class RegistrationModel extends CI_Model
   //   return $count->result_array();
   // }
 
-  
+
   public function providerLogin()
   {
     $postData = $this->input->post(null, true);
@@ -57,7 +67,7 @@ class RegistrationModel extends CI_Model
 
   public function provider_detail()
   {
-    $jobProviderId=$_SESSION['jobProviderId'];
+    $jobProviderId = $_SESSION['jobProviderId'];
     $provider = "SELECT * FROM `provider_registration_form` Where `id`= $jobProviderId";
     $select = $this->db->query($provider);
     return $select->result_array();
@@ -77,13 +87,23 @@ class RegistrationModel extends CI_Model
     $postData = $this->input->post(null, true);
     $id = $postData['id'];
     $data = array(
-      'company_name' => $postData['name'], 'company_mobile_number' => $postData['phno'],
-      'company_email' => $postData['email'], 'street_address' => $postData['addr'],
-      'Landmark' => $postData['landmark1'], 'City' => $postData['city1'], 'district' => $postData['district1'],
-      'state' => $postData['state1'], 'pincode' => $postData['pincode1'],
-      'company_logo' => $postData['file'], 'name' => $postData['name1'],
+      'company_name' => $postData['name'],
+      'company_mobile_number' => $postData['phno'],
+      'company_email' => $postData['email'],
+      'street_address' => $postData['addr'],
+      'Landmark' => $postData['landmark1'],
+      'City' => $postData['city1'],
+      'district' => $postData['district1'],
+      'state' => $postData['state1'],
+      'pincode' => $postData['pincode1'],
+      'company_logo' => $postData['file'],
+      'companywebsite' => $postData['cwebsite1'],
+      'companypan' => $postData['cpan1'],
+      'companygst' => $postData['cgst1'],
+      'name' => $postData['name1'],
       'role' => $postData['role'],
-      'mobile_number' => $postData['phno1'], 'email' => $postData['mail1'],
+      'mobile_number' => $postData['phno1'],
+      'email' => $postData['mail1'],
 
     );
     $this->db->where('id', $id);
@@ -97,15 +117,21 @@ class RegistrationModel extends CI_Model
 
   public function addNew()
   {
-    $jobProviderId=$_SESSION['jobProviderId'];
+    $jobProviderId = $_SESSION['jobProviderId'];
     $post = $this->input->post(null, true);
 
     $add = array(
-       'jobProviderId' =>  $jobProviderId, 'company_name' => $post['company_name'], 'job_category_id' =>  $post['category'],
-      'jobCategory' => $post['category'], 'jobSubCategory' => $post['subcategory'],
-      'job_sub_category_id' => $post['subcategory'], 'location' => $post['preferred_location'],
-      'job_type' => $post['jobtype'], 'salary' => $post['expected_salary'],
-      'experience' => $post['experience'], 'number_of_openings' => $post['no_of_openings'],
+      'jobProviderId' => $jobProviderId,
+      'company_name' => $post['company_name'],
+      'job_category_id' => $post['category'],
+      'jobCategory' => $post['category'],
+      'jobSubCategory' => $post['subcategory'],
+      'job_sub_category_id' => $post['subcategory'],
+      'location' => $post['preferred_location'],
+      'job_type' => $post['jobtype'],
+      'salary' => $post['expected_salary'],
+      'experience' => $post['experience'],
+      'number_of_openings' => $post['no_of_openings'],
       'description' => $post['description']
     );
 
@@ -115,7 +141,7 @@ class RegistrationModel extends CI_Model
 
   public function addTab()
   {
-    $jobProviderId=$_SESSION['jobProviderId'];
+    $jobProviderId = $_SESSION['jobProviderId'];
     $providerAdd = "SELECT * FROM `provider_job` Where `jobProviderId`= $jobProviderId";
     $addtab = $this->db->query($providerAdd);
     return $addtab->result_array();
@@ -135,7 +161,7 @@ class RegistrationModel extends CI_Model
     $add = $this->db->query($update);
     return $add->result_array();
 
-    
+
   }
 
   public function update_job()
@@ -143,11 +169,16 @@ class RegistrationModel extends CI_Model
     $post = $this->input->post(null, true);
     $id = $post['id'];
     $addjob = array(
-      'company_name' => $post['company_name'], 'job_category_id' =>  $post['category'],
-      'jobCategory' => $post['category'], 'jobSubCategory' => $post['subcategory'],
-      'job_sub_category_id' => $post['subcategory'], 'location' => $post['preferred_location'],
-      'job_type' => $post['jobtype'], 'salary' => $post['expected_salary'],
-      'experience' => $post['experience'], 'number_of_openings' => $post['no_of_openings'],
+      'company_name' => $post['company_name'],
+      'job_category_id' => $post['category'],
+      'jobCategory' => $post['category'],
+      'jobSubCategory' => $post['subcategory'],
+      'job_sub_category_id' => $post['subcategory'],
+      'location' => $post['preferred_location'],
+      'job_type' => $post['jobtype'],
+      'salary' => $post['expected_salary'],
+      'experience' => $post['experience'],
+      'number_of_openings' => $post['no_of_openings'],
       'description' => $post['description']
     );
     $this->db->where('id', $id);
@@ -176,13 +207,14 @@ class RegistrationModel extends CI_Model
 
   public function candidates($jobCategory)
   {
-    $query = "SELECT spf.id as seekerId, spf.name as name, sed.educational_qualification as eq, sed.percentage as per, sk.experience as exp, sk.skill as skill,
-        saoi.id as id, saoi.other_interst_category as oic FROM seeker_profile_form spf INNER JOIN seeker_educational_details sed ON sed.seekerId = spf.id INNER JOIN seeker_skill sk ON sk.seekerId = spf.id INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId=spf.id WHERE  saoi.other_interst_category = '" . $jobCategory . "'";
+    $query = "SELECT spf.id as seekerId, spf.name as name, saoi.id as id, saoi.other_sub_interst_category as oisc, saoi.experience as exps,
+    saoi.skillname as skills FROM seeker_profile_form spf INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id
+    WHERE  saoi.other_interst_category = '" . $jobCategory . "'";
     $result = $this->db->query($query);
     return $result->result_array();
   }
 
-
+  
   public function allTableJoin()
   {
     $allTableJoins = "SELECT 
@@ -273,16 +305,21 @@ class RegistrationModel extends CI_Model
 
   public function matchedAllCandidate()
   {
-    $allTableJoins = "SELECT spf.id as seekerId, spf.name as name, sed.educational_qualification as eq, sed.percentage as per, sk.experience as exp, sk.skill as skill,
-        saoi.id as id, saoi.other_interst_category as oic FROM seeker_profile_form spf INNER JOIN seeker_educational_details sed ON sed.seekerId = spf.id INNER JOIN seeker_skill sk ON sk.seekerId = spf.id INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId=spf.id";
+    // $allTableJoins = "SELECT spf.id as seekerId, spf.name as name, sed.educational_qualification as eq, sed.percentage as per, saoi.id as id, 
+    // saoi.other_interst_category as oic, saoi.experience as exp , saoi.skillname as skill FROM seeker_profile_form spf 
+    // INNER JOIN seeker_educational_details sed ON sed.seekerId = spf.id INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id;";
+    $allTableJoins = "SELECT spf.id as seekerId, spf.name as name, spf.dateofbirth as dob, spf.gender as gender,
+     spf.district as dist FROM seeker_profile_form spf;";
     $result = $this->db->query($allTableJoins);
     return $result->result_array();
   }
 
   public function filterCandidate($jobCategory, $jobSubCategory)
   {
-    $query = "SELECT spf.id as seekerId, spf.name as name, sed.educational_qualification as eq, sed.percentage as per, sk.experience as exp, sk.skill as skill,
-        saoi.id as id, saoi.other_interst_category as oic, saoi.other_sub_interst_category as osic  FROM seeker_profile_form spf INNER JOIN seeker_educational_details sed ON sed.seekerId = spf.id INNER JOIN seeker_skill sk ON sk.seekerId = spf.id INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId=spf.id WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND  saoi.other_sub_interst_category = '" . $jobSubCategory . "'";
+    $query = "SELECT spf.id as seekerId, spf.name as name, sed.educational_qualification as eq, sed.percentage as per, se.experience as exp,
+    saoi.skillname as skill,saoi.id as id, saoi.other_interst_category as oic, saoi.other_sub_interst_category as osic  
+    FROM seeker_profile_form spf INNER JOIN seeker_educational_details sed ON sed.seekerId = spf.id INNER JOIN seeker_experience se 
+    ON se.seekerId = spf.id INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND  saoi.other_sub_interst_category = '" . $jobSubCategory . "'";
     $result = $this->db->query($query);
     return $result->result_array();
   }

@@ -245,8 +245,23 @@
                 </div>
                 <div class="">
                     <label for="file" class="form-label">Logo:</label>
-                    <input type="file" class="form-control" id="file" name="logo">
+                    <input type="file" class="form-control" id="file" name="logo" >
                     <p id="logerr" style="color: red;"></p>
+                </div>
+                <div class="">
+                    <label for="cwebsite" class="form-label">Website:</label>
+                    <input type="text" class="form-control" id="cwebsite" name="cwebsite" placeholder="Enter company website">
+                    <p id="weberr" style="color: red;"></p>
+                </div>
+                <div class="">
+                    <label for="cpan" class="form-label">Pan Number:</label>
+                    <input type="text" class="form-control" id="cpan" name="cpan" placeholder="Enter company pan number">
+                    <p id="panerr" style="color: red;"></p>
+                </div>
+                <div class="">
+                    <label for="cgst" class="form-label">GST Number:</label>
+                    <input type="text" class="form-control" id="cgst" name="cgst" placeholder="Enter company GST number">
+                    <p id="gsterr" style="color: red;"></p>
                 </div>
                 <br>
                 <!-- <h3 class=" grid-text-center d-flex justify-content-start text-dark bg-light bg-opacity-50 rounded-3 ms-5 me-5 mt-3"><center>Contact person details</center></h3> -->
@@ -360,6 +375,9 @@
             var y5 = document.forms.district.value;
             var y4 = document.forms.state.value;
             var l = document.forms.file.value;
+            var web = document.forms.cwebsite.value;
+            var pan = document.forms.cpan.value;
+            var gst = document.forms.cgst.value;
             var x1 = document.forms.name1.value;
             var p1 = document.forms.phno1.value;
             var a1 = document.forms.mail1.value;
@@ -368,7 +386,6 @@
 
             if (x != "") {
                 if (x.length < 2) {
-
                     document.getElementById("nameerr").innerHTML = "Name should be in atleast 2 characters";
                     document.forms.name.focus();
                     return false;
@@ -379,7 +396,6 @@
                     return false;
                 } else {
                     document.getElementById("nameerr").innerHTML = "";
-
                 }
             } else if (x == "") {
 
@@ -583,9 +599,24 @@
                 document.getElementById("pinerr").innerHTML = pincode;
                 document.forms.pincode.focus();
                 return false;
-
             }
 
+            // website pan gst
+                if (web.length > 50) {
+                    document.getElementById("weberr").innerHTML = "Website should not exceed 50 characters";
+                    document.forms.cwebsite.focus();
+                    return false;
+                } 
+                if (pan.length > 11) {
+                    document.getElementById("panerr").innerHTML = "Pan number should not exceed 10 characters";
+                    document.forms.cpan.focus();
+                    return false;
+                } 
+                if (gst.length > 15) {
+                    document.getElementById("gsterr").innerHTML = "GST number should not exceed 15 characters";
+                    document.forms.cgst.focus();
+                    return false;
+                } 
 
 
             if (x1 != "") {
