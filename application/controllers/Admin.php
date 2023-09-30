@@ -19,17 +19,27 @@ class Admin extends CI_Controller
 
     public function login()
     {
-        $this->load->view('providerLogin.php');
+        $this->load->view('adminLogin.php');
     }
 
-    public function registration()
-    {
-        $this->load->view('providerRegistration.php');
-    }
 
     public function dashboard(){
-        $this->data['method'] = "dashboard";
-        $this->load->view('admindashboard.php', $this->data);
+        $postData = $this->input->post(null, true);
+        $response = $this->AdminModel->adminLogin();
+        if (isset($response[0]['id'])) {
+            $adminLoggedIn = array(
+                'adminId' => $response[0]['id'],
+                'adminName' => $response[0]['name'],
+                'adminNumber' => $response[0]['mobileNumber'],
+                "role" => $response[0]['userRole']
+            );
+            $this->session->set_userdata($adminLoggedIn);
+            $this->data['method'] = "dashboard";
+            $this->load->view('admindashboard.php', $this->data);
+        } else {
+
+            $this->load->view('providerLogin.php');
+        }
     }
 
     public function createAdminUser()
@@ -105,6 +115,45 @@ class Admin extends CI_Controller
         $verifiedCandidates = $this->AdminModel->verifiedCandidates();
         $this->data['verifiedCandidates'] = $verifiedCandidates;
         $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function manageCandidate(){
+        $id = $this->uri->segment(3);
+        $this->data['method'] ="manageCandidate";
+
+        $education = $this->RegistrationModel->educationalDetails($id);
+        $this->data['education'] = $education;
+
+        $skills = $this->RegistrationModel->skills($id);
+        $this->data['skills'] = $skills;
+
+        // $projectDetails = $this->RegistrationModel->projectDetails($id);
+        // $this->data['projectDetails'] = $projectDetails;
+
+        $areaOfInterest = $this->RegistrationModel->areaOfInterest($id);
+        $this->data['areaOfInterest'] = $areaOfInterest;
+
+        $experienceDetails = $this->RegistrationModel->experienceDetails($id);
+        $this->data['experienceDetails'] = $experienceDetails;
+
+        $basicDetails = $this->RegistrationModel->candidate($id);
+        $this->data['basicDetails'] = $basicDetails;
+
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function verifyCandidate(){
+        $postData = $this->input->post(null, true);
+        $verifyCandidateDetails = $this->AdminModel->verifyCandidateDetails();
+
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('adminLoggedIn');
+        // $successMsg = array('msgClass' => 'warning', 'msgText' => 'Logged out successfully.');
+        //$this->session->set_flashdata('frontFlashMsg', $successMsg);
+        $this->index();
     }
 
 }

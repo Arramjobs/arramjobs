@@ -6,6 +6,15 @@
             parent::__construct();
         }
 
+        Public function adminLogin(){
+            $postData = $this->input->post(null, true);
+            $userName = $postData['userName'];
+            $password = $postData['password'];
+            $query = "SELECT * FROM admin_login WHERE `userName`='$userName' AND `password`='$password'";
+            $count = $this->db->query($query);
+            return $count->result_array();
+        }
+
         public function createAdminUser(){
             $postData = $this->input->post(null, true);
 
@@ -56,6 +65,16 @@
             $verifiedCandidates = "SELECT * FROM `seeker_profile_form` WHERE verificationStatus ='1'";
             $response = $this->db->query($verifiedCandidates);
             return $response->result_array();
+        }
+
+        public function verifyCandidateDetails(){
+            $postData = $this->input->post(null, true);
+            $updateVerificationStatus = array(
+                'verificationStatus' => $postData['verificationStatus']
+            );
+
+            $this->db->where('id', $postData['candidateId']);
+            $this->db->update('seeker_profile_form', $updateVerificationStatus);
         }
     }
 
