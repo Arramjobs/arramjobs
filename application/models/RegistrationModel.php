@@ -161,7 +161,6 @@ class RegistrationModel extends CI_Model
     $add = $this->db->query($update);
     return $add->result_array();
 
-
   }
 
   public function update_job()
