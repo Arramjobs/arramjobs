@@ -20,6 +20,7 @@
         {
             $responses = $this->RegistrationModel->register();
             $this->load->view('providerLogin.php');
+            echo '<script>alert("Registered successfully.");</script>';
         }
 
 
@@ -58,6 +59,7 @@
             } else {
 
                 $this->load->view('providerLogin.php');
+                echo '<script>alert("Please enter registered company details.");</script>';
             }
         }
         // public function viewDashboard()
@@ -144,6 +146,8 @@
 
             echo "Record updated successfully";
             $this->providerUpdateRegistration();
+            echo '<script>alert("Company profile updated successfully.");</script>';
+
         }
 
 
@@ -164,6 +168,7 @@
             // $this->load->view('jobs.php');
             echo "Record added seccessfuly";
             $this->jobViewTable();
+            echo '<script>alert("Job details inserted successfully.");</script>';
         }
 
         public function updateAddNew()
@@ -174,6 +179,7 @@
             $this->data['updateAddNew'] = $addjob;
             //$this->load->view('update_addnew_jobs.php',$this->data);
             $this->load->view('exampleDashboard.php', $this->data);
+
         }
         public function updateInsert()
         {
@@ -182,6 +188,7 @@
 
             echo "Record updated Successfully";
             $this->jobViewTable();
+            echo '<script>alert("Job details updated successfully.");</script>';
         }
         public function deleteAddJob()
         {

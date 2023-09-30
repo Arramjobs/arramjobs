@@ -290,7 +290,7 @@
             <li class="nav-item ">
               <h4 class="ms-1 mb-3">Create Profile</h4>
               <a class="nav-link btna active" href="<?php echo baseUrl . "seekerController/dash" ?>">
-              Seeker Dashboard
+              Employee Dashboard
               </a>
             </li><br>
             <li class="nav-item">
@@ -335,7 +335,7 @@
         if ($method == "dash") {
           ?>
                 <h1 class="seekerdashboard my-5" style="text-align:center;color:navy" id="w">
-                      Welcome To Job Seeker Dashboard
+                      Welcome To Job Employee Dashboard
                     </h1>
                     <p class="seekerdashboardcontent my-5 mx-md-5 px-5">At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're 
                     a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain
@@ -435,6 +435,7 @@
                                     <div id="maritalstatus_error" class="error"></div>
                                   </div>
                                   <h4  class="py-3" style="color:navy">Identification Details :</h4>
+
                                   <div class="form-group">
                                     <label for="aadharfrontphoto">Aadhar Front Photo *</label>
                                     <input type="file" class="form-control" id="aadharfrontphoto" value="<?php echo isset($value['aadhar_front']) ? $value['aadhar_front'] : ''; ?>" name="aadharfrontphoto" >
@@ -450,6 +451,9 @@
                                     <input type="file" class="form-control" id="photo" value="<?php echo isset($value['photo']) ? $value['photo'] : ''; ?>" name="photo" >
                                     <div id="photo_error" class="error"></div>
                                   </div>
+
+                                  <p style="color:red;textalign:center;font-size:small;margin-top:20px">The size of above attachment is below 1024KB</p>
+
                                   <button type="submit" name="submitBtn" class="btn btn-primary">Submit</button>
                               </form>
            
@@ -2807,7 +2811,17 @@
 
                             <div class="form-group">
                               <label for="experience">Experience</label>
-                              <input type="text" class="form-control" id="experience"  name="experience" placeholder="Enter experience" >
+                              <select class="form-control" id="experience" name="experience">
+                                <option value="">Select your experience</option>
+                                <option value="fresher" >Fresher</option>
+                                <option value="0-2" >0-2</option>
+                                <option value="3-5" >3-5</option>
+                                <option value="5-10">5-10</option>
+                                <option value="10-15">10-15</option>
+                                <option value="15-20">15-20</option>
+                                <option value="above 20 years">Above 20 years</option>
+                              </select>
+                              <!-- <input type="text" class="form-control" id="experience"  name="experience" placeholder="Enter experience" > -->
                               <div id="areaexp_error" class="error"></div>
                             </div>
 
@@ -2823,7 +2837,7 @@
                                 <option value="">Select a Job Type</option>
                                 <option value="parttime">Part Time</option>
                                 <option value="fulltime">Full Time</option>
-                                <option value="both">Both</option>
+                                <!-- <option value="both">Both</option> -->
                               </select>
                               <div id="areajob_error" class="error"></div>
                             </div>
@@ -3400,7 +3414,24 @@
                                               </div>
                                               <div class="form-group">
                                                 <label for="experience">Experience</label>
-                                                <input type="text" class="form-control" id="experience"  name="experience" value="<?php echo $value['experience']; ?>">
+                                                <select class="form-control" id="experience" name="experience" value="<?php echo $value['experience']; ?>">
+                                                  <!-- <option value="">Select your experience</option> -->
+                                                  <option value="fresher" <?php if ($value['experience'] === 'fresher')
+                                                    echo ' selected'; ?>>Fresher</option>
+                                                  <option value="0-2" <?php if ($value['experience'] === '0-2')
+                                                    echo ' selected'; ?>>0-2</option>
+                                                  <option value="3-5" <?php if ($value['experience'] === '3-5')
+                                                    echo ' selected'; ?>>3-5</option>
+                                                  <option value="5-10" <?php if ($value['experience'] === '5-10')
+                                                    echo ' selected'; ?>>5-10</option>
+                                                  <option value="10-15" <?php if ($value['experience'] === '10-15')
+                                                    echo ' selected'; ?>>10-15</option>
+                                                  <option value="15-20" <?php if ($value['experience'] === '15-20')
+                                                    echo ' selected'; ?>>15-20</option>
+                                                  <option value="above 20 years" <?php if ($value['experience'] === 'above 20 years')
+                                                    echo ' selected'; ?>>Above 20 years</option>
+                                                </select>
+                                                <!-- <input type="text" class="form-control" id="experience"  name="experience" value="<?php echo $value['experience']; ?>"> -->
                                                 <div id="areaexp_error" class="error"></div>
                                               </div>
 
@@ -3418,7 +3449,7 @@
                                                     echo ' selected'; ?>>Part Time</option>
                                                   <option value="fulltime"<?php if ($value['job_type'] === 'fulltime')
                                                     echo ' selected'; ?>>Full Time</option>
-                                                  <option value="both">Both</option>
+                                                  <!-- <option value="both">Both</option> -->
                                                 </select>
                                                 <div id="areajob_error" class="error"></div>
                                               </div>

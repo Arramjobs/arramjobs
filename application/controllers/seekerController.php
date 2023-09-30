@@ -49,6 +49,7 @@ class SeekerController extends CI_Controller
         } else {
 
             $this->load->view('loginform.php', $this->data);
+            echo '<script>alert("Please enter registered user details.");</script>';
         }
     }
 
@@ -57,6 +58,7 @@ class SeekerController extends CI_Controller
         $postData = $this->input->post(null, true);
         $register = $this->SeekerModel->register();
         $this->load->view('loginform.php');
+        echo '<script>alert("Registered successfully.");</script>';
     }
 
 
@@ -84,6 +86,7 @@ class SeekerController extends CI_Controller
         $updateBasicDetails = $this->SeekerModel->updateBasicDetails();
 
         $this->basicDetails();
+        echo '<script>alert("Basic details inserted successfully.");</script>';
     }
 
 
@@ -103,6 +106,7 @@ class SeekerController extends CI_Controller
             {
                 $this->data['method'] = "addEducationForm";
                 $this->load->view('seekerView.php', $this->data);
+
             }
 
             public function insertEducationForm()
@@ -110,6 +114,8 @@ class SeekerController extends CI_Controller
                 $insertEducationForm = $this->SeekerModel->insertEducationForm();
                
                 $this->educationTable();
+                echo '<script>alert("Education details inserted successfully.");</script>';
+
             }
             public function updateEducation()
             {
@@ -124,6 +130,8 @@ class SeekerController extends CI_Controller
                 $post = $this->input->post(null, true);
                 $updateInsertEducation = $this->SeekerModel->updateInsertEducation();
                 $this->educationTable();
+                echo '<script>alert("Education details updated successfully.");</script>';
+
             }
 
         
@@ -157,12 +165,15 @@ class SeekerController extends CI_Controller
              {
                  $this->data['method'] = "addExperirenceForm";
                  $this->load->view('seekerView.php', $this->data);
+
              }
              public function insertExperienceForm()
              {
                  $insertExperienceForm = $this->SeekerModel->insertExperienceForm();
                 
                  $this->experienceTable();
+                 echo '<script>alert("Experience details inserted successfully.");</script>';
+
              }
              public function updateExperience()
              {
@@ -178,6 +189,8 @@ class SeekerController extends CI_Controller
                  $post = $this->input->post(null, true);
                  $updateInsertExperience = $this->SeekerModel->updateInsertExperience();
                  $this->experienceTable();
+                 echo '<script>alert("Experience details updated successfully.");</script>';
+
              }
 
              public function deleteExperience()
@@ -266,6 +279,8 @@ class SeekerController extends CI_Controller
                         $insertAreaOfIntrest = $this->SeekerModel->insertAreaOfIntrest();
                     
                         $this->areaOfIntrestTable();
+                        echo '<script>alert("Area of interest inserted successfully.");</script>';
+
                     }
 
                     public function updateAreaOfIntrest()
@@ -283,6 +298,8 @@ class SeekerController extends CI_Controller
                         $post = $this->input->post(null, true);
                         $updateInsertAreaOfIntrest = $this->SeekerModel->updateInsertAreaOfIntrest();
                         $this->areaOfIntrestTable();
+                        echo '<script>alert("Area of interest updated successfully.");</script>';
+
                     }
 
                     public function deleteAreaOfIntrest()

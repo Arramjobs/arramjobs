@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard with Sidebar</title>
+    <title>Employer Page</title>
     <!-- Link to Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -343,6 +343,25 @@
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
+        }
+
+        /* To print candidate deatils */
+        @media print {
+        body {
+            visibility: hidden;
+        }
+       
+        #educationTable {
+            margin-left: -100px;
+            margin-top: -120px;
+            visibility: visible;
+            /* position: absolute;
+            left: 0;
+            top: 0; */
+        }
+        .printdiv{
+            visibility: hidden;
+        }
         }
     </style>
 
@@ -1609,8 +1628,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="jobtype">Job Type:</label>
-                                                <select class="form-control" id="jobtype" value=<?php echo $value['job_type']; ?> name="jobtype">
-                                                    <option value="">Select jobtype</option>
+                                                <select class="form-control" id="jobtype" value="<?php echo $value['job_type']; ?>" name="jobtype">
+                                                    <!-- <option value="">Select jobtype</option> -->
                                                     <option value="FullTime" <?php if ($value['job_type'] === 'Fulltime')
                                                         echo ' selected'; ?>>Full Time</option>
                                                     <option value="PartTime" <?php if ($value['job_type'] === 'Parttime')
@@ -2531,7 +2550,7 @@
                                                     <div class="form-group">
                                                         <label for="category" id="lab1">Category:</label>
                                                         <select class="form-control" id="category" name="category" onchange="updateSubcategories()" required>
-                                                            <option value="">Selest a Category</option>
+                                                            <option value="">Select a category</option>
                                                             <option value="architech">Architech</option>
                                                             <option value="developer">Developer</option>
                                                             <option value="tester">Tester</option>
@@ -2548,7 +2567,7 @@
                                                     <div class="form-group">
                                                         <label for="subcategory" id="lab">Subcategory:</label>
                                                         <select class="form-control" id="subcategory" name="subcategory" disabled required>
-                                                            <option value="">Select a Subcategory</option>
+                                                            <option value="">Select a subcategory</option>
                                                         </select>
                                                         <div id="subcategory_error" class="error"></div>
                                                     </div>
@@ -3591,10 +3610,16 @@
                                                             </div>
                                                         </ul>
 
-                                            </div>
+                                            <!-- </div> -->
+
+                                        <!-- To print the page -->
+                                        <div style="float:right;margin-bottom:25px" id="printdiv" >
+                                            <button onClick="window.print()" id="view"  >Print</button>
+                                            <button id="view">Request to Admin</button>
                                         </div>
-
-
+                                        </div>
+ 
+                               
         <?php
                 } else if ($this->data['method'] == "wishlist") {
                     ?>
