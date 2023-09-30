@@ -38,7 +38,7 @@ class Admin extends CI_Controller
             $this->load->view('admindashboard.php', $this->data);
         } else {
 
-            $this->load->view('providerLogin.php');
+            $this->load->view('adminLogin.php');
         }
     }
 
@@ -145,7 +145,7 @@ class Admin extends CI_Controller
     public function verifyCandidate(){
         $postData = $this->input->post(null, true);
         $verifyCandidateDetails = $this->AdminModel->verifyCandidateDetails();
-
+        $this->verifiedCandidates();
     }
 
     public function logout()

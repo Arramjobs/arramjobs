@@ -1155,11 +1155,19 @@
                 <!-- Default Card -->
                 <div class="card">
                     <div class="card-body">
-                        <img src="assets/img/card.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Candidate Resume</h5>
-                            <h5 class="card-title">Name : </h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <img class="h-100" src="<?php echo baseUrl . "assets/profilephoto.png" ?>" class="card-img-top" alt="...">
+                                </div>
+                                <div class="col">
+                                    <h2 class="">Candidate Resume</h2>
+                                    <h5 class="card-title">Name : <?php echo $this->data['basicDetails'][0]['name']; ?></h5>
+                                </div>
+                                <!-- <div class="col">
+                                    Column
+                                </div> -->
+                            </div>
                         </div>
                         <div class="card recent-sales overflow-auto">
                             <div class="card-body">
