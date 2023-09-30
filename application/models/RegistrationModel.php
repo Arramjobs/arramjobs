@@ -322,26 +322,6 @@ class RegistrationModel extends CI_Model
     return $result->result_array();
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // public function getFilteredRecords($category, $subcategory) {
   //         $this->db->select('*');
   //         $this->db->from('seeker_area_of_interst'); 
@@ -357,15 +337,5 @@ class RegistrationModel extends CI_Model
   //         $query = $this->db->get();
   //         return $query->result();
   //     }
-
-
-
-
-
-
-
-
-
-
 
 }

@@ -323,6 +323,7 @@
                 Experience Details
               </a>
             </li><br>
+
             <!-- </li><br> -->
             <li class="nav-item">
               <!-- <a class="nav-link" href="http://localhost/arramjobs/seekerController/areaOfInterest"> -->
@@ -330,6 +331,7 @@
                 Area of Job Interest
               </a>
             </li><br>
+
             <li class="nav-item">
               <!-- <a class="nav-link" href="http://localhost/arramjobs/seekerController/resume"> -->
               <a class="nav-link btna" href="<?php echo baseUrl . "seekerController/resume" ?>">
@@ -356,13 +358,14 @@
 
         <?php
         } else if ($method == 'basicdetails') {
+
         ?>
 
           <!-- 1 Basic details ******************************************************************************************************************************************************************************************* -->
 
+
           <div class="basicdetailcss container mt-5 mx-md-auto" id="page1">
             <h3>Basic Details</h3>
-
             <form name="applicationform" enctype="multipart/form-data" method="post" onsubmit="return group()" action='<?php echo baseUrl . "seekerController/updateBasicDetails" ?>'>
               <?php
               foreach ($basicDetails as $key => $value) {
@@ -719,6 +722,7 @@
                 ?>
 
 
+
               <?php
             } elseif ($method == 'addEducationForm') {
               ?>
@@ -726,6 +730,7 @@
 
                 <div class="eduformcss container mt-5 mx-md-auto" id="education">
                   <h3>Add Education Details</h3>
+
 
                   <div id="educationFormsContainer">
                     <div class="education-form-container">
@@ -935,13 +940,13 @@
                       return true;
                     }
 
-
                     function toggleFields() {
                       var selectedQualification = document.getElementById('qualification').value;
                       var departmentGroup = document.getElementById('department-group');
                       var schoolGroup = document.getElementById('school-group');
                       var percentageGroup = document.getElementById('percentage-group');
                       var yearGroup = document.getElementById('year-group');
+
                       var certificate10thGroup = document.getElementById('certificate_10th-group');
                       var certificate12thGroup = document.getElementById('certificate_12th-group');
                       var certificateUgGroup = document.getElementById('certificate_ug-group');
@@ -956,17 +961,20 @@
                         schoolGroup.style.display = 'none';
                         percentageGroup.style.display = 'none';
                         yearGroup.style.display = 'none';
+
                         certificate10thGroup.style.display = 'none';
                         certificate12thGroup.style.display = 'none';
                         certificateUgGroup.style.display = 'none';
                         certificatePgGroup.style.display = 'none';
                         certificatedcGroup.style.display = 'none';
+
                         addButton.style.display = 'none';
 
                       } else {
                         // Show the school, percentage, and year fields by default
                         schoolGroup.style.display = 'block';
                         percentageGroup.style.display = 'block';
+
                         certificate10thGroup.style.display = 'block';
                         certificate12thGroup.style.display = 'block';
                         certificateUgGroup.style.display = 'block';
@@ -1020,6 +1028,7 @@
 
                       }
 
+
                     }
                   </script>
                   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -1028,8 +1037,6 @@
 
 
                 <?php
-
-
               } elseif ($method == 'updateEducation') {
                 ?>
                   <!-- 2 2 Educational  Update********************************************************************************************************************************** -->
@@ -1094,20 +1101,26 @@
                               </div>
 
                               <div class="form-group" id="school-group" style="display: none;">
+
                                 <label for="school">Institution Name</label>
                                 <input type="text" class="form-control" id="school" value="<?php echo $value['school_college_name']; ?>" name="school" required>
                                 <div id="school_error" class="error"></div>
+
                               </div>
 
                               <div class="form-group" id="percentage-group" style="display: none;">
                                 <label for="percentage">Percentage</label>
+
                                 <input type="text" class="form-control" id="percentage" id="school" value="<?php echo $value['percentage']; ?>" name="percentage" required>
+
                                 <div id="percentage_error" class="error"></div>
                               </div>
 
                               <div class="form-group" id="year-group" style="display: none;">
                                 <label for="year_passed">Year of Passed Out</label>
+
                                 <input type="number" class="form-control" id="year_passed" value="<?php echo $value['yearOfPassing']; ?>" name="year_passed" required>
+
                                 <div id="year_error" class="error"></div>
                               </div>
 
@@ -1215,6 +1228,7 @@
                         <div id="certificate_pg_error" class="error"></div>
                       </div>
                       <div class="form-group" id="certificate_doctorate-group" style="display: none;">
+
                         <label for="certificate_doctorate">Doctorate Certificate Upload*</label>
                         <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate">
                         <div id="certificate_doctorate_error" class="error"></div>
@@ -1517,8 +1531,6 @@
               </table>
             </div>
           </div>
-
-
         <?php
               } elseif ($method == 'addExperirenceForm') {
         ?>
@@ -1555,7 +1567,6 @@
                 </select>
                 <div id="subcategory_error" class="error"></div>
               </div>
-
 
               <div class="form-group">
                 <label for="experience">Experience</label>
@@ -4113,7 +4124,6 @@
           });
         }
       </script>
-
 
 </body>
 
