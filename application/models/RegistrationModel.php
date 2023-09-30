@@ -160,7 +160,6 @@ class RegistrationModel extends CI_Model
     $update = "SELECT * FROM `provider_job` Where `id`=$id";
     $add = $this->db->query($update);
     return $add->result_array();
-
   }
 
   public function update_job()
@@ -213,7 +212,7 @@ class RegistrationModel extends CI_Model
     return $result->result_array();
   }
 
-  
+
   public function allTableJoin()
   {
     $allTableJoins = "SELECT 
@@ -323,26 +322,6 @@ class RegistrationModel extends CI_Model
     return $result->result_array();
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // public function getFilteredRecords($category, $subcategory) {
   //         $this->db->select('*');
   //         $this->db->from('seeker_area_of_interst'); 
@@ -358,15 +337,5 @@ class RegistrationModel extends CI_Model
   //         $query = $this->db->get();
   //         return $query->result();
   //     }
-
-
-
-
-
-
-
-
-
-
 
 }
