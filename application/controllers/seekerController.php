@@ -26,7 +26,7 @@ class SeekerController extends CI_Controller
     public function otpregister()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $response = $this->SeekerModel->otp();
+            // $response = $this->SeekerModel->otp();
             echo "<script>window.location.href = 'dash';</script>";
         }
 

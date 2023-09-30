@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employer Registration Form</title>
+    <title>Employer Registration Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="path/to/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="path/to/bootstrap.min.css"> -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Google Fonts -->
     <style>
         .btn-primary {
             background-color: #f39c12 !important;
@@ -26,9 +29,34 @@
         }
 
         /* Navbar */
-        nav ul li a:hover {
-            color: #F8802A !important;
+        .navcss {
+            color: white;
+            font-weight: bold;
         }
+
+        .navbar-nav li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar-nav li a:hover {
+            color: #F8802A;
+            text-decoration: none;
+        }
+
+        .tamilcss {
+            padding-right: 15%;
+        }
+
+        @media screen and (max-width:576px) {
+            .tamilcss {
+                padding-right: 8%;
+            }
+        }
+
+        /* nav ul li a:hover {
+            color: #F8802A !important;
+        } */
 
         /* Form */
         .formcss {
@@ -97,9 +125,9 @@
         /* to hide arrows in number */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-         margin: 0;
-}
+            -webkit-appearance: none;
+            margin: 0;
+        }
     </style>
 
 
@@ -118,46 +146,33 @@
         }
     </script> -->
 
-    <nav class="navbar navbar-expand-lg" style="background-color: navy; padding-top: 30px; padding-bottom: 30px;">
-        <div class="container">
-            <!-- <img src="logo 1.jpeg" alt="Arram Jobs" width="120" height="50"> -->
-            <h4 style="color: white">அறம் வேலைவாய்ப்பு</h4>
-            <!-- <a href="" style="color: white">ArramJobs</a> -->
+    <nav class="navcss navbar navbar-expand-lg sticky-top"
+        style="background-color: navy; padding-top: 40px; padding-bottom: 40px;">
+        <div class="container-fluid">
+            <h5 class="tamilcss mx-sm-4" style="color:white;">அறம் வேலைவாய்ப்பு</h5>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="material-symbols-outlined text-light px-sm-4">menu</span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
                 <ul class="navbar-nav">
-                    <!-- <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white; padding-right: 40px;">Home</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about" style="color: white; padding-right: 40px;">About Us</a>
+                    <li class="nav-item ">
+                        <a class="nav-link mx-4" href="#about-us">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#provider" style="color: white; padding-right: 40px;">Provider</a>
+                        <a class="nav-link mx-4" href="#how-it-works">How It Works</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#seeker" style="color: white; padding-right: 40px;">Seeker</a>
+                        <a class="nav-link mx-4" href="#job-providers">Employer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white; padding-right: 40px;">BLOG</a>
+                        <a class="nav-link mx-4" href="#job-seekers">Employee</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white; padding-right: 40px;">Contact</a>
+                        <a class="nav-link mx-4" href="#blog">Blog</a>
                     </li>
                 </ul>
-                <!-- <div> -->
-                    <!-- <form class="d-flex" role="search">
-                        <button class="btn btn-danger btn-lg">LogIn</button>
-                    </form> -->
-                    <!-- <div class="dropdown" style="margin-left: 15px;">
-                        <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            LogIn
-                        </button>
-                    </div>
-                </div> -->
+            </div>
     </nav>
 
 
@@ -166,7 +181,7 @@
 
             <!-- <h4 class="grid-text-center d-flex justify-content-start text-dark bg-secondary bg-opacity-5 rounded-3 ms-5 me-5 mt-3"><center>Company Details</center></h4> -->
             <div class="" style="font-size: x-large">
-                <h3>Provider Registration Form<h3>
+                <h3>Employer Registration Form<h3>
             </div>
             <div class="">
                 <h4 class="mx-auto">Company Details</h4>
@@ -184,7 +199,8 @@
                 </div>
                 <div class=" ">
                     <label for="phno" class="form-label">Number:</label>
-                    <input type="number" class="form-control" id="phno" name="mobile" placeholder="Enter company mobile number">
+                    <input type="number" class="form-control" id="phno" name="mobile"
+                        placeholder="Enter company mobile number">
                     <p id="pherr" style="color: red;"></p>
                 </div>
                 <div class="">
@@ -194,12 +210,14 @@
                 </div>
                 <div class=" ">
                     <label for="addr" class="form-label">Street Address:</label>
-                    <input type="text" class="form-control" id="addr" name="address" placeholder="Enter company address">
+                    <input type="text" class="form-control" id="addr" name="address"
+                        placeholder="Enter company address">
                     <p id="adderr" style="color: red;"></p>
                 </div>
                 <div class="">
-                <label for="addr" class="form-label">Landmark:</label>
-                    <input type="text" class="form-control" id="landmark" name="landmark" placeholder="Enter company landmark">
+                    <label for="addr" class="form-label">Landmark:</label>
+                    <input type="text" class="form-control" id="landmark" name="landmark"
+                        placeholder="Enter company landmark">
                     <p id="landerr" style="color: red;"></p>
                 </div>
                 <div class=" ">
@@ -209,7 +227,8 @@
                 </div>
                 <div class=" ">
                     <label for="addr" class="form-label">District:</label>
-                    <input type="text" class="form-control" id="district" name="district" placeholder="Enter company district">
+                    <input type="text" class="form-control" id="district" name="district"
+                        placeholder="Enter company district">
                     <p id="diserr" style="color: red;"></p>
                 </div>
                 <div class=" ">
@@ -220,13 +239,29 @@
 
                 <div class=" ">
                     <label for="addr" class="form-label">Pincode:</label>
-                    <input type="number" class="form-control" id="pincode" name="pincode" placeholder="Enter company pincode">
+                    <input type="number" class="form-control" id="pincode" name="pincode"
+                        placeholder="Enter company pincode">
                     <p id="pinerr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="file" class="form-label">Logo:</label>
-                    <input type="file" class="form-control" id="file" name="logo">
+                    <input type="file" class="form-control" id="file" name="logo" >
                     <p id="logerr" style="color: red;"></p>
+                </div>
+                <div class="">
+                    <label for="cwebsite" class="form-label">Website:</label>
+                    <input type="text" class="form-control" id="cwebsite" name="cwebsite" placeholder="Enter company website">
+                    <p id="weberr" style="color: red;"></p>
+                </div>
+                <div class="">
+                    <label for="cpan" class="form-label">Pan Number:</label>
+                    <input type="text" class="form-control" id="cpan" name="cpan" placeholder="Enter company pan number">
+                    <p id="panerr" style="color: red;"></p>
+                </div>
+                <div class="">
+                    <label for="cgst" class="form-label">GST Number:</label>
+                    <input type="text" class="form-control" id="cgst" name="cgst" placeholder="Enter company GST number">
+                    <p id="gsterr" style="color: red;"></p>
                 </div>
                 <br>
                 <!-- <h3 class=" grid-text-center d-flex justify-content-start text-dark bg-light bg-opacity-50 rounded-3 ms-5 me-5 mt-3"><center>Contact person details</center></h3> -->
@@ -237,23 +272,26 @@
 
                 <div class=" ">
                     <label for="name1" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name1" name="name1" placeholder="Enter contact person name"
-                        onkeypress="return allowOnlyLetters1(event, this)">
+                    <input type="text" class="form-control" id="name1" name="name1"
+                        placeholder="Enter contact person name" onkeypress="return allowOnlyLetters1(event, this)">
                     <p id="nameerr1" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="role" class="form-label">Role:</label>
-                    <input type="text" class="form-control" id="role" name="role" placeholder="Enter contact person role">
+                    <input type="text" class="form-control" id="role" name="role"
+                        placeholder="Enter contact person role">
                     <p id="rolerr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="phno1" class="form-label">Mobile Number:</label>
-                    <input type="tel" class="form-control" id="phno1" name="mobile1" placeholder="Enter contact person number">
+                    <input type="tel" class="form-control" id="phno1" name="mobile1"
+                        placeholder="Enter contact person number">
                     <p id="pherr1" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="mail1" class="form-label">Email-ID:</label>
-                    <input type="email" class="form-control" id="mail1" name="email1" placeholder="Enter contact person Email">
+                    <input type="email" class="form-control" id="mail1" name="email1"
+                        placeholder="Enter contact person Email">
                     <p id="mailerr1" style="color: red;"></p>
                 </div>
 
@@ -267,7 +305,7 @@
             <br>
             <div id="sign" class="">
                 <!-- <p>Already have an account ? <a id="regis" href="http://localhost/arramjobs/provider/login">login</a></p> -->
-                <p>Already have an account ? <a id="regis" href="<?php echo baseUrl . "provider/login" ?>">login</a></p>
+                <p>Already have an account ? <a id="regis" href="<?php echo baseUrl . "provider/login" ?>">Login</a></p>
             </div>
 
 
@@ -337,6 +375,9 @@
             var y5 = document.forms.district.value;
             var y4 = document.forms.state.value;
             var l = document.forms.file.value;
+            var web = document.forms.cwebsite.value;
+            var pan = document.forms.cpan.value;
+            var gst = document.forms.cgst.value;
             var x1 = document.forms.name1.value;
             var p1 = document.forms.phno1.value;
             var a1 = document.forms.mail1.value;
@@ -345,7 +386,6 @@
 
             if (x != "") {
                 if (x.length < 2) {
-
                     document.getElementById("nameerr").innerHTML = "Name should be in atleast 2 characters";
                     document.forms.name.focus();
                     return false;
@@ -356,7 +396,6 @@
                     return false;
                 } else {
                     document.getElementById("nameerr").innerHTML = "";
-
                 }
             } else if (x == "") {
 
@@ -560,9 +599,24 @@
                 document.getElementById("pinerr").innerHTML = pincode;
                 document.forms.pincode.focus();
                 return false;
-
             }
 
+            // website pan gst
+                if (web.length > 50) {
+                    document.getElementById("weberr").innerHTML = "Website should not exceed 50 characters";
+                    document.forms.cwebsite.focus();
+                    return false;
+                } 
+                if (pan.length > 11) {
+                    document.getElementById("panerr").innerHTML = "Pan number should not exceed 10 characters";
+                    document.forms.cpan.focus();
+                    return false;
+                } 
+                if (gst.length > 15) {
+                    document.getElementById("gsterr").innerHTML = "GST number should not exceed 15 characters";
+                    document.forms.cgst.focus();
+                    return false;
+                } 
 
 
             if (x1 != "") {

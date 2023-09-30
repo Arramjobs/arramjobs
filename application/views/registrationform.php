@@ -62,7 +62,7 @@
       }
     }
 
-    .formcss h2 {
+    .formcss h3 {
       text-align: center;
       margin-bottom: 30px;
       color: navy;
@@ -105,7 +105,7 @@
       font-weight: bold;
     }
   </style>
-  <title>Employee Registration </title>
+  <title>Employee Registration Page</title>
 </head>
 
 <body>
@@ -127,10 +127,10 @@
             <a class="nav-link mx-4" href="#how-it-works">How It Works</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#job-seekers">Seekers</a>
+            <a class="nav-link mx-4" href="#job-providers">Employer</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#job-providers">Providers</a>
+            <a class="nav-link mx-4" href="#job-seekers">Employee</a>
           </li>
           <li class="nav-item">
             <a class="nav-link mx-4" href="#blog">Blog</a>
@@ -140,10 +140,9 @@
   </nav>
 
   <div class="formcss container container-lg mt-5 mx-auto">
-    <h2>
-      <center>Employee Registration </center>
-    </h2>
-    <br>
+    <h3>
+      Employee Registration Form
+    </h3>
     <!-- <form name="registration_form" method="post" onsubmit="return validateForm()"
       action="<?php echo baseUrl . "seekerController/registration" ?>"> -->
 
@@ -169,7 +168,7 @@
     </form>
     <br>
     <div id="sign" class="d-flex justify-content-start align-items-center">
-      <p>Already have an account ? <a id="regis" href="<?php echo baseUrl . "seekerController" ?>">login</a></p>
+      <p>Already have an account ? <a id="regis" href="<?php echo baseUrl . "seekerController" ?>">Login</a></p>
     </div>
   </div>
 
@@ -238,7 +237,7 @@
       }
     }
   </script>
-  
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
