@@ -244,7 +244,11 @@
         }
 
 
-
+        public function logout()
+        {
+            $this->session->unset_userdata('userLoggedIn');
+            $this->index();
+        }
 
 
 

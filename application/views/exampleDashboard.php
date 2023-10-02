@@ -379,6 +379,7 @@
             <li><a href="<?php echo baseUrl . "#provider" ?>">Employer</a></li>
             <li><a href="<?php echo baseUrl . "#seeker" ?>">Employee</a></li>
             <li><a href="#blog">Blog</a></li>
+            <li> <a style="background-color:white;color:grey;padding: 0 10px;border-radius:2px" onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "providerController/logout" ?>">LogOut</a> </li>
             <!-- <li><a href="#login">Login</a></li> -->
         </ul>
     </nav>
@@ -388,6 +389,10 @@
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
    
+    <!-- To export as pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
     <!-- <div id="google_translate_element"></div>
   <script src="https://translate.Google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
   <script>
@@ -1595,8 +1600,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="subcategory">Subcategory:</label>
-                                                <select class="form-control" id="subcategory" value=<?php echo $value['jobSubCategory']; ?> name="subcategory" disabled>
-                                                    <option value="">Select a subcategory</option>
+                                                <select class="form-control" id="subcategory" value="<?php echo $value['jobSubCategory']; ?>" name="subcategory" disabled>
+                                                    <option value=""><?php echo $value['jobSubCategory']; ?></option>
                                                 </select>
                                                 <div id="subcategory_error" class="error"></div>
                                             </div>
@@ -3614,11 +3619,29 @@
 
                                         <!-- To print the page -->
                                         <div style="float:right;margin-bottom:25px" id="printdiv" >
+                                            <button id="view" >Request to Admin</button>
                                             <button onClick="window.print()" id="view"  >Print</button>
-                                            <button id="view">Request to Admin</button>
+                                            <button type="button" onclick="generatePDF()" id="view">Export to PDF</button>
+
                                         </div>
                                         </div>
  
+                                    <!-- To download pdf -->
+                                        <script type="text/javascript">
+                                            function generatePDF() {
+                                                
+                                                var element = document.getElementById('educationTable');
+                                                var opt = {
+                                                    margin:       0.5,
+                                                    filename:     'candidateprofile.pdf',
+                                                    image:        { type: 'jpeg', quality: 1 },
+                                                    html2canvas:  { scale: 1 },
+                                                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait',precision: '12' }
+                                                };
+                                                
+                                                html2pdf().set(opt).from(element).save();
+                                            }
+                                        </script>
                                
         <?php
                 } else if ($this->data['method'] == "wishlist") {

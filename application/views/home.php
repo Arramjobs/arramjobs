@@ -336,10 +336,10 @@
 				<a class="nav-link" href="#seeker" style="color: white; padding-right: 40px;">Employee</a>
 				</li>
 				<li class="nav-item">
-				<a class="nav-link" href="#" style="color: white; padding-right: 40px;">BLOG</a>
+				<a class="nav-link" href="https://arramjobs.in/blog/" style="color: white; padding-right: 40px;">BLOG</a>
 				</li>
 				<li class="nav-item">
-				<a class="nav-link" href="#" style="color: white; padding-right: 40px;">Contact</a>
+				<a class="nav-link" href="#contact" style="color: white; padding-right: 40px;">Contact</a>
 				</li>
 			</ul>
 	    <div>
@@ -885,7 +885,7 @@
 <!-- Footer -->
 <footer class="text-center text-lg-start text-muted" style="background-color: #131D3B;">
   <!-- Section: Social media -->
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" id="contact">
     <!-- Left -->
     <div class="me-5 d-none d-lg-block" style="color:white ;">
       <h5>Get connected with us on social networks:</h5>

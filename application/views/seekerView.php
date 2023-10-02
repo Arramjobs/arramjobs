@@ -275,6 +275,9 @@
           <li class="nav-item">
             <a class="nav-link mx-4 pt-lg-0 pt-3" href="#blog">Blog</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4 pt-lg-0 pt-3" style="background-color:white;color:grey;padding: 0 10px;border-radius:2px" onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "seekerController/logout" ?>">LogOut</a>
+          </li>
         </ul>
       </div>
   </nav>
@@ -335,8 +338,7 @@
         if ($method == "dash") {
           ?>
                 <h1 class="seekerdashboard my-5" style="text-align:center;color:navy" id="w">
-                      Welcome To Job Employee Dashboard
-                    </h1>
+                      Welcome To Job Employee Dashboard </h1>
                     <p class="seekerdashboardcontent my-5 mx-md-5 px-5">At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're 
                     a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain
                      access to a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs.</p>
@@ -666,7 +668,7 @@
       <!-- 2 Education table ************************************************************************************************************************************************* -->
                    <div class="container edutablecss mt-5">
                    <h3 class="text-center mx-auto" style="color:navy" >Education Details</h3>
-                  <a id="regis" href="<?php echo baseUrl . "seekerController/addEducationForm" ?>">+ Add Educational Details</a>
+                  <a id="regis" href="<?php echo baseUrl . "seekerController/addEducationForm" ?>">+ Add Education</a>
        
                   <div class="clearfix"></div>
                   <br>
@@ -1464,7 +1466,7 @@
 
                                <div class=" container exptablecss mt-5">
                                <h3 class="text-center">Experience Details </h3>
-                               <a id="regis" href="<?php echo baseUrl . "seekerController/addExperirenceForm" ?>">+ Add Experience Details</a>
+                               <a id="regis" href="<?php echo baseUrl . "seekerController/addExperirenceForm" ?>">+ Add Experience</a>
        
                           <div class="clearfix"></div>
                           <br>
@@ -2084,7 +2086,7 @@
                   
                                     <div class="form-group">
                                       <label for="category">Category:</label>
-                                      <select class="form-control" id="category" name="category" onchange="updateSubcategories()">
+                                      <select class="form-control" id="category" name="category" onchange="updateSubcategories()" value="<?php echo $value['other_category']; ?>">
                                         <option value="">Select a Category</option>
                                         <option value="architech"<?php if ($value['other_category'] === 'architech')
                                           echo ' selected'; ?>>Architect</option>
@@ -2111,7 +2113,7 @@
                                     <div class="form-group">
                                       <label for="subcategory">Subcategory:</label>
                                       <select class="form-control" id="subcategory" value="<?php echo $value['other_sub_category']; ?>" name="subcategory" disabled>
-                                        <option value="">Select a Subcategory</option>
+                                        <option value=""><?php echo $value['other_sub_category']; ?></option>
                                       </select>
                                       <div id="subcategory_error" class="error"></div>
                                     </div>
@@ -2298,7 +2300,7 @@
                           addSubcategoryOption("Retail Space Designer");
 
 
-                          addSubcategoryOption()
+                          // addSubcategoryOption()
                       } else if (selectedCategory === "developer") {
                           addSubcategoryOption("Python Software Engineer");
                           addSubcategoryOption("Python");
@@ -3380,7 +3382,7 @@
                                               <div class="form-group">
                                               <label for="subcategory">Subcategory</label>
                                                 <select class="form-control" id="subcategory" name="subcategory" value="<?php echo $value['other_sub_interst_category']; ?>" >
-                                                  <option value="">Select a sub category </option>
+                                                  <option value=""><?php echo $value['other_sub_interst_category']; ?></option>
                                                 </select>
                                                 <div id="areasubcat_error" class="error"></div>
                                               </div>

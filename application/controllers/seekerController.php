@@ -629,6 +629,12 @@ class SeekerController extends CI_Controller
         $this->data['resume'] = $resume;
          $this->load->view('seekerView.php',$this->data);
         }
+
+        public function logout()
+    {
+        $this->session->unset_userdata('userLoggedIn');
+        $this->index();
+    }
    
 }
 
