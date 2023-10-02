@@ -612,7 +612,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-12 col-md-6 col-lg-3" id="card-sf">
 				<div class="card text-center">
 					<div class="card-body">
@@ -677,7 +677,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
   </section>
 
@@ -978,7 +978,7 @@
             <i class="fas fa-envelope me-3"  style="color: white;"></i>
           arramjobs@gmail.com
           </p>
-          <p style="color: white;"><i class="fas fa-phone me-3" style="color: white;"></i> +91 75581 11555</p>
+          <p style="color: white;"><i class="fas fa-phone me-3" style="color: white;"></i> +91 74183 34443</p>
           <!-- <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p> -->
         </div>
         <!-- Grid column -->
