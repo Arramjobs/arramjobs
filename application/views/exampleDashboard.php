@@ -964,6 +964,7 @@
                                                     <th>Salary</th>
                                                     <th>Experience</th>
                                                     <th>Number of Openings</th>
+                                                    <th>Date</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -981,6 +982,7 @@
                                                             <td><?php echo $value['salary'] ?></td>
                                                             <td><?php echo $value['experience'] ?></td>
                                                             <td><?php echo $value['number_of_openings'] ?></td>
+                                                            <td><?php echo $value['insertdate'] ?></td>
 
                                                             <td>
                                                                 <div class="btn-group" role="group">
@@ -1014,7 +1016,7 @@
 
                                 <div class="form-group">
                                     <label for="company_name">Company Name:</label>
-                                    <input type="text" class="form-control" id="company_name" name="company_name" >
+                                    <input type="text" class="form-control" id="company_name" name="company_name" value="<?php echo $_SESSION['jobProviderUsername'] ?>" readonly>
                                     <div id="company_name_error" class="error"></div>
                                 </div>
 

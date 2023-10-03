@@ -441,16 +441,34 @@
                                   <div class="form-group">
                                     <label for="aadharfrontphoto">Aadhar Front Photo *</label>
                                     <input type="file" class="form-control" id="aadharfrontphoto" value="<?php echo isset($value['aadhar_front']) ? $value['aadhar_front'] : ''; ?>" name="aadharfrontphoto" >
+                                    <?php  if( isset($value['aadhar_front']) ) {
+                                      ?>
+                                      <p> <?php echo $value['aadharfront_filename'] ?> </p>
+                                      <?php
+                                    }
+                                    ?> 
                                     <div id="aadharfrontphoto_error" class="error"></div>
                                   </div>
                                   <div class="form-group">
                                     <label for="aadharbackphoto">Aadhar Back Photo *</label>
-                                    <input type="file" class="form-control" id="aadharbackphoto" value="<?php echo isset($value['aadhar_back']) ? $value['aadhar_back'] : ''; ?>" name="aadharbackphoto" >
+                                    <input type="file" class="form-control" id="aadharbackphoto" value="<?php echo isset($value['aadhar_back']) ; ?>" name="aadharbackphoto" >
+                                    <?php  if( isset($value['aadhar_back']) ) {
+                                      ?>
+                                      <p> <?php echo $value['aadharback_filename'] ?> </p>
+                                      <?php
+                                    }
+                                    ?> 
                                     <div id="aadharbackphoto_error" class="error"></div>
                                   </div>
                                   <div class="form-group">
                                     <label for="photo">Photo *</label>
                                     <input type="file" class="form-control" id="photo" value="<?php echo isset($value['photo']) ? $value['photo'] : ''; ?>" name="photo" >
+                                    <?php  if( isset($value['photo']) ) {
+                                      ?>
+                                      <p> <?php echo $value['photo_filename'] ?> </p>
+                                      <?php
+                                    }
+                                    ?> 
                                     <div id="photo_error" class="error"></div>
                                   </div>
 
