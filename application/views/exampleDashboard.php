@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard with Sidebar</title>
+    <title>Employer Page</title>
     <!-- Link to Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -344,6 +344,25 @@
             -webkit-appearance: none;
             margin: 0;
         }
+
+        /* To print candidate deatils */
+        @media print {
+        body {
+            visibility: hidden;
+        }
+       
+        #educationTable {
+            margin-left: -100px;
+            margin-top: -120px;
+            visibility: visible;
+            /* position: absolute;
+            left: 0;
+            top: 0; */
+        }
+        .printdiv{
+            visibility: hidden;
+        }
+        }
     </style>
 
 </head>
@@ -360,6 +379,7 @@
             <li><a href="<?php echo baseUrl . "#provider" ?>">Employer</a></li>
             <li><a href="<?php echo baseUrl . "#seeker" ?>">Employee</a></li>
             <li><a href="#blog">Blog</a></li>
+            <li> <a style="background-color:white;color:grey;padding: 0 10px;border-radius:2px" onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "providerController/logout" ?>">LogOut</a> </li>
             <!-- <li><a href="#login">Login</a></li> -->
         </ul>
     </nav>
@@ -368,6 +388,12 @@
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+   
+    <!-- To export as pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
 
     <!-- <div id="google_translate_element"></div>
   <script src="https://translate.Google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
@@ -1550,46 +1576,48 @@
                             <div id="company_name_error" class="error"></div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="category">Category:</label>
-                            <select class="form-control" id="category" value=<?php echo $value['jobCategory']; ?> name="category" onchange="updateSubcategories()">
-                                <option value="">Select a category</option>
-                                <option value="architech" <?php if ($value['jobCategory'] === 'architech')
-                                                                echo ' selected'; ?>>Architech</option>
-                                <option value="developer" <?php if ($value['jobCategory'] === 'developer')
-                                                                echo ' selected'; ?>>Developer</option>
-                                <option value="tester" <?php if ($value['jobCategory'] === 'tester')
-                                                            echo ' selected'; ?>>Tester</option>
-                                <option value="uiux" <?php if ($value['jobCategory'] === 'uiux')
-                                                            echo ' selected'; ?>>UI/UX Design</option>
-                                <option value="datascience" <?php if ($value['jobCategory'] === 'datascience')
-                                                                echo ' selected'; ?>>Data Scientist</option>
-                                <option value="databaseadmin" <?php if ($value['jobCategory'] === 'databaseadmin')
-                                                                    echo ' selected'; ?>>Database Admin</option>
-                                <option value="teacher" <?php if ($value['jobCategory'] === 'teacher')
-                                                            echo ' selected'; ?>>Teacher</option>
-                                <option value="professor" <?php if ($value['jobCategory'] === 'professor')
-                                                                echo ' selected'; ?>>Professor</option>
-                            </select>
-                            <div id="category_error" class="error"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="subcategory">Subcategory:</label>
-                            <select class="form-control" id="subcategory" value=<?php echo $value['jobSubCategory']; ?> name="subcategory" disabled>
-                                <option value="">Select a subcategory</option>
-                            </select>
-                            <div id="subcategory_error" class="error"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="experience">Experience:</label>
-                            <select class="form-control" id="experience" value=<?php echo $value['experience']; ?> name="experience">
-                                <option value="">Select experience</option>
-                                <option value="fresher" <?php if ($value['experience'] === 'fresher')
-                                                            echo ' selected'; ?>>Fresher</option>
-                                <option value="0-2" <?php if ($value['experience'] === '0-2')
+                                            <div class="form-group">
+                                                <label for="category">Category:</label>
+                                                <select class="form-control" id="category" value=<?php echo $value['jobCategory']; ?> name="category" onchange="updateSubcategories()">
+                                                    <option value="">Select a category</option>
+                                                    <option value="architech" <?php if ($value['jobCategory'] === 'architech')
+                                                        echo ' selected'; ?>>Architech</option>
+                                                    <option value="developer" <?php if ($value['jobCategory'] === 'developer')
+                                                        echo ' selected'; ?>>Developer</option>
+                                                    <option value="tester" <?php if ($value['jobCategory'] === 'tester')
+                                                        echo ' selected'; ?>>Tester</option>
+                                                    <option value="uiux" <?php if ($value['jobCategory'] === 'uiux')
+                                                        echo ' selected'; ?>>UI/UX Design</option>
+                                                    <option value="datascience" <?php if ($value['jobCategory'] === 'datascience')
+                                                        echo ' selected'; ?>>Data Scientist</option>
+                                                    <option value="databaseadmin" <?php if ($value['jobCategory'] === 'databaseadmin')
+                                                        echo ' selected'; ?>>Database Admin</option>
+                                                    <option value="teacher" <?php if ($value['jobCategory'] === 'teacher')
+                                                        echo ' selected'; ?>>Teacher</option>
+                                                    <option value="professor" <?php if ($value['jobCategory'] === 'professor')
+                                                        echo ' selected'; ?>>Professor</option>
+                                                </select>
+                                                <div id="category_error" class="error"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subcategory">Subcategory:</label>
+                                                <select class="form-control" id="subcategory" value="<?php echo $value['jobSubCategory']; ?>" name="subcategory" disabled>
+                                                    <option value=""><?php echo $value['jobSubCategory']; ?></option>
+                                                </select>
+                                                <div id="subcategory_error" class="error"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="experience">Experience:</label>
+                                                <select class="form-control" id="experience" value=<?php echo $value['experience']; ?> name="experience">
+                                                    <option value="">Select experience</option>
+                                                    <option value="fresher" <?php if ($value['experience'] === 'fresher')
+                                                        echo ' selected'; ?>>Fresher</option>
+                                                    <option value="0-2" <?php if ($value['experience'] === '0-2')
+
                                                         echo ' selected'; ?>>0-2</option>
                                 <option value="3-5" <?php if ($value['experience'] === '3-5')
                                                         echo ' selected'; ?>>3-5</option>
+
                                 <option value="5-10" <?php if ($value['experience'] === '5-10')
                                                             echo ' selected'; ?>>5-10</option>
                                 <option value="10-15" <?php if ($value['experience'] === '10-15')
@@ -1617,6 +1645,7 @@
                             </select>
                             <div id="jobtype_error" class="error"></div>
                         </div>
+
 
                         <div class="form-group">
                             <label for="expected_salary">Salary:</label>
@@ -2522,6 +2551,7 @@
             <div class="input-group">
             </div>
         </div> -->
+
                 <tbody>
                     <br>
                     <form action="<?php echo baseUrl . "providerController/filterAllCandidate" ?>" method="post">
@@ -2541,6 +2571,7 @@
                                         <option value="professor">Professor</option>
                                     </select>
                                     <div id="category_error" class="error"></div>
+
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -3453,6 +3484,7 @@
                     <br> -->
 
 
+
                 <h3 class="mb-5" id="education">Educational Qualification</h3>
                 <ul>
                     <div class="table-responsive">
@@ -3593,7 +3625,32 @@
             </div>
             </div>
 
+                                        <!-- To print the page -->
+                                        <div style="float:right;margin-bottom:25px" id="printdiv" >
+                                            <button id="view" >Request to Admin</button>
+                                            <button onClick="window.print()" id="view"  >Print</button>
+                                            <button type="button" onclick="generatePDF()" id="view">Export to PDF</button>
 
+                                        </div>
+                                        </div>
+ 
+                                    <!-- To download pdf -->
+                                        <script type="text/javascript">
+                                            function generatePDF() {
+                                                
+                                                var element = document.getElementById('educationTable');
+                                                var opt = {
+                                                    margin:       0.5,
+                                                    filename:     'candidateprofile.pdf',
+                                                    image:        { type: 'jpeg', quality: 1 },
+                                                    html2canvas:  { scale: 1 },
+                                                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait',precision: '12' }
+                                                };
+                                                
+                                                html2pdf().set(opt).from(element).save();
+                                            }
+                                        </script>
+                               
         <?php
         } else if ($this->data['method'] == "wishlist") {
         ?>

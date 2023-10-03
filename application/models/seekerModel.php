@@ -88,6 +88,36 @@
             $postData = $this->input->post(null, true);
             // var_dump($postData);
 
+            $config['upload_path']= "./uploads/" ;
+            $basepath = 'http://localhost/arramjobs/uploads/';
+            $config['allowed_types']="jpg|png|pdf";
+            $config['max_size']=1024;
+
+            $this->load->library('upload',$config);
+           
+            if($this->upload->do_upload('aadharfrontphoto'))
+            {
+                $data = $this->upload->data();
+                $aadharf = $data['file_name'];
+            }
+            if ($this->upload->do_upload('aadharbackphoto')) {
+                $data = $this->upload->data();
+                $aadharb = $data['file_name'];
+            }
+            if ($this->upload->do_upload('photo')) {
+                $data = $this->upload->data();
+                $photop = $data['file_name'];
+            }
+            else{
+
+                $error = $this->upload->display_errors();
+            }
+
+            $aadharfront = $basepath.$aadharf;
+            $aadharback = $basepath.$aadharb;
+            $profilephoto = $basepath.$photop;
+
+
             // Update query to modify the existing user's data
             $updateData = array(
                 'name' => $postData['name'],
@@ -98,30 +128,18 @@
                 'address' => $postData['streetaddress'],
                 'landmark' => $postData['landmark'],
                 'pincode' => $postData['pincode'],
+                'district'=> $postData['district'],
                 'maritalstatus' => $postData['maritalstatus'],
-                // 'aadhar_front' => $postData['aadharfrontphoto'],
-                // 'aadhar_back' => $postData['aadharbackphoto'],
-                // 'photo' => $postData['photo']
+                'aadhar_front' => $aadharfront,
+                'aadhar_back' =>  $aadharback,
+                'photo' =>  $profilephoto,
+                'aadharfront_filename' => $aadharf,
+                'aadharback_filename' =>  $aadharb,
+                'photo_filename' =>  $photop
             );
             $this->db->where('id', $postData['id']);
 
-            $config['upload_path'] = "./uploads/";
-            $config['allowed_types'] = "jpg|png|pdf";
-            $config['max_size'] = 1024;
-
-            $this->load->library('upload', $config);
-
-            if (!$this->upload->do_upload('aadharfrontphoto')) {
-                $data = $this->upload->data();
-            }
-            if ($this->upload->do_upload('aadharbackphoto')) {
-                $data = $this->upload->data();
-            }
-            if ($this->upload->do_upload('photo')) {
-                $data = $this->upload->data();
-            } else {
-                $error = $this->upload->display_errors();
-            }
+            
 
             $result = $this->db->update('seeker_profile_form', $updateData);
         }

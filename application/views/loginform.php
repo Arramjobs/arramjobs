@@ -158,7 +158,7 @@
         <p id="pherr" style="color: red;"></p>
       </div>
       <!--  <button type="button" class="btn btn-link">New User</a> -->
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Login</button>
 
     </form>
     <br>
