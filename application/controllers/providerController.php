@@ -207,7 +207,7 @@
         {
             $id = $this->uri->segment(3);
             $this->data['method'] = "resume";
-            
+
 
             $education = $this->RegistrationModel->educationalDetails($id);
             $this->data['education'] = $education;
