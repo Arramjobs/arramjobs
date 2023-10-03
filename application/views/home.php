@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Arram Jobs</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arram Jobs</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha384-0lG3cFw5FvJ8uBpWGpj4MlOOwDlelpzcvr7n3D5y/A8sPk5L4fhFV+XDI7KC5F5q" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <link rel="stylesheet"
@@ -403,19 +402,11 @@
 					<p>At Arram Jobs, we're committed to providing comprehensive solutions that cater to the unique needs of both job seekers and employers. Our platform is designed to offer a range of valuable services and benefits, ensuring a seamless and rewarding experience for all.</p>
 					<p>At Arram Jobs, we are on a mission to connect talented individuals with the career opportunities that align with their aspirations. We believe that the right job can transform lives, foster personal growth, and drive organizational success. With our innovative approach to recruitment, we aim to bridge the gap between exceptional talent and top-tier employers, creating a brighter future for both.</p>
 					<!-- <a href="#" class="btn btn-warning">Learn More</a> -->
-
 				</div>
 			</div>
 		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
 	</div>
+</section>
 
 
    <!-- Recent-posts Section - Home Page -->
@@ -467,85 +458,21 @@
 						<h5 class="card-title"><b>ARRAM UNIQUE FEATURES</b></h5>
 						<p class="card-text"  style="text-align:justify; padding-right: 20px; padding-bottom: 15px;">Arram Job Providing stands out with unique features redefining recruitment. Our platform uses cutting-edge algorithms to match skills, culture, and personality for ideal candidate-employer pairings.</p>
 						<a href="#about" class="btn btn-primary">See More</a>
-
 					</div>
-				</div>
-				<div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify; font-size: medium;">
-					<div class="about-text">
-						<h2><b>About Arramjobs</b></h2>
-						<p>At Arram Jobs, we're committed to providing comprehensive solutions that cater to the unique needs of both job employee and employers. Our platform is designed to offer a range of valuable services and benefits, ensuring a seamless and rewarding experience for all.</p>
-						<p>At Arram Jobs, we are on a mission to connect talented individuals with the career opportunities that align with their aspirations. We believe that the right job can transform lives, foster personal growth, and drive organizational success. With our innovative approach to recruitment, we aim to bridge the gap between exceptional talent and top-tier employers, creating a brighter future for both.</p>
-						<!-- <a href="#" class="btn btn-warning">Learn More</a> -->
 					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+              </div>
 
+            </article>
+          </div><!-- End post list item -->
 
-	<!-- Recent-posts Section - Home Page -->
-	<section id="recent-posts" class="recent-posts" style="margin-bottom: 30px;">
+        </div><!-- End recent posts list -->
 
-		<!--  Section Title -->
-		<div class="container section-title" data-aos="fade-up">
-			<h1 class="text-center"><b>What does Arram Offer</b></h1>
-			<!-- <p class="text-center">Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> -->
-		</div><!-- End Section Title -->
+      </div>
 
-		<div class="container">
-
-			<div class="row gy-4">
-
-				<div class="col-xl-4 col-md-6 col-1" data-aos="fade-up" data-aos-delay="100">
-					<article>
-						<div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2);">
-							<img src="<?php echo baseUrl . "assets/cardimg1.jpeg" ?>" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h5 class="card-title" style="font-family:Arial, Helvetica, sans-serif ;"><b>JOB SEARCHING</b></h5>
-								<p class="card-text" style="text-align:justify; padding-right: 20px; padding-top: 10px; padding-bottom: 10px;">At Arram Job Portal, we're dedicated to helping you unlock your potential. Whether you're a recent graduate starting your career or a seasoned expert seeking new challenges, we're your trusted job search partner.</p>
-								<a href="#seeker" class="btn btn-primary">See More</a>
-							</div>
-						</div>
-					</article>
-				</div><!-- End post list item -->
-
-				<div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-					<article>
-						<div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2);">
-							<img src="<?php echo baseUrl . "assets/cardimg2.jpg" ?>" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h5 class="card-title"><b>JOB PROVIDING</b></h5>
-								<p class="card-text" style="text-align:justify; padding-right: 20px; padding-top: 10px; padding-bottom: 10px;">At Arram Job Providing, our team is dedicated to understanding your staffing needs and delivering tailored solutions. With industry knowledge, we ensure you find the right talent and build lasting connections fostering success.</p>
-								<a href="#provider" class="btn btn-primary">See More</a>
-							</div>
-						</div>
-					</article>
-				</div><!-- End post list item -->
-
-				<div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-					<article>
-
-						<div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2);">
-							<img src="<?php echo baseUrl . "assets/cardimg3.jpeg" ?>" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h5 class="card-title"><b>ARRAM UNIQUE FEATURES</b></h5>
-								<p class="card-text" style="text-align:justify; padding-right: 20px; padding-bottom: 15px;">Arram Job Providing stands out with unique features redefining recruitment. Our platform uses cutting-edge algorithms to match skills, culture, and personality for ideal candidate-employer pairings.</p>
-								<a href="#about" class="btn btn-primary">See More</a>
-							</div>
-						</div>
-				</div>
-
-				</article>
-			</div><!-- End post list item -->
-
-		</div><!-- End recent posts list -->
-
-		</div>
-
-	</section><!-- End Recent-posts Section -->
-
-	<!-- Six Reasons For People Choosing Us -->
-
+    </section><!-- End Recent-posts Section -->
+	
+<!-- Six Reasons For People Choosing Us -->
+    
 	<div class="section services section-padding" id="services" style="background-color:  #D6D3D1	;">
 		<div class="container" style="padding-top:30px;">
 			<div class="row">
@@ -553,56 +480,55 @@
 					<div class="section-header text-center pb-5">
 						<h4 ><b>Why Choose Us</b></h4>
 						<p style="font-size: 50px;" class="custom-paragraph">Six Reasons For People Choosing Us</p>
-
 					</div>
 				</div>
 			</div>
 
-			<!-- card1-3 strat -->
+<!-- card1-3 strat -->
 			<div class="row">
 				<div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-					<div class="card-sec text-white text-center pb-4" style="background-color: #FAFAFA;  box-shadow: 0 0 11px rgba(33,33,33,.2);">
+					<div class="card-sec text-white text-center pb-4" style="background-color: #FAFAFA;  box-shadow: 0 0 11px rgba(33,33,33,.2);" >
 						<div class="card-body-s" style="padding-top: 30px;">
 							<i class="bi bi-phone" style="color: black; font-size: 30px;"></i>
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 33px; color: black;">Mobile Accessibility</h4>
 							<p class="lead" style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">Mobile accessibility aims to remove barriers, enhance user experiences, and enable all users, including those with disabilities and those using mobile devices exclusively, to access and interact with job listings, apply for positions, and navigate the portal's features effortlessly.</p>
 
-						</div>
+						</div>             
 					</div>
 				</div>
 				<div class="col-12 col-md-12 col-lg-4 mb-lg-5">
 					<div class="card-sec text-white text-center pb-4" style="background-color: #FAFAFA; box-shadow: 0 0 11px rgba(33,33,33,.2); ">
 						<div class="card-body-s" style="padding-top: 30px;">
-							<i class="bi bi-book-fill" style="color: black; font-size: 30px;"></i>
+                            <i class="bi bi-book-fill" style="color: black; font-size: 30px;"></i>
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;"> Accredited</h4>
 							<p class="lead" style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">An accredited job portal connects job seekers and employers after obtaining official recognition and certification from accrediting bodies. Accreditation involves evaluating the portal's operations, features, and compliance with industry standards, legal regulations, and ethics.</p>
 
-						</div>
+						</div>             
 					</div>
 				</div>
 				<div class="col-12 col-md-12 col-lg-4 mb-lg-5">
 					<div class="card-sec text-white text-center pb-4" style="background-color: #FAFAFA;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
 						<div class="card-body-s" style="padding-top: 30px;">
-							<i class="bi bi-laptop-fill" style="color: black; font-size: 30px;"></i>
+                            <i class="bi bi-laptop-fill" style="color: black; font-size: 30px;"></i>
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 38px; color: black;">User-friendly Interface</h4>
 							<p class="lead" style="color: black; font-size: 16px; padding-bottom: 20px; padding-left: 20px; padding-right: 20px; text-align: justify;">A job portal's user-friendly interface prioritizes easy navigation, clarity, and effectiveness, benefiting the job seekers and the employers by simplifying the search for their employment opportunities and hiring processes.</p>
 
-						</div>
+						</div>             
 					</div>
 				</div>
 			</div>
-			<!-- card1-3 end -->
+<!-- card1-3 end -->
 
-			<!-- card2-3 strat -->
+<!-- card2-3 strat -->
 			<div class="row">
 				<div class="col-12 col-md-12 col-lg-4 mb-lg-5">
 					<div class="card-sec text-white text-center pb-4" style="background-color: #FAFAFA; box-shadow: 0 0 11px rgba(33,33,33,.2);">
-						<div class="card-body-s" style="padding-top: 30px;">
-							<i class="bi bi-subtract" style="color: black;  font-size: 30px;"></i>
+						<div class="card-body-s" style="padding-top: 30px;">                            
+                            <i class="bi bi-subtract" style="color: black;  font-size: 30px;"></i>
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Extensive Job opportunities</h4>
 							<p class="lead" style="color: black; font-size: 16px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; text-align: justify;">An abundance of 'extensive job opportunities' signifies a robust job market, offering plentiful prospects. This is highly advantageous for job seekers, career changers, and professionals aiming to explore new roles or industries, facilitating diverse career growth.</p>
 
-						</div>
+						</div>             
 					</div>
 				</div>
 				<div class="col-12 col-md-12 col-lg-4 mb-lg-5">
@@ -612,7 +538,7 @@
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Quick Response</h4>
 							<p class="lead" style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">Quick response" in a job portal refers to the prompt and timely feedback or acknowledgment provided to job seekers or employers when they take certain actions or submit applications within the platform. This feature is designed to enhance the user experience by ensuring that users receive immediate confirmation. </p>
 
-						</div>
+						</div>             
 					</div>
 				</div>
 				<div class="col-12 col-md-12 col-lg-4 mb-lg-5">
@@ -622,14 +548,13 @@
 							<h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Advanced search and filtering </h4>
 							<p class="lead" style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">The goal of advanced search and filtering features in a jobs portal is to empower job seekers to pinpoint job listings that align closely with their unique preferences and qualifications, saving time and increasing the likelihood of finding the most suitable job opportunities. </p>
 
-						</div>
+						</div>             
 					</div>
 				</div>
 			</div>
-			<!-- card2 3 end -->
+<!-- card2 3 end -->
 		</div>
 	</div>
-
 
 
 
@@ -640,43 +565,41 @@
 				<div class="about-img">
 					<img src="<?php echo baseUrl ."assets/blog-2.jpg"?>" alt="" class="img-fluid">
 				</div>
-				<div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify; font-size: medium;">
-					<div class="about-text">
-						<p class="fs-1">Employee</p>
-						<p>At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain access to a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs. </p>
-						<a href="#" class="btn btn-warning">Learn More</a>
-					</div>
+			</div>
+			<div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify; font-size: medium;">
+				<div class="about-text">
+					<p class="fs-1">Employee</p>
+					<p>At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain access to a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs. </p>
+					<a href="#" class="btn btn-warning">Learn More</a>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- seeker -->
+<!-- seeker -->
 
 	<!-- provider -->
-
 
 	<section id="provider" class="provider section-padding" style="background-color: #ede9fe">
 	<div class="container">
 		<div class="row">
-
 				<div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify; font-size: medium;">
 					<div class="about-text">
 						<p class="fs-1">Employer</p>
 						<p>At Arram Job Providing, we firmly believe that the key to a prosperous organization lies in having the right people onboard. Be it team expansion, project initiation, or the need for specialized skills, we serve as your dependable partner in talent acquisition. With our extensive network and expertise, we identify and connect you with top-notch professionals who fit your unique requirements. Our commitment to excellence ensures that you receive candidates who not only meet but exceed your expectations. We're dedicated to streamlining your recruitment process, saving you time and resources, so you can focus on what you do best - achieving your business goals.</p>
 						<a href="#" class="btn btn-warning">Learn More</a>
 					</div>
-				</div>
+			    </div>
 				<div class="col-lg-4 col-md-12 col-12">
-					<div class="about-img-img">
-						<img src="<?php echo baseUrl . "assets/blog-4.jpg" ?>" alt="" class="img-fluid">
-					</div>
+				<div class="about-img-img">
+					<img src="<?php echo baseUrl ."assets/blog-4.jpg"?>" alt="" class="img-fluid">
 				</div>
 			</div>
 		</div>
-	</section>
-	<!-- provider -->
-
+	</div>
+</section>
+<!-- provider -->
 
   <!-- Team section -->
   <section id="team" class="team section-paddings">
@@ -703,59 +626,57 @@
 							<i class="bi bi-linkedin text-dark mx-1"></i>
 							<i class="bi bi-instagram text-dark mx-1"></i>
 						</p>
-
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-3">
-					<div class="card text-center">
-						<div class="card-body">
-							<img src="<?php echo baseUrl . "assets/team-3.jpg" ?>" alt="" class="img-fluid rounded-circle">
-							<h3 class="card-title py-2">Person 2</h3>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-							<p class="socials">
-								<i class="bi bi-twitter text-dark mx-1"></i>
-								<i class="bi bi-facebook text-dark mx-1"></i>
-								<i class="bi bi-linkedin text-dark mx-1"></i>
-								<i class="bi bi-instagram text-dark mx-1"></i>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-3">
-					<div class="card text-center">
-						<div class="card-body">
-							<img src="<?php echo baseUrl . "assets/team-4.jpg" ?>" alt="" class="img-fluid rounded-circle">
-							<h3 class="card-title py-2">Person 3</h3>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-							<p class="socials">
-								<i class="bi bi-twitter text-dark mx-1"></i>
-								<i class="bi bi-facebook text-dark mx-1"></i>
-								<i class="bi bi-linkedin text-dark mx-1"></i>
-								<i class="bi bi-instagram text-dark mx-1"></i>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-3">
-					<div class="card text-center">
-						<div class="card-body">
-							<img src="<?php echo baseUrl . "assets/team-1.jpg" ?>" alt="" class="img-fluid rounded-circle">
-							<h3 class="card-title py-2">Person 4</h3>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-							<p class="socials">
-								<i class="bi bi-twitter text-dark mx-1"></i>
-								<i class="bi bi-facebook text-dark mx-1"></i>
-								<i class="bi bi-linkedin text-dark mx-1"></i>
-								<i class="bi bi-instagram text-dark mx-1"></i>
-							</p>
-						</div>
 					</div>
 				</div>
 			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card text-center">
+					<div class="card-body">
+						<img src="<?php echo baseUrl ."assets/team-3.jpg"?>" alt="" class="img-fluid rounded-circle">
+						<h3 class="card-title py-2">Person 2</h3>
+						<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
 
+						<p class="socials">
+							<i class="bi bi-twitter text-dark mx-1"></i>
+							<i class="bi bi-facebook text-dark mx-1"></i>
+							<i class="bi bi-linkedin text-dark mx-1"></i>
+							<i class="bi bi-instagram text-dark mx-1"></i>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card text-center">
+					<div class="card-body">
+						<img src="<?php echo baseUrl ."assets/team-4.jpg"?>" alt="" class="img-fluid rounded-circle">
+						<h3 class="card-title py-2">Person 3</h3>
+						<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
+
+						<p class="socials">
+							<i class="bi bi-twitter text-dark mx-1"></i>
+							<i class="bi bi-facebook text-dark mx-1"></i>
+							<i class="bi bi-linkedin text-dark mx-1"></i>
+							<i class="bi bi-instagram text-dark mx-1"></i>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card text-center">
+					<div class="card-body">
+						<img src="<?php echo baseUrl ."assets/team-1.jpg"?>" alt="" class="img-fluid rounded-circle">
+						<h3 class="card-title py-2">Person 4</h3>
+						<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
+
+						<p class="socials">
+							<i class="bi bi-twitter text-dark mx-1"></i>
+							<i class="bi bi-facebook text-dark mx-1"></i>
+							<i class="bi bi-linkedin text-dark mx-1"></i>
+							<i class="bi bi-instagram text-dark mx-1"></i>
+						</p>
+					</div>
+				</div>
+			</div>
 		</div> -->
 	</div>
   </section>
@@ -1003,10 +924,10 @@
         </div>
         <!-- Grid column -->
 
-					<!-- Grid column -->
-					<!-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4"> -->
-					<!-- Links -->
-					<!-- <h6 class="text-uppercase fw-bold mb-4">
+        <!-- Grid column -->
+        <!-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4"> -->
+          <!-- Links -->
+          <!-- <h6 class="text-uppercase fw-bold mb-4">
             Products
           </h6>
           <p>
@@ -1076,7 +997,5 @@
 </footer>
 <!-- Footer -->
 
-
 </body>
-
 </html>
