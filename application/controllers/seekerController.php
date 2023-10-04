@@ -85,7 +85,8 @@ class SeekerController extends CI_Controller
         $postData = $this->input->post(null, true);
         $updateBasicDetails = $this->SeekerModel->updateBasicDetails();
 
-        $this->basicDetails();
+        // $this->basicDetails();
+        $this->educationTable();
         echo '<script>alert("Basic details inserted successfully.");</script>';
     }
 
@@ -621,14 +622,43 @@ class SeekerController extends CI_Controller
     //     $this->skills();
     // }
 
+    // public function resume(){
+
+    //       $this->data['method'] = "resume";
+
+    //     $resume=$this->SeekerModel->do_upload();
+    //     $this->data['resume'] = $resume;
+    //      $this->load->view('seekerView.php',$this->data);
+    //     }
+
     public function resume(){
 
-          $this->data['method'] = "resume";
+        $this->data['method'] = "resume";
 
-        $resume=$this->SeekerModel->do_upload();
-        $this->data['resume'] = $resume;
-         $this->load->view('seekerView.php',$this->data);
-        }
+      $resume=$this->SeekerModel->do_upload();
+      $this->data['resume'] = $resume;
+       $this->load->view('seekerView.php',$this->data);
+    //    if()
+    //    {
+    //    $this->data['method'] = "thank";
+    //    $this->load->view('seekerView.php',$this->data);
+    //    }
+      }
+
+    //   public function resume(){
+
+    //     $this->data['method'] = "resume";
+    //   $resume=$this->SeekerModel->do_upload();
+    //   $this->data['resume'] = $resume;
+    //     $this->thank();
+    //   }
+
+
+      public function thank(){
+
+        $this->data['method'] = "thank";
+       $this->load->view('seekerView.php',$this->data);
+      }
 
         public function logout()
     {

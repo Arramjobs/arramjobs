@@ -570,7 +570,7 @@
 				<div class="about-text">
 					<p class="fs-1">Employee</p>
 					<p>At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain access to a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs. </p>
-					<a href="#" class="btn btn-warning">Learn More</a>
+					<!-- <a href="#" class="btn btn-warning">Learn More</a> -->
 				</div>
 			</div>
 		</div>
@@ -588,7 +588,7 @@
 					<div class="about-text">
 						<p class="fs-1">Employer</p>
 						<p>At Arram Job Providing, we firmly believe that the key to a prosperous organization lies in having the right people onboard. Be it team expansion, project initiation, or the need for specialized skills, we serve as your dependable partner in talent acquisition. With our extensive network and expertise, we identify and connect you with top-notch professionals who fit your unique requirements. Our commitment to excellence ensures that you receive candidates who not only meet but exceed your expectations. We're dedicated to streamlining your recruitment process, saving you time and resources, so you can focus on what you do best - achieving your business goals.</p>
-						<a href="#" class="btn btn-warning">Learn More</a>
+						<!-- <a href="#" class="btn btn-warning">Learn More</a> -->
 					</div>
 			    </div>
 				<div class="col-lg-4 col-md-12 col-12">
@@ -607,7 +607,7 @@
 		<div class="row"> 
 			<div class="col-md-12">
 				<div class="section-header text-center pb-5">
-                    <p class="head" style="font-size: 50px;">Team</p>
+                    <!-- <p class="head" style="font-size: 50px;">Team</p> -->
 					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, voluptatem?</p> -->
 				</div>
 			</div>
@@ -919,7 +919,7 @@
           <h3 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">
             <i class="fas fa-gem  me-3 " style="color: #EF4444;" ></i>ARRAM JOBS
           </h3  style="color: white;">
-          <p  style="color: white;">Arram Jobs has rapidly emerged as a trusted partner in the recruitment industry. Our journey began with a simple yet powerful idea
+          <p  style="color: white;text-align:justify">Arram Jobs has rapidly emerged as a trusted partner in the recruitment industry. Our journey began with a simple yet powerful idea.
           </p>
         </div>
         <!-- Grid column -->
@@ -951,7 +951,7 @@
           <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">
             Useful links
           </h5>
-          <p  style="color: white;">section-paddings
+          <p  style="color: white;">
             <a href="#about" class="text-reset" style="text-decoration: none;">About Us</a>
           </p>
           <p style="color: white;">
@@ -961,10 +961,10 @@
             <a href="#seeker" class="text-reset" style="text-decoration: none;">Employee</a>
           </p>
           <p style="color: white;">
-            <a href="#" class="text-reset" style="text-decoration: none;">Blog</a>
+            <a href="https://arramjobs.in/blog/" class="text-reset" style="text-decoration: none;">Blog</a>
           </p>
 		  <p style="color: white;">
-            <a href="#" class="text-reset" style="text-decoration: none;">Contact</a>
+            <a href="#contact" class="text-reset" style="text-decoration: none;">Contact</a>
           </p>
         </div>
         <!-- Grid column -->

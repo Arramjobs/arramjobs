@@ -240,10 +240,10 @@
           }
         }
 
-        /* sidebar active */
-        .active {
+       /* sidebar active */
+        /* .active { 
           background-color: yellow;
-        }
+        } */
   </style>
 </head>
 
@@ -342,10 +342,11 @@
                     <p class="seekerdashboardcontent my-5 mx-md-5 px-5">At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're 
                     a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain
                      access to a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs.</p>
+                     <a id="regis" style="margin-left:40%;" href="<?php echo baseUrl . "seekerController/basicdetails" ?>">Start Filling Form </a>
 
 
               <?php
-        } else if ($method == 'basicdetails') {
+        } elseif ($method == 'basicdetails') {
           ?>
 
                       <!-- 1 Basic details ******************************************************************************************************************************************************************************************* -->
@@ -687,7 +688,8 @@
                    <div class="container edutablecss mt-5">
                    <h3 class="text-center mx-auto" style="color:navy" >Education Details</h3>
                   <a id="regis" href="<?php echo baseUrl . "seekerController/addEducationForm" ?>">+ Add Education</a>
-       
+                  <a id="regis" style="float:right" href="<?php echo baseUrl . "seekerController/experiencetable" ?>">Next</a>
+
                   <div class="clearfix"></div>
                   <br>
                   <div class="table-responsive">
@@ -1485,7 +1487,7 @@
                                <div class=" container exptablecss mt-5">
                                <h3 class="text-center">Experience Details </h3>
                                <a id="regis" href="<?php echo baseUrl . "seekerController/addExperirenceForm" ?>">+ Add Experience</a>
-       
+<a id="regis" style="float:right" href="<?php echo baseUrl . "seekerController/areaOfIntrestTable" ?>" >Next </a>
                           <div class="clearfix"></div>
                           <br>
         
@@ -2714,7 +2716,7 @@
                    <div class="container areatablecss mt-5">
                    <h3 class="mx-auto" style="color:navy" >Area of Job Interest Details</h3>
               <a id="regis" href="<?php echo baseUrl . "seekerController/addAreaOfIntrestForm" ?>">+ Add Area of Job Interest</a>
-       
+              <a id="regis" style="float:right" href="<?php echo baseUrl . "seekerController/resume" ?>">Next</a>
               <div class="clearfix"></div>
               <br>
               <div class="table-responsive">
@@ -4078,7 +4080,7 @@
 
 
 <?php
-        } else if ($method == 'resume') {
+        } elseif ($method == 'resume') {
           ?>
 
        <!-- 5 Upload resume ******************************************************************************************************************-->
@@ -4136,7 +4138,12 @@
 
 <!-- ************************************************************************************************************************************************** -->
 
-      
+        <?php
+        } elseif ($method == 'thank') {
+          ?>
+       <!-- 6 thankyou ******************************************************************************************************************-->
+                                <h1>Thanks for submitting</h1>             
+                               
           <?php } ?>
 
     </div>
@@ -4148,7 +4155,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
       <!-- sidebar active class -->
-      <script>
+      <!-- <script>
         function setActiveButton(index) {
           var btns = document.getElementsByClassName("btna");
           for (var i = 0; i < btns.length; i++) {
@@ -4174,7 +4181,7 @@
             setActiveButton(index);
           });
         }
-      </script>
+      </script> -->
 
 
 </body>
