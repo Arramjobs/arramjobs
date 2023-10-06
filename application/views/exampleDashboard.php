@@ -517,8 +517,8 @@
                                                     <p id="pinerr1" style="color: red;"></p>
                                                 </div>
                                                 <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
-                                                    <label for="file" class="form-label">Logo:</label>
-                                                    <input type="file" class="form-control" value='<?php echo $value['company_logo']; ?>' id="file" name="file">
+                                                    <label for="logo" class="form-label">Logo:</label>
+                                                    <input type="file" class="form-control" value='<?php echo $value['company_logo']; ?>' id="logo" name="logo">
                                                     <p id="logerr" style="color: red;"></p>
                                                 </div>
 
@@ -633,7 +633,7 @@
                                 var y3 = document.forms.pincode1.value;
                                 var y4 = document.forms.state1.value;
                                 var y5 = document.forms.district1.value;
-                                var l = document.forms.file.value;
+                                var l = document.forms.logo.value;
                                 var x1 = document.forms.name1.value;
                                 var p1 = document.forms.phno1.value;
                                 var a1 = document.forms.mail1.value;

@@ -313,7 +313,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 
-	<nav class="navbar navbar-expand-lg" style="background-color: navy; padding-top: 30px; padding-bottom: 30px;">
+	<nav class="navbar navbar-expand-lg" id="home" style="background-color: navy; padding-top: 30px; padding-bottom: 30px;">
  	 <div class="container">
 	 	<!-- <img src="arram logo.jpeg" alt="Arram Jobs" width="120" height="50"> -->
          <h4 style="color: white">அறம் வேலைவாய்ப்பு</h4> 
@@ -571,6 +571,7 @@
 					<p class="fs-1">Employee</p>
 					<p>At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain access to a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs. </p>
 					<!-- <a href="#" class="btn btn-warning">Learn More</a> -->
+          <a href="#home" class="btn btn-warning">Home</a>
 				</div>
 			</div>
 		</div>
@@ -589,6 +590,8 @@
 						<p class="fs-1">Employer</p>
 						<p>At Arram Job Providing, we firmly believe that the key to a prosperous organization lies in having the right people onboard. Be it team expansion, project initiation, or the need for specialized skills, we serve as your dependable partner in talent acquisition. With our extensive network and expertise, we identify and connect you with top-notch professionals who fit your unique requirements. Our commitment to excellence ensures that you receive candidates who not only meet but exceed your expectations. We're dedicated to streamlining your recruitment process, saving you time and resources, so you can focus on what you do best - achieving your business goals.</p>
 						<!-- <a href="#" class="btn btn-warning">Learn More</a> -->
+            <a href="#home" class="btn btn-warning">Home</a>
+
 					</div>
 			    </div>
 				<div class="col-lg-4 col-md-12 col-12">

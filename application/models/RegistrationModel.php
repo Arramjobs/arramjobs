@@ -13,6 +13,24 @@ class RegistrationModel extends CI_Model
   {
     $postData = $this->input->post(null, true);
 
+
+     $config['upload_path'] = "./uploads/";
+     $basepath = 'http://localhost/arramjobs/uploads/';
+     $config['allowed_types'] = "jpg|png|pdf";
+     $config['max_size'] = 1024;
+
+     $this->load->library('upload', $config);
+
+     $cmp_logo = "None";
+     if ($this->upload->do_upload('logo')) {
+         $data = $this->upload->data();
+         $cmp_logo = $data['file_name'];
+     } else {
+      $error = $this->upload->display_errors();
+  }
+
+      $cmplogourl= $basepath. $cmp_logo ;
+
     $insert = array(
       'company_name' => $postData['name'],
       'company_mobile_number' => $postData['mobile'],
@@ -23,7 +41,8 @@ class RegistrationModel extends CI_Model
       'district' => $postData['district'],
       'state' => $postData['state'],
       'pincode' => $postData['pincode'],
-      'company_logo' => $postData['logo'],
+      'company_logourl' =>  $cmplogourl ,
+      'company_logo' =>  $cmp_logo ,
       'companywebsite' => $postData['cwebsite'],
       'companypan' => $postData['cpan'],
       'companygst' => $postData['cgst'],
@@ -86,6 +105,25 @@ class RegistrationModel extends CI_Model
   {
     $postData = $this->input->post(null, true);
     $id = $postData['id'];
+    
+    $config['upload_path'] = "./uploads/";
+    $basepath = 'http://localhost/arramjobs/uploads/';
+    $config['allowed_types'] = "jpg|png|pdf";
+    $config['max_size'] = 1024;
+
+    $this->load->library('upload', $config);
+
+    $cmp_logou = "None1";
+    if ($this->upload->do_upload('logo')) {
+        $data = $this->upload->data();
+        $cmp_logou = $data['file_name'];
+    } else {
+     $error = $this->upload->display_errors();
+ }
+
+    $cmplogourlu= $basepath. $cmp_logou ;
+
+   
     $data = array(
       'company_name' => $postData['name'],
       'company_mobile_number' => $postData['phno'],
@@ -96,7 +134,8 @@ class RegistrationModel extends CI_Model
       'district' => $postData['district1'],
       'state' => $postData['state1'],
       'pincode' => $postData['pincode1'],
-      'company_logo' => $postData['file'],
+      'company_logourl' =>  $cmplogourlu ,
+      'company_logo' =>  $cmp_logou ,
       'companywebsite' => $postData['cwebsite1'],
       'companypan' => $postData['cpan1'],
       'companygst' => $postData['cgst1'],
@@ -337,5 +376,28 @@ class RegistrationModel extends CI_Model
   //         $query = $this->db->get();
   //         return $query->result();
   //     }
+
+
+// To upload company logo
+  public function do_upload()
+  {
+
+      $config['upload_path'] = "./uploads/";
+      $config['allowed_types'] = "jpg|png|pdf";
+      $config['max_size'] = 1024;
+
+      $this->load->library('upload', $config);
+
+      if ($this->upload->do_upload('file')) {
+          $data = $this->upload->data();
+
+      } else {
+          $error = $this->upload->display_errors();
+
+      }
+
+
+  }
+
 
 }
