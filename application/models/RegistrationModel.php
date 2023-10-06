@@ -390,14 +390,17 @@ class RegistrationModel extends CI_Model
 
       if ($this->upload->do_upload('file')) {
           $data = $this->upload->data();
-
       } else {
           $error = $this->upload->display_errors();
-
       }
 
-
   }
+
+
+
+
+
+
 
 
 }
