@@ -11,7 +11,7 @@ class SeekerController extends CI_Controller
 
     public function registration()
     {
-        
+
         $this->load->view('registrationform.php');
     }
 
@@ -68,12 +68,10 @@ class SeekerController extends CI_Controller
         $this->load->view('seekerView.php', $data);
     }
 
-   
-    
 
     public function basicDetails()
     {
-        $this->load->model('SeekerModel');
+        // $this->load->model('SeekerModel');
         $basicDetails = $this->SeekerModel->getBasicDetails();
         $this->data['basicDetails'] = $basicDetails;
         $this->data['method'] = 'basicdetails';
@@ -85,292 +83,294 @@ class SeekerController extends CI_Controller
         $postData = $this->input->post(null, true);
         $updateBasicDetails = $this->SeekerModel->updateBasicDetails();
 
-        $this->basicDetails();
+        // $this->basicDetails();
+        $this->educationTable();
         echo '<script>alert("Basic details inserted successfully.");</script>';
     }
 
 
 
-            // education
+    // education
 
-            public function educationTable()
-                {
-                    $this->data['method'] = "educationTable";
-                    $educationTable = $this->SeekerModel->educationTable();
-                    $this->data['educationTable'] = $educationTable;
+    public function educationTable()
+    {
+        $this->data['method'] = "educationTable";
+        $educationTable = $this->SeekerModel->educationTable();
+        $this->data['educationTable'] = $educationTable;
 
-                    $this->load->view('seekerView.php', $this->data);
-                }
+        $this->load->view('seekerView.php', $this->data);
+    }
 
-            public function addEducationForm()
-            {
-                $this->data['method'] = "addEducationForm";
-                $this->load->view('seekerView.php', $this->data);
+    public function addEducationForm()
+    {
+        $this->data['method'] = "addEducationForm";
+        $this->load->view('seekerView.php', $this->data);
 
-            }
+    }
 
-            public function insertEducationForm()
-            {
-                $insertEducationForm = $this->SeekerModel->insertEducationForm();
-               
-                $this->educationTable();
-                echo '<script>alert("Education details inserted successfully.");</script>';
+    public function insertEducationForm()
+    {
+        $insertEducationForm = $this->SeekerModel->insertEducationForm();
 
-            }
-            public function updateEducation()
-            {
-                $educationId = $this->uri->segment(3);
-                $this->data['method'] = "updateEducation";
-                $updateEducation = $this->SeekerModel->updateEducation($educationId);
-                $this->data['updateEducation'] = $updateEducation;
-                $this->load->view('seekerView.php', $this->data);
-            }
-            public function updateInsertEducation()
-            {
-                $post = $this->input->post(null, true);
-                $updateInsertEducation = $this->SeekerModel->updateInsertEducation();
-                $this->educationTable();
-                echo '<script>alert("Education details updated successfully.");</script>';
+        $this->educationTable();
+        echo '<script>alert("Education details inserted successfully.");</script>';
 
-            }
-
+    }
+    public function updateEducation()
+    {
+        $educationId = $this->uri->segment(3);
+        $this->data['method'] = "updateEducation";
+        $updateEducation = $this->SeekerModel->updateEducation($educationId);
+        $this->data['updateEducation'] = $updateEducation;
+        $this->load->view('seekerView.php', $this->data);
+    }
+    public function updateInsertEducation()
+    {
+        $post = $this->input->post(null, true);
+        $updateInsertEducation = $this->SeekerModel->updateInsertEducation();
         
-            public function deleteEducation()
-            {
-                $deleteEducationId = $this->uri->segment(3);
-                $delete = $this->SeekerModel->deleteEducation($deleteEducationId);
-                if ($delete == null) {
-                    $this->educationTable();
-                } else {
-                    echo "Error deleting record";
-                }
-             }
+        $this->educationTable();
+        echo '<script>alert("Education details updated successfully.");</script>';
 
-            
-            
-            
-            
-            // experience
-            
-            
-             public function experienceTable()
-             {
-                 $this->data['method'] = "experienceTable";
-                 $experienceTable = $this->SeekerModel->experienceTable();
-                 $this->data['experienceTable'] = $experienceTable;
+    }
 
-                 $this->load->view('seekerView.php', $this->data);
-             }
-             public function addExperirenceForm()
-             {
-                 $this->data['method'] = "addExperirenceForm";
-                 $this->load->view('seekerView.php', $this->data);
 
-             }
-             public function insertExperienceForm()
-             {
-                 $insertExperienceForm = $this->SeekerModel->insertExperienceForm();
-                
-                 $this->experienceTable();
-                 echo '<script>alert("Experience details inserted successfully.");</script>';
+    public function deleteEducation()
+    {
+        $deleteEducationId = $this->uri->segment(3);
+        $delete = $this->SeekerModel->deleteEducation($deleteEducationId);
+        if ($delete == null) {
+            $this->educationTable();
+        } else {
+            echo "Error deleting record";
+        }
+    }
 
-             }
-             public function updateExperience()
-             {
-                 $experienceId = $this->uri->segment(3);
-                 $this->data['method'] = "updateExperience";
-                 $updateExperience = $this->SeekerModel->updateExperience($experienceId);
-                 $this->data['updateExperience'] = $updateExperience;
-                 $this->load->view('seekerView.php', $this->data);
-             }
 
-             public function updateInsertExperience()
-             {
-                 $post = $this->input->post(null, true);
-                 $updateInsertExperience = $this->SeekerModel->updateInsertExperience();
-                 $this->experienceTable();
-                 echo '<script>alert("Experience details updated successfully.");</script>';
 
-             }
 
-             public function deleteExperience()
-            {
-                $deleteExperienceId = $this->uri->segment(3);
-                $delete = $this->SeekerModel->deleteExperience($deleteExperienceId);
-                if ($delete == null) {
-                    $this->experienceTable();
-                } else {
-                    echo "Error deleting record";
-                }
-             }
+
+    // experience
+
+
+    public function experienceTable()
+    {
+        $this->data['method'] = "experienceTable";
+        $experienceTable = $this->SeekerModel->experienceTable();
+        $this->data['experienceTable'] = $experienceTable;
+
+        $this->load->view('seekerView.php', $this->data);
+    }
+    public function addExperirenceForm()
+    {
+        $this->data['method'] = "addExperirenceForm";
+        $this->load->view('seekerView.php', $this->data);
+
+    }
+    public function insertExperienceForm()
+    {
+        $insertExperienceForm = $this->SeekerModel->insertExperienceForm();
+
+        $this->experienceTable();
+        echo '<script>alert("Experience details inserted successfully.");</script>';
+
+    }
+    public function updateExperience()
+    {
+        $experienceId = $this->uri->segment(3);
+        $this->data['method'] = "updateExperience";
+        $updateExperience = $this->SeekerModel->updateExperience($experienceId);
+        $this->data['updateExperience'] = $updateExperience;
+        $this->load->view('seekerView.php', $this->data);
+    }
+
+    public function updateInsertExperience()
+    {
+        $post = $this->input->post(null, true);
+        $updateInsertExperience = $this->SeekerModel->updateInsertExperience();
+        $this->experienceTable();
+        echo '<script>alert("Experience details updated successfully.");</script>';
+
+    }
+
+    public function deleteExperience()
+    {
+        $deleteExperienceId = $this->uri->segment(3);
+        $delete = $this->SeekerModel->deleteExperience($deleteExperienceId);
+        if ($delete == null) {
+            $this->experienceTable();
+        } else {
+            echo "Error deleting record";
+        }
+    }
 
 
     //    project
 
-                    public function projectTable()
-                    {
-                        $this->data['method'] = "projectTable";
-                        $projectTable = $this->SeekerModel->projectTable();
-                        $this->data['projectTable'] = $projectTable;
+    public function projectTable()
+    {
+        $this->data['method'] = "projectTable";
+        $projectTable = $this->SeekerModel->projectTable();
+        $this->data['projectTable'] = $projectTable;
 
-                        $this->load->view('seekerView.php', $this->data);
-                    }
+        $this->load->view('seekerView.php', $this->data);
+    }
 
-                    public function addProjectForm()
-                    {
-                        $this->data['method'] = "addProjectForm";
-                        $this->load->view('seekerView.php', $this->data);
-                    }
+    public function addProjectForm()
+    {
+        $this->data['method'] = "addProjectForm";
+        $this->load->view('seekerView.php', $this->data);
+    }
 
-                    public function insertProjectForm()
-                    {
-                        $insertProjectForm = $this->SeekerModel->insertProjectForm();
-                    
-                        $this->projectTable();
-                    }
+    public function insertProjectForm()
+    {
+        $insertProjectForm = $this->SeekerModel->insertProjectForm();
 
-                    public function updateProject()
-                    {
-                        $projectId = $this->uri->segment(3);
-                        $this->data['method'] = "updateProject";
-                        $updateProject = $this->SeekerModel->updateProject($projectId);
-                        $this->data['updateProject'] = $updateProject;
-                        $this->load->view('seekerView.php', $this->data);
-                    }
+        $this->projectTable();
+    }
 
-                    public function updateInsertProject()
-                    {
-                        $post = $this->input->post(null, true);
-                        $updateInsertProject = $this->SeekerModel->updateInsertProject();
-                        $this->projectTable();
-                    }
+    public function updateProject()
+    {
+        $projectId = $this->uri->segment(3);
+        $this->data['method'] = "updateProject";
+        $updateProject = $this->SeekerModel->updateProject($projectId);
+        $this->data['updateProject'] = $updateProject;
+        $this->load->view('seekerView.php', $this->data);
+    }
 
-                    public function deleteProject()
-                    {
-                        $deleteProjectId = $this->uri->segment(3);
-                        $delete = $this->SeekerModel->deleteProject($deleteProjectId);
-                        if ($delete == null) {
-                            $this->projectTable();
-                        } else {
-                            echo "Error deleting record";
-                        }
-                    }
+    public function updateInsertProject()
+    {
+        $post = $this->input->post(null, true);
+        $updateInsertProject = $this->SeekerModel->updateInsertProject();
+        $this->projectTable();
+    }
 
-
-            // area of intrest
-
-            public function areaOfIntrestTable()
-                    {
-                        $this->data['method'] = "areaOfIntrestTable";
-                        $areaOfIntrestTable = $this->SeekerModel->areaOfIntrestTable();
-                        $this->data['areaOfIntrestTable'] = $areaOfIntrestTable;
-
-                        $this->load->view('seekerView.php', $this->data);
-                    }
-
-                    public function addAreaOfIntrestForm()
-                    {
-                        $this->data['method'] = "addAreaOfIntrestForm";
-                        $this->load->view('seekerView.php', $this->data);
-                    }
-
-                    public function insertAreaOfIntrest()
-                    {
-                        $insertAreaOfIntrest = $this->SeekerModel->insertAreaOfIntrest();
-                    
-                        $this->areaOfIntrestTable();
-                        echo '<script>alert("Area of interest inserted successfully.");</script>';
-
-                    }
-
-                    public function updateAreaOfIntrest()
-                    {
-                        $updateAreaOfIntrestId = $this->uri->segment(3);
-                        $this->data['method'] = "updateAreaOfIntrest";
-                        $updateAreaOfIntrest = $this->SeekerModel->updateAreaOfIntrest($updateAreaOfIntrestId);
-                        $this->data['updateAreaOfIntrest'] = $updateAreaOfIntrest;
-                        $this->load->view('seekerView.php', $this->data);
-                    }
-
-                    
-                    public function updateInsertAreaOfIntrest()
-                    {
-                        $post = $this->input->post(null, true);
-                        $updateInsertAreaOfIntrest = $this->SeekerModel->updateInsertAreaOfIntrest();
-                        $this->areaOfIntrestTable();
-                        echo '<script>alert("Area of interest updated successfully.");</script>';
-
-                    }
-
-                    public function deleteAreaOfIntrest()
-                    {
-                        $deleteAreaOfIntrestId = $this->uri->segment(3);
-                        $delete = $this->SeekerModel->deleteAreaOfIntrest($deleteAreaOfIntrestId);
-                        if ($delete == null) {
-                            $this->areaOfIntrestTable();
-                        } else {
-                            echo "Error deleting record";
-                        }
-                    }
-                    
-                    // skills
+    public function deleteProject()
+    {
+        $deleteProjectId = $this->uri->segment(3);
+        $delete = $this->SeekerModel->deleteProject($deleteProjectId);
+        if ($delete == null) {
+            $this->projectTable();
+        } else {
+            echo "Error deleting record";
+        }
+    }
 
 
-                    public function skillTable()
-                    {
-                        $this->data['method'] = "skillTable";
-                        $skillTable = $this->SeekerModel->skillTable();
-                        $this->data['skillTable'] = $skillTable;
+    // area of intrest
 
-                        $this->load->view('seekerView.php', $this->data);
-                    }
+    public function areaOfIntrestTable()
+    {
+        $this->data['method'] = "areaOfIntrestTable";
+        $areaOfIntrestTable = $this->SeekerModel->areaOfIntrestTable();
+        $this->data['areaOfIntrestTable'] = $areaOfIntrestTable;
 
-                    
-                    public function addSkillForm()
-                    {
-                        $this->data['method'] = "addSkillForm";
-                        $this->load->view('seekerView.php', $this->data);
-                    }
+        $this->load->view('seekerView.php', $this->data);
+    }
 
-                    public function insertSkillForm()
-                    {
-                        $insertSkillForm = $this->SeekerModel->insertSkillForm();
-                    
-                        $this->skillTable();
-                    }
+    public function addAreaOfIntrestForm()
+    {
+        $this->data['method'] = "addAreaOfIntrestForm";
+        $this->load->view('seekerView.php', $this->data);
+    }
 
-                    public function updateSkill()
-                    {
-                        $updateSkillId = $this->uri->segment(3);
-                        $this->data['method'] = "updateSkill";
-                        $updateSkill = $this->SeekerModel->updateSkill($updateSkillId);
-                        $this->data['updateSkill'] = $updateSkill;
-                        $this->load->view('seekerView.php', $this->data);
-                    }
+    public function insertAreaOfIntrest()
+    {
+        $insertAreaOfIntrest = $this->SeekerModel->insertAreaOfIntrest();
 
-                    public function updateInsertSkill()
-                    {
-                        $post = $this->input->post(null, true);
-                        $updateInsertSkill = $this->SeekerModel->updateInsertSkill();
-                        $this->skillTable();
-                    }
+        $this->areaOfIntrestTable();
+        echo '<script>alert("Area of interest inserted successfully.");</script>';
 
-                    public function deleteSkill()
-                    {
-                        $deleteSkillId = $this->uri->segment(3);
-                        $delete = $this->SeekerModel->deleteSkill($deleteSkillId);
-                        if ($delete == null) {
-                            $this->skillTable();
-                        } else {
-                            echo "Error deleting record";
-                        }
-                    }
+    }
 
-            
+    public function updateAreaOfIntrest()
+    {
+        $updateAreaOfIntrestId = $this->uri->segment(3);
+        $this->data['method'] = "updateAreaOfIntrest";
+        $updateAreaOfIntrest = $this->SeekerModel->updateAreaOfIntrest($updateAreaOfIntrestId);
+        $this->data['updateAreaOfIntrest'] = $updateAreaOfIntrest;
+        $this->load->view('seekerView.php', $this->data);
+    }
 
-            
-                    
-       
+
+    public function updateInsertAreaOfIntrest()
+    {
+        $post = $this->input->post(null, true);
+        $updateInsertAreaOfIntrest = $this->SeekerModel->updateInsertAreaOfIntrest();
+        $this->areaOfIntrestTable();
+        echo '<script>alert("Area of interest updated successfully.");</script>';
+
+    }
+
+    public function deleteAreaOfIntrest()
+    {
+        $deleteAreaOfIntrestId = $this->uri->segment(3);
+        $delete = $this->SeekerModel->deleteAreaOfIntrest($deleteAreaOfIntrestId);
+        if ($delete == null) {
+            $this->areaOfIntrestTable();
+        } else {
+            echo "Error deleting record";
+        }
+    }
+
+    // skills
+
+
+    public function skillTable()
+    {
+        $this->data['method'] = "skillTable";
+        $skillTable = $this->SeekerModel->skillTable();
+        $this->data['skillTable'] = $skillTable;
+
+        $this->load->view('seekerView.php', $this->data);
+    }
+
+
+    public function addSkillForm()
+    {
+        $this->data['method'] = "addSkillForm";
+        $this->load->view('seekerView.php', $this->data);
+    }
+
+    public function insertSkillForm()
+    {
+        $insertSkillForm = $this->SeekerModel->insertSkillForm();
+
+        $this->skillTable();
+    }
+
+    public function updateSkill()
+    {
+        $updateSkillId = $this->uri->segment(3);
+        $this->data['method'] = "updateSkill";
+        $updateSkill = $this->SeekerModel->updateSkill($updateSkillId);
+        $this->data['updateSkill'] = $updateSkill;
+        $this->load->view('seekerView.php', $this->data);
+    }
+
+    public function updateInsertSkill()
+    {
+        $post = $this->input->post(null, true);
+        $updateInsertSkill = $this->SeekerModel->updateInsertSkill();
+        $this->skillTable();
+    }
+
+    public function deleteSkill()
+    {
+        $deleteSkillId = $this->uri->segment(3);
+        $delete = $this->SeekerModel->deleteSkill($deleteSkillId);
+        if ($delete == null) {
+            $this->skillTable();
+        } else {
+            echo "Error deleting record";
+        }
+    }
+
+
+
+
+
+
 
 
 
@@ -502,7 +502,7 @@ class SeekerController extends CI_Controller
     // }
     // public function educationalDetails()
     // {
-        
+
     //     $this->load->model('SeekerModel');
     //     $educationalDetails = $this->SeekerModel->getEducationalDetails();
     //     $this->data['educationalDetails'] = $educationalDetails;
@@ -511,7 +511,7 @@ class SeekerController extends CI_Controller
     // }
     // public function updateEducationDetails()
     // {
-        
+
     //     $postData = $this->input->post(null, true);
     //     $updateEducationDetails = $this->SeekerModel->updateEducationDetails();
 
@@ -519,7 +519,7 @@ class SeekerController extends CI_Controller
     // }
     // public function experienceTable()
     // {
-        
+
     //     $this->data['method'] = 'experienceTable';
     //     $experienceTable=$this->SeekerModel->getExperienceDetails();
     //     $this->data['experienceTable']=$experienceTable;
@@ -530,12 +530,12 @@ class SeekerController extends CI_Controller
     //     $this->data['method'] = 'addExperienceForm';
     //     $this->load->view('seekerView.php', $this->data);
     // }
-    
+
     // public function insertExperience()
     // {
     //     $this->data['method'] = "jobs";
     //     $insertExperience = $this->SeekerModel->insertExperience();
-        
+
     //     $this->load->view('seekerView.php', $this->data);
     //     echo "Record added seccessfuly";
     //     $this->experienceTable();
@@ -548,7 +548,7 @@ class SeekerController extends CI_Controller
     //     $this->data['experienceDetails'] = $experienceDetails;
     //     $this->data['method'] = 'experienceDetails';
     //     $this->load->view('seekerView.php', $this->data);
-        
+
     // }
 
     // public function updateExperienceDetails(){
@@ -560,26 +560,26 @@ class SeekerController extends CI_Controller
     //     $this->load->view('seekerView.php', $this->data);
 
     //     $this->experienceDetails();
-       
+
     // }
 
     // public function projectDetails(){
-          
-        
+
+
     //         $this->load->model('SeekerModel');
     //         $provider = $this->SeekerModel->getProjectDetails(); 
     //         $this->data['projectDetails'] = $provider;
     //         $this->data['method'] = "project";
     //         $this->load->view('seekerView.php', $this->data);
-           
-          
-            
+
+
+
     // }
 
 
     // public function updateProjectDetails()
     // {
-        
+
     //     $postData = $this->input->post(null, true);
     //     $updateProjectDetails = $this->SeekerModel->updateProjectDetails();
 
@@ -587,7 +587,7 @@ class SeekerController extends CI_Controller
     // }
 
     // public function areaofinterest(){
-       
+
     //     $this->data['method'] = "areaofinterest";
     //     $provider = $this->SeekerModel->getAreaOfInterest();
     //     $this->data['areaofinterest'] = $provider;
@@ -597,7 +597,7 @@ class SeekerController extends CI_Controller
 
     // public function updateAreaOfInterest()
     // {
-        
+
     //     $postData = $this->input->post(null, true);
     //     $updateAreaOfInterest = $this->SeekerModel->updateAreaOfInterest();
 
@@ -607,7 +607,7 @@ class SeekerController extends CI_Controller
 
     // public function skills()
     // {
-       
+
     //     $this->data['method'] = "skills";
     //     $provider = $this->SeekerModel->getSkills();
     //     $this->data['skills'] = $provider;
@@ -621,21 +621,53 @@ class SeekerController extends CI_Controller
     //     $this->skills();
     // }
 
-    public function resume(){
+    // public function resume(){
 
-          $this->data['method'] = "resume";
+    //       $this->data['method'] = "resume";
 
-        $resume=$this->SeekerModel->do_upload();
+    //     $resume=$this->SeekerModel->do_upload();
+    //     $this->data['resume'] = $resume;
+    //      $this->load->view('seekerView.php',$this->data);
+    //     }
+
+
+    public function resume()
+    {
+
+        $this->data['method'] = "resume";
+        $resume = $this->SeekerModel->do_upload();
         $this->data['resume'] = $resume;
-         $this->load->view('seekerView.php',$this->data);
-        }
+        $this->load->view('seekerView.php', $this->data);
+    }
 
-        public function logout()
+    public function resumeupload()
+    {
+
+        $this->data['method'] = "resume";
+        $resume = $this->SeekerModel->do_upload();
+        $this->data['resume'] = $resume;
+        $this->thank();
+    }
+
+
+    public function thank()
+    {
+
+        $this->data['method'] = "thank";
+        $this->load->view('seekerView.php', $this->data);
+    }
+
+    public function logout()
     {
         $this->session->unset_userdata('userLoggedIn');
         $this->index();
     }
-   
+
+
+
+
+
+
 }
 
 ?>

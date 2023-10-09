@@ -188,7 +188,7 @@
             </div>
             <!-- <form  name="forms" action="Registrationcontroller.php" method="post"> -->
             <!-- <form id="h" name="forms" action="http://localhost/arramjobs/providerController/providerRegistration" method="post"> -->
-            <form id="h" name="forms" action="<?php echo baseUrl . "providerController/providerRegistration" ?>"
+            <form id="h" enctype="multipart/form-data" name="forms" action="<?php echo baseUrl . "providerController/providerRegistration" ?>"
                 method="post">
 
                 <div class=" ">
@@ -244,8 +244,8 @@
                     <p id="pinerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="file" class="form-label">Logo:</label>
-                    <input type="file" class="form-control" id="file" name="logo" >
+                    <label for="logo" class="form-label">Logo:</label>
+                    <input type="file" class="form-control" id="logo" name="logo" >
                     <p id="logerr" style="color: red;"></p>
                 </div>
                 <div class="">
@@ -374,7 +374,7 @@
             var y3 = document.forms.pincode.value;
             var y5 = document.forms.district.value;
             var y4 = document.forms.state.value;
-            var l = document.forms.file.value;
+            var l = document.forms.logo.value;
             var web = document.forms.cwebsite.value;
             var pan = document.forms.cpan.value;
             var gst = document.forms.cgst.value;
