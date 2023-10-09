@@ -1008,6 +1008,7 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">D.O.B</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1021,7 +1022,8 @@
                                             <td><?php echo $value['phonenumber']; ?></td>
                                             <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
                                             <td><?php echo $value['dateofbirth']; ?></td>
-                                            <td><a href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">Manage</button></a></td>
+                                            <td><span class="badge bg-primary">Verification Pending</span></td>
+                                            <td><a href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
                                         </tr>
                                     <?php
                                         $loopcount++;
@@ -1078,6 +1080,7 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">D.O.B</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1091,7 +1094,8 @@
                                             <td><?php echo $value['phonenumber']; ?></td>
                                             <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
                                             <td><?php echo $value['dateofbirth']; ?></td>
-                                            <td><a href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">Manage</button></a></td>
+                                            <td><span class="badge bg-success">Verification success</span></td>
+                                            <td><a href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
                                         </tr>
                                     <?php
                                         $loopcount++;
@@ -1367,7 +1371,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" value="0">
                                             <label class="form-check-label" for="gridRadios1">
-                                                Verification Panding
+                                                Verification Pending
                                             </label>
                                         </div>
                                         <div class="form-check">
@@ -1386,6 +1390,12 @@
                                 <?php }
                                 ?>
                             </fieldset>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
+                                    <label for="floatingTextarea">Remarks</label>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-success">submit</button>
                         </form>
                     </div>
