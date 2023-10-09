@@ -564,63 +564,6 @@ class SeekerModel extends CI_Model
         $del = $this->db->query($delete);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //     public function insertEducation()
     //     {
     //       $postData = $this->input->post(null, true);
@@ -828,5 +771,3 @@ class SeekerModel extends CI_Model
 
     }
 }
-
-?>

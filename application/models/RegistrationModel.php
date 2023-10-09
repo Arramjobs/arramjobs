@@ -393,14 +393,5 @@ class RegistrationModel extends CI_Model
     } else {
       $error = $this->upload->display_errors();
     }
-
   }
-
-
-
-
-
-
-
-
 }
