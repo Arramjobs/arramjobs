@@ -245,6 +245,63 @@
         /* .active { 
           background-color: yellow;
         } */
+
+        
+
+        /* Progressbar */
+        .progressbar {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          counter-reset: step;
+          margin: 2rem 0 4rem;
+        }
+
+        .progressbar::before,
+        .progress {
+          content: "";
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 4px;
+          width: 100%;
+          background-color: #dcdcdc;
+          z-index: -1;
+        }
+
+        .progress {
+          background-color: yellow;
+          width: 0%;
+          transition: 0.3s;
+        }
+
+        .progress-step {
+          width: 2.1875rem;
+          height: 2.1875rem;
+          background-color: #dcdcdc;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .progress-step::before {
+          counter-increment: step;
+          content: counter(step);
+        }
+
+        .progress-step::after {
+          content: attr(data-title);
+          position: absolute;
+          top: calc(100% + 0.5rem);
+          font-size: 0.85rem;
+          color: #666;
+        }
+
+        .progress-step-active {
+          background-color:yellow;
+          color: #f3f3f3;
+        }
   </style>
 </head>
 
@@ -282,9 +339,26 @@
         </ul>
       </div>
   </nav>
-  
+
+
+
+  <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        
+        <div class="progress-step progress-step-active"
+          data-title="Intro" ></div>
+        <div class="progress-step" data-title="Details"></div>
+        <div class="progress-step" data-title="Education"></div>
+        <div class="progress-step" data-title="Experience"></div>
+        <div class="progress-step" data-title="Interest"></div>
+        <div class="progress-step" data-title="Resume"></div>
+      </div>
+
+
+
   <div class="container-fluid">
     <div class="row">
+
       <!-- Sidebar -->
       <nav class="col-md-3 col-lg-2 d-md-block sidebar">
         <div class="position-sticky">
@@ -332,27 +406,29 @@
         </div>
       </nav>
 
+      
 
       <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
         <?php
         if ($method == "dash") {
           ?>
+          <div class="form-step form-step-active">
                     <h1 class="seekerdashboard my-5" style="text-align:center;color:navy" id="w">
                           Welcome To Job Employee Dashboard </h1>
                         <p class="seekerdashboardcontent my-5 mx-md-5 px-5">At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're 
                         a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain
                          access to a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs.</p>
-                         <a id="regis" style="margin-left:40%;" href="<?php echo baseUrl . "seekerController/basicdetails" ?>">Start Filling Form </a>
-
-
+                         <a id="regis" style="margin-left:40%;" class="btn-next" href="<?php echo baseUrl . "seekerController/basicdetails" ?>">Start Filling Form </a>
+                         </div>
                   <?php
         } elseif ($method == 'basicdetails') {
           ?>
 
                           <!-- 1 Basic details ******************************************************************************************************************************************************************************************* -->
           
-                          <div class="basicdetailcss container mt-5 mx-md-auto" id="page1" >
+
+                          <div class="basicdetailcss container mt-5 mx-md-auto form-step " id="page1" >
                             <h3>Basic Details</h3>
            
                             <form name="applicationform"  enctype="multipart/form-data" method="post" onsubmit="return group()" action='<?php echo baseUrl . "seekerController/updateBasicDetails" ?>'>
@@ -442,7 +518,7 @@
 
 
                                           <div class="form-group">
-                                            <label for="aadharfrontphoto">Aadhar Front Photo *</label>
+                                            <label for="aadharfrontphoto">Aadhaar Front Photo *</label>
                                             <input type="file" class="form-control" id="aadharfrontphoto" value="<?php echo isset($value['aadhar_front']) ? $value['aadhar_front'] : ''; ?>" name="aadharfrontphoto" >
                                             <!-- <?php if (isset($value['aadhar_front'])) {
                                               ?>
@@ -457,7 +533,7 @@
 
 
                                           <div class="form-group">
-                                            <label for="aadharbackphoto">Aadhar Back Photo *</label>
+                                            <label for="aadharbackphoto">Aadhaar Back Photo *</label>
                                             <input type="file" class="form-control" id="aadharbackphoto" value="<?php echo isset($value['aadhar_back']); ?>" name="aadharbackphoto" >
                                             <!-- <?php if (isset($value['aadhar_back'])) {
                                               ?>
@@ -484,7 +560,7 @@
 
                                           <p style="color:red;textalign:center;font-size:small;margin-top:20px">The size of above attachment is below 1024KB</p>
 
-                                          <button type="submit" name="submitBtn" class="btn btn-primary"  id="custom-upload-button">Submit</button>
+                                          <button type="submit" name="submitBtn" class="btn btn-primary btn-next"  id="custom-upload-button" >Submit</button>
                                       </form>
            
                               <?php
@@ -657,7 +733,7 @@
                                     }
 
                                 if (aa == "") {
-                                    var namesms2 = "Aadhar Front Photo must be filled out";
+                                    var namesms2 = "Aadhaar Front Photo must be filled out";
                                     document.getElementById("aadharfrontphoto_error").innerHTML = namesms2;
                                     document.applicationform.aadharfrontphoto.focus();
                                     return false; 
@@ -666,7 +742,7 @@
                                     }
 
                                 if (ab == "") {
-                                    var namesms2 = "Aadhar Back Photo must be filled out";
+                                    var namesms2 = "Aadhaar Back Photo must be filled out";
                                     document.getElementById("aadharbackphoto_error").innerHTML = namesms2;
                                     document.applicationform.aadharbackphoto.focus();
                                     return false; 
@@ -752,7 +828,7 @@
           ?>
                  <!-- 2 1 Education insert ***********************************************************************************************************-->
 
-                    <div class="eduformcss container mt-5 mx-md-auto" id="education">
+                    <div class="eduformcss container mt-5 mx-md-auto form-step " id="education">
                       <h3>Add Education Details</h3>
 
                       <div id="educationFormsContainer">
@@ -846,7 +922,7 @@
 
                       </div>
             
-                        <button type="submit" id="educationsubmit" class="btn btn-primary">Submit</button>
+                        <button type="submit" id="educationsubmit" class="btn btn-primary btn-next">Submit</button>
             
                         </form>
                       </div>
@@ -4004,6 +4080,56 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+
+  <script>
+      // const prevBtns = document.querySelectorAll(".btn-prev");
+const nextBtns = document.querySelectorAll(".btn-next");
+const progress = document.getElementById("progress");
+const formSteps = document.querySelectorAll(".form-step");
+const progressSteps = document.querySelectorAll(".progress-step");
+
+let formStepsNum = 0;
+
+nextBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    formStepsNum++;
+    updateFormSteps();
+    updateProgressbar();
+  });
+});
+
+prevBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    formStepsNum--;
+    updateFormSteps();
+    updateProgressbar();
+  });
+});
+
+function updateFormSteps() {
+  formSteps.forEach((formStep) => {
+    formStep.classList.contains("form-step-active") &&
+      formStep.classList.remove("form-step-active");
+  });
+
+  formSteps[formStepsNum].classList.add("form-step-active");
+}
+
+function updateProgressbar() {
+  progressSteps.forEach((progressStep, idx) => {
+    if (idx < formStepsNum + 1) {
+      progressStep.classList.add("progress-step-active");
+    } else {
+      progressStep.classList.remove("progress-step-active");
+    }
+  });
+
+  const progressActive = document.querySelectorAll(".progress-step-active");
+
+  progress.style.width =
+    ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
+}
+    </script>
       <!-- sidebar active class -->
       <!-- <script>
         function setActiveButton(index) {
