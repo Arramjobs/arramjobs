@@ -354,7 +354,7 @@
 
 
 
-  <div class="progressbar">
+  <!-- <div class="progressbar">
     <div class="progress" id="progress"></div>
 
     <div class="progress-step progress-step-active" data-title="Intro"></div>
@@ -363,7 +363,7 @@
     <div class="progress-step" data-title="Experience"></div>
     <div class="progress-step" data-title="Interest"></div>
     <div class="progress-step" data-title="Resume"></div>
-  </div>
+  </div> -->
 
 
 
