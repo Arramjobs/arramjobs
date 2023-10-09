@@ -23,7 +23,7 @@ class Admin extends CI_Controller
     }
 
 
-    public function dashboard(){
+    public function verifyLogin(){
         $postData = $this->input->post(null, true);
         $response = $this->AdminModel->adminLogin();
         if (isset($response[0]['id'])) {
@@ -40,6 +40,11 @@ class Admin extends CI_Controller
 
             $this->load->view('adminLogin.php');
         }
+    }
+
+    public function dashboard(){
+        $this->data['method'] = "dashboard";
+        $this->load->view('admindashboard.php', $this->data);
     }
 
     public function createAdminUser()

@@ -70,7 +70,8 @@
         public function verifyCandidateDetails(){
             $postData = $this->input->post(null, true);
             $updateVerificationStatus = array(
-                'verificationStatus' => $postData['verificationStatus']
+                'verificationStatus' => $postData['verificationStatus'],
+                'verificationRemarks' => $postData['verificationRemarks']
             );
 
             $this->db->where('id', $postData['candidateId']);
