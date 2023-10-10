@@ -502,7 +502,7 @@
                 </div>
                 <div class="form-group">
                   <label for="pincode">Pincode *</label>
-                  <input type="number" class="form-control" id="pincode" value="<?php echo isset($value['pincode']) ? $value['pincode'] : ''; ?>" name="pincode" placeholder="Enter pincode">
+                  <input type="number" class="form-control" id="pincode" value="<?php echo ($value['pincode']) ? $value['pincode'] : ''; ?>" name="pincode" placeholder="Enter pincode">
                   <div id="pincode_error" class="error"></div>
                 </div>
                 <div class="form-group">
@@ -1563,7 +1563,7 @@
                   <option value="databaseadmin">Database Admin</option>
                   <option value="teacher">Teacher</option>
                   <option value="professor">Professor</option>
-                  <option value="others">Others</option>
+                  <!-- <option value="others">Others</option> -->
                 </select>
                 <div id="category_error" class="error"></div>
               </div>
@@ -3441,12 +3441,13 @@
 
                             <div class="form-group">
                               <label for="skillname">Skill Name</label>
-                              <input type="text" class="form-control" id="skillname" name="skillname" value="<?php echo $value['skillname']; ?>">
+                              <input type="text" class="form-control" id="skillname" name="skillname" value="<?php echo $value['skillname']; ?>" placeholder="Enter skill name">
                             </div>
 
                             <div class="form-group">
                               <label for="experience">Experience</label>
                               <select class="form-control" name="skillexperience" id="skillexperience" value="<?php echo $value['skillexperience']; ?>"><br>
+                               <option value="">Select an experience</option>
                                 <option value="fresher" <?php if ($value['skillexperience'] === 'fresher')
                                                           echo ' selected'; ?>>Fresher</option>
                                 <option value="0-2" <?php if ($value['skillexperience'] === '0-2')
@@ -3464,6 +3465,7 @@
                             <div class="form-group">
                               <label for="skillLevel">Skill Level</label>
                               <select class="form-control" name="skilllevel" id="skilllevel" value="<?php echo $value['skilllevel']; ?>">
+                               <option value="">Select a skill level</option>
                                 <option value="beginner" <?php if ($value['skilllevel'] === 'beginner')
                                                             echo ' selected'; ?>>Beginner</option>
                                 <option value="intermediate" <?php if ($value['skilllevel'] === 'intermediate')

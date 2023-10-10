@@ -498,28 +498,28 @@
                                 <p id="adderr" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
-                                <label for="addr" class="form-label">Landmark:</label>
-                                <input type="address" class="form-control" value='<?php echo $value['Landmark']; ?>' id="landmark1" name="landmark1" placeholder="Enter address">
+                                <label for="landmark1" class="form-label">Landmark:</label>
+                                <input type="address" class="form-control" value='<?php echo $value['Landmark']; ?>' id="landmark1" name="landmark1" placeholder="Enter landmark">
                                 <p id="landerr1" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
-                                <label for="addr" class="form-label">City:</label>
+                                <label for="city1" class="form-label">City:</label>
                                 <input type="address" class="form-control" value='<?php echo $value['City']; ?>' id="city1" name="city1" placeholder="Enter city">
                                 <p id="cityerr1" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
-                                <label for="addr" class="form-label">State:</label>
+                                <label for="state1" class="form-label">State:</label>
                                 <input type="address" class="form-control" value='<?php echo $value['state']; ?>' id="state1" name="state1" placeholder="Enter state">
                                 <p id="stateerr1" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
-                                <label for="addr" class="form-label">District:</label>
+                                <label for="district1" class="form-label">District:</label>
                                 <input type="address" class="form-control" value='<?php echo $value['district']; ?>' id="district1" name="district1" placeholder="Enter district">
                                 <p id="diserr1" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
-                                <label for="addr" class="form-label">Pincode:</label>
-                                <input type="number" class="form-control" value='<?php echo $value['pincode']; ?>' id="pincode1" name="pincode1">
+                                <label for="pincode1" class="form-label">Pincode:</label>
+                                <input type="number" class="form-control" value='<?php echo $value['pincode']; ?>' id="pincode1" name="pincode1" placeholder="Enter pincode">
                                 <p id="pinerr1" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
@@ -532,17 +532,17 @@
 
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
                                 <label for="cwebsite" class="form-label">Website:</label>
-                                <input type="text" class="form-control" value='<?php echo $value['companywebsite']; ?>' id="cwebsite1" name="cwebsite1">
+                                <input type="text" class="form-control" value='<?php echo $value['companywebsite']; ?>' id="cwebsite1" name="cwebsite1" placeholder="Enter company website">
                                 <p id="weberr" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55">
                                 <label for="cpan" class="form-label">Pan Number:</label>
-                                <input type="text" class="form-control" value='<?php echo $value['companypan']; ?>' id="cpan1" name="cpan1">
+                                <input type="text" class="form-control" value='<?php echo $value['companypan']; ?>' id="cpan1" name="cpan1" placeholder="Enter company pan number">
                                 <p id="weberr" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55">
                                 <label for="cgst" class="form-label">GST Number:</label>
-                                <input type="text" class="form-control" value='<?php echo $value['companygst']; ?>' id="cgst1" name="cgst1">
+                                <input type="text" class="form-control" value='<?php echo $value['companygst']; ?>' id="cgst1" name="cgst1" placeholder="Enter company gst number">
                                 <p id="weberr" style="color: red;"></p>
                             </div>
                             <br>
@@ -561,7 +561,7 @@
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
                                 <label for="phno1" class="form-label">Mobile Number:</label>
-                                <input type="number" class="form-control" value='<?php echo $value['mobile_number']; ?>' id="phno1" name="phno1">
+                                <input type="number" class="form-control" value='<?php echo $value['mobile_number']; ?>' id="phno1" name="phno1" placeholder="Enter mobile number">
                                 <p id="pherr1" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
@@ -994,7 +994,7 @@
                                     <td><?php echo $value['salary'] ?></td>
                                     <td><?php echo $value['experience'] ?></td>
                                     <td><?php echo $value['number_of_openings'] ?></td>
-                                    <td><?php echo $value['insertdate'] ?></td>
+                                    <td><?php echo $value['date'] ?></td>
 
                                     <td>
                                         <div class="btn-group" role="group">
@@ -1436,8 +1436,8 @@
 
                 function validateForm() {
 
-                    // var company_name = document.getElementById("company_name");
-                    // var company_nameError = document.getElementById('company_name_error');
+                    var company_name = document.getElementById("company_name");
+                    var company_nameError = document.getElementById('company_name_error');
 
                     var category = document.getElementById("category");
                     var categoryError = document.getElementById('category_error');
@@ -1585,13 +1585,13 @@
                         <input type="hidden" class="form-control" value=<?php echo $value['id']; ?> id="id" name="id" placeholder="enter name" onkeypress="return allowOnlyLetters(event, this)">
                         <div class="form-group">
                             <label for="company_name">Company Name:</label>
-                            <input type="text" class="form-control" id="company_name" value=<?php echo $value['company_name']; ?> name="company_name" readonly>
+                            <input type="text" class="form-control" id="company_name" value="<?php echo $value['company_name']; ?>" name="company_name" readonly>
                             <div id="company_name_error" class="error"></div>
                         </div>
 
                         <div class="form-group">
                             <label for="category">Category:</label>
-                            <select class="form-control" id="category" value=<?php echo $value['jobCategory']; ?> name="category">
+                            <select class="form-control" id="category" value="<?php echo $value['jobCategory']; ?>" name="category">
                                 <option value="">Select a category</option>
                                 <option value="architech" <?php if ($value['jobCategory'] === 'architech')
                                                                 echo ' selected'; ?>>Architech</option>
@@ -1621,7 +1621,7 @@
                         </div>
                         <div class="form-group">
                             <label for="experience">Experience:</label>
-                            <select class="form-control" id="experience" value=<?php echo $value['experience']; ?> name="experience">
+                            <select class="form-control" id="experience" value="<?php echo $value['experience']; ?>" name="experience">
                                 <option value="">Select experience</option>
                                 <option value="fresher" <?php if ($value['experience'] === 'fresher')
                                                             echo ' selected'; ?>>Fresher</option>
@@ -1642,7 +1642,7 @@
                         </div>
                         <div class="form-group">
                             <label for="preferred_location">Preferred Location:</label>
-                            <input type="text" class="form-control" id="preferred_location" value=<?php echo $value['location']; ?> name="preferred_location">
+                            <input type="text" class="form-control" id="preferred_location" value="<?php echo $value['location']; ?>" name="preferred_location">
                             <div id="preferred_location_error" class="error"></div>
                         </div>
                         <div class="form-group">
@@ -1659,18 +1659,18 @@
 
                         <div class="form-group">
                             <label for="expected_salary">Salary:</label>
-                            <input type="number" class="form-control" id="expected_salary" value=<?php echo $value['salary']; ?> name="expected_salary">
+                            <input type="number" class="form-control" id="expected_salary" value="<?php echo $value['salary']; ?>" name="expected_salary">
                             <div id="expected_salary_error" class="error"></div>
                         </div>
 
                         <div class="form-group">
                             <label for="no_of_openings">No of Openings:</label>
-                            <input type="number" class="form-control" id="no_of_openings" value=<?php echo $value['number_of_openings']; ?> name="no_of_openings">
+                            <input type="number" class="form-control" id="no_of_openings" value="<?php echo $value['number_of_openings']; ?>" name="no_of_openings">
                             <div id="no_of_openings_error" class="error"></div>
                         </div>
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <input type="text" class="form-control" id="description" value=<?php echo $value['description']; ?> name="description">
+                            <input type="text" class="form-control" id="description" value="<?php echo $value['description']; ?>" name="description">
                             <div id="description_error" class="error"></div>
                         </div>
 
@@ -2018,7 +2018,7 @@
 
                     if (company_name.value === '') {
                         // alert("Please Enter a Company Name");
-                        displayError('Company name must be filed', 'company_name_error');
+                        displayError('Company name must be filled out', 'company_name_error');
                         return false;
                     } else if (company_name.value !== '') {
                         company_nameError.innerHTML = '';
@@ -2035,7 +2035,7 @@
 
                         if (subcategory.value === "") {
                             // alert("Please select a subcategory")
-                            displayError('Please select a subcategory.', 'subcategory_error');
+                            displayError('Please select a subcategory', 'subcategory_error');
                             return false;
                         } else if (subcategory.value !== '') {
                             subcategoryError.innerHTML = '';
@@ -2044,7 +2044,7 @@
 
                         if (experience.value.trim() === "") {
                             // alert("Please enter a experience");
-                            displayError('Experience must be filed', 'experience_error');
+                            displayError('Experience must be filled out', 'experience_error');
                             return false;
                         } else if (experience.value !== '') {
                             experienceError.innerHTML = '';
@@ -2054,7 +2054,7 @@
 
                         if (preferred_location.value.trim() === "") {
                             // alert("Please enter a preferred location");
-                            displayError('Location must be filed', 'preferred_location_error');
+                            displayError('Location must be filled out', 'preferred_location_error');
                             return false;
                         } else if (preferred_location.value !== '') {
                             preferred_locationError.innerHTML = '';
@@ -2064,7 +2064,7 @@
 
                         if (jobtype.value.trim() === "") {
                             // alert("Please enter a job type");
-                            displayError('Please select a jobtype.', 'jobtype_error');
+                            displayError('Please select a jobtype', 'jobtype_error');
                             return false;
                         } else if (jobtype.value !== '') {
                             jobtype_error.innerHTML = '';
@@ -2074,7 +2074,7 @@
 
                         if (expected_salary.value.trim() === "") {
                             // alert("Please enter a expected salary");
-                            displayError('Salary must be filed', 'expected_salary_error');
+                            displayError('Salary must be filled out', 'expected_salary_error');
                             return false;
                         } else if (expected_salary.value !== '') {
                             expected_salary_error.innerHTML = '';
@@ -2082,7 +2082,7 @@
 
                         if (no_of_openings.value.trim() === "") {
                             // alert("Please enter a No Of Openings");
-                            displayError('No_of_openings must be filed', 'no_of_openings_error');
+                            displayError('No of openings must be filled out', 'no_of_openings_error');
                             return false;
                         } else if (no_of_openings.value !== '') {
                             no_of_openings_error.innerHTML = '';
@@ -2092,7 +2092,7 @@
 
                         if (description.value.trim() === "") {
                             // alert("Please enter a description");
-                            displayError('Description must be filed', 'description_error');
+                            displayError('Description must be filled out', 'description_error');
                             return false;
                         } else if (description.value !== '') {
                             description_error.innerHTML = '';
@@ -3043,7 +3043,7 @@
                             <tr>
                                 <td><?php echo $value['name'] ?></td>
                                 <td><?php echo $value['eq'] ?></td>
-                                <td><?php echo $value['per'] ?></td>qq
+                                <td><?php echo $value['per'] ?></td>
                                 <td><?php echo $value['exp'] ?></td>
                                 <td><?php echo $value['skill'] ?></td>
                                 <td>
