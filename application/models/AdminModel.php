@@ -19,6 +19,7 @@
         public function createAdminUser()
         {
             $postData = $this->input->post(null, true);
+
             $insert = array(
                 'name' => $postData['name'],
                 'mobileNumber' => $postData['mobileNumber'],
@@ -54,25 +55,6 @@
             $verifiedEmployers = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='1'";
             $response = $this->db->query($verifiedEmployers);
             return $response->result_array();
-        }
-
-        public function verifyEmployerDetails($id){
-            $verifyEmployerDetails = "SELECT * FROM `provider_registration_form` WHERE id = $id";
-            $response = $this->db->query($verifyEmployerDetails);
-            return $response->result_array();
-        }
-
-        public function verifyEmployer(){
-            $postData = $this->input->post(null, true);
-            $updateVerificationStatus = array(
-                'levelOneVerification' => $postData['levelOneVerification'],
-                'verificationRemarks' => $postData['verificationRemarks'],
-                'requestToManagement' => $postData['requestToManagement']
-
-            );
-
-            $this->db->where('id', $postData['id']);
-            $this->db->update('provider_registration_form', $updateVerificationStatus);
         }
 
         public function unVerifiedCandidates()
