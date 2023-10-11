@@ -94,6 +94,21 @@ class Admin extends CI_Controller
         $this->data['verifiedEmployers'] = $verifiedEmployers;
         $this->load->view('admindashboard.php', $this->data);
     }
+
+    public function manageEmployer()
+    {
+        $id = $this->uri->segment(3);
+        $verifyEmployerDetails = $this->AdminModel->verifyEmployerDetails($id);
+        $this->data['manageEmployer'] = $verifyEmployerDetails;
+        $this->data['method'] = "manageEmployer";
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function verifyEmployer(){
+        $postData = $this->input->post(null, true);
+        $verifyEmployer = $this->AdminModel->verifyEmployer();
+    }
+
     
     public function createCandidates()
     {

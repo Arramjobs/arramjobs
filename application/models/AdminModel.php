@@ -6,7 +6,8 @@
             parent::__construct();
         }
 
-        Public function adminLogin(){
+        public function adminLogin()
+        {
             $postData = $this->input->post(null, true);
             $userName = $postData['userName'];
             $password = $postData['password'];
@@ -15,9 +16,9 @@
             return $count->result_array();
         }
 
-        public function createAdminUser(){
+        public function createAdminUser()
+        {
             $postData = $this->input->post(null, true);
-
             $insert = array(
                 'name' => $postData['name'],
                 'mobileNumber' => $postData['mobileNumber'],
@@ -34,13 +35,15 @@
             $this->db->insert('admin_login', $insert);
         }
 
-        public function adminUsers(){
+        public function adminUsers()
+        {
             $provider = "SELECT * FROM `admin_login`";
             $select = $this->db->query($provider);
             return $select->result_array();
         }
 
-        public function unVerifiedEmployers(){
+        public function unVerifiedEmployers()
+        {
             $unVerifiedEmployers = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='0'";
             $response = $this->db->query($unVerifiedEmployers);
             return $response->result_array();
@@ -51,6 +54,25 @@
             $verifiedEmployers = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='1'";
             $response = $this->db->query($verifiedEmployers);
             return $response->result_array();
+        }
+
+        public function verifyEmployerDetails($id){
+            $verifyEmployerDetails = "SELECT * FROM `provider_registration_form` WHERE id = $id";
+            $response = $this->db->query($verifyEmployerDetails);
+            return $response->result_array();
+        }
+
+        public function verifyEmployer(){
+            $postData = $this->input->post(null, true);
+            $updateVerificationStatus = array(
+                'levelOneVerification' => $postData['levelOneVerification'],
+                'verificationRemarks' => $postData['verificationRemarks'],
+                'requestToManagement' => $postData['requestToManagement']
+
+            );
+
+            $this->db->where('id', $postData['id']);
+            $this->db->update('provider_registration_form', $updateVerificationStatus);
         }
 
         public function unVerifiedCandidates()
@@ -67,7 +89,8 @@
             return $response->result_array();
         }
 
-        public function verifyCandidateDetails(){
+        public function verifyCandidateDetails()
+        {
             $postData = $this->input->post(null, true);
             $updateVerificationStatus = array(
                 'verificationStatus' => $postData['verificationStatus'],
