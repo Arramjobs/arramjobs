@@ -305,7 +305,7 @@
             <br>
             <div id="sign" class="">
                 <!-- <p>Already have an account ? <a id="regis" href="http://localhost/arramjobs/provider/login">login</a></p> -->
-                <p>Already have an account ? <a id="regis" href="<?php echo baseUrl . "provider/login" ?>">Login</a></p>
+                <!-- <p>Already have an account ? <a id="regis" href="<?php echo baseUrl . "provider/login" ?>">Login</a></p> -->
             </div>
 
 

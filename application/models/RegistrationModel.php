@@ -76,7 +76,7 @@ class RegistrationModel extends CI_Model
     $postData = $this->input->post(null, true);
     $companyName = $postData['userName'];
     $companyMobile = $postData['number'];
-    $query = "SELECT * FROM provider_registration_form WHERE company_name='$companyName' AND company_mobile_number='$companyMobile'";
+    $query = "SELECT * FROM provider_registration_form WHERE userName='$companyName' AND userPassword ='$companyMobile'";
     $count = $this->db->query($query);
     return $count->result_array();
   }
@@ -246,7 +246,7 @@ class RegistrationModel extends CI_Model
   {
     $query = "SELECT spf.id as seekerId, spf.name as name, saoi.id as id, saoi.other_sub_interst_category as oisc, saoi.experience as exps,
     saoi.skillname as skills FROM seeker_profile_form spf INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id
-    WHERE  saoi.other_interst_category = '" . $jobCategory . "'";
+    WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.verificationStatus = '1' " ;
     $result = $this->db->query($query);
     return $result->result_array();
   }
@@ -290,7 +290,7 @@ class RegistrationModel extends CI_Model
             INNER JOIN seeker_projects sp ON sp.id = spf.id
             INNER JOIN seeker_area_of_interst saoi ON saoi.id = spf.id
             INNER JOIN seeker_experience exde ON exde.id = spf.id
-            WHERE spf.id = $id";
+            WHERE spf.id = $id AND spf.verification = 1";
     $results = $this->db->query($allTableJoins, array($id));
     return $result->result();
   }
@@ -346,7 +346,7 @@ class RegistrationModel extends CI_Model
     // saoi.other_interst_category as oic, saoi.experience as exp , saoi.skillname as skill FROM seeker_profile_form spf 
     // INNER JOIN seeker_educational_details sed ON sed.seekerId = spf.id INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id;";
     $allTableJoins = "SELECT spf.id as seekerId, spf.name as name, spf.dateofbirth as dob, spf.gender as gender,
-     spf.district as dist FROM seeker_profile_form spf;";
+     spf.district as dist FROM seeker_profile_form spf WHERE spf.verificationStatus = '1' ;";
     $result = $this->db->query($allTableJoins);
     return $result->result_array();
   }
@@ -356,7 +356,7 @@ class RegistrationModel extends CI_Model
     $query = "SELECT spf.id as seekerId, spf.name as name, sed.educational_qualification as eq, sed.percentage as per, se.experience as exp,
     saoi.skillname as skill,saoi.id as id, saoi.other_interst_category as oic, saoi.other_sub_interst_category as osic  
     FROM seeker_profile_form spf INNER JOIN seeker_educational_details sed ON sed.seekerId = spf.id INNER JOIN seeker_experience se 
-    ON se.seekerId = spf.id INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND  saoi.other_sub_interst_category = '" . $jobSubCategory . "'";
+    ON se.seekerId = spf.id INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND  saoi.other_sub_interst_category = '" . $jobSubCategory . "' AND spf.verificationStatus = '1'";
     $result = $this->db->query($query);
     return $result->result_array();
   }
