@@ -153,92 +153,6 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#request-nav" data-bs-toggle="collapse" href="#">
-                    <!-- <i class="bi bi-menu-button-wide"></i> -->
-                    <i class="bi bi-folder-symlink"></i>
-                    <span>Approval Request</span>
-                    <i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="request-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" data-bs-target="#admin-nav" data-bs-toggle="collapse" href="#">
-                            <!-- <i class="bi bi-menu-button-wide"></i> -->
-                            <i class="bi bi-folder-symlink"></i>
-                            <span>Admin User</span>
-                            <i class="bi bi-chevron-down ms-auto"></i>
-                        </a>
-                        <ul id="admin-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            <li>
-                                <a href="<?php echo baseUrl . "admin/createAdminUser" ?>">
-                                    <i class="bi bi-circle"></i><span>Admin User Request</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo baseUrl . "admin/adminUsers" ?>">
-                                    <i class="bi bi-circle"></i><span>Employer Request</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo baseUrl . "admin/adminUsers" ?>">
-                                    <i class="bi bi-circle"></i><span>Candidate Request</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" data-bs-target="#employer-nav" data-bs-toggle="collapse" href="#">
-                            <!-- <i class="bi bi-menu-button-wide"></i> -->
-                            <i class="bi bi-folder-symlink"></i>
-                            <span>employer User</span>
-                            <i class="bi bi-chevron-down ms-auto"></i>
-                        </a>
-                        <ul id="employer-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            <li>
-                                <a href="<?php echo baseUrl . "admin/createAdminUser" ?>">
-                                    <i class="bi bi-circle"></i><span>Admin User Request</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo baseUrl . "admin/adminUsers" ?>">
-                                    <i class="bi bi-circle"></i><span>Employer Request</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo baseUrl . "admin/adminUsers" ?>">
-                                    <i class="bi bi-circle"></i><span>Candidate Request</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" data-bs-target="#employee-nav" data-bs-toggle="collapse" href="#">
-                            <!-- <i class="bi bi-menu-button-wide"></i> -->
-                            <i class="bi bi-folder-symlink"></i>
-                            <span>employee User</span>
-                            <i class="bi bi-chevron-down ms-auto"></i>
-                        </a>
-                        <ul id="employee-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            <li>
-                                <a href="<?php echo baseUrl . "admin/createAdminUser" ?>">
-                                    <i class="bi bi-circle"></i><span>Admin User Request</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo baseUrl . "admin/adminUsers" ?>">
-                                    <i class="bi bi-circle"></i><span>Employer Request</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo baseUrl . "admin/adminUsers" ?>">
-                                    <i class="bi bi-circle"></i><span>Candidate Request</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                     <!-- <i class="bi bi-menu-button-wide"></i> -->
                     <i class="bi bi-person"></i>
@@ -897,7 +811,6 @@
                                         <th scope="col">Contact Person Name</th>
                                         <th scope="col">Contact Person Role</th>
                                         <th scope="col">Contact Person Mobile</th>
-                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -913,8 +826,7 @@
                                             <td><?php echo $value['name']; ?></td>
                                             <td><?php echo $value['role']; ?></td>
                                             <td><?php echo $value['mobile_number']; ?></td>
-                                            <td><span class="badge bg-success">Pending</span></td>
-                                            <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
+                                            <td><span class="badge bg-success">Approved</span></td>
                                         </tr>
                                     <?php
                                         $loopcount++;
@@ -970,7 +882,6 @@
                                         <th scope="col">Contact Person Name</th>
                                         <th scope="col">Contact Person Role</th>
                                         <th scope="col">Contact Person Mobile</th>
-                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -987,7 +898,6 @@
                                             <td><?php echo $value['role']; ?></td>
                                             <td><?php echo $value['mobile_number']; ?></td>
                                             <td><span class="badge bg-success">Approved</span></td>
-                                            <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
                                         </tr>
                                     <?php
                                         $loopcount++;
@@ -1000,128 +910,6 @@
 
                     </div>
                 </div><!-- End Recent Sales -->
-            </section>
-        <?php
-        } elseif ($method == 'manageEmployer') {
-        ?>
-            <section class="Multi Columns Form">
-                <div class="pagetitle">
-                    <h1>Employer Details</h1>
-                </div><!-- End Page Title -->
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Manage Employer Details</h5>
-
-                        <!-- Multi Columns Form -->
-                        <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/verifyEmployer" ?>" method="post">
-                            <?php
-                            foreach ($this->data['manageEmployer'] as $key => $value) {
-                            ?>
-                                <div class="col-md-12">
-                                    <label for="inputName5" class="form-label">Company Name</label>
-                                    <input type="text" class="form-control" id="inputName5" value="<?php echo $value['company_name'] ?>" readonly name="name" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputNumber5" class="form-label">Company Number</label>+
-                                    <input type="number" class="form-control" id="inputNumber5" name="mobile" value="<?php echo $value['company_mobile_number'] ?>" readonly required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Company Email</label>
-                                    <input type="email" class="form-control" id="inputEmail5" name="email" value="<?php echo $value['company_email'] ?>" readonly required>
-                                </div>
-                                <!-- <div class="col-md-6">
-                                <label for="inputPassword5" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="inputPassword5">
-                            </div> -->
-                                <div class="col-12">
-                                    <label for="inputAddress5" class="form-label">Street Address</label>
-                                    <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="inputAddress2" class="form-label">Landmark</label>
-                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="landmark" value="<?php echo $value['Landmark'] ?>" readonly required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputCity" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="inputCity" name="city" value="<?php echo $value['City'] ?>" readonly required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputCity" class="form-label">District</label>
-                                    <input type="text" class="form-control" id="inputDistrict" name="district" value="<?php echo $value['district'] ?>" readonly required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputState" class="form-label">State</label>
-                                    <select id="inputState" class="form-select" name="state">
-                                        <option selected value="tamil nadu">Tamil Nadu</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputZip" class="form-label">Pincode</label>
-                                    <input type="text" class="form-control" id="inputPincode" value="<?php echo $value['pincode'] ?>" readonly name="pincode">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputFile" class="form-label">Logo</label>
-                                    <input type="file" class="form-control" id="inputFile" name="logo">
-                                </div>
-                                <h5 class="card-title">Contact Person Details</h5>
-                                <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['name'] ?>" readonly name="name1" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Role</label>
-                                    <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['role'] ?>" readonlyname="role" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputNumber5" class="form-label">Mobile Number</label>
-                                    <input type="number" class="form-control" id="inputNumber5" value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Email-ID</label>
-                                    <input type="email" class="form-control" id="inputEmail5" value="<?php echo $value['email'] ?>" readonly name="email1" required>
-                                </div>
-                                <h5 class="card-title">Admin Verification Status</h5>
-                                <div class="col-md-6">
-                                    <label for="inputState" class="form-label">Admin Verification Status</label>
-                                    <select id="inputState" class="form-select" name="levelOneVerification">
-                                        <option selected value="0">Pending</option>
-                                        <option value="1">Verified</option>
-                                        <option value="2">Rejected</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Admin Verification Remarks</label>
-                                    <div class="form-floating mb-3">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
-                                    </div>
-                                </div>
-                                <h5 class="card-title">Send Request to Management</h5>
-                                <div class="col-md-6">
-                                    <label for="inputState" class="form-label">Request to Management</label>
-                                    <select id="inputState" class="form-select" name="requestToManagement">
-                                        <option selected value="0">New Employer Request</option>
-                                        <option value="1">Delete Employer Request</option>
-                                    </select>
-                                </div>
-                                <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
-                                <!-- <div class="col-md-6">
-                                <label>Admin Verification Remarks</label>
-                                <div class="form-floating mb-3">
-                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
-                                </div>
-                            </div> -->
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="reset" class="btn btn-secondary">Reset</button>
-                                </div>
-                            <?php
-                            }
-                            ?>
-                        </form><!-- End Multi Columns Form -->
-
-                    </div>
-                </div>
             </section>
         <?php
         } elseif ($method == "createCandidates") {
