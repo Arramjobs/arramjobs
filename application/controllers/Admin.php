@@ -23,7 +23,8 @@ class Admin extends CI_Controller
     }
 
 
-    public function verifyLogin(){
+    public function verifyLogin()
+    {
         $postData = $this->input->post(null, true);
         $response = $this->AdminModel->adminLogin();
         if (isset($response[0]['id'])) {
@@ -42,7 +43,8 @@ class Admin extends CI_Controller
         }
     }
 
-    public function dashboard(){
+    public function dashboard()
+    {
         $this->data['method'] = "dashboard";
         $this->load->view('admindashboard.php', $this->data);
     }
@@ -53,7 +55,8 @@ class Admin extends CI_Controller
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function insertAdminUser(){
+    public function insertAdminUser()
+    {
         $postData = $this->input->post(null, true);
         $register = $this->AdminModel->createAdminUser();
         $this->adminUsers();
@@ -73,7 +76,8 @@ class Admin extends CI_Controller
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function insertEmployer(){
+    public function insertEmployer()
+    {
         $postData = $this->input->post(null, true);
         $responses = $this->RegistrationModel->register();
         $this->unVerifiedEmployers();
@@ -95,28 +99,14 @@ class Admin extends CI_Controller
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function manageEmployer()
-    {
-        $id = $this->uri->segment(3);
-        $verifyEmployerDetails = $this->AdminModel->verifyEmployerDetails($id);
-        $this->data['manageEmployer'] = $verifyEmployerDetails;
-        $this->data['method'] = "manageEmployer";
-        $this->load->view('admindashboard.php', $this->data);
-    }
-
-    public function verifyEmployer(){
-        $postData = $this->input->post(null, true);
-        $verifyEmployer = $this->AdminModel->verifyEmployer();
-    }
-
-    
     public function createCandidates()
     {
         $this->data['method'] = "createCandidates";
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function candidateRegistration(){
+    public function candidateRegistration()
+    {
         $postData = $this->input->post(null, true);
         $register = $this->SeekerModel->register();
     }
@@ -137,9 +127,10 @@ class Admin extends CI_Controller
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function manageCandidate(){
+    public function manageCandidate()
+    {
         $id = $this->uri->segment(3);
-        $this->data['method'] ="manageCandidate";
+        $this->data['method'] = "manageCandidate";
 
         $education = $this->RegistrationModel->educationalDetails($id);
         $this->data['education'] = $education;
@@ -162,7 +153,8 @@ class Admin extends CI_Controller
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function verifyCandidate(){
+    public function verifyCandidate()
+    {
         $postData = $this->input->post(null, true);
         $verifyCandidateDetails = $this->AdminModel->verifyCandidateDetails();
         $this->verifiedCandidates();
@@ -175,5 +167,4 @@ class Admin extends CI_Controller
         //$this->session->set_flashdata('frontFlashMsg', $successMsg);
         $this->index();
     }
-
 }
