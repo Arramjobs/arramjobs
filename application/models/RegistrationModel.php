@@ -76,7 +76,7 @@ class RegistrationModel extends CI_Model
     $postData = $this->input->post(null, true);
     $companyName = $postData['userName'];
     $companyMobile = $postData['number'];
-    $query = "SELECT * FROM provider_registration_form WHERE userName='$companyName' AND userPassword ='$companyMobile'";
+    $query = "SELECT * FROM provider_registration_form WHERE userName='$companyName' AND password ='$companyMobile'";
     $count = $this->db->query($query);
     return $count->result_array();
   }
