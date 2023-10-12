@@ -37,6 +37,7 @@
         .tamilcss {
             padding-right: 15%;
         }
+        
 
         @media screen and (max-width:576px) {
             .tamilcss {
