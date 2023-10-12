@@ -54,7 +54,7 @@ class ProviderController extends CI_Controller
                 // 'jobProviderUsername' => $response[0]['company_name'],
                 // 'jobProviderNumber' => $response[0]['company_mobile_number']
                 'jobProviderUsername' => $response[0]['userName'],
-                'jobProviderNumber' => $response[0]['userPassword']
+                'jobProviderNumber' => $response[0]['password']
             );
             $this->session->set_userdata($userLoggedIn);
             $this->data['method'] = "dashboard";

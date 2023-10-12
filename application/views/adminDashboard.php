@@ -1014,19 +1014,19 @@
                                                     Verification success
                                                 </label>
                                             </div>
-                                            <div class="form-check">
+                                            <!-- <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') {
                                                                                                                                                         echo 'checked';
                                                                                                                                                     } ?>>
                                                 <label class="form-check-label" for="gridRadios3">
                                                     Rejected
                                                 </label>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </fieldset>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"><?php echo $this->data['manageEmployer'][0]['verificationRemarks'] ?></textarea>
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
@@ -1545,14 +1545,14 @@
                                                 Verification success
                                             </label>
                                         </div>
-                                        <div class="form-check">
+                                        <!-- <div class="form-check">
                                             <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['basicDetails'][0]['verificationStatus'] == '2') {
                                                                                                                                                     echo 'checked';
                                                                                                                                                 } ?>>
                                             <label class="form-check-label" for="gridRadios3">
                                                 Rejected
                                             </label>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 <?php
                                 } else {
