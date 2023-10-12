@@ -19,7 +19,8 @@ class ProviderController extends CI_Controller
     public function providerRegistration()
     {
         $responses = $this->RegistrationModel->register();
-        $this->load->view('providerLogin.php');
+        // $this->load->view('providerLogin.php');
+        $this->load->view('employerRegistered.php');
         echo '<script>alert("Registered successfully.");</script>';
     }
 
@@ -50,8 +51,10 @@ class ProviderController extends CI_Controller
         if (isset($response[0]['id'])) {
             $userLoggedIn = array(
                 'jobProviderId' => $response[0]['id'],
-                'jobProviderUsername' => $response[0]['company_name'],
-                'jobProviderNumber' => $response[0]['company_mobile_number']
+                // 'jobProviderUsername' => $response[0]['company_name'],
+                // 'jobProviderNumber' => $response[0]['company_mobile_number']
+                'jobProviderUsername' => $response[0]['userName'],
+                'jobProviderNumber' => $response[0]['userPassword']
             );
             $this->session->set_userdata($userLoggedIn);
             $this->data['method'] = "dashboard";

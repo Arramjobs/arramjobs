@@ -120,19 +120,19 @@
       <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item ">
-            <a class="nav-link mx-4" href="#about-us">About Us</a>
+            <a class="nav-link mx-4" href="<?php echo baseUrl . "#about" ?>">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#how-it-works">How It Works</a>
+            <a class="nav-link mx-4" href="<?php echo baseUrl . "#home" ?>">How It Works</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#job-providers">Employer</a>
+            <a class="nav-link mx-4" href="<?php echo baseUrl . "#provider" ?>">Employer</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#job-seekers">Employee</a>
+            <a class="nav-link mx-4" href="<?php echo baseUrl . "#seeker" ?>">Employee</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#blog">Blog</a>
+            <a class="nav-link mx-4" href="https://arramjobs.in/blog">Blog</a>
           </li>
         </ul>
       </div>
@@ -147,13 +147,13 @@
     <form name="login_form" method="post" action="<?php echo baseUrl . "providerController/viewDashboard" ?>"
       onsubmit="return validateForm()">
       <div class="form-group">
-        <label for="userID">Company Name:</label>
-        <input type="text" class="form-control" id="userID" name="userName" placeholder="Enter company name">
+        <label for="userID">User Name:</label>
+        <input type="text" class="form-control" id="userID" name="userName" placeholder="Enter username">
         <p id="nameerr" style="color: red;"></p>
       </div>
       <div class="form-group">
-        <label for="password">Company Mobile Number:</label>
-        <input type="tel" class="form-control" id="password" name="number" placeholder="Enter mobile number">
+        <label for="password">Password:</label>
+        <input type="tel" class="form-control" id="password" name="number" placeholder="Enter password">
         <p id="pherr" style="color: red;"></p>
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
