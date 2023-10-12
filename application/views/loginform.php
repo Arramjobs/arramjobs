@@ -124,19 +124,19 @@
       <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item ">
-            <a class="nav-link mx-4" href="#about-us">About Us</a>
+            <a class="nav-link mx-4" href="<?php echo baseUrl . "#about" ?>">About Us</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link mx-4" href="#how-it-works">How It Works</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="<?php echo baseUrl . "#provider" ?>">Employer</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#job-providers">Employer</a>
+            <a class="nav-link mx-4" href="<?php echo baseUrl . "#seeker" ?>">Employee</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="#job-seekers">Employee</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-4" href="#blog">Blog</a>
+            <a class="nav-link mx-4" href="https://arramjobs.in/blog">Blog</a>
           </li>
         </ul>
       </div>

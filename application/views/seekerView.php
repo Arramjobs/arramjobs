@@ -331,19 +331,19 @@
       <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item ">
-            <a class="nav-link mx-4 pt-lg-0 pt-3" href="#about-us">About Us</a>
+            <a class="nav-link mx-4 pt-lg-0 pt-3" href="<?php echo baseUrl . "#about" ?>">About Us</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link mx-4 pt-lg-0 pt-3" href="#how-it-works">How It Works</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link mx-4 pt-lg-0 pt-3" href="<?php echo baseUrl . "#provider" ?>">Employer</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4 pt-lg-0 pt-3" href="#job-providers">Employer</a>
+            <a class="nav-link mx-4 pt-lg-0 pt-3" href="<?php echo baseUrl . "#seeker" ?>">Employee</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4 pt-lg-0 pt-3" href="#job-seekers">Employee</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-4 pt-lg-0 pt-3" href="#blog">Blog</a>
+            <a class="nav-link mx-4 pt-lg-0 pt-3" href="https://arramjobs.in/blog">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link mx-4 pt-lg-0 pt-3" style="background-color:white;color:grey;padding: 0 10px;border-radius:2px" onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "seekerController/logout" ?>">LogOut</a>

@@ -122,9 +122,9 @@
           <li class="nav-item ">
             <a class="nav-link mx-4" href="<?php echo baseUrl . "#about" ?>">About Us</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link mx-4" href="<?php echo baseUrl . "#home" ?>">How It Works</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link mx-4" href="<?php echo baseUrl . "#provider" ?>">Employer</a>
           </li>

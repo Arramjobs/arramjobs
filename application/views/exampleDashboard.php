@@ -380,10 +380,10 @@
         <ul>
             <!-- <li><a href="<?php echo baseUrl; ?>">Home</a></li> -->
             <li><a href="<?php echo baseUrl . "#about" ?>">About Us</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
+            <!-- <li><a href="#how-it-works">How It Works</a></li> -->
             <li><a href="<?php echo baseUrl . "#provider" ?>">Employer</a></li>
             <li><a href="<?php echo baseUrl . "#seeker" ?>">Employee</a></li>
-            <li><a href="#blog">Blog</a></li>
+            <li><a href="https://arramjobs.in/blog">Blog</a></li>
             <li> <a style="background-color:white;color:grey;padding: 0 10px;border-radius:2px" onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "providerController/logout" ?>">LogOut</a> </li>
             <!-- <li><a href="#login">Login</a></li> -->
         </ul>
