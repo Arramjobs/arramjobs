@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Arran Jobs Admin Dashboard</title>
+    <title>Arram Jobs Admin Dashboard</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -1258,7 +1258,7 @@
                         </div> -->
 
                         <div class="card-body">
-                            <h5 class="card-title">Un Verified Candidates<span></span></h5>
+                            <h5 class="card-title">Verified Candidates<span></span></h5>
 
                             <!-- <table class="table table-borderless datatable"> -->
                             <table class="table">
