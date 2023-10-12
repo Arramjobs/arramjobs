@@ -99,6 +99,23 @@ class Admin extends CI_Controller
         $this->load->view('admindashboard.php', $this->data);
     }
 
+    public function manageEmployer()
+    {
+        $id = $this->uri->segment(3);
+        $verifyEmployerDetails = $this->AdminModel->verifyEmployerDetails($id);
+        $this->data['manageEmployer'] = $verifyEmployerDetails;
+        $this->data['method'] = "manageEmployer";
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function verifyEmployer()
+    {
+        $postData = $this->input->post(null, true);
+        $verifyEmployer = $this->AdminModel->verifyEmployer();
+        $this->verifiedEmployers();
+    }
+
+
     public function createCandidates()
     {
         $this->data['method'] = "createCandidates";

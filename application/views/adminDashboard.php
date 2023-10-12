@@ -811,6 +811,7 @@
                                         <th scope="col">Contact Person Name</th>
                                         <th scope="col">Contact Person Role</th>
                                         <th scope="col">Contact Person Mobile</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -826,7 +827,8 @@
                                             <td><?php echo $value['name']; ?></td>
                                             <td><?php echo $value['role']; ?></td>
                                             <td><?php echo $value['mobile_number']; ?></td>
-                                            <td><span class="badge bg-success">Approved</span></td>
+                                            <td><span class="badge bg-success">Pending</span></td>
+                                            <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
                                         </tr>
                                     <?php
                                         $loopcount++;
@@ -882,6 +884,7 @@
                                         <th scope="col">Contact Person Name</th>
                                         <th scope="col">Contact Person Role</th>
                                         <th scope="col">Contact Person Mobile</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -898,6 +901,7 @@
                                             <td><?php echo $value['role']; ?></td>
                                             <td><?php echo $value['mobile_number']; ?></td>
                                             <td><span class="badge bg-success">Approved</span></td>
+                                            <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
                                         </tr>
                                     <?php
                                         $loopcount++;
@@ -910,6 +914,192 @@
 
                     </div>
                 </div><!-- End Recent Sales -->
+            </section>
+        <?php
+        } elseif ($method == 'manageEmployer') {
+        ?>
+            <section class="Multi Columns Form">
+                <div class="pagetitle">
+                    <h1>Employer Details</h1>
+                </div><!-- End Page Title -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Employer Details</h5>
+
+                        <!-- Multi Columns Form -->
+                        <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/verifyEmployer" ?>" method="post">
+                            <?php
+                            foreach ($this->data['manageEmployer'] as $key => $value) {
+                            ?>
+                                <div class="col-md-12">
+                                    <label for="inputName5" class="form-label">Company Name</label>
+                                    <input type="text" class="form-control" id="inputName5" value="<?php echo $value['company_name'] ?>" readonly name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputNumber5" class="form-label">Company Number</label>+
+                                    <input type="number" class="form-control" id="inputNumber5" name="mobile" value="<?php echo $value['company_mobile_number'] ?>" readonly required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputEmail5" class="form-label">Company Email</label>
+                                    <input type="email" class="form-control" id="inputEmail5" name="email" value="<?php echo $value['company_email'] ?>" readonly required>
+                                </div>
+                                <!-- <div class="col-md-6">
+                                <label for="inputPassword5" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="inputPassword5">
+                            </div> -->
+                                <div class="col-12">
+                                    <label for="inputAddress5" class="form-label">Street Address</label>
+                                    <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="inputAddress2" class="form-label">Landmark</label>
+                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="landmark" value="<?php echo $value['Landmark'] ?>" readonly required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputCity" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="inputCity" name="city" value="<?php echo $value['City'] ?>" readonly required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputCity" class="form-label">District</label>
+                                    <input type="text" class="form-control" id="inputDistrict" name="district" value="<?php echo $value['district'] ?>" readonly required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputState" class="form-label">State</label>
+                                    <select id="inputState" class="form-select" name="state">
+                                        <option selected value="tamil nadu">Tamil Nadu</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputZip" class="form-label">Pincode</label>
+                                    <input type="text" class="form-control" id="inputPincode" value="<?php echo $value['pincode'] ?>" readonly name="pincode">
+                                </div>
+                                <h5 class="card-title">Contact Person Details</h5>
+                                <div class="col-md-6">
+                                    <label for="inputEmail5" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['name'] ?>" readonly name="name1" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputEmail5" class="form-label">Role</label>
+                                    <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['role'] ?>" readonlyname="role" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputNumber5" class="form-label">Mobile Number</label>
+                                    <input type="number" class="form-control" id="inputNumber5" value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputEmail5" class="form-label">Email-ID</label>
+                                    <input type="email" class="form-control" id="inputEmail5" value="<?php echo $value['email'] ?>" readonly name="email1" required>
+                                </div>
+                                <h5 class="card-title">Create Employer login credentials</h5>
+                                <?php
+                                if (isset($this->data['manageEmployer'][0]['id'])) {
+                                ?>
+                                    <fieldset class="row mb-3">
+                                        <legend class="col-form-label col-sm-2 pt-0">Verification Status</legend>
+                                        <div class="col-sm-10">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" value="0" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '0') {
+                                                                                                                                                        echo 'checked';
+                                                                                                                                                    } ?>>
+                                                <label class="form-check-label" for="gridRadios1">
+                                                    Verification Panding
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '1') {
+                                                                                                                                                        echo 'checked';
+                                                                                                                                                    } ?>>
+                                                <label class="form-check-label" for="gridRadios2">
+                                                    Verification success
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') {
+                                                                                                                                                        echo 'checked';
+                                                                                                                                                    } ?>>
+                                                <label class="form-check-label" for="gridRadios3">
+                                                    Rejected
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"><?php echo $this->data['manageEmployer'][0]['verificationRemarks'] ?></textarea>
+                                            <label for="floatingTextarea">Remarks</label>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title">Create Employer login credentials</h5>
+                                    <div class="col-md-6">
+                                        <label for="inputEmail5" class="form-label">UserName</label>
+                                        <input type="text" class="form-control" id="inputEmail5" value="<?php echo $this->data['manageEmployer'][0]['userName'] ?>" name="userName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputEmail5" class="form-label">Password</label>
+                                        <input type="text" class="form-control" id="inputEmail5" name="password" value="<?php echo $this->data['manageEmployer'][0]['password'] ?>"  required>
+                                    </div>
+                                    <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
+                                <?php
+                                } else {
+                                ?>
+                                    <fieldset class="row mb-3">
+                                        <legend class="col-form-label col-sm-2 pt-0">Verification Status</legend>
+                                        <div class="col-sm-10">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" value="0">
+                                                <label class="form-check-label" for="gridRadios1">
+                                                    Verification Pending
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2" value="1">
+                                                <label class="form-check-label" for="gridRadios2">
+                                                    Verification success
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2">
+                                                <label class="form-check-label" for="gridRadios3">
+                                                    Rejected
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
+                                            <label for="floatingTextarea">Remarks</label>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title">Create Employer login credentials</h5>
+                                    <div class="col-md-6">
+                                        <label for="inputEmail5" class="form-label">UserName</label>
+                                        <input type="text" class="form-control" id="inputEmail5" name="userName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputEmail5" class="form-label">Password</label>
+                                        <input type="text" class="form-control" id="inputEmail5" name="password" required>
+                                    </div>
+                                <?php }
+                                ?>
+                                <!-- <div class="col-md-6">
+                                <label>Admin Verification Remarks</label>
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
+                                </div>
+                            </div> -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                        </form><!-- End Multi Columns Form -->
+
+                    </div>
+                </div>
             </section>
         <?php
         } elseif ($method == "createCandidates") {
