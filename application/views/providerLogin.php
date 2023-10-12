@@ -168,34 +168,44 @@
       var x = document.login_form.userID.value;
       var p = document.login_form.password.value;
 
-      if (x != "") {
-        if (x.length < 2) {
-          document.getElementById("nameerr").innerHTML = "Name should be in atleast 2 characters";
-          return false;
-        } else if (x.length > 50) {
-          document.getElementById("nameerr").innerHTML = "Name should not exceed 50 characters";
-          return false;
-        } else {
-          document.getElementById("nameerr").innerHTML = "";
-        }
-      } else if (x == "") {
-        var namesms1 = "Name must be filled out";
+      // if (x != "") {
+      //   if (x.length < 2) {
+      //     document.getElementById("nameerr").innerHTML = "Name should be in atleast 2 characters";
+      //     return false;
+      //   } else if (x.length > 50) {
+      //     document.getElementById("nameerr").innerHTML = "Name should not exceed 50 characters";
+      //     return false;
+      //   } else {
+      //     document.getElementById("nameerr").innerHTML = "";
+      //   }
+      // } else if (x == "") {
+      //   var namesms1 = "Name must be filled out";
+      //   document.getElementById("nameerr").innerHTML = namesms1;
+      //   return false;
+      // }
+      if (x == "") {
+        var namesms1 = "Username must be filled out";
         document.getElementById("nameerr").innerHTML = namesms1;
         return false;
       }
 
-      if (p != "") {
-        if (p.length < 10) {
-          document.getElementById("pherr").innerHTML = "Mobile number must be in 10 digits";
-          return false;
-        } else if (p.length > 11) {
-          document.getElementById("pherr").innerHTML = "Mobile number should not exceed 10 digits";
-          return false;
-        } else {
-          document.getElementById("pherr").innerHTML = "";
-        }
-      } else if (p == "") {
-        var phsms = "Mobile number must be filled out";
+      // if (p != "") {
+      //   if (p.length < 10) {
+      //     document.getElementById("pherr").innerHTML = "Mobile number must be in 10 digits";
+      //     return false;
+      //   } else if (p.length > 11) {
+      //     document.getElementById("pherr").innerHTML = "Mobile number should not exceed 10 digits";
+      //     return false;
+      //   } else {
+      //     document.getElementById("pherr").innerHTML = "";
+      //   }
+      // } else if (p == "") {
+      //   var phsms = "Mobile number must be filled out";
+      //   document.getElementById("pherr").innerHTML = phsms;
+      //   return false;
+      // }
+      if (p == "") {
+        var phsms = "Password must be filled out";
         document.getElementById("pherr").innerHTML = phsms;
         return false;
       }

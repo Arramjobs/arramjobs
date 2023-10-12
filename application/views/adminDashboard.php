@@ -1419,13 +1419,13 @@
                                     <tbody>
                                         <?php
                                         $loopcount = 1;
-                                        foreach ($this->data['skills'] as $skey => $svalue) {
+                                        foreach ($this->data['areaOfInterest'] as $skey => $svalue) {
                                         ?>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td><?php echo $svalue['skill'] ?></td>
-                                                <td><?php echo $svalue['experience'] ?></td>
-                                                <td><?php echo $svalue['skill_level'] ?></td>
+                                                <td><?php echo $svalue['skillname'] ?></td>
+                                                <td><?php echo $svalue['skillexperience'] ?></td>
+                                                <td><?php echo $svalue['skilllevel'] ?></td>
                                             </tr>
                                         <?php
                                             $loopcount++;
