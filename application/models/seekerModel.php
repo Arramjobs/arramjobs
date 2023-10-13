@@ -90,7 +90,7 @@ class SeekerModel extends CI_Model
 
         $config['upload_path'] = "./uploads/";
         $basepath = 'http://localhost/arramjobs/uploads/';
-        $config['allowed_types'] = "jpg|png|pdf";
+        $config['allowed_types'] = "jpg|png|pdf|jpeg";
         $config['max_size'] = 1024;
 
         $this->load->library('upload', $config);
@@ -159,7 +159,7 @@ class SeekerModel extends CI_Model
 
         $config['upload_path'] = "./uploads/";
        $basepath = 'http://localhost/arramjobs/uploads/';
-        $config['allowed_types'] = "jpg|png|pdf";
+        $config['allowed_types'] = "jpg|png|pdf|jpeg";
         $config['max_size'] = 1024;
 
         $this->load->library('upload', $config);
@@ -188,6 +188,7 @@ class SeekerModel extends CI_Model
              $cerpg = $data['file_name'];
          }
         if ($this->upload->do_upload('certificate_doctorate')) {
+            $data = $this->upload->data();
              $cerdoct = $data['file_name'];
         } else {
             $error = $this->upload->display_errors();
@@ -237,16 +238,16 @@ class SeekerModel extends CI_Model
 
         $config['upload_path'] = "./uploads/";
         $basepath = 'http://localhost/arramjobs/uploads/';
-         $config['allowed_types'] = "jpg|png|pdf";
+         $config['allowed_types'] = "jpg|png|pdf|jpeg";
          $config['max_size'] = 1024;
  
          $this->load->library('upload', $config);
  
-         $ucer10 = "None";
-         $ucer12 = "None";
-         $ucerug = "None";
-         $ucerpg = "None";
-         $ucerdoct = "None";
+         $ucer10 = $post['old10cer'];
+         $ucer12 = $post['old12cer'];
+         $ucerug =  $post['oldugcer'];
+         $ucerpg =  $post['oldpgcer'];
+         $ucerdoct =   $post['olddoccer'];
 
          if ($this->upload->do_upload('certificate_10th')) {
              $data = $this->upload->data();

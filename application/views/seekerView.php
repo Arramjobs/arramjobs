@@ -205,14 +205,14 @@
       }
     }
 
-    .seekerdashboardcontent {
+    .seekerdashboardcontent  {
       text-align: justify;
       text-indent: 50px;
       letter-spacing: 0.5px;
     }
 
     @media screen and (max-width:768px) {
-      .seekerdashboardcontent {
+      .seekerdashboardcontent ,  .notecontent {
         margin-left: 30%;
       }
     }
@@ -316,6 +316,24 @@
       background-color: yellow;
       color: #f3f3f3;
     }
+
+    /* Display uploaded file */
+    .uploadedfile{
+            display: flex;
+        }
+
+      .cer10upload , .cer12upload ,  .cerugupload ,  .cerpgupload ,  .cerdocupload{
+            display: none;
+        }
+
+        #file-input-label ,  #file-input-label12 ,  #file-input-labelug ,  #file-input-labelpg ,  #file-input-labeldoc {
+            font-weight: 200;
+            border: 1px solid black;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin-right: 10px;
+        }
+
   </style>
 </head>
 
@@ -430,6 +448,7 @@
             <p class="seekerdashboardcontent my-5 mx-md-5 px-5">At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. Regardless of where you stand in your career journey—whether you're
               a recent graduate venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you gain
               access to a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs.</p>
+              <p class=" notecontent mx-md-5 px-5" style="text-align: justify;"><b>Note : </b>Before you fill out this application form make sure you have all your information, front and back page of aadhaar card, profile photo, educational certificates and resume.</p>
             <a id="regis" style="margin-left:40%;" class="btn-next" href="<?php echo baseUrl . "seekerController/basicdetails" ?>">Start Filling Form </a>
           </div>
         <?php
@@ -541,8 +560,6 @@
                 </div>
 
 
-
-
                 <div class="form-group">
                   <label for="aadharbackphoto">Aadhaar Back Photo *</label>
                   <input type="file" class="form-control" id="aadharbackphoto" value="<?php echo isset($value['aadhar_back']); ?>" name="aadharbackphoto">
@@ -554,7 +571,6 @@
                                       ?>  -->
                   <div id="aadharbackphoto_error" class="error"></div>
                 </div>
-
 
 
                 <div class="form-group">
@@ -569,7 +585,8 @@
                   <div id="photo_error" class="error"></div>
                 </div>
 
-                <p style="color:red;textalign:center;font-size:small;margin-top:20px">The size of above attachment is below 1024KB</p>
+                <!-- <p style="color:red;textalign:center;font-size:small;margin-top:20px">The size of above attachment is below 1024KB</p> -->
+                <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF Maximum size: 1024KB</p>
 
                 <button type="submit" name="submitBtn" class="btn btn-primary btn-next" id="custom-upload-button">Submit</button>
             </form>
@@ -1207,33 +1224,64 @@
                               </div>
 
                       </div>
+
                       <div class="form-group" id="certificate_10th-group" style="display: none;">
                         <label for="certificate_10th">10th Certificate Upload</label>
-                        <input type="file" class="form-control" id="certificate_10th" name="certificate_10th">
+                        <!-- <input type="file" class="form-control" id="certificate_10th" name="certificate_10th"> -->
+                        <input type="text" class="form-control"  name="old10cer" value="<?php echo $value['ten_cer']; ?>" hidden>
+                        <div class="uploadedfile">
+                        <input type="file" class="form-control cer10upload" id="certificate_10th" name="certificate_10th" />
+                        <label id="file-input-label" for="certificate_10th">Change File</label>  
+                        <a href="<?php echo $value['tencer_url']; ?>" target="blank" id="existfile" style="margin-top:10px"><?php echo $value['ten_cer']; ?></a>
+                        </div>
                         <div id="certificate_10th_error" class="error"></div>
                       </div>
 
                       <div class="form-group" id="certificate_12th-group" style="display: none;">
                         <label for="certificate_12th">12th Certificate Upload</label>
-                        <input type="file" class="form-control" id="certificate_12th" name="certificate_12th">
+                        <!-- <input type="file" class="form-control" id="certificate_12th" name="certificate_12th"> -->
+                        <input type="text" class="form-control"  name="old12cer" value="<?php echo $value['twelve_cer']; ?>" hidden>
+                        <div class="uploadedfile">
+                        <input type="file" class="form-control cer12upload" id="certificate_12th" name="certificate_12th" />
+                        <label id="file-input-label12" for="certificate_12th">Change File</label>  
+                        <a href="<?php echo $value['twelvecer_url']; ?>" target="blank" id="existfile12" style="margin-top:10px"><?php echo $value['twelve_cer']; ?></a>
+                        </div>
                         <div id="certificate_12th_error" class="error"></div>
                       </div>
 
                       <div class="form-group" id="certificate_ug-group" style="display: none;">
                         <label for="certificate_ug">UG Degree Certificate Upload</label>
-                        <input type="file" class="form-control" id="certificate_ug" name="certificate_ug">
+                        <!-- <input type="file" class="form-control" id="certificate_ug" name="certificate_ug"> -->
+                        <input type="text" class="form-control"  name="oldugcer" value="<?php echo $value['ug_cer']; ?>" hidden>
+                        <div class="uploadedfile">
+                        <input type="file" class="form-control cerugupload" id="certificate_ug" name="certificate_ug" />
+                        <label id="file-input-labelug" for="certificate_ug">Change File</label>  
+                        <a href="<?php echo $value['ugcer_url']; ?>" target="blank" id="existfileug" style="margin-top:10px"><?php echo $value['ug_cer']; ?></a>
+                        </div>
                         <div id="certificate_ug_error" class="error"></div>
                       </div>
 
                       <div class="form-group" id="certificate_pg-group" style="display: none;">
                         <label for="certificate_pg">PG Certificate Upload</label>
-                        <input type="file" class="form-control" id="certificate_pg" name="certificate_pg">
+                        <!-- <input type="file" class="form-control" id="certificate_pg" name="certificate_pg"> -->
+                        <input type="text" class="form-control"  name="oldpgcer" value="<?php echo $value['pg_cer']; ?>" hidden>
+                        <div class="uploadedfile">
+                        <input type="file" class="form-control cerpgupload" id="certificate_pg" name="certificate_pg" />
+                        <label id="file-input-labelpg" for="certificate_pg">Change File</label>  
+                        <a href="<?php echo $value['pgcer_url']; ?>" target="blank" id="existfilepg" style="margin-top:10px"><?php echo $value['pg_cer']; ?></a>
+                        </div>
                         <div id="certificate_pg_error" class="error"></div>
                       </div>
 
                       <div class="form-group" id="certificate_doctorate-group" style="display: none;">
                         <label for="certificate_doctorate">Doctorate Certificate Upload</label>
-                        <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate">
+                        <!-- <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate"> -->
+                        <input type="text" class="form-control"  name="olddoccer" value="<?php echo $value['doc_cer']; ?>" hidden>
+                        <div class="uploadedfile">
+                        <input type="file" class="form-control cerdocupload" id="certificate_doctorate" name="certificate_doctorate" />
+                        <label id="file-input-labeldoc" for="certificate_doctorate">Change File</label>  
+                        <a href="<?php echo $value['doccer_url']; ?>" target="blank" id="existfiledoc" style="margin-top:10px"><?php echo $value['doc_cer']; ?></a>
+                        </div>
                         <div id="certificate_doctorate_error" class="error"></div>
                       </div>
 
@@ -1319,6 +1367,89 @@
                     <button type="submit" id="educationsubmit" class="btn">Submit</button>
                   <?php } ?>
                   </div>
+
+                  <!-- Display uploaded certificates -->
+                  <script>
+                      document.getElementById("file-input-label").addEventListener("click", function() {
+                          document.getElementById("existfile").style.display = "none";
+                      });
+
+                  const fileInput = document.getElementById("certificate_10th");
+                  const fileInputLabel = document.getElementById("file-input-label");
+
+                  fileInput.addEventListener("change", function () {
+                      if (fileInput.files.length > 0) {
+                      fileInputLabel.textContent = fileInput.files[0].name;
+                      } else {
+                      fileInputLabel.textContent = "Select a File";
+                      }
+                  });
+                
+                  // 12 certificate
+                      document.getElementById("file-input-label12").addEventListener("click", function() {
+                          document.getElementById("existfile12").style.display = "none";
+                      });
+
+                  const fileInput12 = document.getElementById("certificate_12th");
+                  const fileInputLabel12 = document.getElementById("file-input-label12");
+
+                  fileInput12.addEventListener("change", function () {
+                      if (fileInput12.files.length > 0) {
+                      fileInputLabel12.textContent = fileInput12.files[0].name;
+                      } else {
+                      fileInputLabel12.textContent = "Select a File";
+                      }
+                  });
+                
+                  // ug certificate
+                      document.getElementById("file-input-labelug").addEventListener("click", function() {
+                          document.getElementById("existfileug").style.display = "none";
+                      });
+
+                  const fileInputug = document.getElementById("certificate_ug");
+                  const fileInputLabelug = document.getElementById("file-input-labelug");
+
+                  fileInputug.addEventListener("change", function () {
+                      if (fileInputug.files.length > 0) {
+                      fileInputLabelug.textContent = fileInputug.files[0].name;
+                      } else {
+                      fileInputLabelug.textContent = "Select a File";
+                      }
+                  });
+                
+                  // pg certificate
+                      document.getElementById("file-input-labelpg").addEventListener("click", function() {
+                          document.getElementById("existfilepg").style.display = "none";
+                      });
+
+                  const fileInputpg = document.getElementById("certificate_pg");
+                  const fileInputLabelpg = document.getElementById("file-input-labelpg");
+
+                  fileInputpg.addEventListener("change", function () {
+                      if (fileInputpg.files.length > 0) {
+                      fileInputLabelpg.textContent = fileInputpg.files[0].name;
+                      } else {
+                      fileInputLabelpg.textContent = "Select a File";
+                      }
+                  });
+                 
+                  // doc certificate
+                      document.getElementById("file-input-labeldoc").addEventListener("click", function() {
+                          document.getElementById("existfiledoc").style.display = "none";
+                      });
+
+                  const fileInputdoc = document.getElementById("certificate_doctorate");
+                  const fileInputLabeldoc = document.getElementById("file-input-labeldoc");
+
+                  fileInputdoc.addEventListener("change", function () {
+                      if (fileInputdoc.files.length > 0) {
+                      fileInputLabeldoc.textContent = fileInputdoc.files[0].name;
+                      } else {
+                      fileInputLabeldoc.textContent = "Select a File";
+                      }
+                  });
+                  </script>
+            
                   <script>
                     // This is for displaying in update form
                     if (document.getElementById('qualification').value !== 'below_8th') {
@@ -1411,51 +1542,6 @@
                         return false;
                       } else {
                         document.getElementById("year_error").innerHTML = "";
-                      }
-
-                      if (tenth == "" && document.getElementById('certificate_10th-group').style.display !== "none") {
-                        var namesms2 = "10 th certificate must be filled out";
-                        document.getElementById("certificate_10th_error").innerHTML = namesms2;
-                        document.educationform.certificate_10th.focus();
-                        return false;
-                      } else {
-                        document.getElementById("certificate_10th_error").innerHTML = "";
-                      }
-
-                      if (tweleth == "" && document.getElementById('certificate_12th-group').style.display !== "none") {
-                        var namesms2 = "12 th certificate must be filled out";
-                        document.getElementById("certificate_12th_error").innerHTML = namesms2;
-                        document.educationform.certificate_12th.focus();
-                        return false;
-                      } else {
-                        document.getElementById("certificate_12th_error").innerHTML = "";
-                      }
-
-                      if (ug == "" && document.getElementById('certificate_ug-group').style.display !== "none") {
-                        var namesms2 = "UG certificate must be filled out";
-                        document.getElementById("certificate_ug_error").innerHTML = namesms2;
-                        document.educationform.certificate_ug.focus();
-                        return false;
-                      } else {
-                        document.getElementById("certificate_ug_error").innerHTML = "";
-                      }
-
-                      if (pg == "" && document.getElementById('certificate_pg-group').style.display !== "none") {
-                        var namesms2 = "PG certificate must be filled out";
-                        document.getElementById("certificate_pg_error").innerHTML = namesms2;
-                        document.educationform.certificate_pg.focus();
-                        return false;
-                      } else {
-                        document.getElementById("certificate_pg_error").innerHTML = "";
-                      }
-
-                      if (dc == "" && document.getElementById('certificate_doctorate-group').style.display !== "none") {
-                        var namesms2 = "Certificate must be filled out";
-                        document.getElementById("certificate_doctorate_error").innerHTML = namesms2;
-                        document.educationform.certificate_doctorate.focus();
-                        return false;
-                      } else {
-                        document.getElementById("certificate_doctorate_error").innerHTML = "";
                       }
 
                       return true;

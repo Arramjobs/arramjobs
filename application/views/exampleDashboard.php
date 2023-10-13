@@ -366,7 +366,23 @@
             .printhide {
                 visibility: hidden;
             }
+        }
 
+        
+/* display uploaded file */
+    #logo1{
+            display: none;
+        }
+
+        .uploadedfile{
+            display: flex;
+        }
+        #file-input-label{
+            font-weight: 200;
+            border: 1px solid black;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin-right: 10px;
         }
     </style>
 
@@ -475,11 +491,11 @@
                     ?>
                         <div class="text-center p-2 border bg-secondary rounded-3  bg-opacity-75 ms-5 me-5 text-white fs-5">Company Details</div>
 
-                        <form name="forms" enctype="multipart/form-data" action="<?php echo baseUrl . "providerController/update_record" ?>" method="post">
+                        <form name="forms" enctype="multipart/form-data" onsubmit="return validateprofile()" action="<?php echo baseUrl . "providerController/update_record" ?>" method="post">
                             <input type="hidden" class="form-control" value=<?php echo $value['id']; ?> id="id" name="id" placeholder="enter name" onkeypress="return allowOnlyLetters(event, this)">
                             <div class=" mb-3 mt-4  ms-5 me-5 w-55  ">
                                 <label for="name" class="form-label">Name:</label>
-                                <input type="text" class="form-control" value='<?php echo $value['company_name']; ?>' id="name" name="name" placeholder="enter name" onkeypress="return allowOnlyLetters(event, this)">
+                                <input type="text" class="form-control" value='<?php echo $value['company_name']; ?>' id="name" name="name" placeholder="Enter name" onkeypress="return allowOnlyLetters(event, this)">
                                 <p id="nameerr" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
@@ -524,9 +540,15 @@
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
                                 <label for="logo1" class="form-label">Logo:</label>
-                                <!-- <input type="file" class="form-control" value='<?php echo $value['company_logo']; ?>' id="logo" name="logo"> -->
-                                <input type="file" class="form-control" id="logo1" name="logo1" value='<?php echo baseUrl . "/uploads/" . ($file_path); ?> '>
+                                <!-- <input type="file" class="form-control" id="logo1" name="logo1" > -->
+                                <div class="uploadedfile">
+                                <input type="file" class="form-control" id="logo1" name="logo1" value="<?php echo $value['company_logo']; ?>" />
+                                <label id="file-input-label" for="logo1">Change File</label>  
+                                <a href="<?php echo $value['company_logourl']; ?>" target="_blank" id="existfile" style="margin-top:10px"><?php echo $value['company_logo']; ?></a>
+                                </div>
+                                <input type="text" class="form-control" value='<?php echo $value['company_logo']; ?>' name="oldimgname" hidden>
                                 <p id="logerr" style="color: red;"></p>
+
 
                             </div>
 
@@ -551,7 +573,7 @@
 
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
                                 <label for="name1" class="form-label">Name:</label>
-                                <input type="text" class="form-control" value='<?php echo $value['name']; ?>' id="name1" name="name1" placeholder="enter name" onkeypress="return allowOnlyLetters1(event, this)">
+                                <input type="text" class="form-control" value='<?php echo $value['name']; ?>' id="name1" name="name1" placeholder="Enter name" onkeypress="return allowOnlyLetters1(event, this)">
                                 <p id="nameerr1" style="color: red;"></p>
                             </div>
                             <div class="mb-3 mt-4  ms-5 me-5 w-55 ">
@@ -582,6 +604,25 @@
                     ?>
                 </div>
             </div>
+
+            <!-- Display uploaded file -->
+            <script>
+                document.getElementById("file-input-label").addEventListener("click", function() {
+                    document.getElementById("existfile").style.display = "none";
+                });
+
+            const fileInput = document.getElementById("logo1");
+            const fileInputLabel = document.getElementById("file-input-label");
+
+            fileInput.addEventListener("change", function () {
+                if (fileInput.files.length > 0) {
+                fileInputLabel.textContent = fileInput.files[0].name;
+                } else {
+                fileInputLabel.textContent = "Select a File";
+                }
+            });
+            </script>
+
             <script type="text/javascript">
                 function allowOnlyLetters(e, t) {
                     if (window.event) {
@@ -631,315 +672,182 @@
                 }
 
 
-                function group() {
-                    var x = document.forms.name.value;
-                    var p = document.forms.phno.value;
-                    var a = document.forms.email.value;
-                    var y = document.forms.addr.value;
-                    var y1 = document.forms.landmark1.value;
-                    var y2 = document.forms.city1.value;
-                    var y3 = document.forms.pincode1.value;
-                    var y4 = document.forms.state1.value;
-                    var y5 = document.forms.district1.value;
-                    var l = document.forms.logo.value;
-                    var x1 = document.forms.name1.value;
-                    var p1 = document.forms.phno1.value;
-                    var a1 = document.forms.mail1.value;
-                    var r = document.forms.role.value;
+                function validateprofile(){
+                    var namep = document.forms.name.value;
+                    var phop = document.forms.phno.value;
+                    var mailp = document.forms.email.value;
+                    var addp =  document.forms.addr.value;
+                    var landp = document.forms.landmark1.value;
+                    var cityp = document.forms.city1.value;
+                    var distp = document.forms.district1.value;
+                    var statep = document.forms.state1.value;
+                    var pincodep = document.forms.pincode1.value;
+                    var logop = document.forms.logo1.value;
+                    var cpname = document.forms.name1.value;
+                    var cprole = document.forms.role.value;
+                    var cppho = document.forms.phno1.value;
+                    var cpmail = document.forms.mail1.value;
 
-                    if (x != "") {
-                        if (x.length < 2) {
 
-                            document.getElementById("nameerr").innerHTML = "Name should be in atleast 2 characters";
-                            document.forms.name.focus();
-                            // alert("Name should be in atleast 4 characters");
-                            return false;
-                        } else if (x.length > 50) {
-                            document.getElementById("nameerr").innerHTML = "Name should not exceed 50 characters";
-                            document.forms.name.focus();
-                            // alert("Name should not exceed 50 characters");
-                            return false;
-                        } else {
-                            document.getElementById("nameerr").innerHTML = "";
-
-                        }
-                    } else if (x == "") {
-                        var namesms1 = "Name must be filled out";
-                        // alert("* Name must be filled out");
+                    if(namep == ''){
+                        var namesms1 = "Company name must be filled out";
                         document.getElementById("nameerr").innerHTML = namesms1;
-                        document.forms.name.focus();
                         return false;
                     }
 
-                    if (p != "") {
-                        if (p.length !== 10) {
-                            document.getElementById("pherr").innerHTML = "Phone number  must be in 10 digits";
+                    if (phop != "") {
+                        if (phop.length < 10) {
+                            document.getElementById("pherr").innerHTML = "Phone number must be in 10 digits";
                             document.forms.phno.focus();
-                            // alert("Phone number  must be in 10 digits")
                             return false;
-                        } else if (p.length > 11) {
-                            document.getElementById("pherr1").innerHTML = "Phone number should not exceed 10 digits";
+                        } else if (phop.length > 10) {
+                            document.getElementById("pherr").innerHTML = "Phone number should not exceed 10 digits";
                             document.forms.phno.focus();
-                            // alert("phone number should not exceed 10 digits");
                             return false;
                         } else {
                             document.getElementById("pherr").innerHTML = "";
 
                         }
-                    } else if (p == "") {
+                    } else if (phop == "") {
                         var phsms = "Phone number must be filled out";
-                        // alert("phone number must be filled out");
                         document.getElementById("pherr").innerHTML = phsms;
                         document.forms.phno.focus();
                         return false;
-
                     }
 
-                    if (a == "") {
+                    if (mailp == "") {
                         var emailsms = "Email must be filled out";
-                        // alert("email must be filled out");
                         document.getElementById("mailerr").innerHTML = emailsms;
                         document.forms.email.focus();
                         return false;
-                    } else if (a != "") {
+                    } else if (mailp != "") {
                         document.getElementById("mailerr").innerHTML = "";
-                        /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
-                        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(a)) {
+                        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailp)) {
                             document.getElementById("mailerr").innerHTML = "";
-                            // return (true);
                         } else {
                             document.getElementById("mailerr").innerHTML = "You have entered an invalid email address";
                             document.forms.email.focus();
-                            // alert("you have entered an invalid email address");
                             return false;
                         }
                     }
 
-                    if (y != "") {
-                        if (y.length < 3) {
-                            document.getElementById("adderr").innerHTML = "Street address should be in atleast 3 characters";
-                            document.forms.addr.focus();
-                            // alert("street address should be in atleast 3 characters");
-                            return false;
-                        } else if (y.length > 100) {
-                            document.getElementById("adderr").innerHTML = "Street address should not exceed 100 characters";
-                            document.forms.addr.focus();
-                            // alert("street address should not exceed 100 characters");
-                            return false;
-                        } else {
-                            document.getElementById("adderr").innerHTML = "";
-                        }
-                    } else {
+                    if(addp == '')
+                    {
                         var adderr = "Street address must be in filled out";
-                        // alert(" street address must be in filled out");
                         document.getElementById("adderr").innerHTML = adderr;
                         document.forms.addr.focus();
                         return false;
                     }
 
-                    if (y1 != "") {
-                        if (y1.length < 3) {
-                            document.getElementById("landerr1").innerHTML = "Landmark should be in atleast 3 characters";
-                            document.forms.landmark1.focus();
-                            // alert(" landmark should be in atleast 3 characters");
-                            return false;
-                        } else if (y1.length > 100) {
-                            document.getElementById("landerr1").innerHTML = "Landmark should not exceed 100 characters";
-                            document.forms.landmark1.focus();
-                            // alert(" landmark should not exceed 100 characters");
-                            return false;
-                        } else {
-                            document.getElementById("landerr1").innerHTML = "";
-                        }
-                    } else {
+                    if (landp == ''){
                         var landmark = "Landmark must be in filled out";
-                        // alert("landmark must be in filled out");
                         document.getElementById("landerr1").innerHTML = landmark;
                         document.forms.landmark1.focus();
                         return false;
                     }
 
-
-                    if (y2 != "") {
-                        if (y2.length < 3) {
-                            document.getElementById("cityerr1").innerHTML = "City should be in atleast 3 characters";
-                            document.forms.city1.focus();
-                            // alert("city should be in atleast 3 characters");
-                            return false;
-                        } else if (y2.length > 100) {
-                            document.getElementById("cityerr1").innerHTML = "City should not exceed 100 characters";
-                            document.forms.city1.focus();
-                            // alert("city should not exceed 100 characters");
-                            return false;
-                        } else {
-                            document.getElementById("cityerr1").innerHTML = "";
-                        }
-                    } else {
+                    if(cityp =='')
+                    {
                         var city = "City must be in filled out";
-                        // alert("city must be in filled out");
                         document.getElementById("cityerr1").innerHTML = city;
                         document.forms.city1.focus();
                         return false;
                     }
 
-                    if (y4 != "") {
-                        if (y4.length < 3) {
-                            document.getElementById("stateerr1").innerHTML = "State should be in atleast 3 characters";
-                            document.forms.state1.focus();
-                            // alert("state should be in atleast 3 characters");
-                            return false;
-                        } else if (y2.length > 100) {
-                            document.getElementById("stateerr1").innerHTML = "State should not exceed 100 characters";
-                            document.forms.state1.focus();
-                            // alert("state should not exceed 100 characters");
-                            return false;
-                        } else {
-                            document.getElementById("stateerr1").innerHTML = "";
-                        }
-                    } else {
+                    if(distp =='')
+                    {
+                        var dist = "District must be in filled out";
+                        document.getElementById("diserr1").innerHTML = dist;
+                        document.forms.district1.focus();
+                        return false;
+                    }
+
+                    if(statep == ''){
                         var state = "State must be in filled out";
-                        // alert("state must be in filled out");
                         document.getElementById("stateerr1").innerHTML = state;
                         document.forms.state1.focus();
                         return false;
                     }
 
-
-
-                    if (y5 != "") {
-                        if (y5.length < 3) {
-                            document.getElementById("diserr1").innerHTML = "District should be in atleast 3 characters";
-                            document.forms.district1.focus();
-                            // alert("district should be in atleast 3 characters");
-                            return false;
-                        } else if (y2.length > 100) {
-                            document.getElementById("diserr1").innerHTML = "District should not exceed 100 characters";
-                            document.forms.district1.focus();
-                            // alert("district should not exceed 100 characters");
-                            return false;
-                        } else {
-                            document.getElementById("diserr1").innerHTML = "";
-                        }
-                    } else {
-                        var district = "District must be in filled out";
-                        // alert(" district must be in filled out");
-                        document.getElementById("diserr1").innerHTML = district;
-                        document.forms.district1.focus();
+                    if (pincodep != "") {
+                        if (pincodep.length < 6) {
+                        document.getElementById("pinerr1").innerHTML = "Pincode  must be in 6 digits";
+                        document.forms.pincode1.focus();
                         return false;
-                    }
-
-                    if (y3 != "") {
-                        if (y3.length !== 6) {
-                            document.getElementById("pinerr1").innerHTML = "Pincode  must be in 6 digits";
-                            document.forms.pincode1.focus();
-                            // alert("pincode  must be in 6 digits");
-                            return false;
-                        } else if (y3.length > 6) {
-                            document.getElementById("pinerr1").innerHTML = "Pincode should not exceed 6 digits";
-                            document.forms.pincode1.focus();
-                            // alert("pincode should not exceed 6 digits")
-                            return false;
+                        } else if (pincodep.length > 6) {
+                        document.getElementById("pinerr1").innerHTML = "Pincode should not exceed 6 digits";
+                        document.forms.pincode1.focus();
+                        return false;
                         } else {
-                            document.getElementById("pinerr1").innerHTML = "";
-
+                        document.getElementById("pinerr1").innerHTML = "";
                         }
-                    } else if (y3 == "") {
+                    } else if (pincodep == "") {
                         var pincode = "Pincode must be filled out";
-                        // alert("pincode must be filled out");
                         document.getElementById("pinerr1").innerHTML = pincode;
                         document.forms.pincode1.focus();
                         return false;
-
                     }
 
+                    //  if(logop == '' && document.getElementById('existfile').style.display == "none"){
+                    //     var logo = "Logo must be uploaded";
+                    //     document.getElementById("logoerr").innerHTML = logo;
+                    //     document.forms.logo1.focus();
+                    //     return false;
+                    // }
 
-                    if (x1 != "") {
-                        if (x1.length < 3) {
-                            document.getElementById("nameerr1").innerHTML = "Name should be in atleast 3 characters";
-                            document.forms.name1.focus();
-                            // alert("Name should be in atleast 4 characters");
-                            return false;
-                        } else if (x1.length > 50) {
-                            document.getElementById("nameerr1").innerHTML = "Name should not exceed 50 characters";
-                            document.forms.name1.focus();
-                            // alert(" Name should not exceed 50 characters");
-                            return false;
-                        } else {
-                            document.getElementById("nameerr1").innerHTML = "";
-
-                        }
-                    } else if (x1 == "") {
+                    if(cpname == '')
+                    {
                         var namesms2 = "Name must be filled out";
-                        // alert(" Name must be filled out");
                         document.getElementById("nameerr1").innerHTML = namesms2;
                         document.forms.name1.focus();
                         return false;
                     }
 
-
-                    if (r != "") {
-                        if (y.length > 50) {
-                            document.getElementById("rolerr").innerHTML = "Role should not exceed 50 characters";
-                            document.forms.role.focus();
-                            // alert("Address should not exceed 50 characters");
-                            return false;
-                        } else {
-                            document.getElementById("rolerr").innerHTML = "";
-                        }
-                    } else {
-                        var adderr = "Role must be in filled out";
-                        // alert("role must be in filled out");
-                        document.getElementById("rolerr").innerHTML = adderr;
+                    if(cprole == ''){
+                        var role = "Role must be in filled out";
+                        document.getElementById("rolerr").innerHTML = role;
                         document.forms.role.focus();
                         return false;
                     }
 
-                    if (p1 != "") {
-                        if (p1.length !== 10) {
-                            document.getElementById("pherr1").innerHTML = "Mobile number  must be in 10 digits";
+                    if (cppho != "") {
+                        if (cppho.length < 10) {
+                            document.getElementById("pherr1").innerHTML = "Phone number must be in 10 digits";
                             document.forms.phno1.focus();
-                            // alert("Phone number  must be in 10 digits");
                             return false;
-                        } else if (p1.length > 11) {
-                            document.getElementById("pherr1").innerHTML = "Mobile number should not exceed 10 digits";
+                        } else if (cppho.length > 10) {
+                            document.getElementById("pherr1").innerHTML = "Phone number should not exceed 10 digits";
                             document.forms.phno1.focus();
-                            // alert("phone number should not exceed 10 digits");
                             return false;
                         } else {
                             document.getElementById("pherr1").innerHTML = "";
 
                         }
-                    } else if (p1 == "") {
+                    } else if (cppho == "") {
                         var phsms1 = "Mobile number must be filled out";
-                        // alert("phone number must be filled out");
                         document.getElementById("pherr1").innerHTML = phsms1;
                         document.forms.phno1.focus();
                         return false;
-
                     }
 
-
-                    if (a1 == "") {
+                    if (cpmail == "") {
                         var emailsms1 = "Email must be filled out";
-                        // alert("email must be filled out");
                         document.getElementById("mailerr1").innerHTML = emailsms1;
                         document.forms.mail1.focus();
                         return false;
-                    } else if (a1 != "") {
-                        document.getElementById("mailerr").innerHTML = "";
-                        /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
-                        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(a1)) {
+                    } else if (cpmail != "") {
+                        document.getElementById("mailerr1").innerHTML = "";
+                        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(cpmail)) {
                             document.getElementById("mailerr1").innerHTML = "";
-                            // return (true);
                         } else {
                             document.getElementById("mailerr1").innerHTML = "You have entered an invalid email address";
                             document.forms.mail1.focus();
-                            // alert("you have entered an invalid email address");
                             return false;
                         }
                     }
 
                 }
+
             </script>
 
 
