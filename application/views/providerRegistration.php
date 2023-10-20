@@ -115,6 +115,11 @@
             background-color: #2d76d9;
         }
 
+        .form-control[type="file"] {
+             border: none;
+             color: #4285f4;
+        }
+
         button[type="submit"] {
             width: 100%;
             margin-top: 20px;
@@ -247,6 +252,7 @@
                     <label for="logo" class="form-label">Logo:</label>
                     <input type="file" class="form-control" id="logo" name="logo" >
                     <p id="logerr" style="color: red;"></p>
+                    <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF Maximum size: 1024KB</p>
                 </div>
                 <div class="">
                     <label for="cwebsite" class="form-label">Website:</label>

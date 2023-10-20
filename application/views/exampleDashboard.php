@@ -379,9 +379,9 @@
         }
         #file-input-label{
             font-weight: 200;
-            border: 1px solid black;
-            border-radius: 4px;
-            padding: 8px 16px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            padding: 6px 12px;
             margin-right: 10px;
         }
     </style>
@@ -542,13 +542,13 @@
                                 <label for="logo1" class="form-label">Logo:</label>
                                 <!-- <input type="file" class="form-control" id="logo1" name="logo1" > -->
                                 <div class="uploadedfile">
-                                <input type="file" class="form-control" id="logo1" name="logo1" value="<?php echo $value['company_logo']; ?>" />
+                                <input type="file" class="form-control" id="logo1" name="logo1" value="<?php echo $value['company_logo']; ?>" onchange="Filevalidation()" />
                                 <label id="file-input-label" for="logo1">Change File</label>  
                                 <a href="<?php echo $value['company_logourl']; ?>" target="_blank" id="existfile" style="margin-top:10px"><?php echo $value['company_logo']; ?></a>
                                 </div>
                                 <input type="text" class="form-control" value='<?php echo $value['company_logo']; ?>' name="oldimgname" hidden>
                                 <p id="logerr" style="color: red;"></p>
-
+                                <p style="color:grey;textalign:center;font-size:small;">PNG, JPG, JPEG, PDF Maximum size: 1024KB</p>
 
                             </div>
 
@@ -621,6 +621,25 @@
                 fileInputLabel.textContent = "Select a File";
                 }
             });
+
+
+            Filevalidation = () => {
+            const fi = document.getElementById('logo1');
+            // Check if any file is selected.
+            if (fi.files.length > 0) {
+                for (const i = 0; i <= fi.files.length - 1; i++) {
+         
+                    const fsize = fi.files.item(i).size;
+                    const file = Math.round((fsize / 1024));
+                    if (file >= 1024) {
+                        alert(
+                          "File too Big, please select a file less than 1mb");
+                          return false;
+                    } 
+                    
+                }
+            }
+        }
             </script>
 
             <script type="text/javascript">
@@ -893,6 +912,11 @@
                             <?php
                             foreach ($this->data['providerJobs'] as $key => $value) {
                             ?>
+
+                                <?php  $dateap =  $value['date'] ;
+                                $twelveHourTime = date(" F j, Y h:i A", strtotime($dateap));
+                                ?>
+
                                 <tr>
                                     <td><?php echo $value['id'] ?></td>
                                     <td><?php echo $value['company_name'] ?></td>
@@ -902,7 +926,8 @@
                                     <td><?php echo $value['salary'] ?></td>
                                     <td><?php echo $value['experience'] ?></td>
                                     <td><?php echo $value['number_of_openings'] ?></td>
-                                    <td><?php echo $value['date'] ?></td>
+                                    <!-- <td><?php echo $value['date'] ?></td> -->
+                                    <td><?php echo $twelveHourTime ?></td>
 
                                     <td>
                                         <div class="btn-group" role="group">
