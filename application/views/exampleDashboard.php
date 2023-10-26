@@ -431,11 +431,11 @@
                             Employer Jobs
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?php echo baseUrl . "providerController/matchedCandidate" ?>">
                             Canditates List
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                             <a class="nav-link" href="http://localhost/arramjobs/providerController/jobWishlistCandidates">
                             Candidate Wishlists
@@ -957,7 +957,7 @@
                 <a id="regis" href="<?php echo baseUrl . "providerController/providerAddJob" ?>">+ Add Job Requirements</a>
                 <div style="float:right">
                     <a id="regis" href="<?php echo baseUrl . "providerController/providerUpdateRegistration" ?>">Previous</a>
-                    <a id="regis" href="<?php echo baseUrl . "providerController/matchedCandidate" ?>">Next</a>
+                    <!-- <a id="regis" href="<?php echo baseUrl . "providerController/matchedCandidate" ?>">Next</a> -->
 
                 </div>
 
@@ -999,7 +999,7 @@
                                     <td>
                                         <div class="btn-group" role="group">
                                             <!-- <button class="btn btn-primary">View</button> -->
-                                            <a id="view" href="<?php echo baseUrl . "providerController/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>">View</a>
+                                            <a id="view" href="<?php echo baseUrl . "providerController/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>">List</a>
                                             <a id="updates" href="<?php echo baseUrl . "providerController/updateAddNew" ?>/<?php echo $value['id'] ?>">Edit</a>
                                             <!-- <a id="view" onclick="confirm('Are you sure , you want to delete..?')" href="deleteAddJob">delete</a> -->
                                             <a id="deletes" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "providerController/deleteAddJob" ?>/<?php echo $value['id'] ?>">Delete</a>
@@ -2113,7 +2113,7 @@
         } else if ($this->data['method'] == "match") {
         ?>
 
-            <!-- 2 3 view  Matched canditate ********************************************************************************************************* -->
+            <!-- 2  Matched canditate ********************************************************************************************************* -->
 
             <div>
                 <div class="container mt-5">
@@ -2121,9 +2121,10 @@
                     <br>
                     <br>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped " id="matchtable" >
                             <thead>
                                 <tr>
+                                <th>S.No</th>
                                     <th>Name</th>
                                     <!-- <th>Degree</th> -->
                                     <th>Sub Category</th>
@@ -2136,9 +2137,11 @@
                             </thead>
                             <tbody>
                                 <?php
+                                $count = 1;
                                 foreach ($this->data['response'] as $key => $value) {
                                 ?>
                                     <tr>
+                                        <td><?php echo $count++; ?>.</td>
                                         <td><?php echo $value['name'] ?></td>
                                         <td><?php echo $value['oisc'] ?></td>
                                         <td><?php echo $value['exps'] ?></td>
@@ -2147,21 +2150,37 @@
                                         <td>
                                             <div class="btn-group" role="group">
                                                 <!-- <button class="btn btn-primary">View</button> -->
-                                                <a id="view" href="<?php echo baseUrl . "providerController/resumeCard" ?>/<?php echo $value['seekerId'] ?>">View</a>
+                                                <a id="view" href="<?php echo baseUrl . "providerController/resumeCard" ?>/<?php echo $value['seekerId'] ?>">Candidate Resume</a>
                                             </div>
                                         </td>
                                     </tr>
+                                   
                                 <?php
                                 }
                                 ?>
                             </tbody>
-
+                            <div style="display:flex;justify-content:space-between;padding:20px">
+                            <p>Category : <?php echo $this->data['category'] ?></p>
+                            <p >Count :<?php echo $count-1; ?></p>
+                            </div>
                         </table>
+                        <h2 id="nomatches" style="display:none;text-align:center">No Matches Available.</h2>
+                        <?php
+                        if($count == "1"){
+                            ?>
+                            <script>
+                            document.getElementById("nomatches").style.display = "block";
+                            document.getElementById("matchtable").style.display = "none";
+                            </script>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
+
             <script>
-                function updateSubcategories() {
+                    function updateSubcategories() {
                     var categorySelect = document.getElementById("category");
                     var subcategorySelect = document.getElementById("subcategory");
                     var selectedCategory = categorySelect.value;
@@ -2525,6 +2544,7 @@
         } else if ($this->data['method'] == "allCandidate") {
         ?>
 
+            <!-- No need -->
             <!-- 3 List of Canditates *************************************************************************************************************** -->
 
             <div class="container mt-5">
@@ -2976,7 +2996,7 @@
         <?php
         } else if ($this->data['method'] == "filltercandidate") {
         ?>
-
+            <!-- No need -->
             <!-- 3 1 All candidate search ************************************************************************************* -->
 
             <div class="container mt-5">
@@ -3426,14 +3446,14 @@
 
             <div class="full" id="educationTable">
 
-                <!-- 3 2 Candidate all details view download ************************************************************************************************************************* -->
+                <!-- Candidate resume all details view download ************************************************************************************************************************* -->
 
                 <br>
                 <h2 class=" bg-black p-5 mb-0" id="candidateResume">
                     <center>Candidate Resume</center>
                 </h2>
                 <br>
-                <a id="regis" class="printhide" href="<?php echo baseUrl . "providerController/matchedCandidate" ?>">Back</a>
+                <!-- <a id="regis" class="printhide" href="<?php echo baseUrl . "providerController/matchedCandidate" ?>">Back</a> -->
 
                 <ul>
                     <br>
@@ -3476,23 +3496,59 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                <th>S.No</th>
                                     <th>Educational Qualification</th>
                                     <th>Department</th>
                                     <th>Institution Name</th>
                                     <th>Percentage</th>
                                     <th>Year of Passed Out</th>
+                                    <th>Certificates</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+                                $countedu=1;
                                 foreach ($this->data['education'] as $key => $value) {
                                 ?>
                                     <tr>
+                                    <td><?php echo $countedu++; ?>.</td>
                                         <td><?php echo $value['educational_qualification'] ?></td>
                                         <td><?php echo $value['department'] ?></td>
                                         <td><?php echo $value['school_college_name'] ?></td>
                                         <td><?php echo $value['percentage'] ?></td>
                                         <td><?php echo $value['yearOfPassing'] ?></td>
+                                        <?php
+                    if ( $value['educational_qualification'] == 'sslc' ) {
+                      ?>
+                                  <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
+                  <?php
+                    }
+                    else if ( $value['educational_qualification'] == 'hsc' ) {
+                    ?>
+                     <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
+                     <?php
+                    }
+                    else if ( $value['educational_qualification'] == 'bachelors' ) {
+                    ?>
+                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
+                    <?php
+                   }
+                  else if ( $value['educational_qualification'] == 'masters' ) {
+                   ?>
+                   <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
+                   <?php
+                    }
+                    else if ( $value['educational_qualification'] == 'doctorate' ) {
+                    ?>
+                    <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
+                     <?php
+                    }
+                    else {
+                    ?>
+                    <td>NA</a></td>
+                    <?php
+                   }
+                   ?>
                                     </tr>
                                 <?php
                                 }
@@ -3509,6 +3565,7 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                <th>S.No </th>
                                     <th>Job Category </th>
                                     <th>Job Sub Category</th>
                                     <th>Prefered Location</th>
@@ -3521,9 +3578,11 @@
                             <tbody>
 
                                 <?php
+                                $countarea=1;
                                 foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
                                 ?>
                                     <tr>
+                                    <td><?php echo $countarea++; ?>. </td>
                                         <td><?php echo $avalue['other_interst_category'] ?> </td>
                                         <td><?php echo $avalue['other_sub_interst_category'] ?></td>
                                         <td> <?php echo $avalue['prefered_location'] ?></td>
@@ -3547,6 +3606,7 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                <th>S.No</th>
                                     <th>Skill Name</th>
                                     <th>Skill Experience</th>
                                     <th>Skill Level</th>
@@ -3555,9 +3615,11 @@
                             <tbody>
 
                                 <?php
+                                $countskill = 1;
                                 foreach ($this->data['areaOfInterest'] as $skey => $svalue) {
                                 ?>
                                     <tr>
+                                    <td><?php echo $countskill++; ?>. </td>
                                         <td><?php echo $svalue['skillname'] ?> </td>
                                         <td><?php echo $svalue['skillexperience'] ?></td>
                                         <td> <?php echo $svalue['skilllevel'] ?></td>
@@ -3576,6 +3638,7 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                <th>S.No</th>
                                     <th>Job Category </th>
                                     <th>Job Sub Category</th>
                                     <th>Company Name</th>
@@ -3588,9 +3651,11 @@
                             <tbody>
 
                                 <?php
+                                $countexp=1;
                                 foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
                                 ?>
                                     <tr>
+                                        <td><?php echo $countexp++; ?>. </td>
                                         <td><?php echo $ivalue['other_category'] ?> </td>
                                         <td><?php echo $ivalue['other_sub_category'] ?></td>
                                         <td> <?php echo $ivalue['company_name'] ?></td>

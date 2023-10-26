@@ -55,10 +55,43 @@ class SeekerModel extends CI_Model
         $insert = array(
             'name' => $name,
             'email' => $email,
-            'phonenumber' => $phonenumber
+            'phonenumber' => $phonenumber,
         );
 
         $this->db->insert('seeker_profile_form', $insert);
+    }
+
+    public function generate_customer_id() {
+        $current_year = date('Y');
+
+        $latest_customer_id = $this->get_latest_customer_id();
+        $incremented_id = str_pad((int)substr($latest_customer_id, -4) + 1, 4, '0', STR_PAD_LEFT);
+        
+        $customer_id = "AJEE" . $current_year . $incremented_id;
+
+        $insert = array(
+            'eeid' => $customer_id
+        );
+
+        $phonenumber = $this->input->post('phonenumber');
+
+        $this->db->where('phonenumber',$phonenumber);
+        $this->db->update('seeker_profile_form', $insert);
+    }
+
+    public function get_latest_customer_id() {
+        $this->db->select('eeid');
+        $this->db->from('seeker_profile_form'); 
+        $this->db->order_by('eeid', 'DESC');
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row->eeid;
+        } else {
+            return 'AJEE' . date('Y') . '0000';
+        }
     }
 
     public function getUserData($phonenumber)

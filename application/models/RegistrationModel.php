@@ -57,7 +57,38 @@ class RegistrationModel extends CI_Model
   }
 
 
+  public function generate_customer_id() {
+    $current_year = date('Y');
 
+    $latest_customer_id = $this->get_latest_customer_id();
+    $incremented_id = str_pad((int)substr($latest_customer_id, -4) + 1, 4, '0', STR_PAD_LEFT);
+    
+    $customer_id = "AJER" . $current_year . $incremented_id;
+
+    $insert = array(
+        'erid' => $customer_id
+    );
+
+    $mobilenumber = $this->input->post('mobile');
+
+    $this->db->where('company_mobile_number',$mobilenumber);
+    $this->db->update('provider_registration_form', $insert);
+}
+
+public function get_latest_customer_id() {
+    $this->db->select('erid');
+    $this->db->from('provider_registration_form'); 
+    $this->db->order_by('erid', 'DESC');
+    $this->db->limit(1);
+
+    $query = $this->db->get();
+    if ($query->num_rows() > 0) {
+        $row = $query->row();
+        return $row->erid;
+    } else {
+        return 'AJER' . date('Y') . '0000';
+    }
+}
 
 
   // public function database_login()
@@ -244,7 +275,7 @@ class RegistrationModel extends CI_Model
 
   public function candidates($jobCategory)
   {
-    $query = "SELECT spf.id as seekerId, spf.name as name, saoi.id as id, saoi.other_sub_interst_category as oisc, saoi.experience as exps,
+    $query = "SELECT spf.id as seekerId, spf.name as name, saoi.id as id,saoi.other_interst_category as oic, saoi.other_sub_interst_category as oisc, saoi.experience as exps,
     saoi.skillname as skills FROM seeker_profile_form spf INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id
     WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.verificationStatus = '1' " ;
     $result = $this->db->query($query);

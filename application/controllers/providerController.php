@@ -19,6 +19,7 @@ class ProviderController extends CI_Controller
     public function providerRegistration()
     {
         $responses = $this->RegistrationModel->register();
+        $this->RegistrationModel->generate_customer_id();
         // $this->load->view('providerLogin.php');
         $this->load->view('employerRegistered.php');
         echo '<script>alert("Registered successfully.");</script>';
@@ -118,6 +119,7 @@ class ProviderController extends CI_Controller
         $response = $this->RegistrationModel->candidates($jobCategory);
         $this->data['method'] = "match";
         $this->data['response'] = $response;
+        $this->data['category'] = $jobCategory;
         $this->load->view('exampleDashboard.php', $this->data);
     }
 
