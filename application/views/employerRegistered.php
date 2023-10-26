@@ -88,8 +88,7 @@
             <h1>Registered Successfully.</h1>
             <h3 style="padding-top:40px;">Thank you.</h3>
             <br>
-            <p>Registered id is <b>AJER20230001</b>.</p>
-            <!-- <br> -->
+            <p>Registered id is <b> <?php $employerid = $_SESSION['employerid']; ?> </b>.</p>
             <p>Your Registered id has been sent to whatsapp. Use this registered id for login.</p>
 
     </div>

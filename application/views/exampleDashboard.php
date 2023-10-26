@@ -963,7 +963,6 @@
 
                 <div class="clearfix"></div>
                 <br>
-
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
                         <thead>
@@ -2160,6 +2159,7 @@
                                 ?>
                             </tbody>
                             <div style="display:flex;justify-content:space-between;padding:20px">
+                            <p>Registered id : <?php echo $employerid = $_SESSION['employerid']; ?></p>
                             <p>Category : <?php echo $this->data['category'] ?></p>
                             <p >Count :<?php echo $count-1; ?></p>
                             </div>
@@ -3454,7 +3454,13 @@
                 </h2>
                 <br>
                 <!-- <a id="regis" class="printhide" href="<?php echo baseUrl . "providerController/matchedCandidate" ?>">Back</a> -->
-
+                <?php
+                                foreach ($this->data['basicDetails'] as $nkey => $nvalue) {
+                                ?>
+                <p style="float:right">Employee ID : <?php echo $nvalue['eeid'] ?></p>
+                <?php
+                                }
+                                ?>
                 <ul>
                     <br>
                     <br>

@@ -106,8 +106,9 @@ public function get_latest_customer_id() {
   {
     $postData = $this->input->post(null, true);
     $companyName = $postData['userName'];
-    $companyMobile = $postData['number'];
-    $query = "SELECT * FROM provider_registration_form WHERE userName='$companyName' AND password ='$companyMobile'";
+    // $companyMobile = $postData['number'];
+    // $query = "SELECT * FROM provider_registration_form WHERE userName='$companyName' AND password ='$companyMobile'";
+    $query = "SELECT * FROM provider_registration_form WHERE erid='$companyName'";
     $count = $this->db->query($query);
     return $count->result_array();
   }
@@ -275,7 +276,7 @@ public function get_latest_customer_id() {
 
   public function candidates($jobCategory)
   {
-    $query = "SELECT spf.id as seekerId, spf.name as name, saoi.id as id,saoi.other_interst_category as oic, saoi.other_sub_interst_category as oisc, saoi.experience as exps,
+    $query = "SELECT spf.id as seekerId, spf.name as name, saoi.id as id,  saoi.other_sub_interst_category as oisc, saoi.experience as exps,
     saoi.skillname as skills FROM seeker_profile_form spf INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id
     WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.verificationStatus = '1' " ;
     $result = $this->db->query($query);

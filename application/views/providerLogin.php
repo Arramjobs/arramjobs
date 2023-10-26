@@ -147,15 +147,15 @@
     <form name="login_form" method="post" action="<?php echo baseUrl . "providerController/viewDashboard" ?>"
       onsubmit="return validateForm()">
       <div class="form-group">
-        <label for="userID">User Name:</label>
-        <input type="text" class="form-control" id="userID" name="userName" placeholder="Enter username">
+        <label for="userID">Registered ID :</label>
+        <input type="text" class="form-control" id="userID" name="userName" placeholder="Enter registered id">
         <p id="nameerr" style="color: red;"></p>
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="password">Password:</label>
         <input type="tel" class="form-control" id="password" name="number" placeholder="Enter password">
         <p id="pherr" style="color: red;"></p>
-      </div>
+      </div> -->
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
     <div id="sign">
@@ -166,7 +166,7 @@
   <script>
     function validateForm() {
       var x = document.login_form.userID.value;
-      var p = document.login_form.password.value;
+      // var p = document.login_form.password.value;
 
       // if (x != "") {
       //   if (x.length < 2) {
@@ -184,7 +184,7 @@
       //   return false;
       // }
       if (x == "") {
-        var namesms1 = "Username must be filled out";
+        var namesms1 = "Employer id must be filled out";
         document.getElementById("nameerr").innerHTML = namesms1;
         return false;
       }
@@ -204,11 +204,11 @@
       //   document.getElementById("pherr").innerHTML = phsms;
       //   return false;
       // }
-      if (p == "") {
-        var phsms = "Password must be filled out";
-        document.getElementById("pherr").innerHTML = phsms;
-        return false;
-      }
+      // if (p == "") {
+      //   var phsms = "Password must be filled out";
+      //   document.getElementById("pherr").innerHTML = phsms;
+      //   return false;
+      // }
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

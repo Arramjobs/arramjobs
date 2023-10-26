@@ -21,7 +21,7 @@ class SeekerModel extends CI_Model
         $postData = $this->input->post(null, true);
         $username = $postData['username'];
         $phonenumber = $postData['phonenumber'];
-        $query = "SELECT * FROM seeker_profile_form WHERE name='$username' AND phonenumber='$phonenumber'";
+        $query = "SELECT * FROM seeker_profile_form WHERE eeid='$username' AND phonenumber='$phonenumber'";
         $count = $this->db->query($query);
         return $count->result_array();
     }

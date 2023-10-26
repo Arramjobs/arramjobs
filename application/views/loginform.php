@@ -148,8 +148,8 @@
       onsubmit="return validateForm()">
 
       <div class="form-group">
-        <label for="phone">Name</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your name" required>
+        <label for="phone">Registered ID</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter registered id" required>
       </div>
       <div class="form-group">
         <label for="phone">Mobile Number</label>
