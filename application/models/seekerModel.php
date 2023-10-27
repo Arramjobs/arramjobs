@@ -90,10 +90,15 @@ class SeekerModel extends CI_Model
 
         $config['upload_path'] = "./uploads/";
         $basepath = 'http://localhost/arramjobs/uploads/';
-        $config['allowed_types'] = "jpg|png|pdf";
+        $config['allowed_types'] = "jpg|png|pdf|jpeg";
         $config['max_size'] = 1024;
 
         $this->load->library('upload', $config);
+
+        $aadharf= $postData['oldaadharfront'];
+        $aadharb= $postData['oldaadharback'];
+        $photop= $postData['oldprofilephoto'];
+
 
         if ($this->upload->do_upload('aadharfrontphoto')) {
             $data = $this->upload->data();
@@ -120,6 +125,7 @@ class SeekerModel extends CI_Model
             'name' => $postData['name'],
             'email' => $postData['email'],
             'dateofbirth' => $postData['dateofbirth'],
+            'age' => $postData['age'],
             'gender' => $postData['gender'],
             'buildingName' => $postData['doorno'],
             'address' => $postData['streetaddress'],
@@ -132,7 +138,8 @@ class SeekerModel extends CI_Model
             'photo' => $profilephoto,
             'aadharfront_filename' => $aadharf,
             'aadharback_filename' => $aadharb,
-            'photo_filename' => $photop
+            'photo_filename' => $photop,
+            'bdsubmited' => $postData['bdsubmit'],
         );
         $this->db->where('id', $postData['id']);
 
@@ -158,9 +165,11 @@ class SeekerModel extends CI_Model
 
 
         $config['upload_path'] = "./uploads/";
-       $basepath = 'http://localhost/arramjobs/uploads/';
-        $config['allowed_types'] = "jpg|png|pdf";
+        $basepath = 'http://localhost/arramjobs/uploads/';
+        $config['allowed_types'] = "jpg|png|pdf|jpeg";
         $config['max_size'] = 1024;
+
+        // $edudata1=$post['edusubmit'];
 
         $this->load->library('upload', $config);
 
@@ -171,24 +180,26 @@ class SeekerModel extends CI_Model
         $cerdoct = "None";
 
 
+
         if ($this->upload->do_upload('certificate_10th')) {
             $data = $this->upload->data();
             $cer10 = $data['file_name'];
         }
         if ($this->upload->do_upload('certificate_12th')) {
             $data = $this->upload->data();
-             $cer12 = $data['file_name'];
-         }
+            $cer12 = $data['file_name'];
+        }
         if ($this->upload->do_upload('certificate_ug')) {
             $data = $this->upload->data();
-             $cerug = $data['file_name'];
-         }
+            $cerug = $data['file_name'];
+        }
         if ($this->upload->do_upload('certificate_pg')) {
             $data = $this->upload->data();
-             $cerpg = $data['file_name'];
-         }
+            $cerpg = $data['file_name'];
+        }
         if ($this->upload->do_upload('certificate_doctorate')) {
-             $cerdoct = $data['file_name'];
+            $data = $this->upload->data();
+            $cerdoct = $data['file_name'];
         } else {
             $error = $this->upload->display_errors();
         }
@@ -207,22 +218,37 @@ class SeekerModel extends CI_Model
             'school_college_name' => $post['school'],
             'percentage' => $post['percentage'],
             'yearOfPassing' => $post['year_passed'],
-            'tencer_url' =>   $urlten,
-            'twelvecer_url' =>   $urltwelve,
-            'ugcer_url' =>  $urlug,
-            'pgcer_url' =>  $urlpg,
-            'doccer_url' =>  $urldoc,
-            'ten_cer' =>  $cer10,
-            'twelve_cer' =>  $cer12,
-            'ug_cer' =>  $cerug,
-            'pg_cer' =>  $cerpg,
-            'doc_cer' =>  $cerdoct
-        ); 
+            'tencer_url' => $urlten,
+            'twelvecer_url' => $urltwelve,
+            'ugcer_url' => $urlug,
+            'pgcer_url' => $urlpg,
+            'doccer_url' => $urldoc,
+            'ten_cer' => $cer10,
+            'twelve_cer' => $cer12,
+            'ug_cer' => $cerug,
+            'pg_cer' => $cerpg,
+            'doc_cer' => $cerdoct
+
+        );
 
 
         $this->db->insert('seeker_educational_details', $add);
     }
 
+    public function insertSubmit()
+    {
+        $post = $this->input->post(null, true);
+
+        $seekerId = $_SESSION['seekerId'];
+
+        $addsubmit = array(
+            'edusubmited' => $post['edusubmit'],
+        );
+        $this->db->where('id', $seekerId);
+
+      $this->db->update('seeker_profile_form', $addsubmit);
+
+    }
 
     public function updateEducation($educationId)
     {
@@ -237,45 +263,45 @@ class SeekerModel extends CI_Model
 
         $config['upload_path'] = "./uploads/";
         $basepath = 'http://localhost/arramjobs/uploads/';
-         $config['allowed_types'] = "jpg|png|pdf";
-         $config['max_size'] = 1024;
- 
-         $this->load->library('upload', $config);
- 
-         $ucer10 = "None";
-         $ucer12 = "None";
-         $ucerug = "None";
-         $ucerpg = "None";
-         $ucerdoct = "None";
+        $config['allowed_types'] = "jpg|png|pdf|jpeg";
+        $config['max_size'] = 1024;
 
-         if ($this->upload->do_upload('certificate_10th')) {
-             $data = $this->upload->data();
-             $ucer10 = $data['file_name'];
-         }
-         if ($this->upload->do_upload('certificate_12th')) {
-             $data = $this->upload->data();
-             $ucer12 = $data['file_name'];
-         }
-         if ($this->upload->do_upload('certificate_ug')) {
-             $data = $this->upload->data();
-             $ucerug = $data['file_name'];
-         }
-         if ($this->upload->do_upload('certificate_pg')) {
-             $data = $this->upload->data();
-             $ucerpg = $data['file_name'];
-         }
-         if ($this->upload->do_upload('certificate_doctorate')) {
-             $data = $this->upload->data();
-             $ucerdoct = $data['file_name'];
-         } else {
-             $error = $this->upload->display_errors();
-         }
+        $this->load->library('upload', $config);
 
-         $urltenu = $basepath . $ucer10;
-         $urltwelveu = $basepath . $ucer12;
-         $urlugu = $basepath . $ucerug;
-         $urlpgu = $basepath . $ucerpg;
-         $urldocu = $basepath . $ucerdoct;
+        $ucer10 = $post['old10cer'];
+        $ucer12 = $post['old12cer'];
+        $ucerug = $post['oldugcer'];
+        $ucerpg = $post['oldpgcer'];
+        $ucerdoct = $post['olddoccer'];
+
+        if ($this->upload->do_upload('certificate_10th')) {
+            $data = $this->upload->data();
+            $ucer10 = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_12th')) {
+            $data = $this->upload->data();
+            $ucer12 = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_ug')) {
+            $data = $this->upload->data();
+            $ucerug = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_pg')) {
+            $data = $this->upload->data();
+            $ucerpg = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_doctorate')) {
+            $data = $this->upload->data();
+            $ucerdoct = $data['file_name'];
+        } else {
+            $error = $this->upload->display_errors();
+        }
+
+        $urltenu = $basepath . $ucer10;
+        $urltwelveu = $basepath . $ucer12;
+        $urlugu = $basepath . $ucerug;
+        $urlpgu = $basepath . $ucerpg;
+        $urldocu = $basepath . $ucerdoct;
 
         $educationId = $post['id'];
         $updateInsertEducation = array(
@@ -284,16 +310,16 @@ class SeekerModel extends CI_Model
             'school_college_name' => $post['school'],
             'percentage' => $post['percentage'],
             'yearOfPassing' => $post['year_passed'],
-            'tencer_url' =>   $urltenu,
-            'twelvecer_url' =>   $urltwelveu,
-            'ugcer_url' =>  $urlugu,
-            'pgcer_url' =>  $urlpgu,
-            'doccer_url' =>  $urldocu,
-            'ten_cer' =>  $ucer10,
-            'twelve_cer' =>  $ucer12,
-            'ug_cer' =>  $ucerug,
-            'pg_cer' =>  $ucerpg,
-            'doc_cer' =>  $ucerdoct
+            'tencer_url' => $urltenu,
+            'twelvecer_url' => $urltwelveu,
+            'ugcer_url' => $urlugu,
+            'pgcer_url' => $urlpgu,
+            'doccer_url' => $urldocu,
+            'ten_cer' => $ucer10,
+            'twelve_cer' => $ucer12,
+            'ug_cer' => $ucerug,
+            'pg_cer' => $ucerpg,
+            'doc_cer' => $ucerdoct
         );
         $this->db->where('id', $educationId);
         $this->db->update('seeker_educational_details', $updateInsertEducation);
@@ -337,6 +363,18 @@ class SeekerModel extends CI_Model
         $this->db->insert('seeker_experience', $add);
     }
 
+    public function insertSubmitExp()
+    {
+        $post = $this->input->post(null, true);
+        $seekerId = $_SESSION['seekerId'];
+
+        $submitexp = array(
+            'expsubmited' => $post['expsubmit'],
+        );
+        $this->db->where('id', $seekerId);
+
+      $this->db->update('seeker_profile_form', $submitexp);
+    }
 
     public function updateExperience($experienceId)
     {
@@ -470,6 +508,19 @@ class SeekerModel extends CI_Model
         );
 
         $this->db->insert('seeker_area_of_interst', $add);
+    }
+
+    public function insertSubmitArea()
+    {
+        $post = $this->input->post(null, true);
+        $seekerId = $_SESSION['seekerId'];
+
+        $submitarea = array(
+            'areasubmited' => $post['areasubmit'],
+        );
+        $this->db->where('id', $seekerId);
+
+      $this->db->update('seeker_profile_form', $submitarea);
     }
 
     public function updateAreaOfIntrest($updateAreaOfIntrestId)
@@ -654,14 +705,6 @@ class SeekerModel extends CI_Model
 
 
 
-
-
-
-
-
-
-
-
     //     }
     //     public function getProjectDetails(){
     //         $seekerId=$_SESSION['seekerId'];
@@ -751,6 +794,31 @@ class SeekerModel extends CI_Model
     //     }
 
 
+
+    public function updateresumefilename($resumefilename)
+    {
+        $seekerId = $_SESSION['seekerId'];
+        $basepath = 'http://localhost/arramjobs/uploads/';
+
+        $updateresume['resume_filename'] = $resumefilename;
+        $updateresume['resume_filename_url'] = $basepath.$resumefilename;
+
+        $this->db->where('seekerId', $seekerId);
+        $this->db->update('seeker_area_of_interst', $updateresume);
+    }
+    public function insertSubmitResume()
+    {
+        $post = $this->input->post(null, true);
+        $seekerId = $_SESSION['seekerId'];
+
+        $submitresume = array(
+            'resumesubmited' => $post['resumesubmit'],
+        );
+        $this->db->where('id', $seekerId);
+
+      $this->db->update('seeker_profile_form', $submitresume);
+    }
+
     public function do_upload()
     {
 
@@ -762,6 +830,8 @@ class SeekerModel extends CI_Model
 
         if ($this->upload->do_upload('file')) {
             $data = $this->upload->data();
+            $resumefilename = $data['file_name'];
+            $this->updateresumefilename($resumefilename);
 
         } else {
             $error = $this->upload->display_errors();

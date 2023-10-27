@@ -16,7 +16,7 @@ class RegistrationModel extends CI_Model
 
     $config['upload_path'] = "./uploads/";
     $basepath = 'http://localhost/arramjobs/uploads/';
-    $config['allowed_types'] = "jpg|png|pdf";
+    $config['allowed_types'] = "jpg|png|pdf|jpeg";
     $config['max_size'] = 1024;
 
     $this->load->library('upload', $config);
@@ -108,12 +108,13 @@ class RegistrationModel extends CI_Model
 
     $config['upload_path'] = "./uploads/";
     $basepath = 'http://localhost/arramjobs/uploads/';
-    $config['allowed_types'] = "jpg|png|pdf";
+    $config['allowed_types'] = "jpg|png|pdf|jpeg";
     $config['max_size'] = 1024;
 
     $this->load->library('upload', $config);
 
-    $cmp_logou = "None";
+    $cmp_logou = $postData['oldimgname'];
+    
     if ($this->upload->do_upload('logo1')) {
       $data = $this->upload->data();
       $cmp_logou = $data['file_name'];
