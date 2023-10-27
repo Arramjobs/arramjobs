@@ -20,6 +20,7 @@ class ProviderController extends CI_Controller
     {
         $responses = $this->RegistrationModel->register();
         $this->RegistrationModel->generate_customer_id();
+        $this->RegistrationModel->geterid();
         // $this->load->view('providerLogin.php');
         $this->load->view('employerRegistered.php');
         echo '<script>alert("Registered successfully.");</script>';
@@ -44,6 +45,11 @@ class ProviderController extends CI_Controller
 
 
     // ,$this[data]
+
+    public function employerid() {
+        $dataid = $this->RegistrationModel->geterid();
+        $this->load->view('employerRegistered.php', $dataid);
+    }
 
     public function viewDashboard()
     {

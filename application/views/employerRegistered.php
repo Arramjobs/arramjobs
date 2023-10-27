@@ -76,8 +76,11 @@
                         <a class="nav-link mx-4" href="<?php echo baseUrl . "#seeker" ?>">Employee</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-4" href="https://arramjobs.in/blog">Blog</a>
+                        <a class="nav-link mx-4" href="<?php echo baseUrl . "#contact" ?>">Contact</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link mx-4" href="https://arramjobs.in/blog">Blog</a>
+                    </li> -->
                 </ul>
             </div>
     </nav>
@@ -88,7 +91,9 @@
             <h1>Registered Successfully.</h1>
             <h3 style="padding-top:40px;">Thank you.</h3>
             <br>
-            <p>Registered id is <b> <?php $employerid = $_SESSION['employerid']; ?> </b>.</p>
+            <p>Registered id is <b> <?php echo $dataid; ?> </b>.</p>
+
+            
             <p>Your Registered id has been sent to whatsapp. Use this registered id for login.</p>
 
     </div>

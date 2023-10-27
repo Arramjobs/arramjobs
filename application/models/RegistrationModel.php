@@ -102,6 +102,13 @@ public function get_latest_customer_id() {
   // }
 
 
+  public function geterid() {
+    $postData = $this->input->post(null, true);
+    $phonenumber = $postData['mobile'];
+    $query = "SELECT erid FROM provider_registration_form WHERE company_mobile_number ='$phonenumber'";
+    return $this->db->query($query);
+}
+
   public function providerLogin()
   {
     $postData = $this->input->post(null, true);
