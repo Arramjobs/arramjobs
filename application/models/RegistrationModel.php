@@ -73,6 +73,7 @@ class RegistrationModel extends CI_Model
 
     $this->db->where('company_mobile_number',$mobilenumber);
     $this->db->update('provider_registration_form', $insert);
+    return $customer_id;
 }
 
 public function get_latest_customer_id() {
@@ -102,20 +103,13 @@ public function get_latest_customer_id() {
   // }
 
 
-  public function geterid() {
-    $postData = $this->input->post(null, true);
-    $phonenumber = $postData['mobile'];
-    $query = "SELECT erid FROM provider_registration_form WHERE company_mobile_number ='$phonenumber'";
-    return $this->db->query($query);
-}
-
   public function providerLogin()
   {
     $postData = $this->input->post(null, true);
-    $companyName = $postData['userName'];
+    $employerid = $postData['userName'];
     // $companyMobile = $postData['number'];
     // $query = "SELECT * FROM provider_registration_form WHERE userName='$companyName' AND password ='$companyMobile'";
-    $query = "SELECT * FROM provider_registration_form WHERE erid='$companyName'";
+    $query = "SELECT * FROM provider_registration_form WHERE erid='$employerid' AND verificationStatus = '1' AND addNewApproval = '1' AND deleteApproval = '0'";
     $count = $this->db->query($query);
     return $count->result_array();
   }

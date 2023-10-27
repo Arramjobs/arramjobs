@@ -77,6 +77,7 @@ class SeekerModel extends CI_Model
 
         $this->db->where('phonenumber',$phonenumber);
         $this->db->update('seeker_profile_form', $insert);
+        return $customer_id;
     }
 
     public function get_latest_customer_id() {
@@ -199,6 +200,7 @@ class SeekerModel extends CI_Model
 
         $cer10 = "None";
         $cer12 = "None";
+        $cerdip = 'None';
         $cerug = "None";
         $cerpg = "None";
         $cerdoct = "None";
@@ -211,6 +213,10 @@ class SeekerModel extends CI_Model
         if ($this->upload->do_upload('certificate_12th')) {
             $data = $this->upload->data();
              $cer12 = $data['file_name'];
+         }
+         if ($this->upload->do_upload('certificate_dip')) {
+            $data = $this->upload->data();
+             $cerdip = $data['file_name'];
          }
         if ($this->upload->do_upload('certificate_ug')) {
             $data = $this->upload->data();
@@ -228,6 +234,7 @@ class SeekerModel extends CI_Model
 
         $urlten = $basepath . $cer10;
         $urltwelve = $basepath . $cer12;
+        $urldiploma = $basepath . $cerdip;
         $urlug = $basepath . $cerug;
         $urlpg = $basepath . $cerpg;
         $urldoc = $basepath . $cerdoct;
@@ -242,11 +249,13 @@ class SeekerModel extends CI_Model
             'yearOfPassing' => $post['year_passed'],
             'tencer_url' =>   $urlten,
             'twelvecer_url' =>   $urltwelve,
+            'diplomacer_url' =>   $urldiploma,
             'ugcer_url' =>  $urlug,
             'pgcer_url' =>  $urlpg,
             'doccer_url' =>  $urldoc,
             'ten_cer' =>  $cer10,
             'twelve_cer' =>  $cer12,
+            'diploma_cer' =>  $cerdip,
             'ug_cer' =>  $cerug,
             'pg_cer' =>  $cerpg,
             'doc_cer' =>  $cerdoct
@@ -277,6 +286,7 @@ class SeekerModel extends CI_Model
  
          $ucer10 = "None";
          $ucer12 = "None";
+         $ucerdip = "None";
          $ucerug = "None";
          $ucerpg = "None";
          $ucerdoct = "None";
@@ -289,6 +299,10 @@ class SeekerModel extends CI_Model
              $data = $this->upload->data();
              $ucer12 = $data['file_name'];
          }
+         if ($this->upload->do_upload('certificate_dip')) {
+            $data = $this->upload->data();
+            $ucerdip = $data['file_name'];
+        }
          if ($this->upload->do_upload('certificate_ug')) {
              $data = $this->upload->data();
              $ucerug = $data['file_name'];
@@ -306,6 +320,7 @@ class SeekerModel extends CI_Model
 
          $urltenu = $basepath . $ucer10;
          $urltwelveu = $basepath . $ucer12;
+         $urldiplomau = $basepath . $ucerdip;
          $urlugu = $basepath . $ucerug;
          $urlpgu = $basepath . $ucerpg;
          $urldocu = $basepath . $ucerdoct;
@@ -319,11 +334,13 @@ class SeekerModel extends CI_Model
             'yearOfPassing' => $post['year_passed'],
             'tencer_url' =>   $urltenu,
             'twelvecer_url' =>   $urltwelveu,
+            'diplomacer_url' =>   $urldiplomau,
             'ugcer_url' =>  $urlugu,
             'pgcer_url' =>  $urlpgu,
             'doccer_url' =>  $urldocu,
             'ten_cer' =>  $ucer10,
             'twelve_cer' =>  $ucer12,
+            'diploma_cer' =>  $ucerdip,
             'ug_cer' =>  $ucerug,
             'pg_cer' =>  $ucerpg,
             'doc_cer' =>  $ucerdoct

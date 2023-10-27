@@ -57,8 +57,10 @@ class SeekerController extends CI_Controller
     {
         $postData = $this->input->post(null, true);
         $register = $this->SeekerModel->register();
-        $this->SeekerModel->generate_customer_id();
-        $this->load->view('loginform.php');
+        $generatedeeid = $this->SeekerModel->generate_customer_id();
+        $data['generatedeeid'] = $generatedeeid;
+        // $this->load->view('loginform.php');
+        $this->load->view('employeeRegistered.php', $data);
         echo '<script>alert("Registered successfully.");</script>';
     }
 
