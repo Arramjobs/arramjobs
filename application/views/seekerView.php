@@ -584,7 +584,7 @@
 
                         <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF Maximum size: 1024KB</p>
 
-                        <button type="submit" name="submitBtn" class="btn btn-primary btn-next" id="custom-upload-button">Submit</button>
+                        <button type="submit" name="submitBtn" class="btn btn-primary btn-next" id="bdsubmitbtn">Submit</button>
                     </form>
 
                     <?php
@@ -657,6 +657,8 @@
                           }
                       });
 
+                     
+
                 function group() {
                   var x = document.applicationform.name.value;
                   var y = document.applicationform.email.value;
@@ -673,6 +675,19 @@
                   var ab = document.applicationform.aadharbackphoto.value;
                   var photo = document.applicationform.photo.value;
 
+                  //Age validation
+                      var dob = new Date(d);
+                      var age = parseInt(ag);
+                      var currentDate = new Date();
+
+                      var ageFromDateOfBirth = currentDate.getFullYear() - dob.getFullYear();
+                          if (age !== ageFromDateOfBirth) {
+                              document.getElementById("age_error").textContent = "Age does not match with Date of Birth and current date.";
+                              document.applicationform.age.focus();
+                              return false;
+                          } else {
+                              document.getElementById("age_error").textContent = "";
+                          }
 
                   if (x != "") {
                     if (x.length < 2) {
@@ -766,9 +781,9 @@
                   }
 
                   if (b == "") {
-                    var namesms2 = "Door no & Building Name must be filled out";
+                    var namesms2 = "Door no & Building name must be filled out";
                     document.getElementById("doorno_error").innerHTML = namesms2;
-                    document.applicationform.gender.focus();
+                    document.applicationform.doorno.focus();
                     return false;
                   } else {
                     document.getElementById("doorno_error").innerHTML = "";
@@ -852,7 +867,9 @@
                   } else {
                     document.getElementById("photo_error").innerHTML = "";
                   }
+
                 }
+
               </script>
 
               <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
