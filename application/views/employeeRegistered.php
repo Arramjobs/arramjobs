@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registered Employer</title>
+    <title>Registered Employee</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="path/to/bootstrap.min.css"> -->
@@ -85,16 +85,13 @@
             </div>
     </nav>
     <div class="thankscontent">
-
-        <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHkAAAB5CAMAAAAqJH57AAAAYFBMVEUrtnP///8Ws2vE59QAsGUltXAAr2Lc8ebr9/D7/v0IsWj0+vdmxpTK6tiX1rTN69ux4MZVwYqP1K8/u3695dA1uXmG0Kmn3MBzyp2d2bl+zaJdw49tyJhJvoO34sri8+qHa9jeAAAEI0lEQVRoge2b3ZqjIAyGLRpRbK3WaW2n25n7v8tR0YoIyJ/Dwc53ut15n5AEQojRIZSiP/IfWaa8wHH1KHs9qhgX+a+QcftZozRJCKIiSZKi+rPFu5Jx++wwABEvAJQk9cOIrk/GZYTQGsrgEYpKfbgmuahqQArqJAR1VXgkZ+WVqKxdWE6uZeaJXFwi5SqvVz0qNezeJOet1jJzix61m5m2RT41xJjbizQnJ3J+T0zWmRUkd/WSK8kni4WehUBptop80Q5oidnkYkXOjnYeZkWO8gSTknHjstKTUCPd1GTkc+S20pMAzmbk2NHFDJrEJuSP1BO3V/qhT459gju00GoR+ewe1EsRka8FZOwpuGZBJIjwNTlrfIM7dLPO6zX56COPeaHjNrn07WQqUm6RT/uAOzR/fHDkXFBY+hFAriTf93AyFbqryOdkN3AUJWc5Od8hoWZBk0vJ1V7hRUUqGbnYldurkJDL/cKLCpVicrYzt1cmJD/2Nrkz+iEiF7sGNhU0hYD8tW9gU5EvAbne3+TO6HpNxh7Biqsn4BXZY3wl8UW6C88x9iZfvdmM4v5iJPlHuPLkb28mo6HSlKLRN0dufZHRWOLKNkTUcuSnp8VG79pagoYnR/aUzMxVRhayZEnGfm4VyQyWOjrFC3Llxc0M+CZdRFQtyDcfbmaW+lPuPbgtyD62TqRj8byBjmS/YKmPKZol5+4BxoLVFWyaM2T30Ca6Fr+Dm5Kd62yddHr/9syQXauCZG5IqIKLaqwOKNlx10Za6fT+dcuQ3Q5nFqzxh8YjmpI3K23VFRMMfDyQSwMyev6T/kI7j23IUGe5DG2QTiKy2s/w6qtkcf/EJJ0mMutnZWzDlZbnteBHWqcTT2ZjW5XP8Jquvc8VWu904v8Tm88nxR7GNGv5BTdMp1GLPUy5b8/FORdmmscir8W+rTyrAL5nNEMwTqeJzJ5V6vMZhFbbgpfn80ZNAtFs9eRri3Qa/9iyJtmow5gFHyPcJp3Gv7Wsw7ZqT2bBB7RVOlFxtedmUcKij8Qunai4env7jrEIM5NCgBd3x9C4V7G+dgCv7lUaVYngTcAsqget7pJYw10rtAV4fX/W6hkweW231KKegV4pxka4cToNEvRJ9HpDDPpmVTUKekOal7o32sbH4n6YbrU/JpflE4+wB6jb9xzQpd11SNz31G5vdxH+sLwNiXu9Bv1tYn0lEfe3w/X0A75jHNpQbzd7v1e95O9V4d7oAr5LBnyLDff+HPDNPeCcQcDZinDzJAFnaALODQWclQo4HxZwJi7gHGDA2cdDuHnPQ8AZ14BzvQeHWeaX2yzzwXZ+G9zntzsVZZiZ9V5Z2QSZ0+9VfNWgY7jvbxMGBfoeY4SH+QZlolf9dzfpL393MynP8en3vzXypj/y/0H+AVxLN/zoYsaXAAAAAElFTkSuQmCC"
-            alt="success" > -->
             <h1>Registered Successfully.</h1>
             <h3 style="padding-top:40px;">Thank you.</h3>
             <br>
-            <p>Registered id is <b> <?php echo $generatedid; ?> </b>.</p>
-            <p>Your Registered id has been sent to whatsapp. Use this registered id for login.</p>
-
+            <p>Registered id is <b>  <?php echo $generatedeeid; ?> </b>.</p>
+            <p>Your Registered id and mobile number has been sent to whatsapp. Use this registered id and mobile number for <a id="regis" href="<?php echo baseUrl . "seekerController" ?>">Login</a>.</p>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

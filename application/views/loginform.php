@@ -136,8 +136,11 @@
             <a class="nav-link mx-4" href="<?php echo baseUrl . "#seeker" ?>">Employee</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4" href="https://arramjobs.in/blog">Blog</a>
+            <a class="nav-link mx-4" href="<?php echo baseUrl . "#contact" ?>">Contact</a>
           </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link mx-4" href="https://arramjobs.in/blog">Blog</a>
+          </li> -->
         </ul>
       </div>
   </nav>
@@ -148,8 +151,8 @@
       onsubmit="return validateForm()">
 
       <div class="form-group">
-        <label for="phone">Name</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your name" required>
+        <label for="phone">Registered ID</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your registered id" required>
       </div>
       <div class="form-group">
         <label for="phone">Mobile Number</label>

@@ -19,8 +19,9 @@ class ProviderController extends CI_Controller
     public function providerRegistration()
     {
         $responses = $this->RegistrationModel->register();
-        // $this->load->view('providerLogin.php');
-        $this->load->view('employerRegistered.php');
+        $generatedid = $this->RegistrationModel->generate_customer_id();
+        $data['generatedid'] = $generatedid;
+        $this->load->view('employerRegistered.php', $data);
         echo '<script>alert("Registered successfully.");</script>';
     }
 
@@ -44,6 +45,7 @@ class ProviderController extends CI_Controller
 
     // ,$this[data]
 
+
     public function viewDashboard()
     {
         $postData = $this->input->post(null, true);
@@ -51,10 +53,9 @@ class ProviderController extends CI_Controller
         if (isset($response[0]['id'])) {
             $userLoggedIn = array(
                 'jobProviderId' => $response[0]['id'],
-                // 'jobProviderUsername' => $response[0]['company_name'],
-                // 'jobProviderNumber' => $response[0]['company_mobile_number']
-                'jobProviderUsername' => $response[0]['userName'],
-                'jobProviderNumber' => $response[0]['password']
+                'jobProviderUsername' => $response[0]['company_name'],
+                'jobProviderNumber' => $response[0]['company_mobile_number'],
+                'employerid' => $response[0]['erid'],
             );
             $this->session->set_userdata($userLoggedIn);
             $this->data['method'] = "dashboard";
@@ -118,6 +119,7 @@ class ProviderController extends CI_Controller
         $response = $this->RegistrationModel->candidates($jobCategory);
         $this->data['method'] = "match";
         $this->data['response'] = $response;
+        $this->data['category'] = $jobCategory;
         $this->load->view('exampleDashboard.php', $this->data);
     }
 

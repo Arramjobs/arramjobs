@@ -171,11 +171,14 @@
                         <a class="nav-link mx-4" href="<?php echo baseUrl . "#provider" ?>">Employer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-4" href="#<?php echo baseUrl . "#seeker" ?>">Employee</a>
+                        <a class="nav-link mx-4" href="<?php echo baseUrl . "#seeker" ?>">Employee</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-4" href="https://arramjobs.in/blog">Blog</a>
+                        <a class="nav-link mx-4" href="<?php echo baseUrl . "#contact" ?>">Contact</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link mx-4" href="https://arramjobs.in/blog">Blog</a>
+                    </li> -->
                 </ul>
             </div>
     </nav>

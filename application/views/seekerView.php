@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee Page</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -261,7 +263,6 @@
           background-color: yellow;
         } */
 
-
 /* Display uploaded file */
       .uploadedfile{
             display: flex;
@@ -313,8 +314,6 @@
           margin-left: 10px;
         }
 
-      
-
   </style>
 </head>
 
@@ -342,8 +341,11 @@
             <a class="nav-link mx-4 pt-lg-0 pt-3" href="<?php echo baseUrl . "#seeker" ?>">Employee</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4 pt-lg-0 pt-3" href="https://arramjobs.in/blog">Blog</a>
+            <a class="nav-link mx-4 pt-lg-0 pt-3" href="<?php echo baseUrl . "#contact" ?>">Contact</a>
           </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link mx-4 pt-lg-0 pt-3" href="https://arramjobs.in/blog">Blog</a>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link mx-4 pt-lg-0 pt-3" style="background-color:white;color:grey;padding: 0 10px;border-radius:2px" onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "seekerController/logout" ?>">LogOut</a>
           </li>
@@ -355,6 +357,7 @@
       <div class="pbar" >
         <div> <p class="round" id="round1">1</p>
         <p>Details</p></div>
+
 
         <div><p  class="round " id="round2" >2</p>
         <p>Education</p></div>
@@ -369,6 +372,7 @@
         <p>Resume</p></div>
       </div>
       </div>
+
 
   <div class="container-fluid">
     <div class="row">
@@ -391,27 +395,21 @@
               </a>
             </li><br>
             <li class="nav-item">
-              <!-- <a class="nav-link" href="http://localhost/arramjobs/seekerController/educationalDetails"> -->
               <a class="nav-link btna" href="<?php echo baseUrl . "seekerController/educationTable" ?>">
                 Education Details
               </a>
             </li><br>
             <li class="nav-item">
-              <!-- <a class="nav-link" href="http://localhost/arramjobs/seekerController/experienceDetails"> -->
-              <!-- <a class="nav-link" href="<?php echo baseUrl . "seekerController/experienceDetails" ?>"> -->
               <a class="nav-link btna" href="<?php echo baseUrl . "seekerController/experienceTable" ?>">
                 Experience Details
               </a>
             </li><br>
-            <!-- </li><br> -->
             <li class="nav-item">
-              <!-- <a class="nav-link" href="http://localhost/arramjobs/seekerController/areaOfInterest"> -->
               <a class="nav-link btna" href="<?php echo baseUrl . "seekerController/areaOfIntrestTable" ?>">
                 Area of Job Interest
               </a>
             </li><br>
             <li class="nav-item">
-              <!-- <a class="nav-link" href="http://localhost/arramjobs/seekerController/resume"> -->
               <a class="nav-link btna" href="<?php echo baseUrl . "seekerController/resume" ?>">
                 Upload Resume
               </a>
@@ -972,9 +970,7 @@
 
                     <div class="eduformcss container mt-5 mx-md-auto form-step " id="education">
                       <h3>Add Education Details</h3>
-
-                      <div id="educationFormsContainer">
-                        <div class="education-form-container">
+                         
 
                           <form name="educationform" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" action="<?php echo baseUrl . "seekerController/insertEducationForm" ?>">
 
@@ -1013,6 +1009,7 @@
                               <input type="text" class="form-control" id="department" name="department" placeholder="Enter department name">
                               <div id="department_error" class="error"></div>
                             </div>
+
 
                             <div class="form-group" id="school-group" style="display: none;">
                               <label for="school">Institution Name</label>
@@ -1056,13 +1053,16 @@
                               <div id="certificate_pg_error" class="error"></div>
                             </div>
 
+
                             <div class="form-group" id="certificate_doctorate-group" style="display: none;">
                               <label for="certificate_doctorate">Doctorate Certificate Upload</label>
                               <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate" accept="image/png ,image/jpg, image/jpeg, application/pdf">
                               <div id="certificate_doctorate_error" class="error"></div>
                             </div>
 
+
                             <input type="number" class="form-control"  value="1" name="edusubmit" hidden>
+
 
                         </div>
 
@@ -1243,6 +1243,14 @@
                             document.getElementById("certificate_12th_error").innerHTML = "";
                           }
 
+                      if (diploma == "" && document.getElementById('certificate_dip-group').style.display !== "none") {
+                        var namesms2 = "Diploma certificate must be filled out";
+                        document.getElementById("certificate_dip_error").innerHTML = namesms2;
+                        document.educationform.certificate_dip.focus();
+                        return false;
+                      } else {
+                        document.getElementById("certificate_12th_error").innerHTML = "";
+                      }
 
                           if (ug == "" && document.getElementById('certificate_ug-group').style.display !== "none") {
                             var namesms2 = "UG certificate must be filled out";
@@ -1482,11 +1490,18 @@
                                 <div id="certificate_12th_error" class="error"></div>
                               </div>
 
-                              <div class="form-group" id="certificate_ug-group" style="display: none;">
-                                <label for="certificate_ug">UG Degree Certificate Upload*</label>
-                                <input type="file" class="form-control" id="certificate_ug" name="certificate_ug">
-                                <div id="certificate_ug_error" class="error"></div>
-                              </div>
+                      <div class="form-group" id="certificate_dip-group" style="display: none;">
+                          <label for="certificate_dip">Diploma Certificate Upload</label>
+                          <input type="file" class="form-control" id="certificate_dip" name="certificate_dip">
+                          <div id="certificate_dip_error" class="error"></div>
+                        </div>
+
+                      <div class="form-group" id="certificate_ug-group" style="display: none;">
+                        <label for="certificate_ug">UG Degree Certificate Upload</label>
+                        <input type="file" class="form-control" id="certificate_ug" name="certificate_ug">
+                        <div id="certificate_ug_error" class="error"></div>
+                      </div>
+
 
                               <div class="form-group" id="certificate_pg-group" style="display: none;">
                                 <label for="certificate_pg">PG Certificate Upload*</label>
@@ -1517,6 +1532,7 @@
                           if (fileInput.files.length > 0) {
                           fileInputLabel.textContent = fileInput.files[0].name;
                           } else {
+
                           fileInputLabel.textContent = "Select a File";
                           }
                       });
@@ -1715,6 +1731,7 @@
                   </tbody>
                   </table>
                 </div>
+
               </div>
 
 
@@ -1783,8 +1800,6 @@
                   </table>
                 </div>
               </div>
-
-
             <?php
         } elseif ($method == 'addExperirenceForm') {
           ?>
@@ -1815,12 +1830,11 @@
                     <div id="category_error" class="error"></div>
                   </div>
                   <div class="form-group">
-                    <label for="subcategory">Subcategory</label>
-                    <select class="form-control" id="subcategory" name="subcategory" disabled>
-                      <option value="">Select a Subcategory</option>
-                    </select>
-                    <div id="subcategory_error" class="error"></div>
-                  </div>
+                <label for="subcategory">Subcategory</label>
+                <input class="form-control" id="subcategory" name="subcategory" value="<?php echo $value['other_sub_category']; ?>" placeholder="Enter subcategory">
+                <div id="subcategory_error" class="error"></div>
+              </div>
+
 
 
                   <div class="form-group">
@@ -2284,8 +2298,10 @@
                     return false;
                   }
 
+
                   if (role.value === '') {
                     // displayError('Please enter a role.', 'role_error');
+
 
                     // alert("Role must be filled out.");
                     displayError('Role must be filled out', 'role_error');
@@ -2444,8 +2460,8 @@
                         <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
 
                         <div class="form-group">
-                          <label for="category">Category:</label>
-                          <select class="form-control" id="category" name="category" onchange="updateSubcategories()">
+                          <label for="category">Category</label>
+                          <select class="form-control" id="category" name="category" >
 
                             <option value="">Select a Category</option>
                             <option value="architech">Architech</option>
@@ -2461,11 +2477,21 @@
                           <div id="category_error" class="error"></div>
                         </div>
                         <div class="form-group">
-                          <label for="subcategory">Subcategory:</label>
-                          <select class="form-control" id="subcategory" name="subcategory" disabled>
-                            <option value="">Select a Subcategory</option>
-                          </select>
-                          <div id="subcategory_error" class="error"></div>
+                          <label for="subcategory">Subcategory</label>
+                          <input class="form-control" id="subcategory" name="subcategory" placeholder="Enter subcategory">
+                          <div id="areasubcat_error" class="error"></div>
+                        </div>
+
+                        <div class="form-group" id="otherCategoryFields" style="display: none;">
+                          <label for="customCategoryInput">Custom Category</label>
+                          <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput" placeholder="Enter custom category">
+                          <label for="customSubcategoryInput">Custom Subcategory</label>
+                          <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput" placeholder="Enter custom subcategory">
+                        </div>
+                        <div class="form-group" id="customCategory" style="display: none;">
+                          <label for="customCategoryInput">Category Name</label>
+                          <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
+
                         </div>
 
 
@@ -2527,7 +2553,6 @@
 
                         <button type="submit" class="btn btn-primary">Submit</button>
                   <?php } ?>
-
                 </form>
               </div>
 
@@ -2865,6 +2890,7 @@
                     displayError('Please select an experience.', 'experience_error');
                     return false;
                   }
+
                   if (companyname.value === '') {
                     // alert("Please enter a company name.");
                     displayError('Company name must be filled out', 'companyname_error');
@@ -2896,6 +2922,7 @@
 
                   return true;
                 }
+
 
                 function clearErrorMessages() {
                   var errorElements = document.querySelectorAll('.error');
@@ -3126,7 +3153,7 @@
                         for (var i = 0; i < fieldsToClear.length; i++) {
                           fieldsToClear[i].value = '';
                         }
-                      }
+
 
                       function toggleCategoryFields() {
                         var category = document.getElementById("category").value;
@@ -4328,7 +4355,6 @@
                       // function validateFileType() {
                       //       var selectedFile = document.getElementById('idresume').files[0];
                       //       var allowedTypes = ['image/jpg','image/jpeg', 'image/png', 'application/pdf'];
-
                       //       if (!allowedTypes.includes(selectedFile.type)) {
                       //           alert('Invalid file type. Please upload a JPG, JPEG, PNG or PDF file.');
                       //           document.getElementById('idresume').value = '';
@@ -4347,6 +4373,7 @@
           ?>
                     <!-- 6 thankyou ******************************************************************************************************************-->
                     <img src="https://uploads-ssl.webflow.com/5ef0df6b9272f7410180a013/60c0e28575cd7c21701806fd_q1cunpuhbdreMPFRSFLyfUXNzpqv_I5fz_plwv6gV3sMNXwUSPrq88pC2iJijEV7wERnKXtdTA0eE4HvdnntGo9AHAWn-IcMPKV-rZw1v75vlTEoLF4OdNqsRb7C6r7Mvzrm7fe4.png" style="margin-left:30%;margin-top:5%" alt="Success">
+
 
               <?php } ?>
 
