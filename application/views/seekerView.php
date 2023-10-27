@@ -1373,6 +1373,18 @@
                                     <div id="certificate_12th_error" class="error"></div>
                                   </div>
 
+                                  <div class="form-group" id="certificate_dip-group" style="display: none;">
+                                    <label for="certificate_dip">Diploma Certificate Upload</label>
+                                    <!-- <input type="file" class="form-control" id="certificate_12th" name="certificate_12th"> -->
+                                    <input type="text" class="form-control"  name="olddipcer" value="<?php echo $value['diploma_cer']; ?>" hidden>
+                                    <div class="uploadedfile">
+                                    <input type="file" class="form-control cerdipupload" id="certificate_dip" name="certificate_dip" accept="image/png ,image/jpg, image/jpeg, application/pdf"/>
+                                    <label id="file-input-labeldip" for="certificate_dip">Change File</label>  
+                                    <a href="<?php echo $value['diplomacer_url']; ?>" class="filelink" target="blank" id="existfiledip" ><?php echo $value['diploma_cer']; ?></a>
+                                    </div>
+                                    <div id="certificate_dip_error" class="error"></div>
+                                  </div>
+
                                   <div class="form-group" id="certificate_ug-group" style="display: none;">
                                     <label for="certificate_ug">UG Degree Certificate Upload</label>
                                     <!-- <input type="file" class="form-control" id="certificate_ug" name="certificate_ug"> -->
@@ -1413,19 +1425,6 @@
 
                                   </form>
                                 </div>
-
-                                <!-- <?php
-                    if ( $value['datainsertededu'] == '1' ) {
-                      ?>
-                                 <script>
-                                  document.getElementById("round1").style.backgroundColor= "blue";
-                                  document.getElementById("round2").style.backgroundColor= "blue";
-                                  // document.getElementById("round1").style.backgroundColor= "blue";
-                                  // document.getElementById("round1").style.backgroundColor= "blue";
-                                </script>
-                  <?php
-                    } 
-                    ?> -->
 
                               <?php
                                 }
@@ -1538,6 +1537,22 @@
                           }
                       });
                 
+                      // Diploma certificate
+                      document.getElementById("file-input-labeldip").addEventListener("click", function() {
+                              document.getElementById("existfiledip").style.display = "none";
+                          });
+
+                      const fileInputdip = document.getElementById("certificate_dip");
+                      const fileInputLabeldip = document.getElementById("file-input-labeldip");
+
+                      fileInputdip.addEventListener("change", function () {
+                          if (fileInputdip.files.length > 0) {
+                          fileInputLabeldip.textContent = fileInputdip.files[0].name;
+                          } else {
+                          fileInputLabeldip.textContent = "Select a File";
+                          }
+                      });
+
                       // ug certificate
                           document.getElementById("file-input-labelug").addEventListener("click", function() {
                               document.getElementById("existfileug").style.display = "none";
@@ -1601,6 +1616,11 @@
 
                         if (document.getElementById('qualification').value === 'hsc') {
                           document.getElementById('certificate_12th-group').style.display = 'block';
+                        }
+
+                        if (document.getElementById('qualification').value === 'diploma') {
+                          document.getElementById('department-group').style.display = 'block';
+                          document.getElementById('certificate_dip-group').style.display = 'block';
                         }
 
                         if (document.getElementById('qualification').value === 'bachelors') {
