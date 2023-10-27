@@ -41,7 +41,12 @@ class SeekerController extends CI_Controller
             $userLoggedIn = array(
                 'seekerId' => $login[0]['id'],
                 'seekerName' => $login[0]['name'],
-                'seekerPhoneNumber' => $login[0]['phonenumber']
+                'seekerPhoneNumber' => $login[0]['phonenumber'],
+                'basicdetaildata' => $login[0]['bdsubmited'],
+                'edudata' => $login[0]['edusubmited'],
+                'expdata' => $login[0]['expsubmited'],
+                'areadata' => $login[0]['areasubmited'],
+                'resumedata' => $login[0]['resumesubmited'],
             );
             $this->session->set_userdata($userLoggedIn);
             $this->data['method'] = "dash";
@@ -114,6 +119,7 @@ class SeekerController extends CI_Controller
     public function insertEducationForm()
     {
         $insertEducationForm = $this->SeekerModel->insertEducationForm();
+        $insertEducationForm = $this->SeekerModel->insertSubmit();
 
         $this->educationTable();
         echo '<script>alert("Education details inserted successfully.");</script>';
@@ -131,7 +137,7 @@ class SeekerController extends CI_Controller
     {
         $post = $this->input->post(null, true);
         $updateInsertEducation = $this->SeekerModel->updateInsertEducation();
-        
+
         $this->educationTable();
         echo '<script>alert("Education details updated successfully.");</script>';
 
@@ -173,6 +179,8 @@ class SeekerController extends CI_Controller
     public function insertExperienceForm()
     {
         $insertExperienceForm = $this->SeekerModel->insertExperienceForm();
+        $insertExperienceForm = $this->SeekerModel->insertSubmitExp();
+
 
         $this->experienceTable();
         echo '<script>alert("Experience details inserted successfully.");</script>';
@@ -280,6 +288,8 @@ class SeekerController extends CI_Controller
     public function insertAreaOfIntrest()
     {
         $insertAreaOfIntrest = $this->SeekerModel->insertAreaOfIntrest();
+        $insertAreaOfIntrest = $this->SeekerModel->insertSubmitArea();
+
 
         $this->areaOfIntrestTable();
         echo '<script>alert("Area of interest inserted successfully.");</script>';
@@ -368,131 +378,6 @@ class SeekerController extends CI_Controller
             echo "Error deleting record";
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -645,9 +530,9 @@ class SeekerController extends CI_Controller
 
     public function resumeupload()
     {
-
         $this->data['method'] = "resume";
         $resume = $this->SeekerModel->do_upload();
+        $submitresume = $this->SeekerModel->insertSubmitResume();
         $this->data['resume'] = $resume;
         $this->thank();
     }

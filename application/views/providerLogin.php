@@ -156,7 +156,7 @@
       </div>
       <!-- <div class="form-group">
         <label for="password">Password:</label>
-        <input type="tel" class="form-control" id="password" name="number" placeholder="Enter password">
+        <input type="text" class="form-control" id="password" name="number" placeholder="Enter password">
         <p id="pherr" style="color: red;"></p>
       </div> -->
       <button type="submit" class="btn btn-primary">Login</button>
