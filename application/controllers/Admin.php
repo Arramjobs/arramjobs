@@ -35,8 +35,7 @@ class Admin extends CI_Controller
                 "role" => $response[0]['userRole']
             );
             $this->session->set_userdata($adminLoggedIn);
-            $this->data['method'] = "dashboard";
-            $this->load->view('admindashboard.php', $this->data);
+            $this->dashboard();
         } else {
 
             $this->load->view('adminLogin.php');
@@ -45,6 +44,12 @@ class Admin extends CI_Controller
 
     public function dashboard()
     {
+        $admin = $this->AdminModel->admin();
+        $this->data['admin'] = $admin;
+        $employer = $this->AdminModel->employer();
+        $this->data['employer'] = $employer;
+        $employee = $this->AdminModel->employee();
+        $this->data['employee'] = $employee;
         $this->data['method'] = "dashboard";
         $this->load->view('admindashboard.php', $this->data);
     }
@@ -115,39 +120,55 @@ class Admin extends CI_Controller
         $this->verifiedEmployers();
     }
 
-
-    public function createCandidates()
+    public function employerApprovel()
     {
-        $this->data['method'] = "createCandidates";
+        $id = $this->uri->segment(3);
+        $employerApprovelDetails = $this->AdminModel->verifyEmployerDetails($id);
+        $this->data['manageEmployer'] = $employerApprovelDetails;
+        $this->data['method'] = "employerApprovel";
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function candidateRegistration()
+    public function employerApprovelStatus()
+    {
+        $id = $this->uri->segment(3);
+        $employerApprovelDetails = $this->AdminModel->employerApprovelStatus($id);
+        $this->data['manageEmployer'] = $employerApprovelDetails;
+        $this->dashboard();
+    }
+
+    public function createEmployees()
+    {
+        $this->data['method'] = "createEmployees";
+        $this->load->view('admindashboard.php', $this->data);
+    }
+
+    public function employeeRegistration()
     {
         $postData = $this->input->post(null, true);
         $register = $this->SeekerModel->register();
     }
 
-    public function unVerifiedCandidates()
+    public function unVerifiedEmployees()
     {
-        $this->data['method'] = "unVerifiedCandidates";
-        $unVerifiedCandidates = $this->AdminModel->unVerifiedCandidates();
-        $this->data['unVerifiedCandidates'] = $unVerifiedCandidates;
+        $this->data['method'] = "unVerifiedEmployees";
+        $unVerifiedEmployees = $this->AdminModel->unVerifiedEmployees();
+        $this->data['unVerifiedEmployees'] = $unVerifiedEmployees;
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function verifiedCandidates()
+    public function verifiedEmployees()
     {
-        $this->data['method'] = "verifiedCandidates";
-        $verifiedCandidates = $this->AdminModel->verifiedCandidates();
-        $this->data['verifiedCandidates'] = $verifiedCandidates;
+        $this->data['method'] = "verifiedEmployees";
+        $verifiedEmployees = $this->AdminModel->verifiedEmployees();
+        $this->data['verifiedEmployees'] = $verifiedEmployees;
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function manageCandidate()
+    public function manageEmployee()
     {
         $id = $this->uri->segment(3);
-        $this->data['method'] = "manageCandidate";
+        $this->data['method'] = "manageEmployee";
 
         $education = $this->RegistrationModel->educationalDetails($id);
         $this->data['education'] = $education;
@@ -170,11 +191,31 @@ class Admin extends CI_Controller
         $this->load->view('admindashboard.php', $this->data);
     }
 
-    public function verifyCandidate()
+    public function verifyEmployee()
     {
         $postData = $this->input->post(null, true);
-        $verifyCandidateDetails = $this->AdminModel->verifyCandidateDetails();
-        $this->verifiedCandidates();
+        $verifyEmployeeDetails = $this->AdminModel->verifyEmployeeDetails();
+        $this->verifiedEmployees();
+    }
+
+    public function addNewAdminApprovel()
+    {
+    }
+
+    public function deleteAdminApprovel()
+    {
+    }
+
+    public function employerApprovelRequest()
+    {
+        $addNewEmployerApprovel = $this->AdminModel->addNewEmployerApprovel();
+        $this->data['addNewEmployerApprovel'] = $addNewEmployerApprovel;
+
+        $deleteEmployerApprovel = $this->AdminModel->deleteEmployerApprovel();
+        $this->data['deleteEmployerApprovel'] = $deleteEmployerApprovel;
+
+        $this->data['method'] = "addNewEmployerApprovel";
+        $this->load->view('admindashboard.php', $this->data);
     }
 
     public function logout()
