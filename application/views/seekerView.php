@@ -1747,6 +1747,9 @@
 
               <div class=" container exptablecss mt-5">
                 <h3 class="text-center">Experience Details </h3>
+                <div style="padding-bottom:20px">
+                  Are you a fresher ?  <a id="deletes" href="<?php echo baseUrl . "seekerController/areaOfIntrestTable" ?>">Skip</a>
+                </div>
                 <a id="regis" href="<?php echo baseUrl . "seekerController/addExperirenceForm" ?>">+ Add Experience</a>
                 <div style="float:right">
                   <a id="regis" href="<?php echo baseUrl . "seekerController/educationTable" ?>">Previous </a>
