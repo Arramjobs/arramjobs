@@ -152,7 +152,7 @@
 
         public function addNewEmployerApprovel()
         {
-            $addNewAdminApprovel = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='1' And addNewRequest ='1' And addNewApprovel ='0'";
+            $addNewAdminApprovel = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='1' And addNewApprovel ='0'";
             $response = $this->db->query($addNewAdminApprovel);
             return array('response' => $response->result_array(), "totalRows" => $response->num_rows());
         }
