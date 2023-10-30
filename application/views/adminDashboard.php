@@ -980,7 +980,7 @@
                                     <input type="text" class="form-control" id="inputName5" value="<?php echo $value['company_name'] ?>" readonly name="name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputNumber5" class="form-label">Company Number</label>+
+                                    <label for="inputNumber5" class="form-label">Company Number</label>
                                     <input type="number" class="form-control" id="inputNumber5" name="mobile" value="<?php echo $value['company_mobile_number'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
@@ -1787,8 +1787,8 @@
                                                     <td><a href="<?php echo baseUrl . "admin/employerApprovel/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
                                                 </tr>
                                         <?php
+                                                $loopcount++;
                                             }
-                                            $loopcount++;
                                         }
                                         ?>
                                         <?php
