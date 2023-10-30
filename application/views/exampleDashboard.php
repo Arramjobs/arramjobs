@@ -271,6 +271,7 @@
 
         #view {
             display: inline-block;
+            margin-left: 5px;
             padding: 8px 16px;
             border: 2px solid #f39c12;
             background-color: #f39c12;
@@ -914,7 +915,7 @@
                             ?>
 
                                 <?php  $dateap =  $value['date'] ;
-                                $twelveHourTime = date(" F j, Y h:i A", strtotime($dateap));
+                                $twelveHourTime = date(" F j, Y", strtotime($dateap));
                                 ?>
 
                                 <tr>
@@ -1401,8 +1402,10 @@
             <div>
                 <div class="container mt-5">
                     <h3 class="text-center">Job Matched Candidates</h3>
-                    <br>
-                    <br>
+                    <!-- <br>
+                    <br> -->
+                     <a id="regis" href="<?php echo baseUrl . "providerController/jobViewTable" ?>">Back</a>
+
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped " id="matchtable" >
                             <thead>
@@ -1434,6 +1437,7 @@
                                             <div class="btn-group" role="group">
                                                 <!-- <button class="btn btn-primary">View</button> -->
                                                 <a id="view" href="<?php echo baseUrl . "providerController/resumeCard" ?>/<?php echo $value['seekerId'] ?>">Candidate Resume</a>
+                                                <a id="view" href="#">Request</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -1823,6 +1827,280 @@
                 }
             </script>
 
+<?php
+        } else if ($this->data['method'] == "resume") {
+        ?>
+
+            <div class="full" id="educationTable">
+
+                <!-- Candidate resume all details view download ************************************************************************************************************************* -->
+
+                <br>
+                <h2 class=" bg-black p-5 mb-0" id="candidateResume">
+                    <center>Candidate Resume</center>
+                </h2>
+                <br>
+                <?php
+                foreach ($this->data['basicDetails'] as $nkey => $nvalue) {
+                ?>
+                <p style="float:right">Employee ID : <?php echo $nvalue['eeid'] ?></p>
+                <?php
+                }
+                ?>
+                <ul>
+                    <br>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Candidate Name</th>
+                                    <th>Photo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($this->data['basicDetails'] as $nkey => $nvalue) {
+                                ?>
+                                    <!-- <form method="POST"> -->
+                                    <tr>
+                                        <td><?php echo $nvalue['name'] ?></td>
+                                        <!-- <td><img src="<?php echo base_url('uploads' . $nvalue['photo']) ?>" width="200" height="160"></td> -->
+                                        <td><img src="<?php echo $nvalue['photo'] ?>" alt="Profile Photo" width="160" height="160"></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                                <!-- </form> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </ul>
+                <!-- <br>
+                                            <h4 class="">Candidate Name : <?php echo $nvalue['name'] ?></h4>
+                                                <img src="<?php base_url() . '/uploads/' . $data['photo'] ?>" width="200" height="160">
+                                            <br> -->
+
+
+                <h3 class="mb-5" id="education">Educational Qualification</h3>
+                <ul>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                <th>S.No</th>
+                                    <th>Educational Qualification</th>
+                                    <th>Department</th>
+                                    <th>Institution Name</th>
+                                    <th>Percentage</th>
+                                    <th>Year of Passed Out</th>
+                                    <th>Certificates</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $countedu=1;
+                                foreach ($this->data['education'] as $key => $value) {
+                                ?>
+                                    <tr>
+                                    <td><?php echo $countedu++; ?>.</td>
+                                        <td><?php echo $value['educational_qualification'] ?></td>
+                                        <td><?php echo $value['department'] ?></td>
+                                        <td><?php echo $value['school_college_name'] ?></td>
+                                        <td><?php echo $value['percentage'] ?></td>
+                                        <td><?php echo $value['yearOfPassing'] ?></td>
+                                        <?php
+                    if ( $value['educational_qualification'] == 'sslc' ) {
+                      ?>
+                                  <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
+                  <?php
+                    }
+                    else if ( $value['educational_qualification'] == 'hsc' ) {
+                    ?>
+                     <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
+                     <?php
+                    }
+                    else if ( $value['educational_qualification'] == 'bachelors' ) {
+                    ?>
+                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
+                    <?php
+                   }
+                  else if ( $value['educational_qualification'] == 'masters' ) {
+                   ?>
+                   <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
+                   <?php
+                    }
+                    else if ( $value['educational_qualification'] == 'doctorate' ) {
+                    ?>
+                    <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
+                     <?php
+                    }
+                    else {
+                    ?>
+                    <td>NA</a></td>
+                    <?php
+                   }
+                   ?>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </ul>
+
+
+                <h3 class="mb-5">Area of Interest</h3>
+                <ul>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                <th>S.No </th>
+                                    <th>Job Category </th>
+                                    <th>Job Sub Category</th>
+                                    <th>Prefered Location</th>
+                                    <th>Experience</th>
+                                    <th>Job Type</th>
+                                    <th>Description</th>
+                                    <th>Expected Salary</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+                                $countarea=1;
+                                foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
+                                ?>
+                                    <tr>
+                                    <td><?php echo $countarea++; ?>. </td>
+                                        <td><?php echo $avalue['other_interst_category'] ?> </td>
+                                        <td><?php echo $avalue['other_sub_interst_category'] ?></td>
+                                        <td> <?php echo $avalue['prefered_location'] ?></td>
+                                        <td> <?php echo $avalue['experience'] ?></td>
+                                        <td> <?php echo $avalue['job_type'] ?></td>
+                                        <td> <?php echo $avalue['description'] ?></td>
+                                        <td> <?php echo $avalue['expected_salary'] ?></td>
+                                    </tr>
+
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </ul>
+
+                <h3 class="mb-5">Skills</h3>
+                <ul>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                <th>S.No</th>
+                                    <th>Skill Name</th>
+                                    <th>Skill Experience</th>
+                                    <th>Skill Level</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+                                $countskill = 1;
+                                foreach ($this->data['areaOfInterest'] as $skey => $svalue) {
+                                ?>
+                                    <tr>
+                                    <td><?php echo $countskill++; ?>. </td>
+                                        <td><?php echo $svalue['skillname'] ?> </td>
+                                        <td><?php echo $svalue['skillexperience'] ?></td>
+                                        <td> <?php echo $svalue['skilllevel'] ?></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </ul>
+
+                <h3 class="mb-5">Experience Details</h3>
+                <ul>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                <th>S.No</th>
+                                    <th>Job Category </th>
+                                    <th>Job Sub Category</th>
+                                    <th>Company Name</th>
+                                    <th>Job Role</th>
+                                    <th>Previous Employer Name</th>
+                                    <!-- <th>Previous Employer Mobile</th> -->
+                                    <!-- <th>Previous Employer Email</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+                                $countexp=1;
+                                foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
+                                ?>
+                                    <tr>
+                                        <td><?php echo $countexp++; ?>. </td>
+                                        <td><?php echo $ivalue['other_category'] ?> </td>
+                                        <td><?php echo $ivalue['other_sub_category'] ?></td>
+                                        <td> <?php echo $ivalue['company_name'] ?></td>
+                                        <td> <?php echo $ivalue['job_role'] ?></td>
+                                        <td> <?php echo $ivalue['previous_employer_name'] ?></td>
+                                        <!-- <td> <?php echo $ivalue['previous_employer_mobile'] ?></td> -->
+                                        <!-- <td> <?php echo $ivalue['previous_employer_email'] ?></td> -->
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </ul>
+
+                <!-- </div> -->
+
+                <!-- To print the page -->
+                <div style="float:right;margin-bottom:25px" id="printdiv">
+                    <!-- <button id="view" class="printhide">Request to Admin</button> -->
+                    <button onClick="window.print()" id="view" class="printhide">Print</button>
+                    <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button>
+
+                </div>
+            </div>
+
+            <!-- To download pdf -->
+            <script type="text/javascript">
+                function generatePDF() {
+
+                    var element = document.getElementById('educationTable');
+                    var opt = {
+                        margin: 0.5,
+                        filename: 'candidateprofile.pdf',
+                        image: {
+                            type: 'jpeg',
+                            quality: 1
+                        },
+                        html2canvas: {
+                            scale: 1
+                        },
+                        jsPDF: {
+                            unit: 'in',
+                            format: 'letter',
+                            orientation: 'portrait',
+                            precision: '12'
+                        }
+                    };
+
+                    html2pdf().set(opt).from(element).save();
+                }
+            </script>
 
         <?php
         } else if ($this->data['method'] == "allCandidate") {
@@ -2724,281 +3002,7 @@
                 }
             </script>
 
-        <?php
-        } else if ($this->data['method'] == "resume") {
-        ?>
-
-            <div class="full" id="educationTable">
-
-                <!-- Candidate resume all details view download ************************************************************************************************************************* -->
-
-                <br>
-                <h2 class=" bg-black p-5 mb-0" id="candidateResume">
-                    <center>Candidate Resume</center>
-                </h2>
-                <br>
-                <!-- <a id="regis" class="printhide" href="<?php echo baseUrl . "providerController/matchedCandidate" ?>">Back</a> -->
-                <?php
-                                foreach ($this->data['basicDetails'] as $nkey => $nvalue) {
-                                ?>
-                <p style="float:right">Employee ID : <?php echo $nvalue['eeid'] ?></p>
-                <?php
-                                }
-                                ?>
-                <ul>
-                    <br>
-                    <br>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Candidate Name</th>
-                                    <th>Photo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach ($this->data['basicDetails'] as $nkey => $nvalue) {
-                                ?>
-                                    <!-- <form method="POST"> -->
-                                    <tr>
-                                        <td><?php echo $nvalue['name'] ?></td>
-                                        <!-- <td><img src="<?php echo base_url('uploads' . $nvalue['photo']) ?>" width="200" height="160"></td> -->
-                                        <td><img src="<?php echo $nvalue['photo'] ?>" alt="Profile Photo" width="160" height="160"></td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                                <!-- </form> -->
-                            </tbody>
-                        </table>
-                    </div>
-                </ul>
-                <!-- <br>
-                                            <h4 class="">Candidate Name : <?php echo $nvalue['name'] ?></h4>
-                                                <img src="<?php base_url() . '/uploads/' . $data['photo'] ?>" width="200" height="160">
-                                            <br> -->
-
-
-                <h3 class="mb-5" id="education">Educational Qualification</h3>
-                <ul>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                <th>S.No</th>
-                                    <th>Educational Qualification</th>
-                                    <th>Department</th>
-                                    <th>Institution Name</th>
-                                    <th>Percentage</th>
-                                    <th>Year of Passed Out</th>
-                                    <th>Certificates</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $countedu=1;
-                                foreach ($this->data['education'] as $key => $value) {
-                                ?>
-                                    <tr>
-                                    <td><?php echo $countedu++; ?>.</td>
-                                        <td><?php echo $value['educational_qualification'] ?></td>
-                                        <td><?php echo $value['department'] ?></td>
-                                        <td><?php echo $value['school_college_name'] ?></td>
-                                        <td><?php echo $value['percentage'] ?></td>
-                                        <td><?php echo $value['yearOfPassing'] ?></td>
-                                        <?php
-                    if ( $value['educational_qualification'] == 'sslc' ) {
-                      ?>
-                                  <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
-                  <?php
-                    }
-                    else if ( $value['educational_qualification'] == 'hsc' ) {
-                    ?>
-                     <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
-                     <?php
-                    }
-                    else if ( $value['educational_qualification'] == 'bachelors' ) {
-                    ?>
-                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
-                    <?php
-                   }
-                  else if ( $value['educational_qualification'] == 'masters' ) {
-                   ?>
-                   <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
-                   <?php
-                    }
-                    else if ( $value['educational_qualification'] == 'doctorate' ) {
-                    ?>
-                    <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
-                     <?php
-                    }
-                    else {
-                    ?>
-                    <td>NA</a></td>
-                    <?php
-                   }
-                   ?>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </ul>
-
-
-                <h3 class="mb-5">Area of Interest</h3>
-                <ul>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                <th>S.No </th>
-                                    <th>Job Category </th>
-                                    <th>Job Sub Category</th>
-                                    <th>Prefered Location</th>
-                                    <th>Experience</th>
-                                    <th>Job Type</th>
-                                    <th>Description</th>
-                                    <th>Expected Salary</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <?php
-                                $countarea=1;
-                                foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
-                                ?>
-                                    <tr>
-                                    <td><?php echo $countarea++; ?>. </td>
-                                        <td><?php echo $avalue['other_interst_category'] ?> </td>
-                                        <td><?php echo $avalue['other_sub_interst_category'] ?></td>
-                                        <td> <?php echo $avalue['prefered_location'] ?></td>
-                                        <td> <?php echo $avalue['experience'] ?></td>
-                                        <td> <?php echo $avalue['job_type'] ?></td>
-                                        <td> <?php echo $avalue['description'] ?></td>
-                                        <td> <?php echo $avalue['expected_salary'] ?></td>
-                                    </tr>
-
-                                <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </ul>
-
-                <h3 class="mb-5">Skills</h3>
-                <ul>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                <th>S.No</th>
-                                    <th>Skill Name</th>
-                                    <th>Skill Experience</th>
-                                    <th>Skill Level</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <?php
-                                $countskill = 1;
-                                foreach ($this->data['areaOfInterest'] as $skey => $svalue) {
-                                ?>
-                                    <tr>
-                                    <td><?php echo $countskill++; ?>. </td>
-                                        <td><?php echo $svalue['skillname'] ?> </td>
-                                        <td><?php echo $svalue['skillexperience'] ?></td>
-                                        <td> <?php echo $svalue['skilllevel'] ?></td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </ul>
-
-                <h3 class="mb-5">Experience Details</h3>
-                <ul>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                <th>S.No</th>
-                                    <th>Job Category </th>
-                                    <th>Job Sub Category</th>
-                                    <th>Company Name</th>
-                                    <th>Job Role</th>
-                                    <th>Previous Employer Name</th>
-                                    <!-- <th>Previous Employer Mobile</th> -->
-                                    <!-- <th>Previous Employer Email</th> -->
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <?php
-                                $countexp=1;
-                                foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
-                                ?>
-                                    <tr>
-                                        <td><?php echo $countexp++; ?>. </td>
-                                        <td><?php echo $ivalue['other_category'] ?> </td>
-                                        <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                        <td> <?php echo $ivalue['company_name'] ?></td>
-                                        <td> <?php echo $ivalue['job_role'] ?></td>
-                                        <td> <?php echo $ivalue['previous_employer_name'] ?></td>
-                                        <!-- <td> <?php echo $ivalue['previous_employer_mobile'] ?></td> -->
-                                        <!-- <td> <?php echo $ivalue['previous_employer_email'] ?></td> -->
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </ul>
-
-                <!-- </div> -->
-
-                <!-- To print the page -->
-                <div style="float:right;margin-bottom:25px" id="printdiv">
-                    <button id="view" class="printhide">Request to Admin</button>
-                    <button onClick="window.print()" id="view" class="printhide">Print</button>
-                    <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button>
-
-                </div>
-            </div>
-
-            <!-- To download pdf -->
-            <script type="text/javascript">
-                function generatePDF() {
-
-                    var element = document.getElementById('educationTable');
-                    var opt = {
-                        margin: 0.5,
-                        filename: 'candidateprofile.pdf',
-                        image: {
-                            type: 'jpeg',
-                            quality: 1
-                        },
-                        html2canvas: {
-                            scale: 1
-                        },
-                        jsPDF: {
-                            unit: 'in',
-                            format: 'letter',
-                            orientation: 'portrait',
-                            precision: '12'
-                        }
-                    };
-
-                    html2pdf().set(opt).from(element).save();
-                }
-            </script>
+        
 
         <?php
         } else if ($this->data['method'] == "wishlist") {

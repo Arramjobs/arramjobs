@@ -311,12 +311,12 @@ class SeekerModel extends CI_Model
  
          $this->load->library('upload', $config);
  
-         $ucer10 = "None";
-         $ucer12 = "None";
-         $ucerdip = "None";
-         $ucerug = "None";
-         $ucerpg = "None";
-         $ucerdoct = "None";
+         $ucer10 = $post['old10cer'];
+         $ucer12 = $post['old12cer'];
+         $ucerdip = $post['olddipcer'];
+         $ucerug = $post['oldugcer'];
+         $ucerpg = $post['oldpgcer'];
+         $ucerdoct = $post['olddoccer'];
 
          if ($this->upload->do_upload('certificate_10th')) {
              $data = $this->upload->data();
