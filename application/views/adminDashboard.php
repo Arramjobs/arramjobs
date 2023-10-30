@@ -1158,12 +1158,6 @@
                                                     Request Send
                                                 </label>
                                             </div>
-                                            <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteRequest" id="gridRadios" value="2">
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
-                                            </div> -->
                                         </div>
                                     </fieldset>
                                     <div class="col-md-6">
