@@ -132,7 +132,7 @@ class Admin extends CI_Controller
     public function employerApprovelStatus()
     {
         $id = $this->uri->segment(3);
-        $employerApprovelDetails = $this->AdminModel->employerApprovelStatus($id);
+        $employerApprovelDetails = $this->AdminModel->employerApprovelStatus();
         $this->data['manageEmployer'] = $employerApprovelDetails;
         $this->dashboard();
     }

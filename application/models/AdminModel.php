@@ -89,7 +89,9 @@
             $postData = $this->input->post(null, true);
             $updateVerificationStatus = array(
                 'verificationStatus' => $postData['verificationStatus'],
-                'verificationRemarks' => $postData['verificationRemarks']
+                'verificationRemarks' => $postData['verificationRemarks'],
+                'deleteRequest' => $postData['deleteRequest'],
+                'deleteRequestRemarks' => $postData['deleteRequestRemarks']
             );
 
             $this->db->where('id', $postData['id']);
@@ -104,6 +106,7 @@
                 'addNewApprovelRemarks' => $postData['addNewApprovelRemarks'],
                 'deleteApprovel' => $postData['deleteApprovel'],
                 'deleteApprovelRemarks' => $postData['deleteApprovelRemarks']
+                
             );
 
             $this->db->where('id', $postData['id']);
