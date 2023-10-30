@@ -1074,6 +1074,42 @@
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
+                                    <h5 class="card-title">Send Employer Delete Request</h5>
+                                    <fieldset class="row mb-3">
+                                        <legend class="col-form-label col-sm-4 pt-0">Delete Request Status</legend>
+                                        <div class="col-sm-8">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="deleteRequest" id="" value="0" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '0') {
+                                                                                                                                                    echo 'checked';
+                                                                                                                                                } ?>>
+                                                <label class="form-check-label" for="gridRadios1">
+                                                    Request Not Send
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="deleteRequest" id="" value="1" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '1') {
+                                                                                                                                                    echo 'checked';
+                                                                                                                                                } ?>>
+                                                <label class="form-check-label" for="gridRadios2">
+                                                    Request Send
+                                                </label>
+                                            </div>
+                                            <!-- <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') {
+                                                                                                                                                        echo 'checked';
+                                                                                                                                                    } ?>>
+                                                <label class="form-check-label" for="gridRadios3">
+                                                    Rejected
+                                                </label>
+                                            </div> -->
+                                        </div>
+                                    </fieldset>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteRequestRemarks" style="height: 100px;"></textarea>
+                                            <label for="floatingTextarea">Remarks</label>
+                                        </div>
+                                    </div>
                                     <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
                                 <?php
                                 } else {
@@ -1107,62 +1143,17 @@
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
-                                <?php }
-                                ?>
-                                <h5 class="card-title">Send Employer Delete Request</h5>
-                                <?php
-                                if (isset($this->data['manageEmployer'][0]['id'])) {
-                                ?>
                                     <fieldset class="row mb-3">
                                         <legend class="col-form-label col-sm-4 pt-0">Delete Request Status</legend>
                                         <div class="col-sm-8">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteRequest" id="gridRadios1" value="0" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '0') {
-                                                                                                                                                    echo 'checked';
-                                                                                                                                                } ?>>
+                                                <input class="form-check-input" type="radio" name="deleteRequest" id="" value="0">
                                                 <label class="form-check-label" for="gridRadios1">
                                                     Request Not Send
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteRequest" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '1') {
-                                                                                                                                                    echo 'checked';
-                                                                                                                                                } ?>>
-                                                <label class="form-check-label" for="gridRadios2">
-                                                    Request Send
-                                                </label>
-                                            </div>
-                                            <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') {
-                                                                                                                                                        echo 'checked';
-                                                                                                                                                    } ?>>
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
-                                            </div> -->
-                                        </div>
-                                    </fieldset>
-                                    <div class="col-md-6">
-                                        <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteRequestRemarks" style="height: 100px;"></textarea>
-                                            <label for="floatingTextarea">Remarks</label>
-                                        </div>
-                                    </div>
-                                    <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
-                                <?php
-                                } else {
-                                ?>
-                                    <fieldset class="row mb-3">
-                                        <legend class="col-form-label col-sm-4 pt-0">Delete Request Status</legend>
-                                        <div class="col-sm-8">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteRequest" id="gridRadios1" value="0">
-                                                <label class="form-check-label" for="gridRadios1">
-                                                    Request Not Send
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteRequest" id="gridRadios2" value="1">
+                                                <input class="form-check-input" type="radio" name="deleteRequest" id="" value="1">
                                                 <label class="form-check-label" for="gridRadios2">
                                                     Request Send
                                                 </label>
