@@ -51,13 +51,13 @@ class Admin extends CI_Controller
         $employee = $this->AdminModel->employee();
         $this->data['employee'] = $employee;
         $this->data['method'] = "dashboard";
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function createAdminUser()
     {
         $this->data['method'] = "createAdminUser";
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function insertAdminUser()
@@ -72,13 +72,13 @@ class Admin extends CI_Controller
         $this->data['method'] = "adminUsers";
         $adminUsers = $this->AdminModel->adminUsers();
         $this->data['adminUsers'] = $adminUsers;
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function createEmployer()
     {
         $this->data['method'] = "createEmployer";
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function insertEmployer()
@@ -93,7 +93,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "unVerifiedEmployers";
         $unVerifiedEmployers = $this->AdminModel->unVerifiedEmployers();
         $this->data['unVerifiedEmployers'] = $unVerifiedEmployers;
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function verifiedEmployers()
@@ -101,7 +101,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "verifiedEmployers";
         $verifiedEmployers = $this->AdminModel->verifiedEmployers();
         $this->data['verifiedEmployers'] = $verifiedEmployers;
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function manageEmployer()
@@ -110,7 +110,7 @@ class Admin extends CI_Controller
         $verifyEmployerDetails = $this->AdminModel->verifyEmployerDetails($id);
         $this->data['manageEmployer'] = $verifyEmployerDetails;
         $this->data['method'] = "manageEmployer";
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function verifyEmployer()
@@ -126,7 +126,7 @@ class Admin extends CI_Controller
         $employerApprovelDetails = $this->AdminModel->verifyEmployerDetails($id);
         $this->data['manageEmployer'] = $employerApprovelDetails;
         $this->data['method'] = "employerApprovel";
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function employerApprovelStatus()
@@ -140,7 +140,7 @@ class Admin extends CI_Controller
     public function createEmployees()
     {
         $this->data['method'] = "createEmployees";
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function employeeRegistration()
@@ -154,7 +154,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "unVerifiedEmployees";
         $unVerifiedEmployees = $this->AdminModel->unVerifiedEmployees();
         $this->data['unVerifiedEmployees'] = $unVerifiedEmployees;
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function verifiedEmployees()
@@ -162,7 +162,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "verifiedEmployees";
         $verifiedEmployees = $this->AdminModel->verifiedEmployees();
         $this->data['verifiedEmployees'] = $verifiedEmployees;
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function manageEmployee()
@@ -188,7 +188,7 @@ class Admin extends CI_Controller
         $basicDetails = $this->RegistrationModel->candidate($id);
         $this->data['basicDetails'] = $basicDetails;
 
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function verifyEmployee()
@@ -215,7 +215,7 @@ class Admin extends CI_Controller
         $this->data['deleteEmployerApprovel'] = $deleteEmployerApprovel;
 
         $this->data['method'] = "addNewEmployerApprovel";
-        $this->load->view('admindashboard.php', $this->data);
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function logout()
