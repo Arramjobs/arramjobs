@@ -1080,16 +1080,16 @@
                                         <div class="col-sm-8">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="deleteRequest" id="" value="0" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '0') {
-                                                                                                                                                    echo 'checked';
-                                                                                                                                                } ?>>
+                                                                                                                                        echo 'checked';
+                                                                                                                                    } ?>>
                                                 <label class="form-check-label" for="gridRadios1">
                                                     Request Not Send
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="deleteRequest" id="" value="1" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '1') {
-                                                                                                                                                    echo 'checked';
-                                                                                                                                                } ?>>
+                                                                                                                                        echo 'checked';
+                                                                                                                                    } ?>>
                                                 <label class="form-check-label" for="gridRadios2">
                                                     Request Send
                                                 </label>
@@ -1939,49 +1939,33 @@
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
-                                    <?php
-                                    if ($this->data['manageEmployer'][0]['deleteRequest'] == '1') {
-                                    ?>
-                                        <fieldset class="row mb-3">
-                                            <legend class="col-form-label col-sm-4 pt-0">Delete Employer Approvel</legend>
-                                            <div class="col-sm-8">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios1" value="0" <?php if ($this->data['manageEmployer'][0]['deleteApprovel'] == '0') {
-                                                                                                                                                        echo 'checked';
-                                                                                                                                                    } ?>>
-                                                    <label class="form-check-label" for="gridRadios1">
-                                                        Approvel Pending
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['deleteApprovel'] == '1') {
-                                                                                                                                                        echo 'checked';
-                                                                                                                                                    } ?>>
-                                                    <label class="form-check-label" for="gridRadios2">
-                                                        Approvel success
-                                                    </label>
-                                                </div>
-                                                <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['deleteApprovel'] == '2') {
+                                    <fieldset class="row mb-3">
+                                        <legend class="col-form-label col-sm-4 pt-0">Delete Employer Approvel</legend>
+                                        <div class="col-sm-8">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios1" value="0" <?php if ($this->data['manageEmployer'][0]['deleteApprovel'] == '0') {
                                                                                                                                                     echo 'checked';
                                                                                                                                                 } ?>>
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
+                                                <label class="form-check-label" for="gridRadios1">
+                                                    Approvel Pending
                                                 </label>
-                                            </div> -->
                                             </div>
-                                        </fieldset>
-                                        <div class="col-md-6">
-                                            <div class="form-floating mb-3">
-                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteApprovelRemarks" style="height: 100px;"></textarea>
-                                                <label for="floatingTextarea">Remarks</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['deleteApprovel'] == '1') {
+                                                                                                                                                    echo 'checked';
+                                                                                                                                                } ?>>
+                                                <label class="form-check-label" for="gridRadios2">
+                                                    Approvel success
+                                                </label>
                                             </div>
                                         </div>
-                                    <?php } else {
-                                    ?>
-                                        <input class="form-check-input" type="text" name="deleteApprovel" value="0" hidden>
-                                        <input class="form-check-input" type="text" name="deleteApprovelRemarks" value="deleteApprovelRemarks" hidden>
-                                    <?php } ?>
+                                    </fieldset>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteApprovelRemarks" style="height: 100px;"></textarea>
+                                            <label for="floatingTextarea">Remarks</label>
+                                        </div>
+                                    </div>
                                     <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
                                 <?php
                                 } else {
@@ -2001,12 +1985,6 @@
                                                     Approvel Success
                                                 </label>
                                             </div>
-                                            <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios" value="2">
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
-                                            </div> -->
                                         </div>
                                     </fieldset>
                                     <div class="col-md-6">
@@ -2030,14 +2008,6 @@
                                                     Approvel success
                                                 </label>
                                             </div>
-                                            <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['deleteApprovel'] == '2') {
-                                                                                                                                                    echo 'checked';
-                                                                                                                                                } ?>>
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
-                                            </div> -->
                                         </div>
                                     </fieldset>
                                     <div class="col-md-6">
@@ -2047,13 +2017,6 @@
                                         </div>
                                     </div>
                                 <?php }
-                                ?>
-                                <?php
-                                if ($this->data['manageEmployer'][0]['deleteRequest'] == '1') {
-                                ?>
-
-                                <?php
-                                }
                                 ?>
                                 <!-- <div class="col-md-6">
                                 <label>Admin Verification Remarks</label>
