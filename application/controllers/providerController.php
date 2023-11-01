@@ -8,11 +8,20 @@ class ProviderController extends CI_Controller
         $this->load->library('session');
     }
 
+    public function login()
+	{
+		$this->load->view('employerLogin.php');
+	}
+
+    public function registration()
+	{
+		$this->load->view('providerRegistration.php');
+	}
 
     public function index()
     {
         //$responses=$this->RegistrationModel->register();
-        $this->load->view('providerLogin.php');
+        $this->load->view('employerLogin.php');
     }
 
 
@@ -59,10 +68,10 @@ class ProviderController extends CI_Controller
             );
             $this->session->set_userdata($userLoggedIn);
             $this->data['method'] = "dashboard";
-            $this->load->view('exampleDashboard.php', $this->data);
+            $this->load->view('employerDashboard.php', $this->data);
         } else {
 
-            $this->load->view('providerLogin.php');
+            $this->load->view('employerLogin.php');
             echo '<script>alert("Please enter registered company details.");</script>';
         }
     }
@@ -89,7 +98,7 @@ class ProviderController extends CI_Controller
     public function dashboard()
     {
         $this->data['method'] = "dashboard";
-        $this->load->view('exampleDashboard.php', $this->data);
+        $this->load->view('employerDashboard.php', $this->data);
     }
 
 
@@ -99,7 +108,7 @@ class ProviderController extends CI_Controller
         $this->data['method'] = "updateJob";
         $provider = $this->RegistrationModel->provider_detail();
         $this->data['providerDetail'] = $provider;
-        $this->load->view('exampleDashboard.php', $this->data);
+        $this->load->view('employerDashboard.php', $this->data);
     }
 
 
@@ -109,7 +118,7 @@ class ProviderController extends CI_Controller
         $tab = $this->RegistrationModel->addTab();
         $this->data['providerJobs'] = $tab;
 
-        $this->load->view('exampleDashboard.php', $this->data);
+        $this->load->view('employerDashboard.php', $this->data);
     }
 
 
@@ -120,7 +129,7 @@ class ProviderController extends CI_Controller
         $this->data['method'] = "match";
         $this->data['response'] = $response;
         $this->data['category'] = $jobCategory;
-        $this->load->view('exampleDashboard.php', $this->data);
+        $this->load->view('employerDashboard.php', $this->data);
     }
 
     public function matchedCandidate()
@@ -160,7 +169,7 @@ class ProviderController extends CI_Controller
     public function providerAddJob()
     {
         $this->data['method'] = "addnew";
-        $this->load->view('exampleDashboard.php', $this->data);
+        $this->load->view('employerDashboard.php', $this->data);
     }
 
 
@@ -183,7 +192,7 @@ class ProviderController extends CI_Controller
         $addjob = $this->RegistrationModel->updatejob($id);
         $this->data['updateAddNew'] = $addjob;
         //$this->load->view('update_addnew_jobs.php',$this->data);
-        $this->load->view('exampleDashboard.php', $this->data);
+        $this->load->view('employerDashboard.php', $this->data);
 
     }
     public function updateInsert()
@@ -233,7 +242,7 @@ class ProviderController extends CI_Controller
         $this->data['basicDetails'] = $seekerName;
 
 
-        $this->load->view('exampleDashboard.php', $this->data);
+        $this->load->view('employerDashboard.php', $this->data);
     }
 
 
