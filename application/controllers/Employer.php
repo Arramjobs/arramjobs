@@ -1,10 +1,10 @@
 <?php
-class ProviderController extends CI_Controller
+class Employer extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('RegistrationModel');
+        $this->load->model('EmployerModel');
         $this->load->library('session');
     }
 
@@ -15,20 +15,20 @@ class ProviderController extends CI_Controller
 
     public function registration()
 	{
-		$this->load->view('providerRegistration.php');
+		$this->load->view('employerRegistration.php');
 	}
 
     public function index()
     {
-        //$responses=$this->RegistrationModel->register();
+        //$responses=$this->EmployerModel->register();
         $this->load->view('employerLogin.php');
     }
 
 
     public function providerRegistration()
     {
-        $responses = $this->RegistrationModel->register();
-        $generatedid = $this->RegistrationModel->generate_customer_id();
+        $responses = $this->EmployerModel->register();
+        $generatedid = $this->EmployerModel->generate_customer_id();
         $data['generatedid'] = $generatedid;
         $this->load->view('employerRegistered.php', $data);
         echo '<script>alert("Registered successfully.");</script>';
@@ -39,7 +39,7 @@ class ProviderController extends CI_Controller
     //  public function load_login()
     // {
     //      $postData=$this->input->post(null,true);
-    //      $response=$this->RegistrationModel->database_login();
+    //      $response=$this->EmployerModel->database_login();
     //      if(isset($response[0]['id']))
     //     {
     //         $this->data['method']="dashboard";
@@ -58,7 +58,7 @@ class ProviderController extends CI_Controller
     public function viewDashboard()
     {
         $postData = $this->input->post(null, true);
-        $response = $this->RegistrationModel->providerLogin();
+        $response = $this->EmployerModel->providerLogin();
         if (isset($response[0]['id'])) {
             $userLoggedIn = array(
                 'jobProviderId' => $response[0]['id'],
@@ -78,7 +78,7 @@ class ProviderController extends CI_Controller
     // public function viewDashboard()
     // {
     //     $postData = $this->input->post(null, true);
-    //     $response = $this->RegistrationModel->database_login();
+    //     $response = $this->EmployerModel->database_login();
     //     if (isset($response[0]['id'])) {
     //         $userLoggedIn = array(
     //             'jobProviderId' => $response[0]['jobProviderId'],
@@ -106,7 +106,7 @@ class ProviderController extends CI_Controller
     public function providerUpdateRegistration()
     {
         $this->data['method'] = "updateJob";
-        $provider = $this->RegistrationModel->provider_detail();
+        $provider = $this->EmployerModel->provider_detail();
         $this->data['providerDetail'] = $provider;
         $this->load->view('employerDashboard.php', $this->data);
     }
@@ -115,7 +115,7 @@ class ProviderController extends CI_Controller
     public function jobViewTable()
     {
         $this->data['method'] = "jobview";
-        $tab = $this->RegistrationModel->addTab();
+        $tab = $this->EmployerModel->addTab();
         $this->data['providerJobs'] = $tab;
 
         $this->load->view('employerDashboard.php', $this->data);
@@ -125,7 +125,7 @@ class ProviderController extends CI_Controller
     public function jobMatchedTable()
     {
         $jobCategory = $this->uri->segment(3);
-        $response = $this->RegistrationModel->candidates($jobCategory);
+        $response = $this->EmployerModel->candidates($jobCategory);
         $this->data['method'] = "match";
         $this->data['response'] = $response;
         $this->data['category'] = $jobCategory;
@@ -135,7 +135,7 @@ class ProviderController extends CI_Controller
     public function matchedCandidate()
     {
 
-        $allcandidates = $this->RegistrationModel->matchedAllCandidate();
+        $allcandidates = $this->EmployerModel->matchedAllCandidate();
         $this->data['method'] = "allCandidate";
 
         $this->data['candidateView'] = $allcandidates;
@@ -156,7 +156,7 @@ class ProviderController extends CI_Controller
     public function update_record()
     {
         $postData = $this->input->post(null, true);
-        $var = $this->RegistrationModel->update_data();
+        $var = $this->EmployerModel->update_data();
 
         // echo "Record updated successfully";
         $this->jobViewTable();
@@ -177,7 +177,7 @@ class ProviderController extends CI_Controller
     public function insertJob()
     {
         $this->data['method'] = "jobs";
-        $addJob = $this->RegistrationModel->addNew();
+        $addJob = $this->EmployerModel->addNew();
 
         // $this->load->view('jobs.php');
         echo "Record added seccessfuly";
@@ -189,7 +189,7 @@ class ProviderController extends CI_Controller
     {
         $id = $this->uri->segment(3);
         $this->data['method'] = "updateaddnew";
-        $addjob = $this->RegistrationModel->updatejob($id);
+        $addjob = $this->EmployerModel->updatejob($id);
         $this->data['updateAddNew'] = $addjob;
         //$this->load->view('update_addnew_jobs.php',$this->data);
         $this->load->view('employerDashboard.php', $this->data);
@@ -198,7 +198,7 @@ class ProviderController extends CI_Controller
     public function updateInsert()
     {
         $postData = $this->input->post(null, true);
-        $add = $this->RegistrationModel->update_job();
+        $add = $this->EmployerModel->update_job();
 
         echo "Record updated Successfully";
         $this->jobViewTable();
@@ -207,7 +207,7 @@ class ProviderController extends CI_Controller
     public function deleteAddJob()
     {
         $deleteId = $this->uri->segment(3);
-        $delete = $this->RegistrationModel->deleteAddJob($deleteId);
+        $delete = $this->EmployerModel->deleteAddJob($deleteId);
         if ($delete == null) {
             echo "Record deleted successfully";
         } else {
@@ -223,22 +223,22 @@ class ProviderController extends CI_Controller
         $this->data['method'] = "resume";
 
 
-        $education = $this->RegistrationModel->educationalDetails($id);
+        $education = $this->EmployerModel->educationalDetails($id);
         $this->data['education'] = $education;
 
-        $skills = $this->RegistrationModel->skills($id);
+        $skills = $this->EmployerModel->skills($id);
         $this->data['skills'] = $skills;
 
-        $projectDetails = $this->RegistrationModel->projectDetails($id);
+        $projectDetails = $this->EmployerModel->projectDetails($id);
         $this->data['projectDetails'] = $projectDetails;
 
-        $areaOfInterest = $this->RegistrationModel->areaOfInterest($id);
+        $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
         $this->data['areaOfInterest'] = $areaOfInterest;
 
-        $experienceDetails = $this->RegistrationModel->experienceDetails($id);
+        $experienceDetails = $this->EmployerModel->experienceDetails($id);
         $this->data['experienceDetails'] = $experienceDetails;
 
-        $seekerName = $this->RegistrationModel->candidate($id);
+        $seekerName = $this->EmployerModel->candidate($id);
         $this->data['basicDetails'] = $seekerName;
 
 
@@ -251,7 +251,7 @@ class ProviderController extends CI_Controller
         $postData = $this->input->post(null, true);
         $category = $postData['category'];
         $subcategory = $postData['subcategory'];
-        $filter = $this->RegistrationModel->filterCandidate($category, $subcategory);
+        $filter = $this->EmployerModel->filterCandidate($category, $subcategory);
         $this->data['filtercandidate'] = $filter;
         $this->data['method'] = "filltercandidate";
         $this->load->view('exampleDashboard.php', $this->data);
@@ -266,14 +266,6 @@ class ProviderController extends CI_Controller
 
 
 
-
-
-
-
-
-
-
-
     //     public function filter() {
     //         $this->data['method']="match";
     //         $category = $this->input->post('category'); 
@@ -281,7 +273,7 @@ class ProviderController extends CI_Controller
 
 
 
-    //         $filtered_records = $this->RegistrationModel->getFilteredRecords($category, $subcategory);
+    //         $filtered_records = $this->EmployerModel->getFilteredRecords($category, $subcategory);
 
     //         $data['filtered_records'] = $filtered_records;
     //         $this->load->view('exampleDashboard.php', $data); 
@@ -293,45 +285,11 @@ class ProviderController extends CI_Controller
     // public function innerjoin()
     // {
     //     $id=$this->uri->segment(3);
-    //     $this->load->RegistrationModel->joinTables($id);
+    //     $this->load->EmployerModel->joinTables($id);
     // }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
 
 ?>

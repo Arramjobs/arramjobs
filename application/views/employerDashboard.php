@@ -116,7 +116,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "providerController/logout" ?>">
+                            <a class="dropdown-item d-flex align-items-center" onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "Employer/logout" ?>">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Log Out</span>
                             </a>
@@ -137,14 +137,14 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="<?php echo baseUrl . "providerController/dashboard" ?>">
+                <a class="nav-link " href="<?php echo baseUrl . "Employer/dashboard" ?>">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link "   href="<?php echo baseUrl . "providerController/providerUpdateRegistration" ?>">
+                <a class="nav-link "   href="<?php echo baseUrl . "Employer/providerUpdateRegistration" ?>">
                     <!-- <i class="bi bi-menu-button-wide"></i> -->
                     <i class="bi bi-person"></i>
                     <span>Employer Profile</span>
@@ -152,7 +152,7 @@
             </li><!-- End profile Nav -->
 
             <li class="nav-item">
-                <a class="nav-link "   href="<?php echo baseUrl . "providerController/jobViewTable" ?>">
+                <a class="nav-link "   href="<?php echo baseUrl . "Employer/jobViewTable" ?>">
                     <i class="bi bi-bar-chart"></i>
                     <span>Employer Jobs</span>
                 </a>
@@ -185,7 +185,7 @@
 
                                 <h5 class="card-title">Welcome To Employer Dashboard</h5>
                                 <div class="col-12">
-                                    <div class="card info-card sales-card p-2 ">
+                                    <div class="card info-card sales-card p-4 ">
 
                                         <p>At Arram Job Providing, we firmly believe that the key to a prosperous organization lies in
                                              having the right people onboard. Be it team expansion, project initiation, or the need for
@@ -227,63 +227,63 @@
                             $file_path = $value['company_logo'];
                         ?>
                             <!-- Multi Columns Form -->
-                            <form name="forms" class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "providerController/update_record" ?>" method="post" enctype="multipart/form-data" onsubmit="return validateprofile()">
+                            <form name="forms" class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Employer/update_record" ?>" method="post" enctype="multipart/form-data" onsubmit="return validateprofile()">
                             <input type="hidden" class="form-control" value=<?php echo $value['id']; ?> id="id" name="id"  onkeypress="return allowOnlyLetters(event, this)">
                                 <div class="col-md-12">
-                                    <label for="inputName5" class="form-label">Name</label>
+                                    <label for="inputName5" class="form-label">Name:</label>
                                     <input type="text" class="form-control" id="inputName5" name="name" value="<?php echo $value['company_name']; ?>"
                                     onkeypress="return allowOnlyLetters(event, this)" placeholder="Enter name" required>
                                     <p id="nameerr" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputNumber5" class="form-label">Mobile Number</label>
+                                    <label for="inputNumber5" class="form-label">Mobile Number:</label>
                                     <input type="number" class="form-control" id="inputNumber5" value='<?php echo $value['company_mobile_number']; ?>' name="phno" placeholder="Enter mobile number" required>
                                     <p id="pherr" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Email</label>
+                                    <label for="inputEmail5" class="form-label">Email:</label>
                                     <input type="email" class="form-control" id="inputEmail5" name="email" 
                                     value='<?php echo $value['company_email']; ?>' placeholder="Enter email" required >
                                     <p id="mailerr" style="color: red;"></p>
                                 </div>
-                                <div class="col-12">
-                                    <label for="inputAddres5s" class="form-label">Street Address</label>
+                                <div class="col-md-6">
+                                    <label for="inputAddres5s" class="form-label">Street Address:</label>
                                     <input type="text" class="form-control" id="inputAddres5s" value='<?php echo $value['street_address']; ?>' 
                                       name="addr" placeholder="Enter address" required>
                                     <p id="adderr" style="color: red;"></p>
                                 </div>
-                                <div class="col-12">
-                                    <label for="inputAddress2" class="form-label">Landmark</label>
+                                <div class="col-md-6">
+                                    <label for="inputAddress2" class="form-label">Landmark:</label>
                                     <input type="text" class="form-control" id="inputAddress2"  value='<?php echo $value['Landmark']; ?>' 
                                     name="landmark1" placeholder="Enter landmark" required>
                                 <p id="landerr1" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputCity" class="form-label">City</label>
+                                    <label for="inputCity" class="form-label">City:</label>
                                     <input type="text" class="form-control" id="inputCity"  value='<?php echo $value['City']; ?>'
                                     name="city1" placeholder="Enter city" required>
                                 <p id="cityerr1" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputDistrict" class="form-label">District</label>
+                                    <label for="inputDistrict" class="form-label">District:</label>
                                     <input type="text" class="form-control" id="inputDistrict" value='<?php echo $value['district']; ?>' 
                                     name="district1" placeholder="Enter district" required>
                                 <p id="diserr1" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputState" class="form-label">State</label>
+                                    <label for="inputState" class="form-label">State:</label>
                                     <input type="text" class="form-control"  value='<?php echo $value['state']; ?>' 
                                     id="inputState" name="state1" placeholder="Enter state" required>
                                 <p id="stateerr1" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPincode" class="form-label">Pincode</label>
+                                    <label for="inputPincode" class="form-label">Pincode:</label>
                                     <input type="text" class="form-control" id="inputPincode" value='<?php echo $value['pincode']; ?>' 
                                     name="pincode1" placeholder="Enter pincode" required>
                                 <p id="pinerr1" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="logo1" class="form-label">Logo</label>
+                                    <label for="logo1" class="form-label">Logo:</label>
                                     <div class="uploadedfile" style="display:flex;">
                                     <input type="file" class="form-control" id="logo1" name="logo1" value="<?php echo $value['company_logo']; ?>" hidden/>
                                     <label id="file-input-label" class="form-control" for="logo1">Change File</label>  
@@ -294,18 +294,18 @@
                                     <p style="color:grey;textalign:center;font-size:small;">PNG, JPG, JPEG, PDF Maximum size: 1024KB</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="cwebsite1" class="form-label">Website</label>
+                                    <label for="cwebsite1" class="form-label">Website:</label>
                                     <input type="text" class="form-control" value='<?php echo $value['companywebsite']; ?>'
                                      id="cwebsite1" name="cwebsite1" placeholder="Enter company website">
                                     <p id="weberr" style="color: red;"></p>
                                 </div> <div class="col-md-6">
-                                    <label for="cpan1" class="form-label">PAN Number</label>
+                                    <label for="cpan1" class="form-label">PAN Number:</label>
                                     <input type="text" class="form-control"   value='<?php echo $value['companypan']; ?>'
                                      id="cpan1" name="cpan1" placeholder="Enter company pan number">
                                     <p id="weberr" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="cgst1" class="form-label">GST Number</label>
+                                    <label for="cgst1" class="form-label">GST Number:</label>
                                     <input type="text" class="form-control" value='<?php echo $value['companygst']; ?>' 
                                     id="cgst1" name="cgst1" placeholder="Enter company gst number">
                                 <p id="weberr" style="color: red;"></p>
@@ -313,25 +313,25 @@
 
                                 <h5 class="card-title">Contact Person Details</h5>
                                 <div class="col-md-6">
-                                    <label for="cpname" class="form-label">Name</label>
+                                    <label for="cpname" class="form-label">Name:</label>
                                     <input type="text" class="form-control" id="cpname" value='<?php echo $value['name']; ?>'
                                     name="name1" placeholder="Enter name" onkeypress="return allowOnlyLetters1(event, this)" required>
                                     <p id="nameerr1" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="cprole" class="form-label">Role</label>
+                                    <label for="cprole" class="form-label">Role:</label>
                                     <input type="text" class="form-control" id="cprole" value='<?php echo $value['role']; ?>' 
                                      name="role" placeholder="Enter role" required>
                                 <p id="rolerr" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="cpmobilno" class="form-label">Mobile Number</label>
+                                    <label for="cpmobilno" class="form-label">Mobile Number:</label>
                                     <input type="number" class="form-control" id="cpmobilno" value='<?php echo $value['mobile_number']; ?>'
                                      name="phno1" placeholder="Enter mobile number" required>
                                 <p id="pherr1" style="color: red;"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="cpemail" class="form-label">Email-ID</label>
+                                    <label for="cpemail" class="form-label">Email-ID:</label>
                                     <input type="email" class="form-control" id="cpemail" value='<?php echo $value['email']; ?>'
                                     name="mail1" placeholder="Enter email" required>
                                 <p id="mailerr1" style="color: red;"></p>
@@ -609,9 +609,9 @@
                             <h5 class="card-title">Jobs</h5>
 
                             <div class="d-flex justify-content-between">
-                                     <a href="<?php echo baseUrl . "providerController/providerAddJob" ?>">
+                                     <a href="<?php echo baseUrl . "Employer/providerAddJob" ?>">
                                      <button type="button" class="btn btn-info mb-4">+ Add Job Requirements</button></a>
-                                     <a  href="<?php echo baseUrl . "providerController/providerUpdateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
+                                     <a  href="<?php echo baseUrl . "Employer/providerUpdateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
                                     </div>
                                 <?php
                                 if (isset($this->data['providerJobs'][0]['company_name'])) {
@@ -652,9 +652,9 @@
                                                             <td><?php echo $value['number_of_openings'] ?></td>
                                                             <td><?php echo $twelveHourTime ?></td>
                                                             <td class="d-flex">
-                                                            <a href="<?php echo baseUrl . "providerController/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>"><button type="button" class="btn btn-success">List</button></a>
-                                                            <a class="px-1" href="<?php echo baseUrl . "providerController/updateAddNew" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary">Edit</button></a>
-                                                            <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "providerController/deleteAddJob" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                            <a href="<?php echo baseUrl . "Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>"><button type="button" class="btn btn-success">List</button></a>
+                                                            <a class="px-1" href="<?php echo baseUrl . "Employer/updateAddNew" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary">Edit</button></a>
+                                                            <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employer/deleteAddJob" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                                                       </td> 
                                                         </tr>
                                                     <?php
@@ -692,7 +692,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Add New Job Requirement</h5>
 
-                 <form class="row g-3 needs-validation" novalidate name="experienceform" method="post" onsubmit="return validateForm()" action="<?php echo baseUrl . "providerController/insertJob" ?>">
+                 <form class="row g-3 needs-validation" novalidate name="experienceform" method="post" onsubmit="return validateForm()" action="<?php echo baseUrl . "Employer/insertJob" ?>">
 
                     <div class="col-12">
                         <label class="form-label" for="company_name">Company Name:</label>
@@ -716,7 +716,7 @@
                         <div id="category_error" class="error"></div>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label" for="subcategory">Subcategory</label>
+                        <label class="form-label" for="subcategory">Subcategory:</label>
                         <input class="form-control" id="subcategory" name="subcategory"  placeholder="Enter subcategory" required>
                         <div id="subcategory_error" class="error"></div>
                     </div>
@@ -915,7 +915,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Update Job Requirement</h5>
-                <form class="row g-3 needs-validation" novalidate name="experienceform" method="post" onsubmit="return validateFormUpdate()" action="<?php echo baseUrl . "providerController/updateInsert" ?>">
+                <form class="row g-3 needs-validation" novalidate name="experienceform" method="post" onsubmit="return validateFormUpdate()" action="<?php echo baseUrl . "Employer/updateInsert" ?>">
                     <?php
                     foreach ($this->data['updateAddNew'] as $key => $value) {
                     ?>
@@ -951,7 +951,7 @@
                             <div id="category_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
-                              <label class="form-label"  for="subcategory">Subcategory</label>
+                              <label class="form-label"  for="subcategory">Subcategory:</label>
                               <input class="form-control" id="subcategory" name="subcategory" value="<?php echo $value['jobSubCategory']; ?>" placeholder="Enter subcategory" required>
                               <div id="subcategory_error" class="error"></div>
                         </div>
@@ -1167,7 +1167,7 @@
                         <div class="card recent-sales overflow-auto">
 
                        
-                          <a  href="<?php echo baseUrl . "providerController/jobViewTable" ?>"> <button type="button" class="btn btn-info m-4 ">Back</button></a>
+                          <a  href="<?php echo baseUrl . "Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info m-4 ">Back</button></a>
     
                             <div class="card-body">
                                 <?php
@@ -1197,7 +1197,7 @@
                                                             <td><?php echo $value['oisc'] ?></td>
                                                             <td><?php echo $value['exps'] ?></td>
                                                             <td><?php echo $value['skills'] ?></td>
-                                                            <td><a href="<?php echo baseUrl . "providerController/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
+                                                            <td><a href="<?php echo baseUrl . "Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
                                                             <a href="#"><button type="button" class="btn btn-success">Request</button></a>
                                                         </td>
                                                         </tr>
@@ -1471,8 +1471,8 @@
            <?php
         }
         ?>
- <!-- To download pdf -->
- <script type="text/javascript">
+    <!-- To download pdf -->
+    <script type="text/javascript">
                 function generatePDF() {
 
                     var element = document.getElementById('resumeprint');

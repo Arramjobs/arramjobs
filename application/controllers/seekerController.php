@@ -5,38 +5,34 @@ class SeekerController extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('SeekerModel');
+        $this->load->model('EmployeeModel');
         $this->load->library('session');
     }
 
     public function registration()
     {
-
-        $this->load->view('registrationform.php');
+        $this->load->view('employeeRegistration.php');
     }
-
-
 
 
     public function index()
     {
-        $this->load->view('loginform.php');
+        $this->load->view('employeeLogin.php');
     }
 
     public function otpregister()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // $response = $this->SeekerModel->otp();
+            // $response = $this->EmployeeModel->otp();
             echo "<script>window.location.href = 'dash';</script>";
         }
-
         $this->load->view('seekerOtp.php');
     }
 
     public function seekerLogin()
     {
         $postData = $this->input->post(null, true);
-        $login = $this->SeekerModel->seekerLogin();
+        $login = $this->EmployeeModel->seekerLogin();
         if (isset($login[0]['id'])) {
             $userLoggedIn = array(
                 'seekerId' => $login[0]['id'],
@@ -53,16 +49,16 @@ class SeekerController extends CI_Controller
             $this->dash();
         } else {
 
-            $this->load->view('loginform.php', $this->data);
-            echo '<script>alert("Please enter registered user details.");</script>';
+            $this->load->view('employeeLogin.php', $this->data);
+            echo '<script>alert("Please enter valid details.");</script>';
         }
     }
 
     public function seekerRegistration()
     {
         $postData = $this->input->post(null, true);
-        $register = $this->SeekerModel->register();
-        $generatedeeid = $this->SeekerModel->generate_customer_id();
+        $register = $this->EmployeeModel->register();
+        $generatedeeid = $this->EmployeeModel->generate_customer_id();
         $data['generatedeeid'] = $generatedeeid;
         // $this->load->view('loginform.php');
         $this->load->view('employeeRegistered.php', $data);
@@ -73,23 +69,23 @@ class SeekerController extends CI_Controller
     public function dash()
     {
         $data['method'] = "dash";
-        $this->load->view('seekerView.php', $data);
+        $this->load->view('employeeDashboard.php', $data);
     }
 
 
     public function basicDetails()
     {
-        // $this->load->model('SeekerModel');
-        $basicDetails = $this->SeekerModel->getBasicDetails();
+        // $this->load->model('EmployeeModel');
+        $basicDetails = $this->EmployeeModel->getBasicDetails();
         $this->data['basicDetails'] = $basicDetails;
         $this->data['method'] = 'basicdetails';
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
     public function updateBasicDetails()
     {
         $postData = $this->input->post(null, true);
-        $updateBasicDetails = $this->SeekerModel->updateBasicDetails();
+        $updateBasicDetails = $this->EmployeeModel->updateBasicDetails();
 
         // $this->basicDetails();
         $this->educationTable();
@@ -103,7 +99,7 @@ class SeekerController extends CI_Controller
     public function educationTable()
     {
         $this->data['method'] = "educationTable";
-        $educationTable = $this->SeekerModel->educationTable();
+        $educationTable = $this->EmployeeModel->educationTable();
         $this->data['educationTable'] = $educationTable;
 
         $this->load->view('seekerView.php', $this->data);
@@ -118,8 +114,8 @@ class SeekerController extends CI_Controller
 
     public function insertEducationForm()
     {
-        $insertEducationForm = $this->SeekerModel->insertEducationForm();
-        $insertEducationForm = $this->SeekerModel->insertSubmit();
+        $insertEducationForm = $this->EmployeeModel->insertEducationForm();
+        $insertEducationForm = $this->EmployeeModel->insertSubmit();
 
         $this->educationTable();
         echo '<script>alert("Education details inserted successfully.");</script>';
@@ -129,14 +125,14 @@ class SeekerController extends CI_Controller
     {
         $educationId = $this->uri->segment(3);
         $this->data['method'] = "updateEducation";
-        $updateEducation = $this->SeekerModel->updateEducation($educationId);
+        $updateEducation = $this->EmployeeModel->updateEducation($educationId);
         $this->data['updateEducation'] = $updateEducation;
         $this->load->view('seekerView.php', $this->data);
     }
     public function updateInsertEducation()
     {
         $post = $this->input->post(null, true);
-        $updateInsertEducation = $this->SeekerModel->updateInsertEducation();
+        $updateInsertEducation = $this->EmployeeModel->updateInsertEducation();
 
         $this->educationTable();
         echo '<script>alert("Education details updated successfully.");</script>';
@@ -147,7 +143,7 @@ class SeekerController extends CI_Controller
     public function deleteEducation()
     {
         $deleteEducationId = $this->uri->segment(3);
-        $delete = $this->SeekerModel->deleteEducation($deleteEducationId);
+        $delete = $this->EmployeeModel->deleteEducation($deleteEducationId);
         if ($delete == null) {
             $this->educationTable();
         } else {
@@ -157,15 +153,13 @@ class SeekerController extends CI_Controller
 
 
 
-
-
     // experience
 
 
     public function experienceTable()
     {
         $this->data['method'] = "experienceTable";
-        $experienceTable = $this->SeekerModel->experienceTable();
+        $experienceTable = $this->EmployeeModel->experienceTable();
         $this->data['experienceTable'] = $experienceTable;
 
         $this->load->view('seekerView.php', $this->data);
@@ -178,19 +172,19 @@ class SeekerController extends CI_Controller
     }
     public function insertExperienceForm()
     {
-        $insertExperienceForm = $this->SeekerModel->insertExperienceForm();
-        $insertExperienceForm = $this->SeekerModel->insertSubmitExp();
+        $insertExperienceForm = $this->EmployeeModel->insertExperienceForm();
+        $insertExperienceForm = $this->EmployeeModel->insertSubmitExp();
 
 
         $this->experienceTable();
         echo '<script>alert("Experience details inserted successfully.");</script>';
-
     }
+
     public function updateExperience()
     {
         $experienceId = $this->uri->segment(3);
         $this->data['method'] = "updateExperience";
-        $updateExperience = $this->SeekerModel->updateExperience($experienceId);
+        $updateExperience = $this->EmployeeModel->updateExperience($experienceId);
         $this->data['updateExperience'] = $updateExperience;
         $this->load->view('seekerView.php', $this->data);
     }
@@ -198,16 +192,15 @@ class SeekerController extends CI_Controller
     public function updateInsertExperience()
     {
         $post = $this->input->post(null, true);
-        $updateInsertExperience = $this->SeekerModel->updateInsertExperience();
+        $updateInsertExperience = $this->EmployeeModel->updateInsertExperience();
         $this->experienceTable();
         echo '<script>alert("Experience details updated successfully.");</script>';
-
     }
 
     public function deleteExperience()
     {
         $deleteExperienceId = $this->uri->segment(3);
-        $delete = $this->SeekerModel->deleteExperience($deleteExperienceId);
+        $delete = $this->EmployeeModel->deleteExperience($deleteExperienceId);
         if ($delete == null) {
             $this->experienceTable();
         } else {
@@ -221,7 +214,7 @@ class SeekerController extends CI_Controller
     public function projectTable()
     {
         $this->data['method'] = "projectTable";
-        $projectTable = $this->SeekerModel->projectTable();
+        $projectTable = $this->EmployeeModel->projectTable();
         $this->data['projectTable'] = $projectTable;
 
         $this->load->view('seekerView.php', $this->data);
@@ -235,7 +228,7 @@ class SeekerController extends CI_Controller
 
     public function insertProjectForm()
     {
-        $insertProjectForm = $this->SeekerModel->insertProjectForm();
+        $insertProjectForm = $this->EmployeeModel->insertProjectForm();
 
         $this->projectTable();
     }
@@ -244,7 +237,7 @@ class SeekerController extends CI_Controller
     {
         $projectId = $this->uri->segment(3);
         $this->data['method'] = "updateProject";
-        $updateProject = $this->SeekerModel->updateProject($projectId);
+        $updateProject = $this->EmployeeModel->updateProject($projectId);
         $this->data['updateProject'] = $updateProject;
         $this->load->view('seekerView.php', $this->data);
     }
@@ -252,14 +245,14 @@ class SeekerController extends CI_Controller
     public function updateInsertProject()
     {
         $post = $this->input->post(null, true);
-        $updateInsertProject = $this->SeekerModel->updateInsertProject();
+        $updateInsertProject = $this->EmployeeModel->updateInsertProject();
         $this->projectTable();
     }
 
     public function deleteProject()
     {
         $deleteProjectId = $this->uri->segment(3);
-        $delete = $this->SeekerModel->deleteProject($deleteProjectId);
+        $delete = $this->EmployeeModel->deleteProject($deleteProjectId);
         if ($delete == null) {
             $this->projectTable();
         } else {
@@ -273,7 +266,7 @@ class SeekerController extends CI_Controller
     public function areaOfIntrestTable()
     {
         $this->data['method'] = "areaOfIntrestTable";
-        $areaOfIntrestTable = $this->SeekerModel->areaOfIntrestTable();
+        $areaOfIntrestTable = $this->EmployeeModel->areaOfIntrestTable();
         $this->data['areaOfIntrestTable'] = $areaOfIntrestTable;
 
         $this->load->view('seekerView.php', $this->data);
@@ -287,8 +280,8 @@ class SeekerController extends CI_Controller
 
     public function insertAreaOfIntrest()
     {
-        $insertAreaOfIntrest = $this->SeekerModel->insertAreaOfIntrest();
-        $insertAreaOfIntrest = $this->SeekerModel->insertSubmitArea();
+        $insertAreaOfIntrest = $this->EmployeeModel->insertAreaOfIntrest();
+        $insertAreaOfIntrest = $this->EmployeeModel->insertSubmitArea();
 
 
         $this->areaOfIntrestTable();
@@ -300,7 +293,7 @@ class SeekerController extends CI_Controller
     {
         $updateAreaOfIntrestId = $this->uri->segment(3);
         $this->data['method'] = "updateAreaOfIntrest";
-        $updateAreaOfIntrest = $this->SeekerModel->updateAreaOfIntrest($updateAreaOfIntrestId);
+        $updateAreaOfIntrest = $this->EmployeeModel->updateAreaOfIntrest($updateAreaOfIntrestId);
         $this->data['updateAreaOfIntrest'] = $updateAreaOfIntrest;
         $this->load->view('seekerView.php', $this->data);
     }
@@ -309,7 +302,7 @@ class SeekerController extends CI_Controller
     public function updateInsertAreaOfIntrest()
     {
         $post = $this->input->post(null, true);
-        $updateInsertAreaOfIntrest = $this->SeekerModel->updateInsertAreaOfIntrest();
+        $updateInsertAreaOfIntrest = $this->EmployeeModel->updateInsertAreaOfIntrest();
         $this->areaOfIntrestTable();
         echo '<script>alert("Area of interest updated successfully.");</script>';
 
@@ -318,7 +311,7 @@ class SeekerController extends CI_Controller
     public function deleteAreaOfIntrest()
     {
         $deleteAreaOfIntrestId = $this->uri->segment(3);
-        $delete = $this->SeekerModel->deleteAreaOfIntrest($deleteAreaOfIntrestId);
+        $delete = $this->EmployeeModel->deleteAreaOfIntrest($deleteAreaOfIntrestId);
         if ($delete == null) {
             $this->areaOfIntrestTable();
         } else {
@@ -326,13 +319,13 @@ class SeekerController extends CI_Controller
         }
     }
 
-    // skills
 
+    // skills
 
     public function skillTable()
     {
         $this->data['method'] = "skillTable";
-        $skillTable = $this->SeekerModel->skillTable();
+        $skillTable = $this->EmployeeModel->skillTable();
         $this->data['skillTable'] = $skillTable;
 
         $this->load->view('seekerView.php', $this->data);
@@ -347,7 +340,7 @@ class SeekerController extends CI_Controller
 
     public function insertSkillForm()
     {
-        $insertSkillForm = $this->SeekerModel->insertSkillForm();
+        $insertSkillForm = $this->EmployeeModel->insertSkillForm();
 
         $this->skillTable();
     }
@@ -356,7 +349,7 @@ class SeekerController extends CI_Controller
     {
         $updateSkillId = $this->uri->segment(3);
         $this->data['method'] = "updateSkill";
-        $updateSkill = $this->SeekerModel->updateSkill($updateSkillId);
+        $updateSkill = $this->EmployeeModel->updateSkill($updateSkillId);
         $this->data['updateSkill'] = $updateSkill;
         $this->load->view('seekerView.php', $this->data);
     }
@@ -364,14 +357,14 @@ class SeekerController extends CI_Controller
     public function updateInsertSkill()
     {
         $post = $this->input->post(null, true);
-        $updateInsertSkill = $this->SeekerModel->updateInsertSkill();
+        $updateInsertSkill = $this->EmployeeModel->updateInsertSkill();
         $this->skillTable();
     }
 
     public function deleteSkill()
     {
         $deleteSkillId = $this->uri->segment(3);
-        $delete = $this->SeekerModel->deleteSkill($deleteSkillId);
+        $delete = $this->EmployeeModel->deleteSkill($deleteSkillId);
         if ($delete == null) {
             $this->skillTable();
         } else {
@@ -391,8 +384,8 @@ class SeekerController extends CI_Controller
     // public function educationalDetails()
     // {
 
-    //     $this->load->model('SeekerModel');
-    //     $educationalDetails = $this->SeekerModel->getEducationalDetails();
+    //     $this->load->model('EmployeeModel');
+    //     $educationalDetails = $this->EmployeeModel->getEducationalDetails();
     //     $this->data['educationalDetails'] = $educationalDetails;
     //     $this->data['method'] = 'educationalDetails';
     //     $this->load->view('seekerView.php', $this->data);
@@ -401,7 +394,7 @@ class SeekerController extends CI_Controller
     // {
 
     //     $postData = $this->input->post(null, true);
-    //     $updateEducationDetails = $this->SeekerModel->updateEducationDetails();
+    //     $updateEducationDetails = $this->EmployeeModel->updateEducationDetails();
 
     //     $this->educationalDetails();
     // }
@@ -409,7 +402,7 @@ class SeekerController extends CI_Controller
     // {
 
     //     $this->data['method'] = 'experienceTable';
-    //     $experienceTable=$this->SeekerModel->getExperienceDetails();
+    //     $experienceTable=$this->EmployeeModel->getExperienceDetails();
     //     $this->data['experienceTable']=$experienceTable;
     //     $this->load->view('seekerView.php', $this->data);
     // }
@@ -422,7 +415,7 @@ class SeekerController extends CI_Controller
     // public function insertExperience()
     // {
     //     $this->data['method'] = "jobs";
-    //     $insertExperience = $this->SeekerModel->insertExperience();
+    //     $insertExperience = $this->EmployeeModel->insertExperience();
 
     //     $this->load->view('seekerView.php', $this->data);
     //     echo "Record added seccessfuly";
@@ -431,8 +424,8 @@ class SeekerController extends CI_Controller
 
     //  public function experienceDetails()
     // {
-    //     $this->load->model('SeekerModel');
-    //     $experienceDetails = $this->SeekerModel->getExperienceDetails();
+    //     $this->load->model('EmployeeModel');
+    //     $experienceDetails = $this->EmployeeModel->getExperienceDetails();
     //     $this->data['experienceDetails'] = $experienceDetails;
     //     $this->data['method'] = 'experienceDetails';
     //     $this->load->view('seekerView.php', $this->data);
@@ -443,7 +436,7 @@ class SeekerController extends CI_Controller
     //     $id = $this->uri->segment(3);
     //     $this->data['method'] = "updateExperienceDetails";
     //     // $postData = $this->input->post(null, true);
-    //     $updateExperienceDetails = $this->SeekerModel->updateExperienceDetails($id);
+    //     $updateExperienceDetails = $this->EmployeeModel->updateExperienceDetails($id);
     //     $this->data['updateExperienceDetails'] = $updateExperienceDetails;
     //     $this->load->view('seekerView.php', $this->data);
 
@@ -454,13 +447,11 @@ class SeekerController extends CI_Controller
     // public function projectDetails(){
 
 
-    //         $this->load->model('SeekerModel');
-    //         $provider = $this->SeekerModel->getProjectDetails(); 
+    //         $this->load->model('EmployeeModel');
+    //         $provider = $this->EmployeeModel->getProjectDetails(); 
     //         $this->data['projectDetails'] = $provider;
     //         $this->data['method'] = "project";
     //         $this->load->view('seekerView.php', $this->data);
-
-
 
     // }
 
@@ -469,7 +460,7 @@ class SeekerController extends CI_Controller
     // {
 
     //     $postData = $this->input->post(null, true);
-    //     $updateProjectDetails = $this->SeekerModel->updateProjectDetails();
+    //     $updateProjectDetails = $this->EmployeeModel->updateProjectDetails();
 
     //     $this->projectDetails();
     // }
@@ -477,7 +468,7 @@ class SeekerController extends CI_Controller
     // public function areaofinterest(){
 
     //     $this->data['method'] = "areaofinterest";
-    //     $provider = $this->SeekerModel->getAreaOfInterest();
+    //     $provider = $this->EmployeeModel->getAreaOfInterest();
     //     $this->data['areaofinterest'] = $provider;
     //     $this->load->view('seekerView.php', $this->data);
     // }
@@ -487,7 +478,7 @@ class SeekerController extends CI_Controller
     // {
 
     //     $postData = $this->input->post(null, true);
-    //     $updateAreaOfInterest = $this->SeekerModel->updateAreaOfInterest();
+    //     $updateAreaOfInterest = $this->EmployeeModel->updateAreaOfInterest();
 
     //     $this->areaofinterest();
     // }
@@ -497,14 +488,14 @@ class SeekerController extends CI_Controller
     // {
 
     //     $this->data['method'] = "skills";
-    //     $provider = $this->SeekerModel->getSkills();
+    //     $provider = $this->EmployeeModel->getSkills();
     //     $this->data['skills'] = $provider;
     //     $this->load->view('seekerView.php', $this->data);
     // }
 
     // public function updateskills(){
     //     $postData = $this->input->post(null, true);
-    //     $updateskills = $this->SeekerModel->updateskills();
+    //     $updateskills = $this->EmployeeModel->updateskills();
 
     //     $this->skills();
     // }
@@ -513,7 +504,7 @@ class SeekerController extends CI_Controller
 
     //       $this->data['method'] = "resume";
 
-    //     $resume=$this->SeekerModel->do_upload();
+    //     $resume=$this->EmployeeModel->do_upload();
     //     $this->data['resume'] = $resume;
     //      $this->load->view('seekerView.php',$this->data);
     //     }
@@ -523,7 +514,7 @@ class SeekerController extends CI_Controller
     {
 
         $this->data['method'] = "resume";
-        $resume = $this->SeekerModel->do_upload();
+        $resume = $this->EmployeeModel->do_upload();
         $this->data['resume'] = $resume;
         $this->load->view('seekerView.php', $this->data);
     }
@@ -531,8 +522,8 @@ class SeekerController extends CI_Controller
     public function resumeupload()
     {
         $this->data['method'] = "resume";
-        $resume = $this->SeekerModel->do_upload();
-        $submitresume = $this->SeekerModel->insertSubmitResume();
+        $resume = $this->EmployeeModel->do_upload();
+        $submitresume = $this->EmployeeModel->insertSubmitResume();
         $this->data['resume'] = $resume;
         $this->thank();
     }
@@ -553,9 +544,5 @@ class SeekerController extends CI_Controller
 
 
 
-
-
-
 }
-
 ?>

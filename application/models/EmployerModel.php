@@ -1,7 +1,7 @@
 <?php
 
 
-class RegistrationModel extends CI_Model
+class EmployerModel extends CI_Model
 {
   public function __construct()
   {
@@ -114,9 +114,6 @@ public function get_latest_customer_id() {
     return $count->result_array();
   }
 
-
-
-
   public function provider_detail()
   {
     $jobProviderId = $_SESSION['jobProviderId'];
@@ -129,9 +126,6 @@ public function get_latest_customer_id() {
     // $select = $this->db->query($provider);
     // return $select->result_array();
   }
-
-
-
 
 
   public function update_data()
@@ -185,9 +179,6 @@ public function get_latest_customer_id() {
 
 
 
-
-
-
   public function addNew()
   {
     $jobProviderId = $_SESSION['jobProviderId'];
@@ -227,7 +218,6 @@ public function get_latest_customer_id() {
   }
 
 
-
   public function updatejob($id)
   {
     $update = "SELECT * FROM `provider_job` Where `id`=$id";
@@ -264,8 +254,6 @@ public function get_latest_customer_id() {
     $del = $this->db->query($delete);
     // $this->db->where('id', $deleteId);
   }
-
-
 
 
   //   public function joinTables($jobCategory)
@@ -328,7 +316,6 @@ public function get_latest_customer_id() {
     $results = $this->db->query($allTableJoins, array($id));
     return $result->result();
   }
-
 
 
   public function educationalDetails($id)

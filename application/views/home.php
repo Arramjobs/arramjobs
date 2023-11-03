@@ -464,8 +464,8 @@
           EMPLOYER
           <p class="loginlink">
 
-            <a href="<?php echo baseUrl . "providerController/login" ?>" class="signlink">Login</a>
-            <a href="<?php echo baseUrl . "providerController/registration" ?>">Sign Up</a>
+            <a href="<?php echo baseUrl . "Employer/login" ?>" class="signlink">Login</a>
+            <a href="<?php echo baseUrl . "Employer/registration" ?>">Sign Up</a>
           </p>
         </div>
 
