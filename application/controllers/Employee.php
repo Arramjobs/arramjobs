@@ -1,5 +1,5 @@
 <?php
-class SeekerController extends CI_Controller
+class Employee extends CI_Controller
 {
     private $data = array();
     public function __construct()
@@ -102,13 +102,13 @@ class SeekerController extends CI_Controller
         $educationTable = $this->EmployeeModel->educationTable();
         $this->data['educationTable'] = $educationTable;
 
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
     public function addEducationForm()
     {
         $this->data['method'] = "addEducationForm";
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
 
     }
 
@@ -127,7 +127,7 @@ class SeekerController extends CI_Controller
         $this->data['method'] = "updateEducation";
         $updateEducation = $this->EmployeeModel->updateEducation($educationId);
         $this->data['updateEducation'] = $updateEducation;
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
     public function updateInsertEducation()
     {
@@ -162,12 +162,12 @@ class SeekerController extends CI_Controller
         $experienceTable = $this->EmployeeModel->experienceTable();
         $this->data['experienceTable'] = $experienceTable;
 
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
     public function addExperirenceForm()
     {
         $this->data['method'] = "addExperirenceForm";
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
 
     }
     public function insertExperienceForm()
@@ -186,7 +186,7 @@ class SeekerController extends CI_Controller
         $this->data['method'] = "updateExperience";
         $updateExperience = $this->EmployeeModel->updateExperience($experienceId);
         $this->data['updateExperience'] = $updateExperience;
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
     public function updateInsertExperience()
@@ -269,13 +269,13 @@ class SeekerController extends CI_Controller
         $areaOfIntrestTable = $this->EmployeeModel->areaOfIntrestTable();
         $this->data['areaOfIntrestTable'] = $areaOfIntrestTable;
 
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
     public function addAreaOfIntrestForm()
     {
         $this->data['method'] = "addAreaOfIntrestForm";
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
     public function insertAreaOfIntrest()
@@ -295,7 +295,7 @@ class SeekerController extends CI_Controller
         $this->data['method'] = "updateAreaOfIntrest";
         $updateAreaOfIntrest = $this->EmployeeModel->updateAreaOfIntrest($updateAreaOfIntrestId);
         $this->data['updateAreaOfIntrest'] = $updateAreaOfIntrest;
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
 
@@ -516,10 +516,10 @@ class SeekerController extends CI_Controller
         $this->data['method'] = "resume";
         $resume = $this->EmployeeModel->do_upload();
         $this->data['resume'] = $resume;
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
-    public function resumeupload()
+    public function registered()
     {
         $this->data['method'] = "resume";
         $resume = $this->EmployeeModel->do_upload();
@@ -531,9 +531,8 @@ class SeekerController extends CI_Controller
 
     public function thank()
     {
-
         $this->data['method'] = "thank";
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
     public function logout()

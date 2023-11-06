@@ -78,7 +78,7 @@
                                     </div>
 
                                     <form class="row g-3 needs-validation" novalidate onsubmit="return validateForm()"
-                                        action="<?php echo baseUrl . "seekerController/seekerRegistration" ?>"
+                                        action="<?php echo baseUrl . "Employee/seekerRegistration" ?>"
                                         name="registration_form" method="post">
 
                                         <div class="">
@@ -111,7 +111,7 @@
                                             <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                         </div>
                                         <div class="col-12">
-                                            <p class="small mb-0">Already have an account? <a href="<?php echo baseUrl . "seekerController" ?>">Login</a></p>
+                                            <p class="small mb-0">Already have an account? <a href="<?php echo baseUrl . "Employee" ?>">Login</a></p>
                                         </div>
                                     </form>
 

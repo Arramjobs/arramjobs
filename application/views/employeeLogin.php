@@ -65,7 +65,7 @@
                                         <p class="text-center small">Enter your registered id & mobile number to login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "seekerController/seekerLogin" ?>" method="post" onsubmit="return validateForm()">
+                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Employee/seekerLogin" ?>" method="post" onsubmit="return validateForm()">
 
                                         <div class="col-12">
                                             <label for="username" class="form-label">Registerd ID</label>
@@ -96,7 +96,7 @@
                                     <div class="col-12">
                                     <br>
                                         <div class="form-check">
-                                                <p>Create an account ? <a href="<?php echo baseUrl . "seekerController/registration" ?>">Register</a></p>
+                                                <p>Create an account ? <a href="<?php echo baseUrl . "Employee/registration" ?>">Register</a></p>
                                         </div>
                                     </div>
 

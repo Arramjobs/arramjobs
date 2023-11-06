@@ -1780,7 +1780,6 @@
                                       <tr>
 
                                         <td><?php echo $value['id'] ?></td>
-
                                         <td><?php echo $value['other_category'] ?></td>
                                         <td><?php echo $value['other_sub_category'] ?></td>
                                         <td><?php echo $value['experience'] ?></td>
@@ -1817,7 +1816,6 @@
                     <div class="form-group">
                       <label for="category">Category</label>
                       <select class="form-control" id="category" name="category">
-
                         <option value="">Select a Category</option>
                         <option value="architech">Architech</option>
                         <option value="developer">Developer</option>
@@ -2986,7 +2984,7 @@
                       
 
                      
-                          <!-- <div class="form-group" id="resumeupload">
+                          <div class="form-group" id="resumeupload">
                         <label class="mb-3" for="file">Uploaded Resume</label>
                         <input type="file" name="file" id="idresume" value=""  accept="image/png ,image/jpg, image/jpeg, application/pdf" required>
                         <div class="uploadedfile">
@@ -2994,7 +2992,7 @@
                         <label id="file-input-labelaf" for="idresume">Select File</label>  
                         <a href="<?php echo $value['resume_filename']; ?>" target="blank" id="existfileaf"  style="margin-top:10px"><?php echo $value['resume_filename_url']; ?></a>
                         </div>
-                      </div> -->
+                      </div>
 
 
                           <button id="resumeButton" type="submit" class="btn btn-primary">Submit</button>

@@ -144,7 +144,7 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link "   href="<?php echo baseUrl . "Employer/providerUpdateRegistration" ?>">
+                <a class="nav-link "   href="<?php echo baseUrl . "Employer/updateRegistration" ?>">
                     <!-- <i class="bi bi-menu-button-wide"></i> -->
                     <i class="bi bi-person"></i>
                     <span>Employer Profile</span>
@@ -609,9 +609,9 @@
                             <h5 class="card-title">Jobs</h5>
 
                             <div class="d-flex justify-content-between">
-                                     <a href="<?php echo baseUrl . "Employer/providerAddJob" ?>">
+                                     <a href="<?php echo baseUrl . "Employer/addNewJob" ?>">
                                      <button type="button" class="btn btn-info mb-4">+ Add Job Requirements</button></a>
-                                     <a  href="<?php echo baseUrl . "Employer/providerUpdateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
+                                     <a  href="<?php echo baseUrl . "Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
                                     </div>
                                 <?php
                                 if (isset($this->data['providerJobs'][0]['company_name'])) {

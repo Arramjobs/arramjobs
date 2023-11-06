@@ -103,7 +103,7 @@ class Employer extends CI_Controller
 
 
 
-    public function providerUpdateRegistration()
+    public function updateRegistration()
     {
         $this->data['method'] = "updateJob";
         $provider = $this->EmployerModel->provider_detail();
@@ -166,7 +166,7 @@ class Employer extends CI_Controller
 
 
 
-    public function providerAddJob()
+    public function addNewJob()
     {
         $this->data['method'] = "addnew";
         $this->load->view('employerDashboard.php', $this->data);

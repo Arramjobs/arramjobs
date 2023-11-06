@@ -29,13 +29,16 @@
     <!-- Template Main CSS File -->
     <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+   <style>
+   /* To hide arrows in number field */
+ #pincode::-webkit-outer-spin-button,
+   #pincode::-webkit-inner-spin-button ,
+   #year_passed::-webkit-outer-spin-button,
+    #year_passed::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+   </style>
 </head>
 
 <body>
@@ -50,14 +53,6 @@
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
-
-
-        <!-- <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
-        </div>End Search Bar -->
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
@@ -110,7 +105,7 @@
 
                         <li>
                             <a class="dropdown-item d-flex align-items-center" onclick="return confirm('Are you sure to logout?')"
-                             href="<?php echo baseUrl . "seekerController/logout" ?>">
+                             href="<?php echo baseUrl . "Employee/logout" ?>">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Log Out</span>
                             </a>
@@ -131,42 +126,42 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="<?php echo baseUrl . "seekerController/dash" ?>">
+                <a class="nav-link " href="<?php echo baseUrl . "Employee/dash" ?>">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo baseUrl . "seekerController/basicDetails" ?>">
+                <a class="nav-link" href="<?php echo baseUrl . "Employee/basicDetails" ?>">
                     <i class="bi bi-person"></i>
                     <span>Basic Details</span>
                 </a>
             </li><!-- End Tables Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo baseUrl . "seekerController/educationTable" ?>">
+                <a class="nav-link" href="<?php echo baseUrl . "Employee/educationTable" ?>">
                     <i class="bi bi-bar-chart"></i>
                     <span>Education Details</span>
                 </a>
             </li><!-- End Charts Nav -->
 
             <li class="nav-item">
-                <a class="nav-link " href="<?php echo baseUrl . "seekerController/experienceTable" ?>">
+                <a class="nav-link " href="<?php echo baseUrl . "Employee/experienceTable" ?>">
                     <i class="bi bi-gem"></i>
                     <span>Experience Details</span>
                 </a>
             </li><!-- End Icons Nav -->
 
             <li class="nav-item">
-                <a class="nav-link " href="<?php echo baseUrl . "seekerController/areaOfIntrestTable" ?>">
+                <a class="nav-link " href="<?php echo baseUrl . "Employee/areaOfIntrestTable" ?>">
                     <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Area of Interest</span>
+                    <span>Area of Job Interest</span>
                 </a>
             </li><!-- End Icons Nav -->
           
             <li class="nav-item">
-                <a class="nav-link " href="<?php echo baseUrl . "seekerController/resume" ?>">
+                <a class="nav-link " href="<?php echo baseUrl . "Employee/resume" ?>">
                     <i class="bi bi-file-earmark"></i>
                     <span>Resume</span>
                 </a>
@@ -206,15 +201,22 @@
                                             your steadfast companion in the job search expedition. With our comprehensive platform, you gain access to
                                             a wealth of opportunities, career resources, and expert guidance to navigate the ever-evolving job market.
                                             We prioritize your aspirations, offering support and solutions tailored to your unique needs.</p>
-                                                    <p><b>Note : </b>The following documents are required :</p>
+                                       <div class="d-sm-flex justify-content-between">
+                                            <div>
+                                                   <p><b>Note : </b>The following documents are required :</p>
                                                     <ul>
                                                         <li>Aadhaar card [front and back page]</li>
                                                         <li>Profile photo</li>
                                                         <li>Educational certificates [10th, 12th, Degree]</li>
                                                         <li>Resume</li>
                                                     </ul> 
-                                                    <a class="" href="<?php echo baseUrl . "seekerController/basicdetails" ?>"><button type="button" class="btn btn-success">Create Profile</button></a>
-                                        </div>
+                                                   </div> 
+
+                                                  <a class="my-5" href="<?php echo baseUrl . "Employee/basicdetails" ?>"><button type="button" class="btn btn-success">Create Profile</button></a>
+                                        
+                                                  </div>
+                                                </div>
+
                                     </div>
 
                                 </div>
@@ -242,43 +244,49 @@
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate name="applicationform" enctype="multipart/form-data" method="post" 
-                            onsubmit="return group()" action='<?php echo baseUrl . "seekerController/updateBasicDetails" ?>'>
+                            onsubmit="return group()" action='<?php echo baseUrl . "Employee/updateBasicDetails" ?>'>
                            
                             <?php
                             foreach ($basicDetails as $key => $value) {
                                 ?>
 
-                                <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id" placeholder="Enter your name" onkeypress="return allowOnltLetters(event,this)">
+                                <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>"
+                                 name="id" placeholder="Enter your name" onkeypress="return allowOnltLetters(event,this)">
 
                                         <div class="col-12">
                                         <label for="Name" class="form-label">Name *</label>
-                                        <input type="text" class="form-control" id="name" value="<?php echo $value['name']; ?>" name="name" placeholder="Enter your name">
+                                        <input type="text" class="form-control" id="name" value="<?php echo $value['name']; ?>"
+                                         name="name" placeholder="Enter your name" required>
                                         <div id="Name_error" style="color: red;"></div>
                                         </div>
 
                                         <div class="col-12">
                                         <label for="emailid" class="form-label">Email *</label><br>
-                                        <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" name="email" placeholder="Enter your email">
+                                        <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" 
+                                        name="email" placeholder="Enter your email" required>
                                         <div id="emailid_error" style="color: red;"></div>
                                         </div>
                                         <div class="col-md-6">
                                         <label for="phonenumber" class="form-label">Mobile Number *</label>
-                                        <input type="tel" class="form-control" id="phonenumber" value="<?php echo $value['phonenumber']; ?>" name="phonenumber" placeholder="Enter your number" value="<?= isset($updateData['phonenumber']) ? $updateData['phonenumber'] : ''; ?>">
+                                        <input type="tel" class="form-control" id="phonenumber" value="<?php echo $value['phonenumber']; ?>" 
+                                        name="phonenumber" placeholder="Enter your number" required>
                                         <div id="phonenumber_error" style="color: red;"></div>
                                         </div>
                                         <div class="col-md-6">
                                         <label for="dob" class="form-label">Date of Birth *</label>
-                                        <input type="date" class="form-control" id="dateofbirth" value="<?php echo $value['dateofbirth']; ?>" name="dateofbirth">
+                                        <input type="date" class="form-control" id="dateofbirth" value="<?php echo $value['dateofbirth']; ?>"
+                                         name="dateofbirth" required>
                                         <div id="dob_error" style="color: red;"></div>
                                         </div>
                                         <div class="col-md-6">
                                         <label for="age" class="form-label">Age *</label>
-                                        <input type="number" class="form-control" id="age" value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" placeholder="Enter age">
+                                        <input type="number" class="form-control" id="age" value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" 
+                                        name="age" placeholder="Enter age" required>
                                         <div id="age_error" style="color: red;"></div>
                                         </div>
                                         <div class="col-md-6">
                                         <label for="gender" class="form-label">Gender *</label>
-                                        <select class="form-control" id="gender" name="gender">
+                                        <select class="form-control" id="gender" name="gender" required>
                                             <option value="">Select your Gender</option>
                                             <option value="male" <?php if (isset($value['gender']) && $value['gender'] === 'male')
                                                 echo 'selected'; ?>>Male</option>
@@ -294,22 +302,26 @@
 
                                         <div class="col-md-6">
                                         <label for="Door no" class="form-label">Door no / Building Name *</label>
-                                        <input type="text" class="form-control" id="doorno" value="<?php echo isset($value['buildingName']) ? $value['buildingName'] : ''; ?>" name="doorno" placeholder="Enter door no / building name">
+                                        <input type="text" class="form-control" id="doorno" value="<?php echo isset($value['buildingName']) ? $value['buildingName'] : ''; ?>" 
+                                        name="doorno" placeholder="Enter door no / building name" required>
                                         <div id="doorno_error" style="color: red;"></div>
                                         </div>
                                         <div class="col-md-6">
                                         <label for="street address" class="form-label">Street Address *</label>
-                                        <input type="text" class="form-control" id="streetaddress" value="<?php echo isset($value['address']) ? $value['address'] : ''; ?>" name="streetaddress" placeholder="Enter street address">
+                                        <input type="text" class="form-control" id="streetaddress" value="<?php echo isset($value['address']) ? $value['address'] : ''; ?>" 
+                                        name="streetaddress" placeholder="Enter street address" required>
                                         <div id="streetaddress_error" style="color: red;"></div>
                                         </div>
                                         <div class="col-md-6">
                                         <label for="landmark" class="form-label">Landmark *</label>
-                                        <input type="text" class="form-control" id="landmark" value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" name="landmark" placeholder="Enter landmark">
+                                        <input type="text" class="form-control" id="landmark" value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" 
+                                        name="landmark" placeholder="Enter landmark" required>
                                         <div id="landmark_error" style="color: red;"></div>
                                         </div>
                                         <div class="col-md-6">
                                         <label for="pincode" class="form-label">Pincode *</label>
-                                        <input type="number" class="form-control" id="pincode" value="<?php echo ($value['pincode']) ? $value['pincode'] : ''; ?>" name="pincode" placeholder="Enter pincode">
+                                        <input type="number" class="form-control" id="pincode" value="<?php echo ($value['pincode']) ? $value['pincode'] : ''; ?>" 
+                                        name="pincode" placeholder="Enter pincode" required>
                                         <div id="pincode_error" style="color: red;"></div>
                                         </div>
                                         <div class="col-md-6">
@@ -320,7 +332,8 @@
                                         <div class="col-md-6">
                                         <label for="maritalstatus" class="form-label">Marital Status *</label>
 
-                                        <select class="form-control" id="maritalstatus" value="<?php echo isset($value['maritalStatus']) ? $value['maritalStatus'] : ''; ?>" name="maritalstatus">
+                                        <select class="form-control" id="maritalstatus" value="<?php echo isset($value['maritalStatus']) ? $value['maritalStatus'] : ''; ?>"
+                                         name="maritalstatus" required>
                                             <option value="">Select your Marital Status</option>
 
                                             <option value="single" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'single')
@@ -380,22 +393,22 @@
 
                                 <?php
                                 if ($value['bdsubmited'] == '1') {
-                                    ?>
-                                                    <script>
-                                                        let bds= "data";
-                                                        document.getElementById("existfileaf").style.display= "block";
-                                                        document.getElementById("existfileab").style.display= "block";
-                                                        document.getElementById("existfilepp").style.display= "block";
-                                                    </script>
-                                            <?php
+                                ?>
+                                    <script>
+                                        let bds= "data";
+                                        document.getElementById("existfileaf").style.display= "block";
+                                        document.getElementById("existfileab").style.display= "block";
+                                        document.getElementById("existfilepp").style.display= "block";
+                                    </script>
+                                <?php
                                 } else {
-                                    ?>
-                                                    <script>
-                                                        document.getElementById("existfileaf").style.display= "none";
-                                                        document.getElementById("existfileab").style.display= "none";
-                                                        document.getElementById("existfilepp").style.display= "none";
-                                                    </script>
-                                            <?php
+                                ?>
+                                    <script>
+                                        document.getElementById("existfileaf").style.display= "none";
+                                        document.getElementById("existfileab").style.display= "none";
+                                        document.getElementById("existfilepp").style.display= "none";
+                                    </script>
+                            <?php
                                 }
                             }
                             ?>
@@ -662,159 +675,219 @@
 
                 </script>
 
-            <?php
-        } elseif ($method == "adminUsers") {
+<?php
+        } elseif ($method == "educationTable") {
             ?>
-                <section class="usertablewithscrool">
+                <section class="usertable">
                     <div class="pagetitle">
-                        <h1>Admin Users List</h1>
+                        <h1>Education Details</h1>
                         <nav>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">adminUsers</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Table</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
-                    <!-- Recent Sales -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
-
-                            <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
+                           
                             <div class="card-body">
-                                <h5 class="card-title">User List<span></span></h5>
+                                       
+                                        <h5 class="card-title">Education Table<span></span></h5>
 
-                                <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">S.No</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Mobile Number</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">User Role</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $loopcount = 1;
-                                        foreach ($this->data['adminUsers'] as $key => $value) {
+                                        <div class="d-flex justify-content-between">
+                                        <a href="<?php echo baseUrl . "Employee/addEducationForm" ?>">
+                                        <button type="button" class="btn btn-info mb-4">+ Add Education</button></a>
+                                       <div>
+                                       <a  href="<?php echo baseUrl . "Employee/basicdetails" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
+                                       <a  href="<?php echo baseUrl . "Employee/experiencetable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
+                                       </div>
+                                    </div>
+                                    <?php
+                                         if (isset($educationTable[0]['id'])) {
+                                           $count=1;
                                             ?>
+                                        <table class="table">
+                                            <thead>
                                                 <tr>
-                                                    <td><a href="#"><?php echo $loopcount; ?></a></td>
-                                                    <td><?php echo $value['name']; ?></td>
-                                                    <td><a href="#" class="text-primary"><?php echo $value['mobileNumber']; ?></a></td>
-                                                    <td><?php echo $value['email']; ?></td>
-                                                    <td><?php echo $value['userRole']; ?></td>
-                                                    <td><span class="badge bg-success">Approved</span></td>
+                                                    <th scope="col">S.No</th>
+                                                    <th scope="col">Department</th>
+                                                    <th scope="col">Institution Name</th>
+                                                    <th scope="col">Educational Qualification</th>
+                                                    <th scope="col">Percentage</th>
+                                                    <th scope="col">Year of Passing</th>
+                                                    <th scope="col">Certificate</th>
+                                                    <th scope="col">Action</th>
                                                 </tr>
+                                            </thead>
+                                            <tbody>
+                                           <?php
+                                         if (isset($educationTable[0]['id'])) {
+                                           $count=1;
+                                            foreach ($educationTable as $key => $value) {
+                                            $seekerId = $_SESSION['seekerId'];
+                                            ?>
+                                                    <tr>
+                                                    <td><a><?php echo $count++; ?>.</a></td>
+                                                    <td><?php echo $value['educational_qualification'] ?></td>
+                                                    <td><?php echo $value['department'] ?></td>
+                                                    <td><?php echo $value['school_college_name'] ?></td>
+                                                    <td><?php echo $value['percentage'] ?></td>
+                                                    <td><?php echo $value['yearOfPassing'] ?></td>
                                             <?php
-                                            $loopcount++;
-                                        }
+                                            if ($value['educational_qualification'] == 'sslc') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'hsc') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'diploma') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'bachelors') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'masters') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'doctorate') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <td>NA</a></td>
+                                            <?php
+                                            }
+                                            
+                                            ?>
+                                            <td class="d-flex">
+                                                <a href="<?php echo baseUrl . "Employee/updateEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employee/deleteEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                            </td>
+                                      </tr>
+                                        <?php
+                                            }
+                                        } 
                                         ?>
-                                    </tbody>
-                                </table>
-
+                                            </tbody>
+                                        </table>
+                                        <?php
+                                } else {
+                                    ?>
+                                        <h5 class="card-title">No Records Found<span></span></h5>
+                                    <?php
+                                }
+                                ?>
                             </div>
 
                         </div>
                     </div><!-- End Recent Sales -->
                 </section>
+
             <?php
-        } elseif ($method == "createEmployer") {
+        } elseif ($method == "addEducationForm") {
             ?>
                 <section class="Multi Columns Form">
                     <div class="pagetitle">
-                        <h1>Create Employer</h1>
+                        <h1>Education Details</h1>
                         <nav>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="">Home</a></li>
-                                <li class="breadcrumb-item active">Create Employer</li>
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Add Education</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Employer Registration Form</h5>
+                            <h5 class="card-title">Add Education Details</h5>
 
                             <!-- Multi Columns Form -->
-                            <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/insertEmployer" ?>" method="post">
-                                <div class="col-md-12">
-                                    <label for="inputName5" class="form-label">Company Name</label>
-                                    <input type="text" class="form-control" id="inputName5" name="name" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputNumber5" class="form-label">Company Number</label>
-                                    <input type="number" class="form-control" id="inputNumber5" name="mobile" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Company Email</label>
-                                    <input type="email" class="form-control" id="inputEmail5" name="email" required>
-                                </div>
-                                <!-- <div class="col-md-6">
-                                <label for="inputPassword5" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="inputPassword5">
-                            </div> -->
+                            <form class="row g-3" novalidate name="educationform" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" 
+                            action="<?php echo baseUrl . "Employee/insertEducationForm" ?>">
+
                                 <div class="col-12">
-                                    <label for="inputAddress5" class="form-label">Street Address</label>
-                                    <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="inputAddress2" class="form-label">Landmark</label>
-                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="landmark" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputCity" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="inputCity" name="city" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputCity" class="form-label">District</label>
-                                    <input type="text" class="form-control" id="inputDistrict" name="district" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputState" class="form-label">State</label>
-                                    <select id="inputState" class="form-select" name="state">
-                                        <option selected value="tamil nadu">Tamil Nadu</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputZip" class="form-label">Pincode</label>
-                                    <input type="text" class="form-control" id="inputPincode" name="pincode">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputFile" class="form-label">Logo</label>
-                                    <input type="file" class="form-control" id="inputFile" name="logo">
-                                </div>
-                                <h5 class="card-title">Contact Person Details</h5>
-                                <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="inputEmail5" name="name1" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Role</label>
-                                    <input type="text" class="form-control" id="inputEmail5" name="role" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputNumber5" class="form-label">Mobile Number</label>
-                                    <input type="number" class="form-control" id="inputNumber5" name="mobile1" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Email-ID</label>
-                                    <input type="email" class="form-control" id="inputEmail5" name="email1" required>
-                                </div>
+                                <label for="qualification" class="form-label">Educational Qualification</label>
+                                <select class="form-control" id="qualification" name="qualification" onchange="toggleFields()" required>
+                                  <option value="">Select Qualification</option>
+                                  <option value="below_8th">Below 8th</option>
+                                  <option value="sslc">SSLC</option>
+                                  <option value="hsc">HSC</option>
+                                  <option value="diploma">Diploma</option>
+                                  <option value="bachelors">Bachelors</option>
+                                  <option value="masters">Masters</option>
+                                  <option value="doctorate">Doctorate</option>
+                                </select>
+                                <div id="qualification_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="department-group" style="display: none;">
+                                <label for="department" class="form-label">Department</label>
+                                <input type="text" class="form-control" id="department" name="department" placeholder="Enter department name">
+                                <div id="department_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="school-group" style="display: none;">
+                                <label for="school" class="form-label">Institution Name</label>
+                                <input type="text" class="form-control" id="school" name="school" placeholder="Enter institution name">
+                                <div id="school_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="percentage-group" style="display: none;">
+                                <label for="percentage" class="form-label">Percentage</label>
+                                <input type="text" class="form-control" id="percentage" id="school" name="percentage" placeholder="Enter percentage">
+                                <div id="percentage_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="year-group" style="display: none;">
+                                <label for="year_passed" class="form-label">Year of Passed Out</label>
+                                <input type="number" class="form-control" id="year_passed" name="year_passed" maxlength="4" pattern="\d{4}" placeholder="Enter year of passed out">
+                                <div id="year_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_10th-group" style="display: none;">
+                                <label for="certificate_10th" class="form-label">10th Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_10th" name="certificate_10th" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <div id="certificate_10th_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_12th-group" style="display: none;">
+                                <label for="certificate_12th" class="form-label">12th Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_12th" name="certificate_12th" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <div id="certificate_12th_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_dip-group" style="display: none;">
+                                <label for="certificate_dip" class="form-label">Diploma Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_dip" name="certificate_dip">
+                                <div id="certificate_dip_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_ug-group" style="display: none;">
+                                <label for="certificate_ug" class="form-label">UG Degree Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_ug" name="certificate_ug" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <div id="certificate_ug_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_pg-group" style="display: none;">
+                                <label for="certificate_pg" class="form-label">PG Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_pg" name="certificate_pg" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <div id="certificate_pg_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_doctorate-group" style="display: none;">
+                                <label for="certificate_doctorate" class="form-label">Doctorate Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <div id="certificate_doctorate_error" class="text-danger"></div>
+                              </div>
+
+                              <input type="number" class="form-control"  value="1" name="edusubmit" hidden>
+
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                     <button type="reset" class="btn btn-secondary">Reset</button>
@@ -824,1265 +897,1778 @@
                         </div>
                     </div>
                 </section>
-            <?php
-        } elseif ($method == "unVerifiedEmployers") {
-            ?>
-                <section class="usertable">
-                    <div class="pagetitle">
-                        <h1>Un Verified Employers</h1>
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Un Verified Employers</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </nav>
-                    </div><!-- End Page Title -->
-                    <div class="col-12">
-                        <div class="card recent-sales overflow-auto">
+                <script>
+                          function toggleFields() {
+                            var selectedQualification = document.getElementById('qualification').value;
+                            var departmentGroup = document.getElementById('department-group');
+                            var schoolGroup = document.getElementById('school-group');
+                            var percentageGroup = document.getElementById('percentage-group');
+                            var yearGroup = document.getElementById('year-group');
+                            var certificate10thGroup = document.getElementById('certificate_10th-group');
+                            var certificate12thGroup = document.getElementById('certificate_12th-group');
+                            var certificatedipGroup = document.getElementById('certificate_dip-group');
+                            var certificateUgGroup = document.getElementById('certificate_ug-group');
+                            var certificatePgGroup = document.getElementById('certificate_pg-group');
+                            var certificatedcGroup = document.getElementById('certificate_doctorate-group');
+                            var addButton = document.getElementById('addButton');
 
-                            <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
+                            // Show/hide the additional fields based on the selected qualification
+                            if (selectedQualification === 'below_8th') {
+                              departmentGroup.style.display = 'none';
+                              schoolGroup.style.display = 'none';
+                              percentageGroup.style.display = 'none';
+                              yearGroup.style.display = 'none';
+                              certificate10thGroup.style.display = 'none';
+                              certificate12thGroup.style.display = 'none';
+                              certificatedipGroup.style.display = 'none';
+                              certificateUgGroup.style.display = 'none';
+                              certificatePgGroup.style.display = 'none';
+                              certificatedcGroup.style.display = 'none';
+                              addButton.style.display = 'none';
 
-                            <div class="card-body">
-                                <?php
-                                if (isset($this->data['unVerifiedEmployers'][0]['company_name'])) {
-                                    ?>
-                                        <h5 class="card-title">Un Verified Employers<span></span></h5>
+                            } else {
+                              schoolGroup.style.display = 'block';
+                              percentageGroup.style.display = 'block';
+                              certificate10thGroup.style.display = 'block';
+                              certificate12thGroup.style.display = 'block';
+                              certificatedipGroup.style.display = 'block';
+                              certificateUgGroup.style.display = 'block';
+                              certificatePgGroup.style.display = 'block';
+                              certificatedcGroup.style.display = 'block';
+                              yearGroup.style.display = 'block';
 
-                                        <!-- <table class="table table-borderless datatable"> -->
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">S.No</th>
-                                                    <th scope="col">Company Name</th>
-                                                    <th scope="col"> Company Number</th>
-                                                    <th scope="col">Contact Person Name</th>
-                                                    <th scope="col">Contact Person Role</th>
-                                                    <th scope="col">Contact Person Mobile</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                $loopcount = 1;
-                                                foreach ($this->data['unVerifiedEmployers'] as $key => $value) {
-                                                    ?>
-                                                        <tr>
-                                                            <td><a href="#"><?php echo $loopcount; ?></a></td>
-                                                            <td><?php echo $value['company_name']; ?></td>
-                                                            <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
-                                                            <td><?php echo $value['name']; ?></td>
-                                                            <td><?php echo $value['role']; ?></td>
-                                                            <td><?php echo $value['mobile_number']; ?></td>
-                                                            <td><span class="badge bg-success">Pending</span></td>
-                                                            <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
-                                                        </tr>
-                                                    <?php
-                                                    $loopcount++;
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    <?php
-                                } else {
-                                    ?>
-                                        <h5 class="card-title">No Records Found<span></span></h5>
-                                    <?php
-                                }
-                                ?>
-                            </div>
+                            }
 
-                        </div>
-                    </div><!-- End Recent Sales -->
-                </section>
-            <?php
-        } elseif ($method == "verifiedEmployers") {
-            ?>
-                <section class="usertable">
-                    <div class="pagetitle">
-                        <h1>verifiedEmployers</h1>
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">verifiedEmployers</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </nav>
-                    </div><!-- End Page Title -->
-                    <div class="col-12">
-                        <div class="card recent-sales overflow-auto">
+                            if (selectedQualification === 'sslc') {
+                              departmentGroup.style.display = 'none';
+                              certificate12thGroup.style.display = 'none';
+                              certificatedipGroup.style.display = 'none';
+                              certificateUgGroup.style.display = 'none';
+                              certificatePgGroup.style.display = 'none';
+                              certificatedcGroup.style.display = 'none';
+                           
+                            } else if (selectedQualification === 'hsc') {
+                              departmentGroup.style.display = 'none';
+                              certificate10thGroup.style.display = 'none';
+                              certificatedipGroup.style.display = 'none';
+                              certificateUgGroup.style.display = 'none';
+                              certificatePgGroup.style.display = 'none';
+                              certificatedcGroup.style.display = 'none';
 
-                            <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
+                            } else if (selectedQualification === 'diploma') {
+                              departmentGroup.style.display = 'block';
+                              certificate10thGroup.style.display = 'none';
+                              certificate12thGroup.style.display = 'none';
+                              certificateUgGroup.style.display = 'none';
+                              certificatedcGroup.style.display = 'none';
+                              certificatePgGroup.style.display = 'none';
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
+                            } else if (selectedQualification === 'bachelors') {
+                              departmentGroup.style.display = 'block';
+                              certificate10thGroup.style.display = 'none';
+                              certificate12thGroup.style.display = 'none';
+                              certificatedipGroup.style.display = 'none';
+                              certificatedcGroup.style.display = 'none';
+                              certificatePgGroup.style.display = 'none';
 
-                            <div class="card-body">
-                                <?php
-                                if (isset($this->data['verifiedEmployers'][0]['company_name'])) {
-                                    ?>
-                                        <h5 class="card-title">Verified Employers<span></span></h5>
+                            } else if (selectedQualification === 'masters') {
+                              departmentGroup.style.display = 'block';
+                              certificate10thGroup.style.display = 'none';
+                              certificate12thGroup.style.display = 'none';
+                              certificatedipGroup.style.display = 'none';
+                              certificateUgGroup.style.display = 'none';
+                              certificatedcGroup.style.display = 'none';
 
-                                        <!-- <table class="table table-borderless datatable"> -->
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">S.No</th>
-                                                    <th scope="col">Company Name</th>
-                                                    <th scope="col"> Company Number</th>
-                                                    <th scope="col">Contact Person Name</th>
-                                                    <th scope="col">Contact Person Role</th>
-                                                    <th scope="col">Contact Person Mobile</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                $loopcount = 1;
-                                                foreach ($this->data['verifiedEmployers'] as $key => $value) {
-                                                    ?>
-                                                        <tr>
-                                                            <td><a href="#"><?php echo $loopcount; ?></a></td>
-                                                            <td><?php echo $value['company_name']; ?></td>
-                                                            <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
-                                                            <td><?php echo $value['name']; ?></td>
-                                                            <td><?php echo $value['role']; ?></td>
-                                                            <td><?php echo $value['mobile_number']; ?></td>
-                                                            <td><span class="badge bg-success">Approved</span></td>
-                                                            <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
-                                                        </tr>
-                                                    <?php
-                                                    $loopcount++;
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    <?php
-                                } else {
-                                    ?>
-                                        <h5 class="card-title">No Records Found<span></span></h5>
-                                    <?php
-                                }
-                                ?>
-                            </div>
+                            } else if (selectedQualification === 'doctorate') {
+                              departmentGroup.style.display = 'block';
+                              certificate10thGroup.style.display = 'none';
+                              certificate12thGroup.style.display = 'none';
+                              certificatedipGroup.style.display = 'none';
+                              certificateUgGroup.style.display = 'none';
+                              certificatePgGroup.style.display = 'none';
+                            }
 
-                        </div>
-                    </div><!-- End Recent Sales -->
-                </section>
-            <?php
-        } elseif ($method == 'manageEmployer') {
+                          }
+
+                          function validateForm() {
+                            var q = document.educationform.qualification.value;
+                            var dep = document.educationform.department.value;
+                            var scl = document.educationform.school.value;
+                            var per = document.educationform.percentage.value;
+                            var yop = document.educationform.year_passed.value;
+                            var tenth = document.educationform.certificate_10th.value;
+                            var tweleth = document.educationform.certificate_12th.value;
+                            var diploma =document.educationform.certificate_dip.value;
+                            var ug = document.educationform.certificate_ug.value;
+                            var pg = document.educationform.certificate_pg.value;
+                            var dc = document.educationform.certificate_doctorate.value;
+
+                            if (q == "") {
+                              var namesms2 = "Please select qualification";
+                              document.getElementById("qualification_error").innerHTML = namesms2;
+                              document.educationform.qualification.focus();
+                              return false;
+                            } else {
+                              document.getElementById("qualification_error").innerHTML = "";
+                            }
+
+
+                            if (dep == "" && document.getElementById('department-group').style.display !== "none") {
+                              var namesms2 = "Department must be filled out";
+                              document.getElementById("department_error").innerHTML = namesms2;
+                              document.educationform.department.focus();
+                              return false;
+                            } else {
+                              document.getElementById("department_error").innerHTML = "";
+                            }
+
+
+                            if (scl == "" && document.getElementById('school-group').style.display != "none") {
+                              var namesms2 = "School or college must be filled out";
+                              document.getElementById("school_error").innerHTML = namesms2;
+                              document.educationform.school.focus();
+                              return false;
+                            } else {
+                              document.getElementById("school_error").innerHTML = "";
+                            }
+
+
+                            if (per == "" && document.getElementById('percentage-group').style.display !== "none") {
+                              var namesms2 = "Percentage must be filled out";
+                              document.getElementById("percentage_error").innerHTML = namesms2;
+                              document.educationform.percentage.focus();
+                              return false;
+                            } else if(per > 100) {
+                              var pervalidate = "Please enter valid percentage";
+                              document.getElementById("percentage_error").innerHTML = pervalidate;
+                              document.educationform.percentage.focus();
+                              return false;
+                            } else  {
+                              document.getElementById("percentage_error").innerHTML = "";
+                            }
+
+
+                            if (yop == "" && document.getElementById('year-group').style.display !== "none") {
+                              var namesms2 = "Year of passed out must be filled out";
+                              document.getElementById("year_error").innerHTML = namesms2;
+                              document.educationform.year_passed.focus();
+                              return false;
+                            } else if (!/^\d{4}$/.test(yop)) {
+                                document.getElementById("year_error").innerHTML = "Please enter a valid year in YYYY format.";
+                                return false;
+                            }else {
+                              document.getElementById("year_error").innerHTML = "";
+                            }
+
+                            if (tenth == "" && document.getElementById('certificate_10th-group').style.display !== "none") {
+                              var namesms2 = "10 th certificate must be uploaded";
+                              document.getElementById("certificate_10th_error").innerHTML = namesms2;
+                              document.educationform.certificate_10th.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_10th_error").innerHTML = "";
+                            }
+
+                            if (tweleth == "" && document.getElementById('certificate_12th-group').style.display !== "none") {
+                              var namesms2 = "12 th certificate must be uploaded";
+                              document.getElementById("certificate_12th_error").innerHTML = namesms2;
+                              document.educationform.certificate_12th.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_12th_error").innerHTML = "";
+                            }
+
+                            if (diploma == "" && document.getElementById('certificate_dip-group').style.display !== "none") {
+                              var namesms2 = "Diploma certificate must be uploaded";
+                              document.getElementById("certificate_dip_error").innerHTML = namesms2;
+                              document.educationform.certificate_dip.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_dip_error").innerHTML = "";
+                            }
+
+                            if (ug == "" && document.getElementById('certificate_ug-group').style.display !== "none") {
+                              var namesms2 = "UG certificate must be uploaded";
+                              document.getElementById("certificate_ug_error").innerHTML = namesms2;
+                              document.educationform.certificate_ug.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_ug_error").innerHTML = "";
+                            }
+
+
+                            if (pg == "" && document.getElementById('certificate_pg-group').style.display !== "none") {
+                              var namesms2 = "PG certificate must be uploaded";
+                              document.getElementById("certificate_pg_error").innerHTML = namesms2;
+                              document.educationform.certificate_pg.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_pg_error").innerHTML = "";
+                            }
+
+
+                            if (dc == "" && document.getElementById('certificate_doctorate-group').style.display !== "none") {
+                              var namesms2 = "Certificate must be uploaded";
+                              document.getElementById("certificate_doctorate_error").innerHTML = namesms2;
+                              document.educationform.certificate_doctorate.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_doctorate_error").innerHTML = "";
+                            }
+
+                            return true;
+                          }
+                        </script>
+           
+           <?php
+        } elseif ($method == "updateEducation") {
             ?>
                 <section class="Multi Columns Form">
                     <div class="pagetitle">
-                        <h1>Employer Details</h1>
+                        <h1>Education Details</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Edit Education</li>
+                            </ol>
+                        </nav>
                     </div><!-- End Page Title -->
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Manage Employer Details</h5>
+                            <h5 class="card-title">Update Education Details</h5>
 
                             <!-- Multi Columns Form -->
-                            <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/verifyEmployer" ?>" method="post">
-                                <?php
-                                foreach ($this->data['manageEmployer'] as $key => $value) {
-                                    ?>
-                                        <div class="col-md-12">
-                                            <label for="inputName5" class="form-label">Company Name</label>
-                                            <input type="text" class="form-control" id="inputName5" value="<?php echo $value['company_name'] ?>" readonly name="name" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputNumber5" class="form-label">Company Number</label>
-                                            <input type="number" class="form-control" id="inputNumber5" name="mobile" value="<?php echo $value['company_mobile_number'] ?>" readonly required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputEmail5" class="form-label">Company Email</label>
-                                            <input type="email" class="form-control" id="inputEmail5" name="email" value="<?php echo $value['company_email'] ?>" readonly required>
-                                        </div>
-                                        <!-- <div class="col-md-6">
-                                <label for="inputPassword5" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="inputPassword5">
-                            </div> -->
-                                        <div class="col-12">
-                                            <label for="inputAddress5" class="form-label">Street Address</label>
-                                            <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="inputAddress2" class="form-label">Landmark</label>
-                                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="landmark" value="<?php echo $value['Landmark'] ?>" readonly required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputCity" class="form-label">City</label>
-                                            <input type="text" class="form-control" id="inputCity" name="city" value="<?php echo $value['City'] ?>" readonly required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputCity" class="form-label">District</label>
-                                            <input type="text" class="form-control" id="inputDistrict" name="district" value="<?php echo $value['district'] ?>" readonly required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputState" class="form-label">State</label>
-                                            <select id="inputState" class="form-select" name="state">
-                                                <option selected value="tamil nadu">Tamil Nadu</option>
-                                                <option>...</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputZip" class="form-label">Pincode</label>
-                                            <input type="text" class="form-control" id="inputPincode" value="<?php echo $value['pincode'] ?>" readonly name="pincode">
-                                        </div>
-                                        <h5 class="card-title">Contact Person Details</h5>
-                                        <div class="col-md-6">
-                                            <label for="inputEmail5" class="form-label">Name</label>
-                                            <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['name'] ?>" readonly name="name1" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputEmail5" class="form-label">Role</label>
-                                            <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['role'] ?>" readonlyname="role" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputNumber5" class="form-label">Mobile Number</label>
-                                            <input type="number" class="form-control" id="inputNumber5" value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputEmail5" class="form-label">Email-ID</label>
-                                            <input type="email" class="form-control" id="inputEmail5" value="<?php echo $value['email'] ?>" readonly name="email1" required>
-                                        </div>
-                                        <h5 class="card-title">Employer Verification Status</h5>
-                                        <?php
-                                        if (isset($this->data['manageEmployer'][0]['id'])) {
-                                            ?>
-                                                <fieldset class="row mb-3">
-                                                    <legend class="col-form-label col-sm-4 pt-0">Verification Status</legend>
-                                                    <div class="col-sm-8">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" value="0" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '0') {
-                                                                echo 'checked';
-                                                            } ?>>
-                                                            <label class="form-check-label" for="gridRadios1">
-                                                                Verification Pending
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '1') {
-                                                                echo 'checked';
-                                                            } ?>>
-                                                            <label class="form-check-label" for="gridRadios2">
-                                                                Verification success
-                                                            </label>
-                                                        </div>
-                                                        <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') {
-                                                    echo 'checked';
-                                                } ?>>
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
-                                            </div> -->
-                                                    </div>
-                                                </fieldset>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
-                                                        <label for="floatingTextarea">Remarks</label>
-                                                    </div>
-                                                </div>
-                                                <h5 class="card-title">Send Employer Delete Request</h5>
-                                                <fieldset class="row mb-3">
-                                                    <legend class="col-form-label col-sm-4 pt-0">Delete Request Status</legend>
-                                                    <div class="col-sm-8">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="deleteRequest" id="" value="0" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '0') {
-                                                                echo 'checked';
-                                                            } ?>>
-                                                            <label class="form-check-label" for="gridRadios1">
-                                                                Request Not Send
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="deleteRequest" id="" value="1" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '1') {
-                                                                echo 'checked';
-                                                            } ?>>
-                                                            <label class="form-check-label" for="gridRadios2">
-                                                                Request Send
-                                                            </label>
-                                                        </div>
-                                                        <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') {
-                                                    echo 'checked';
-                                                } ?>>
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
-                                            </div> -->
-                                                    </div>
-                                                </fieldset>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteRequestRemarks" style="height: 100px;"></textarea>
-                                                        <label for="floatingTextarea">Remarks</label>
-                                                    </div>
-                                                </div>
-                                                <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
-                                            <?php
-                                        } else {
-                                            ?>
-                                                <fieldset class="row mb-3">
-                                                    <legend class="col-form-label col-sm-2 pt-0">Verification Status</legend>
-                                                    <div class="col-sm-10">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" value="0">
-                                                            <label class="form-check-label" for="gridRadios1">
-                                                                Verification Pending
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2" value="1">
-                                                            <label class="form-check-label" for="gridRadios2">
-                                                                Verification success
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2">
-                                                            <label class="form-check-label" for="gridRadios3">
-                                                                Rejected
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
-                                                        <label for="floatingTextarea">Remarks</label>
-                                                    </div>
-                                                </div>
-                                                <fieldset class="row mb-3">
-                                                    <legend class="col-form-label col-sm-4 pt-0">Delete Request Status</legend>
-                                                    <div class="col-sm-8">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="deleteRequest" id="" value="0">
-                                                            <label class="form-check-label" for="gridRadios1">
-                                                                Request Not Send
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="deleteRequest" id="" value="1">
-                                                            <label class="form-check-label" for="gridRadios2">
-                                                                Request Send
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteRequestRemarks" style="height: 100px;"></textarea>
-                                                        <label for="floatingTextarea">Remarks</label>
-                                                    </div>
-                                                </div>
-                                        <?php }
-                                        ?>
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                            <button type="reset" class="btn btn-secondary">Reset</button>
-                                        </div>
-                                    <?php
-                                }
+                            <form class="row g-3" novalidate name="educationform" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" 
+                            action="<?php echo baseUrl . "Employee/updateInsertEducation" ?>">
+
+                            <?php
+                                foreach ($updateEducation as $key => $value) {
+                                $seekerId = $_SESSION['seekerId'];
                                 ?>
+                                    <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
+                                    <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id">
+                                    <div class="col-12">
+                                        <label class="form-label" for="qualification">Educational Qualification</label>
+                                        <select class="form-control" id="qualification" value="<?php echo $value['educational_qualification']; ?>" name="qualification" onchange="toggleFields()" readonly>
+                                        <option value="<?php echo $value['educational_qualification']; ?>"><?php echo $value['educational_qualification']; ?></option>
+                                        </select>
+                                        <div id="qualification_error" class="error"></div>
+                                    </div>
+
+                                    <div class="col-md-6" id="department-group" style="display: none;">
+                                        <label class="form-label" for="department">Department</label>
+                                        <input type="text" class="form-control" id="department" name="department" value="<?php echo $value['department']; ?>">
+                                        <div id="department_error" class="error"></div>
+                                    </div>
+
+                                    <div class="col-md-6" id="school-group" style="display: none;">
+                                        <label class="form-label" for="school">Institution Name</label>
+                                        <input type="text" class="form-control" id="school" value="<?php echo $value['school_college_name']; ?>" name="school">
+                                        <div id="school_error" class="error"></div>
+                                    </div>
+
+                                    <div class="col-md-6" id="percentage-group" style="display: none;">
+                                        <label class="form-label" for="percentage">Percentage</label>
+                                        <input type="text" class="form-control" id="percentage" id="school" value="<?php echo $value['percentage']; ?>" name="percentage">
+                                        <div id="percentage_error" class="error"></div>
+                                    </div>
+
+                                    <div class="col-md-6" id="year-group" style="display: none;">
+                                        <label class="form-label" for="year_passed">Year of Passed Out</label>
+                                        <input type="number" class="form-control" id="year_passed" value="<?php echo $value['yearOfPassing']; ?>" name="year_passed">
+                                        <div id="year_error" class="error"></div>
+                                    </div>
+
+                            <div class="col-md-6" id="certificate_10th-group" style="display: none;">
+                                <label class="form-label" for="certificate_10th">10th Certificate Upload</label>
+                                <input type="text" class="form-control"  name="old10cer" value="<?php echo $value['ten_cer']; ?>" hidden>
+                                <div class="uploadedfile"  style="display:flex;">
+                                <input type="file" class="form-control cer10upload" id="certificate_10th" name="certificate_10th" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden />
+                                <label class="form-control" id="file-input-label" for="certificate_10th">Change File</label>  
+                                <a href="<?php echo $value['tencer_url']; ?>" class="filelink p-2" target="blank" id="existfile" ><?php echo $value['ten_cer']; ?></a>
+                                </div>
+                                <div id="certificate_10th_error" class="error"></div>
+                            </div>
+
+                            <div class="col-md-6" id="certificate_12th-group" style="display: none;">
+                                <label class="form-label" for="certificate_12th">12th Certificate Upload</label>
+                                <input type="text" class="form-control"  name="old12cer" value="<?php echo $value['twelve_cer']; ?>" hidden>
+                                <div class="uploadedfile"  style="display:flex;">
+                                <input type="file" class="form-control cer12upload" id="certificate_12th" name="certificate_12th" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden/>
+                                <label class="form-control" id="file-input-label12" for="certificate_12th">Change File</label>  
+                                <a href="<?php echo $value['twelvecer_url']; ?>" class="filelink p-2" target="blank" id="existfile12" ><?php echo $value['twelve_cer']; ?></a>
+                                </div>
+                                <div id="certificate_12th_error" class="error"></div>
+                            </div>
+
+                            <div class="col-md-6" id="certificate_dip-group" style="display: none;">
+                                <label class="form-label" for="certificate_dip">Diploma Certificate Upload</label>
+                                <input type="text" class="form-control"  name="olddipcer" value="<?php echo $value['diploma_cer']; ?>" hidden>
+                                <div class="uploadedfile"  style="display:flex;">
+                                <input type="file" class="form-control cerdipupload" id="certificate_dip" name="certificate_dip" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden/>
+                                <label class="form-control" id="file-input-labeldip" for="certificate_dip">Change File</label>  
+                                <a href="<?php echo $value['diplomacer_url']; ?>" class="filelink p-2" target="blank" id="existfiledip" ><?php echo $value['diploma_cer']; ?></a>
+                                </div>
+                                <div id="certificate_dip_error" class="error"></div>
+                            </div>
+
+                            <div class="col-md-6" id="certificate_ug-group" style="display: none;">
+                                <label class="form-label" for="certificate_ug">UG Degree Certificate Upload</label>
+                                <input type="text" class="form-control"  name="oldugcer" value="<?php echo $value['ug_cer']; ?>" hidden>
+                                <div class="uploadedfile"  style="display:flex;">
+                                <input type="file" class="form-control cerugupload" id="certificate_ug" name="certificate_ug" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden/>
+                                <label class="form-control" id="file-input-labelug" for="certificate_ug">Change File</label>  
+                                <a href="<?php echo $value['ugcer_url']; ?>" class="filelink p-2" target="blank" id="existfileug" ><?php echo $value['ug_cer']; ?></a>
+                                </div>
+                                <div id="certificate_ug_error" class="error"></div>
+                            </div>
+
+                            <div class="col-md-6" id="certificate_pg-group" style="display: none;">
+                                <label class="form-label" for="certificate_pg">PG Certificate Upload</label>
+                                <input type="text" class="form-control"  name="oldpgcer" value="<?php echo $value['pg_cer']; ?>" hidden>
+                                <div class="uploadedfile"  style="display:flex;">
+                                <input type="file" class="form-control cerpgupload" id="certificate_pg" name="certificate_pg" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden/>
+                                <label class="form-control" id="file-input-labelpg" for="certificate_pg">Change File</label>  
+                                <a href="<?php echo $value['pgcer_url']; ?>" class="filelink p-2" target="blank" id="existfilepg" ><?php echo $value['pg_cer']; ?></a>
+                                </div>
+                                <div id="certificate_pg_error" class="error"></div>
+                            </div>
+
+                            <div class="col-md-6" id="certificate_doctorate-group" style="display: none;">
+                                <label class="form-label" for="certificate_doctorate">Doctorate Certificate Upload</label>
+                                <input type="text" class="form-control"  name="olddoccer" value="<?php echo $value['doc_cer']; ?>" hidden>
+                                <div class="uploadedfile"  style="display:flex;">
+                                <input type="file" class="form-control cerdocupload" id="certificate_doctorate" name="certificate_doctorate" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden/>
+                                <label class="form-control" id="file-input-labeldoc" for="certificate_doctorate">Change File</label>  
+                                <a href="<?php echo $value['doccer_url']; ?>" class="filelink p-2" target="blank" id="existfiledoc" ><?php echo $value['doc_cer']; ?></a>
+                                </div>
+                                <div id="certificate_doctorate_error" class="error"></div>
+                            </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                </div>
+                                <?php
+                                  }
+                                  ?>
                             </form><!-- End Multi Columns Form -->
 
                         </div>
                     </div>
                 </section>
-            <?php
-        } elseif ($method == "createEmployees") {
-            ?>
-                <section class="Multi Columns Form">
-                    <div class="pagetitle">
-                        <h1>createEmployees</h1>
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Create Employees</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </nav>
-                    </div><!-- End Page Title -->
-                    <div class="card mb-3">
+                <script>
+                            document.getElementById("file-input-label").addEventListener("click", function() {
+                                document.getElementById("existfile").style.display = "none";
+                            });
 
-                        <div class="card-body">
+                        const fileInput = document.getElementById("certificate_10th");
+                        const fileInputLabel = document.getElementById("file-input-label");
 
-                            <div class="pt-4 pb-2">
-                                <h5 class="card-title text-center pb-0 fs-4">Create New Employee</h5>
-                            </div>
+                        fileInput.addEventListener("change", function () {
+                            if (fileInput.files.length > 0) {
+                            fileInputLabel.textContent = fileInput.files[0].name;
+                            } else {
 
-                            <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/employeeRegistration" ?>" method="post">
-                                <div class="col-12">
-                                    <label for="yourName" class="form-label">Employee Name</label>
-                                    <input type="text" name="name" class="form-control" id="yourName" required>
-                                    <div class="invalid-feedback">Please, enter your name!</div>
-                                </div>
+                            fileInputLabel.textContent = "Select a File";
+                            }
+                        });
+                
+                        // 12 certificate
+                            document.getElementById("file-input-label12").addEventListener("click", function() {
+                                document.getElementById("existfile12").style.display = "none";
+                            });
 
-                                <div class="col-12">
-                                    <label for="yourEmail" class="form-label">Employee Email</label>
-                                    <input type="email" name="email" class="form-control" id="yourEmail" required>
-                                    <div class="invalid-feedback">Please, enter a valid Email adddress!</div>
-                                </div>
+                        const fileInput12 = document.getElementById("certificate_12th");
+                        const fileInputLabel12 = document.getElementById("file-input-label12");
 
-                                <div class="col-12">
-                                    <label for="yourEmail" class="form-label">Employee Mobile</label>
-                                    <input type="number" name="phonenumber" class="form-control" id="yourEmail" required>
-                                    <div class="invalid-feedback">Please, enter mobile number!</div>
-                                </div>
+                        fileInput12.addEventListener("change", function () {
+                            if (fileInput12.files.length > 0) {
+                            fileInputLabel12.textContent = fileInput12.files[0].name;
+                            } else {
+                            fileInputLabel12.textContent = "Select a File";
+                            }
+                        });
+                
+                        // Diploma certificate
+                        document.getElementById("file-input-labeldip").addEventListener("click", function() {
+                                document.getElementById("existfiledip").style.display = "none";
+                            });
 
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                                        <div class="invalid-feedback">You must agree before submitting.</div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100" type="submit">Create Account</button>
-                                </div>
-                            </form>
+                        const fileInputdip = document.getElementById("certificate_dip");
+                        const fileInputLabeldip = document.getElementById("file-input-labeldip");
 
-                        </div>
-                    </div>
-                </section>
-            <?php
-        } elseif ($method == "unVerifiedEmployees") {
+                        fileInputdip.addEventListener("change", function () {
+                            if (fileInputdip.files.length > 0) {
+                            fileInputLabeldip.textContent = fileInputdip.files[0].name;
+                            } else {
+                            fileInputLabeldip.textContent = "Select a File";
+                            }
+                        });
+
+                        // ug certificate
+                            document.getElementById("file-input-labelug").addEventListener("click", function() {
+                                document.getElementById("existfileug").style.display = "none";
+                            });
+
+                        const fileInputug = document.getElementById("certificate_ug");
+                        const fileInputLabelug = document.getElementById("file-input-labelug");
+
+                        fileInputug.addEventListener("change", function () {
+                            if (fileInputug.files.length > 0) {
+                            fileInputLabelug.textContent = fileInputug.files[0].name;
+                            } else {
+                            fileInputLabelug.textContent = "Select a File";
+                            }
+                        });
+                
+                        // pg certificate
+                            document.getElementById("file-input-labelpg").addEventListener("click", function() {
+                                document.getElementById("existfilepg").style.display = "none";
+                            });
+
+                        const fileInputpg = document.getElementById("certificate_pg");
+                        const fileInputLabelpg = document.getElementById("file-input-labelpg");
+
+                        fileInputpg.addEventListener("change", function () {
+                            if (fileInputpg.files.length > 0) {
+                            fileInputLabelpg.textContent = fileInputpg.files[0].name;
+                            } else {
+                            fileInputLabelpg.textContent = "Select a File";
+                            }
+                        });
+                 
+                        // doc certificate
+                            document.getElementById("file-input-labeldoc").addEventListener("click", function() {
+                                document.getElementById("existfiledoc").style.display = "none";
+                            });
+
+                        const fileInputdoc = document.getElementById("certificate_doctorate");
+                        const fileInputLabeldoc = document.getElementById("file-input-labeldoc");
+
+                        fileInputdoc.addEventListener("change", function () {
+                            if (fileInputdoc.files.length > 0) {
+                            fileInputLabeldoc.textContent = fileInputdoc.files[0].name;
+                            } else {
+                            fileInputLabeldoc.textContent = "Select a File";
+                            }
+                        });
+                        </script>
+            
+                        <script>
+                          // This is for displaying in update form
+                          if (document.getElementById('qualification').value !== 'below_8th') {
+                            document.getElementById('school-group').style.display = 'block';
+                            document.getElementById('percentage-group').style.display = 'block';
+                            document.getElementById('year-group').style.display = 'block';
+                          }
+
+                          if (document.getElementById('qualification').value === 'sslc') {
+                            document.getElementById('certificate_10th-group').style.display = 'block';
+                          }
+
+                          if (document.getElementById('qualification').value === 'hsc') {
+                            document.getElementById('certificate_12th-group').style.display = 'block';
+                          }
+
+                          if (document.getElementById('qualification').value === 'diploma') {
+                            document.getElementById('department-group').style.display = 'block';
+                            document.getElementById('certificate_dip-group').style.display = 'block';
+                          }
+
+                          if (document.getElementById('qualification').value === 'bachelors') {
+                            document.getElementById('department-group').style.display = 'block';
+                            document.getElementById('certificate_ug-group').style.display = 'block';
+                          }
+
+                          if (document.getElementById('qualification').value === 'masters') {
+                            document.getElementById('department-group').style.display = 'block';
+                            document.getElementById('certificate_pg-group').style.display = 'block';
+                          }
+
+                          if (document.getElementById('qualification').value === 'doctorate') {
+                            document.getElementById('department-group').style.display = 'block';
+                            document.getElementById('certificate_doctorate-group').style.display = 'block';
+                          }
+
+
+
+                          function validateForm() {
+                            var q = document.educationform.qualification.value;
+                            var dep = document.educationform.department.value;
+                            var scl = document.educationform.school.value;
+                            var per = document.educationform.percentage.value;
+                            var yop = document.educationform.year_passed.value;
+                            var tenth = document.educationform.certificate_10th.value;
+                            var tweleth = document.educationform.certificate_12th.value;
+                            var ug = document.educationform.certificate_ug.value;
+                            var pg = document.educationform.certificate_pg.value;
+                            var dc = document.educationform.certificate_doctorate.value;
+
+                            if (q == "") {
+                              var namesms2 = "Qualification must be filled out";
+                              document.getElementById("qualification_error").innerHTML = namesms2;
+                              document.educationform.qualification.focus();
+                              return false;
+                            } else {
+                              document.getElementById("qualification_error").innerHTML = "";
+                            }
+
+                            if (dep == "" && document.getElementById('department-group').style.display !== "none") {
+                              var namesms2 = "Department must be filled out";
+                              document.getElementById("department_error").innerHTML = namesms2;
+                              document.educationform.department.focus();
+                              return false;
+                            } else {
+                              document.getElementById("department_error").innerHTML = "";
+                            }
+
+                            if (scl == "" && document.getElementById('school-group').style.display != "none") {
+                              var namesms2 = "School or college must be filled out";
+                              document.getElementById("school_error").innerHTML = namesms2;
+                              document.educationform.school.focus();
+                              return false;
+                            } else {
+                              document.getElementById("school_error").innerHTML = "";
+                            }
+
+
+                            if (per == "" && document.getElementById('percentage-group').style.display !== "none") {
+                              var namesms2 = "Percentage must be filled out";
+                              document.getElementById("percentage_error").innerHTML = namesms2;
+                              document.educationform.percentage.focus();
+                              return false;
+                            } else if(per > 100) {
+                              var pervalidate = "Please enter valid percentage";
+                              document.getElementById("percentage_error").innerHTML = pervalidate;
+                              document.educationform.percentage.focus();
+                              return false;
+                            } else {
+                              document.getElementById("percentage_error").innerHTML = "";
+                            }
+
+
+                            if (yop == "" && document.getElementById('year-group').style.display !== "none") {
+                              var namesms2 = "Year of passed out must be filled out";
+                              document.getElementById("year_error").innerHTML = namesms2;
+                              document.educationform.year_passed.focus();
+                              return false;
+                            } else {
+                              document.getElementById("year_error").innerHTML = "";
+                            }
+
+                            return true;
+                          }
+                        </script>
+
+<?php
+        } elseif ($method == "experienceTable") {
             ?>
                 <section class="usertable">
                     <div class="pagetitle">
-                        <h1>Un Verified Employees</h1>
+                        <h1>Experience Details</h1>
                         <nav>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Un Verified Employees</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Table</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
-
-                            <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
+                           
                             <div class="card-body">
-                                <?php
-                                if (isset($this->data['unVerifiedEmployees'][0]['name'])) {
-                                    ?>
-                                        <h5 class="card-title">Un Verified Employees<span></span></h5>
-
-                                        <!-- <table class="table table-borderless datatable"> -->
+                                       
+                                        <h5 class="card-title">Experience Table<span></span></h5>
+                                        <div class="mb-4">
+                                            Are you a fresher ?  <a href="<?php echo baseUrl . "Employee/areaOfIntrestTable" ?>"><button type="button" class="btn btn-danger mx-2">Skip</button></a>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                        <a href="<?php echo baseUrl . "Employee/addExperirenceForm" ?>">
+                                        <button type="button" class="btn btn-info mb-4">+ Add Experience</button></a>
+                                       <div>
+                                       <a  href="<?php echo baseUrl . "Employee/educationTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
+                                       <a  href="<?php echo baseUrl . "Employee/areaOfIntrestTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
+                                       </div>
+                                    </div>
+                                    <?php
+                                         if (isset($experienceTable[0]['id'])) {
+                                           $count=1;
+                                            ?>
                                         <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S.No</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Mobile Number</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">D.O.B</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                $loopcount = 1;
-                                                foreach ($this->data['unVerifiedEmployees'] as $key => $value) {
-                                                    ?>
-                                                        <tr>
-                                                            <td><a href="#"><?php echo $loopcount; ?></a></td>
-                                                            <td><?php echo $value['name']; ?></td>
-                                                            <td><?php echo $value['phonenumber']; ?></td>
-                                                            <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
-                                                            <td><?php echo $value['dateofbirth']; ?></td>
-                                                            <td><span class="badge bg-primary">Verification Pending</span></td>
-                                                            <td><a href="<?php echo baseUrl . "admin/manageEmployee/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
-                                                        </tr>
-                                                    <?php
-                                                    $loopcount++;
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    <?php
-                                } else {
-                                    ?>
-                                        <h5 class="card-title">No Records Found</h5>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-
-                        </div>
-                    </div><!-- End Recent Sales -->
-                </section>
-            <?php
-        } elseif ($method == "verifiedEmployees") {
-            ?>
-                <section class="usertablewithscrool">
-                    <div class="pagetitle">
-                        <h1>VerifiedEmployees</h1>
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">VerifiedEmployees</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </nav>
-                    </div><!-- End Page Title -->
-                    <!-- Recent Sales -->
-                    <div class="col-12">
-                        <div class="card recent-sales overflow-auto">
-
-                            <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
-                            <div class="card-body">
-                                <?php
-                                if (isset($this->data['verifiedEmployees'][0]['name'])) {
-                                    ?>
-                                        <h5 class="card-title">Verified Employees<span></span></h5>
-
-                                        <!-- <table class="table table-borderless datatable"> -->
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">S.No</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Mobile Number</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">D.O.B</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                $loopcount = 1;
-                                                foreach ($this->data['verifiedEmployees'] as $key => $value) {
-                                                    ?>
-                                                        <tr>
-                                                            <td><a href="#"><?php echo $loopcount; ?></a></td>
-                                                            <td><?php echo $value['name']; ?></td>
-                                                            <td><?php echo $value['phonenumber']; ?></td>
-                                                            <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
-                                                            <td><?php echo $value['dateofbirth']; ?></td>
-                                                            <td><span class="badge bg-success">Verification success</span></td>
-                                                            <td><a href="<?php echo baseUrl . "admin/manageEmployee/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
-                                                        </tr>
-                                                    <?php
-                                                    $loopcount++;
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    <?php
-                                } else {
-                                    ?>
-                                        <h5 class="card-title">No Records Found<span></span></h5>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-
-                        </div>
-                    </div><!-- End Recent Sales -->
-                </section>
-            <?php
-        } elseif ($method == "manageEmployee") {
-            ?>
-                <section>
-                    <!-- Default Card -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <img class="h-100" src="<?php echo baseUrl . "assets/profilephoto.png" ?>" class="card-img-top" alt="...">
-                                    </div>
-                                    <div class="col">
-                                        <h2 class="">Employee Resume</h2>
-                                        <h5 class="card-title">Name : <?php echo $this->data['basicDetails'][0]['name']; ?></h5>
-                                    </div>
-                                    <!-- <div class="col">
-                                    Column
-                                </div> -->
-                                </div>
-                            </div>
-                            <div class="card recent-sales overflow-auto">
-                                <div class="card-body">
-                                    <h5 class="card-title">Educational Qualification</h5>
-
-                                    <!-- Table with stripped rows -->
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">S.No</th>
-                                                <th scope="col">Educational Qualification</th>
-                                                <th scope="col">Department</th>
-                                                <th scope="col">Institution Name</th>
-                                                <th scope="col">Percentage</th>
-                                                <th scope="col">Year of Passed Out</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $loopcount = 1;
-                                            foreach ($this->data['education'] as $key => $value) {
-                                                ?>
-                                                    <tr>
-                                                        <th scope="row"><?php echo $loopcount; ?></th>
-                                                        <td><?php echo $value['educational_qualification'] ?></td>
-                                                        <td><?php echo $value['department'] ?></td>
-                                                        <td><?php echo $value['school_college_name'] ?></td>
-                                                        <td><?php echo $value['percentage'] ?></td>
-                                                        <td><?php echo $value['yearOfPassing'] ?></td>
-                                                    </tr>
-                                                <?php
-                                                $loopcount++;
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                    <!-- End Table with stripped rows -->
-
-                                </div>
-                            </div>
-                            <div class="card recent-sales overflow-auto">
-                                <div class="card-body">
-                                    <h5 class="card-title">Skills</h5>
-
-                                    <!-- Table with stripped rows -->
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">S.No</th>
-                                                <th scope="col">Skill</th>
-                                                <th scope="col">Experience</th>
-                                                <th scope="col">Skill Level</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $loopcount = 1;
-                                            foreach ($this->data['areaOfInterest'] as $skey => $svalue) {
-                                                ?>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td><?php echo $svalue['skillname'] ?></td>
-                                                        <td><?php echo $svalue['skillexperience'] ?></td>
-                                                        <td><?php echo $svalue['skilllevel'] ?></td>
-                                                    </tr>
-                                                <?php
-                                                $loopcount++;
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                    <!-- End Table with stripped rows -->
-
-                                </div>
-                            </div>
-                            <div class="card recent-sales overflow-auto">
-                                <div class="card-body">
-                                    <h5 class="card-title">Area of Interest</h5>
-
-                                    <!-- Table with stripped rows -->
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">S.No</th>
-                                                <th scope="col">Job Category</th>
-                                                <th scope="col">Job Sub Category</th>
-                                                <th scope="col">Prefered Location</th>
-                                                <th scope="col">Experience</th>
-                                                <th scope="col">Job Type</th>
-                                                <th scope="col">Description</th>
-                                                <th scope="col">Expected Salary</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $loopcount = 1;
-                                            foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
-                                                ?>
-                                                    <tr>
-                                                        <th scope="row"><?php echo $loopcount; ?></th>
-                                                        <td><?php echo $avalue['other_interst_category'] ?> </td>
-                                                        <td><?php echo $avalue['other_sub_interst_category'] ?></td>
-                                                        <td><?php echo $avalue['prefered_location'] ?></td>
-                                                        <td><?php echo $avalue['experience'] ?></td>
-                                                        <td><?php echo $avalue['job_type'] ?></td>
-                                                        <td><?php echo $avalue['description'] ?></td>
-                                                        <td> <?php echo $avalue['expected_salary'] ?></td>
-                                                    </tr>
-                                                <?php
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                    <!-- End Table with stripped rows -->
-
-                                </div>
-                            </div>
-                            <div class="card recent-sales overflow-auto">
-                                <div class="card-body">
-                                    <h5 class="card-title">Experience Details</h5>
-
-                                    <!-- Table with stripped rows -->
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">S.No</th>
-                                                <th scope="col">Job Category</th>
-                                                <th scope="col">Job Sub Category</th>
-                                                <th scope="col">Company Name</th>
-                                                <th scope="col">Job Role</th>
-                                                <th scope="col">Previous Employer Name</th>
-                                                <th scope="col">Previous Employer Mobile</th>
-                                                <th scope="col">Previous Employer Email</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $loopcount = 1;
-                                            foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
-                                                ?>
-                                                    <tr>
-                                                        <th scope="row"><?php echo $loopcount; ?> </th>
-                                                        <td><?php echo $ivalue['other_category'] ?></td>
-                                                        <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                                        <td><?php echo $ivalue['company_name'] ?></td>
-                                                        <td><?php echo $ivalue['job_role'] ?></td>
-                                                        <td><?php echo $ivalue['previous_employer_name'] ?></td>
-                                                        <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
-                                                        <td><?php echo $ivalue['previous_employer_email'] ?></td>
-                                                    </tr>
-                                                <?php
-                                                $loopcount++;
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                    <!-- End Table with stripped rows -->
-
-                                </div>
-                            </div>
-                            <form action="<?php echo baseUrl . "admin/verifyEmployee" ?>" method="post">
-                                <input class="form-check-input" type="text" name="EmployeeId" id="" value="<?php echo $this->data['basicDetails'][0]['id'] ?>" hidden>
-                                <fieldset class="row mb-3">
-                                    <legend class="col-form-label col-sm-2 pt-0">Verification Status</legend>
-                                    <?php if (isset($this->data['basicDetails'][0]['id'])) {
-                                        ?>
-                                            <div class="col-sm-10">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" value="0" <?php if ($this->data['basicDetails'][0]['verificationStatus'] == '0') {
-                                                        echo 'checked';
-                                                    } ?>>
-                                                    <label class="form-check-label" for="gridRadios1">
-                                                        Verification Pending
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2" value="1" <?php if ($this->data['basicDetails'][0]['verificationStatus'] == '1') {
-                                                        echo 'checked';
-                                                    } ?>>
-                                                    <label class="form-check-label" for="gridRadios2">
-                                                        Verification success
-                                                    </label>
-                                                </div>
-                                                <!-- <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['basicDetails'][0]['verificationStatus'] == '2') {
-                                                echo 'checked';
-                                            } ?>>
-                                            <label class="form-check-label" for="gridRadios3">
-                                                Rejected
-                                            </label>
-                                        </div> -->
-                                            </div>
-                                        <?php
-                                    } else {
-                                        ?>
-                                            <div class="col-sm-10">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" value="0">
-                                                    <label class="form-check-label" for="gridRadios1">
-                                                        Verification Pending
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2" value="1">
-                                                    <label class="form-check-label" for="gridRadios2">
-                                                        Verification success
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2">
-                                                    <label class="form-check-label" for="gridRadios3">
-                                                        Rejected
-                                                    </label>
-                                                </div>
-                                            </div>
-                                    <?php }
-                                    ?>
-                                </fieldset>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
-                                        <label for="floatingTextarea">Remarks</label>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-success">submit</button>
-                            </form>
-                        </div>
-                    </div><!-- End Default Card -->
-                </section>
-            <?php
-        } elseif ($method == 'addNewAdminApprovel') {
-            ?>
-                <section class="usertable">
-                    <div class="pagetitle">
-                        <h1>verifiedEmployers</h1>
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">verifiedEmployers</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </nav>
-                    </div><!-- End Page Title -->
-                    <div class="col-12">
-                        <div class="card recent-sales overflow-auto">
-
-                            <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
-                            <div class="card-body">
-                                <h5 class="card-title">Verified Employers<span></span></h5>
-
-                                <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">S.No</th>
-                                            <th scope="col">Company Name</th>
-                                            <th scope="col"> Company Number</th>
-                                            <th scope="col">Contact Person Name</th>
-                                            <th scope="col">Contact Person Role</th>
-                                            <th scope="col">Contact Person Mobile</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $loopcount = 1;
-                                        foreach ($this->data['verifiedEmployers'] as $key => $value) {
-                                            ?>
-                                                <tr>
-                                                    <td><a href="#"><?php echo $loopcount; ?></a></td>
-                                                    <td><?php echo $value['company_name']; ?></td>
-                                                    <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
-                                                    <td><?php echo $value['name']; ?></td>
-                                                    <td><?php echo $value['role']; ?></td>
-                                                    <td><?php echo $value['mobile_number']; ?></td>
-                                                    <td><span class="badge bg-success">Approved</span></td>
-                                                    <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
-                                                </tr>
-                                            <?php
-                                            $loopcount++;
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                        </div>
-                    </div><!-- End Recent Sales -->
-                </section>
-            <?php
-        } elseif ($method == 'addNewEmployerApprovel') {
-            $addNewApprovel = $this->data['addNewEmployerApprovel']['response'];
-            $deleteApprovel = $this->data['deleteEmployerApprovel']['response'];
-            ?>
-                <section class="usertable">
-                    <div class="pagetitle">
-                        <h1>Employer Approvel Request</h1>
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Employer Approvel Request</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </nav>
-                    </div><!-- End Page Title -->
-                    <div class="col-12">
-                        <div class="card recent-sales overflow-auto">
-
-                            <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-                            <div class="card-body">
-                                <?php if ($this->data['addNewEmployerApprovel']['totalRows'] >= 1 || $this->data['deleteEmployerApprovel']['totalRows'] >= 1) {
-                                    ?>
-                                        <h5 class="card-title">Employer Add / Delete Request<span></span></h5>
-
-                                        <!-- <table class="table table-borderless datatable"> -->
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">S.No</th>
+                                                    <th scope="col">Job Category</th>
+                                                    <th scope="col">Job Subcategory</th>
+                                                    <th scope="col">Experience</th>
                                                     <th scope="col">Company Name</th>
-                                                    <th scope="col"> Company Number</th>
-                                                    <th scope="col">Contact Person Name</th>
-                                                    <th scope="col">Contact Person Role</th>
-                                                    <th scope="col">Contact Person Mobile</th>
-                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Role</th>
+                                                    <th scope="col">Name of Employer</th>
+                                                    <th scope="col">Mobile Number of Employer</th>
+                                                    <th scope="col">Email Id</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                $loopcount = 1;
-                                                if ($this->data['addNewEmployerApprovel']['totalRows'] >= 1) {
-                                                    ?>
-                                                        <?php
-                                                        $loopcount = 1;
-                                                        foreach ($addNewApprovel as $key => $value) {
-                                                            ?>
-                                                                <tr>
-                                                                    <td><a href="#"><?php echo $loopcount; ?></a></td>
-                                                                    <td><?php echo $value['company_name']; ?></td>
-                                                                    <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
-                                                                    <td><?php echo $value['name']; ?></td>
-                                                                    <td><?php echo $value['role']; ?></td>
-                                                                    <td><?php echo $value['mobile_number']; ?></td>
-                                                                    <td><span class="badge bg-success">Add Request</span></td>
-                                                                    <td><a href="<?php echo baseUrl . "admin/employerApprovel/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
-                                                                </tr>
-                                                        <?php
-                                                        $loopcount++;
-                                                        }
-                                                }
+                                            <?php
+                                                if (isset($experienceTable[0]['id'])) {
+                                                    $count=1;
+                                                foreach ($experienceTable as $key => $value) {
+                                                $seekerId = $_SESSION['seekerId'];
                                                 ?>
-                                                <?php
-                                                if ($this->data['deleteEmployerApprovel']['totalRows'] >= 1) {
-                                                    foreach ($deleteApprovel as $dkey => $dvalue) {
-                                                        ?>
-                                                                <tr>
-                                                                    <td><a href="#"><?php echo $loopcount; ?></a></td>
-                                                                    <td><?php echo $dvalue['company_name']; ?></td>
-                                                                    <td><a href="#" class="text-primary"><?php echo $dvalue['company_mobile_number']; ?></a></td>
-                                                                    <td><?php echo $dvalue['name']; ?></td>
-                                                                    <td><?php echo $dvalue['role']; ?></td>
-                                                                    <td><?php echo $dvalue['mobile_number']; ?></td>
-                                                                    <td><span class="badge bg-danger">Delete Request</span></td>
-                                                                    <td><a href="<?php echo baseUrl . "admin/employerApprovel/" . $dvalue['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
-                                                                </tr>
-                                                        <?php
-                                                    }
-                                                    $loopcount++;
-                                                }
-                                                ?>
+                                                    <tr>
+                                                    <td><?php echo $count++ ?>.</td>
+                                                    <td><?php echo $value['other_category'] ?></td>
+                                                    <td><?php echo $value['other_sub_category'] ?></td>
+                                                    <td><?php echo $value['experience'] ?></td>
+                                                    <td><?php echo $value['company_name'] ?></td>
+                                                    <td><?php echo $value['job_role'] ?></td>
+                                                    <td><?php echo $value['previous_employer_name'] ?></td>
+                                                    <td><?php echo $value['previous_employer_mobile'] ?></td>
+                                                    <td><?php echo $value['previous_employer_email'] ?></td>
+                                                    <td>
+                                                    <div class="d-flex">
+                                                        <a href="<?php echo baseUrl . "Employee/updateExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                                        <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employee/deleteExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                    </div>
+                                                    </td>
+                                      </tr>
+                                        <?php
+                                            }
+                                        } 
+                                        ?>
                                             </tbody>
                                         </table>
-                                    <?php
+                                        <?php
                                 } else {
                                     ?>
                                         <h5 class="card-title">No Records Found<span></span></h5>
                                     <?php
                                 }
                                 ?>
-
                             </div>
+
                         </div>
                     </div><!-- End Recent Sales -->
                 </section>
-            <?php
-        } elseif ($method == 'employerApprovel') {
+
+                <?php
+        } elseif ($method == "addExperirenceForm") {
             ?>
                 <section class="Multi Columns Form">
                     <div class="pagetitle">
-                        <h1>Employer Details</h1>
+                        <h1>Experience Details</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Add Experience</li>
+                            </ol>
+                        </nav>
                     </div><!-- End Page Title -->
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Approve Employer Details</h5>
+                            <h5 class="card-title">Add Experience Details</h5>
 
                             <!-- Multi Columns Form -->
-                            <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/employerApprovelStatus" ?>" method="post">
-                                <?php
-                                foreach ($this->data['manageEmployer'] as $key => $value) {
-                                    ?>
-                                        <div class="col-md-12">
-                                            <label for="inputName5" class="form-label">Company Name</label>
-                                            <input type="text" class="form-control" id="inputName5" value="<?php echo $value['company_name'] ?>" readonly name="name" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputNumber5" class="form-label">Company Number</label>+
-                                            <input type="number" class="form-control" id="inputNumber5" name="mobile" value="<?php echo $value['company_mobile_number'] ?>" readonly required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputEmail5" class="form-label">Company Email</label>
-                                            <input type="email" class="form-control" id="inputEmail5" name="email" value="<?php echo $value['company_email'] ?>" readonly required>
-                                        </div>
-                                        <!-- <div class="col-md-6">
-                                <label for="inputPassword5" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="inputPassword5">
-                            </div> -->
-                                        <div class="col-12">
-                                            <label for="inputAddress5" class="form-label">Street Address</label>
-                                            <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="inputAddress2" class="form-label">Landmark</label>
-                                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="landmark" value="<?php echo $value['Landmark'] ?>" readonly required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputCity" class="form-label">City</label>
-                                            <input type="text" class="form-control" id="inputCity" name="city" value="<?php echo $value['City'] ?>" readonly required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputCity" class="form-label">District</label>
-                                            <input type="text" class="form-control" id="inputDistrict" name="district" value="<?php echo $value['district'] ?>" readonly required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputState" class="form-label">State</label>
-                                            <select id="inputState" class="form-select" name="state">
-                                                <option selected value="tamil nadu">Tamil Nadu</option>
-                                                <option>...</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputZip" class="form-label">Pincode</label>
-                                            <input type="text" class="form-control" id="inputPincode" value="<?php echo $value['pincode'] ?>" readonly name="pincode">
-                                        </div>
-                                        <h5 class="card-title">Contact Person Details</h5>
-                                        <div class="col-md-6">
-                                            <label for="inputEmail5" class="form-label">Name</label>
-                                            <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['name'] ?>" readonly name="name1" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputEmail5" class="form-label">Role</label>
-                                            <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['role'] ?>" readonlyname="role" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputNumber5" class="form-label">Mobile Number</label>
-                                            <input type="number" class="form-control" id="inputNumber5" value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputEmail5" class="form-label">Email-ID</label>
-                                            <input type="email" class="form-control" id="inputEmail5" value="<?php echo $value['email'] ?>" readonly name="email1" required>
-                                        </div>
-                                        <h5 class="card-title">Add Employer Approvel</h5>
-                                        <?php
-                                        if (isset($this->data['manageEmployer'][0]['id'])) {
-                                            ?>
-                                                <fieldset class="row mb-3">
-                                                    <legend class="col-form-label col-sm-4 pt-0">Add Employer Approvel</legend>
-                                                    <div class="col-sm-8">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios1" value="0" <?php if ($this->data['manageEmployer'][0]['addNewApprovel'] == '0') {
-                                                                echo 'checked';
-                                                            } ?>>
-                                                            <label class="form-check-label" for="gridRadios1">
-                                                                Approvel Pending
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['addNewApprovel'] == '1') {
-                                                                echo 'checked';
-                                                            } ?>>
-                                                            <label class="form-check-label" for="gridRadios2">
-                                                                Approvel success
-                                                            </label>
-                                                        </div>
-                                                        <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') {
-                                                    echo 'checked';
-                                                } ?>>
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
-                                            </div> -->
-                                                    </div>
-                                                </fieldset>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="addNewApprovelRemarks" style="height: 100px;"></textarea>
-                                                        <label for="floatingTextarea">Remarks</label>
-                                                    </div>
-                                                </div>
-                                                <fieldset class="row mb-3">
-                                                    <legend class="col-form-label col-sm-4 pt-0">Delete Employer Approvel</legend>
-                                                    <div class="col-sm-8">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios1" value="0" <?php if ($this->data['manageEmployer'][0]['deleteApprovel'] == '0') {
-                                                                echo 'checked';
-                                                            } ?>>
-                                                            <label class="form-check-label" for="gridRadios1">
-                                                                Approvel Pending
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['deleteApprovel'] == '1') {
-                                                                echo 'checked';
-                                                            } ?>>
-                                                            <label class="form-check-label" for="gridRadios2">
-                                                                Approvel success
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteApprovelRemarks" style="height: 100px;"></textarea>
-                                                        <label for="floatingTextarea">Remarks</label>
-                                                    </div>
-                                                </div>
-                                                <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
-                                            <?php
-                                        } else {
-                                            ?>
-                                                <fieldset class="row mb-3">
-                                                    <legend class="col-form-label col-sm-4 pt-0">Add Employer Approvel</legend>
-                                                    <div class="col-sm-8">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios1" value="0">
-                                                            <label class="form-check-label" for="gridRadios1">
-                                                                Approvel Pending
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios2" value="1">
-                                                            <label class="form-check-label" for="gridRadios2">
-                                                                Approvel Success
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="addNewApprovelRemarks" style="height: 100px;"></textarea>
-                                                        <label for="floatingTextarea">Remarks</label>
-                                                    </div>
-                                                </div>
-                                                <fieldset class="row mb-3">
-                                                    <legend class="col-form-label col-sm-4 pt-0">Delete Employer Approvel</legend>
-                                                    <div class="col-sm-8">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios1" value="0">
-                                                            <label class="form-check-label" for="gridRadios1">
-                                                                Approvel Pending
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios2" value="1">
-                                                            <label class="form-check-label" for="gridRadios2">
-                                                                Approvel success
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteApprovelRemarks" style="height: 100px;"></textarea>
-                                                        <label for="floatingTextarea">Remarks</label>
-                                                    </div>
-                                                </div>
-                                        <?php }
-                                        ?>
-                                        <!-- <div class="col-md-6">
-                                <label>Admin Verification Remarks</label>
-                                <div class="form-floating mb-3">
-                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="addNewApprovelRemarks" style="height: 100px;"></textarea>
-                                </div>
-                            </div> -->
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                    <?php
-                                }
-                                ?>
-                            </form><!-- End Multi Columns Form -->
+                            <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
+                             onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Employee/insertExperienceForm" ?>">
+
+                             <div class="col-12">
+                      <label for="category" class="form-label">Category</label>
+                      <select class="form-control" id="category" name="category" required>
+                        <option value="">Select a Category</option>
+                        <option value="architech">Architech</option>
+                        <option value="developer">Developer</option>
+                        <option value="tester">Tester</option>
+                        <option value="uiux">UI/UX Design</option>
+                        <option value="datascience">Data Scientist</option>
+                        <option value="databaseadmin">Database Admin</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="professor">Professor</option>
+                        <option value="others">Others</option>
+                      </select>
+                      <div id="category_error" class="text-danger"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="subcategory" class="form-label">Subcategory</label>
+                      <input class="form-control" id="subcategory" name="subcategory"  placeholder="Enter subcategory" required>
+                      <div id="subcategory_error" class="text-danger"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="experience" class="form-label">Experience</label>
+                      <select class="form-control" id="experience" name="experience" required>
+                        <option value="">Select your experience</option>
+                        <option value="0-2">0-2</option>
+                        <option value="3-5">3-5</option>
+                        <option value="5-10">5-10</option>
+                        <option value="10-15">10-15</option>
+                        <option value="15-20">15-20</option>
+                        <option value="above 20 years">Above 20 years</option>
+                      </select>
+                      <div id="experienceexp_error" class="text-danger"></div>
+                    </div>
+
+
+                    <div class="form-control" id="otherCategoryField" style="display: none;">
+                      <label for="othercategory">Other Category:</label>
+                      <select class="form-control" id="experience" name="experience">
+                        <input type="text" class="form-control" id="othercategory" name="othercategory">
+                    </div>
+                    <div class="form-control" id="otherSubcategoryField" style="display: none;">
+                      <label for="othersubcategory">Other Subcategory:</label>
+                      <select class="form-control" id="experience" name="experience">
+                        <input type="text" class="form-control" id="othersubcategory" name="othersubcategory">
+                    </div>
+
+
+                    <div class="col-md-6">
+                      <label for="company name" class="form-label">Company Name</label>
+                      <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Enter company name" required>
+                      <div id="companyname_error" class="text-danger"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="role" class="form-label">Role in the Company</label>
+                      <input type="text" class="form-control" id="role" name="role" placeholder="Enter role" required>
+                      <div id="role_error" class="text-danger"></div>
+                    </div>
+
+                    <h5 class="card-title">Previous Company Manager Details</h5>
+
+                    <div class="col-md-6">
+                      <label for="Name" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" placeholder="Enter employer name" required>
+                      <div id="name_error" class="text-danger"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="number" class="form-label">Mobile Number</label>
+                      <input type="text" class="form-control" id="number" name="number" placeholder="Enter mobile number" required>
+                      <div id="mobilenum_error" class="text-danger"></div>
+                    </div>
+
+                    <div class="col-md-6" class="form-label">
+                      <label for="email">Email-Id</label>
+                      <input type="text" class="form-control" id="emailid" name="emailid" placeholder="Enter Email" required>
+                      <div id="emailid_error" class="text-danger"></div>
+                    </div>
+
+                    <input type="number" class="form-control"  value="1" name="expsubmit" hidden>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+
+                </form><!-- End Multi Columns Form -->
 
                         </div>
                     </div>
                 </section>
+
+                <script>
+              
+                  function validateexpForm() {
+                    var category = document.getElementById("category");
+                    var subcategory = document.getElementById("subcategory");
+                    var experience = document.getElementById("experience");
+                    var companyname = document.getElementById("companyname");
+                    var role = document.getElementById("role");
+                    var ename = document.getElementById("nameofemployer");
+                    var phonenumber1 = document.getElementById("number");
+                    var email1 = document.getElementById("emailid");
+
+                    if (category.value == '') {
+                      // alert("Please select a Category.");
+                      displayError('Please select a category', 'category_error');
+                      // document.experienceform.category.focus();
+                      return false;
+                    }
+
+                    if (subcategory.value == '') {
+                      // alert("Please select a subcategory.");
+                      displayError('Please select a subcategory', 'subcategory_error');
+                      // document.experienceform.subcategory.focus();
+                      return false;
+                    }
+
+                    // if (experience.value === 'fresher') {
+                    //   hideFields();
+                    // } else if (experience.value === '') {
+                    //   // alert("Please select an experience.");
+                    //   displayError('Please select an experience.', 'experience_error');
+                    //   document.experienceform.experience.focus();
+                    //   return false;
+                    // }
+                    if (experience.value === '') {
+                      // alert("Please select an experience.");
+                      displayError('Please select an experience', 'experienceexp_error');
+                      // document.experienceform.experience.focus();
+                      return false;
+                    }
+
+                    if (companyname.value === '') {
+                      // alert("Company name must be filled out.");
+                      displayError('Company name must be filled out', 'companyname_error');
+                      // document.experienceform.companyname.focus();
+                      return false;
+                    }
+
+                    if (role.value === '') {
+                      // displayError('Please enter a role.', 'role_error');
+                      // alert("Role must be filled out.");
+                      displayError('Role must be filled out', 'role_error');
+                      // document.experienceform.role.focus();
+                      return false;
+                    }
+
+                    if (ename.value === '') {
+                      // alert("Name must be filled out.");
+                      displayError('Employer name must be filled out', 'name_error');
+                      return false;
+                    }
+
+                    if (phonenumber1.value === '') {
+                      // alert("Mobile number must be filled out.");
+                      displayError('Mobile number must be filled out', 'mobilenum_error');
+                      return false;
+                    }
+
+                    if (email1.value === '') {
+                      // alert("Email must be filled out.");
+                      displayError('Email id must be filled out', 'emailid_error');
+                      return false;
+                    }
+                    return true;
+                  }
+
+                  function clearErrorMessages() {
+                    var errorElements = document.querySelectorAll('.error');
+                    errorElements.forEach(function(errorElement) {
+                      errorElement.textContent = '';
+                    });
+                  }
+
+                  function displayError(message, elementId) {
+                    var errorElement = document.getElementById(elementId);
+                    errorElement.innerHTML = message;
+                    errorElement.style.color = 'red';
+                  }
+                </script>
+
+
+                <?php
+        } elseif ($method == "updateExperience") {
+            ?>
+                <section class="Multi Columns Form">
+                    <div class="pagetitle">
+                        <h1>Experience Details</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Edit Experience</li>
+                            </ol>
+                        </nav>
+                    </div><!-- End Page Title -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Update Experience Details</h5>
+
+                            <!-- Multi Columns Form -->
+                            <form class="row g-3 needs-validation" novalidate name="experienceform" method="post" 
+                            onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Employee/updateInsertExperience" ?>">
+
+                            <?php
+                            foreach ($updateExperience as $key => $value) {
+                            $seekerId = $_SESSION['seekerId'];
+                                ?>
+                                    <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
+                                    <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id" >
+
+                                    <div class="col-12">
+                                      <label class="form-label" for="category">Category</label>
+                                      <select class="form-control" id="category" name="category" value="<?php echo $value['other_category']; ?>" required>
+                                        <option value="">Select a Category</option>
+                                        <option value="architech" <?php if ($value['other_category'] === 'architech')
+                                          echo ' selected'; ?>>Architect</option>
+                                        <option value="developer" <?php if ($value['other_category'] === 'developer')
+                                          echo ' selected'; ?>>Developer</option>
+                                        <option value="tester" <?php if ($value['other_category'] === 'tester')
+                                          echo ' selected'; ?>>Tester</option>
+                                        <option value="uiux" <?php if ($value['other_category'] === 'uiux')
+                                          echo ' selected'; ?>>UI/UX Design</option>
+                                        <option value="datascience" <?php if ($value['other_category'] === 'datascience')
+                                          echo ' selected'; ?>>Data Scientist</option>
+                                        <option value="databaseadmin" <?php if ($value['other_category'] === 'databaseadmin')
+                                          echo ' selected'; ?>>Database Admin</option>
+                                        <option value="teacher" <?php if ($value['other_category'] === 'teacher')
+                                          echo ' selected'; ?>>Teacher</option>
+                                        <option value="professor" <?php if ($value['other_category'] === 'professor')
+                                          echo ' selected'; ?>>Professor</option>
+                                        <option value="others"<?php if ($value['other_category'] === 'others')
+                                          echo ' selected'; ?>>Others</option>
+                                      </select>
+                                      <div id="category_error" class="error"></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <label class="form-label" for="subcategory">Subcategory</label>
+                                      <input class="form-control" id="subcategory" name="subcategory" value="<?php echo $value['other_sub_category']; ?>" placeholder="Enter subcategory" required>
+                                      <div id="subcategory_error" class="error"></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <label class="form-label" for="experience">Experience</label>
+                                      <select class="form-control" id="experience" name="experience" required>
+                                        <option value="">Select your experience</option>
+                                        <option value="0-2" <?php if ($value['experience'] === '0-2')
+                                          echo ' selected'; ?>>0-2</option>
+                                        <option value="3-5" <?php if ($value['experience'] === '3-5')
+                                          echo ' selected'; ?>>3-5</option>
+                                        <option value="5-10" <?php if ($value['experience'] === '5-10')
+                                          echo ' selected'; ?>>5-10</option>
+                                        <option value="10-15" <?php if ($value['experience'] === '10-15')
+                                          echo ' selected'; ?>>10-15</option>
+                                        <option value="15-20" <?php if ($value['experience'] === '15-20')
+                                          echo ' selected'; ?>>15-20</option>
+                                        <option value="above 20 years" <?php if ($value['experience'] === 'above 20 years')
+                                          echo ' selected'; ?>>Above 20 years</option>
+                                      </select>
+                                      <div id="experience_error" class="error"></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <label class="form-label" for="company name">Company Name</label>
+                                      <input type="text" class="form-control" value="<?php echo $value['company_name']; ?>" id="companyname" name="companyname" required>
+                                      <div id="companyname_error" class="error"></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <label class="form-label" for="role">Role in the Company</label>
+                                      <input type="text" class="form-control" value="<?php echo $value['job_role']; ?>" id="role" name="role" required>
+                                      <div id="role_error" class="error"></div>
+                                    </div>
+
+                                    <h5 class="card-title">Previous Company Manager Details</h5>
+
+                                    <div class="col-md-6">
+                                      <label class="form-label" for="Name">Name</label>
+                                      <input type="text" class="form-control" value="<?php echo $value['previous_employer_name']; ?>" id="nameofemployer" name="nameofemployer" required>
+                                      <div id="name_error" class="error"></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <label class="form-label" for="phone number">Mobile Number</label>
+                                      <input type="text" class="form-control" value="<?php echo $value['previous_employer_mobile']; ?>" id="number" name="number" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <label class="form-label" for="email">Email</label>
+                                      <input type="text" class="form-control" value="<?php echo $value['previous_employer_email']; ?>" id="emailid" name="emailid" required>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button type="reset" class="btn btn-secondary">Reset</button>
+                                    </div>
+
+                                </form><!-- End Multi Columns Form -->
+
+                                <?php 
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </section>
+
+                <script>
+                
+                  function validateexpForm() {
+                    var category = document.getElementById("category");
+                    var subcategory = document.getElementById("subcategory");
+                    var experience = document.getElementById("experience");
+                    var companyname = document.getElementById("companyname");
+                    var role = document.getElementById("role");
+                    var ename = document.getElementById("nameofemployer");
+                    var phonenumber1 = document.getElementById("phonenumber");
+                    var email1 = document.getElementById("email");
+
+                    if (category.value === '') {
+                      // alert("Category is required");
+                      displayError('Please select a category', 'category_error');
+                      return true;
+                    }
+
+                    if (subcategory.value === '') {
+                      // alert("Please select a subcategory");
+                      displayError('Please select a subcategory', 'subcategory_error');
+                      return false;
+                    }
+                    if (experience.value === 'fresher') {
+                      hideFields();
+                    } else if (experience.value === '') {
+                      // alert("Please select an experience");
+                      displayError('Please select an experience.', 'experience_error');
+                      return false;
+                    }
+
+                    if (companyname.value === '') {
+                      // alert("Please enter a company name.");
+                      displayError('Company name must be filled out', 'companyname_error');
+                      return false;
+                    }
+
+                    if (role.value === '') {
+                      // alert("Please enter a role.");
+                      displayError('Role must befilled out', 'role_error');
+                      return false;
+                    }
+
+                    if (ename.value === '') {
+                      // alert("Name must be filled out.");
+                      displayError('Employer name must be filled out', 'name_error');
+                      return false;
+                    }
+                    if (phonenumber1.value === '') {
+                      // alert("Mobile number must be filled out.");
+                      displayError('Mobile number must be filled out', 'mobilenum_error');
+                      return false;
+                    }
+                    if (email1.value === '') {
+                      // alert("Email must be filled out.");
+                      displayError('Email id must be filled out', 'emailid_error');
+                      return false;
+                    }
+
+                    return true;
+                  }
+
+
+                  function clearErrorMessages() {
+                    var errorElements = document.querySelectorAll('.error');
+                    errorElements.forEach(function(errorElement) {
+                      errorElement.textContent = '';
+                    });
+                  }
+
+                  function displayError(message, elementId) {
+                    var errorElement = document.getElementById(elementId);
+                    errorElement.innerHTML = message;
+                    errorElement.style.color = 'red';
+                  }
+                </script>
+
+<?php
+        } elseif ($method == "areaOfIntrestTable") {
+            ?>
+                <section class="usertable">
+                    <div class="pagetitle">
+                        <h1>Area of Job Interest</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Table</li>
+                            </ol>
+                        </nav>
+                    </div><!-- End Page Title -->
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                           
+                            <div class="card-body">
+                                       
+                                        <h5 class="card-title">Area of Job Interest Table<span></span></h5>
+                                        
+                                        <div class="d-flex justify-content-between">
+                                        <a href="<?php echo baseUrl . "Employee/addAreaOfIntrestForm" ?>">
+                                        <button type="button" class="btn btn-info mb-4">+ Add Area of Job Interest</button></a>
+                                       <div>
+                                       <a  href="<?php echo baseUrl . "Employee/experienceTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
+                                       <a  href="<?php echo baseUrl . "Employee/resume" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
+                                       </div>
+                                    </div>
+                                    <?php
+                                         if (isset($areaOfIntrestTable[0]['id'])) {
+                                           $count=1;
+                                            ?>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">S.No</th>
+                                                    <th scope="col">Job Category</th>
+                                                    <th scope="col">Job Subcategory</th>
+                                                    <th scope="col">Prefered Location</th>
+                                                    <th scope="col">Experience</th>
+                                                    <th scope="col">Role</th>
+                                                    <th scope="col">Job Type</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Expected Salary</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php
+                                                if (isset($areaOfIntrestTable[0]['id'])) {
+                                                    $count=1;
+                                                foreach ($areaOfIntrestTable as $key => $value) {
+                                                $seekerId = $_SESSION['seekerId'];
+                                                ?>
+                                                    <tr>
+                                                    <td><?php echo $count++ ?>.</td>
+                                                    <td><?php echo $value['other_interst_category'] ?></td>
+                                                    <td><?php echo $value['other_sub_interst_category'] ?></td>
+                                                    <td><?php echo $value['prefered_location'] ?></td>
+                                                    <td><?php echo $value['experience'] ?></td>
+                                                    <td><?php echo $value['job_type'] ?></td>
+                                                    <td><?php echo $value['description'] ?></td>
+                                                    <td><?php echo $value['expected_salary'] ?></td>
+                                                    <td>
+                                                    <div class="d-flex">
+                                                        <a href="<?php echo baseUrl . "Employee/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                                        <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employee/deleteEmployee/AreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                    </div>
+                                                    </td>
+                                      </tr>
+                                        <?php
+                                            }
+                                        } 
+                                        ?>
+                                            </tbody>
+                                        </table>
+                                        <?php
+                                } else {
+                                    ?>
+                                        <h5 class="card-title">No Records Found<span></span></h5>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+
+                        </div>
+                    </div><!-- End Recent Sales -->
+                </section>
+
+
+
+            <?php
+        } elseif ($method == "addAreaOfIntrestForm") {
+            ?>
+               <section class="Multi Columns Form">
+                    <div class="pagetitle">
+                        <h1>Area of Job Interest Details</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Add Job Interest</li>
+                            </ol>
+                        </nav>
+                    </div><!-- End Page Title -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add Job Interest</h5>
+
+                            <!-- Multi Columns Form -->
+                            <form class="row g-3 needs-validation" novalidate  method="post"
+                            onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Employee/insertAreaOfIntrest" ?>">
+
+                              <div class="col-12">
+                                <label class="form-label" for="category">Category</label>
+                                <select class="form-control" id="category" name="category" required>
+                                  <option value="">Select a Category</option>
+                                  <option value="architech">Architech</option>
+                                  <option value="developer">Developer</option>
+                                  <option value="tester">Tester</option>
+                                  <option value="uiux">UI/UX Design</option>
+                                  <option value="datascience">Data Scientist</option>
+                                  <option value="databaseadmin">Database Admin</option>
+                                  <option value="teacher">Teacher</option>
+                                  <option value="professor">Professor</option>
+                                  <option value="others">Others</option>
+                                </select>
+                                <div id="areacat_error" class="error"></div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for=" subcategory">Subcategory</label>
+                                <input type="text" class="form-control" id="subcategory" name="subcategory" placeholder="Enter subcategory" required>
+                                <div id="areasubcat_error" class="error"></div>
+                              </div>
+
+                              <div class="col-md-6" id="otherCategoryFields" style="display: none;">
+                                <label for="customCategoryInput">Custom Category</label>
+                                <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput" placeholder="Enter custom category">
+                                <label for="customSubcategoryInput">Custom Subcategory</label>
+                                <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput" placeholder="Enter custom subcategory">
+                              </div>
+                              <div class="col-md-6" id="customCategory" style="display: none;">
+                                <label for="customCategoryInput">Category Name</label>
+                                <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
+                              </div>
+
+                              <div class="col-md-6" id="customSubcategory" style="display: none;">
+                                <label for="customSubcategoryInput"> Subcategory Name</label>
+                                <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="preferred-location">Preferred Location to work</label>
+                                <input type="text" class="form-control" id="preferred-location" name="preferred-location" placeholder="Enter prefered location" required>
+                                <div id="arealocation_error" class="error"></div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="experience">Experience</label>
+                                <select class="form-control" id="experience" name="experience" required>
+                                  <option value="">Select your experience</option>
+                                  <option value="fresher">Fresher</option>
+                                  <option value="0-2">0-2</option>
+                                  <option value="3-5">3-5</option>
+                                  <option value="5-10">5-10</option>
+                                  <option value="10-15">10-15</option>
+                                  <option value="15-20">15-20</option>
+                                  <option value="above 20 years">Above 20 years</option>
+                                </select>
+                                <div id="areaexp_error" class="error"></div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="description">Description</label>
+                                <input class="form-control" id="description" name="description" rows="3" placeholder="Enter description" required>
+                                <div id="areades_error" class="error"></div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="jobtype">Job Type</label>
+                                <select class="form-control" id="jobtype" name="jobtype" required>
+                                  <option value="">Select a Job Type</option>
+                                  <option value="parttime">Part Time</option>
+                                  <option value="fulltime">Full Time</option>
+                                </select>
+                                <div id="areajob_error" class="error"></div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="expected-salary">Expected Salary</label>
+                                <input type="text" class="form-control" id="expected-salary" name="expected-salary" placeholder="Enter salary expectation" required>
+                                <div id="areasalary_error" class="error"></div>
+                              </div>
+
+                        
+                                <h5 class="card-title">Your Strength</h5>
+                
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="skillname">Skill Name</label>
+                                <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name" required>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="experience">Experience</label>
+                                <select class="form-control" name="skillexperience" id="skillexperience" required>
+                                  <option value="">Select Experience</option>
+                                  <option value="fresher">Fresher</option>
+                                  <option value="0-2">0-2 years</option>
+                                  <option value="2-5">2-5 years</option>
+                                  <option value="5-10">5-10 years</option>
+                                  <option value="10-20">10-20 years</option>
+                                  <option value="20-above">20 years above</option>
+                                </select>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="skillLevel">Skill Level</label>
+                                <select class="form-control" name="skilllevel" id="skilllevel" required>
+                                  <option value="">Select Skill Level</option>
+                                  <option value="beginner">Beginner</option>
+                                  <option value="intermediate">Intermediate</option>
+                                  <option value="advanced">Advanced</option>
+                                </select>
+                              </div>
+
+                            <input type="number" class="form-control"  value="1" name="areasubmit" hidden>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+
+                </form><!-- End Multi Columns Form -->
+
+                        </div>
+                    </div>
+                </section>
+
+                <script>
+                        function clearFormFields(form) {
+                          var fieldsToClear = form.querySelectorAll('input, select');
+                          for (var i = 0; i < fieldsToClear.length; i++) {
+                            fieldsToClear[i].value = '';
+                          }
+                        }
+
+                        function validateAreaForm() {
+                          var category = document.getElementById("category").value;
+                          var subcategory = document.getElementById("subcategory").value;
+                          var preferredLocation = document.getElementById("preferred-location").value;
+                          var jobtype = document.getElementById("jobtype").value;
+                          var experience = document.getElementById("experience").value;
+                          var description = document.getElementById("description").value;
+                          var expectedSalary = document.getElementById("expected-salary").value;
+                          // var skillExperience = document.getElementById("skillExperience").value;
+                          // var skillName = docment.getElementById("skillname").value;
+                          // var skillLevel = document.getElementById("skilllevel").value; 
+
+
+                          if (category === "") {
+                            // alert("Please select a category.");
+                            displayError('Please select a category', 'areacat_error');
+                            return false;
+                          }
+
+                          if (subcategory === "" && category !== "") {
+                            // alert("Please select a subcategory.");
+                            displayError('Please select a subcategory', 'areasubcat_error');
+                            return false;
+                          }
+
+                          if (preferredLocation.trim() === "") {
+                            // alert("Preferred location must be filled out.");
+                            displayError('Preferred location must be filled out', 'arealocation_error');
+                            return false;
+                          }
+
+                          if (experience.trim() === "") {
+                            // alert("Experience must be filled out.");
+                            displayError('Experience must be filled out', 'areaexp_error');
+                            return false;
+                          }
+
+                          if (description.trim() === "") {
+                            // alert("Description must be filled out.");
+                            displayError('Description must be filled out', 'areades_error');
+                            return false;
+                          }
+
+                          if (jobtype.trim() === "") {
+                            // alert("Please select your job type.");    
+                            displayError('Job type must be filled out', 'areajob_error');
+                            return false;
+                          }
+
+                          if (expectedSalary.trim() === "") {
+                            // alert("Expected salary must be filled out.");
+                            displayError('Expected salary must be filled out', 'areasalary_error');
+                            return false;
+                          }
+
+                          // if (skillName.trim() === "") {
+                          //   alert("Please provide a skillname");
+                          //   return false;
+                          // }
+                          // if (skillExperience.trim() === "") {
+                          //   alert("Please provide a experience");
+                          //   return false;
+                          // }
+                          // if (skillLevel.trim() === "") {
+                          //   alert("Please provide a skillLevel");
+                          //   return false;
+                          // }
+
+                          return true;
+                        }
+
+                        function clearErrorMessages() {
+                          var errorElements = document.querySelectorAll('.error');
+                          errorElements.forEach(function(errorElement) {
+                            errorElement.textContent = '';
+                          });
+                        }
+
+                        function displayError(message, elementId) {
+                          var errorElement = document.getElementById(elementId);
+                          errorElement.innerHTML = message;
+                          errorElement.style.color = 'red';
+                        }
+
+                      </script>
+
+            <?php
+        } elseif ($method == 'updateAreaOfIntrest') {
+            ?>
+                
+                <section class="Multi Columns Form">
+                    <div class="pagetitle">
+                        <h1>Area of Job Interest Details</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Edit Job Interest</li>
+                            </ol>
+                        </nav>
+                    </div><!-- End Page Title -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Update Job Interest</h5>
+
+                            <!-- Multi Columns Form -->
+                            <form class="row g-3 needs-validation" novalidate  method="post"
+                            onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Employee/updateInsertAreaOfIntrest" ?>">
+
+                            <?php
+                            foreach ($updateAreaOfIntrest as $key => $value) {
+                              $seekerId = $_SESSION['seekerId'];
+                              ?>
+                                          <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
+                                          <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id">
+                                          
+                                              <div class="col-12">
+                                                <label class="form-label" for="category">Category</label>
+                                                <select class="form-control" id="category" name="category" value="<?php echo $value['other_interst_category']; ?>" required>
+                                                  <option value="architech" <?php if ($value['other_interst_category'] === 'architech')
+                                                    echo ' selected'; ?>>Architech</option>
+                                                  <option value="developer">Developer</option>
+                                                  <option value="tester" <?php if ($value['other_interst_category'] === 'tester')
+                                                    echo ' selected'; ?>>Tester</option>
+                                                  <option value="uiux" <?php if ($value['other_interst_category'] === 'uiux')
+                                                    echo ' selected'; ?>>UI/UX Design</option>
+                                                  <option value="datascience" <?php if ($value['other_interst_category'] === 'datascience')
+                                                    echo ' selected'; ?>>Data Scientist</option>
+                                                  <option value="databaseadmin" <?php if ($value['other_interst_category'] === 'databaseadmin')
+                                                    echo ' selected'; ?>>Database Admin</option>
+                                                  <option value="teacher" <?php if ($value['other_interst_category'] === 'teacher')
+                                                    echo ' selected'; ?>>Teacher</option>
+                                                  <option value="professor" <?php if ($value['other_interst_category'] === 'professor')
+                                                    echo ' selected'; ?>>Professor</option>
+                                                  <option value="others" <?php if ($value['other_interst_category'] === 'others')
+                                                    echo ' selected'; ?>>Others</option>
+                                                </select>
+                                                <div id="areacat_error" class="error"></div>
+                                              </div>
+
+                                              <div class="col-md-6">
+                                                <label class="form-label" for="subcategory">Subcategory</label>
+                                                <input type="text" class="form-control" id="subcategory" name="subcategory" value="<?php echo $value['other_sub_interst_category'] ?>" placeholder="Enter subcategory" required>
+                                                <div id="areasubcat_error" class="error"></div>
+                                              </div>
+
+
+                                              <div class="" id="otherCategoryFields" style="display: none;">
+                                                <label for="customCategoryInput">Custom Category</label>
+                                                <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput" placeholder="Enter custom category">
+                                                <label for="customSubcategoryInput">Custom Subcategory</label>
+                                                <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput" placeholder="Enter custom subcategory">
+                                              </div>
+                                              <div class="" id="customCategory" style="display: none;">
+                                                <label for="customCategoryInput">Category Name</label>
+                                                <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
+                                              </div>
+                                              <div class="" id="customSubcategory" style="display: none;">
+                                                <label for="customSubcategoryInput"> Subcategory Name</label>
+                                                <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
+                                              </div>
+
+
+                                              <div class="col-md-6">
+                                                <label for="preferred-location">Preferred Location to work</label>
+                                                <input type="text" class="form-control" id="preferred-location" name="preferred-location" value="<?php echo $value['prefered_location']; ?>" required>
+                                                <div id="arealocation_error" class="error"></div>
+
+                                              </div>
+                                              <div class="col-md-6">
+                                                <label class="form-label" for="experience">Experience</label>
+                                                <select class="form-control" id="experience" name="experience" value="<?php echo $value['experience']; ?>" required>
+                                                  <!-- <option value="">Select your experience</option> -->
+                                                  <option value="fresher" <?php if ($value['experience'] === 'fresher')
+                                                    echo ' selected'; ?>>Fresher</option>
+                                                  <option value="0-2" <?php if ($value['experience'] === '0-2')
+                                                    echo ' selected'; ?>>0-2</option>
+                                                  <option value="3-5" <?php if ($value['experience'] === '3-5')
+                                                    echo ' selected'; ?>>3-5</option>
+                                                  <option value="5-10" <?php if ($value['experience'] === '5-10')
+                                                    echo ' selected'; ?>>5-10</option>
+                                                  <option value="10-15" <?php if ($value['experience'] === '10-15')
+                                                    echo ' selected'; ?>>10-15</option>
+                                                  <option value="15-20" <?php if ($value['experience'] === '15-20')
+                                                    echo ' selected'; ?>>15-20</option>
+                                                  <option value="above 20 years" <?php if ($value['experience'] === 'above 20 years')
+                                                    echo ' selected'; ?>>Above 20 years</option>
+                                                </select>
+                                                <div id="areaexp_error" class="error"></div>
+                                              </div>
+
+                                              <div class="col-md-6">
+                                                <label class="form-label" for="description">Description</label>
+                                                <input class="form-control" id="description" name="description" value="<?php echo $value['description']; ?>" rows="3" required>
+                                                <div id="areades_error" class="error"></div>
+                                              </div>
+
+                                              <div class="col-md-6">
+                                                <label class="form-label" for="jobtype">Job Type</label>
+                                                <select class="form-control" id="jobtype" name="jobtype" value="<?php echo $value['job_type']; ?>" required>
+                                                  <option value="parttime" <?php if ($value['job_type'] === 'parttime')
+                                                    echo ' selected'; ?>>Part Time</option>
+                                                  <option value="fulltime" <?php if ($value['job_type'] === 'fulltime')
+                                                    echo ' selected'; ?>>Full Time</option>
+                                                </select>
+                                                <div id="areajob_error" class="error"></div>
+                                              </div>
+
+                                              <div class="col-md-6">
+                                                <label class="form-label" for="expected-salary">Expected Salary</label>
+                                                <input type="text" class="form-control" id="expected-salary" name="expected-salary" value="<?php echo $value['expected_salary']; ?>" required>
+                                                <div id="areasalary_error" class="error"></div>
+                                              </div>
+
+                                                <h4 class="card-title">Your Strength</h4>
+
+                                              <div class="col-md-6">
+                                                <label class="form-label" for="skillname">Skill Name</label>
+                                                <input type="text" class="form-control" id="skillname" name="skillname" value="<?php echo $value['skillname']; ?>" placeholder="Enter skill name" required>
+                                              </div>
+
+                                              <div class="col-md-6">
+                                                <label class="form-label" for="experience">Experience</label>
+                                                <select class="form-control" name="skillexperience" id="skillexperience" value="<?php echo $value['skillexperience']; ?>" required><br>
+                                                 <option value="">Select an experience</option>
+                                                  <option value="fresher" <?php if ($value['skillexperience'] === 'fresher')
+                                                    echo ' selected'; ?>>Fresher</option>
+                                                  <option value="0-2" <?php if ($value['skillexperience'] === '0-2')
+                                                    echo ' selected'; ?>>0-2 years</option>
+                                                  <option value="2-5" <?php if ($value['skillexperience'] === '2-5')
+                                                    echo ' selected'; ?>>2-5 years</option>
+                                                  <option value="5-10" <?php if ($value['skillexperience'] === '5-10')
+                                                    echo ' selected'; ?>>5-10 years</option>
+                                                  <option value="10-20" <?php if ($value['skillexperience'] === '10-20')
+                                                    echo ' selected'; ?>>10-20 years</option>
+                                                  <option value="20-above" <?php if ($value['skillexperience'] === '20-above')
+                                                    echo ' selected'; ?>>20 years above</option>
+                                                </select>
+                                              </div>
+                                              <div class="col-md-6">
+                                                <label class="form-label" for="skillLevel">Skill Level</label>
+                                                <select class="form-control" name="skilllevel" id="skilllevel" value="<?php echo $value['skilllevel']; ?>" required>
+                                                 <option value="">Select a skill level</option>
+                                                  <option value="beginner" <?php if ($value['skilllevel'] === 'beginner')
+                                                    echo ' selected'; ?>>Beginner</option>
+                                                  <option value="intermediate" <?php if ($value['skilllevel'] === 'intermediate')
+                                                    echo ' selected'; ?>>Intermediate</option>
+                                                  <option value="advanced" <?php if ($value['skilllevel'] === 'advanced')
+                                                    echo ' selected'; ?>>Advanced</option>
+                                                </select>
+                                              </div>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                            </div>
+                                           
+                        <?php
+                          }
+                            ?>
+                            </form>
+                        </div>
+                    </div>
+                </section>     
+
+                <script>
+                      
+                        function validateAreaForm() {
+                          var category = document.getElementById("category").value;
+                          var subcategory = document.getElementById("subcategory").value;
+                          var preferredLocation = document.getElementById("preferred-location").value;
+                          var jobtype = document.getElementById("jobtype").value;
+                          var experience = document.getElementById("experience").value;
+                          var description = document.getElementById("description").value;
+                          var expectedSalary = document.getElementById("expected-salary").value;
+                          // var skillExperience = document.getElementById("skillExperience").value;
+                          // var skillName = docment.getElementById("skillname").value;
+                          // var skillLevel = document.getElementById("skilllevel").value; 
+
+
+
+                          if (category === "") {
+                            // alert("Please select a category.");
+                            displayError('Please select a category', 'areacat_error');
+                            return false;
+                          }
+
+                          if (subcategory === "" && category !== "") {
+                            // alert("Please select a subcategory.");
+                            displayError('Please select a subcategory', 'areasubcat_error');
+                            return false;
+                          }
+
+                          if (preferredLocation.trim() === "") {
+                            // alert("Preferred location must be filled out.");
+                            displayError('Preferred location must be filled out', 'arealocation_error');
+                            return false;
+                          }
+
+                          if (experience.trim() === "") {
+                            // alert("Experience must be filled out.");
+                            displayError('Experience must be filled out', 'areaexp_error');
+                            return false;
+                          }
+
+                          if (description.trim() === "") {
+                            // alert("Description must be filled out.");
+                            displayError('Description must be filled out', 'areades_error');
+                            return false;
+                          }
+
+                          if (jobtype.trim() === "") {
+                            // alert("Please select your job type.");    
+                            displayError('Job type must be filled out', 'areajob_error');
+                            return false;
+                          }
+
+                          if (expectedSalary.trim() === "") {
+                            // alert("Expected salary must be filled out.");
+                            displayError('Expected salary must be filled out', 'areasalary_error');
+                            return false;
+                          }
+
+                          // if (skillName.trim() === "") {
+                          //   alert("Please provide a skillname");
+                          //   return false;
+                          // }
+                          // if (skillExperience.trim() === "") {
+                          //   alert("Please provide a experience");
+                          //   return false;
+                          // }
+                          // if (skillLevel.trim() === "") {
+                          //   alert("Please provide a skillLevel");
+                          //   return false;
+                          // }
+
+                          return true;
+                        }
+
+                        function clearErrorMessages() {
+                          var errorElements = document.querySelectorAll('.error');
+                          errorElements.forEach(function(errorElement) {
+                            errorElement.textContent = '';
+                          });
+                        }
+
+                        function displayError(message, elementId) {
+                          var errorElement = document.getElementById(elementId);
+                          errorElement.innerHTML = message;
+                          errorElement.style.color = 'red';
+                        }
+                        // Function to update the subcategories based on the selected category
+
+                        // Helper function to add a subcategory option to the select element
+                        function addSubcategoryOption(value, selectElement) {
+                          var option = document.createElement("option");
+                          option.value = value.toLowerCase();
+                          option.text = value;
+                          selectElement.appendChild(option);
+                        }
+                      </script>
+
+
+            <?php
+        } elseif ($method == "resume") {
+            ?>
+                <section class="Multi Columns Form">
+                    <div class="pagetitle">
+                        <h1>Resume</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Resume</li>
+                            </ol>
+                        </nav>
+                    </div><!-- End Page Title -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Upload Resume</h5>
+
+                            <!-- Multi Columns Form -->
+                        <form class="row g-3 needs-validation" novalidate name="resumeform" id="resumeForm" method="post" enctype="multipart/form-data"
+                            onsubmit="return validateForm()" action="<?php echo baseUrl . "Employee/registered" ?>">
+
+                            
+
+                            <div class="col-12">
+                            <label class="form-label" for="file">Upload Resume</label>
+                            <input type="file" class="form-control" name="file" id="idresume" accept="image/png ,image/jpg, image/jpeg, application/pdf" required>
+                            <div id="resume_error" class="text-danger"></div>
+                        </div>
+
+                            <!-- <div class="col-12">
+                                <label class="form-label" for="file">Uploaded Resume</label>
+                                <input type="file" name="oldresume" id="oldresume" value="<?php echo $value['resume_filename']; ?>" required>
+                                <div class="uploadedfile">
+                                <input type="file" class="form-control " id="idresume" name="file" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden/>
+                                <label id="file-input-labelresume" for="idresume">Select File</label>  
+                                <a href="<?php echo $value['resume_filename']; ?>" target="blank" id="existfileresume"  style="margin-top:10px"><?php echo $value['resume_filename_url']; ?></a>
+                                </div>
+                            </div> -->
+
+                            <input type="number" class="form-control"  value="1" name="resumesubmit" hidden>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+
+                        
+
+                        </form><!-- End Multi Columns Form -->
+
+                        </div>
+                    </div>
+                </section>
+
+                <script>
+
+                    function validateForm() {
+                        var ur = document.resumeform.file.value;
+
+                    if (ur == "") {
+                        var msg = "Resume must be uploaded";
+                        document.getElementById("resume_error").innerHTML = msg;
+                        return false;
+                    } else {
+                        document.getElementById("resume_error").innerHTML = "";
+                    }
+                       
+                    }
+                    </script>
+
+            <?php
+        } elseif ($method == "thank") {
+            ?>
+                 <section class="Multi Columns Form">
+                    <div class="pagetitle my-2">
+                        <h1>Registered Successfully</h1>
+                    </div><!-- End Page Title -->
+                    <div class="card my-5">
+                        <div class="text-center">
+                            <img class="p-sm-5 img-fluid" src="<?php echo baseUrl . "assets/employee_thanks.png" ?>" alt="Thanks">
+                        </div>
+                    </div>
+                </section>
+
             <?php
         }
         ?>
 
     </main><!-- End #main -->
 
+
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
             &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
         </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
-        </div>
     </footer><!-- End Footer -->
+
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
