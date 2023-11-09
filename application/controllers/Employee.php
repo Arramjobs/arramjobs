@@ -54,7 +54,7 @@ class Employee extends CI_Controller
         }
     }
 
-    public function seekerRegistration()
+    public function employeeRegistration()
     {
         $postData = $this->input->post(null, true);
         $register = $this->EmployeeModel->register();
@@ -267,8 +267,9 @@ class Employee extends CI_Controller
     {
         $this->data['method'] = "areaOfIntrestTable";
         $areaOfIntrestTable = $this->EmployeeModel->areaOfIntrestTable();
+        $skillTable = $this->EmployeeModel->skillTable();
         $this->data['areaOfIntrestTable'] = $areaOfIntrestTable;
-
+        $this->data['skillTable'] = $skillTable;
         $this->load->view('employeeDashboard.php', $this->data);
     }
 
@@ -328,21 +329,22 @@ class Employee extends CI_Controller
         $skillTable = $this->EmployeeModel->skillTable();
         $this->data['skillTable'] = $skillTable;
 
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
 
     public function addSkillForm()
     {
         $this->data['method'] = "addSkillForm";
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
     public function insertSkillForm()
     {
         $insertSkillForm = $this->EmployeeModel->insertSkillForm();
-
-        $this->skillTable();
+        // $this->skillTable();
+        $this->areaOfIntrestTable();
+        echo '<script>alert("Skill inserted successfully.");</script>';
     }
 
     public function updateSkill()
@@ -351,14 +353,14 @@ class Employee extends CI_Controller
         $this->data['method'] = "updateSkill";
         $updateSkill = $this->EmployeeModel->updateSkill($updateSkillId);
         $this->data['updateSkill'] = $updateSkill;
-        $this->load->view('seekerView.php', $this->data);
+        $this->load->view('employeeDashboard.php', $this->data);
     }
 
     public function updateInsertSkill()
     {
         $post = $this->input->post(null, true);
         $updateInsertSkill = $this->EmployeeModel->updateInsertSkill();
-        $this->skillTable();
+        $this->areaOfIntrestTable();
     }
 
     public function deleteSkill()
@@ -366,7 +368,7 @@ class Employee extends CI_Controller
         $deleteSkillId = $this->uri->segment(3);
         $delete = $this->EmployeeModel->deleteSkill($deleteSkillId);
         if ($delete == null) {
-            $this->skillTable();
+            $this->areaOfIntrestTable();
         } else {
             echo "Error deleting record";
         }

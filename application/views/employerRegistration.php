@@ -73,7 +73,7 @@
                     <p class="text-center small">Enter your company details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate id="h" onsubmit="return group()" enctype="multipart/form-data" name="forms" action="<?php echo baseUrl . "Employer/providerRegistration" ?>"
+                  <form class="row g-3 needs-validation" novalidate id="h" onsubmit="return group()" enctype="multipart/form-data" name="forms" action="<?php echo baseUrl . "Employer/employerRegistration" ?>"
                 method="post" >
                     
                     <div class="">

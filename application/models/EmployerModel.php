@@ -267,7 +267,8 @@ public function get_latest_customer_id() {
   public function candidates($jobCategory)
   {
     $query = "SELECT spf.id as seekerId, spf.name as name, saoi.id as id,  saoi.other_sub_interst_category as oisc, saoi.experience as exps,
-    saoi.skillname as skills FROM seeker_profile_form spf INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id
+    ssk.skill as skills FROM seeker_profile_form spf INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id 
+    INNER JOIN  seeker_skill ssk ON ssk.seekerId=spf.id
     WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.verificationStatus = '1' " ;
     $result = $this->db->query($query);
     return $result->result_array();

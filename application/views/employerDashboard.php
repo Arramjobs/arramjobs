@@ -722,7 +722,8 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="experience">Experience:</label>
-                        <select class="form-control" id="experience" name="experience" required>
+                        <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required>
+                        <!-- <select class="form-control" id="experience" name="experience" required>
                             <option value="">Select experience</option>
                             <option value="fresher">Fresher</option>
                             <option value="0-3 years">0-3 years</option>
@@ -731,7 +732,7 @@
                             <option value="10-15 years">10-15 years</option>
                             <option value="15-20 years">15-20 years</option>
                             <option value="above 20 years">above 20 years</option>
-                        </select>
+                        </select> -->
                         <div id="experience_error" class="error"></div>
                     </div>
                     <div class="col-md-6">
@@ -957,8 +958,8 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label"  for="experience">Experience:</label>
-                            <select class="form-control" id="experience" value="<?php echo $value['experience']; ?>" name="experience" required>
-                                <option value="">Select experience</option>
+                            <input type="text" class="form-control" id="experience" value="<?php echo $value['experience']; ?>" name="experience" placeholder="Enter experience" required>
+                            <!-- <select class="form-control" id="experience" value="<?php echo $value['experience']; ?>" name="experience" required>
                                 <option value="fresher" <?php if ($value['experience'] === 'fresher')
                                                             echo ' selected'; ?>>Fresher</option>
                                 <option value="0-3 years" <?php if ($value['experience'] === '0-3 years')
@@ -973,7 +974,7 @@
                                                             echo ' selected'; ?>>15-20 years</option>
                                 <option value="above 20 years" <?php if ($value['experience'] === 'above 20 years')
                                                                     echo ' selected'; ?>>above 20 years</option>
-                            </select>
+                            </select> -->
                             <div id="experience_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
@@ -1357,13 +1358,13 @@
                                         <tbody>
                                         <?php
                                 $countskill = 1;
-                                foreach ($this->data['areaOfInterest'] as $skey => $svalue) {
+                                foreach ($this->data['skills'] as $skey => $svalue) {
                                 ?>
                                                     <tr>
                                                         <th><?php echo $countskill++; ?>.</th>
-                                                        <td><?php echo $svalue['skillname'] ?></td>
-                                                        <td><?php echo $svalue['skillexperience'] ?></td>
-                                                        <td><?php echo $svalue['skilllevel'] ?></td>
+                                                        <td><?php echo $svalue['skill'] ?></td>
+                                                        <td><?php echo $svalue['experience'] ?></td>
+                                                        <td><?php echo $svalue['skill_level'] ?></td>
                                                     </tr>
                                                 <?php
                                             }

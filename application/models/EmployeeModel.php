@@ -544,9 +544,9 @@ class EmployeeModel extends CI_Model
             'job_type' => $post['jobtype'],
             'description' => $post['description'],
             'expected_salary' => $post['expected-salary'],
-            'skillname' => $post['skillname'],
-            'skillexperience' => $post['skillexperience'],
-            'skilllevel' => $post['skilllevel']
+            // 'skillname' => $post['skillname'],
+            // 'skillexperience' => $post['skillexperience'],
+            // 'skilllevel' => $post['skilllevel']
         );
 
         $this->db->insert('seeker_area_of_interst', $add);
@@ -584,9 +584,9 @@ class EmployeeModel extends CI_Model
             'job_type' => $post['jobtype'],
             'description' => $post['description'],
             'expected_salary' => $post['expected-salary'],
-            'skillname' => $post['skillname'],
-            'skillexperience' => $post['skillexperience'],
-            'skilllevel' => $post['skilllevel']
+            // 'skillname' => $post['skillname'],
+            // 'skillexperience' => $post['skillexperience'],
+            // 'skilllevel' => $post['skilllevel']
         );
 
         $this->db->where('id', $areaOfIntrest);
@@ -595,7 +595,6 @@ class EmployeeModel extends CI_Model
 
     public function deleteAreaOfIntrest($deleteAreaOfIntrestId)
     {
-
         $delete = "DELETE FROM `seeker_area_of_interst` WHERE `id`=$deleteAreaOfIntrestId";
         $del = $this->db->query($delete);
     }
@@ -619,7 +618,7 @@ class EmployeeModel extends CI_Model
         $add = array(
             'seekerId' => $seekerId,
             'skill' => $post['skillname'],
-            'experience' => $post['experience'],
+            'experience' => $post['skillexperience'],
             'skill_level' => $post['skilllevel']
         );
 
@@ -641,7 +640,7 @@ class EmployeeModel extends CI_Model
         $areaOfIntrest = $post['id'];
         $updateInsertSkill = array(
             'skill' => $post['skillname'],
-            'experience' => $post['experience'],
+            'experience' => $post['skillexperience'],
             'skill_level' => $post['skilllevel']
         );
 
@@ -651,7 +650,6 @@ class EmployeeModel extends CI_Model
 
     public function deleteSkill($deleteSkillId)
     {
-
         $delete = "DELETE FROM `seeker_skill` WHERE `id`=$deleteSkillId";
         $del = $this->db->query($delete);
     }

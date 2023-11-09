@@ -42,6 +42,12 @@
             return array('response' => $select->result_array(), "totalRows" => $select->num_rows());
         }
 
+        public function deleteAdminUser($adminId)
+        {
+            $delete = "DELETE FROM `admin_login` WHERE `id`=$adminId";
+            $del = $this->db->query($delete);
+        }
+
         public function employer()
         {
             $employer = "SELECT * FROM `provider_registration_form`";
@@ -90,8 +96,8 @@
             $updateVerificationStatus = array(
                 'verificationStatus' => $postData['verificationStatus'],
                 'verificationRemarks' => $postData['verificationRemarks'],
-                'deleteRequest' => $postData['deleteRequest'],
-                'deleteRequestRemarks' => $postData['deleteRequestRemarks']
+                // 'deleteRequest' => $postData['deleteRequest'],
+                // 'deleteRequestRemarks' => $postData['deleteRequestRemarks']
             );
 
             $this->db->where('id', $postData['id']);
@@ -115,15 +121,22 @@
 
         public function unVerifiedEmployees()
         {
-            $unVerifiedEmployees = "SELECT * FROM `seeker_profile_form` WHERE verificationStatus ='0'";
+            $unVerifiedEmployees = "SELECT * FROM `seeker_profile_form` WHERE verificationStatus ='0' AND deleteStatus ='0'";
             $response = $this->db->query($unVerifiedEmployees);
             return $response->result_array();
         }
 
         public function verifiedEmployees()
         {
-            $verifiedEmployees = "SELECT * FROM `seeker_profile_form` WHERE verificationStatus ='1'";
+            $verifiedEmployees = "SELECT * FROM `seeker_profile_form` WHERE verificationStatus ='1' AND deleteStatus ='0'";
             $response = $this->db->query($verifiedEmployees);
+            return $response->result_array();
+        }
+
+        public function deleteEmployeeList()
+        {
+            $deleteEmployeeList = "SELECT * FROM `seeker_profile_form` WHERE deleteStatus ='1'";
+            $response = $this->db->query($deleteEmployeeList);
             return $response->result_array();
         }
 
@@ -137,6 +150,29 @@
 
             $this->db->where('id', $postData['EmployeeId']);
             $this->db->update('seeker_profile_form', $updateVerificationStatus);
+        }
+
+        public function deleteEmployeeDetails()
+        {
+            $postData = $this->input->post(null, true);
+            $updateDeleteStatus = array(
+                'deleteRemarks' => $postData['deleteEmployeeRemarks'],
+                'deleteStatus' => $postData['deleteEmployeeStatus']
+            );
+
+            $this->db->where('id', $postData['EmployeeId']);
+            $this->db->update('seeker_profile_form', $updateDeleteStatus);
+        }
+
+        public function restoreEmployeeDetails()
+        {
+            $postData = $this->input->post(null, true);
+            $updateRestoreStatus = array(
+                'deleteStatus' => $postData['restoreEmployee']
+            );
+
+            $this->db->where('id', $postData['EmployeeId']);
+            $this->db->update('seeker_profile_form', $updateRestoreStatus);
         }
 
         public function addNewAdminApprovel()

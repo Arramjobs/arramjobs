@@ -25,7 +25,7 @@ class Employer extends CI_Controller
     }
 
 
-    public function providerRegistration()
+    public function employerRegistration()
     {
         $responses = $this->EmployerModel->register();
         $generatedid = $this->EmployerModel->generate_customer_id();

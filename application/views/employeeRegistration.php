@@ -78,7 +78,7 @@
                                     </div>
 
                                     <form class="row g-3 needs-validation" novalidate onsubmit="return validateForm()"
-                                        action="<?php echo baseUrl . "Employee/seekerRegistration" ?>"
+                                        action="<?php echo baseUrl . "Employee/employeeRegistration" ?>"
                                         name="registration_form" method="post">
 
                                         <div class="">

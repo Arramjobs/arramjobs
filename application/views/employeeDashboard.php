@@ -133,37 +133,98 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo baseUrl . "Employee/basicDetails" ?>">
-                    <i class="bi bi-person"></i>
-                    <span>Basic Details</span>
+                <a class="nav-link  d-flex justify-content-between" href="<?php echo baseUrl . "Employee/basicDetails" ?>">
+                    <div><i class="bi bi-person"></i>
+                    <span>Basic Details</span></div>
+                    <?php
+            $basicdetaildata = $_SESSION['basicdetaildata'];
+            if ($basicdetaildata == "1") {
+              ?>
+                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">1</div>
+                    <?php
+            } else{
+              ?>
+                  <div class="rounded-circle bg-secondary text-light text-center" style="width: 25px; height:25px;font-size: 12px;">1</div>
+               <?php
+            }
+              ?>
                 </a>
             </li><!-- End Tables Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo baseUrl . "Employee/educationTable" ?>">
-                    <i class="bi bi-bar-chart"></i>
-                    <span>Education Details</span>
+                <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Employee/educationTable" ?>">
+                    <div><i class="bi bi-bar-chart"></i>
+                    <span>Education Details</span></div>
+                    <?php
+           $educationdata = $_SESSION['edudata'];
+           if ($educationdata == "1") {
+             ?>
+                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">2</div>
+                    <?php
+            } else{
+              ?>
+                  <div class="rounded-circle bg-secondary text-light text-center" style="width: 25px; height:25px;font-size: 12px;">2</div>
+               <?php
+            }
+              ?>
                 </a>
             </li><!-- End Charts Nav -->
 
             <li class="nav-item">
-                <a class="nav-link " href="<?php echo baseUrl . "Employee/experienceTable" ?>">
-                    <i class="bi bi-gem"></i>
-                    <span>Experience Details</span>
+                <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Employee/experienceTable" ?>">
+                    <div><i class="bi bi-gem"></i>
+                    <span>Experience Details</span></div>
+                    <?php
+                $experiencedata = $_SESSION['expdata'];
+                if ($experiencedata == "1") {
+             ?>
+                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">3</div>
+                    <?php
+            } else{
+              ?>
+                  <div class="rounded-circle bg-secondary text-light text-center" style="width: 25px; height:25px;font-size: 12px;">3</div>
+               <?php
+            }
+              ?>
                 </a>
             </li><!-- End Icons Nav -->
 
             <li class="nav-item">
-                <a class="nav-link " href="<?php echo baseUrl . "Employee/areaOfIntrestTable" ?>">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Area of Job Interest</span>
+            <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Employee/areaOfIntrestTable" ?>">
+            <div><i class="bi bi-box-arrow-in-right"></i>
+                    <span>Area of Job Interest</span></div>
+                    <?php
+            $areaofinterestdata = $_SESSION['areadata'];
+            if ($areaofinterestdata == "1") {
+             ?>
+                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">4</div>
+                    <?php
+            } else{
+              ?>
+                  <div class="rounded-circle bg-secondary text-light text-center" style="width: 25px; height:25px;font-size: 12px;">4</div>
+               <?php
+            }
+              ?>
                 </a>
             </li><!-- End Icons Nav -->
           
             <li class="nav-item">
-                <a class="nav-link " href="<?php echo baseUrl . "Employee/resume" ?>">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Resume</span>
+            <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Employee/resume" ?>">
+            <div><i class="bi bi-file-earmark"></i>
+                    <span>Resume</span></div>
+                    <?php
+          $resumesubmitdata = $_SESSION['resumedata'];
+          if ($resumesubmitdata == "1") {
+             ?>
+                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">5</div>
+                    <?php
+            } else{
+              ?>
+                  <div class="rounded-circle bg-secondary text-light text-center" style="width: 25px; height:25px;font-size: 12px;">5</div>
+               <?php
+            }
+              ?>
+                    
                 </a>
             </li><!-- End Icons Nav -->
 
@@ -1599,7 +1660,8 @@
 
                     <div class="col-md-6">
                       <label for="experience" class="form-label">Experience</label>
-                      <select class="form-control" id="experience" name="experience" required>
+                     <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required>
+                      <!-- <select class="form-control" id="experience" name="experience" required>
                         <option value="">Select your experience</option>
                         <option value="0-2">0-2</option>
                         <option value="3-5">3-5</option>
@@ -1607,7 +1669,7 @@
                         <option value="10-15">10-15</option>
                         <option value="15-20">15-20</option>
                         <option value="above 20 years">Above 20 years</option>
-                      </select>
+                      </select> -->
                       <div id="experienceexp_error" class="text-danger"></div>
                     </div>
 
@@ -1822,7 +1884,8 @@
 
                                     <div class="col-md-6">
                                       <label class="form-label" for="experience">Experience</label>
-                                      <select class="form-control" id="experience" name="experience" required>
+                                      <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" value="<?php echo $value['experience']; ?>" required>
+                                      <!-- <select class="form-control" id="experience" name="experience" required>
                                         <option value="">Select your experience</option>
                                         <option value="0-2" <?php if ($value['experience'] === '0-2')
                                           echo ' selected'; ?>>0-2</option>
@@ -1836,7 +1899,7 @@
                                           echo ' selected'; ?>>15-20</option>
                                         <option value="above 20 years" <?php if ($value['experience'] === 'above 20 years')
                                           echo ' selected'; ?>>Above 20 years</option>
-                                      </select>
+                                      </select> -->
                                       <div id="experience_error" class="error"></div>
                                     </div>
 
@@ -1966,7 +2029,7 @@
             ?>
                 <section class="usertable">
                     <div class="pagetitle">
-                        <h1>Area of Job Interest</h1>
+                        <h1>Area of Job Interest and Skill Table</h1>
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
@@ -1979,7 +2042,7 @@
                            
                             <div class="card-body">
                                        
-                                        <h5 class="card-title">Area of Job Interest Table<span></span></h5>
+                                        <h5 class="card-title">Area of Job InterestTable<span></span></h5>
                                         
                                         <div class="d-flex justify-content-between">
                                         <a href="<?php echo baseUrl . "Employee/addAreaOfIntrestForm" ?>">
@@ -2001,7 +2064,6 @@
                                                     <th scope="col">Job Subcategory</th>
                                                     <th scope="col">Prefered Location</th>
                                                     <th scope="col">Experience</th>
-                                                    <th scope="col">Role</th>
                                                     <th scope="col">Job Type</th>
                                                     <th scope="col">Description</th>
                                                     <th scope="col">Expected Salary</th>
@@ -2027,7 +2089,58 @@
                                                     <td>
                                                     <div class="d-flex">
                                                         <a href="<?php echo baseUrl . "Employee/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
-                                                        <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employee/deleteEmployee/AreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                        <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employee/deleteAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                    </div>
+                                                    </td>
+                                      </tr>
+                                        <?php
+                                            }
+                                        } 
+                                        ?>
+                                            </tbody>
+                                        </table>
+                                        <?php
+                                } else {
+                                    ?>
+                                        <h5 class="card-title">No Records Found<span></span></h5>
+                                    <?php
+                                }
+                                ?>
+                              <br><br>
+                                  <div>
+                                        <a href="<?php echo baseUrl . "Employee/addSkillForm" ?>">
+                                        <button type="button" class="btn btn-info mb-4">+ Add Skill</button></a>
+                                  <div>
+                                        <?php
+                                         if (isset($areaOfIntrestTable[0]['id'])) {
+                                           $count=1;
+                                            ?>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">S.No</th>
+                                                    <th scope="col">Skill Name</th>
+                                                    <th scope="col">Skill Experience</th>
+                                                    <th scope="col">Skill Level</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php
+                      if (isset($skillTable[0]['id'])) {
+                        $count= 1;
+                        foreach ($skillTable as $key => $value) {
+                          $seekerId = $_SESSION['seekerId'];
+                      ?>
+                                                    <tr>
+                                                    <td><?php echo $count++ ?>.</td>
+                                                    <td><?php echo $value['skill'] ?></td>
+                                                    <td><?php echo $value['experience'] ?></td>
+                                                    <td><?php echo $value['skill_level'] ?></td> 
+                                                    <td>
+                                                    <div class="d-flex">
+                                                        <a href="<?php echo baseUrl . "Employee/updateSkill" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                                        <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employee/deleteSkill" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                                                     </div>
                                                     </td>
                                       </tr>
@@ -2120,7 +2233,8 @@
 
                               <div class="col-md-6">
                                 <label class="form-label" for="experience">Experience</label>
-                                <select class="form-control" id="experience" name="experience" required>
+                                <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required>
+                                <!-- <select class="form-control" id="experience" name="experience" required>
                                   <option value="">Select your experience</option>
                                   <option value="fresher">Fresher</option>
                                   <option value="0-2">0-2</option>
@@ -2129,7 +2243,7 @@
                                   <option value="10-15">10-15</option>
                                   <option value="15-20">15-20</option>
                                   <option value="above 20 years">Above 20 years</option>
-                                </select>
+                                </select> -->
                                 <div id="areaexp_error" class="error"></div>
                               </div>
 
@@ -2155,38 +2269,7 @@
                                 <div id="areasalary_error" class="error"></div>
                               </div>
 
-                        
-                                <h5 class="card-title">Your Strength</h5>
-                
-
-                              <div class="col-md-6">
-                                <label class="form-label" for="skillname">Skill Name</label>
-                                <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name" required>
-                              </div>
-
-                              <div class="col-md-6">
-                                <label class="form-label" for="experience">Experience</label>
-                                <select class="form-control" name="skillexperience" id="skillexperience" required>
-                                  <option value="">Select Experience</option>
-                                  <option value="fresher">Fresher</option>
-                                  <option value="0-2">0-2 years</option>
-                                  <option value="2-5">2-5 years</option>
-                                  <option value="5-10">5-10 years</option>
-                                  <option value="10-20">10-20 years</option>
-                                  <option value="20-above">20 years above</option>
-                                </select>
-                              </div>
-
-                              <div class="col-md-6">
-                                <label class="form-label" for="skillLevel">Skill Level</label>
-                                <select class="form-control" name="skilllevel" id="skilllevel" required>
-                                  <option value="">Select Skill Level</option>
-                                  <option value="beginner">Beginner</option>
-                                  <option value="intermediate">Intermediate</option>
-                                  <option value="advanced">Advanced</option>
-                                </select>
-                              </div>
-
+                      
                             <input type="number" class="form-control"  value="1" name="areasubmit" hidden>
 
                     <div class="text-center">
@@ -2263,19 +2346,6 @@
                             return false;
                           }
 
-                          // if (skillName.trim() === "") {
-                          //   alert("Please provide a skillname");
-                          //   return false;
-                          // }
-                          // if (skillExperience.trim() === "") {
-                          //   alert("Please provide a experience");
-                          //   return false;
-                          // }
-                          // if (skillLevel.trim() === "") {
-                          //   alert("Please provide a skillLevel");
-                          //   return false;
-                          // }
-
                           return true;
                         }
 
@@ -2294,6 +2364,71 @@
 
                       </script>
 
+<?php
+        } elseif ($method == "addSkillForm") {
+            ?>
+               <section class="Multi Columns Form">
+                    <div class="pagetitle">
+                        <h1>Skill Details</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Add Skill</li>
+                            </ol>
+                        </nav>
+                    </div><!-- End Page Title -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add New Skill</h5>
+
+                            <!-- Multi Columns Form -->
+                            <form class="row g-3 needs-validation" novalidate  method="post"
+                            onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Employee/insertSkillForm" ?>">
+
+                            
+                              <div class="col-12">
+                                <label class="form-label" for="skillname">Skill Name</label>
+                                <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name" required>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="experience">Experience</label>
+                                <input type="text" class="form-control" name="skillexperience" id="skillexperience" placeholder="Enter skill experience" required>
+                                <!-- <select class="form-control" name="skillexperience" id="skillexperience" required>
+                                  <option value="">Select Experience</option>
+                                  <option value="fresher">Fresher</option>
+                                  <option value="0-2">0-2 years</option>
+                                  <option value="2-5">2-5 years</option>
+                                  <option value="5-10">5-10 years</option>
+                                  <option value="10-20">10-20 years</option>
+                                  <option value="20-above">20 years above</option>
+                                </select> -->
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="skillLevel">Skill Level</label>
+                                <select class="form-control" name="skilllevel" id="skilllevel" required>
+                                  <option value="">Select Skill Level</option>
+                                  <option value="beginner">Beginner</option>
+                                  <option value="intermediate">Intermediate</option>
+                                  <option value="advanced">Advanced</option>
+                                </select>
+                              </div>
+
+                            <input type="number" class="form-control"  value="1" name="areasubmit" hidden>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+
+                        </form><!-- End Multi Columns Form -->
+
+                        </div>
+                    </div>
+                </section>
+
+                
             <?php
         } elseif ($method == 'updateAreaOfIntrest') {
             ?>
@@ -2378,8 +2513,8 @@
                                               </div>
                                               <div class="col-md-6">
                                                 <label class="form-label" for="experience">Experience</label>
-                                                <select class="form-control" id="experience" name="experience" value="<?php echo $value['experience']; ?>" required>
-                                                  <!-- <option value="">Select your experience</option> -->
+                                                <input type="text" class="form-control" id="experience" name="experience" value="<?php echo $value['experience']; ?>" required>
+                                                <!-- <select class="form-control" id="experience" name="experience" value="<?php echo $value['experience']; ?>" required>
                                                   <option value="fresher" <?php if ($value['experience'] === 'fresher')
                                                     echo ' selected'; ?>>Fresher</option>
                                                   <option value="0-2" <?php if ($value['experience'] === '0-2')
@@ -2394,7 +2529,7 @@
                                                     echo ' selected'; ?>>15-20</option>
                                                   <option value="above 20 years" <?php if ($value['experience'] === 'above 20 years')
                                                     echo ' selected'; ?>>Above 20 years</option>
-                                                </select>
+                                                </select> -->
                                                 <div id="areaexp_error" class="error"></div>
                                               </div>
 
@@ -2421,7 +2556,7 @@
                                                 <div id="areasalary_error" class="error"></div>
                                               </div>
 
-                                                <h4 class="card-title">Your Strength</h4>
+                                                <!-- <h4 class="card-title">Your Strength</h4>
 
                                               <div class="col-md-6">
                                                 <label class="form-label" for="skillname">Skill Name</label>
@@ -2458,7 +2593,7 @@
                                                     echo ' selected'; ?>>Advanced</option>
                                                 </select>
                                               </div>
-                                            </div>
+                                            </div> -->
 
                                             <div class="text-center">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -2570,8 +2705,79 @@
                         }
                       </script>
 
+<?php
+        } elseif ($method == "updateSkill") {
+            ?>
+               <section class="Multi Columns Form">
+                    <div class="pagetitle">
+                        <h1>Skill Details</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Edit Skill</li>
+                            </ol>
+                        </nav>
+                    </div><!-- End Page Title -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Update Skill</h5>
 
+                            <!-- Multi Columns Form -->
+                            <form class="row g-3 needs-validation" novalidate  method="post"
+                            onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Employee/updateInsertSkill" ?>">
+
+                            <?php
+                  if (isset($updateSkill[0]['id'])) {
+                    foreach ($updateSkill as $key => $value) {
+                      $seekerId = $_SESSION['seekerId'];
+                  ?>
+                      <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
+                      <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id" placeholder="Enter your name">
+
+                              <div class="col-12">
+                                <label class="form-label" for="skillname">Skill Name</label>
+                                <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name"  value="<?php echo $value['skill']; ?>" required>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="experience">Experience</label>
+                                <input type="text" class="form-control" name="skillexperience" id="skillexperience" value="<?php echo $value['experience']; ?>" required >
+                                <!-- <select class="form-control" name="skillexperience" id="skillexperience" required>
+                                  <option value="fresher" <?php if ($value['experience'] === 'fresher') echo ' selected'; ?>>Fresher</option>
+                                  <option value="0-2" <?php if ($value['experience'] === '0-2') echo ' selected'; ?>>0-2 years</option>
+                                  <option value="2-5" <?php if ($value['experience'] === '2-5') echo ' selected'; ?>>2-5 years</option>
+                                  <option value="5-10" <?php if ($value['experience'] === '5-10') echo ' selected'; ?>>5-10 years</option>
+                                  <option value="10-20" <?php if ($value['experience'] === '10-20') echo ' selected'; ?>>10-20 years</option>
+                                  <option value="20-above" <?php if ($value['experience'] === '20-above') echo ' selected'; ?>>20 years above</option>
+                                </select> -->
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label" for="skillLevel">Skill Level</label>
+                                <select class="form-control" name="skilllevel" id="skilllevel" required>
+                                  <option value="beginner" <?php if ($value['skill_level'] === 'beginner') echo ' selected'; ?>>Beginner</option>
+                              <option value="intermediate" <?php if ($value['skill_level'] === 'intermediate') echo ' selected'; ?>>Intermediate</option>
+                              <option value="advanced" <?php if ($value['skill_level'] === 'advanced') echo ' selected'; ?>>Advanced</option>
+                                </select>
+                              </div>
+
+                            <input type="number" class="form-control"  value="1" name="areasubmit" hidden>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+
+                        </form><!-- End Multi Columns Form -->
+
+                        </div>
+                    </div>
+                </section>
+
+                
             <?php
+                    }
+                  }
         } elseif ($method == "resume") {
             ?>
                 <section class="Multi Columns Form">
@@ -2592,23 +2798,22 @@
                         <form class="row g-3 needs-validation" novalidate name="resumeform" id="resumeForm" method="post" enctype="multipart/form-data"
                             onsubmit="return validateForm()" action="<?php echo baseUrl . "Employee/registered" ?>">
 
-                            
-
-                            <div class="col-12">
+                         <!-- <div class="col-12">
                             <label class="form-label" for="file">Upload Resume</label>
                             <input type="file" class="form-control" name="file" id="idresume" accept="image/png ,image/jpg, image/jpeg, application/pdf" required>
                             <div id="resume_error" class="text-danger"></div>
-                        </div>
+                        </div>  -->
 
-                            <!-- <div class="col-12">
+                        
+                            <div class="col-12">
                                 <label class="form-label" for="file">Uploaded Resume</label>
-                                <input type="file" name="oldresume" id="oldresume" value="<?php echo $value['resume_filename']; ?>" required>
+                                <input type="file" name="oldresume" id="oldresume" value="<?php echo $areaOfIntrestTable['resume_filename']; ?>" >
                                 <div class="uploadedfile">
                                 <input type="file" class="form-control " id="idresume" name="file" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden/>
                                 <label id="file-input-labelresume" for="idresume">Select File</label>  
-                                <a href="<?php echo $value['resume_filename']; ?>" target="blank" id="existfileresume"  style="margin-top:10px"><?php echo $value['resume_filename_url']; ?></a>
+                                <a href="<?php echo  $areaOfIntrestTable['resume_filename']; ?>" target="blank" id="existfileresume"  style="margin-top:10px"><?php echo  $areaOfIntrestTable['resume_filename_url']; ?></a>
                                 </div>
-                            </div> -->
+                            </div>
 
                             <input type="number" class="form-control"  value="1" name="resumesubmit" hidden>
 

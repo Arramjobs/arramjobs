@@ -8,8 +8,8 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->model('AdminModel');
         $this->load->library('session');
-        $this->load->model('RegistrationModel');
-        $this->load->model('SeekerModel');
+        $this->load->model('EmployerModel');
+        $this->load->model('EmployeeModel');
     }
 
     public function index()
@@ -39,6 +39,7 @@ class Admin extends CI_Controller
         } else {
 
             $this->load->view('adminLogin.php');
+            echo '<script>alert("Please enter valid login details.");</script>';
         }
     }
 
@@ -81,11 +82,23 @@ class Admin extends CI_Controller
         $this->load->view('adminDashboard.php', $this->data);
     }
 
+    public function deleteAdminuser()
+    {
+        $adminId = $this->uri->segment(3);
+        $delete = $this->AdminModel->deleteAdminUser($adminId);
+        if ($delete == null) {
+            $this->adminUsers();
+        } else {
+            echo "Error deleting record";
+        }
+    }
     public function insertEmployer()
     {
         $postData = $this->input->post(null, true);
-        $responses = $this->RegistrationModel->register();
+        $responses = $this->EmployerModel->register();
+        $generatedid = $this->EmployerModel->generate_customer_id();
         $this->unVerifiedEmployers();
+        echo '<script>alert("Employer registered successfully.");</script>';
     }
 
     public function unVerifiedEmployers()
@@ -118,6 +131,7 @@ class Admin extends CI_Controller
         $postData = $this->input->post(null, true);
         $verifyEmployer = $this->AdminModel->verifyEmployer();
         $this->verifiedEmployers();
+        // echo '<script>alert("Employer verified successfully.");</script>';
     }
 
     public function employerApprovel()
@@ -146,7 +160,10 @@ class Admin extends CI_Controller
     public function employeeRegistration()
     {
         $postData = $this->input->post(null, true);
-        $register = $this->SeekerModel->register();
+        $register = $this->EmployeeModel->register();
+        $generatedeeid = $this->EmployeeModel->generate_customer_id();
+        $this->unVerifiedEmployees();
+        echo '<script>alert("Employee registered successfully.");</script>';
     }
 
     public function unVerifiedEmployees()
@@ -165,27 +182,46 @@ class Admin extends CI_Controller
         $this->load->view('adminDashboard.php', $this->data);
     }
 
+    public function deleteEmployeeList()
+    {
+        $this->data['method'] = "deleteEmployeeList";
+        $deleteEmployeeList = $this->AdminModel->deleteEmployeeList();
+        $this->data['deleteEmployeeList'] = $deleteEmployeeList;
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
     public function manageEmployee()
     {
         $id = $this->uri->segment(3);
         $this->data['method'] = "manageEmployee";
 
-        $education = $this->RegistrationModel->educationalDetails($id);
+        $education = $this->EmployerModel->educationalDetails($id);
         $this->data['education'] = $education;
 
-        $skills = $this->RegistrationModel->skills($id);
+        $skills = $this->EmployerModel->skills($id);
         $this->data['skills'] = $skills;
 
-        // $projectDetails = $this->RegistrationModel->projectDetails($id);
+        // $projectDetails = $this->EmployerModel->projectDetails($id);
         // $this->data['projectDetails'] = $projectDetails;
 
-        $areaOfInterest = $this->RegistrationModel->areaOfInterest($id);
+        $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
         $this->data['areaOfInterest'] = $areaOfInterest;
 
-        $experienceDetails = $this->RegistrationModel->experienceDetails($id);
+        $experienceDetails = $this->EmployerModel->experienceDetails($id);
         $this->data['experienceDetails'] = $experienceDetails;
 
-        $basicDetails = $this->RegistrationModel->candidate($id);
+        $basicDetails = $this->EmployerModel->candidate($id);
+        $this->data['basicDetails'] = $basicDetails;
+
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
+    public function deleteEmployee()
+    {
+        $id = $this->uri->segment(3);
+        $this->data['method'] = "deleteEmployee";
+
+        $basicDetails = $this->EmployerModel->candidate($id);
         $this->data['basicDetails'] = $basicDetails;
 
         $this->load->view('adminDashboard.php', $this->data);
@@ -196,6 +232,20 @@ class Admin extends CI_Controller
         $postData = $this->input->post(null, true);
         $verifyEmployeeDetails = $this->AdminModel->verifyEmployeeDetails();
         $this->verifiedEmployees();
+    }
+
+    public function deleteEmployeeform()
+    {
+        $postData = $this->input->post(null, true);
+        $deleteEmployeeDetails = $this->AdminModel->deleteEmployeeDetails();
+        $this->deleteEmployeeList();
+    }
+
+    public function restoreEmployeeform()
+    {
+        $postData = $this->input->post(null, true);
+        $restoreEmployeeDetails = $this->AdminModel->restoreEmployeeDetails();
+        $this->deleteEmployeeList();
     }
 
     public function addNewAdminApprovel()
