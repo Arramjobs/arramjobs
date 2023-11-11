@@ -2077,9 +2077,10 @@
                                                 foreach ($areaOfIntrestTable as $key => $value) {
                                                 $seekerId = $_SESSION['seekerId'];
                                                 ?>
+                                                <?php $resumefilenameconst = $value['resume_filename']; ?>
                                                     <tr>
                                                     <td><?php echo $count++ ?>.</td>
-                                                    <td><?php echo $value['other_interst_category'] ?></td>
+                                                    <td><?php echo $value['other_interst_category'] ?></td> 
                                                     <td><?php echo $value['other_sub_interst_category'] ?></td>
                                                     <td><?php echo $value['prefered_location'] ?></td>
                                                     <td><?php echo $value['experience'] ?></td>
@@ -2798,14 +2799,14 @@
                         <form class="row g-3 needs-validation" novalidate name="resumeform" id="resumeForm" method="post" enctype="multipart/form-data"
                             onsubmit="return validateForm()" action="<?php echo baseUrl . "Employee/registered" ?>">
 
-                         <!-- <div class="col-12">
+                         <div class="col-12">
                             <label class="form-label" for="file">Upload Resume</label>
                             <input type="file" class="form-control" name="file" id="idresume" accept="image/png ,image/jpg, image/jpeg, application/pdf" required>
                             <div id="resume_error" class="text-danger"></div>
-                        </div>  -->
+                        </div> 
 
-                        
-                            <div class="col-12">
+
+                            <!-- <div class="col-12">
                                 <label class="form-label" for="file">Uploaded Resume</label>
                                 <input type="file" name="oldresume" id="oldresume" value="<?php echo $areaOfIntrestTable['resume_filename']; ?>" >
                                 <div class="uploadedfile">
@@ -2813,7 +2814,7 @@
                                 <label id="file-input-labelresume" for="idresume">Select File</label>  
                                 <a href="<?php echo  $areaOfIntrestTable['resume_filename']; ?>" target="blank" id="existfileresume"  style="margin-top:10px"><?php echo  $areaOfIntrestTable['resume_filename_url']; ?></a>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <input type="number" class="form-control"  value="1" name="resumesubmit" hidden>
 

@@ -71,14 +71,14 @@
 
         public function unVerifiedEmployers()
         {
-            $unVerifiedEmployers = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='0'";
+            $unVerifiedEmployers = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='0' AND deleteRequest ='0'";
             $response = $this->db->query($unVerifiedEmployers);
             return $response->result_array();
         }
 
         public function verifiedEmployers()
         {
-            $verifiedEmployers = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='1'";
+            $verifiedEmployers = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='1' AND addNewRequest = '1' AND addNewApprovel = '1' ";
             $response = $this->db->query($verifiedEmployers);
             return $response->result_array();
         }
@@ -96,12 +96,44 @@
             $updateVerificationStatus = array(
                 'verificationStatus' => $postData['verificationStatus'],
                 'verificationRemarks' => $postData['verificationRemarks'],
+                'addNewRequest' => $postData['addRequest'],
                 // 'deleteRequest' => $postData['deleteRequest'],
                 // 'deleteRequestRemarks' => $postData['deleteRequestRemarks']
             );
 
             $this->db->where('id', $postData['id']);
             $this->db->update('provider_registration_form', $updateVerificationStatus);
+        }
+
+
+        public function verifyEmployerVerified()
+        {
+            $postData = $this->input->post(null, true);
+            $updateVerification = array(
+                'verificationStatus' => $postData['verificationStatus'],
+                'verificationRemarks' => $postData['verificationRemarks'],
+                'addNewRequest' => $postData['addNewRequest'],
+                'deleteRequest' => $postData['deleteRequest'],
+                'addNewApprovel' => $postData['addNewApprovel'],
+                'deleteApprovel' => $postData['deleteApprovel']
+            );
+
+            $this->db->where('id', $postData['id']);
+            $this->db->update('provider_registration_form', $updateVerification);
+        }
+
+        public function deleteRequestEmployer()
+        {
+            $postData = $this->input->post(null, true);
+            $updateDeleteRequestStatus = array(
+                'deleteRequest' => $postData['deleteRequest'],
+                'deleteRequestRemarks' => $postData['deleteRequestRemarks'],
+                'addNewRequest' => $postData['addNewRequest'],
+                'addNewApprovel' => $postData['addNewApprovel'],
+            );
+
+            $this->db->where('id', $postData['id']);
+            $this->db->update('provider_registration_form', $updateDeleteRequestStatus);
         }
 
         public function employerApprovelStatus()
@@ -117,6 +149,28 @@
 
             $this->db->where('id', $postData['id']);
             $this->db->update('provider_registration_form', $updateVerificationStatus);
+        }
+
+        public function deleteEmployerList()
+        {
+            $deleteEmployerList = "SELECT * FROM `provider_registration_form` WHERE deleteRequest ='1' AND deleteApprovel = '1' ";
+            $response = $this->db->query($deleteEmployerList);
+            return $response->result_array();
+        }
+
+        public function restoreEmployerDetails()
+        {
+            $postData = $this->input->post(null, true);
+            $updateRestoreStatus = array(
+                'deleteRequest' => $postData['deleterequest'],
+                'deleteApprovel' => $postData['deleteapprovel'],
+                'addNewRequest' => $postData['addrequest'],
+                'addNewApprovel' => $postData['addapprovel'],
+                'verificationStatus' => $postData['verificationstatus']
+            );
+
+            $this->db->where('id', $postData['EmployerId']);
+            $this->db->update('provider_registration_form', $updateRestoreStatus);
         }
 
         public function unVerifiedEmployees()
@@ -157,7 +211,7 @@
             $postData = $this->input->post(null, true);
             $updateDeleteStatus = array(
                 'deleteRemarks' => $postData['deleteEmployeeRemarks'],
-                'deleteStatus' => $postData['deleteEmployeeStatus']
+                'deleteStatus' => $postData['deleteEmployeeStatus'],
             );
 
             $this->db->where('id', $postData['EmployeeId']);
@@ -191,14 +245,14 @@
 
         public function addNewEmployerApprovel()
         {
-            $addNewAdminApprovel = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='1' And addNewApprovel ='0'";
+            $addNewAdminApprovel = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='1' And addNewRequest ='1' AND addNewApprovel != '1'";
             $response = $this->db->query($addNewAdminApprovel);
             return array('response' => $response->result_array(), "totalRows" => $response->num_rows());
         }
 
         public function deleteEmployerApprovel()
         {
-            $addNewAdminApprovel = "SELECT * FROM `provider_registration_form` WHERE verificationStatus ='1' And addNewApprovel ='1' And deleteRequest ='1' And deleteApprovel ='0'";
+            $addNewAdminApprovel = "SELECT * FROM `provider_registration_form` WHERE deleteRequest ='1' AND deleteApprovel != '1'";
             $response = $this->db->query($addNewAdminApprovel);
             return array('response' => $response->result_array(), "totalRows" => $response->num_rows());
         }

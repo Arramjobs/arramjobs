@@ -38,7 +38,8 @@
             <section>
                 <div class="my-5 py-md-5 text-center">
                     <img class="img-fluid" src="<?php echo baseUrl . "assets/employee_registered.png" ?>" alt="Thanks">
-                    <p>Registered id is <b>  <?php echo $generatedeeid; ?> </b>.</p>        
+                    <p class="ms-5">The registered id is <b>  <?php echo $generatedeeid; ?> </b> for <a href="<?php echo baseUrl . "Employee" ?>">Login</a>.</p>
+
                     </div>
             </section>
 

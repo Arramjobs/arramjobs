@@ -145,7 +145,17 @@ body {
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h6><?php echo $_SESSION['adminName']; ?></h6>
-                            <span><?php echo $_SESSION['role']; ?></span>
+                            <?php
+                            if ($_SESSION['role'] == 'supadm') {
+                            ?>
+                                <span>Super Admin</span>
+                                <?php
+                                } else {
+                                ?>
+                                <span>Admin</span>
+                                <?php
+                              }
+                                ?>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -302,11 +312,11 @@ body {
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#delete_nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-dash-circle"></i><span>Deleted List</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-dash-circle"></i><span>Recently Deleted</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="delete_nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="<?php echo baseUrl . "" ?>">
+                        <a href="<?php echo baseUrl . "admin/deleteEmployerList" ?>">
                             <i class="bi bi-circle"></i><span>Employer</span>
                         </a>
                     </li>
@@ -976,15 +986,16 @@ body {
                                         foreach ($this->data['unVerifiedEmployers'] as $key => $value) {
                                         ?>
                                             <tr>
-                                                <td><a href="#"><?php echo $loopcount; ?></a></td>
+                                                <td><a href="#"><?php echo $loopcount; ?></a>.</td>
                                                 <td><?php echo $value['erid']; ?></td>
                                                 <td><?php echo $value['company_name']; ?></td>
                                                 <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
                                                 <td><?php echo $value['name']; ?></td>
                                                 <td><?php echo $value['role']; ?></td>
                                                 <td><?php echo $value['mobile_number']; ?></td>
-                                                <td><span class="badge bg-success">Pending</span></td>
-                                                <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
+                                                <td><span class="badge bg-primary">Verification Pending</span></td>
+                                                <td class="d-flex"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                <a class="ms-1" href="<?php echo baseUrl . "admin/deleteRequestEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></td>
                                             </tr>
                                         <?php
                                             $loopcount++;
@@ -1068,7 +1079,8 @@ body {
                                                 <td><?php echo $value['role']; ?></td>
                                                 <td><?php echo $value['mobile_number']; ?></td>
                                                 <td><span class="badge bg-success">Approved</span></td>
-                                                <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
+                                                <td class="d-flex"><a href="<?php echo baseUrl . "admin/manageEmployerVerify/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                <a class="ms-1" href="<?php echo baseUrl . "admin/deleteRequestEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></td>
                                             </tr>
                                         <?php
                                             $loopcount++;
@@ -1094,10 +1106,16 @@ body {
             <section class="Multi Columns Form">
                 <div class="pagetitle">
                     <h1>Employer Details</h1>
+                    <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                    <li class="breadcrumb-item active">Employer</li>
+                                </ol>
+                            </nav>
                 </div><!-- End Page Title -->
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Manage Employer Details</h5>
+                        <h5 class="card-title">Unverified Employer Details</h5>
 
                         <!-- Multi Columns Form -->
                         <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/verifyEmployer" ?>" method="post">
@@ -1174,34 +1192,23 @@ body {
                                         <legend class="col-form-label col-sm-4 pt-0">Verification Status</legend>
                                         <div class="col-sm-8">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" value="0" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '0') {
-                                                                                                                                                        echo 'checked';
-                                                                                                                                                    } ?>>
-                                                <label class="form-check-label" for="gridRadios1">
-                                                    Verification Pending
-                                                </label>
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" 
+                                                value="0" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '0') { echo 'checked'; } ?>>
+                                                <label class="form-check-label" for="gridRadios1">  Verification Pending </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '1') {
-                                                                                                                                                        echo 'checked';
-                                                                                                                                                    } ?>>
-                                                <label class="form-check-label" for="gridRadios2">
-                                                    Verification success
-                                                </label>
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '1') { echo 'checked'; } ?>>
+                                                <label class="form-check-label" for="gridRadios2">  Verification success </label>
                                             </div>
                                             <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') {
-                                                                                                                                                        echo 'checked';
-                                                                                                                                                    } ?>>
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') { echo 'checked'; } ?>>
+                                                <label class="form-check-label" for="gridRadios3"> Rejected </label>
                                             </div> -->
                                         </div>
                                     </fieldset>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"><?php echo $this->data['manageEmployer'][0]['verificationRemarks'] ?></textarea>
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;" required><?php echo $this->data['manageEmployer'][0]['verificationRemarks'] ?></textarea>
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
@@ -1211,29 +1218,17 @@ body {
                                         <legend class="col-form-label col-sm-4 pt-0">Delete Request Status</legend>
                                         <div class="col-sm-8">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteRequest" id="" value="0" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '0') {
-                                                                                                                                        echo 'checked';
-                                                                                                                                    } ?>>
-                                                <label class="form-check-label" for="gridRadios1">
-                                                    Request Not Send
-                                                </label>
+                                                <input class="form-check-input" type="radio" name="deleteRequest" id="" value="0" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '0') { echo 'checked';  } ?>>
+                                                <label class="form-check-label" for="gridRadios1"> Request Not Send </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteRequest" id="" value="1" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '1') {
-                                                                                                                                        echo 'checked';
-                                                                                                                                    } ?>>
-                                                <label class="form-check-label" for="gridRadios2">
-                                                    Request Send
-                                                </label>
+                                                <input class="form-check-input" type="radio" name="deleteRequest" id="" value="1" <?php if ($this->data['manageEmployer'][0]['deleteRequest'] == '1') {  echo 'checked'; } ?>>
+                                                <label class="form-check-label" for="gridRadios2">  Request Send </label>
                                             </div> -->
 
                                             <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') {
-                                                                                                                                                        echo 'checked';
-                                                                                                                                                    } ?>>
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') { echo 'checked';  } ?>>
+                                                <label class="form-check-label" for="gridRadios3">  Rejected </label>
                                             </div>
                                         </div> -->
 
@@ -1246,6 +1241,8 @@ body {
                                         </div>
                                     </div> -->
                                     <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
+                                    <input class="form-check-input" type="text" name="addRequest" id="" value="1" hidden>
+
                                 <?php
                                 } else {
                                 ?>
@@ -1315,6 +1312,198 @@ body {
                     </div>
                 </div>
             </section>
+
+    <?php 
+        } elseif ($method == 'manageEmployerVerify') {
+    ?>
+        <section class="Multi Columns Form">
+            <div class="pagetitle">
+                <h1>Employer Details</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                        <li class="breadcrumb-item active">Employer</li>
+                    </ol>
+                </nav>
+            </div><!-- End Page Title -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Verified Employer Details</h5>
+
+                    <!-- Multi Columns Form -->
+                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/verifyEmployerVerified" ?>" method="post">
+                        <?php
+                        foreach ($this->data['manageEmployerVerify'] as $key => $value) {
+                        ?>
+                           <p>Employer ID : <?php echo $value['erid'] ?></p>
+
+                            <div class="col-md-12">
+                                <label for="inputName5" class="form-label">Company Name</label>
+                                <input type="text" class="form-control" id="inputName5" value="<?php echo $value['company_name'] ?>" readonly name="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputNumber5" class="form-label">Company Number</label>
+                                <input type="number" class="form-control" id="inputNumber5" name="mobile" value="<?php echo $value['company_mobile_number'] ?>" readonly required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail5" class="form-label">Company Email</label>
+                                <input type="email" class="form-control" id="inputEmail5" name="email" value="<?php echo $value['company_email'] ?>" readonly required>
+                            </div>
+                            <!-- <div class="col-md-6">
+                            <label for="inputPassword5" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="inputPassword5">
+                        </div> -->
+                            <div class="col-12">
+                                <label for="inputAddress5" class="form-label">Street Address</label>
+                                <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
+                            </div>
+                            <div class="col-12">
+                                <label for="inputAddress2" class="form-label">Landmark</label>
+                                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="landmark" value="<?php echo $value['Landmark'] ?>" readonly required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputCity" class="form-label">City</label>
+                                <input type="text" class="form-control" id="inputCity" name="city" value="<?php echo $value['City'] ?>" readonly required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputCity" class="form-label">District</label>
+                                <input type="text" class="form-control" id="inputDistrict" name="district" value="<?php echo $value['district'] ?>" readonly required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputState" class="form-label">State</label>
+                                <select id="inputState" class="form-select" name="state">
+                                    <option selected value="tamil nadu">Tamil Nadu</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputZip" class="form-label">Pincode</label>
+                                <input type="text" class="form-control" id="inputPincode" value="<?php echo $value['pincode'] ?>" readonly name="pincode">
+                            </div>
+                            <h5 class="card-title">Contact Person Details</h5>
+                            <div class="col-md-6">
+                                <label for="inputEmail5" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['name'] ?>" readonly name="name1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail5" class="form-label">Role</label>
+                                <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['role'] ?>" readonlyname="role" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputNumber5" class="form-label">Mobile Number</label>
+                                <input type="number" class="form-control" id="inputNumber5" value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail5" class="form-label">Email-ID</label>
+                                <input type="email" class="form-control" id="inputEmail5" value="<?php echo $value['email'] ?>" readonly name="email1" required>
+                            </div>
+                            <h5 class="card-title">Employer Verification Status</h5>
+                            <?php
+                            if (isset($this->data['manageEmployerVerify'][0]['id'])) {
+                            ?>
+                                <fieldset class="row mb-3">
+                                    <legend class="col-form-label col-sm-4 pt-0">Verification Status</legend>
+                                    <div class="col-sm-8">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" 
+                                            value="0" <?php if ($this->data['manageEmployerVerify'][0]['verificationStatus'] == '0') { echo 'checked';  } ?>>
+                                            <label class="form-check-label" for="gridRadios1">
+                                                Verification Pending </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2"
+                                             value="1" <?php if ($this->data['manageEmployerVerify'][0]['verificationStatus'] == '1') { echo 'checked'; } ?>>
+                                            <label class="form-check-label" for="gridRadios2">
+                                                Verification success </label>
+                                        </div>
+                                        <!-- <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployerVerify'][0]['verificationStatus'] == '2') {  echo 'checked'; } ?>>
+                                            <label class="form-check-label" for="gridRadios3"> Rejected </label>
+                                        </div> -->
+                                    </div>
+                                </fieldset>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;" required><?php echo $this->data['manageEmployerVerify'][0]['verificationRemarks'] ?></textarea>
+                                        <label for="floatingTextarea">Remarks</label>
+                                    </div>
+                                </div>
+
+                                <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployerVerify'][0]['id'] ?>" hidden>
+                                <input class="form-check-input" type="text" name="addNewRequest" id="" value="0" hidden>
+                                <input class="form-check-input" type="text" name="deleteRequest" id="" value="0" hidden>
+                                <input class="form-check-input" type="text" name="addNewApprovel" id="" value="0" hidden>
+                                <input class="form-check-input" type="text" name="deleteApprovel" id="" value="0" hidden>
+
+                            <?php
+                            } else {
+                            ?>
+                                <fieldset class="row mb-3">
+                                    <legend class="col-form-label col-sm-2 pt-0">Verification Status</legend>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" value="0">
+                                            <label class="form-check-label" for="gridRadios1">
+                                                Verification Pending
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2" value="1">
+                                            <label class="form-check-label" for="gridRadios2">
+                                                Verification success
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2">
+                                            <label class="form-check-label" for="gridRadios3">
+                                                Rejected
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
+                                        <label for="floatingTextarea">Remarks</label>
+                                    </div>
+                                </div>
+                                <fieldset class="row mb-3">
+                                    <legend class="col-form-label col-sm-4 pt-0">Delete Request Status</legend>
+                                    <div class="col-sm-8">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="deleteRequest" id="" value="0">
+                                            <label class="form-check-label" for="gridRadios1">
+                                                Request Not Send
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="deleteRequest" id="" value="1">
+                                            <label class="form-check-label" for="gridRadios2">
+                                                Request Send
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteRequestRemarks" style="height: 100px;"></textarea>
+                                        <label for="floatingTextarea">Remarks</label>
+                                    </div>
+                                </div>
+                            <?php }
+                            ?>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </form><!-- End Multi Columns Form -->
+
+                </div>
+            </div>
+        </section>
+
         <?php
         } elseif ($method == "createEmployees") {
         ?>
@@ -1778,7 +1967,7 @@ body {
                             </fieldset>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;" >
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;" required>
                                     <?php echo $this->data['basicDetails'][0]['verificationRemarks'] ?></textarea>
                                     <label for="floatingTextarea">Remarks</label>
                                 </div>
@@ -1907,6 +2096,7 @@ body {
                                             <th scope="col">Contact Person Name</th>
                                             <th scope="col">Contact Person Role</th>
                                             <th scope="col">Contact Person Mobile</th>
+                                            <th scope="col">Request Remarks</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -1928,6 +2118,7 @@ body {
                                                     <td><?php echo $value['name']; ?></td>
                                                     <td><?php echo $value['role']; ?></td>
                                                     <td><?php echo $value['mobile_number']; ?></td>
+                                                    <td>Add Request</td>
                                                     <td><span class="badge bg-success">Add Request</span></td>
                                                     <td><a href="<?php echo baseUrl . "admin/employerApprovel/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
                                                 </tr>
@@ -1941,19 +2132,20 @@ body {
                                             foreach ($deleteApprovel as $dkey => $dvalue) {
                                         ?>
                                                 <tr>
-                                                    <td><a href="#"><?php echo $loopcount; ?></a></td>
-                                                    <td><?php echo $value['erid']; ?></td>
+                                                    <td><a href="#"><?php echo $loopcount++; ?>.</a></td>
+                                                    <td><?php echo $dvalue['erid']; ?></td>
                                                     <td><?php echo $dvalue['company_name']; ?></td>
                                                     <td><a href="#" class="text-primary"><?php echo $dvalue['company_mobile_number']; ?></a></td>
                                                     <td><?php echo $dvalue['name']; ?></td>
                                                     <td><?php echo $dvalue['role']; ?></td>
                                                     <td><?php echo $dvalue['mobile_number']; ?></td>
+                                                    <td><?php echo $dvalue['deleteRequestRemarks']; ?></td>
                                                     <td><span class="badge bg-danger">Delete Request</span></td>
                                                     <td><a href="<?php echo baseUrl . "admin/employerApprovel/" . $dvalue['id'] ?>"><button type="button" class="btn btn-success">View</button></a></td>
                                                 </tr>
                                         <?php
                                             }
-                                            $loopcount++;
+                                            // $loopcount++;
                                         }
                                         ?>
                                     </tbody>
@@ -1976,10 +2168,16 @@ body {
             <section class="Multi Columns Form">
                 <div class="pagetitle">
                     <h1>Employer Details</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                            <li class="breadcrumb-item active">Approval</li>
+                        </ol>
+                    </nav>
                 </div><!-- End Page Title -->
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Approve Employer Details</h5>
+                        <h5 class="card-title">Approve Employer</h5>
 
                         <!-- Multi Columns Form -->
                         <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/employerApprovelStatus" ?>" method="post">
@@ -2023,7 +2221,6 @@ body {
                                     <label for="inputState" class="form-label">State</label>
                                     <select id="inputState" class="form-select" name="state">
                                         <option selected value="tamil nadu">Tamil Nadu</option>
-                                        <option>...</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
@@ -2047,72 +2244,71 @@ body {
                                     <label for="inputEmail5" class="form-label">Email-ID</label>
                                     <input type="email" class="form-control" id="inputEmail5" value="<?php echo $value['email'] ?>" readonly name="email1" required>
                                 </div>
-                                <h5 class="card-title">Add Employer Approval</h5>
+
+                                <h5 class="card-title">Employer Approval</h5>
                                 <?php
                                 if (isset($this->data['manageEmployer'][0]['id'])) {
                                 ?>
-                                    <fieldset class="row mb-3">
-                                        <legend class="col-form-label col-sm-4 pt-0">Add Employer Approval</legend>
-                                        <div class="col-sm-8">
+                                   
+                                    <?php if ($this->data['manageEmployer'][0]['addNewRequest'] == '1')
+                                     { ?>
+                                      <fieldset class="row mb-3">
+                                      <legend class="col-form-label col-sm-4 pt-0">Employer Add Approval Request</legend>
+                                      <div class="col-sm-8">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios1" value="0" <?php if ($this->data['manageEmployer'][0]['addNewApprovel'] == '0') {
-                                                                                                                                                    echo 'checked';
-                                                                                                                                                } ?>>
-                                                <label class="form-check-label" for="gridRadios1">
-                                                    Approval Pending
-                                                </label>
+                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios1" value="1" checked>
+                                                <label class="form-check-label" for="gridRadios1">Add</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['addNewApprovel'] == '1') {
-                                                                                                                                                    echo 'checked';
-                                                                                                                                                } ?>>
-                                                <label class="form-check-label" for="gridRadios2">
-                                                    Approval success
-                                                </label>
+                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios2" value="0">
+                                                <label class="form-check-label" for="gridRadios2">Don't Add</label>
                                             </div>
-                                            <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2" <?php if ($this->data['manageEmployer'][0]['verificationStatus'] == '2') {
-                                                                                                                                                        echo 'checked';
-                                                                                                                                                    } ?>>
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
-                                            </div> -->
-                                        </div>
+                                            
                                     </fieldset>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="addNewApprovelRemarks" style="height: 100px;"></textarea>
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="addNewApprovelRemarks" style="height: 100px;" required></textarea>
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
-                                    <fieldset class="row mb-3">
-                                        <legend class="col-form-label col-sm-4 pt-0">Delete Employer Approval</legend>
-                                        <div class="col-sm-8">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios1" value="0" <?php if ($this->data['manageEmployer'][0]['deleteApprovel'] == '0') {
-                                                                                                                                                    echo 'checked';
-                                                                                                                                                } ?>>
-                                                <label class="form-check-label" for="gridRadios1">
-                                                    Approval Pending
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios2" value="1" <?php if ($this->data['manageEmployer'][0]['deleteApprovel'] == '1') {
-                                                                                                                                                    echo 'checked';
-                                                                                                                                                } ?>>
-                                                <label class="form-check-label" for="gridRadios2">
-                                                    Approval success
-                                                </label>
-                                            </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" name="deleteApprovel" value="0" id="" hidden >
+                                            <input type="text" name="deleteApprovelRemarks" value="" id="" hidden >
                                         </div>
+                                    </div>
+                                     
+                                     <?php
+                                    } else if ($this->data['manageEmployer'][0]['deleteRequest'] == '1')
+                                     { ?>
+                                      <fieldset class="row mb-3">
+                                      <legend class="col-form-label col-sm-4 pt-0">Employer Delete Approval Request</legend>
+                                      <div class="col-sm-8">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios1" value="1" checked>
+                                                <label class="form-check-label" for="gridRadios1">Delete</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios2" value="0">
+                                                <label class="form-check-label" for="gridRadios2">Don't Delete </label>
+                                            </div>
                                     </fieldset>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteApprovelRemarks" style="height: 100px;"></textarea>
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteApprovelRemarks" style="height: 100px;" required></textarea>
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" name="addNewApprovel" value="0" id="" hidden >
+                                            <input type="text" name="addNewApprovelRemarks" value="" id="" hidden >
+                                        </div>
+                                    </div>
+                                     <?php
+                                    } ?>
+                                        
+                                    
                                     <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
                                 <?php
                                 } else {
@@ -2171,6 +2367,7 @@ body {
                                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="addNewApprovelRemarks" style="height: 100px;"></textarea>
                                 </div>
                             </div> -->
+
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
@@ -2255,13 +2452,14 @@ body {
                                     <?php
                                     }        
                                     ?>
-                                                <td>
+                                                <td class="d-flex">
                                                     <form action="<?php echo baseUrl . "admin/restoreEmployeeform" ?>" method="post" >
-                                                        <input class="form-check-input" type="text" name="EmployeeId" id="" value="<?php echo $this->data['deleteEmployeeList'][0]['id'] ?>" hidden>
+                                                        <input class="form-check-input" type="text" name="EmployeeId" id="" value="<?php echo $value['id']?>" hidden>
                                                         <input class="form-check-input" type="text" name="restoreEmployee" id="" value="0" hidden>
 
                                                         <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to restore?')">Restore</button>
                                                     </form>
+                                                    <a class="ms-1" href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
                                             </tr>
                                         <?php
                                             $loopcount++;
@@ -2306,6 +2504,132 @@ body {
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
                                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteEmployeeRemarks" style="height: 100px;" required></textarea>
+                                    <label for="floatingTextarea">Remarks</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div><!-- End Default Card -->
+            </section>
+
+            <?php 
+        } elseif ($method == "deleteEmployerList") {
+                ?>
+                    <section class="usertable">
+                        <div class="pagetitle">
+                            <h1>Deleted Employers</h1>
+                            <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                    <li class="breadcrumb-item active">Employer</li>
+                                </ol>
+                            </nav>
+                        </div><!-- End Page Title -->
+                        <div class="col-12">
+                            <div class="card recent-sales overflow-auto">
+        
+                                <div class="card-body">
+                                    <?php
+                                    if (isset($this->data['deleteEmployerList'][0]['name'])) {
+                                    ?>
+                                        <h5 class="card-title">Deleted Employers<span></span></h5>
+        
+                                        <!-- <table class="table table-borderless datatable"> -->
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">S.No</th>
+                                                    <th scope="col">Employer ID</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Mobile Number</th>
+                                                    <th scope="col">Verification Status</th>
+                                                    <th scope="col">Delete Request Remarks</th>
+                                                    <th scope="col">Delete Approvel Remarks</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $loopcount = 1;
+                                                foreach ($this->data['deleteEmployerList'] as $key => $value) {
+                                                ?>
+                                                    <tr>
+                                                        <td><a href="#"><?php echo $loopcount; ?>.</a></td>
+                                                        <td><?php echo $value['erid']; ?></td>
+                                                        <td><?php echo $value['company_name']; ?></td>
+                                                        <td><?php echo $value['company_mobile_number']; ?></td>
+                                            <?php 
+                                            if($value['verificationStatus']== 1) {
+                                            ?>
+                                                        <td><span class="badge bg-success">Verification Success</span></td>
+                                            <?php 
+                                            } else{
+                                            ?>
+                                                        <td><span class="badge bg-danger">Verification Pending</span></td>
+                                            <?php
+                                            }        
+                                            ?>
+                                                        <td><?php echo $value['deleteRequestRemarks']; ?></td>
+                                                        <td><?php echo $value['deleteApprovelRemarks']; ?></td>
+                                                        <td class="d-flex">
+                                                            <form action="<?php echo baseUrl . "admin/restoreEmployerform" ?>" method="post" >
+                                                                <input class="form-check-input" type="text" name="EmployerId" id="" value="<?php echo $value['id'] ?>" hidden>
+                                                                <input class="form-check-input" type="text" name="deleterequest" id="" value="0" hidden>
+                                                                <input class="form-check-input" type="text" name="deleteapprovel" id="" value="0" hidden>
+                                                                <input class="form-check-input" type="text" name="addrequest" id="" value="0" hidden>
+                                                                <input class="form-check-input" type="text" name="addapprovel" id="" value="0" hidden>
+                                                                <input class="form-check-input" type="text" name="verificationstatus" id="" value="0" hidden>
+        
+                                                                <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to restore?')">Restore</button>
+                                                            </form>
+                                                            <a class="ms-1" href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                                                    </tr>
+                                                <?php
+                                                    $loopcount++;
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <h5 class="card-title">No Records Found</h5>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+        
+                            </div>
+                        </div><!-- End Recent Sales -->
+                    </section>
+        
+            <?php
+        } elseif ($method == "deleteRequestEmployer") {
+        ?>
+            <section>
+                <div class="pagetitle">
+                    <h1>Delete Request Employer</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                            <li class="breadcrumb-item active">Delete</li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="card">
+                    <div class="card-body pt-4">
+                        
+                        <form class="needs-validation" novalidate action="<?php echo baseUrl . "admin/deleteRequestEmployerForm" ?>" method="post">
+                            <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['employerDetails'][0]['id'] ?>" hidden>
+                            <input class="form-check-input" type="text" name="addNewRequest" id="" value="0" hidden>
+                            <input class="form-check-input" type="text" name="addNewApprovel" id="" value="0" hidden>
+                            <input class="form-check-input" type="text" name="deleteRequest" id="" value="1" hidden>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteRequestRemarks" style="height: 100px;" required></textarea>
                                     <label for="floatingTextarea">Remarks</label>
                                 </div>
                             </div>

@@ -527,7 +527,7 @@
 
 
             if (a1 == "") {
-                var emailsms1 = "mail must be filled out";
+                var emailsms1 = "Mail must be filled out";
                 document.getElementById("mailerr1").innerHTML = emailsms1;
                 document.forms.mail1.focus();
                 return false;

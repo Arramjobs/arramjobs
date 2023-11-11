@@ -126,13 +126,29 @@ class Admin extends CI_Controller
         $this->load->view('adminDashboard.php', $this->data);
     }
 
+    public function manageEmployerVerify()
+    {
+        $id = $this->uri->segment(3);
+        $verifyEmployerDetails = $this->AdminModel->verifyEmployerDetails($id);
+        $this->data['manageEmployerVerify'] = $verifyEmployerDetails;
+        $this->data['method'] = "manageEmployerVerify";
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
     public function verifyEmployer()
     {
         $postData = $this->input->post(null, true);
         $verifyEmployer = $this->AdminModel->verifyEmployer();
-        $this->verifiedEmployers();
-        // echo '<script>alert("Employer verified successfully.");</script>';
+        $this->unVerifiedEmployers();
     }
+
+    public function verifyEmployerVerified()
+    {
+        $postData = $this->input->post(null, true);
+        $verifyEmployerVerified = $this->AdminModel->verifyEmployerVerified();
+        $this->verifiedEmployers();
+    }
+
 
     public function employerApprovel()
     {
@@ -148,9 +164,38 @@ class Admin extends CI_Controller
         $id = $this->uri->segment(3);
         $employerApprovelDetails = $this->AdminModel->employerApprovelStatus();
         $this->data['manageEmployer'] = $employerApprovelDetails;
+        $this->verifiedEmployers();
+    }
+
+    public function deleteRequestEmployer()
+    {
+        $id = $this->uri->segment(3);
+        $employerDetails = $this->AdminModel->verifyEmployerDetails($id);
+        $this->data['employerDetails'] = $employerDetails;
+        $this->data['method'] = "deleteRequestEmployer";
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+    public function deleteRequestEmployerForm()
+    {
+        $postData = $this->input->post(null, true);
+        $deleteRequestEmployer = $this->AdminModel->deleteRequestEmployer();
         $this->dashboard();
     }
 
+    public function deleteEmployerList()
+    {
+        $this->data['method'] = "deleteEmployerList";
+        $deleteEmployerList = $this->AdminModel->deleteEmployerList();
+        $this->data['deleteEmployerList'] = $deleteEmployerList;
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
+    public function restoreEmployerform()
+    {
+        $postData = $this->input->post(null, true);
+        $restoreEmployerDetails = $this->AdminModel->restoreEmployerDetails();
+        $this->deleteEmployerList();
+    }
     public function createEmployees()
     {
         $this->data['method'] = "createEmployees";
