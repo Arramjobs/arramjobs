@@ -164,7 +164,7 @@ class Admin extends CI_Controller
         $id = $this->uri->segment(3);
         $employerApprovelDetails = $this->AdminModel->employerApprovelStatus();
         $this->data['manageEmployer'] = $employerApprovelDetails;
-        $this->verifiedEmployers();
+        $this->dashboard();
     }
 
     public function deleteRequestEmployer()
@@ -196,6 +196,19 @@ class Admin extends CI_Controller
         $restoreEmployerDetails = $this->AdminModel->restoreEmployerDetails();
         $this->deleteEmployerList();
     }
+
+    public function deleteEmployer()
+    {
+        $deleteEmployerId = $this->uri->segment(3);
+        $delete = $this->AdminModel->deleteEmployer($deleteEmployerId);
+        if ($delete == null) {
+            $this->deleteEmployerList();
+        } else {
+            echo "Error deleting record";
+        }
+    }
+
+
     public function createEmployees()
     {
         $this->data['method'] = "createEmployees";
@@ -283,7 +296,8 @@ class Admin extends CI_Controller
     {
         $postData = $this->input->post(null, true);
         $deleteEmployeeDetails = $this->AdminModel->deleteEmployeeDetails();
-        $this->deleteEmployeeList();
+        $this->unVerifiedEmployees();
+
     }
 
     public function restoreEmployeeform()
@@ -291,6 +305,17 @@ class Admin extends CI_Controller
         $postData = $this->input->post(null, true);
         $restoreEmployeeDetails = $this->AdminModel->restoreEmployeeDetails();
         $this->deleteEmployeeList();
+    }
+
+    public function deleteEmployeeDetails()
+    {
+        $deleteEmployeeId = $this->uri->segment(3);
+        $delete = $this->AdminModel->deleteEmployee($deleteEmployeeId);
+        if ($delete == null) {
+            $this->deleteEmployeeList();
+        } else {
+            echo "Error deleting record";
+        }
     }
 
     public function addNewAdminApprovel()

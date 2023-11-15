@@ -144,7 +144,7 @@
                     <?php
             } else{
               ?>
-                  <div class="rounded-circle bg-secondary text-light text-center" style="width: 25px; height:25px;font-size: 12px;">1</div>
+                  <div class="rounded-circle bg-secondary text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">1</div>
                <?php
             }
               ?>
@@ -163,7 +163,7 @@
                     <?php
             } else{
               ?>
-                  <div class="rounded-circle bg-secondary text-light text-center" style="width: 25px; height:25px;font-size: 12px;">2</div>
+                  <div class="rounded-circle bg-secondary text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">2</div>
                <?php
             }
               ?>
@@ -182,7 +182,7 @@
                     <?php
             } else{
               ?>
-                  <div class="rounded-circle bg-secondary text-light text-center" style="width: 25px; height:25px;font-size: 12px;">3</div>
+                  <div class="rounded-circle bg-secondary text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">3</div>
                <?php
             }
               ?>
@@ -201,7 +201,7 @@
                     <?php
             } else{
               ?>
-                  <div class="rounded-circle bg-secondary text-light text-center" style="width: 25px; height:25px;font-size: 12px;">4</div>
+                  <div class="rounded-circle bg-secondary text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">4</div>
                <?php
             }
               ?>
@@ -220,7 +220,7 @@
                     <?php
             } else{
               ?>
-                  <div class="rounded-circle bg-secondary text-light text-center" style="width: 25px; height:25px;font-size: 12px;">5</div>
+                  <div class="rounded-circle bg-secondary text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">5</div>
                <?php
             }
               ?>

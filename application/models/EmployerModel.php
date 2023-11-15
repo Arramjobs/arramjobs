@@ -109,7 +109,7 @@ public function get_latest_customer_id() {
     $employerid = $postData['userName'];
     // $companyMobile = $postData['number'];
     // $query = "SELECT * FROM provider_registration_form WHERE userName='$companyName' AND password ='$companyMobile'";
-    $query = "SELECT * FROM provider_registration_form WHERE erid='$employerid' AND verificationStatus = '1' AND addNewApprovel = '1' AND deleteApprovel = '0'";
+    $query = "SELECT * FROM provider_registration_form WHERE erid='$employerid' AND verificationStatus = '1' AND ( addNewApprovel = '1' OR deleteApprovel = '2')";
     $count = $this->db->query($query);
     return $count->result_array();
   }

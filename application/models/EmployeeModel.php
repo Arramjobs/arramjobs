@@ -372,7 +372,6 @@ class EmployeeModel extends CI_Model
 
     public function deleteEducation($deleteEducationId)
     {
-
         $delete = "DELETE FROM `seeker_educational_details` WHERE `id`=$deleteEducationId";
         $del = $this->db->query($delete);
     }

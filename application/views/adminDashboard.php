@@ -1140,11 +1140,11 @@ body {
                                 <label for="inputPassword5" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="inputPassword5">
                             </div> -->
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <label for="inputAddress5" class="form-label">Street Address</label>
                                     <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <label for="inputAddress2" class="form-label">Landmark</label>
                                     <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="landmark" value="<?php echo $value['Landmark'] ?>" readonly required>
                                 </div>
@@ -1164,9 +1164,27 @@ body {
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputZip" class="form-label">Pincode</label>
+                                    <label for="inputPincode" class="form-label">Pincode</label>
                                     <input type="text" class="form-control" id="inputPincode" value="<?php echo $value['pincode'] ?>" readonly name="pincode">
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="inputLogo" class="form-label">Logo</label>
+                                    <!-- <input type="text" class="form-control" id="inputLogo" value="<?php echo $value['company_logo'] ?>" readonly name="pincode"> -->
+                                    <a href="<?php echo $value['company_logourl'] ;?>" class="form-control text-primary" target="blank"><?php echo $value['company_logo'] ;?></a>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputWebsite" class="form-label">Website</label>
+                                    <input type="text" class="form-control" id="inputWebsite" value="<?php echo $value['companywebsite'] ?>" readonly name="cwebsite1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputPan" class="form-label">PAN Number</label>
+                                    <input type="text" class="form-control" id="inputPan" value="<?php echo $value['companypan'] ?>" readonly name="cpan1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputGst" class="form-label">GST Number</label>
+                                    <input type="text" class="form-control" id="inputGst" value="<?php echo $value['companygst'] ?>" readonly name="cgst1">
+                                </div>
+                                
                                 <h5 class="card-title">Contact Person Details</h5>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Name</label>
@@ -1242,6 +1260,9 @@ body {
                                     </div> -->
                                     <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
                                     <input class="form-check-input" type="text" name="addRequest" id="" value="1" hidden>
+                                    <input class="form-check-input" type="text" name="addApprovel" id="" value="0" hidden>
+                                    <input class="form-check-input" type="text" name="deleteApprovel" id="" value="0" hidden>
+                            
 
                                 <?php
                                 } else {
@@ -1353,11 +1374,11 @@ body {
                             <label for="inputPassword5" class="form-label">Password</label>
                             <input type="password" class="form-control" id="inputPassword5">
                         </div> -->
-                            <div class="col-12">
+                            <div class="col-md-6">
                                 <label for="inputAddress5" class="form-label">Street Address</label>
                                 <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
                             </div>
-                            <div class="col-12">
+                            <div class="col-md-6">
                                 <label for="inputAddress2" class="form-label">Landmark</label>
                                 <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="landmark" value="<?php echo $value['Landmark'] ?>" readonly required>
                             </div>
@@ -1379,6 +1400,23 @@ body {
                                 <label for="inputZip" class="form-label">Pincode</label>
                                 <input type="text" class="form-control" id="inputPincode" value="<?php echo $value['pincode'] ?>" readonly name="pincode">
                             </div>
+                            <div class="col-md-6">
+                                    <label for="inputLogo" class="form-label">Logo</label>
+                                    <!-- <input type="text" class="form-control" id="inputLogo" value="<?php echo $value['company_logo'] ?>" readonly name="pincode"> -->
+                                    <a href="<?php echo $value['company_logourl'] ;?>" class="form-control text-primary" target="blank"><?php echo $value['company_logo'] ;?></a>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputWebsite" class="form-label">Website</label>
+                                    <input type="text" class="form-control" id="inputWebsite" value="<?php echo $value['companywebsite'] ?>" readonly name="cwebsite1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputPan" class="form-label">PAN Number</label>
+                                    <input type="text" class="form-control" id="inputPan" value="<?php echo $value['companypan'] ?>" readonly name="cpan1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputGst" class="form-label">GST Number</label>
+                                    <input type="text" class="form-control" id="inputGst" value="<?php echo $value['companygst'] ?>" readonly name="cgst1">
+                                </div>
                             <h5 class="card-title">Contact Person Details</h5>
                             <div class="col-md-6">
                                 <label for="inputEmail5" class="form-label">Name</label>
@@ -1750,6 +1788,89 @@ body {
                         </div>
                         <div class="card recent-sales overflow-auto">
                             <div class="card-body">
+
+                            <table class="table table-striped mt-2">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-2" scope="col">Mobile No.</th>
+                                            <th class="col-4" scope="col">Mail</th>
+                                            <th class="col-2" scope="col">D.O.B</th>
+                                            <th class="col-1" scope="col">Age</th>
+                                            <th class="col-1" scope="col">Gender</th>
+                                            <th class="col-2" scope="col">Marital Status </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        foreach ($this->data['basicDetails'] as $key => $value) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $value['phonenumber'] ?></td>
+                                                <td><?php echo $value['email'] ?></td>
+                                                <td><?php echo $value['dateofbirth'] ?></td>
+                                                <td><?php echo $value['age'] ?></td>
+                                                <td><?php echo $value['gender'] ?></td>
+                                                <td><?php echo $value['maritalStatus'] ?></td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped pt-3">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-3" scope="col">Door No.</th>
+                                            <th class="col-4" scope="col">Street Address</th>
+                                            <th class="col-2" scope="col">Landmark</th>
+                                            <th class="col-1" scope="col">Pincode</th>
+                                            <th class="col-1" scope="col">District</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        foreach ($this->data['basicDetails'] as $key => $value) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $value['buildingName'] ?></td>
+                                                <td><?php echo $value['address'] ?></td>
+                                                <td><?php echo $value['landmark'] ?></td>
+                                                <td><?php echo $value['pincode'] ?></td>
+                                                <td><?php echo $value['district'] ?></td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+
+                                <table class="table table-striped mt-2">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-4" scope="col">Profile Photo</th>
+                                            <th class="col-4" scope="col">Aadhaar Front</th>
+                                            <th class="col-4" scope="col">Aadhaar Back</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        foreach ($this->data['basicDetails'] as $key => $value) {
+                                        ?>
+                                            <tr>
+                                                <td><a href="<?php echo $value['photo'] ?>" target="_blank" ><?php echo $value['photo_filename'] ?></a></td>
+                                                <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank" ><?php echo $value['aadharfront_filename'] ?></a></td>
+                                                <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank" ><?php echo $value['aadharback_filename'] ?></a></td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                                    </div>
+                                    </div>
+                       <div class="card recent-sales overflow-auto">
+                            <div class="card-body">
+
                                 <h5 class="card-title">Educational Qualification</h5>
 
                                 <!-- Table with stripped rows -->
@@ -1762,6 +1883,7 @@ body {
                                             <th scope="col">Institution Name</th>
                                             <th scope="col">Percentage</th>
                                             <th scope="col">Year of Passed Out</th>
+                                            <th scope="col">Certificates</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1776,6 +1898,37 @@ body {
                                                 <td><?php echo $value['school_college_name'] ?></td>
                                                 <td><?php echo $value['percentage'] ?></td>
                                                 <td><?php echo $value['yearOfPassing'] ?></td>
+                                                <?php
+                                            if ($value['educational_qualification'] == 'sslc') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'hsc') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'diploma') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'bachelors') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'masters') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'doctorate') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <td>NA</a></td>
+                                            <?php
+                                            }
+                                            ?>
                                             </tr>
                                         <?php
                                             $loopcount++;
@@ -1795,10 +1948,10 @@ body {
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col">S.No</th>
-                                            <th scope="col">Skill</th>
-                                            <th scope="col">Experience</th>
-                                            <th scope="col">Skill Level</th>
+                                            <th class="col-2" scope="col">S.No</th>
+                                            <th class="col-4" scope="col">Skill</th>
+                                            <th class="col-3" scope="col">Experience</th>
+                                            <th class="col-3" scope="col">Skill Level</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1907,6 +2060,14 @@ body {
 
                             </div>
                         </div>
+                        <div class="card recent-sales overflow-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">Resume</h5>
+
+                               <a href="<?php echo $this->data['areaOfInterest'][0]['resume_filename_url']; ?>" target="blank" ><?php echo $this->data['areaOfInterest'][0]['resume_filename']; ?></a>
+
+                            </div>
+                        </div>
                         <form action="<?php echo baseUrl . "admin/verifyEmployee" ?>" method="post">
                             <input class="form-check-input" type="text" name="EmployeeId" id="" value="<?php echo $this->data['basicDetails'][0]['id'] ?>" hidden>
                             <fieldset class="row mb-3">
@@ -1972,7 +2133,7 @@ body {
                                     <label for="floatingTextarea">Remarks</label>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">submit</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
                         </form>
                     </div>
                 </div><!-- End Default Card -->
@@ -2201,11 +2362,11 @@ body {
                                 <label for="inputPassword5" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="inputPassword5">
                             </div> -->
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <label for="inputAddress5" class="form-label">Street Address</label>
                                     <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <label for="inputAddress2" class="form-label">Landmark</label>
                                     <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="landmark" value="<?php echo $value['Landmark'] ?>" readonly required>
                                 </div>
@@ -2227,6 +2388,24 @@ body {
                                     <label for="inputZip" class="form-label">Pincode</label>
                                     <input type="text" class="form-control" id="inputPincode" value="<?php echo $value['pincode'] ?>" readonly name="pincode">
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="inputLogo" class="form-label">Logo</label>
+                                    <!-- <input type="text" class="form-control" id="inputLogo" value="<?php echo $value['company_logo'] ?>" readonly name="pincode"> -->
+                                    <a href="<?php echo $value['company_logourl'] ;?>" class="form-control text-primary" target="blank"><?php echo $value['company_logo'] ;?></a>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputWebsite" class="form-label">Website</label>
+                                    <input type="text" class="form-control" id="inputWebsite" value="<?php echo $value['companywebsite'] ?>" readonly name="cwebsite1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputPan" class="form-label">PAN Number</label>
+                                    <input type="text" class="form-control" id="inputPan" value="<?php echo $value['companypan'] ?>" readonly name="cpan1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputGst" class="form-label">GST Number</label>
+                                    <input type="text" class="form-control" id="inputGst" value="<?php echo $value['companygst'] ?>" readonly name="cgst1">
+                                </div>
+
                                 <h5 class="card-title">Contact Person Details</h5>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Name</label>
@@ -2234,11 +2413,11 @@ body {
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Role</label>
-                                    <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['role'] ?>" readonlyname="role" required>
+                                    <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['role'] ?>" readonly name="role" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputNumber5" class="form-label">Mobile Number</label>
-                                    <input type="number" class="form-control" id="inputNumber5" value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required>
+                                    <input type="number" class="form-control" id="inputNumber5" value="<?php echo $value['mobile_number'] ?>" readonly name="mobile1" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Email-ID</label>
@@ -2260,8 +2439,8 @@ body {
                                                 <label class="form-check-label" for="gridRadios1">Add</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios2" value="0">
-                                                <label class="form-check-label" for="gridRadios2">Don't Add</label>
+                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios2" value="2">
+                                                <label class="form-check-label" for="gridRadios2">Delete</label>
                                             </div>
                                             
                                     </fieldset>
@@ -2277,6 +2456,12 @@ body {
                                             <input type="text" name="deleteApprovelRemarks" value="" id="" hidden >
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                        <input type="text" name="addNewRequest" value="0" id="" hidden >
+                                        <input type="text" name="deleteRequest" value="0" id="" hidden >
+                                        </div>
+                                    </div>
                                      
                                      <?php
                                     } else if ($this->data['manageEmployer'][0]['deleteRequest'] == '1')
@@ -2289,8 +2474,8 @@ body {
                                                 <label class="form-check-label" for="gridRadios1">Delete</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios2" value="0">
-                                                <label class="form-check-label" for="gridRadios2">Don't Delete </label>
+                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios2" value="2">
+                                                <label class="form-check-label" for="gridRadios2">Add</label>
                                             </div>
                                     </fieldset>
                                     <div class="col-md-6">
@@ -2304,6 +2489,10 @@ body {
                                             <input type="text" name="addNewApprovel" value="0" id="" hidden >
                                             <input type="text" name="addNewApprovelRemarks" value="" id="" hidden >
                                         </div>
+                                        <div class="form-floating mb-3">
+                                        <input type="text" name="addNewRequest" value="0" id="" hidden >
+                                        <input type="text" name="deleteRequest" value="0" id="" hidden >
+                                     </div>
                                     </div>
                                      <?php
                                     } ?>
@@ -2459,7 +2648,7 @@ body {
 
                                                         <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to restore?')">Restore</button>
                                                     </form>
-                                                    <a class="ms-1" href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                                                    <a class="ms-1" onclick="return confirm('Are you sure you want to delete permanently?')" href="<?php echo baseUrl . "Admin/deleteEmployeeDetails" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a></td>
                                             </tr>
                                         <?php
                                             $loopcount++;
@@ -2493,14 +2682,13 @@ body {
                         </ol>
                     </nav>
                 </div>
-
+                <p>Employee ID : <?php echo $this->data['basicDetails'][0]['eeid'] ?></p>
                 <div class="card">
                     <div class="card-body pt-4">
-                        
+
                         <form class="needs-validation" novalidate action="<?php echo baseUrl . "admin/deleteEmployeeform" ?>" method="post">
                             <input class="form-check-input" type="text" name="EmployeeId" id="" value="<?php echo $this->data['basicDetails'][0]['id'] ?>" hidden>
                             <input class="form-check-input" type="text" name="deleteEmployeeStatus" id="" value="1" hidden>
-
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
                                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="deleteEmployeeRemarks" style="height: 100px;" required></textarea>
@@ -2583,7 +2771,7 @@ body {
         
                                                                 <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to restore?')">Restore</button>
                                                             </form>
-                                                            <a class="ms-1" href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                                                            <a class="ms-1" onclick="return confirm('Are you sure you want to delete permanently?')" href="<?php echo baseUrl . "Admin/deleteEmployer" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a></td>
                                                     </tr>
                                                 <?php
                                                     $loopcount++;
@@ -2617,7 +2805,7 @@ body {
                         </ol>
                     </nav>
                 </div>
-
+                <p>Employee ID : <?php echo $this->data['employerDetails'][0]['erid'] ?></p>
                 <div class="card">
                     <div class="card-body pt-4">
                         
