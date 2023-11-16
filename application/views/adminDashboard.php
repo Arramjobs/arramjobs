@@ -2010,6 +2010,7 @@ body {
                                                 <td> <?php echo $avalue['expected_salary'] ?></td>
                                             </tr>
                                         <?php
+                                        $loopcount ++;
                                         }
                                         ?>
                                     </tbody>
@@ -2065,8 +2066,10 @@ body {
                             <div class="card-body">
                                 <h5 class="card-title">Resume</h5>
 
-                               <a href="<?php echo $this->data['areaOfInterest'][0]['resume_filename_url']; ?>" target="blank" ><?php echo $this->data['areaOfInterest'][0]['resume_filename']; ?></a>
+                               <!-- <a href="<?php echo $this->data['areaOfInterest'][0]['resume_filename_url']; ?>" target="blank" ><?php echo $this->data['areaOfInterest'][0]['resume_filename']; ?></a> -->
+                               <a href="<?php echo isset($this->data['areaOfInterest'][0]['resume_filename_url']) ?  $this->data['areaOfInterest'][0]['resume_filename_url'] : ''; ?>" target="blank" ><?php echo isset($this->data['areaOfInterest'][0]['resume_filename']) ?  $this->data['areaOfInterest'][0]['resume_filename'] : 'No file'; ?></a>
 
+                               
                             </div>
                         </div>
                         <form action="<?php echo baseUrl . "admin/verifyEmployee" ?>" method="post">

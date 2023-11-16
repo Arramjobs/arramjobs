@@ -761,7 +761,7 @@
 
                                         <div class="d-flex justify-content-between">
                                         <a href="<?php echo baseUrl . "Employee/addEducationForm" ?>">
-                                        <button type="button" class="btn btn-info mb-4">+ Add Education</button></a>
+                                        <button type="button" class="btn btn-success mb-4">+ Add Education</button></a>
                                        <div>
                                        <a  href="<?php echo baseUrl . "Employee/basicdetails" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
                                        <a  href="<?php echo baseUrl . "Employee/experiencetable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
@@ -1549,7 +1549,7 @@
                                         </div>
                                         <div class="d-flex justify-content-between">
                                         <a href="<?php echo baseUrl . "Employee/addExperirenceForm" ?>">
-                                        <button type="button" class="btn btn-info mb-4">+ Add Experience</button></a>
+                                        <button type="button" class="btn btn-success mb-4">+ Add Experience</button></a>
                                        <div>
                                        <a  href="<?php echo baseUrl . "Employee/educationTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
                                        <a  href="<?php echo baseUrl . "Employee/areaOfIntrestTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
@@ -2045,11 +2045,11 @@
                            
                             <div class="card-body">
                                        
-                                        <h5 class="card-title">Area of Job InterestTable<span></span></h5>
+                                        <h5 class="card-title">Area of Job Interest Table<span></span></h5>
                                         
                                         <div class="d-flex justify-content-between">
                                         <a href="<?php echo baseUrl . "Employee/addAreaOfIntrestForm" ?>">
-                                        <button type="button" class="btn btn-info mb-4">+ Add Area of Job Interest</button></a>
+                                        <button type="button" class="btn btn-success mb-4">+ Add Area of Job Interest</button></a>
                                        <div>
                                        <a  href="<?php echo baseUrl . "Employee/experienceTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
                                        <a  href="<?php echo baseUrl . "Employee/resume" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
@@ -2110,10 +2110,12 @@
                                     <?php
                                 }
                                 ?>
-                              <br><br>
+
+                                
+                              <h5 class="card-title">Skill Table<span></span></h5>
                                   <div>
                                         <a href="<?php echo baseUrl . "Employee/addSkillForm" ?>">
-                                        <button type="button" class="btn btn-info mb-4">+ Add Skill</button></a>
+                                        <button type="button" class="btn btn-success mb-4">+ Add Skill</button></a>
                                   <div>
                                         <?php
                                          if (isset($areaOfIntrestTable[0]['id'])) {
