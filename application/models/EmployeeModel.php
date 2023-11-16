@@ -1,5 +1,5 @@
 <?php
-class SeekerModel extends CI_Model
+class EmployeeModel extends CI_Model
 {
     public function __construct()
     {
@@ -37,10 +37,8 @@ class SeekerModel extends CI_Model
     public function otp()
     {
         $otp = $this->input->post('otp');
-
         $insert = array(
             'otp' => $otp
-
         );
 
         $this->db->insert('seeker_otp', $insert);
@@ -100,7 +98,6 @@ class SeekerModel extends CI_Model
         $this->db->where('phonenumber', $phonenumber);
         $query = $this->db->get('seeker_profile_form');
         $userData = $query->row_array();
-
 
         print_r($userData);
 
@@ -177,8 +174,6 @@ class SeekerModel extends CI_Model
         );
         $this->db->where('id', $postData['id']);
 
-
-
         $result = $this->db->update('seeker_profile_form', $updateData);
     }
 
@@ -189,7 +184,6 @@ class SeekerModel extends CI_Model
         $seekerId = "SELECT * FROM `seeker_educational_details` Where `seekerId`= $seekerId";
         $addtab = $this->db->query($seekerId);
         return $addtab->result_array();
-
     }
 
     public function insertEducationForm()
@@ -203,7 +197,6 @@ class SeekerModel extends CI_Model
         $config['allowed_types'] = "jpg|png|pdf|jpeg";
         $config['max_size'] = 1024;
 
-        // $edudata1=$post['edusubmit'];
 
         $this->load->library('upload', $config);
 
@@ -213,7 +206,6 @@ class SeekerModel extends CI_Model
         $cerug = "None";
         $cerpg = "None";
         $cerdoct = "None";
-
 
 
         if ($this->upload->do_upload('certificate_10th')) {
@@ -380,12 +372,9 @@ class SeekerModel extends CI_Model
 
     public function deleteEducation($deleteEducationId)
     {
-
         $delete = "DELETE FROM `seeker_educational_details` WHERE `id`=$deleteEducationId";
         $del = $this->db->query($delete);
     }
-
-
 
 
     public function experienceTable()
@@ -465,7 +454,6 @@ class SeekerModel extends CI_Model
 
 
     // project
-
 
     public function projectTable()
     {
@@ -555,9 +543,9 @@ class SeekerModel extends CI_Model
             'job_type' => $post['jobtype'],
             'description' => $post['description'],
             'expected_salary' => $post['expected-salary'],
-            'skillname' => $post['skillname'],
-            'skillexperience' => $post['skillexperience'],
-            'skilllevel' => $post['skilllevel']
+            // 'skillname' => $post['skillname'],
+            // 'skillexperience' => $post['skillexperience'],
+            // 'skilllevel' => $post['skilllevel']
         );
 
         $this->db->insert('seeker_area_of_interst', $add);
@@ -595,9 +583,9 @@ class SeekerModel extends CI_Model
             'job_type' => $post['jobtype'],
             'description' => $post['description'],
             'expected_salary' => $post['expected-salary'],
-            'skillname' => $post['skillname'],
-            'skillexperience' => $post['skillexperience'],
-            'skilllevel' => $post['skilllevel']
+            // 'skillname' => $post['skillname'],
+            // 'skillexperience' => $post['skillexperience'],
+            // 'skilllevel' => $post['skilllevel']
         );
 
         $this->db->where('id', $areaOfIntrest);
@@ -606,7 +594,6 @@ class SeekerModel extends CI_Model
 
     public function deleteAreaOfIntrest($deleteAreaOfIntrestId)
     {
-
         $delete = "DELETE FROM `seeker_area_of_interst` WHERE `id`=$deleteAreaOfIntrestId";
         $del = $this->db->query($delete);
     }
@@ -614,7 +601,6 @@ class SeekerModel extends CI_Model
 
 
     //  skill,
-
     public function skillTable()
     {
         $seekerId = $_SESSION['seekerId'];
@@ -631,7 +617,7 @@ class SeekerModel extends CI_Model
         $add = array(
             'seekerId' => $seekerId,
             'skill' => $post['skillname'],
-            'experience' => $post['experience'],
+            'experience' => $post['skillexperience'],
             'skill_level' => $post['skilllevel']
         );
 
@@ -653,7 +639,7 @@ class SeekerModel extends CI_Model
         $areaOfIntrest = $post['id'];
         $updateInsertSkill = array(
             'skill' => $post['skillname'],
-            'experience' => $post['experience'],
+            'experience' => $post['skillexperience'],
             'skill_level' => $post['skilllevel']
         );
 
@@ -663,7 +649,6 @@ class SeekerModel extends CI_Model
 
     public function deleteSkill($deleteSkillId)
     {
-
         $delete = "DELETE FROM `seeker_skill` WHERE `id`=$deleteSkillId";
         $del = $this->db->query($delete);
     }
@@ -754,17 +739,14 @@ class SeekerModel extends CI_Model
     //         $this->db->where('id', $postData['id']);
     //         $result = $this->db->update('seeker_experience', $updateData);
 
-
-
-
-
     //     }
+
+
     //     public function getProjectDetails(){
     //         $seekerId=$_SESSION['seekerId'];
     //         $provider = "SELECT * FROM `seeker_projects` Where `seekerId` = $seekerId";
     //         $select = $this->db->query($provider);
     //         return $select->result_array();
-
 
     //     }
 
@@ -787,7 +769,6 @@ class SeekerModel extends CI_Model
     //         $this->db->where('seekerId', $postData['seekerId']);
     //         $result = $this->db->update('seeker_projects', $updateData);
     //     }
-
 
 
 
@@ -817,8 +798,6 @@ class SeekerModel extends CI_Model
     //         );
     //         $this->db->where('seekerId', $postData['seekerId']);
     //         $this->db->update('seeker_area_of_interst', $updateData);
-
-
 
     //     }
 
@@ -888,7 +867,6 @@ class SeekerModel extends CI_Model
 
         } else {
             $error = $this->upload->display_errors();
-
         }
 
 

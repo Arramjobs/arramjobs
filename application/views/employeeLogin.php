@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Arram Jobs Admin Login</title>
+    <title>Employee Login Page</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -29,13 +29,14 @@
     <!-- Template Main CSS File -->
     <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <style>
+        /* To hide arrows in number field */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    </style>
 </head>
 
 <body>
@@ -49,9 +50,9 @@
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
-                                <a href="<?php echo baseUrl; ?>" class="logo d-flex align-items-center w-auto">
+                                <a href="<?php echo baseUrl; ?>/#seeker" class="logo d-flex align-items-center w-auto">
                                     <!-- <img src="assets/img/logo.png" alt=""> -->
-                                    <span class="d-none d-lg-block">ArramjobsAdmin</span>
+                                    <span class="d-none d-lg-block">Arramjobs Employee</span>
                                 </a>
                             </div><!-- End Logo -->
 
@@ -61,24 +62,25 @@
 
                                     <div class="pt-4 pb-2">
                                         <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                                        <p class="text-center small">Enter your username & password to login</p>
+                                        <p class="text-center small">Enter your registered id & mobile number to login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/verifyLogin" ?>" method="post">
+                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Employee/seekerLogin" ?>" method="post" onsubmit="return validateForm()">
 
                                         <div class="col-12">
-                                            <label for="yourUsername" class="form-label">Username</label>
+                                            <label for="username" class="form-label">Registerd ID</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="userName" class="form-control" id="yourUsername" placeholder="Enter username" required>
-                                                <div class="invalid-feedback">Please enter your username.</div>
+                                                <input type="text" name="username" class="form-control" id="username" placeholder="Enter your registered id" required>
+                                                <div class="invalid-feedback">Please enter your registered id.</div>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" name="password" class="form-control" id="yourPassword" placeholder="Enter password" required>
-                                            <div class="invalid-feedback">Please enter your password!</div>
+                                            <label for="phonenumber" class="form-label">Mobile Number</label>
+                                            <input type="number" name="phonenumber" class="form-control" id="phonenumber" placeholder="Enter your mobile number" required>
+                                            <p id="pherr" style="color: red;"></p>
+                                            <div class="invalid-feedback">Please enter your mobile number.</div>
                                         </div>
 
                                         <!-- <div class="col-12">
@@ -91,17 +93,15 @@
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
                                         </div>
                                     </form>
+                                    <div class="col-12">
+                                    <br>
+                                        <div class="form-check">
+                                                <p>Create an account ? <a href="<?php echo baseUrl . "Employee/registration" ?>">Register</a></p>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
-
-                            <!-- <div class="credits">
-                                <!-- All the links in the footer should remain intact. -->
-                            <!-- You can delete the links only if you purchased the pro version. -->
-                            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                            <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                            </div> -->
 
                         </div>
                     </div>
@@ -112,6 +112,35 @@
         </div>
     </main><!-- End #main -->
 
+    <script>
+    function validateForm() {
+      var phoneNumber = document.getElementById("phonenumber").value;
+    
+      if (phoneNumber != "") {
+        if (phoneNumber.length < 10) {
+          document.getElementById("pherr").innerHTML = "Mobile number must be in 10 digits";
+          // document.forms.phno.focus();
+          return false;
+        } else if (phoneNumber.length > 10) {
+          document.getElementById("pherr").innerHTML = "Mobile number should not exceed 10 digits";
+          // document.forms.phno.focus();
+          return false;
+        } else {
+          document.getElementById("pherr").innerHTML = "";
+        }
+      } 
+    //   else if (phoneNumber == "") {
+    //     var phsms = "Mobile number must be filled out";
+    //     document.getElementById("pherr").innerHTML = phsms;
+    //     // document.forms.phno.focus();
+    //     return false;
+    //   }
+      else {
+          document.getElementById("pherr").innerHTML = "";
+        }
+      return true;
+    }
+  </script>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

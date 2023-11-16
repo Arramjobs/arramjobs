@@ -1,7 +1,7 @@
 <?php
 
 
-class RegistrationModel extends CI_Model
+class EmployerModel extends CI_Model
 {
   public function __construct()
   {
@@ -109,13 +109,10 @@ public function get_latest_customer_id() {
     $employerid = $postData['userName'];
     // $companyMobile = $postData['number'];
     // $query = "SELECT * FROM provider_registration_form WHERE userName='$companyName' AND password ='$companyMobile'";
-    $query = "SELECT * FROM provider_registration_form WHERE erid='$employerid' AND verificationStatus = '1' AND addNewApproval = '1' AND deleteApproval = '0'";
+    $query = "SELECT * FROM provider_registration_form WHERE erid='$employerid' AND verificationStatus = '1' AND ( addNewApprovel = '1' OR deleteApprovel = '2')";
     $count = $this->db->query($query);
     return $count->result_array();
   }
-
-
-
 
   public function provider_detail()
   {
@@ -129,9 +126,6 @@ public function get_latest_customer_id() {
     // $select = $this->db->query($provider);
     // return $select->result_array();
   }
-
-
-
 
 
   public function update_data()
@@ -185,9 +179,6 @@ public function get_latest_customer_id() {
 
 
 
-
-
-
   public function addNew()
   {
     $jobProviderId = $_SESSION['jobProviderId'];
@@ -225,7 +216,6 @@ public function get_latest_customer_id() {
     // $select = $this->db->query($provider);
     // return $select->result_array();
   }
-
 
 
   public function updatejob($id)
@@ -266,8 +256,6 @@ public function get_latest_customer_id() {
   }
 
 
-
-
   //   public function joinTables($jobCategory)
   //   {
   //       $query = "SELECT spf.id as id, spf.name as name, sed.educational_qualification as eq, sed.percentage as per, sk.experience as exp, sk.skill as skill,
@@ -279,7 +267,8 @@ public function get_latest_customer_id() {
   public function candidates($jobCategory)
   {
     $query = "SELECT spf.id as seekerId, spf.name as name, saoi.id as id,  saoi.other_sub_interst_category as oisc, saoi.experience as exps,
-    saoi.skillname as skills FROM seeker_profile_form spf INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id
+    ssk.skill as skills FROM seeker_profile_form spf INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id 
+    INNER JOIN  seeker_skill ssk ON ssk.seekerId=spf.id
     WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.verificationStatus = '1' " ;
     $result = $this->db->query($query);
     return $result->result_array();
@@ -328,7 +317,6 @@ public function get_latest_customer_id() {
     $results = $this->db->query($allTableJoins, array($id));
     return $result->result();
   }
-
 
 
   public function educationalDetails($id)

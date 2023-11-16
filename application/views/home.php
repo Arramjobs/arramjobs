@@ -449,23 +449,23 @@
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="<?php echo baseUrl . "provider/login" ?>">Employer LogIn</a></li>
-              <li><a class="dropdown-item" href="<?php echo baseUrl . "seekerController" ?>">Employee LogIn</a></li>
+              <li><a class="dropdown-item" href="<?php echo baseUrl . "Employee" ?>">Employee LogIn</a></li>
             </ul>
           </div> -->
 
         <div class="loginbutton">
           EMPLOYEE
           <p class="loginlink">
-            <a href="<?php echo baseUrl . "seekerController" ?>" class="signlink">Login</a>
-            <a href="<?php echo baseUrl . "seekerController/registration" ?>">Sign Up</a>
+            <a href="<?php echo baseUrl . "Employee" ?>" class="signlink">Login</a>
+            <a href="<?php echo baseUrl . "Employee/registration" ?>">Sign Up</a>
           </p>
         </div>
         <div class="loginbutton loginbutton2">
           EMPLOYER
           <p class="loginlink">
 
-            <a href="<?php echo baseUrl . "provider/login" ?>" class="signlink">Login</a>
-            <a href="<?php echo baseUrl . "provider/registration" ?>">Sign Up</a>
+            <a href="<?php echo baseUrl . "Employer/login" ?>" class="signlink">Login</a>
+            <a href="<?php echo baseUrl . "Employer/registration" ?>">Sign Up</a>
           </p>
         </div>
 
