@@ -563,14 +563,15 @@
                     } else {
                     document.getElementById("Name_error").innerHTML = "";
                     }
-
                 } else if (x == "") {
                     var namesms1 = "Name must be filled out";
                     // alert("* Name must be filled out");
                     document.getElementById("Name_error").innerHTML = namesms1;
                     document.applicationform.name.focus();
                     return false;
-                }
+                }else {
+                    document.getElementById("Name_error").innerHTML = "";
+                    }
 
                 if (y == "") {
                     var emailsms = "Email must be filled out";
@@ -590,7 +591,10 @@
                     // alert("you have entered an invalid email address");
                     return false;
                     }
-                }
+                }else {
+                    document.getElementById("emailid_error").innerHTML = "";
+                    }
+
                 if (p != "") {
                     if (p.length !== 10) {
                     document.getElementById("phonenumber_error").innerHTML = "Mobile number  must be in 10 digits";
@@ -604,14 +608,16 @@
                     return false;
                     } else {
                     document.getElementById("phonenumber_error").innerHTML = "";
-
                     }
                 } else if (p == "") {
                     var phsms = "Mobile number must be filled out";
                     document.getElementById("phonenumber_error").innerHTML = phsms;
                     document.applicationform.phonenumber.focus();
                     return false;
-                }
+                }else {
+                    document.getElementById("phonenumber_error").innerHTML = "";
+                    }
+                
 
                 if (d == "") {
                     var namesms2 = "Date of birth must be filled out";
@@ -661,9 +667,7 @@
                     return false;
                 } else {
                     document.getElementById("streetaddress_error").innerHTML = "";
-
                 }
-
 
                 if (l == "") {
                     var namesms2 = "Landmark must be filled out";
@@ -673,7 +677,6 @@
                 } else {
                     document.getElementById("landmark_error").innerHTML = "";
                 }
-
 
                 if (pin != "") {
                     if (pin.length !== 6) {
@@ -686,15 +689,15 @@
                     return false;
                     } else {
                     document.getElementById("pincode_error").innerHTML = "";
-
                     }
                 } else if (pin == "") {
                     var pincode = "Pincode must be filled out";
                     document.getElementById("pincode_error").innerHTML = pincode;
                     document.applicationform.pincode.focus();
                     return false;
-                }
-
+                }else {
+                    document.getElementById("pincode_error").innerHTML = "";
+                    }
 
                 if (m == "") {
                     var namesms2 = "Marital status must be filled out";
@@ -1214,31 +1217,31 @@
                                         <select class="form-control" id="qualification" value="<?php echo $value['educational_qualification']; ?>" name="qualification" onchange="toggleFields()" readonly>
                                         <option value="<?php echo $value['educational_qualification']; ?>"><?php echo $value['educational_qualification']; ?></option>
                                         </select>
-                                        <div id="qualification_error" class="error"></div>
+                                        <div id="qualification_error" class="text-danger"></div>
                                     </div>
 
                                     <div class="col-md-6" id="department-group" style="display: none;">
                                         <label class="form-label" for="department">Department</label>
                                         <input type="text" class="form-control" id="department" name="department" value="<?php echo $value['department']; ?>">
-                                        <div id="department_error" class="error"></div>
+                                        <div id="department_error" class="text-danger"></div>
                                     </div>
 
                                     <div class="col-md-6" id="school-group" style="display: none;">
                                         <label class="form-label" for="school">Institution Name</label>
                                         <input type="text" class="form-control" id="school" value="<?php echo $value['school_college_name']; ?>" name="school">
-                                        <div id="school_error" class="error"></div>
+                                        <div id="school_error" class="text-danger"></div>
                                     </div>
 
                                     <div class="col-md-6" id="percentage-group" style="display: none;">
                                         <label class="form-label" for="percentage">Percentage</label>
                                         <input type="text" class="form-control" id="percentage" id="school" value="<?php echo $value['percentage']; ?>" name="percentage">
-                                        <div id="percentage_error" class="error"></div>
+                                        <div id="percentage_error" class="text-danger"></div>
                                     </div>
 
                                     <div class="col-md-6" id="year-group" style="display: none;">
                                         <label class="form-label" for="year_passed">Year of Passed Out</label>
                                         <input type="number" class="form-control" id="year_passed" value="<?php echo $value['yearOfPassing']; ?>" name="year_passed">
-                                        <div id="year_error" class="error"></div>
+                                        <div id="year_error" class="text-danger"></div>
                                     </div>
 
                             <div class="col-md-6" id="certificate_10th-group" style="display: none;">
@@ -1249,7 +1252,7 @@
                                 <label class="form-control" id="file-input-label" for="certificate_10th">Change File</label>  
                                 <a href="<?php echo $value['tencer_url']; ?>" class="filelink p-2" target="blank" id="existfile" ><?php echo $value['ten_cer']; ?></a>
                                 </div>
-                                <div id="certificate_10th_error" class="error"></div>
+                                <div id="certificate_10th_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_12th-group" style="display: none;">
@@ -1260,7 +1263,7 @@
                                 <label class="form-control" id="file-input-label12" for="certificate_12th">Change File</label>  
                                 <a href="<?php echo $value['twelvecer_url']; ?>" class="filelink p-2" target="blank" id="existfile12" ><?php echo $value['twelve_cer']; ?></a>
                                 </div>
-                                <div id="certificate_12th_error" class="error"></div>
+                                <div id="certificate_12th_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_dip-group" style="display: none;">
@@ -1271,7 +1274,7 @@
                                 <label class="form-control" id="file-input-labeldip" for="certificate_dip">Change File</label>  
                                 <a href="<?php echo $value['diplomacer_url']; ?>" class="filelink p-2" target="blank" id="existfiledip" ><?php echo $value['diploma_cer']; ?></a>
                                 </div>
-                                <div id="certificate_dip_error" class="error"></div>
+                                <div id="certificate_dip_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_ug-group" style="display: none;">
@@ -1282,7 +1285,7 @@
                                 <label class="form-control" id="file-input-labelug" for="certificate_ug">Change File</label>  
                                 <a href="<?php echo $value['ugcer_url']; ?>" class="filelink p-2" target="blank" id="existfileug" ><?php echo $value['ug_cer']; ?></a>
                                 </div>
-                                <div id="certificate_ug_error" class="error"></div>
+                                <div id="certificate_ug_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_pg-group" style="display: none;">
@@ -1293,7 +1296,7 @@
                                 <label class="form-control" id="file-input-labelpg" for="certificate_pg">Change File</label>  
                                 <a href="<?php echo $value['pgcer_url']; ?>" class="filelink p-2" target="blank" id="existfilepg" ><?php echo $value['pg_cer']; ?></a>
                                 </div>
-                                <div id="certificate_pg_error" class="error"></div>
+                                <div id="certificate_pg_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_doctorate-group" style="display: none;">
@@ -1304,7 +1307,7 @@
                                 <label class="form-control" id="file-input-labeldoc" for="certificate_doctorate">Change File</label>  
                                 <a href="<?php echo $value['doccer_url']; ?>" class="filelink p-2" target="blank" id="existfiledoc" ><?php echo $value['doc_cer']; ?></a>
                                 </div>
-                                <div id="certificate_doctorate_error" class="error"></div>
+                                <div id="certificate_doctorate_error" class="text-danger"></div>
                             </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary">Update</button>
@@ -1698,7 +1701,7 @@
                       <div id="role_error" class="text-danger"></div>
                     </div>
 
-                    <h5 class="card-title">Previous Company Manager Details</h5>
+                    <h5 class="card-title">Previous Job's Manager Details</h5>
 
                     <div class="col-md-6">
                       <label for="Name" class="form-label">Name</label>
@@ -1915,7 +1918,7 @@
                                       <div id="role_error" class="error"></div>
                                     </div>
 
-                                    <h5 class="card-title">Previous Company Manager Details</h5>
+                                    <h5 class="card-title">Previous Job's Manager Details</h5>
 
                                     <div class="col-md-6">
                                       <label class="form-label" for="Name">Name</label>

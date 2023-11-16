@@ -922,7 +922,7 @@ body {
                                 <input type="email" class="form-control" id="inputEmail5" name="email1" placeholder="Enter cp email" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Create Account</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
                         </form><!-- End Multi Columns Form -->
@@ -1588,9 +1588,10 @@ body {
                                     <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
                                     <div class="invalid-feedback">You must agree before submitting.</div>
                                 </div>
-                            </div>
-                            <div class="col-12"> -->
-                                <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                            </div>-->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Create Account</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
                         </form>
 
