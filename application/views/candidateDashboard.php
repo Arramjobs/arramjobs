@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Employee Page</title>
+    <title>Candidate Page</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -30,14 +31,89 @@
     <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
 
    <style>
-   /* To hide arrows in number field */
- #pincode::-webkit-outer-spin-button,
-   #pincode::-webkit-inner-spin-button ,
-   #year_passed::-webkit-outer-spin-button,
-    #year_passed::-webkit-inner-spin-button {
+        /* To hide arrows in number field */
+      #pincode::-webkit-outer-spin-button,
+      #pincode::-webkit-inner-spin-button ,
+      #year_passed::-webkit-outer-spin-button,
+      #year_passed::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
+
+
+    /* Sidebar changes */
+
+    .sidebar {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 996;
+  transition: all 0.3s;
+  padding: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #aab7cf transparent;
+  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  background: #fff;
+  color: #4154f1;
+  border-radius: 10px;
+} 
+
+.sidebar ul li a:hover {
+    background: #4154f1;
+    color: #fff;
+    transition: .3s ease;
+    /* border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px; */
+}
+
+.sidebar ul li.active {
+    background: #fff;
+    color: #4154f1;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+}
+
+.sidebar ul li.active a {
+    color: #fff;
+    background: #4154f1;
+       
+}
+
+.sidebar ul .nav-item.active,
+.sidebar ul .nav-item.active i {
+    background: #fff;
+    color: #4154f1;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    border-radius: 50%;
+}
+
+.sidebar ul .nav-item.active i {   
+    color: #fff;
+    background: #4154f1;   
+    border-radius: 50%; 
+}
+
+.sidebar ul .nav-item:hover  {
+    color: #fff;
+    border-radius: 50%;
+}
+
+  .sidebar-nav .nav-link:hover {
+   color: #fff;
+  transition: 0.3;
+  background: #4154f1;
+  border-radius: 4px;
+}
+
+.sidebar-nav .nav-link:hover i {
+    color: #fff;
+}
+
+    /* End of sidebar changes */
    </style>
 </head>
 
@@ -48,7 +124,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="<?php echo baseUrl; ?>" class="logo d-flex align-items-center">
-                <img src="<?php echo baseUrl . "assets/logo.png" ?>" alt="ArramJobs">
+            <img src="<?php echo baseUrl . "assets/logo.png" ?>" alt="ArramJobs">
                 <!-- <span class="d-none d-lg-block">Arramjobs</span> -->
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -57,10 +133,21 @@
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
-                <li class="nav-item dropdown pe-3">
+                <li class="nav-item dropdown pe-3 d-flex">
 
+                <?php
+                          if (isset($basicDetails)) {
+                            foreach ($basicDetails as $key => $value) {
+                                ?>
+                              <a href="<?php echo $value['photo'] ?>"><img src="<?php echo baseUrl . "uploads/".$value['photo_filename'] ?>" alt="profilep"  width="30" height="30" class="rounded-circle"></a>
+                            <?php }
+                          } else {
+                            ?>
+                        <img src="<?php echo baseUrl . "assets/profilephoto.png" ?>" width="30" height="30" alt="Profile" class="rounded-circle">
+                          <?php }
+                          ?>
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="<?php echo baseUrl . "assets/profilephoto.png" ?>" alt="Profile" class="rounded-circle">
+                              
                         <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['seekerName']; ?></span>
                     </a><!-- End Profile Iamge Icon -->
 
@@ -68,14 +155,14 @@
                         <li class="dropdown-header">
                             <h6><?php echo $_SESSION['seekerName']; ?></h6>
                             <p class="pt-1"><?php echo $_SESSION['employeeidd']; ?></p>
-                            <span>Employee</span>
+                            <span>Candidate</span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center disabled" href="users-profile.html">
+                            <a class="dropdown-item d-flex align-items-center" href="<?php echo baseUrl . "Candidate/myProfile" ?>">
                                 <i class="bi bi-person"></i>
                                 <span>My Profile</span>
                             </a>
@@ -106,7 +193,7 @@
 
                         <li>
                             <a class="dropdown-item d-flex align-items-center" onclick="return confirm('Are you sure to logout?')"
-                             href="<?php echo baseUrl . "Employee/logout" ?>">
+                             href="<?php echo baseUrl . "Candidate/logout" ?>">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Log Out</span>
                             </a>
@@ -126,112 +213,128 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link " href="<?php echo baseUrl . "Employee/dash" ?>">
+            <li class="nav-item <?php echo isPageActive('Candidate/dash') ? 'active' : ''; ?>">
+                <a class="nav-link " href="<?php echo baseUrl . "Candidate/dash" ?>">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link  d-flex justify-content-between" href="<?php echo baseUrl . "Employee/basicDetails" ?>">
+            <li class="nav-item <?php echo isPageActive('Candidate/basicDetails') || isPageActive('Candidate/basicdetails') ? 'active' : ''; ?>">
+                <a class="nav-link  d-flex justify-content-between" href="<?php echo baseUrl . "Candidate/basicDetails" ?>">
                     <div><i class="bi bi-person"></i>
                     <span>Basic Details</span></div>
                     <?php
-            $basicdetaildata = $_SESSION['basicdetaildata'];
-            if ($basicdetaildata == "1") {
+                     if (isset($basicDetails)) {
+                     if ($basicDetails[0]['bdsubmited'] === "1") {
               ?>
-                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">1</i></div>
+                    <!-- <div class="border border-success border-5 rounded-circle" style="width: 15px; height:15px;"></div> -->
+                    <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">
                     <?php
             } else{
               ?>
-                  <div class="rounded-circle bg-secondary text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">1</div>
+                    <div class="border border-secondary border-5 rounded-circle" style="width: 15px; height:15px;"></div>
                <?php
             }
+          }
               ?>
                 </a>
             </li><!-- End Tables Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Employee/educationTable" ?>">
+            <li class="nav-item <?php echo isPageActive('Candidate/educationTable') || isPageActive('Candidate/updateEducation') ? 'active' : ''; ?>">
+                <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Candidate/educationTable" ?>">
                     <div><i class="bi bi-bar-chart"></i>
                     <span>Education Details</span></div>
                     <?php
-           $educationdata = $_SESSION['edudata'];
-           if ($educationdata == "1") {
+        if (isset($basicDetails)) {
+          if ($basicDetails[0]['edusubmited'] === "1") {
              ?>
-                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">2</div>
+                    <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">
                     <?php
             } else{
               ?>
-                  <div class="rounded-circle bg-secondary text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">2</div>
+                    <div class="border border-secondary border-5 rounded-circle" style="width: 15px; height:15px;"></div>
                <?php
             }
+          }
               ?>
                 </a>
             </li><!-- End Charts Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Employee/experienceTable" ?>">
+            <li class="nav-item <?php echo isPageActive('Candidate/experienceTable') || isPageActive('Candidate/addExperirenceForm') || isPageActive('Candidate/updateExperience') || isPageActive('Candidate/experiencetable') ? 'active' : ''; ?>">
+                <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Candidate/experienceTable" ?>">
                     <div><i class="bi bi-gem"></i>
                     <span>Experience Details</span></div>
                     <?php
-                $experiencedata = $_SESSION['expdata'];
-                if ($experiencedata == "1") {
+                 if (isset($basicDetails)) {
+                  if ($basicDetails[0]['expsubmited'] === "1") {
              ?>
-                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">3</div>
+                    <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">
                     <?php
             } else{
               ?>
-                  <div class="rounded-circle bg-secondary text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">3</div>
+                    <div class="border border-secondary border-5 rounded-circle" style="width: 15px; height:15px;"></div>
                <?php
             }
+          }
               ?>
                 </a>
             </li><!-- End Icons Nav -->
 
-            <li class="nav-item">
-            <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Employee/areaOfIntrestTable" ?>">
+            <li class="nav-item <?php echo isPageActive('Candidate/areaOfIntrestTable')  || isPageActive('Candidate/updateAreaOfIntrest') || isPageActive('Candidate/addAreaOfIntrestForm') || isPageActive('Candidate/addSkillForm') || isPageActive('Candidate/updateSkill')? 'active' : ''; ?>">
+            <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
             <div><i class="bi bi-box-arrow-in-right"></i>
                     <span>Area of Job Interest</span></div>
                     <?php
-            $areaofinterestdata = $_SESSION['areadata'];
-            if ($areaofinterestdata == "1") {
+            if (isset($basicDetails)) {
+              if ($basicDetails[0]['areasubmited'] === "1") {
              ?>
-                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">4</div>
+                    <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">
                     <?php
             } else{
               ?>
-                  <div class="rounded-circle bg-secondary text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">4</div>
+                    <div class="border border-secondary border-5 rounded-circle" style="width: 15px; height:15px;"></div>
                <?php
             }
+          }
               ?>
                 </a>
             </li><!-- End Icons Nav -->
           
-            <li class="nav-item">
-            <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Employee/resume" ?>">
+            <li class="nav-item <?php echo isPageActive('Candidate/resume') ? 'active' : ''; ?>">
+            <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Candidate/resume" ?>">
             <div><i class="bi bi-file-earmark"></i>
                     <span>Resume</span></div>
                     <?php
-          $resumesubmitdata = $_SESSION['resumedata'];
-          if ($resumesubmitdata == "1") {
+          if (isset($basicDetails)) {
+            if ($basicDetails[0]['resumesubmited'] === "1") {
              ?>
-                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">5</div>
+                    <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">
                     <?php
             } else{
               ?>
-                  <div class="rounded-circle bg-secondary text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">5</div>
+                    <div class="border border-secondary border-5 rounded-circle" style="width: 15px; height:15px;"></div>
                <?php
             }
+          }
               ?>
-                    
                 </a>
             </li><!-- End Icons Nav -->
 
         </ul>
 
     </aside><!-- End Sidebar-->
+
+    <?php
+    function isPageActive($page)
+    {
+        // Get the current page URL
+        $currentUrl = $_SERVER['REQUEST_URI'];
+
+        // Check if the current page URL contains the specified page
+        return strpos($currentUrl, $page) !== false || ($page === 'Candidate/dash' && $currentUrl === '/');
+    }
+    ?>
 
 
     <main id="main" class="main">
@@ -254,7 +357,7 @@
                             <div class="col-lg-12">
                                 <div class="row">
 
-                                    <h5 class="card-title">Welcome To Employee Dashboard</h5>
+                                    <h5 class="card-title">Welcome To Candidate Dashboard</h5>
                                     <div class="col-12">
                                         <div class="card info-card sales-card p-4 ">
                                             <p>At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. 
@@ -274,7 +377,7 @@
                                                     </ul> 
                                                    </div> 
 
-                                                  <a class="my-5" href="<?php echo baseUrl . "Employee/basicdetails" ?>"><button type="button" class="btn btn-success">Create Profile</button></a>
+                                                  <a class="my-5 <?php echo isPageActive('Candidate/basicdetails') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/basicdetails" ?>"><button type="button" class="btn btn-success">Create Profile</button></a>
                                         
                                                   </div>
                                                 </div>
@@ -292,7 +395,7 @@
             ?>
                 <section class="Multi Columns Form">
                     <div class="pagetitle">
-                        <h1>Employee Details</h1>
+                        <h1>Candidate Details</h1>
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
@@ -306,7 +409,7 @@
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate name="applicationform" enctype="multipart/form-data" method="post" 
-                            onsubmit="return group()" action='<?php echo baseUrl . "Employee/updateBasicDetails" ?>'>
+                            onsubmit="return group()" action='<?php echo baseUrl . "Candidate/updateBasicDetails" ?>'>
                            
                             <?php
                             foreach ($basicDetails as $key => $value) {
@@ -743,7 +846,7 @@
 <?php
         } elseif ($method == "educationTable") {
             ?>
-                <section class="usertable">
+                <section class="usertable " >
                     <div class="pagetitle">
                         <h1>Education Details</h1>
                         <nav>
@@ -759,22 +862,24 @@
                             <div class="card-body pt-4">
                                        
                                         <!-- <h5 class="card-title">Education Table<span></span></h5> -->
-
                                         <div class="d-flex justify-content-between">
-                                        <a href="<?php echo baseUrl . "Employee/addEducationForm" ?>">
-                                        <button type="button" class="btn btn-success mb-4">+ Add Education</button></a>
+                                        <!-- <a href="<?php echo baseUrl . "Candidate/addEducationForm" ?>">
+                                        <button type="button" class="btn btn-success mb-4">+ Add Education</button></a> -->
+                                        
+                                        <a  href="#addeduform"><button  onclick="addeduformfunction()" type="button" class="btn btn-success mb-4">+ Add Education</button></a>
                                        <div>
-                                       <a  href="<?php echo baseUrl . "Employee/basicdetails" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
-                                       <a  href="<?php echo baseUrl . "Employee/experiencetable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
+                                       <a class="<?php echo isPageActive('Candidate/basicdetails') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
+                                       <a class="<?php echo isPageActive('Candidate/experiencetable') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
                                        </div>
                                     </div>
                                     <?php
                                          if (isset($educationTable[0]['id'])) {
                                            $count=1;
                                             ?>
-                                        <table class="table">
+                                        <table class="table overflow-auto " id="myTable">
                                             <thead>
                                                 <tr>
+                                                <!-- <th scope="col"></th> -->
                                                     <th scope="col">S.No</th>
                                                     <th scope="col">Educational Qualification</th>
                                                     <th scope="col">Specialiization</th>
@@ -793,6 +898,7 @@
                                             $seekerId = $_SESSION['seekerId'];
                                             ?>
                                                     <tr>
+                                                    <!-- <td><input type="checkbox" class="checkbox"></td> -->
                                                     <td><a><?php echo $count++; ?>.</a></td>
                                                     <td><?php echo $value['educational_qualification'] ?></td>
                                                     <td><?php echo $value['department'] ?></td>
@@ -800,27 +906,31 @@
                                                     <td><?php echo $value['yearOfPassing'] ?></td>
                                                     <td><?php echo $value['percentage'] ?></td>
                                             <?php
-                                            if ($value['educational_qualification'] == 'sslc') {
+                                            if ($value['educational_qualification'] == '10th/SSLC') {
                                             ?>
                                                     <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
                                             <?php
-                                            } else if ($value['educational_qualification'] == 'hsc') {
+                                            } else if ($value['educational_qualification'] == '12th/HSC') {
                                             ?>
                                                     <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
                                             <?php
-                                            } else if ($value['educational_qualification'] == 'diploma') {
+                                            } else if ($value['educational_qualification'] == 'DIPLOMA') {
                                             ?>
                                                     <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
                                             <?php
-                                            } else if ($value['educational_qualification'] == 'bachelors') {
+                                            } else if ($value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" || 
+                                             $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW") {
                                             ?>
                                                     <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
                                             <?php
-                                            } else if ($value['educational_qualification'] == 'masters') {
+                                            } else if ($value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                             $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                              $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW") {
                                             ?>
                                                     <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
                                             <?php
-                                            } else if ($value['educational_qualification'] == 'doctorate') {
+                                            } else if ($value['educational_qualification'] == 'Ph.D') {
                                             ?>
                                                     <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
                                             <?php
@@ -832,8 +942,8 @@
                                             
                                             ?>
                                             <td class="d-flex">
-                                                <a href="<?php echo baseUrl . "Employee/updateEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
-                                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employee/deleteEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                <a class="<?php echo isPageActive('Candidate/updateEducation') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/updateEducation" ?>/<?php echo $value['id'] ?>#editeduform"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                                             </td>
                                       </tr>
                                         <?php
@@ -850,56 +960,49 @@
                                 }
                                 ?>
                             </div>
+                            <!-- <a onclick="return confirm('Are you sure you want to delete?')" ><button type="button" class=" ms-4 mb-4 btn btn-danger" onclick="deleteRows()">Delete</button></a> -->
 
                         </div>
                     </div><!-- End Recent Sales -->
                 </section>
 
-            <?php
-        } elseif ($method == "addEducationForm") {
-            ?>
-                <section class="Multi Columns Form">
-                    <div class="pagetitle">
-                        <h1>Education Details</h1>
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                                <li class="breadcrumb-item active">Add Education</li>
-                            </ol>
-                        </nav>
-                    </div><!-- End Page Title -->
-                    <div class="card">
+          <!-- Delete Row in table  -->
+                <!-- <script>
+                  function deleteRows() {
+                    var checkboxes = document.getElementsByClassName('checkbox');
+                    var table = document.getElementById('myTable');
+
+                    for (var i = checkboxes.length - 1; i >= 0; i--) {
+                      if (checkboxes[i].checked) {
+                        table.deleteRow(i + 1);
+                      }
+                    }
+                  }
+                </script> -->
+
+                <div class="card" id="addeduform" style="display:none">
                         <div class="card-body">
                             <h5 class="card-title">Add Education Details</h5>
 
                             <!-- Multi Columns Form -->
-                            <form class="row g-3" novalidate name="educationform" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" 
-                            action="<?php echo baseUrl . "Employee/insertEducationForm" ?>">
+                            <form class="row g-3" autocomplete="off" novalidate name="educationform" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" 
+                            action="<?php echo baseUrl . "Candidate/insertEducationForm" ?>">
 
-                                <div class="col-12">
+                              <div class="col-12 autocomplete">
                                 <label for="qualification" class="form-label">Educational Qualification</label>
-                                <select class="form-control" id="qualification" name="qualification" onchange="toggleFields()" required>
-                                  <option value="">Select Qualification</option>
-                                  <option value="below_8th">Below 8th</option>
-                                  <option value="sslc">SSLC</option>
-                                  <option value="hsc">HSC</option>
-                                  <option value="diploma">Diploma</option>
-                                  <option value="bachelors">Bachelors</option>
-                                  <option value="masters">Masters</option>
-                                  <option value="doctorate">Doctorate</option>
-                                </select>
+                                <input id="qualification" class="form-control" type="text" name="qualification" onchange="toggleFields()"  placeholder="Enter qualification">
                                 <div id="qualification_error" class="text-danger"></div>
                               </div>
 
                               <div class="col-md-6" id="department-group" style="display: none;">
-                                <label for="department" class="form-label">Department</label>
-                                <input type="text" class="form-control" id="department" name="department" placeholder="Enter department name">
+                                <label for="department" class="form-label">Specialization</label>
+                                <input type="text" class="form-control" id="department" name="department" placeholder="Enter specialization">
                                 <div id="department_error" class="text-danger"></div>
                               </div>
 
                               <div class="col-md-6" id="school-group" style="display: none;">
-                                <label for="school" class="form-label">Institution Name</label>
-                                <input type="text" class="form-control" id="school" name="school" placeholder="Enter institution name">
+                                <label for="school" class="form-label">Institute</label>
+                                <input type="text" class="form-control" id="school" name="school" placeholder="Enter institute name">
                                 <div id="school_error" class="text-danger"></div>
                               </div>
 
@@ -934,19 +1037,19 @@
                               </div>
 
                               <div class="col-md-6" id="certificate_ug-group" style="display: none;">
-                                <label for="certificate_ug" class="form-label">UG Degree Certificate Upload</label>
+                                <label id="additionalFieldLabelug" for="certificate_ug" class="form-label">UG Degree Certificate Upload</label>
                                 <input type="file" class="form-control" id="certificate_ug" name="certificate_ug" accept="image/png ,image/jpg, image/jpeg, application/pdf">
                                 <div id="certificate_ug_error" class="text-danger"></div>
                               </div>
 
                               <div class="col-md-6" id="certificate_pg-group" style="display: none;">
-                                <label for="certificate_pg" class="form-label">PG Certificate Upload</label>
+                                <label id="additionalFieldLabelpg" for="certificate_pg" class="form-label">PG Certificate Upload</label>
                                 <input type="file" class="form-control" id="certificate_pg" name="certificate_pg" accept="image/png ,image/jpg, image/jpeg, application/pdf">
                                 <div id="certificate_pg_error" class="text-danger"></div>
                               </div>
 
                               <div class="col-md-6" id="certificate_doctorate-group" style="display: none;">
-                                <label for="certificate_doctorate" class="form-label">Doctorate Certificate Upload</label>
+                                <label id="additionalFieldLabeldoc" for="certificate_doctorate" class="form-label">Doctorate Certificate Upload</label>
                                 <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate" accept="image/png ,image/jpg, image/jpeg, application/pdf">
                                 <div id="certificate_doctorate_error" class="text-danger"></div>
                               </div>
@@ -961,102 +1064,156 @@
 
                         </div>
                     </div>
-                </section>
-                <script>
-                          function toggleFields() {
-                            var selectedQualification = document.getElementById('qualification').value;
-                            var departmentGroup = document.getElementById('department-group');
-                            var schoolGroup = document.getElementById('school-group');
-                            var percentageGroup = document.getElementById('percentage-group');
-                            var yearGroup = document.getElementById('year-group');
-                            var certificate10thGroup = document.getElementById('certificate_10th-group');
-                            var certificate12thGroup = document.getElementById('certificate_12th-group');
-                            var certificatedipGroup = document.getElementById('certificate_dip-group');
-                            var certificateUgGroup = document.getElementById('certificate_ug-group');
-                            var certificatePgGroup = document.getElementById('certificate_pg-group');
-                            var certificatedcGroup = document.getElementById('certificate_doctorate-group');
-                            var addButton = document.getElementById('addButton');
+                
+                        <script>
+               function autocomplete(inp, arr) {
+                var currentFocus;
+
+                inp.addEventListener("input", function(e) {
+                    var a, b, i, val = this.value;
+                    closeAllLists();
+                    if (!val) { return false;}
+                    currentFocus = -1;
+                    a = document.createElement("DIV");
+                    a.setAttribute("id", this.id + "autocomplete-list");
+                    a.setAttribute("class", "autocomplete-items");
+                    this.parentNode.appendChild(a);
+                    for (i = 0; i < arr.length; i++) {
+                        if (arr[i].toUpperCase().includes(val.toUpperCase())) {
+                            b = document.createElement("DIV");
+                            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                            b.innerHTML += arr[i].substr(val.length);
+                            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                            b.addEventListener("click", function(e) {
+                                inp.value = this.getElementsByTagName("input")[0].value;
+                                closeAllLists();
+                                // Show or hide additional fields based on the selected value
+                                showAdditionalFields(inp.value);
+                            });
+                            a.appendChild(b);
+                        }
+                    }
+                });
+
+            inp.addEventListener("keydown", function(e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    currentFocus++;
+                    addActive(x);
+                } else if (e.keyCode == 38) { 
+                    currentFocus--;
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+
+            function addActive(x) {
+                if (!x) return false;
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+
+            function removeActive(x) {
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+
+            function closeAllLists(elmnt) {
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        function showAdditionalFields(selectedValue) {
+            document.getElementById("school-group").style.display = "none";
+            document.getElementById("percentage-group").style.display = "none";
+            document.getElementById("department-group").style.display = "none";
+            document.getElementById("year-group").style.display = 'none';
+            document.getElementById("certificate_10th-group").style.display = 'none';
+            document.getElementById("certificate_12th-group").style.display = 'none';
+            document.getElementById("certificate_dip-group").style.display = 'none';
+            document.getElementById("certificate_ug-group").style.display = 'none';
+            document.getElementById("certificate_pg-group").style.display = 'none';
+            document.getElementById("certificate_doctorate-group").style.display = 'none';
+           
+            if (selectedValue === "Below_9th" || selectedValue === "9th" || selectedValue === "11th") {
+              document.getElementById("school-group").style.display = "block";
+            document.getElementById("year-group").style.display = 'block';
+            } 
+             else if (selectedValue === "10th/SSLC" ) {
+                    document.getElementById("school-group").style.display = "block";
+                    document.getElementById("percentage-group").style.display = "block";
+                    document.getElementById("year-group").style.display = 'block';
+                    document.getElementById("certificate_10th-group").style.display = 'block';
+            } 
+            else if (selectedValue === "12th/HSC") {
+              document.getElementById("school-group").style.display = "block";
+                document.getElementById("percentage-group").style.display = "block";
+                document.getElementById("year-group").style.display = 'block';
+                document.getElementById("certificate_12th-group").style.display = 'block';
+            } 
+            else if (selectedValue === "DIPLOMA") {
+              document.getElementById("department-group").style.display = "block";
+              document.getElementById("school-group").style.display = "block";
+                document.getElementById("percentage-group").style.display = "block";
+                document.getElementById("year-group").style.display = 'block';
+                document.getElementById("certificate_dip-group").style.display = 'block';
+            } 
+            else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW") {
+              document.getElementById("department-group").style.display = "block";
+              document.getElementById("school-group").style.display = "block";
+                document.getElementById("percentage-group").style.display = "block";
+                document.getElementById("year-group").style.display = 'block';
+                document.getElementById("certificate_ug-group").style.display = 'block';
+                document.getElementById("additionalFieldLabelug").innerText = "Upload " + selectedValue + " Certificate";
+            } 
+            else if (selectedValue === "M.E" || selectedValue === "M.A" || selectedValue === "M.COM" || selectedValue === "M.ED" || selectedValue === "M.LIT" || selectedValue === "M.TECH" || selectedValue === "MCA" || selectedValue === "MBA" || selectedValue === "M.SC" || selectedValue === "MSW") {
+              document.getElementById("department-group").style.display = "block";
+              document.getElementById("school-group").style.display = "block";
+                document.getElementById("percentage-group").style.display = "block";
+                document.getElementById("year-group").style.display = 'block';
+                document.getElementById("certificate_pg-group").style.display = 'block';
+                document.getElementById("additionalFieldLabelpg").innerText = "Upload " + selectedValue + " Certificate";
+            } 
+            else if (selectedValue === "Ph.D"  ) {
+              document.getElementById("department-group").style.display = "block";
+              document.getElementById("school-group").style.display = "block";
+                document.getElementById("percentage-group").style.display = "block";
+                document.getElementById("year-group").style.display = 'block';
+                document.getElementById("certificate_doctorate-group").style.display = 'block';
+                document.getElementById("additionalFieldLabeldoc").innerText = "Upload " + selectedValue + " Certificate";
+            } 
+           
+                   
+        }
+
+        var countries = [
+            "Below_9th", "9th", "10th/SSLC", "11th", "12th/HSC", "DIPLOMA", 
+            "B.A", "B.COM", "B.ED","B.E", "B.LIT", "B.SC", "BBA", "BCA", "B.TECH", "BSW",
+            "M.A", "M.COM", "M.ED", "M.E", "M.LIT","M.SC","MBA", "MCA", "M.TECH", "MSW",
+             "Ph.D" ];
+
+        autocomplete(document.getElementById("qualification"), countries);
 
 
-                            // Show/hide the additional fields based on the selected qualification
-                            if (selectedQualification === 'below_8th') {
-                              departmentGroup.style.display = 'none';
-                              schoolGroup.style.display = 'none';
-                              percentageGroup.style.display = 'none';
-                              yearGroup.style.display = 'none';
-                              certificate10thGroup.style.display = 'none';
-                              certificate12thGroup.style.display = 'none';
-                              certificatedipGroup.style.display = 'none';
-                              certificateUgGroup.style.display = 'none';
-                              certificatePgGroup.style.display = 'none';
-                              certificatedcGroup.style.display = 'none';
-                              addButton.style.display = 'none';
 
-                            } else {
-                              schoolGroup.style.display = 'block';
-                              percentageGroup.style.display = 'block';
-                              certificate10thGroup.style.display = 'block';
-                              certificate12thGroup.style.display = 'block';
-                              certificatedipGroup.style.display = 'block';
-                              certificateUgGroup.style.display = 'block';
-                              certificatePgGroup.style.display = 'block';
-                              certificatedcGroup.style.display = 'block';
-                              yearGroup.style.display = 'block';
-
-                            }
-
-                            if (selectedQualification === 'sslc') {
-                              departmentGroup.style.display = 'none';
-                              certificate12thGroup.style.display = 'none';
-                              certificatedipGroup.style.display = 'none';
-                              certificateUgGroup.style.display = 'none';
-                              certificatePgGroup.style.display = 'none';
-                              certificatedcGroup.style.display = 'none';
-                           
-                            } else if (selectedQualification === 'hsc') {
-                              departmentGroup.style.display = 'none';
-                              certificate10thGroup.style.display = 'none';
-                              certificatedipGroup.style.display = 'none';
-                              certificateUgGroup.style.display = 'none';
-                              certificatePgGroup.style.display = 'none';
-                              certificatedcGroup.style.display = 'none';
-
-                            } else if (selectedQualification === 'diploma') {
-                              departmentGroup.style.display = 'block';
-                              certificate10thGroup.style.display = 'none';
-                              certificate12thGroup.style.display = 'none';
-                              certificateUgGroup.style.display = 'none';
-                              certificatedcGroup.style.display = 'none';
-                              certificatePgGroup.style.display = 'none';
-
-                            } else if (selectedQualification === 'bachelors') {
-                              departmentGroup.style.display = 'block';
-                              certificate10thGroup.style.display = 'none';
-                              certificate12thGroup.style.display = 'none';
-                              certificatedipGroup.style.display = 'none';
-                              certificatedcGroup.style.display = 'none';
-                              certificatePgGroup.style.display = 'none';
-
-                            } else if (selectedQualification === 'masters') {
-                              departmentGroup.style.display = 'block';
-                              certificate10thGroup.style.display = 'none';
-                              certificate12thGroup.style.display = 'none';
-                              certificatedipGroup.style.display = 'none';
-                              certificateUgGroup.style.display = 'none';
-                              certificatedcGroup.style.display = 'none';
-
-                            } else if (selectedQualification === 'doctorate') {
-                              departmentGroup.style.display = 'block';
-                              certificate10thGroup.style.display = 'none';
-                              certificate12thGroup.style.display = 'none';
-                              certificatedipGroup.style.display = 'none';
-                              certificateUgGroup.style.display = 'none';
-                              certificatePgGroup.style.display = 'none';
-                            }
-
-                          }
-
-                          function validateForm() {
+                  function validateForm() {
                             var q = document.educationform.qualification.value;
                             var dep = document.educationform.department.value;
                             var scl = document.educationform.school.value;
@@ -1070,7 +1227,7 @@
                             var dc = document.educationform.certificate_doctorate.value;
 
                             if (q == "") {
-                              var namesms2 = "Please select qualification";
+                              var namesms2 = "Qualification must be filled out";
                               document.getElementById("qualification_error").innerHTML = namesms2;
                               document.educationform.qualification.focus();
                               return false;
@@ -1185,6 +1342,406 @@
                             return true;
                           }
                         </script>
+
+               
+
+                  <script>
+                        function addeduformfunction(){
+                        document.getElementById("addeduform").style.display = "block";
+                        }
+                        </script>
+
+            <?php
+        } elseif ($method == "addEducationForm") {
+            ?>
+                <section class="Multi Columns Form">
+                    <div class="pagetitle">
+                        <h1>Education Details</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                                <li class="breadcrumb-item active">Add Education</li>
+                            </ol>
+                        </nav>
+                    </div><!-- End Page Title -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add Education Details</h5>
+
+                            <!-- Multi Columns Form -->
+                            <form class="row g-3" autocomplete="off" novalidate name="educationform" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" 
+                            action="<?php echo baseUrl . "Candidate/insertEducationForm" ?>">
+
+                                <!-- <div class="col-12">
+                                <label for="qualification" class="form-label">Educational Qualification</label>
+                                <select class="form-control" id="qualification" name="qualification" onchange="toggleFields()" required>
+                                  <option value="">Select Qualification</option>
+                                  <option value="below_8th">Below 8th</option>
+                                  <option value="sslc">SSLC</option>
+                                  <option value="hsc">HSC</option>
+                                  <option value="diploma">Diploma</option>
+                                  <option value="bachelors">Bachelors</option>
+                                  <option value="masters">Masters</option>
+                                  <option value="doctorate">Doctorate</option>
+                                </select>
+                                <div id="qualification_error" class="text-danger"></div>
+                              </div> -->
+                              <div class="col-12 autocomplete">
+                                <label for="qualification" class="form-label">Educational Qualification</label>
+                                <input id="qualification" class="form-control" type="text" name="qualification" onchange="toggleFields()"  placeholder="Enter qualification">
+                                <div id="qualification_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="department-group" style="display: none;">
+                                <label for="department" class="form-label">Specialization</label>
+                                <input type="text" class="form-control" id="department" name="department" placeholder="Enter specialization">
+                                <div id="department_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="school-group" style="display: none;">
+                                <label for="school" class="form-label">Institute</label>
+                                <input type="text" class="form-control" id="school" name="school" placeholder="Enter institute name">
+                                <div id="school_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="percentage-group" style="display: none;">
+                                <label for="percentage" class="form-label">Percentage</label>
+                                <input type="text" class="form-control" id="percentage" id="school" name="percentage" placeholder="Enter percentage">
+                                <div id="percentage_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="year-group" style="display: none;">
+                                <label for="year_passed" class="form-label">Year of Passed Out</label>
+                                <input type="number" class="form-control" id="year_passed" name="year_passed" maxlength="4" pattern="\d{4}" placeholder="Enter year of passed out">
+                                <div id="year_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_10th-group" style="display: none;">
+                                <label for="certificate_10th" class="form-label">10th Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_10th" name="certificate_10th" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <div id="certificate_10th_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_12th-group" style="display: none;">
+                                <label for="certificate_12th" class="form-label">12th Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_12th" name="certificate_12th" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <div id="certificate_12th_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_dip-group" style="display: none;">
+                                <label for="certificate_dip" class="form-label">Diploma Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_dip" name="certificate_dip">
+                                <div id="certificate_dip_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_ug-group" style="display: none;">
+                                <label id="additionalFieldLabelug" for="certificate_ug" class="form-label">UG Degree Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_ug" name="certificate_ug" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <div id="certificate_ug_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_pg-group" style="display: none;">
+                                <label id="additionalFieldLabelpg" for="certificate_pg" class="form-label">PG Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_pg" name="certificate_pg" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <div id="certificate_pg_error" class="text-danger"></div>
+                              </div>
+
+                              <div class="col-md-6" id="certificate_doctorate-group" style="display: none;">
+                                <label id="additionalFieldLabeldoc" for="certificate_doctorate" class="form-label">Doctorate Certificate Upload</label>
+                                <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <div id="certificate_doctorate_error" class="text-danger"></div>
+                              </div>
+
+                              <input type="number" class="form-control"  value="1" name="edusubmit" hidden>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                </div>
+                            </form><!-- End Multi Columns Form -->
+
+                        </div>
+                    </div>
+                </section>
+                
+                <script>
+                function autocomplete(inp, arr) {
+                    var currentFocus;
+
+                    inp.addEventListener("input", function(e) {
+                        var a, b, i, val = this.value;
+                        closeAllLists();
+                        if (!val) { return false;}
+                        currentFocus = -1;
+                        a = document.createElement("DIV");
+                        a.setAttribute("id", this.id + "autocomplete-list");
+                        a.setAttribute("class", "autocomplete-items");
+                        this.parentNode.appendChild(a);
+                        for (i = 0; i < arr.length; i++) {
+                            if (arr[i].toUpperCase().includes(val.toUpperCase())) {
+                                b = document.createElement("DIV");
+                                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                                b.innerHTML += arr[i].substr(val.length);
+                                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                                b.addEventListener("click", function(e) {
+                                    inp.value = this.getElementsByTagName("input")[0].value;
+                                    closeAllLists();
+                                    // Show or hide additional fields based on the selected value
+                                    showAdditionalFields(inp.value);
+                                });
+                                a.appendChild(b);
+                            }
+                        }
+                    });
+
+            inp.addEventListener("keydown", function(e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    currentFocus++;
+                    addActive(x);
+                } else if (e.keyCode == 38) { 
+                    currentFocus--;
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+
+            function addActive(x) {
+                if (!x) return false;
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+
+            function removeActive(x) {
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+
+            function closeAllLists(elmnt) {
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        function showAdditionalFields(selectedValue) {
+            document.getElementById("school-group").style.display = "none";
+            document.getElementById("percentage-group").style.display = "none";
+            document.getElementById("department-group").style.display = "none";
+            document.getElementById("year-group").style.display = 'none';
+            document.getElementById("certificate_10th-group").style.display = 'none';
+            document.getElementById("certificate_12th-group").style.display = 'none';
+            document.getElementById("certificate_dip-group").style.display = 'none';
+            document.getElementById("certificate_ug-group").style.display = 'none';
+            document.getElementById("certificate_pg-group").style.display = 'none';
+            document.getElementById("certificate_doctorate-group").style.display = 'none';
+           
+            if (selectedValue === "Below_9th" || selectedValue === "9th" || selectedValue === "11th") {
+              document.getElementById("school-group").style.display = "block";
+            document.getElementById("year-group").style.display = 'block';
+            } 
+             else if (selectedValue === "10th/SSLC" ) {
+                    document.getElementById("school-group").style.display = "block";
+                    document.getElementById("percentage-group").style.display = "block";
+                    document.getElementById("year-group").style.display = 'block';
+                    document.getElementById("certificate_10th-group").style.display = 'block';
+            } 
+            else if (selectedValue === "12th/HSC") {
+              document.getElementById("school-group").style.display = "block";
+                document.getElementById("percentage-group").style.display = "block";
+                document.getElementById("year-group").style.display = 'block';
+                document.getElementById("certificate_12th-group").style.display = 'block';
+            } 
+            else if (selectedValue === "DIPLOMA") {
+              document.getElementById("department-group").style.display = "block";
+              document.getElementById("school-group").style.display = "block";
+                document.getElementById("percentage-group").style.display = "block";
+                document.getElementById("year-group").style.display = 'block';
+                document.getElementById("certificate_dip-group").style.display = 'block';
+            } 
+            else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW") {
+              document.getElementById("department-group").style.display = "block";
+              document.getElementById("school-group").style.display = "block";
+                document.getElementById("percentage-group").style.display = "block";
+                document.getElementById("year-group").style.display = 'block';
+                document.getElementById("certificate_ug-group").style.display = 'block';
+                document.getElementById("additionalFieldLabelug").innerText = "Upload " + selectedValue + " Certificate";
+            } 
+            else if (selectedValue === "M.E" || selectedValue === "M.A" || selectedValue === "M.COM" || selectedValue === "M.ED" || selectedValue === "M.LIT" || selectedValue === "M.TECH" || selectedValue === "MCA" || selectedValue === "MBA" || selectedValue === "M.SC" || selectedValue === "MSW") {
+              document.getElementById("department-group").style.display = "block";
+              document.getElementById("school-group").style.display = "block";
+                document.getElementById("percentage-group").style.display = "block";
+                document.getElementById("year-group").style.display = 'block';
+                document.getElementById("certificate_pg-group").style.display = 'block';
+                document.getElementById("additionalFieldLabelpg").innerText = "Upload " + selectedValue + " Certificate";
+            } 
+            else if (selectedValue === "Ph.D"  ) {
+              document.getElementById("department-group").style.display = "block";
+              document.getElementById("school-group").style.display = "block";
+                document.getElementById("percentage-group").style.display = "block";
+                document.getElementById("year-group").style.display = 'block';
+                document.getElementById("certificate_doctorate-group").style.display = 'block';
+                document.getElementById("additionalFieldLabeldoc").innerText = "Upload " + selectedValue + " Certificate";
+            } 
+           
+                   
+        }
+
+        var countries = [
+            "Below_9th", "9th", "10th/SSLC", "11th", "12th/HSC", "DIPLOMA", 
+            "B.A", "B.COM", "B.ED","B.E", "B.LIT", "B.SC", "BBA", "BCA", "B.TECH", "BSW",
+            "M.A", "M.COM", "M.ED", "M.E", "M.LIT","M.SC","MBA", "MCA", "M.TECH", "MSW",
+             "Ph.D" ];
+
+        autocomplete(document.getElementById("qualification"), countries);
+
+
+
+                  function validateForm() {
+                            var q = document.educationform.qualification.value;
+                            var dep = document.educationform.department.value;
+                            var scl = document.educationform.school.value;
+                            var per = document.educationform.percentage.value;
+                            var yop = document.educationform.year_passed.value;
+                            var tenth = document.educationform.certificate_10th.value;
+                            var tweleth = document.educationform.certificate_12th.value;
+                            var diploma =document.educationform.certificate_dip.value;
+                            var ug = document.educationform.certificate_ug.value;
+                            var pg = document.educationform.certificate_pg.value;
+                            var dc = document.educationform.certificate_doctorate.value;
+
+                            if (q == "") {
+                              var namesms2 = "Qualification must be filled out";
+                              document.getElementById("qualification_error").innerHTML = namesms2;
+                              document.educationform.qualification.focus();
+                              return false;
+                            } else {
+                              document.getElementById("qualification_error").innerHTML = "";
+                            }
+
+
+                            if (dep == "" && document.getElementById('department-group').style.display !== "none") {
+                              var namesms2 = "Department must be filled out";
+                              document.getElementById("department_error").innerHTML = namesms2;
+                              document.educationform.department.focus();
+                              return false;
+                            } else {
+                              document.getElementById("department_error").innerHTML = "";
+                            }
+
+
+                            if (scl == "" && document.getElementById('school-group').style.display != "none") {
+                              var namesms2 = "School or college must be filled out";
+                              document.getElementById("school_error").innerHTML = namesms2;
+                              document.educationform.school.focus();
+                              return false;
+                            } else {
+                              document.getElementById("school_error").innerHTML = "";
+                            }
+
+
+                            if (per == "" && document.getElementById('percentage-group').style.display !== "none") {
+                              var namesms2 = "Percentage must be filled out";
+                              document.getElementById("percentage_error").innerHTML = namesms2;
+                              document.educationform.percentage.focus();
+                              return false;
+                            } else if(per > 100) {
+                              var pervalidate = "Please enter valid percentage";
+                              document.getElementById("percentage_error").innerHTML = pervalidate;
+                              document.educationform.percentage.focus();
+                              return false;
+                            } else  {
+                              document.getElementById("percentage_error").innerHTML = "";
+                            }
+
+
+                            if (yop == "" && document.getElementById('year-group').style.display !== "none") {
+                              var namesms2 = "Year of passed out must be filled out";
+                              document.getElementById("year_error").innerHTML = namesms2;
+                              document.educationform.year_passed.focus();
+                              return false;
+                            } else if (!/^\d{4}$/.test(yop)) {
+                                document.getElementById("year_error").innerHTML = "Please enter a valid year in YYYY format.";
+                                return false;
+                            }else {
+                              document.getElementById("year_error").innerHTML = "";
+                            }
+
+                            if (tenth == "" && document.getElementById('certificate_10th-group').style.display !== "none") {
+                              var namesms2 = "10 th certificate must be uploaded";
+                              document.getElementById("certificate_10th_error").innerHTML = namesms2;
+                              document.educationform.certificate_10th.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_10th_error").innerHTML = "";
+                            }
+
+                            if (tweleth == "" && document.getElementById('certificate_12th-group').style.display !== "none") {
+                              var namesms2 = "12 th certificate must be uploaded";
+                              document.getElementById("certificate_12th_error").innerHTML = namesms2;
+                              document.educationform.certificate_12th.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_12th_error").innerHTML = "";
+                            }
+
+                            if (diploma == "" && document.getElementById('certificate_dip-group').style.display !== "none") {
+                              var namesms2 = "Diploma certificate must be uploaded";
+                              document.getElementById("certificate_dip_error").innerHTML = namesms2;
+                              document.educationform.certificate_dip.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_dip_error").innerHTML = "";
+                            }
+
+                            if (ug == "" && document.getElementById('certificate_ug-group').style.display !== "none") {
+                              var namesms2 = "UG certificate must be uploaded";
+                              document.getElementById("certificate_ug_error").innerHTML = namesms2;
+                              document.educationform.certificate_ug.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_ug_error").innerHTML = "";
+                            }
+
+
+                            if (pg == "" && document.getElementById('certificate_pg-group').style.display !== "none") {
+                              var namesms2 = "PG certificate must be uploaded";
+                              document.getElementById("certificate_pg_error").innerHTML = namesms2;
+                              document.educationform.certificate_pg.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_pg_error").innerHTML = "";
+                            }
+
+
+                            if (dc == "" && document.getElementById('certificate_doctorate-group').style.display !== "none") {
+                              var namesms2 = "Certificate must be uploaded";
+                              document.getElementById("certificate_doctorate_error").innerHTML = namesms2;
+                              document.educationform.certificate_doctorate.focus();
+                              return false;
+                            } else {
+                              document.getElementById("certificate_doctorate_error").innerHTML = "";
+                            }
+
+                            return true;
+                          }
+                </script>
+
            
            <?php
         } elseif ($method == "updateEducation") {
@@ -1199,13 +1756,122 @@
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                           
+                            <div class="card-body pt-4">
+                                       
+                                        <!-- <h5 class="card-title">Education Table<span></span></h5> -->
+
+                                        <div class="d-flex justify-content-between">
+                                        <!-- <a href="<?php echo baseUrl . "Candidate/addEducationForm" ?>">
+                                        <button type="button" class="btn btn-success mb-4">+ Add Education</button></a> -->
+                                        
+                                        <a href="#addeduform"><button  onclick="addeduformfunction()" type="button" class="btn btn-success mb-4">+ Add Education</button></a>
+                                       <div>
+                                       <a  href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
+                                       <a  href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
+                                       </div>
+                                    </div>
+                                    <?php
+                                         if (isset($educationTable[0]['id'])) {
+                                           $count=1;
+                                            ?>
+                                        <table class="table overflow-auto " id="myTable">
+                                            <thead>
+                                                <tr>
+                                                <!-- <th scope="col"></th> -->
+                                                    <th scope="col">S.No</th>
+                                                    <th scope="col">Educational Qualification</th>
+                                                    <th scope="col">Specialiization</th>
+                                                    <th scope="col">Institute</th>
+                                                    <th scope="col">Year of Passing</th>
+                                                    <th scope="col">Percentage</th>
+                                                    <th scope="col">Certificate</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                           <?php
+                                         if (isset($educationTable[0]['id'])) {
+                                           $count=1;
+                                            foreach ($educationTable as $key => $value) {
+                                            $seekerId = $_SESSION['seekerId'];
+                                            ?>
+                                                    <tr>
+                                                    <!-- <td><input type="checkbox" class="checkbox"></td> -->
+                                                    <td><a><?php echo $count++; ?>.</a></td>
+                                                    <td><?php echo $value['educational_qualification'] ?></td>
+                                                    <td><?php echo $value['department'] ?></td>
+                                                    <td><?php echo $value['school_college_name'] ?></td>
+                                                    <td><?php echo $value['yearOfPassing'] ?></td>
+                                                    <td><?php echo $value['percentage'] ?></td>
+                                            <?php
+                                            if ($value['educational_qualification'] == '10th/SSLC') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == '12th/HSC') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'DIPLOMA') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" || 
+                                             $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW") {
+                                            ?>
+                                                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                             $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                              $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW") {
+                                            ?>
+                                                    <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
+                                            <?php
+                                            } else if ($value['educational_qualification'] == 'Ph.D') {
+                                            ?>
+                                                    <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <td>NA</a></td>
+                                            <?php
+                                            }
+                                            
+                                            ?>
+                                            <td class="d-flex">
+                                                <a class="<?php echo isPageActive('Candidate/updateEducation') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/updateEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                            </td>
+                                      </tr>
+                                        <?php
+                                            }
+                                        } 
+                                        ?>
+                                            </tbody>
+                                        </table>
+                                        <?php
+                                } else {
+                                    ?>
+                                        <h5 class="card-title">No Records Found<span></span></h5>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <!-- <a onclick="return confirm('Are you sure you want to delete?')" ><button type="button" class=" ms-4 mb-4 btn btn-danger" onclick="deleteRows()">Delete</button></a> -->
+
+                        </div>
+                    </div>
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" id="editeduform">
                             <h5 class="card-title">Update Education Details</h5>
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3" novalidate name="educationform" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" 
-                            action="<?php echo baseUrl . "Employee/updateInsertEducation" ?>">
+                            action="<?php echo baseUrl . "Candidate/updateInsertEducation" ?>">
 
                             <?php
                                 foreach ($updateEducation as $key => $value) {
@@ -1227,19 +1893,19 @@
                                         <div id="department_error" class="text-danger"></div>
                                     </div>
 
-                                    <div class="col-md-6" id="school-group" style="display: none;">
+                                    <div class="col-md-6" id="school-group" >
                                         <label class="form-label" for="school">Institution Name</label>
                                         <input type="text" class="form-control" id="school" value="<?php echo $value['school_college_name']; ?>" name="school">
                                         <div id="school_error" class="text-danger"></div>
                                     </div>
 
-                                    <div class="col-md-6" id="percentage-group" style="display: none;">
+                                    <div class="col-md-6" id="percentage-group">
                                         <label class="form-label" for="percentage">Percentage</label>
                                         <input type="text" class="form-control" id="percentage" id="school" value="<?php echo $value['percentage']; ?>" name="percentage">
                                         <div id="percentage_error" class="text-danger"></div>
                                     </div>
 
-                                    <div class="col-md-6" id="year-group" style="display: none;">
+                                    <div class="col-md-6" id="year-group" >
                                         <label class="form-label" for="year_passed">Year of Passed Out</label>
                                         <input type="number" class="form-control" id="year_passed" value="<?php echo $value['yearOfPassing']; ?>" name="year_passed">
                                         <div id="year_error" class="text-danger"></div>
@@ -1279,7 +1945,7 @@
                             </div>
 
                             <div class="col-md-6" id="certificate_ug-group" style="display: none;">
-                                <label class="form-label" for="certificate_ug">UG Degree Certificate Upload</label>
+                                <label id="additionalFieldLabelug" class="form-label" for="certificate_ug">UG Degree Certificate Upload</label>
                                 <input type="text" class="form-control"  name="oldugcer" value="<?php echo $value['ug_cer']; ?>" hidden>
                                 <div class="uploadedfile"  style="display:flex;">
                                 <input type="file" class="form-control cerugupload" id="certificate_ug" name="certificate_ug" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden/>
@@ -1290,7 +1956,7 @@
                             </div>
 
                             <div class="col-md-6" id="certificate_pg-group" style="display: none;">
-                                <label class="form-label" for="certificate_pg">PG Certificate Upload</label>
+                                <label id="additionalFieldLabelpg" class="form-label" for="certificate_pg">PG Certificate Upload</label>
                                 <input type="text" class="form-control"  name="oldpgcer" value="<?php echo $value['pg_cer']; ?>" hidden>
                                 <div class="uploadedfile"  style="display:flex;">
                                 <input type="file" class="form-control cerpgupload" id="certificate_pg" name="certificate_pg" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden/>
@@ -1322,6 +1988,7 @@
                         </div>
                     </div>
                 </section>
+               
                 <script>
                             document.getElementById("file-input-label").addEventListener("click", function() {
                                 document.getElementById("existfile").style.display = "none";
@@ -1421,37 +2088,45 @@
                         </script>
             
                         <script>
+
+                          var qualify = document.getElementById('qualification').value;
+
+
                           // This is for displaying in update form
-                          if (document.getElementById('qualification').value !== 'below_8th') {
-                            document.getElementById('school-group').style.display = 'block';
-                            document.getElementById('percentage-group').style.display = 'block';
-                            document.getElementById('year-group').style.display = 'block';
+                          if (qualify == 'Below_9th' || qualify == '9th' || qualify == '11th') {
+                            document.getElementById('percentage-group').style.display = 'none';
                           }
 
-                          if (document.getElementById('qualification').value === 'sslc') {
+                          if (qualify === '10th/SSLC') {
                             document.getElementById('certificate_10th-group').style.display = 'block';
                           }
 
-                          if (document.getElementById('qualification').value === 'hsc') {
+                          if (document.getElementById('qualification').value === '12th/HSC') {
                             document.getElementById('certificate_12th-group').style.display = 'block';
                           }
 
-                          if (document.getElementById('qualification').value === 'diploma') {
+                          if (document.getElementById('qualification').value === 'DIPLOMA') {
                             document.getElementById('department-group').style.display = 'block';
                             document.getElementById('certificate_dip-group').style.display = 'block';
                           }
 
-                          if (document.getElementById('qualification').value === 'bachelors') {
+                          if (qualify === "B.E" || qualify === "B.A" || qualify === "B.COM" || 
+                          qualify === "B.ED" || qualify === "B.LIT" || qualify === "B.TECH" || 
+                          qualify === "BCA" || qualify === "BBA" || qualify === "B.SC" || qualify === "BSW") {
                             document.getElementById('department-group').style.display = 'block';
                             document.getElementById('certificate_ug-group').style.display = 'block';
+                            document.getElementById("additionalFieldLabelug").innerText = "Uploaded " + qualify + " Certificate";
                           }
 
-                          if (document.getElementById('qualification').value === 'masters') {
+                          if (qualify === "M.E" || qualify === "M.A" || qualify === "M.COM" || qualify === "M.ED"
+                           || qualify === "M.LIT" || qualify === "M.TECH" || qualify === "MCA" || qualify === "MBA"
+                            || qualify === "M.SC" || qualify === "MSW") {
                             document.getElementById('department-group').style.display = 'block';
                             document.getElementById('certificate_pg-group').style.display = 'block';
+                            document.getElementById("additionalFieldLabelpg").innerText = "Uploaded " + qualify + " Certificate";
                           }
 
-                          if (document.getElementById('qualification').value === 'doctorate') {
+                          if (document.getElementById('qualification').value === 'Ph.D') {
                             document.getElementById('department-group').style.display = 'block';
                             document.getElementById('certificate_doctorate-group').style.display = 'block';
                           }
@@ -1545,22 +2220,23 @@
                             <div class="card-body">
                                        
                                         <h5 class="card-title">Experience Table<span></span></h5>
-                                        <div class="mb-4">
-                                            Are you a fresher ?  <a href="<?php echo baseUrl . "Employee/areaOfIntrestTable" ?>"><button type="button" class="btn btn-danger mx-2">Skip</button></a>
+                                        <div id="exptableheading" class="mb-4">
+                                            Are you a fresher ? <a class="<?php echo isPageActive('Candidate/areaOfIntrestTable') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"><button type="button" class="btn btn-danger mx-2">Skip</button></a> <br>
+                                            or Experienced ? <a class="<?php echo isPageActive('Candidate/addExperirenceForm') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/addExperirenceForm" ?>"><button type="button" onclick="exptablevisible()" class="btn btn-success m-2">+ Add Experience</button></a>
                                         </div>
-                                        <div class="d-flex justify-content-between">
-                                        <a href="<?php echo baseUrl . "Employee/addExperirenceForm" ?>">
-                                        <button type="button" class="btn btn-success mb-4">+ Add Experience</button></a>
+                                        <div class="d-flex justify-content-between" >
+                                        <a class="<?php echo isPageActive('Candidate/addExperirenceForm') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/addExperirenceForm" ?>">
+                                        <button id="expadd" style="display:none;" type="button" class="btn btn-success mb-4">+ Add Experience</button></a>
                                        <div>
-                                       <a  href="<?php echo baseUrl . "Employee/educationTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
-                                       <a  href="<?php echo baseUrl . "Employee/areaOfIntrestTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
+                                       <a class="<?php echo isPageActive('Candidate/educationTable') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button id="expprevious" style="visibility: hidden;" type="button" class="btn btn-info mb-4 ">Previous</button></a>
+                                       <a class="<?php echo isPageActive('Candidate/areaOfIntrestTable') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button id="expnext" style="visibility: hidden;" type="button" class="btn btn-info mb-4 ">Next</button></a>
                                        </div>
                                     </div>
                                     <?php
                                          if (isset($experienceTable[0]['id'])) {
                                            $count=1;
                                             ?>
-                                        <table class="table">
+                                        <table class="table" id="exptable" style="display:none;">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S.No</th>
@@ -1594,8 +2270,8 @@
                                                     <td><?php echo $value['previous_employer_email'] ?></td>
                                                     <td>
                                                     <div class="d-flex">
-                                                        <a href="<?php echo baseUrl . "Employee/updateExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
-                                                        <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employee/deleteExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                        <a href="<?php echo baseUrl . "Candidate/updateExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1 <?php echo isPageActive('Candidate/updateExperience') ? 'active' : ''; ?>">Edit</button></a>
+                                                        <a class="<?php echo isPageActive('Candidate/updateExperience') ? 'active' : ''; ?>" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                                                     </div>
                                                     </td>
                                       </tr>
@@ -1618,6 +2294,28 @@
                     </div><!-- End Recent Sales -->
                 </section>
 
+                <script>
+                  function exptablevisible() {
+                    document.getElementById("expadd").style.display = "block";
+                    document.getElementById("expprevious").style.visibility = "visible";
+                    document.getElementById("expnext").style.visibility = "visible";
+                    document.getElementById("exptable").style.display = "block";}
+                <?php
+                 if (isset($basicDetails)) {
+                  if ($basicDetails[0]['expsubmited'] === "1") {
+             ?>
+             document.getElementById("expadd").style.display = "block";
+             document.getElementById("expprevious").style.visibility = "visible";
+             document.getElementById("expnext").style.visibility = "visible";
+             document.getElementById("exptable").style.display = "block";
+             document.getElementById("exptableheading").style.display = "none";          
+               <?php
+            }
+          }
+              ?>
+                </script>
+
+
                 <?php
         } elseif ($method == "addExperirenceForm") {
             ?>
@@ -1637,24 +2335,45 @@
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
-                             onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Employee/insertExperienceForm" ?>">
+                             onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Candidate/insertExperienceForm" ?>">
 
-                             <div class="col-12">
-                      <label for="category" class="form-label">Category</label>
-                      <select class="form-control" id="category" name="category" required>
-                        <option value="">Select a Category</option>
-                        <option value="architech">Architech</option>
-                        <option value="developer">Developer</option>
-                        <option value="tester">Tester</option>
-                        <option value="uiux">UI/UX Design</option>
-                        <option value="datascience">Data Scientist</option>
-                        <option value="databaseadmin">Database Admin</option>
-                        <option value="teacher">Teacher</option>
-                        <option value="professor">Professor</option>
-                        <option value="others">Others</option>
-                      </select>
-                      <div id="category_error" class="text-danger error"></div>
-                    </div>
+                             <!-- <div class="col-12">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-control" id="category" name="category" required>
+                                  <option value="">Select a Category</option>
+                                  <option value="architech">Architech</option>
+                                  <option value="developer">Developer</option>
+                                  <option value="tester">Tester</option>
+                                  <option value="uiux">UI/UX Design</option>
+                                  <option value="datascience">Data Scientist</option>
+                                  <option value="databaseadmin">Database Admin</option>
+                                  <option value="teacher">Teacher</option>
+                                  <option value="professor">Professor</option>
+                                  <option value="others">Others</option>
+                                </select>
+                                <div id="category_error" class="text-danger error"></div>
+                            </div> -->
+                           
+                            <div class="col-12">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-control" id="category" name="category" autocomplete="off" onchange="showHideOtherField()" required>
+                                <option value="">Select a Category</option>
+                                <?php
+                            foreach ($categoryList as $key => $value) {
+                                ?>
+                                  <option value="<?php echo $value->categoryName ?>"><?php echo $value->categoryName ?></option>
+                                  <?php } ?>
+                                  <option value="others">Others</option>
+                                </select>
+                                <div id="category_error" class="text-danger error"></div>
+                            </div>
+
+                            <div class="col-12" id="newcategory_group" style="display: none;">
+                              <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+                              <input class="form-control" id="newcategory" name="newcategory"  placeholder="Enter new category">
+                              <div id="newcategory_error" class="text-danger error"></div>
+                              <input id="categoryothers" name="categoryothers" value="1" hidden >
+                            </div>
 
                     <div class="col-md-6">
                       <label for="subcategory" class="form-label">Subcategory</label>
@@ -1735,10 +2454,24 @@
                 </section>
 
                 <script>
+
+            function showHideOtherField() {
+                    var categoryDropdown = document.getElementById('category');
+                    var otherCategoryField = document.getElementById('newcategory_group');
+
+                    if (categoryDropdown.value === 'others') {
+                        otherCategoryField.style.display = 'block';
+                    } else {
+                        otherCategoryField.style.display = 'none';
+                    }
+                }
+
+
               function validateexpForm() {
                 clearErrorMessages(); 
 
                 var category = document.getElementById("category");
+                var newothercategory = document.getElementById("newcategory_group");
                 var subcategory = document.getElementById("subcategory");
                 var experience = document.getElementById("experience");
                 var companyname = document.getElementById("companyname");
@@ -1749,6 +2482,11 @@
 
                 if (category.value === '') {
                   displayError('Please select a category', 'category_error');
+                  return false;
+                }
+
+                if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
+                  displayError('Please enter newcategory', 'newcategory_error');
                   return false;
                 }
 
@@ -1823,7 +2561,7 @@
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate name="experienceform" method="post" 
-                            onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Employee/updateInsertExperience" ?>">
+                            onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Candidate/updateInsertExperience" ?>">
 
                             <?php
                             foreach ($updateExperience as $key => $value) {
@@ -1835,8 +2573,8 @@
                                     <div class="col-12">
                                       <label class="form-label" for="category">Category</label>
                                       <select class="form-control" id="category" name="category" value="<?php echo $value['other_category']; ?>" required>
-                                        <option value="">Select a Category</option>
-                                        <option value="architech" <?php if ($value['other_category'] === 'architech')
+                                        <option value="<?php echo $value['other_category'] ; ?>"><?php echo $value['other_category'] ; ?></option>
+                                        <!-- <option value="architech" <?php if ($value['other_category'] === 'architech')
                                           echo ' selected'; ?>>Architect</option>
                                         <option value="developer" <?php if ($value['other_category'] === 'developer')
                                           echo ' selected'; ?>>Developer</option>
@@ -1853,7 +2591,7 @@
                                         <option value="professor" <?php if ($value['other_category'] === 'professor')
                                           echo ' selected'; ?>>Professor</option>
                                         <option value="others"<?php if ($value['other_category'] === 'others')
-                                          echo ' selected'; ?>>Others</option>
+                                          echo ' selected'; ?>>Others</option> -->
                                       </select>
                                       <div id="category_error" class="error"></div>
                                     </div>
@@ -2020,11 +2758,11 @@
                                         <h5 class="card-title">Area of Job Interest Table<span></span></h5>
                                         
                                         <div class="d-flex justify-content-between">
-                                        <a href="<?php echo baseUrl . "Employee/addAreaOfIntrestForm" ?>">
+                                        <a class="<?php echo isPageActive('Candidate/addAreaOfIntrestForm') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/addAreaOfIntrestForm" ?>">
                                         <button type="button" class="btn btn-success mb-4">+ Add Area of Job Interest</button></a>
                                        <div>
-                                       <a  href="<?php echo baseUrl . "Employee/experienceTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
-                                       <a  href="<?php echo baseUrl . "Employee/resume" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
+                                       <a class="<?php echo isPageActive('Candidate/experienceTable') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/experienceTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
+                                       <a class="<?php echo isPageActive('Candidate/resume') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/resume" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
                                        </div>
                                     </div>
                                     <?php
@@ -2052,7 +2790,6 @@
                                                 foreach ($areaOfIntrestTable as $key => $value) {
                                                 $seekerId = $_SESSION['seekerId'];
                                                 ?>
-                                                <?php $resumefilenameconst = $value['resume_filename']; ?>
                                                     <tr>
                                                     <td><?php echo $count++ ?>.</td>
                                                     <td><?php echo $value['other_interst_category'] ?></td> 
@@ -2064,8 +2801,8 @@
                                                     <td><?php echo $value['expected_salary'] ?></td>
                                                     <td>
                                                     <div class="d-flex">
-                                                        <a href="<?php echo baseUrl . "Employee/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
-                                                        <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employee/deleteAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                        <a href="<?php echo baseUrl . "Candidate/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                                        <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                                                     </div>
                                                     </td>
                                       </tr>
@@ -2086,7 +2823,7 @@
                                 
                               <h5 class="card-title">Skill Table<span></span></h5>
                                   <div>
-                                        <a href="<?php echo baseUrl . "Employee/addSkillForm" ?>">
+                                        <a class="<?php echo isPageActive('Candidate/addSkillForm') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/addSkillForm" ?>">
                                         <button type="button" class="btn btn-success mb-4">+ Add Skill</button></a>
                                   <div>
                                         <?php
@@ -2117,8 +2854,8 @@
                                                     <td><?php echo $value['skill_level'] ?></td> 
                                                     <td>
                                                     <div class="d-flex">
-                                                        <a href="<?php echo baseUrl . "Employee/updateSkill" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
-                                                        <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employee/deleteSkill" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                        <a class="<?php echo isPageActive('Candidate/updateSkill') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Candidate/updateSkill" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                                        <a class="<?php echo isPageActive('Candidate/deleteSkill') ? 'active' : ''; ?>" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteSkill" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                                                     </div>
                                                     </td>
                                       </tr>
@@ -2162,24 +2899,28 @@
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate  method="post"
-                            onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Employee/insertAreaOfIntrest" ?>">
+                            onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Candidate/insertAreaOfIntrest" ?>">
 
                               <div class="col-12">
                                 <label class="form-label" for="category">Category</label>
-                                <select class="form-control" id="category" name="category" required>
-                                  <option value="">Select a Category</option>
-                                  <option value="architech">Architech</option>
-                                  <option value="developer">Developer</option>
-                                  <option value="tester">Tester</option>
-                                  <option value="uiux">UI/UX Design</option>
-                                  <option value="datascience">Data Scientist</option>
-                                  <option value="databaseadmin">Database Admin</option>
-                                  <option value="teacher">Teacher</option>
-                                  <option value="professor">Professor</option>
+                                <select class="form-control" id="category" name="category" onchange="showHideOtherField()" required>
+                                <option value="">Select a Category</option>
+                                <?php
+                            foreach ($categoryList as $key => $value) {
+                                ?>
+                                  <option value="<?php echo $value->categoryName ?>"><?php echo $value->categoryName ?></option>
+                                  <?php } ?>
                                   <option value="others">Others</option>
                                 </select>
                                 <div id="areacat_error" class="error"></div>
                               </div>
+
+                              <div class="col-12" id="newcategory_group" style="display: none;">
+                              <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+                              <input class="form-control" id="newcategory" name="newcategory"  placeholder="Enter new category">
+                              <div id="newcategory_error" class="text-danger error"></div>
+                              <input id="categoryothers" name="categoryothers" value="1" hidden >
+                            </div>
 
                               <div class="col-md-6">
                                 <label class="form-label" for=" subcategory">Subcategory</label>
@@ -2262,6 +3003,18 @@
                 </section>
 
                 <script>
+
+      function showHideOtherField() {
+        var categoryDropdown = document.getElementById('category');
+        var otherCategoryField = document.getElementById('newcategory_group');
+
+        if (categoryDropdown.value === 'others') {
+            otherCategoryField.style.display = 'block';
+        } else {
+            otherCategoryField.style.display = 'none';
+        }
+        }
+
             function clearFormFields(form) {
               var fieldsToClear = form.querySelectorAll('input, select');
               for (var i = 0; i < fieldsToClear.length; i++) {
@@ -2273,6 +3026,7 @@
               clearErrorMessages();
 
               var category = document.getElementById("category").value;
+              var newothercategory = document.getElementById("newcategory_group");
               var subcategory = document.getElementById("subcategory").value;
               var preferredLocation = document.getElementById("preferred-location").value;
               var jobtype = document.getElementById("jobtype").value;
@@ -2284,6 +3038,11 @@
                 displayError('Please select a category', 'areacat_error');
                 return false;
               }
+
+              if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
+                  displayError('Please enter newcategory', 'newcategory_error');
+                  return false;
+                }
 
               if (subcategory === "" && category !== "") {
                 displayError('Please select a subcategory', 'areasubcat_error');
@@ -2352,7 +3111,7 @@
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate  method="post"
-                            onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Employee/insertSkillForm" ?>">
+                            onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Candidate/insertSkillForm" ?>">
 
                             
                               <div class="col-12">
@@ -2461,7 +3220,7 @@
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate  method="post"
-                            onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Employee/updateInsertAreaOfIntrest" ?>">
+                            onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Candidate/updateInsertAreaOfIntrest" ?>">
 
                             <?php
                             foreach ($updateAreaOfIntrest as $key => $value) {
@@ -2472,8 +3231,9 @@
                                           
                                               <div class="col-12">
                                                 <label class="form-label" for="category">Category</label>
-                                                <select class="form-control" id="category" name="category" value="<?php echo $value['other_interst_category']; ?>" required>
-                                                  <option value="architech" <?php if ($value['other_interst_category'] === 'architech')
+                                                <select class="form-control" id="category" name="category" value="<?php echo $value['other_interst_category']; ?>" >
+                                                <option value="<?php echo $value['other_interst_category'] ; ?>"><?php echo $value['other_interst_category'] ; ?></option>
+                                                  <!-- <option value="architech" <?php if ($value['other_interst_category'] === 'architech')
                                                     echo ' selected'; ?>>Architech</option>
                                                   <option value="developer">Developer</option>
                                                   <option value="tester" <?php if ($value['other_interst_category'] === 'tester')
@@ -2489,7 +3249,7 @@
                                                   <option value="professor" <?php if ($value['other_interst_category'] === 'professor')
                                                     echo ' selected'; ?>>Professor</option>
                                                   <option value="others" <?php if ($value['other_interst_category'] === 'others')
-                                                    echo ' selected'; ?>>Others</option>
+                                                    echo ' selected'; ?>>Others</option> -->
                                                 </select>
                                                 <div id="areacat_error" class="error"></div>
                                               </div>
@@ -2718,7 +3478,7 @@
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate  method="post"
-                            onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Employee/updateInsertSkill" ?>">
+                            onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Candidate/updateInsertSkill" ?>">
 
                             <?php
                   if (isset($updateSkill[0]['id'])) {
@@ -2834,7 +3594,7 @@
 
                             <!-- Multi Columns Form -->
                         <form class="row g-3 needs-validation" novalidate name="resumeform" id="resumeForm" method="post" enctype="multipart/form-data"
-                            onsubmit="return validateForm()" action="<?php echo baseUrl . "Employee/registered" ?>">
+                            onsubmit="return validateForm()" action="<?php echo baseUrl . "Candidate/registered" ?>">
 
                             
                             <?php if (!empty($arearesume[0]['resume_filename']))
@@ -2917,6 +3677,310 @@
                         </div>
                     </div>
                 </section>
+
+                <?php
+        } elseif ($method == "myProfile") {
+                  ?>
+                      <section>
+                          <!-- Default Card -->
+                          <div class="card">
+                              <div class="card-body">
+                                  <div class="container">
+                                      <div class="row">
+                                      <h2 class="text-center py-3">My Profile</h2>
+                              <?php
+                                if (isset($basicDetails)) {
+                                  foreach ($basicDetails as $key => $value) { 
+                                ?>
+                                          <div class="col d-flex justify-content-around mb-4">
+                                            <h5 class="card-title">Name : <?php echo $value['name']; ?></h5>
+                                            <img src="<?php echo baseUrl . "uploads/".$value['photo_filename'] ?>" alt="profilep"  width="100" height="100">
+                                          </div>
+                                          
+                                      </div>
+                                  </div>
+                                  <div class="card recent-sales overflow-auto">
+                                      <div class="card-body">
+          
+                                      <table class="table table-striped mt-2">
+                                              <thead>
+                                                  <tr>
+                                                      <th class="col-2" scope="col">Mobile No.</th>
+                                                      <th class="col-4" scope="col">Mail</th>
+                                                      <th class="col-2" scope="col">D.O.B</th>
+                                                      <th class="col-1" scope="col">Age</th>
+                                                      <th class="col-1" scope="col">Gender</th>
+                                                      <th class="col-2" scope="col">Marital Status </th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                      <tr>
+                                                          <td><?php echo $value['phonenumber'] ?></td>
+                                                          <td><?php echo $value['email'] ?></td>
+                                                          <td><?php echo $value['dateofbirth'] ?></td>
+                                                          <td><?php echo $value['age'] ?></td>
+                                                          <td><?php echo $value['gender'] ?></td>
+                                                          <td><?php echo $value['maritalStatus'] ?></td>
+                                                      </tr>
+                                              </tbody>
+                                          </table>
+                                          <table class="table table-striped pt-3">
+                                              <thead>
+                                                  <tr>
+                                                      <th class="col-3" scope="col">Door No.</th>
+                                                      <th class="col-4" scope="col">Street Address</th>
+                                                      <th class="col-2" scope="col">Landmark</th>
+                                                      <th class="col-1" scope="col">Pincode</th>
+                                                      <th class="col-1" scope="col">District</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                      <tr>
+                                                          <td><?php echo $value['buildingName'] ?></td>
+                                                          <td><?php echo $value['address'] ?></td>
+                                                          <td><?php echo $value['landmark'] ?></td>
+                                                          <td><?php echo $value['pincode'] ?></td>
+                                                          <td><?php echo $value['district'] ?></td>
+                                                      </tr>
+                                              </tbody>
+                                          </table>
+          
+                                          <table class="table table-striped mt-2">
+                                              <thead>
+                                                  <tr>
+                                                      <th class="col-4" scope="col">Profile Photo</th>
+                                                      <th class="col-4" scope="col">Aadhaar Front</th>
+                                                      <th class="col-4" scope="col">Aadhaar Back</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                      <tr>
+                                                          <td><a href="<?php echo $value['photo'] ?>" target="_blank" ><?php echo $value['photo_filename'] ?></a></td>
+                                                          <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank" ><?php echo $value['aadharfront_filename'] ?></a></td>
+                                                          <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank" ><?php echo $value['aadharback_filename'] ?></a></td>
+                                                      </tr>
+                                                      <?php
+                                                  }
+                                                }
+                                                  ?>
+                                              </tbody>
+                                          </table>
+                                    </div>
+                                    </div>
+
+                                 <div class="card recent-sales overflow-auto">
+                                      <div class="card-body">
+          
+                                          <h5 class="card-title">Educational Qualification</h5>
+                                                    <table class="table table-striped">
+                                              <thead>
+                                                  <tr>
+                                                      <th scope="col">S.No</th>
+                                                      <th scope="col">Educational Qualification</th>
+                                                      <th scope="col">Specialiization</th>
+                                                      <th scope="col">Institution Name</th>
+                                                      <th scope="col">Percentage</th>
+                                                      <th scope="col">Year of Passed Out</th>
+                                                      <th scope="col">Certificates</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                            <?php  
+                                                      if (isset($educationTable[0]['id'])) {
+                                                      $count=1;
+                                                        foreach ($educationTable as $key => $value) {
+                                            ?>
+                                                      <tr>
+                                                          <td><?php echo $count; ?>.</td>
+                                                          <td><?php echo $value['educational_qualification'] ?></td>
+                                                          <td><?php echo $value['department'] ?></td>
+                                                          <td><?php echo $value['school_college_name'] ?></td>
+                                                          <td><?php echo $value['percentage'] ?></td>
+                                                          <td><?php echo $value['yearOfPassing'] ?></td>
+                                                          <?php
+                                                      if ($value['educational_qualification'] == '10th/SSLC') {
+                                                      ?>
+                                                              <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
+                                                      <?php
+                                                      } else if ($value['educational_qualification'] == '12th/HSC') {
+                                                      ?>
+                                                              <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
+                                                      <?php
+                                                      } else if ($value['educational_qualification'] == 'DIPLOMA') {
+                                                      ?>
+                                                              <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
+                                                      <?php
+                                                      } else if ($value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                      $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" || 
+                                                      $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW") {
+                                                      ?>
+                                                              <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
+                                                      <?php
+                                                      } else if ($value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                      $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                       $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW") {
+                                                      ?>
+                                                              <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
+                                                      <?php
+                                                      } else if ($value['educational_qualification'] == 'Ph.D') {
+                                                      ?>
+                                                              <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
+                                                      <?php
+                                                      } else {
+                                                      ?>
+                                                          <td>NA</a></td>
+                                                      <?php
+                                                      }
+                                                      ?>
+                                                      </tr>
+                                                  <?php
+                                                      $count++;
+                                                  }
+                                                }
+                                                  ?>
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  </div>
+
+                                  <div class="card recent-sales overflow-auto">
+                                      <div class="card-body">
+                                          <h5 class="card-title">Experience Details</h5>
+          
+                                          <table class="table table-striped">
+                                              <thead>
+                                                  <tr>
+                                                      <th scope="col">S.No</th>
+                                                      <th scope="col">Job Category</th>
+                                                      <th scope="col">Job Sub Category</th>
+                                                      <th scope="col">Company Name</th>
+                                                      <th scope="col">Job Role</th>
+                                                      <th scope="col">Previous Job's Manager Name</th>
+                                                      <th scope="col">Previous Job's Manager Mobile</th>
+                                                      <th scope="col">Previous Job's Manager Email</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                              <?php
+                                                if (isset($experienceTable[0]['id'])) {
+                                                    $loopcount=1;
+                                                foreach ($experienceTable as $key => $ivalue) {
+                                                ?>
+                                                      <tr>
+                                                          <td scope="row"><?php echo $loopcount; ?>.</td>
+                                                          <td><?php echo $ivalue['other_category'] ?></td>
+                                                          <td><?php echo $ivalue['other_sub_category'] ?></td>
+                                                          <td><?php echo $ivalue['company_name'] ?></td>
+                                                          <td><?php echo $ivalue['job_role'] ?></td>
+                                                          <td><?php echo $ivalue['previous_employer_name'] ?></td>
+                                                          <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
+                                                          <td><?php echo $ivalue['previous_employer_email'] ?></td>
+                                                      </tr>
+                                                  <?php
+                                                      $loopcount++;
+                                                  }
+                                                }
+                                                  ?>
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  </div>
+
+                                  <div class="card recent-sales overflow-auto">
+                                      <div class="card-body">
+                                          <h5 class="card-title">Skills</h5>
+          
+                                          <table class="table table-striped">
+                                              <thead>
+                                                  <tr>
+                                                      <th class="col-2" scope="col">S.No</th>
+                                                      <th class="col-4" scope="col">Skill</th>
+                                                      <th class="col-3" scope="col">Experience</th>
+                                                      <th class="col-3" scope="col">Skill Level</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                  <?php
+                                                   if (isset($skillTable[0]['id'])) {
+                                                    $loopcount= 1;
+                                                    foreach ($skillTable as $key => $svalue) {
+                                                  ?>
+                                                      <tr>
+                                                          <td><?php echo $loopcount; ?>.</td>
+                                                          <td><?php echo $svalue['skill'] ?></td>
+                                                          <td><?php echo $svalue['experience'] ?></td>
+                                                          <td><?php echo $svalue['skill_level'] ?></td>
+                                                      </tr>
+                                                  <?php
+                                                      $loopcount++;
+                                                  }
+                                                }
+                                                  ?>
+                                              </tbody>
+                                          </table>          
+                                      </div>
+                                  </div>
+
+                                  <div class="card recent-sales overflow-auto">
+                                      <div class="card-body">
+                                          <h5 class="card-title">Area of Interest</h5>
+                                                    <table class="table table-striped">
+                                              <thead>
+                                                  <tr>
+                                                      <th scope="col">S.No</th>
+                                                      <th scope="col">Job Category</th>
+                                                      <th scope="col">Job Sub Category</th>
+                                                      <th scope="col">Prefered Location</th>
+                                                      <th scope="col">Experience</th>
+                                                      <th scope="col">Job Type</th>
+                                                      <th scope="col">Description</th>
+                                                      <th scope="col">Expected Salary</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                              <?php
+                                                if (isset($areaOfIntrestTable[0]['id'])) {
+                                                    $loopcount=1;
+                                                foreach ($areaOfIntrestTable as $key => $avalue) {
+                                                ?>
+                                                      <tr>
+                                                          <td scope="row"><?php echo $loopcount; ?>.</td>
+                                                          <td><?php echo $avalue['other_interst_category'] ?> </td>
+                                                          <td><?php echo $avalue['other_sub_interst_category'] ?></td>
+                                                          <td><?php echo $avalue['prefered_location'] ?></td>
+                                                          <td><?php echo $avalue['experience'] ?></td>
+                                                          <td><?php echo $avalue['job_type'] ?></td>
+                                                          <td><?php echo $avalue['description'] ?></td>
+                                                          <td> <?php echo $avalue['expected_salary'] ?></td>
+                                                      </tr>
+                                                  <?php
+                                                  $loopcount ++;
+                                                  }
+                                                }
+                                                  ?>
+                                              </tbody>
+                                          </table>          
+                                      </div>
+                                  </div>
+
+                                  <div class="card recent-sales overflow-auto">
+                                      <div class="card-body">
+                                          <h5 class="card-title">Resume</h5>
+                                          <?php
+                                              if (isset($areaOfIntrestTable[0]['id'])) {
+                                          ?>
+                                         <a href="<?php echo $areaOfIntrestTable[0]['resume_filename_url'] ;?>" target="blank" >
+                                         <?php echo $areaOfIntrestTable[0]['resume_filename'] ?  $areaOfIntrestTable[0]['resume_filename'] : 'No file'; ?>
+                                        </a>
+                                         <?php
+                                               }
+                                         ?>
+                                        </div>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </section>
 
             <?php
         }

@@ -8,10 +8,11 @@
     <title>Employer Page</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -30,6 +31,20 @@
     <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
 
     <style>
+    /* To hide arrows in number field */
+        #inputNumber5::-webkit-outer-spin-button,
+        #inputNumber5::-webkit-inner-spin-button,
+        #cpmobilno::-webkit-outer-spin-button,
+        #cpmobilno::-webkit-inner-spin-button,
+        #expected_salary::-webkit-outer-spin-button,
+        #expected_salary::-webkit-inner-spin-button,
+        #expected_salaryu::-webkit-outer-spin-button,
+        #expected_salaryu::-webkit-inner-spin-button{
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
+
          /* To print candidate deatils */
          @media print {
             body {
@@ -45,6 +60,76 @@
                 visibility: hidden;
             }
         }
+
+        /* Sidebar changes */
+
+        
+
+        .sidebar {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 996;
+  transition: all 0.3s;
+  padding: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #aab7cf transparent;
+  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  background: #fff;
+  color: #4154f1;
+  border-radius: 10px;
+} 
+
+.sidebar ul li a:hover {
+    background: #4154f1;
+    color: #fff;
+    transition: .3s ease;
+    /* border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px; */
+}
+
+.sidebar ul li.active a {
+    color: #fff;
+    background: #4154f1;
+       
+}
+
+.sidebar ul .nav-item.active,
+.sidebar ul .nav-item.active i {
+    background: #fff;
+    color: #4154f1;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    border-radius: 50%;
+}
+
+.sidebar ul .nav-item.active i {   
+    color: #fff;
+    background: #4154f1;   
+     
+}
+
+.sidebar ul .nav-item:hover  {
+    color: #fff;
+    border-radius: 50%;
+}
+
+  .sidebar-nav .nav-link:hover {
+   color: #fff;
+  transition: 0.3;
+  background: #4154f1;
+  border-radius: 4px;
+}
+
+.sidebar-nav .nav-link:hover i {
+    color: #fff;
+}
+
+
+        /* End of changes */
     </style>
 </head>
 
@@ -136,14 +221,14 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
+            <li class="nav-item <?php echo isPageActive('Employer/dashboard') ? 'active' : ''; ?>">
                 <a class="nav-link " href="<?php echo baseUrl . "Employer/dashboard" ?>">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
-            <li class="nav-item">
+            <li class="nav-item <?php echo isPageActive('Employer/updateRegistration') ? 'active' : ''; ?>">
                 <a class="nav-link "   href="<?php echo baseUrl . "Employer/updateRegistration" ?>">
                     <!-- <i class="bi bi-menu-button-wide"></i> -->
                     <i class="bi bi-person"></i>
@@ -151,7 +236,7 @@
                 </a>
             </li><!-- End profile Nav -->
 
-            <li class="nav-item">
+            <li class="nav-item <?php echo isPageActive('Employer/jobViewTable') || isPageActive('Employer/jobMatchedTable') || isPageActive('Employer/updateAddNew') || isPageActive('Employer/deleteAddJob') || isPageActive('Employer/addNewJob') || isPageActive('Employer/resumeCard')? 'active' : ''; ?>">
                 <a class="nav-link "   href="<?php echo baseUrl . "Employer/jobViewTable" ?>">
                     <i class="bi bi-bar-chart"></i>
                     <span>Employer Jobs</span>
@@ -161,6 +246,17 @@
         </ul>
 
     </aside><!-- End Sidebar-->
+
+        <?php
+            function isPageActive($page)
+        {
+            // Get the current page URL
+            $currentUrl = $_SERVER['REQUEST_URI'];
+
+            // Check if the current page URL contains the specified page
+            return strpos($currentUrl, $page) !== false || ($page === 'Employer/dashboard' && $currentUrl === '/');
+        }
+        ?>
 
 
     <main id="main" class="main">
@@ -609,7 +705,7 @@
                             <h5 class="card-title">Jobs</h5>
 
                             <div class="d-flex justify-content-between">
-                                     <a href="<?php echo baseUrl . "Employer/addNewJob" ?>">
+                                     <a class="<?php echo isPageActive('Employer/addNewJob') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Employer/addNewJob" ?>">
                                      <button type="button" class="btn btn-success mb-4">+ Add Job Requirements</button></a>
                                      <a  href="<?php echo baseUrl . "Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
                                     </div>
@@ -652,9 +748,9 @@
                                                             <td><?php echo $value['number_of_openings'] ?></td>
                                                             <td><?php echo $twelveHourTime ?></td>
                                                             <td class="d-flex">
-                                                            <a href="<?php echo baseUrl . "Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>"><button type="button" class="btn btn-success">List</button></a>
-                                                            <a class="px-1" href="<?php echo baseUrl . "Employer/updateAddNew" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary">Edit</button></a>
-                                                            <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employer/deleteAddJob" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                            <a class="<?php echo isPageActive('Employer/jobMatchedTable') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>"><button type="button" class="btn btn-success">List</button></a>
+                                                            <a class="px-1 <?php echo isPageActive('Employer/updateAddNew') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Employer/updateAddNew" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary">Edit</button></a>
+                                                            <a <?php echo isPageActive('Employer/deleteAddJob') ? 'active' : ''; ?> onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employer/deleteAddJob" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                                                       </td> 
                                                         </tr>
                                                     <?php
@@ -702,19 +798,25 @@
 
                     <div class="col-md-6">
                         <label class="form-label" for="category">Category:</label>
-                        <select class="form-control" id="category" name="category" required >
-                            <option value="">Select a category</option>
-                            <option value="architech">Architech</option>
-                            <option value="developer">Developer</option>
-                            <option value="tester">Tester</option>
-                            <option value="uiux">UI/UX Design</option>
-                            <option value="datascience">Data Scientist</option>
-                            <option value="databaseadmin">Database Admin</option>
-                            <option value="teacher">Teacher</option>
-                            <option value="professor">Professor</option>
+                        <select class="form-control" id="category" name="category" onchange="showHideOtherField()" required >
+                             <option value="">Select a Category</option>
+                                <?php
+                            foreach ($categoryList as $key => $value) {
+                                ?>
+                                  <option value="<?php echo $value->categoryName ?>"><?php echo $value->categoryName ?></option>
+                                  <?php } ?>
+                                  <option value="others">Others</option>
                         </select>
                         <div id="category_error" class="error"></div>
                     </div>
+
+                    <div class="col-12" id="newcategory_group" style="display: none;">
+                        <label for="newcategory" class="form-label">Reason for choosing category as others:</label>
+                        <input class="form-control" id="newcategory" name="newcategory"  placeholder="Enter new category">
+                        <div id="newcategory_error" class="text-danger error"></div>
+                        <!-- <input id="categoryothers" name="categoryothers" value="1" hidden > -->
+                    </div>
+
                     <div class="col-md-6">
                         <label class="form-label" for="subcategory">Subcategory:</label>
                         <input class="form-control" id="subcategory" name="subcategory"  placeholder="Enter subcategory" required>
@@ -775,12 +877,27 @@
                         </div>
                     </div>
                 </section>
+
                 <script>
+
+                function showHideOtherField() {
+                    var categoryDropdown = document.getElementById('category');
+                    var otherCategoryField = document.getElementById('newcategory_group');
+
+                    if (categoryDropdown.value === 'others') {
+                        otherCategoryField.style.display = 'block';
+                    } else {
+                        otherCategoryField.style.display = 'none';
+                    }
+                }
                 
                 function validateForm() {
 
                     var company_name = document.getElementById("company_name");
                     var company_nameError = document.getElementById('company_name_error');
+
+                    var newothercategory = document.getElementById("newcategory_group");
+                    var newothercategory_error = document.getElementById("newcategory_error");
 
                     var category = document.getElementById("category");
                     var categoryError = document.getElementById('category_error');
@@ -823,6 +940,15 @@
                             return false;
                         } else if (category.value !== '') {
                             categoryError.innerHTML = '';
+                        }
+
+                        if (newothercategory.value === '' &&  document.getElementById("newcategory_group").style.display == "block") {
+                            // alert("Please Select a Category");
+                            displayError('Please ener new Category', 'newothercategory_error');
+                            //  document.experienceform.category.focus();
+                            return false;
+                        } else if (newothercategory.value !== '') {
+                            newothercategory_error.innerHTML = '';
                         }
 
                         if (subcategory.value === "") {
@@ -931,7 +1057,8 @@
                         <div class="col-md-6">
                             <label class="form-label"  for="category">Category:</label>
                             <select class="form-control" id="category" value="<?php echo $value['jobCategory']; ?>" name="category" required>
-                                <option value="">Select a category</option>
+                            <option value="<?php echo $value['jobCategory'];?>"><?php echo $value['jobCategory'];?></option>
+                            <!-- <option value="">Select a category</option>
                                 <option value="architech" <?php if ($value['jobCategory'] === 'architech')
                                                                 echo ' selected'; ?>>Architech</option>
                                 <option value="developer" <?php if ($value['jobCategory'] === 'developer')
@@ -947,7 +1074,7 @@
                                 <option value="teacher" <?php if ($value['jobCategory'] === 'teacher')
                                                             echo ' selected'; ?>>Teacher</option>
                                 <option value="professor" <?php if ($value['jobCategory'] === 'professor')
-                                                                echo ' selected'; ?>>Professor</option>
+                                                                echo ' selected'; ?>>Professor</option> -->
                             </select>
                             <div id="category_error" class="error"></div>
                         </div>
@@ -996,7 +1123,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label"  for="expected_salary">Salary:</label>
-                            <input type="number" class="form-control" id="expected_salary" value="<?php echo $value['salary']; ?>" name="expected_salary" required>
+                            <input type="number" class="form-control" id="expected_salaryu" value="<?php echo $value['salary']; ?>" name="expected_salary" required>
                             <div id="expected_salary_error" class="error"></div>
                         </div>
 
@@ -1167,9 +1294,7 @@
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
 
-                       
-                          <a  href="<?php echo baseUrl . "Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info m-4 ">Back</button></a>
-    
+                        <div> <a  href="<?php echo baseUrl . "Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info m-4 ">Back</button></a> </div>
                             <div class="card-body">
                                 <?php
                                 if (isset($this->data['response'][0]['name'])) {
@@ -1198,8 +1323,7 @@
                                                             <td><?php echo $value['oisc'] ?></td>
                                                             <td><?php echo $value['exps'] ?></td>
                                                             <td><?php echo $value['skills'] ?></td>
-                                                            <td><a href="<?php echo baseUrl . "Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
-                                                            <a href="#"><button type="button" class="btn btn-success">Request</button></a>
+                                                            <td><a class="<?php echo isPageActive('Employer/resumeCard') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
                                                         </td>
                                                         </tr>
                                                     <?php
@@ -1237,12 +1361,12 @@
                                     <div class="col">
                                     </div>
                                     <div class="">
-                                        <h2 class="text-center py-3">Employee Resume</h2>
+                                        <h2 class="text-center py-3">Candidate Resume</h2>
                                     </div>
                                     <?php
                                     foreach ($this->data['basicDetails'] as $nkey => $nvalue) {
                                     ?>
-                                        <p class="d-flex flex-row-reverse">Employee ID : <?php echo $nvalue['eeid'] ?></p>
+                                        <p class="d-flex flex-row-reverse">Candidate ID : <?php echo $nvalue['eeid'] ?></p>
                                     <?php
                                     }
                                     ?>
@@ -1266,6 +1390,73 @@
                                             ?>
                                         </tbody>
                                     </table>
+                                    <?php
+                                if (($basicDetails[0]['requestCandidate'] == '2')) {
+                                  foreach ($basicDetails as $key => $value) { 
+                                ?>
+                                    <table class="table table-striped mt-2">
+                                              <thead>
+                                                  <tr>
+                                                      <th class="col-2" scope="col">Mobile No.</th>
+                                                      <th class="col-4" scope="col">Mail</th>
+                                                      <th class="col-2" scope="col">D.O.B</th>
+                                                      <th class="col-1" scope="col">Age</th>
+                                                      <th class="col-1" scope="col">Gender</th>
+                                                      <th class="col-2" scope="col">Marital Status </th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                      <tr>
+                                                          <td><?php echo $value['phonenumber'] ?></td>
+                                                          <td><?php echo $value['email'] ?></td>
+                                                          <td><?php echo $value['dateofbirth'] ?></td>
+                                                          <td><?php echo $value['age'] ?></td>
+                                                          <td><?php echo $value['gender'] ?></td>
+                                                          <td><?php echo $value['maritalStatus'] ?></td>
+                                                      </tr>
+                                              </tbody>
+                                          </table>
+                                          <table class="table table-striped pt-3">
+                                              <thead>
+                                                  <tr>
+                                                      <th class="col-3" scope="col">Door No.</th>
+                                                      <th class="col-4" scope="col">Street Address</th>
+                                                      <th class="col-2" scope="col">Landmark</th>
+                                                      <th class="col-1" scope="col">Pincode</th>
+                                                      <th class="col-1" scope="col">District</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                      <tr>
+                                                          <td><?php echo $value['buildingName'] ?></td>
+                                                          <td><?php echo $value['address'] ?></td>
+                                                          <td><?php echo $value['landmark'] ?></td>
+                                                          <td><?php echo $value['pincode'] ?></td>
+                                                          <td><?php echo $value['district'] ?></td>
+                                                      </tr>
+                                              </tbody>
+                                          </table>
+          
+                                          <table class="table table-striped mt-2">
+                                              <thead>
+                                                  <tr>
+                                                      <th class="col-4" scope="col">Profile Photo</th>
+                                                      <th class="col-4" scope="col">Aadhaar Front</th>
+                                                      <th class="col-4" scope="col">Aadhaar Back</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                      <tr>
+                                                          <td><a href="<?php echo $value['photo'] ?>" target="_blank" ><?php echo $value['photo_filename'] ?></a></td>
+                                                          <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank" ><?php echo $value['aadharfront_filename'] ?></a></td>
+                                                          <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank" ><?php echo $value['aadharback_filename'] ?></a></td>
+                                                      </tr>
+                                                      <?php
+                                                  }
+                                                }
+                                                  ?>
+                                              </tbody>
+                                          </table>
                                 </div>
                             </div>
 
@@ -1299,27 +1490,35 @@
                                                         <td><?php echo $value['percentage'] ?></td>
                                                         <td><?php echo $value['yearOfPassing'] ?></td>
                                                         <?php
-                    if ( $value['educational_qualification'] == 'sslc' ) {
+                    if ( $value['educational_qualification'] == '10th/SSLC' ) {
                       ?>
                                   <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
                   <?php
                     }
-                    else if ( $value['educational_qualification'] == 'hsc' ) {
+                    else if ( $value['educational_qualification'] == '12th/HSC' ) {
                     ?>
                      <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
                      <?php
+                    } else if ($value['educational_qualification'] == 'DIPLOMA') {
+                    ?>
+                            <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
+                     <?php
                     }
-                    else if ( $value['educational_qualification'] == 'bachelors' ) {
+                    else if ( $value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                    $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" || 
+                    $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW") {
                     ?>
                     <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
                     <?php
                    }
-                  else if ( $value['educational_qualification'] == 'masters' ) {
+                  else if ( $value['educational_qualification'] == "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                  $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                   $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" ) {
                    ?>
                    <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
                    <?php
                     }
-                    else if ( $value['educational_qualification'] == 'doctorate' ) {
+                    else if ( $value['educational_qualification'] == 'Ph.D' ) {
                     ?>
                     <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
                      <?php
@@ -1456,24 +1655,64 @@
                                         </tbody>
                                     </table>
                                     <!-- End Table with stripped rows -->
-
+                                          <?php
+                                             if (($basicDetails[0]['requestCandidate'] == '2')) {
+                                          ?>
+                                        <h5 class="card-title">Resume</h5>
+                                         <a href="<?php echo $areaOfInterest[0]['resume_filename_url'] ;?>" target="blank" >
+                                         <?php echo $areaOfInterest[0]['resume_filename'] ?  $areaOfInterest[0]['resume_filename'] : 'No file'; ?>
+                                        </a>
+                                         <?php
+                                               }
+                                         ?>
                                 </div>
                             </div>
-                            <div style="float:right;margin-bottom:25px" id="printdiv">
-                            <button onClick="window.print()"  type="button" class="btn btn-dark printhide">Print</button>
-                            <!-- <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button> -->
 
-                </div>
+                            
+                            
+                            <div class="d-flex justify-content-between" id="printdiv">
+
+                                    <form action="<?php echo baseUrl . "employer/requestCandidate" ?>" method="post" >
+                                        <input class="form-check-input" type="text" name="requestadmin" id="" value="1" hidden>
+                                        <input class="form-check-input" type="text" name="candidateid" id="" value="<?php echo $this->data['basicDetails'][0]['id']; ?>" hidden>
+                                        <input class="form-check-input" type="text" name="employer_id" id="" value="<?php echo $_SESSION['employerid'] ?>" hidden>
+
+                                        <button type="submit" id="candidaterequest" class="btn btn-success printhide" onclick="return confirm('Are you sure you want to send requuest ?')">Request to view details</button>
+                                    </form>
+                                    <button id="candidaterequested" class="btn btn-success printhide" style="display:none" disabled >Request send to view details</button>
+                            <!-- <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button> -->
+                            <button onClick="window.print()"  type="button" class="btn btn-dark printhide">Print</button>
+                            </div>
+
                         </div>
                     </div><!-- End Default Card -->
                 </section>
-
+                <?php
+                if (($basicDetails[0]['requestCandidate'] == '1')) {
+                ?>
+                <script>
+                    document.getElementById("candidaterequest").style.display = "none";
+                    document.getElementById("candidaterequested").style.display = "block";
+                </script>
+                <?php 
+                }
+                ?>
+                    <?php
+                    if (($basicDetails[0]['requestCandidate'] == '2')) {
+                    ?>
+                    <script>
+                        document.getElementById("candidaterequest").style.display = "none";
+                    </script>
+                    <?php 
+                    }
+                    ?>
             
            <?php
         }
         ?>
-    <!-- To download pdf -->
-    <script type="text/javascript">
+
+        <!-- To download pdf -->
+        <!-- <script type="text/javascript">
                 function generatePDF() {
 
                     var element = document.getElementById('resumeprint');
@@ -1497,7 +1736,8 @@
 
                     html2pdf().set(opt).from(element).save();
                 }
-            </script>
+            </script> -->
+
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->

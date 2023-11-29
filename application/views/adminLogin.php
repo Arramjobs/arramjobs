@@ -8,10 +8,12 @@
     <title>Arram Jobs Admin Login</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    
+    <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">

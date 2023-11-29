@@ -24,16 +24,20 @@ class Employer extends CI_Controller
         $this->load->view('employerLogin.php');
     }
 
+    public function employerRegistration() {
+        $phone_number = $this->input->post('mobile');
 
-    public function employerRegistration()
-    {
-        $responses = $this->EmployerModel->register();
-        $generatedid = $this->EmployerModel->generate_customer_id();
-        $data['generatedid'] = $generatedid;
-        $this->load->view('employerRegistered.php', $data);
-        echo '<script>alert("Registered successfully.");</script>';
+        if ($this->EmployerModel->checkUserExistence($phone_number)) {
+            echo '<script>alert("Phone number already exists. Please use a different number.");</script>';
+            $this->load->view('employerRegistration');
+        } else {
+            $postData = $this->input->post(null, true);
+            $register = $this->EmployerModel->register();
+            $generatedeeid = $this->EmployerModel->generate_customer_id();
+            // $data['generatedeeid'] = $generatedeeid;
+            $this->load->view('employerRegistered.php');
+        }
     }
-
 
 
     //  public function load_login()
@@ -46,7 +50,6 @@ class Employer extends CI_Controller
     //         $this->load->view('exampleDashboard.php',$this->data);
     //     }
     //     else{
-
     //         $this->load->view('provider_login.php');
     //     }
     // }
@@ -75,6 +78,7 @@ class Employer extends CI_Controller
             echo '<script>alert("Please enter registered company details.");</script>';
         }
     }
+
     // public function viewDashboard()
     // {
     //     $postData = $this->input->post(null, true);
@@ -89,7 +93,6 @@ class Employer extends CI_Controller
     //         $this->data['method'] = "dashboard";
     //         $this->load->view('exampleDashboard.php', $this->data);
     //     } else {
-
     //         $this->load->view('providerLogin.php');
     //     }
     // }
@@ -134,7 +137,6 @@ class Employer extends CI_Controller
 
     public function matchedCandidate()
     {
-
         $allcandidates = $this->EmployerModel->matchedAllCandidate();
         $this->data['method'] = "allCandidate";
 
@@ -161,7 +163,6 @@ class Employer extends CI_Controller
         // echo "Record updated successfully";
         $this->jobViewTable();
         echo '<script>alert("Company profile updated successfully.");</script>';
-
     }
 
 
@@ -169,6 +170,10 @@ class Employer extends CI_Controller
     public function addNewJob()
     {
         $this->data['method'] = "addnew";
+
+        $categoryList = $this->EmployerModel->getCategoryList();
+        $this->data['categoryList'] = $categoryList;
+
         $this->load->view('employerDashboard.php', $this->data);
     }
 
@@ -193,8 +198,8 @@ class Employer extends CI_Controller
         $this->data['updateAddNew'] = $addjob;
         //$this->load->view('update_addnew_jobs.php',$this->data);
         $this->load->view('employerDashboard.php', $this->data);
-
     }
+
     public function updateInsert()
     {
         $postData = $this->input->post(null, true);
@@ -204,6 +209,7 @@ class Employer extends CI_Controller
         $this->jobViewTable();
         echo '<script>alert("Job details updated successfully.");</script>';
     }
+
     public function deleteAddJob()
     {
         $deleteId = $this->uri->segment(3);
@@ -245,7 +251,6 @@ class Employer extends CI_Controller
         $this->load->view('employerDashboard.php', $this->data);
     }
 
-
     public function filterAllCandidate()
     {
         $postData = $this->input->post(null, true);
@@ -255,6 +260,14 @@ class Employer extends CI_Controller
         $this->data['filtercandidate'] = $filter;
         $this->data['method'] = "filltercandidate";
         $this->load->view('exampleDashboard.php', $this->data);
+    }
+
+
+    public function requestCandidate()
+    {
+        $postData = $this->input->post(null, true);
+        $requestCandidate = $this->EmployerModel->requestForCandidate();
+        $this->jobViewTable();
     }
 
 
@@ -270,7 +283,6 @@ class Employer extends CI_Controller
     //         $this->data['method']="match";
     //         $category = $this->input->post('category'); 
     //         $subcategory = $this->input->post('subcategory'); 
-
 
 
     //         $filtered_records = $this->EmployerModel->getFilteredRecords($category, $subcategory);

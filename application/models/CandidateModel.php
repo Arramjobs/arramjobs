@@ -1,5 +1,5 @@
 <?php
-class EmployeeModel extends CI_Model
+class CandidateModel extends CI_Model
 {
     public function __construct()
     {
@@ -19,17 +19,17 @@ class EmployeeModel extends CI_Model
     public function seekerLogin()
     {
         $postData = $this->input->post(null, true);
-        $username = $postData['username'];
+        // $username = $postData['username'];
         $phonenumber = $postData['phonenumber'];
-        $query = "SELECT * FROM seeker_profile_form WHERE eeid='$username' AND phonenumber='$phonenumber'";
+        $query = "SELECT * FROM seeker_profile_form WHERE phonenumber='$phonenumber'";
         $count = $this->db->query($query);
         return $count->result_array();
     }
 
 
-    public function checkUserExistence($phonenumber)
+    public function checkUserExistence($phone_number)
     {
-        $this->db->where('phonenumber', $phonenumber);
+        $this->db->where('phonenumber', $phone_number);
         $query = $this->db->get('seeker_profile_form');
         return $query->num_rows() > 0;
     }
@@ -49,7 +49,6 @@ class EmployeeModel extends CI_Model
         $name = $this->input->post('name');
         $email = $this->input->post('email');
         $phonenumber = $this->input->post('phonenumber');
-
         $insert = array(
             'name' => $name,
             'email' => $email,
@@ -384,8 +383,15 @@ class EmployeeModel extends CI_Model
         $seekerId = "SELECT * FROM `seeker_experience` Where `seekerId`= $seekerId";
         $addtab = $this->db->query($seekerId);
         return $addtab->result_array();
-
     }
+
+    public function getCategoryList(){
+        $category = "SELECT * FROM `category_master` ORDER BY `categoryName` ASC ";
+        $select = $this->db->query($category);
+        return $select->result(); 
+    }
+
+
     public function insertExperienceForm()
     {
         $seekerId = $_SESSION['seekerId'];
@@ -401,6 +407,8 @@ class EmployeeModel extends CI_Model
             'previous_employer_name' => $post['nameofemployer'],
             'previous_employer_mobile' => $post['number'],
             'previous_employer_email' => $post['emailid'],
+            'categoryOthers' =>isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
+            'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0",
         );
 
         $this->db->insert('seeker_experience', $add);
@@ -544,6 +552,8 @@ class EmployeeModel extends CI_Model
             'job_type' => $post['jobtype'],
             'description' => $post['description'],
             'expected_salary' => $post['expected-salary'],
+            'categoryOthers' =>isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
+            'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0",
             // 'skillname' => $post['skillname'],
             // 'skillexperience' => $post['skillexperience'],
             // 'skilllevel' => $post['skilllevel']

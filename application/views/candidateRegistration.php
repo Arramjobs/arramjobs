@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Employee Registration Page</title>
+    <title>Candidate Registration Page</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -64,7 +65,7 @@
                                 <a href="<?php echo baseUrl; ?>/#seeker"
                                     class="logo d-flex align-items-center w-auto">
                                     <!-- <img src="assets/img/logo.png" alt=""> -->
-                                    <span class="d-none d-lg-block">Arramjobs Employee</span>
+                                    <span class="d-none d-lg-block">Arramjobs Candidate</span>
                                 </a>
                             </div><!-- End Logo -->
 
@@ -78,7 +79,7 @@
                                     </div>
 
                                     <form class="row g-3 needs-validation" novalidate onsubmit="return validateForm()"
-                                        action="<?php echo baseUrl . "Employee/employeeRegistration" ?>"
+                                        action="<?php echo baseUrl . "Candidate/candidateRegistration" ?>"
                                         name="registration_form" method="post">
 
                                         <div class="">
@@ -111,7 +112,7 @@
                                             <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                         </div>
                                         <div class="col-12">
-                                            <p class="small mb-0">Already have an account? <a href="<?php echo baseUrl . "Employee" ?>">Login</a></p>
+                                            <p class="small mb-0">Already have an account? <a href="<?php echo baseUrl . "Candidate" ?>">Login</a></p>
                                         </div>
                                     </form>
 

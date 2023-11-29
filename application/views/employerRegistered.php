@@ -8,10 +8,11 @@
     <title>Employer Registered</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -39,7 +40,7 @@
                 <div class="my-5 py-md-5 text-center">
                     <img class="img-fluid" src="<?php echo baseUrl . "assets/employee_registered.png" ?>" alt="Thanks">
                     <p>Login after 24 hours of registering.</p>
-                    <p>The registered id is <b> <?php echo $generatedid; ?> </b>for <a href="<?php echo baseUrl . "Employer/login" ?>">Login</a>.</p>
+                    <p>Use the registered mobile number to <a href="<?php echo baseUrl . "Employer/login" ?>">Login</a>.</p>
                     </div>
             </section>
 

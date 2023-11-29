@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Employee Login Page</title>
+    <title>Candidate Login Page</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -52,7 +53,7 @@
                             <div class="d-flex justify-content-center py-4">
                                 <a href="<?php echo baseUrl; ?>/#seeker" class="logo d-flex align-items-center w-auto">
                                     <!-- <img src="assets/img/logo.png" alt=""> -->
-                                    <span class="d-none d-lg-block">Arramjobs Employee</span>
+                                    <span class="d-none d-lg-block">Arramjobs Candidate</span>
                                 </a>
                             </div><!-- End Logo -->
 
@@ -62,25 +63,28 @@
 
                                     <div class="pt-4 pb-2">
                                         <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                                        <p class="text-center small">Enter your registered id & mobile number to login</p>
+                                        <p class="text-center small">Enter your mobile number to login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Employee/seekerLogin" ?>" method="post" onsubmit="return validateForm()">
+                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Candidate/seekerLogin" ?>" method="post" onsubmit="return validateForm()">
 
-                                        <div class="col-12">
+                                        <!-- <div class="col-12">
                                             <label for="username" class="form-label">Registerd ID</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
                                                 <input type="text" name="username" class="form-control" id="username" placeholder="Enter your registered id" required>
                                                 <div class="invalid-feedback">Please enter your registered id.</div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="col-12">
                                             <label for="phonenumber" class="form-label">Mobile Number</label>
-                                            <input type="number" name="phonenumber" class="form-control" id="phonenumber" placeholder="Enter your mobile number" required>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                <input type="number" name="phonenumber" class="form-control" id="phonenumber" placeholder="Enter your mobile number" required>
+                                                <div class="invalid-feedback">Please enter your mobile number.</div>
+                                            </div>
                                             <p id="pherr" style="color: red;"></p>
-                                            <div class="invalid-feedback">Please enter your mobile number.</div>
                                         </div>
 
                                         <!-- <div class="col-12">
@@ -96,7 +100,7 @@
                                     <div class="col-12">
                                     <br>
                                         <div class="form-check">
-                                                <p>Create an account ? <a href="<?php echo baseUrl . "Employee/registration" ?>">Register</a></p>
+                                                <p>Create an account ? <a href="<?php echo baseUrl . "Candidate/registration" ?>">Register</a></p>
                                         </div>
                                     </div>
 
