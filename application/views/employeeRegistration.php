@@ -85,19 +85,19 @@
                                             <label for="username" class="form-label">Name</label>
                                             <input type="text" class="form-control" id="name" name="name"
                                                 placeholder="Enter your name" required>
-                                            <div id="username_error"  style="color: red;"></div>
+                                            <div id="username_error"  style="color: red;" class="error"></div>
                                         </div>
                                         <div class="">
                                             <label for="email" class="form-label">Email ID</label>
                                             <input type="email" class="form-control" id="email" name="email"
                                                 placeholder="Enter your email" required>
-                                            <div id="email_error"  style="color: red;"></div>
+                                            <div id="email_error"  style="color: red;" class="error" ></div>
                                         </div>
                                         <div class="">
                                             <label for="phonenumber" class="form-label">Mobile number</label>
                                             <input type="tel" class="form-control" id="phonenumber" name="phonenumber"
                                                 placeholder="Enter your mobile number" required>
-                                            <div id="phone_error"  style="color: red;"></div>
+                                            <div id="phone_error"  style="color: red;" class="error" ></div>
                                         </div>
 
                                         <!-- <div class="col-12">

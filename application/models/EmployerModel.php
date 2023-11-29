@@ -15,7 +15,8 @@ class EmployerModel extends CI_Model
 
 
     $config['upload_path'] = "./uploads/";
-    $basepath = 'http://localhost/arramjobs/uploads/';
+    // $basepath = 'http://localhost/arramjobs/uploads/';
+    $basepath =  base_url().'uploads/';
     $config['allowed_types'] = "jpg|png|pdf|jpeg";
     $config['max_size'] = 1024;
 
@@ -134,7 +135,7 @@ public function get_latest_customer_id() {
     $id = $postData['id'];
 
     $config['upload_path'] = "./uploads/";
-    $basepath = 'http://localhost/arramjobs/uploads/';
+    $basepath =  base_url().'uploads/';
     $config['allowed_types'] = "jpg|png|pdf|jpeg";
     $config['max_size'] = 1024;
 

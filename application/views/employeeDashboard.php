@@ -67,6 +67,7 @@
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h6><?php echo $_SESSION['seekerName']; ?></h6>
+                            <p class="pt-1"><?php echo $_SESSION['employeeidd']; ?></p>
                             <span>Employee</span>
                         </li>
                         <li>
@@ -140,7 +141,7 @@
             $basicdetaildata = $_SESSION['basicdetaildata'];
             if ($basicdetaildata == "1") {
               ?>
-                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">1</div>
+                    <div class="rounded-circle bg-success text-light text-center pt-1" style="width: 25px; height:25px;font-size: 12px;">1</i></div>
                     <?php
             } else{
               ?>
@@ -718,7 +719,7 @@
                 }
 
                 if (ab == "" && document.getElementById('existfileab').style.display == "none") {
-                    var namesms2 = "Aadhaar Back Photo must be uploade";
+                    var namesms2 = "Aadhaar Back Photo must be uploaded";
                     document.getElementById("aadharbackphoto_error").innerHTML = namesms2;
                     document.applicationform.aadharbackphoto.focus();
                     return false;
@@ -755,9 +756,9 @@
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
                            
-                            <div class="card-body">
+                            <div class="card-body pt-4">
                                        
-                                        <h5 class="card-title">Education Table<span></span></h5>
+                                        <!-- <h5 class="card-title">Education Table<span></span></h5> -->
 
                                         <div class="d-flex justify-content-between">
                                         <a href="<?php echo baseUrl . "Employee/addEducationForm" ?>">
@@ -775,11 +776,11 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S.No</th>
-                                                    <th scope="col">Department</th>
-                                                    <th scope="col">Institution Name</th>
                                                     <th scope="col">Educational Qualification</th>
-                                                    <th scope="col">Percentage</th>
+                                                    <th scope="col">Specialiization</th>
+                                                    <th scope="col">Institute</th>
                                                     <th scope="col">Year of Passing</th>
+                                                    <th scope="col">Percentage</th>
                                                     <th scope="col">Certificate</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
@@ -796,8 +797,8 @@
                                                     <td><?php echo $value['educational_qualification'] ?></td>
                                                     <td><?php echo $value['department'] ?></td>
                                                     <td><?php echo $value['school_college_name'] ?></td>
-                                                    <td><?php echo $value['percentage'] ?></td>
                                                     <td><?php echo $value['yearOfPassing'] ?></td>
+                                                    <td><?php echo $value['percentage'] ?></td>
                                             <?php
                                             if ($value['educational_qualification'] == 'sslc') {
                                             ?>
@@ -1652,13 +1653,13 @@
                         <option value="professor">Professor</option>
                         <option value="others">Others</option>
                       </select>
-                      <div id="category_error" class="text-danger"></div>
+                      <div id="category_error" class="text-danger error"></div>
                     </div>
 
                     <div class="col-md-6">
                       <label for="subcategory" class="form-label">Subcategory</label>
                       <input class="form-control" id="subcategory" name="subcategory"  placeholder="Enter subcategory" required>
-                      <div id="subcategory_error" class="text-danger"></div>
+                      <div id="subcategory_error" class="text-danger error"></div>
                     </div>
 
                     <div class="col-md-6">
@@ -1673,7 +1674,7 @@
                         <option value="15-20">15-20</option>
                         <option value="above 20 years">Above 20 years</option>
                       </select> -->
-                      <div id="experienceexp_error" class="text-danger"></div>
+                      <div id="experienceexp_error" class="text-danger error"></div>
                     </div>
 
 
@@ -1692,13 +1693,13 @@
                     <div class="col-md-6">
                       <label for="company name" class="form-label">Company Name</label>
                       <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Enter company name" required>
-                      <div id="companyname_error" class="text-danger"></div>
+                      <div id="companyname_error" class="text-danger error"></div>
                     </div>
 
                     <div class="col-md-6">
                       <label for="role" class="form-label">Role in the Company</label>
                       <input type="text" class="form-control" id="role" name="role" placeholder="Enter role" required>
-                      <div id="role_error" class="text-danger"></div>
+                      <div id="role_error" class="text-danger error"></div>
                     </div>
 
                     <h5 class="card-title">Previous Job's Manager Details</h5>
@@ -1706,19 +1707,19 @@
                     <div class="col-md-6">
                       <label for="Name" class="form-label">Name</label>
                       <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" placeholder="Enter employer name" required>
-                      <div id="name_error" class="text-danger"></div>
+                      <div id="name_error" class="text-danger error"></div>
                     </div>
 
                     <div class="col-md-6">
                       <label for="number" class="form-label">Mobile Number</label>
                       <input type="text" class="form-control" id="number" name="number" placeholder="Enter mobile number" required>
-                      <div id="mobilenum_error" class="text-danger"></div>
+                      <div id="mobilenum_error" class="text-danger error"></div>
                     </div>
 
                     <div class="col-md-6" class="form-label">
                       <label for="email">Email-Id</label>
                       <input type="text" class="form-control" id="emailid" name="emailid" placeholder="Enter Email" required>
-                      <div id="emailid_error" class="text-danger"></div>
+                      <div id="emailid_error" class="text-danger error"></div>
                     </div>
 
                     <input type="number" class="form-control"  value="1" name="expsubmit" hidden>
@@ -1729,103 +1730,81 @@
                     </div>
 
                 </form><!-- End Multi Columns Form -->
-
                         </div>
                     </div>
                 </section>
 
                 <script>
-              
-                  function validateexpForm() {
-                    var category = document.getElementById("category");
-                    var subcategory = document.getElementById("subcategory");
-                    var experience = document.getElementById("experience");
-                    var companyname = document.getElementById("companyname");
-                    var role = document.getElementById("role");
-                    var ename = document.getElementById("nameofemployer");
-                    var phonenumber1 = document.getElementById("number");
-                    var email1 = document.getElementById("emailid");
+              function validateexpForm() {
+                clearErrorMessages(); 
 
-                    if (category.value == '') {
-                      // alert("Please select a Category.");
-                      displayError('Please select a category', 'category_error');
-                      // document.experienceform.category.focus();
-                      return false;
-                    }
+                var category = document.getElementById("category");
+                var subcategory = document.getElementById("subcategory");
+                var experience = document.getElementById("experience");
+                var companyname = document.getElementById("companyname");
+                var role = document.getElementById("role");
+                var ename = document.getElementById("nameofemployer");
+                var phonenumber1 = document.getElementById("number");
+                var email1 = document.getElementById("emailid");
 
-                    if (subcategory.value == '') {
-                      // alert("Please select a subcategory.");
-                      displayError('Please select a subcategory', 'subcategory_error');
-                      // document.experienceform.subcategory.focus();
-                      return false;
-                    }
+                if (category.value === '') {
+                  displayError('Please select a category', 'category_error');
+                  return false;
+                }
 
-                    // if (experience.value === 'fresher') {
-                    //   hideFields();
-                    // } else if (experience.value === '') {
-                    //   // alert("Please select an experience.");
-                    //   displayError('Please select an experience.', 'experience_error');
-                    //   document.experienceform.experience.focus();
-                    //   return false;
-                    // }
-                    if (experience.value === '') {
-                      // alert("Please select an experience.");
-                      displayError('Please select an experience', 'experienceexp_error');
-                      // document.experienceform.experience.focus();
-                      return false;
-                    }
+                if (subcategory.value === '') {
+                  displayError('Please select a subcategory', 'subcategory_error');
+                  return false;
+                }
 
-                    if (companyname.value === '') {
-                      // alert("Company name must be filled out.");
-                      displayError('Company name must be filled out', 'companyname_error');
-                      // document.experienceform.companyname.focus();
-                      return false;
-                    }
+                if (experience.value === '') {
+                  displayError('Please select an experience', 'experienceexp_error');
+                  return false;
+                }
 
-                    if (role.value === '') {
-                      // displayError('Please enter a role.', 'role_error');
-                      // alert("Role must be filled out.");
-                      displayError('Role must be filled out', 'role_error');
-                      // document.experienceform.role.focus();
-                      return false;
-                    }
+                if (companyname.value === '') {
+                  displayError('Company name must be filled out', 'companyname_error');
+                  return false;
+                }
 
-                    if (ename.value === '') {
-                      // alert("Name must be filled out.");
-                      displayError('Employer name must be filled out', 'name_error');
-                      return false;
-                    }
+                if (role.value === '') {
+                  displayError('Role must be filled out', 'role_error');
+                  return false;
+                }
 
-                    if (phonenumber1.value === '') {
-                      // alert("Mobile number must be filled out.");
-                      displayError('Mobile number must be filled out', 'mobilenum_error');
-                      return false;
-                    }
+                if (ename.value === '') {
+                  displayError('Employer name must be filled out', 'name_error');
+                  return false;
+                }
 
-                    if (email1.value === '') {
-                      // alert("Email must be filled out.");
-                      displayError('Email id must be filled out', 'emailid_error');
-                      return false;
-                    }
-                    return true;
-                  }
+                if (phonenumber1.value === '') {
+                  displayError('Mobile number must be filled out', 'mobilenum_error');
+                  return false;
+                }
 
-                  function clearErrorMessages() {
-                    var errorElements = document.querySelectorAll('.error');
-                    errorElements.forEach(function(errorElement) {
-                      errorElement.textContent = '';
-                    });
-                  }
+                if (email1.value === '') {
+                  displayError('Email id must be filled out', 'emailid_error');
+                  return false;
+                }
 
-                  function displayError(message, elementId) {
-                    var errorElement = document.getElementById(elementId);
-                    errorElement.innerHTML = message;
-                    errorElement.style.color = 'red';
-                  }
-                </script>
+                return true;
+              }
 
+              function displayError(message, elementId) {
+                var errorElement = document.getElementById(elementId);
+                errorElement.innerHTML = message;
+                errorElement.style.color = 'red';
+              }
 
-                <?php
+              function clearErrorMessages() {
+                var errorElements = document.getElementsByClassName('error');
+                Array.from(errorElements).forEach(function (errorElement) {
+                  errorElement.textContent = '';
+                });
+              }
+            </script>
+
+<?php
         } elseif ($method == "updateExperience") {
             ?>
                 <section class="Multi Columns Form">
@@ -1951,88 +1930,81 @@
                 </section>
 
                 <script>
-                
-                  function validateexpForm() {
-                    var category = document.getElementById("category");
-                    var subcategory = document.getElementById("subcategory");
-                    var experience = document.getElementById("experience");
-                    var companyname = document.getElementById("companyname");
-                    var role = document.getElementById("role");
-                    var ename = document.getElementById("nameofemployer");
-                    var phonenumber1 = document.getElementById("phonenumber");
-                    var email1 = document.getElementById("email");
+                function validateexpForm() {
+                  clearErrorMessages();
 
-                    if (category.value === '') {
-                      // alert("Category is required");
-                      displayError('Please select a category', 'category_error');
-                      return true;
-                    }
+                  var category = document.getElementById("category");
+                  var subcategory = document.getElementById("subcategory");
+                  var experience = document.getElementById("experience");
+                  var companyname = document.getElementById("companyname");
+                  var role = document.getElementById("role");
+                  var ename = document.getElementById("nameofemployer");
+                  var phonenumber1 = document.getElementById("number");
+                  var email1 = document.getElementById("emailid");
 
-                    if (subcategory.value === '') {
-                      // alert("Please select a subcategory");
-                      displayError('Please select a subcategory', 'subcategory_error');
-                      return false;
-                    }
-                    if (experience.value === 'fresher') {
-                      hideFields();
-                    } else if (experience.value === '') {
-                      // alert("Please select an experience");
-                      displayError('Please select an experience.', 'experience_error');
-                      return false;
-                    }
-
-                    if (companyname.value === '') {
-                      // alert("Please enter a company name.");
-                      displayError('Company name must be filled out', 'companyname_error');
-                      return false;
-                    }
-
-                    if (role.value === '') {
-                      // alert("Please enter a role.");
-                      displayError('Role must befilled out', 'role_error');
-                      return false;
-                    }
-
-                    if (ename.value === '') {
-                      // alert("Name must be filled out.");
-                      displayError('Employer name must be filled out', 'name_error');
-                      return false;
-                    }
-                    if (phonenumber1.value === '') {
-                      // alert("Mobile number must be filled out.");
-                      displayError('Mobile number must be filled out', 'mobilenum_error');
-                      return false;
-                    }
-                    if (email1.value === '') {
-                      // alert("Email must be filled out.");
-                      displayError('Email id must be filled out', 'emailid_error');
-                      return false;
-                    }
-
-                    return true;
+                  if (category.value === '') {
+                    displayError('Please select a category', 'category_error');
+                    return false;
                   }
 
-
-                  function clearErrorMessages() {
-                    var errorElements = document.querySelectorAll('.error');
-                    errorElements.forEach(function(errorElement) {
-                      errorElement.textContent = '';
-                    });
+                  if (subcategory.value === '') {
+                    displayError('Please select a subcategory', 'subcategory_error');
+                    return false;
                   }
 
-                  function displayError(message, elementId) {
-                    var errorElement = document.getElementById(elementId);
-                    errorElement.innerHTML = message;
-                    errorElement.style.color = 'red';
+                  if (experience.value === '') {
+                    displayError('Please select an experience', 'experienceexp_error');
+                    return false;
                   }
-                </script>
+
+                  if (companyname.value === '') {
+                    displayError('Company name must be filled out', 'companyname_error');
+                    return false;
+                  }
+
+                  if (role.value === '') {
+                    displayError('Role must be filled out', 'role_error');
+                    return false;
+                  }
+
+                  if (ename.value === '') {
+                    displayError('Employer name must be filled out', 'name_error');
+                    return false;
+                  }
+
+                  if (phonenumber1.value === '') {
+                    displayError('Mobile number must be filled out', 'mobilenum_error');
+                    return false;
+                  }
+
+                  if (email1.value === '') {
+                    displayError('Email id must be filled out', 'emailid_error');
+                    return false;
+                  }
+
+                  return true;
+                }
+
+                function displayError(message, elementId) {
+                  var errorElement = document.getElementById(elementId);
+                  errorElement.innerHTML = message;
+                  errorElement.style.color = 'red';
+                }
+
+                function clearErrorMessages() {
+                  var errorElements = document.getElementsByClassName('error');
+                  Array.from(errorElements).forEach(function (errorElement) {
+                    errorElement.textContent = '';
+                  });
+                }
+              </script>
 
 <?php
         } elseif ($method == "areaOfIntrestTable") {
             ?>
                 <section class="usertable">
                     <div class="pagetitle">
-                        <h1>Area of Job Interest and Skill Table</h1>
+                        <h1>Area of Job Interest and Skill Details</h1>
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
@@ -2290,85 +2262,76 @@
                 </section>
 
                 <script>
-                        function clearFormFields(form) {
-                          var fieldsToClear = form.querySelectorAll('input, select');
-                          for (var i = 0; i < fieldsToClear.length; i++) {
-                            fieldsToClear[i].value = '';
-                          }
-                        }
+            function clearFormFields(form) {
+              var fieldsToClear = form.querySelectorAll('input, select');
+              for (var i = 0; i < fieldsToClear.length; i++) {
+                fieldsToClear[i].value = '';
+              }
+            }
 
-                        function validateAreaForm() {
-                          var category = document.getElementById("category").value;
-                          var subcategory = document.getElementById("subcategory").value;
-                          var preferredLocation = document.getElementById("preferred-location").value;
-                          var jobtype = document.getElementById("jobtype").value;
-                          var experience = document.getElementById("experience").value;
-                          var description = document.getElementById("description").value;
-                          var expectedSalary = document.getElementById("expected-salary").value;
-                          // var skillExperience = document.getElementById("skillExperience").value;
-                          // var skillName = docment.getElementById("skillname").value;
-                          // var skillLevel = document.getElementById("skilllevel").value; 
+            function validateAreaForm() {
+              clearErrorMessages();
 
+              var category = document.getElementById("category").value;
+              var subcategory = document.getElementById("subcategory").value;
+              var preferredLocation = document.getElementById("preferred-location").value;
+              var jobtype = document.getElementById("jobtype").value;
+              var experience = document.getElementById("experience").value;
+              var description = document.getElementById("description").value;
+              var expectedSalary = document.getElementById("expected-salary").value;
 
-                          if (category === "") {
-                            // alert("Please select a category.");
-                            displayError('Please select a category', 'areacat_error');
-                            return false;
-                          }
+              if (category === "") {
+                displayError('Please select a category', 'areacat_error');
+                return false;
+              }
 
-                          if (subcategory === "" && category !== "") {
-                            // alert("Please select a subcategory.");
-                            displayError('Please select a subcategory', 'areasubcat_error');
-                            return false;
-                          }
+              if (subcategory === "" && category !== "") {
+                displayError('Please select a subcategory', 'areasubcat_error');
+                return false;
+              }
 
-                          if (preferredLocation.trim() === "") {
-                            // alert("Preferred location must be filled out.");
-                            displayError('Preferred location must be filled out', 'arealocation_error');
-                            return false;
-                          }
+              if (preferredLocation.trim() === "") {
+                displayError('Preferred location must be filled out', 'arealocation_error');
+                return false;
+              }
 
-                          if (experience.trim() === "") {
-                            // alert("Experience must be filled out.");
-                            displayError('Experience must be filled out', 'areaexp_error');
-                            return false;
-                          }
+              if (experience.trim() === "") {
+                displayError('Experience must be filled out', 'areaexp_error');
+                return false;
+              }
 
-                          if (description.trim() === "") {
-                            // alert("Description must be filled out.");
-                            displayError('Description must be filled out', 'areades_error');
-                            return false;
-                          }
+              if (description.trim() === "") {
+                displayError('Description must be filled out', 'areades_error');
+                return false;
+              }
 
-                          if (jobtype.trim() === "") {
-                            // alert("Please select your job type.");    
-                            displayError('Job type must be filled out', 'areajob_error');
-                            return false;
-                          }
+              if (jobtype.trim() === "") {
+                displayError('Job type must be filled out', 'areajob_error');
+                return false;
+              }
 
-                          if (expectedSalary.trim() === "") {
-                            // alert("Expected salary must be filled out.");
-                            displayError('Expected salary must be filled out', 'areasalary_error');
-                            return false;
-                          }
+              if (expectedSalary.trim() === "") {
+                displayError('Expected salary must be filled out', 'areasalary_error');
+                return false;
+              }
 
-                          return true;
-                        }
+              return true;
+            }
 
-                        function clearErrorMessages() {
-                          var errorElements = document.querySelectorAll('.error');
-                          errorElements.forEach(function(errorElement) {
-                            errorElement.textContent = '';
-                          });
-                        }
+            function clearErrorMessages() {
+              var errorElements = document.querySelectorAll('.error');
+              errorElements.forEach(function (errorElement) {
+                errorElement.textContent = '';
+              });
+            }
 
-                        function displayError(message, elementId) {
-                          var errorElement = document.getElementById(elementId);
-                          errorElement.innerHTML = message;
-                          errorElement.style.color = 'red';
-                        }
+            function displayError(message, elementId) {
+              var errorElement = document.getElementById(elementId);
+              errorElement.innerHTML = message;
+              errorElement.style.color = 'red';
+            }
+          </script>
 
-                      </script>
 
 <?php
         } elseif ($method == "addSkillForm") {
@@ -2389,12 +2352,13 @@
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate  method="post"
-                            onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Employee/insertSkillForm" ?>">
+                            onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Employee/insertSkillForm" ?>">
 
                             
                               <div class="col-12">
                                 <label class="form-label" for="skillname">Skill Name</label>
                                 <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name" required>
+                                <div id="sname_error" class="error"></div>
                               </div>
 
                               <div class="col-md-6">
@@ -2409,6 +2373,7 @@
                                   <option value="10-20">10-20 years</option>
                                   <option value="20-above">20 years above</option>
                                 </select> -->
+                                <div id="sexp_error" class="error"></div>
                               </div>
 
                               <div class="col-md-6">
@@ -2419,6 +2384,7 @@
                                   <option value="intermediate">Intermediate</option>
                                   <option value="advanced">Advanced</option>
                                 </select>
+                                <div id="slevel_error" class="error"></div>
                               </div>
 
                             <input type="number" class="form-control"  value="1" name="areasubmit" hidden>
@@ -2434,6 +2400,46 @@
                     </div>
                 </section>
 
+                <script>
+                  function validateSkillForm(){
+                    var sname = document.getElementById("skillname").value;
+                    var sexp = document.getElementById("skillexperience").value;
+                    var slevel = document.getElementById("skilllevel").value;
+
+                    clearErrorMessages();
+
+                    if (sname.trim() === "") {
+                    displayError('Skill name must be filled out', 'sname_error');
+                    return false;
+                  }
+
+                  if (sexp.trim() === "") {
+                    displayError('Skill experience must be filled out', 'sexp_error');
+                    return false;
+                  }
+
+                  if (slevel.trim() === "") {
+                    displayError('Skill level must be filled out', 'slevel_error');
+                    return false;
+                  }
+
+                  return true;
+                }
+
+                function displayError(message, elementId) {
+                  var errorElement = document.getElementById(elementId);
+                  errorElement.innerHTML = message;
+                  errorElement.style.color = 'red';
+                }
+
+                function clearErrorMessages() {
+                  var errorElements = document.getElementsByClassName('error');
+                  Array.from(errorElements).forEach(function (errorElement) {
+                    errorElement.textContent = '';
+                  });
+                }
+                  
+                </script>
                 
             <?php
         } elseif ($method == 'updateAreaOfIntrest') {
@@ -2624,11 +2630,8 @@
                           var experience = document.getElementById("experience").value;
                           var description = document.getElementById("description").value;
                           var expectedSalary = document.getElementById("expected-salary").value;
-                          // var skillExperience = document.getElementById("skillExperience").value;
-                          // var skillName = docment.getElementById("skillname").value;
-                          // var skillLevel = document.getElementById("skilllevel").value; 
 
-
+                          clearErrorMessages();
 
                           if (category === "") {
                             // alert("Please select a category.");
@@ -2672,19 +2675,6 @@
                             return false;
                           }
 
-                          // if (skillName.trim() === "") {
-                          //   alert("Please provide a skillname");
-                          //   return false;
-                          // }
-                          // if (skillExperience.trim() === "") {
-                          //   alert("Please provide a experience");
-                          //   return false;
-                          // }
-                          // if (skillLevel.trim() === "") {
-                          //   alert("Please provide a skillLevel");
-                          //   return false;
-                          // }
-
                           return true;
                         }
 
@@ -2700,9 +2690,7 @@
                           errorElement.innerHTML = message;
                           errorElement.style.color = 'red';
                         }
-                        // Function to update the subcategories based on the selected category
 
-                        // Helper function to add a subcategory option to the select element
                         function addSubcategoryOption(value, selectElement) {
                           var option = document.createElement("option");
                           option.value = value.toLowerCase();
@@ -2730,7 +2718,7 @@
 
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate  method="post"
-                            onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Employee/updateInsertSkill" ?>">
+                            onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Employee/updateInsertSkill" ?>">
 
                             <?php
                   if (isset($updateSkill[0]['id'])) {
@@ -2743,6 +2731,7 @@
                               <div class="col-12">
                                 <label class="form-label" for="skillname">Skill Name</label>
                                 <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name"  value="<?php echo $value['skill']; ?>" required>
+                                <div id="sname_error" class="error"></div>
                               </div>
 
                               <div class="col-md-6">
@@ -2756,6 +2745,7 @@
                                   <option value="10-20" <?php if ($value['experience'] === '10-20') echo ' selected'; ?>>10-20 years</option>
                                   <option value="20-above" <?php if ($value['experience'] === '20-above') echo ' selected'; ?>>20 years above</option>
                                 </select> -->
+                                <div id="sexp_error" class="error"></div>
                               </div>
 
                               <div class="col-md-6">
@@ -2765,6 +2755,7 @@
                               <option value="intermediate" <?php if ($value['skill_level'] === 'intermediate') echo ' selected'; ?>>Intermediate</option>
                               <option value="advanced" <?php if ($value['skill_level'] === 'advanced') echo ' selected'; ?>>Advanced</option>
                                 </select>
+                                <div id="slevel_error" class="error"></div>
                               </div>
 
                             <input type="number" class="form-control"  value="1" name="areasubmit" hidden>
@@ -2779,6 +2770,47 @@
                         </div>
                     </div>
                 </section>
+
+                <script>
+                  function validateSkillForm(){
+                    var sname = document.getElementById("skillname").value;
+                    var sexp = document.getElementById("skillexperience").value;
+                    var slevel = document.getElementById("skilllevel").value;
+
+                    clearErrorMessages();
+
+                    if (sname.trim() === "") {
+                    displayError('Skill name must be filled out', 'sname_error');
+                    return false;
+                  }
+
+                  if (sexp.trim() === "") {
+                    displayError('Skill experience must be filled out', 'sexp_error');
+                    return false;
+                  }
+
+                  if (slevel.trim() === "") {
+                    displayError('Skill level must be filled out', 'slevel_error');
+                    return false;
+                  }
+
+                  return true;
+                }
+
+                function displayError(message, elementId) {
+                  var errorElement = document.getElementById(elementId);
+                  errorElement.innerHTML = message;
+                  errorElement.style.color = 'red';
+                }
+
+                function clearErrorMessages() {
+                  var errorElements = document.getElementsByClassName('error');
+                  Array.from(errorElements).forEach(function (errorElement) {
+                    errorElement.textContent = '';
+                  });
+                }
+                  
+                </script>
 
                 
             <?php
@@ -2804,22 +2836,27 @@
                         <form class="row g-3 needs-validation" novalidate name="resumeform" id="resumeForm" method="post" enctype="multipart/form-data"
                             onsubmit="return validateForm()" action="<?php echo baseUrl . "Employee/registered" ?>">
 
-                         <div class="col-12">
+                            
+                            <?php if (!empty($arearesume[0]['resume_filename']))
+                            { ?>
+                              <div class="col-md-6">
+                                <label class="form-label" for="file">Uploaded Resume</label>
+                                <input type="file" name="oldresume" id="oldresume" value="<?php echo $arearesume[0]['resume_filename']?>" hidden>
+                                <div class="uploadedfile d-md-flex" >
+                                <input type="file" class="form-control " id="idresume" name="file" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden >
+                                <label id="file-input-labelresume" for="idresume" class="form-control">Change file</label>  
+                                <a href="<?php echo $arearesume[0]['resume_filename_url']?>" id="existfileresume" class="ms-2" style="margin-top:10px"><?php echo $arearesume[0]['resume_filename']?></a>
+                                </div>
+                            </div>
+                            <?php }
+                            else { 
+                              ?>
+                              <div class="col-12">
                             <label class="form-label" for="file">Upload Resume</label>
                             <input type="file" class="form-control" name="file" id="idresume" accept="image/png ,image/jpg, image/jpeg, application/pdf" required>
                             <div id="resume_error" class="text-danger"></div>
                         </div> 
-
-
-                            <!-- <div class="col-12">
-                                <label class="form-label" for="file">Uploaded Resume</label>
-                                <input type="file" name="oldresume" id="oldresume" value="<?php echo $areaOfIntrestTable['resume_filename']; ?>" >
-                                <div class="uploadedfile">
-                                <input type="file" class="form-control " id="idresume" name="file" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden/>
-                                <label id="file-input-labelresume" for="idresume">Select File</label>  
-                                <a href="<?php echo  $areaOfIntrestTable['resume_filename']; ?>" target="blank" id="existfileresume"  style="margin-top:10px"><?php echo  $areaOfIntrestTable['resume_filename_url']; ?></a>
-                                </div>
-                            </div> -->
+                            <?php } ?>
 
                             <input type="number" class="form-control"  value="1" name="resumesubmit" hidden>
 
@@ -2837,6 +2874,21 @@
                 </section>
 
                 <script>
+                        // uploaded resume
+                        document.getElementById("file-input-labelresume").addEventListener("click", function() {
+                                document.getElementById("existfileresume").style.display = "none";
+                            });
+
+                        const fileInputresume = document.getElementById("idresume");
+                        const fileInputLabelresume = document.getElementById("file-input-labelresume");
+
+                        fileInputresume.addEventListener("change", function () {
+                            if (fileInputresume.files.length > 0) {
+                              fileInputLabelresume.textContent = fileInputresume.files[0].name;
+                            } else {
+                              fileInputLabelresume.textContent = "Select a File";
+                            }
+                        });
 
                     function validateForm() {
                         var ur = document.resumeform.file.value;

@@ -38,6 +38,7 @@ class Employee extends CI_Controller
                 'seekerId' => $login[0]['id'],
                 'seekerName' => $login[0]['name'],
                 'seekerPhoneNumber' => $login[0]['phonenumber'],
+                'employeeidd' => $login[0]['eeid'],
                 'basicdetaildata' => $login[0]['bdsubmited'],
                 'edudata' => $login[0]['edusubmited'],
                 'expdata' => $login[0]['expsubmited'],
@@ -62,7 +63,6 @@ class Employee extends CI_Controller
         $data['generatedeeid'] = $generatedeeid;
         // $this->load->view('loginform.php');
         $this->load->view('employeeRegistered.php', $data);
-        echo '<script>alert("Registered successfully.");</script>';
     }
 
 
@@ -514,10 +514,11 @@ class Employee extends CI_Controller
 
     public function resume()
     {
-
         $this->data['method'] = "resume";
         $resume = $this->EmployeeModel->do_upload();
         $this->data['resume'] = $resume;
+        $arearesume = $this->EmployeeModel->areaOfIntrestTable();
+        $this->data['arearesume'] = $arearesume;
         $this->load->view('employeeDashboard.php', $this->data);
     }
 

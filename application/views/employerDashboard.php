@@ -610,7 +610,7 @@
 
                             <div class="d-flex justify-content-between">
                                      <a href="<?php echo baseUrl . "Employer/addNewJob" ?>">
-                                     <button type="button" class="btn btn-info mb-4">+ Add Job Requirements</button></a>
+                                     <button type="button" class="btn btn-success mb-4">+ Add Job Requirements</button></a>
                                      <a  href="<?php echo baseUrl . "Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
                                     </div>
                                 <?php

@@ -120,7 +120,7 @@ class EmployeeModel extends CI_Model
         // var_dump($postData);
 
         $config['upload_path'] = "./uploads/";
-        $basepath = 'http://localhost/arramjobs/uploads/';
+        $basepath =  base_url().'uploads/';
         $config['allowed_types'] = "jpg|png|pdf|jpeg";
         $config['max_size'] = 1024;
 
@@ -193,7 +193,7 @@ class EmployeeModel extends CI_Model
 
 
         $config['upload_path'] = "./uploads/";
-        $basepath = 'http://localhost/arramjobs/uploads/';
+        $basepath =  base_url().'uploads/';
         $config['allowed_types'] = "jpg|png|pdf|jpeg";
         $config['max_size'] = 1024;
 
@@ -296,7 +296,8 @@ class EmployeeModel extends CI_Model
         $post = $this->input->post(null, true);
 
         $config['upload_path'] = "./uploads/";
-        $basepath = 'http://localhost/arramjobs/uploads/';
+        // $basepath = 'http://localhost/arramjobs/uploads/';
+        $basepath =  base_url().'uploads/';
 
          $config['allowed_types'] = "jpg|png|pdf";
          $config['max_size'] = 1024;
@@ -830,8 +831,8 @@ class EmployeeModel extends CI_Model
     public function updateresumefilename($resumefilename)
     {
         $seekerId = $_SESSION['seekerId'];
-        $basepath = 'http://localhost/arramjobs/uploads/';
-
+        $basepath =  base_url().'uploads/';
+       
         $updateresume['resume_filename'] = $resumefilename;
         $updateresume['resume_filename_url'] = $basepath.$resumefilename;
 
