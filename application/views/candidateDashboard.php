@@ -136,14 +136,14 @@
                 <li class="nav-item dropdown pe-3 d-flex">
 
                 <?php
-                          if (isset($basicDetails)) {
+                          if (($basicDetails[0]['bdsubmited'] == '1')) {
                             foreach ($basicDetails as $key => $value) {
                                 ?>
                               <a href="<?php echo $value['photo'] ?>"><img src="<?php echo baseUrl . "uploads/".$value['photo_filename'] ?>" alt="profilep"  width="30" height="30" class="rounded-circle"></a>
                             <?php }
                           } else {
                             ?>
-                        <img src="<?php echo baseUrl . "assets/profilephoto.png" ?>" width="30" height="30" alt="Profile" class="rounded-circle">
+                        <img  src="<?php echo baseUrl . "assets/profilephoto.png" ?>" width="30" height="30" alt="Profile" class="rounded-circle">
                           <?php }
                           ?>
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">

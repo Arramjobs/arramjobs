@@ -325,14 +325,14 @@ class Admin extends CI_Controller
     {
         $postData = $this->input->post(null, true);
         $verifyEmployeeDetails = $this->AdminModel->verifyEmployeeDetails();
-        $this->verifiedEmployees();
+        $this->verifiedCandidate();
     }
 
     public function deleteEmployeeform()
     {
         $postData = $this->input->post(null, true);
         $deleteEmployeeDetails = $this->AdminModel->deleteEmployeeDetails();
-        $this->deleteEmployeeList();
+        $this->deleteCandidateList();
 
     }
 
@@ -340,7 +340,7 @@ class Admin extends CI_Controller
     {
         $postData = $this->input->post(null, true);
         $restoreEmployeeDetails = $this->AdminModel->restoreEmployeeDetails();
-        $this->deleteEmployeeList();
+        $this->deleteCandidateList();
     }
 
     // Delete Employee from Table permanently

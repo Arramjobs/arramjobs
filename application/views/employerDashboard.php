@@ -1383,7 +1383,7 @@
                                         ?>
                                                     <tr>
                                                         <td><?php echo $this->data['basicDetails'][0]['name']; ?></td>
-                                                        <td><img class="h-100" src="<?php echo $nvalue['photo'] ?>" class="card-img-top" width="160" height="160" alt="profile photo"></td>
+                                                        <td><img class="h-100" src="<?php echo baseUrl . "uploads/".$nvalue['photo_filename'] ?>" class="card-img-top" width="160" height="160" alt="profile photo"></td>
                                                     </tr>
                                                 <?php
                                             }
