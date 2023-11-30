@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Employee Registered</title>
+    <title>Candidate Registered</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -37,8 +38,8 @@
 
             <section>
                 <div class="my-5 py-md-5 text-center">
-                    <img class="img-fluid" src="<?php echo baseUrl . "assets/employee_registered.png" ?>" alt="Thanks">
-                    <p class="ms-5">The registered id is <b>  <?php echo $generatedeeid; ?> </b> for <a href="<?php echo baseUrl . "Employee" ?>">Login</a>.</p>
+                    <img class="img-fluid" src="<?php echo baseUrl . "assets/candidate_registered.png" ?>" alt="Thanks">
+                    <p class="ms-5">Use the registered mobile number to <a href="<?php echo baseUrl . "Candidate" ?>">Login</a>.</p>
 
                     </div>
             </section>

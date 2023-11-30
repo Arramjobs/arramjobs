@@ -4,7 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arram Jobs</title>
+  <title>அறம் அறக்கட்டளை</title>
+
+  <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -15,6 +18,12 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Fonts -->
+
+  <!-- Template Main CSS File -->
+  <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
+
+<!-- END of my changes -->
+
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -454,10 +463,10 @@
           </div> -->
 
         <div class="loginbutton">
-          EMPLOYEE
+        CANDIDATE
           <p class="loginlink">
-            <a href="<?php echo baseUrl . "Employee" ?>" class="signlink">Login</a>
-            <a href="<?php echo baseUrl . "Employee/registration" ?>">Sign Up</a>
+            <a href="<?php echo baseUrl . "Candidate" ?>" class="signlink">Login</a>
+            <a href="<?php echo baseUrl . "Candidate/registration" ?>">Sign Up</a>
           </p>
         </div>
         <div class="loginbutton loginbutton2">
@@ -727,7 +736,7 @@
 
 
 
-  <section id="seeker" class="seeker section-padding" style="background-color: #f7fee7">
+  <section id="candidate" class="seeker section-padding" style="background-color: #f7fee7">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 col-12">
@@ -738,7 +747,7 @@
         <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center"
           style="text-align: justify; font-size: medium;">
           <div class="about-text">
-            <p class="fs-1">Employee</p>
+            <p class="fs-1">Candidate</p>
             <p>At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost
               potential. Regardless of where you stand in your career journey—whether you're a recent graduate venturing
               into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in
@@ -758,7 +767,7 @@
 
   <!-- provider -->
 
-  <section id="provider" class="provider section-padding" style="background-color: #ede9fe">
+  <section id="employer" class="provider section-padding" style="background-color: #ede9fe">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center"
@@ -1155,10 +1164,10 @@
               <a href="#about" class="text-reset" style="text-decoration: none;">About Us</a>
             </p>
             <p style="color: white;">
-              <a href="#provider" class="text-reset" style="text-decoration: none;">Employer</a>
+              <a href="#candidate" class="text-reset" style="text-decoration: none;">Candidate</a>
             </p>
             <p style="color: white;">
-              <a href="#seeker" class="text-reset" style="text-decoration: none;">Employee</a>
+              <a href="#employer" class="text-reset" style="text-decoration: none;">Employer</a>
             </p>
             <!-- <p style="color: white;">
               <a href="https://arramjobs.in/blog/" class="text-reset" style="text-decoration: none;">Blog</a>
@@ -1176,9 +1185,9 @@
             </p>
             <p style="color: white;">
               <i class="fas fa-envelope me-3" style="color: white;"></i>
-              arramjobs@gmail.com
+              <a href="mailto:arramjobs@gmail.com" style="color: white; text-decoration: none;"> arramjobs@gmail.com</a>
             </p>
-            <p style="color: white;"><i class="fas fa-phone me-3" style="color: white;"></i> +91 74183 34443</p>
+            <p style="color: white;"><i class="fas fa-phone me-3" style="color: white;"></i> <a href="tel:+7418334443" style="color: white; text-decoration: none;" >+91 7418334443</a> </p></p>
             <!-- <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p> -->
           </div>
           <!-- Grid column -->

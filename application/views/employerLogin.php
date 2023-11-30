@@ -10,10 +10,11 @@
 
     <title>Employer Login Page</title>
 
+    <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -59,17 +60,17 @@
 
                                     <div class="pt-4 pb-2">
                                         <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                                        <p class="text-center small">Enter your registered id to login</p>
+                                        <p class="text-center small">Enter your registered mobile number to login</p>
                                     </div>
 
                                     <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Employer/viewDashboard" ?>" onsubmit="return validateForm()" method="post" >
 
                                         <div class="col-12">
-                                            <label for="userID" class="form-label">Registered ID:</label>
+                                            <label for="userID" class="form-label">Mobile Number : </label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="userName" placeholder="Enter your registered id" class="form-control" id="userID" required>
-                                                <div class="invalid-feedback">Please enter your registered id.</div>
+                                                <input type="text" name="mobilenumber" placeholder="Enter your mobile number" class="form-control" id="userID" required>
+                                                <div class="invalid-feedback">Please enter your registered mobile number.</div>
                                             </div>
                                         </div>
 

@@ -13,9 +13,9 @@ class EmployerModel extends CI_Model
   {
     $postData = $this->input->post(null, true);
 
-
     $config['upload_path'] = "./uploads/";
-    $basepath = 'http://localhost/arramjobs/uploads/';
+    // $basepath = 'http://localhost/arramjobs/uploads/';
+    $basepath =  base_url().'uploads/';
     $config['allowed_types'] = "jpg|png|pdf|jpeg";
     $config['max_size'] = 1024;
 
@@ -51,7 +51,6 @@ class EmployerModel extends CI_Model
       'mobile_number' => $postData['mobile1'],
       'email' => $postData['email1'],
     );
-
 
     $this->db->insert('provider_registration_form', $insert);
   }
@@ -91,6 +90,13 @@ public function get_latest_customer_id() {
     }
 }
 
+public function checkUserExistence($phone_number)
+    {
+        $this->db->where('company_mobile_number', $phone_number);
+        $query = $this->db->get('provider_registration_form');
+        return $query->num_rows() > 0;
+    }
+
 
   // public function database_login()
   // {
@@ -106,10 +112,9 @@ public function get_latest_customer_id() {
   public function providerLogin()
   {
     $postData = $this->input->post(null, true);
-    $employerid = $postData['userName'];
-    // $companyMobile = $postData['number'];
-    // $query = "SELECT * FROM provider_registration_form WHERE userName='$companyName' AND password ='$companyMobile'";
-    $query = "SELECT * FROM provider_registration_form WHERE erid='$employerid' AND verificationStatus = '1' AND ( addNewApprovel = '1' OR deleteApprovel = '2')";
+    // $employerid = $postData['userName'];
+    $companyMobile = $postData['mobilenumber'];
+    $query = "SELECT * FROM provider_registration_form WHERE company_mobile_number = '$companyMobile' AND verifyOne = '1' AND  verifyTwo = '1' AND deleteStatus = '0'";
     $count = $this->db->query($query);
     return $count->result_array();
   }
@@ -134,7 +139,7 @@ public function get_latest_customer_id() {
     $id = $postData['id'];
 
     $config['upload_path'] = "./uploads/";
-    $basepath = 'http://localhost/arramjobs/uploads/';
+    $basepath =  base_url().'uploads/';
     $config['allowed_types'] = "jpg|png|pdf|jpeg";
     $config['max_size'] = 1024;
 
@@ -196,7 +201,10 @@ public function get_latest_customer_id() {
       'salary' => $post['expected_salary'],
       'experience' => $post['experience'],
       'number_of_openings' => $post['no_of_openings'],
-      'description' => $post['description']
+      'description' => $post['description'],
+      'categoryOthers' =>isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
+      'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0"
+
     );
 
     $this->db->insert('provider_job', $add);
@@ -255,6 +263,12 @@ public function get_latest_customer_id() {
     // $this->db->where('id', $deleteId);
   }
 
+  public function getCategoryList(){
+    $category = "SELECT * FROM `category_master` ORDER BY `categoryName` ASC ";
+    $select = $this->db->query($category);
+    return $select->result(); 
+}
+
 
   //   public function joinTables($jobCategory)
   //   {
@@ -266,14 +280,28 @@ public function get_latest_customer_id() {
 
   public function candidates($jobCategory)
   {
-    $query = "SELECT spf.id as seekerId, spf.name as name, saoi.id as id,  saoi.other_sub_interst_category as oisc, saoi.experience as exps,
-    ssk.skill as skills FROM seeker_profile_form spf INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId=spf.id 
-    INNER JOIN  seeker_skill ssk ON ssk.seekerId=spf.id
-    WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.verificationStatus = '1' " ;
+    $query = "SELECT spf.id as seekerId, spf.name as name,  saoi.other_sub_interst_category as oisc, saoi.experience as exps, ssk.skill as skills 
+    FROM seeker_profile_form spf 
+    INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
+    INNER JOIN  seeker_skill ssk ON ssk.seekerId = spf.id
+    WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.identityVerify ='1' AND spf.addressVerify ='1' AND spf.employmentVerify ='1' AND spf.identityVerify ='1' AND spf.deleteStatus ='0' ;" ;
     $result = $this->db->query($query);
     return $result->result_array();
   }
 
+
+  public function requestForCandidate()
+  {
+      $postData = $this->input->post(null, true);
+      $updateRequestStatus = array(
+          'requestCandidate' => $postData['requestadmin'],
+          'requestedEmployer' => $postData['employer_id']
+
+      );
+
+      $this->db->where('id', $postData['candidateid']);
+      $this->db->update('seeker_profile_form', $updateRequestStatus);
+  }
 
   public function allTableJoin()
   {
