@@ -221,14 +221,14 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item <?php echo isPageActive('Employer/dashboard') ? 'active' : ''; ?>">
+            <li class="nav-item" id="dash" >
                 <a class="nav-link " href="<?php echo baseUrl . "Employer/dashboard" ?>">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
-            <li class="nav-item <?php echo isPageActive('Employer/updateRegistration') ? 'active' : ''; ?>">
+            <li class="nav-item" id="employerprofile">
                 <a class="nav-link "   href="<?php echo baseUrl . "Employer/updateRegistration" ?>">
                     <!-- <i class="bi bi-menu-button-wide"></i> -->
                     <i class="bi bi-person"></i>
@@ -236,7 +236,7 @@
                 </a>
             </li><!-- End profile Nav -->
 
-            <li class="nav-item <?php echo isPageActive('Employer/jobViewTable') || isPageActive('Employer/jobMatchedTable') || isPageActive('Employer/updateAddNew') || isPageActive('Employer/deleteAddJob') || isPageActive('Employer/addNewJob') || isPageActive('Employer/resumeCard')? 'active' : ''; ?>">
+            <li class="nav-item" id="employerjobs">
                 <a class="nav-link "   href="<?php echo baseUrl . "Employer/jobViewTable" ?>">
                     <i class="bi bi-bar-chart"></i>
                     <span>Employer Jobs</span>
@@ -247,22 +247,14 @@
 
     </aside><!-- End Sidebar-->
 
-        <?php
-            function isPageActive($page)
-        {
-            // Get the current page URL
-            $currentUrl = $_SERVER['REQUEST_URI'];
-
-            // Check if the current page URL contains the specified page
-            return strpos($currentUrl, $page) !== false || ($page === 'Employer/dashboard' && $currentUrl === '/');
-        }
-        ?>
-
-
     <main id="main" class="main">
         <?php
         if ($method == "dashboard") {
             ?>
+            <!-- Sidebar Active  -->
+        <script>
+         document.getElementById('dash').classList.add('active');
+        </script>
                 <section class="section dashboard">
                     <div class="pagetitle">
                         <h1>Dashboard</h1>
@@ -304,6 +296,10 @@
                 <?php
         } elseif ($method == "updateJob") {
             ?>
+            <!-- Sidebar Active  -->
+        <script>
+         document.getElementById('employerprofile').classList.add('active');
+        </script>
                 <section class="Multi Columns Form">
                     <div class="pagetitle">
                         <h1>Edit Employer Profile</h1>
@@ -688,6 +684,10 @@
         <?php
         } elseif ($method == "jobview") {
             ?>
+            <!-- Sidebar Active  -->
+        <script>
+         document.getElementById('employerjobs').classList.add('active');
+        </script>
                 <section class="usertable">
                     <div class="pagetitle">
                         <h1>Employer Jobs</h1>
@@ -705,7 +705,7 @@
                             <h5 class="card-title">Jobs</h5>
 
                             <div class="d-flex justify-content-between">
-                                     <a class="<?php echo isPageActive('Employer/addNewJob') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Employer/addNewJob" ?>">
+                                     <a class="" href="<?php echo baseUrl . "Employer/addNewJob" ?>">
                                      <button type="button" class="btn btn-success mb-4">+ Add Job Requirements</button></a>
                                      <a  href="<?php echo baseUrl . "Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
                                     </div>
@@ -748,9 +748,9 @@
                                                             <td><?php echo $value['number_of_openings'] ?></td>
                                                             <td><?php echo $twelveHourTime ?></td>
                                                             <td class="d-flex">
-                                                            <a class="<?php echo isPageActive('Employer/jobMatchedTable') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>"><button type="button" class="btn btn-success">List</button></a>
-                                                            <a class="px-1 <?php echo isPageActive('Employer/updateAddNew') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Employer/updateAddNew" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary">Edit</button></a>
-                                                            <a <?php echo isPageActive('Employer/deleteAddJob') ? 'active' : ''; ?> onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employer/deleteAddJob" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                            <a class="" href="<?php echo baseUrl . "Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>"><button type="button" class="btn btn-success">List</button></a>
+                                                            <a class="px-1 " href="<?php echo baseUrl . "Employer/updateAddNew" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary">Edit</button></a>
+                                                            <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Employer/deleteAddJob" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                                                       </td> 
                                                         </tr>
                                                     <?php
@@ -774,6 +774,10 @@
                 <?php
         } elseif ($method == "addnew") {
             ?>
+            <!-- Sidebar Active  -->
+        <script>
+         document.getElementById('employerjobs').classList.add('active');
+        </script>
                 <section class="Multi Columns Form">
                     <div class="pagetitle">
                         <h1>Employer Jobs</h1>
@@ -1029,6 +1033,10 @@
 <?php
         } elseif ($method == "updateaddnew") {
             ?>
+            <!-- Sidebar Active  -->
+        <script>
+         document.getElementById('employerjobs').classList.add('active');
+        </script>
                 <section class="Multi Columns Form">
                     <div class="pagetitle">
                         <h1>Employer Jobs</h1>
@@ -1057,24 +1065,14 @@
                         <div class="col-md-6">
                             <label class="form-label"  for="category">Category:</label>
                             <select class="form-control" id="category" value="<?php echo $value['jobCategory']; ?>" name="category" required>
-                            <option value="<?php echo $value['jobCategory'];?>"><?php echo $value['jobCategory'];?></option>
-                            <!-- <option value="">Select a category</option>
-                                <option value="architech" <?php if ($value['jobCategory'] === 'architech')
-                                                                echo ' selected'; ?>>Architech</option>
-                                <option value="developer" <?php if ($value['jobCategory'] === 'developer')
-                                                                echo ' selected'; ?>>Developer</option>
-                                <option value="tester" <?php if ($value['jobCategory'] === 'tester')
-                                                            echo ' selected'; ?>>Tester</option>
-                                <option value="uiux" <?php if ($value['jobCategory'] === 'uiux')
-                                                            echo ' selected'; ?>>UI/UX Design</option>
-                                <option value="datascience" <?php if ($value['jobCategory'] === 'datascience')
-                                                                echo ' selected'; ?>>Data Scientist</option>
-                                <option value="databaseadmin" <?php if ($value['jobCategory'] === 'databaseadmin')
-                                                                    echo ' selected'; ?>>Database Admin</option>
-                                <option value="teacher" <?php if ($value['jobCategory'] === 'teacher')
-                                                            echo ' selected'; ?>>Teacher</option>
-                                <option value="professor" <?php if ($value['jobCategory'] === 'professor')
-                                                                echo ' selected'; ?>>Professor</option> -->
+                            <?php   
+                                      $defaultSelectedValue = $value['jobCategory'];
+                                      foreach ($categoryList as $key => $cvalue) {
+                                          $selected = ($cvalue->categoryName == $defaultSelectedValue) ? 'selected' : ''; ?>
+                                          <option value="<?php echo $cvalue->categoryName ?>" <?php echo $selected ?>>
+                                              <?php echo $cvalue->categoryName ?>
+                                          </option>
+                                      <?php }  ?>
                             </select>
                             <div id="category_error" class="error"></div>
                         </div>
@@ -1281,6 +1279,10 @@
 <?php
         } elseif ($method == "match") {
             ?>
+            <!-- Sidebar Active  -->
+        <script>
+         document.getElementById('employerjobs').classList.add('active');
+        </script>
                 <section class="usertable">
                     <div class="pagetitle">
                         <h1>Job Matched Candidates</h1>
@@ -1323,7 +1325,7 @@
                                                             <td><?php echo $value['oisc'] ?></td>
                                                             <td><?php echo $value['exps'] ?></td>
                                                             <td><?php echo $value['skills'] ?></td>
-                                                            <td><a class="<?php echo isPageActive('Employer/resumeCard') ? 'active' : ''; ?>" href="<?php echo baseUrl . "Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
+                                                            <td><a class="" href="<?php echo baseUrl . "Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
                                                         </td>
                                                         </tr>
                                                     <?php
@@ -1352,6 +1354,10 @@
                 <?php
         } elseif ($method == "resume") {
             ?>
+            <!-- Sidebar Active  -->
+        <script>
+         document.getElementById('employerjobs').classList.add('active');
+        </script>
                 <section>
                     <!-- Default Card -->
                     <div class="card" id="resumeprint">
@@ -1490,45 +1496,45 @@
                                                         <td><?php echo $value['percentage'] ?></td>
                                                         <td><?php echo $value['yearOfPassing'] ?></td>
                                                         <?php
-                    if ( $value['educational_qualification'] == '10th/SSLC' ) {
-                      ?>
-                                  <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
-                  <?php
-                    }
-                    else if ( $value['educational_qualification'] == '12th/HSC' ) {
-                    ?>
-                     <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
-                     <?php
-                    } else if ($value['educational_qualification'] == 'DIPLOMA') {
-                    ?>
-                            <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
-                     <?php
-                    }
-                    else if ( $value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                    $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" || 
-                    $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW") {
-                    ?>
-                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
-                    <?php
-                   }
-                  else if ( $value['educational_qualification'] == "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                  $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                   $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" ) {
-                   ?>
-                   <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
-                   <?php
-                    }
-                    else if ( $value['educational_qualification'] == 'Ph.D' ) {
-                    ?>
-                    <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
-                     <?php
-                    }
-                    else {
-                    ?>
-                    <td>NA</a></td>
-                    <?php
-                   }
-                   ?>
+                                                        if ( $value['educational_qualification'] == '10th/SSLC' ) {
+                                                        ?>
+                                                                    <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
+                                                    <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == '12th/HSC' ) {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
+                                                        <?php
+                                                        } else if ($value['educational_qualification'] == 'DIPLOMA') {
+                                                        ?>
+                                                                <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
+                                                        <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                        $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" || 
+                                                        $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW") {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
+                                                        <?php
+                                                    }
+                                                    else if ( $value['educational_qualification'] == "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                    $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                    $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" ) {
+                                                    ?>
+                                                    <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
+                                                    <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == 'Ph.D' ) {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
+                                                        <?php
+                                                        }
+                                                        else {
+                                                        ?>
+                                                        <td>NA</a></td>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                     </tr>
                                                 <?php
                                             }
@@ -1677,7 +1683,7 @@
                                         <input class="form-check-input" type="text" name="candidateid" id="" value="<?php echo $this->data['basicDetails'][0]['id']; ?>" hidden>
                                         <input class="form-check-input" type="text" name="employer_id" id="" value="<?php echo $_SESSION['employerid'] ?>" hidden>
 
-                                        <button type="submit" id="candidaterequest" class="btn btn-success printhide" onclick="return confirm('Are you sure you want to send requuest ?')">Request to view details</button>
+                                        <button type="submit" id="candidaterequest" class="btn btn-success printhide" onclick="return confirm('Are you sure you want to send request?')">Request to view details</button>
                                     </form>
                                     <button id="candidaterequested" class="btn btn-success printhide" style="display:none" disabled >Request send to view details</button>
                             <!-- <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button> -->

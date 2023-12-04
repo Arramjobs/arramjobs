@@ -211,20 +211,20 @@
 
         public function unVerifiedEmployees()
         {
-            $unVerifiedEmployees = "SELECT * FROM `seeker_profile_form` WHERE identityVerify ='0' AND addressVerify ='0' AND employmentVerify ='0' AND identityVerify ='0' AND newList = '0' AND deleteStatus ='0'";
+            $unVerifiedEmployees = "SELECT * FROM `seeker_profile_form` WHERE identityVerify ='0' AND addressVerify ='0' AND employmentVerify ='0' AND educationverify ='0' AND newList = '0' AND deleteStatus ='0'";
             $response = $this->db->query($unVerifiedEmployees);
             return $response->result_array();
         }
 
         public function verifiedEmployees()
         {
-            $verifiedEmployees = "SELECT * FROM `seeker_profile_form` WHERE identityVerify ='1' AND addressVerify ='1' AND employmentVerify ='1' AND identityVerify ='1' AND deleteStatus ='0'";
+            $verifiedEmployees = "SELECT * FROM `seeker_profile_form` WHERE identityVerify ='1' AND addressVerify ='1' AND employmentVerify ='1' AND educationverify ='1' AND deleteStatus ='0'";
             $response = $this->db->query($verifiedEmployees);
             return $response->result_array();
         }
         public function pendingEmployees()
         {
-            $pendingEmployees = "SELECT * FROM `seeker_profile_form` WHERE (identityVerify ='0' OR addressVerify ='0' OR employmentVerify ='0' OR identityVerify ='0') AND newList = '1' AND deleteStatus ='0'";
+            $pendingEmployees = "SELECT * FROM `seeker_profile_form` WHERE (identityVerify ='0' OR addressVerify ='0' OR employmentVerify ='0' OR educationverify ='0') AND newList = '1' AND deleteStatus ='0'";
             $response = $this->db->query($pendingEmployees);
             return $response->result_array();
         }
@@ -286,7 +286,7 @@
 
         public function candidateRequestDetails()
         {
-            $candidateRequestList = "SELECT * FROM `seeker_profile_form` WHERE identityVerify ='1' AND addressVerify ='1' AND employmentVerify ='1' AND identityVerify ='1' AND deleteStatus ='0' AND requestCandidate ='1'";
+            $candidateRequestList = "SELECT * FROM `seeker_profile_form` WHERE identityVerify ='1' AND addressVerify ='1' AND employmentVerify ='1' AND educationverify ='1' AND deleteStatus ='0' AND requestCandidate ='1'";
             $response = $this->db->query($candidateRequestList);
             return $response->result_array();
         }
@@ -312,6 +312,106 @@
             $this->db->where('id', $postData['EmployeeId']);
             $this->db->update('seeker_profile_form', $updateRequestApprovel);
         }
+
+       
+        public function candidateNewCategory()
+        {
+            $candidateNewCategory = "SELECT * FROM `seeker_experience` WHERE categoryOthers ='1' ";
+            $response = $this->db->query($candidateNewCategory);
+            return $response->result_array();
+        }
+        public function candidateNewCategoryArea()
+        {
+            $candidateNewCategoryArea = "SELECT * FROM `seeker_area_of_interst` WHERE categoryOthers ='1' ";
+            $response = $this->db->query($candidateNewCategoryArea);
+            return $response->result_array();
+        }
+
+        public function employerNewCategory()
+        {
+            $employernewcategory = "SELECT * FROM `provider_job` WHERE categoryOthers ='1' ";
+            $response = $this->db->query($employernewcategory);
+            return $response->result_array();
+        }
+
+        public function addcategoryExperience(){
+            $postData = $this->input->post(null, true);
+            $addnewcategory = array(
+                'other_category' => $postData['new_category'],
+                'categoryOthers' => $postData['categoryexp']
+            );
+
+            $this->db->where('id', $postData['expTableId']);
+            $this->db->update('seeker_experience', $addnewcategory);
+
+            $newcategorytable = array(
+                'categoryName' => $postData['new_category'],
+            );
+            $this->db->insert('category_master', $newcategorytable);
+        }
+
+        public function addcategoryArea(){
+            $postData = $this->input->post(null, true);
+            $addnewcategory = array(
+                'other_interst_category' => $postData['new_category'],
+                'categoryOthers' => $postData['categoryarea']
+            );
+
+            $this->db->where('id', $postData['areaTableId']);
+            $this->db->update('seeker_area_of_interst', $addnewcategory);
+
+            $newcategorytable = array(
+                'categoryName' => $postData['new_category'],
+            );
+            $this->db->insert('category_master', $newcategorytable);
+        }
+
+        public function addcategoryEmployerJob(){
+            $postData = $this->input->post(null, true);
+            $addnewcategory = array(
+                'jobCategory' => $postData['new_category'],
+                'categoryOthers' => $postData['categoryjob']
+            );
+
+            $this->db->where('id', $postData['jobTableId']);
+            $this->db->update('provider_job', $addnewcategory);
+
+            $newcategorytable = array(
+                'categoryName' => $postData['new_category'],
+            );
+            $this->db->insert('category_master', $newcategorytable);
+        }
+
+         function cancelNewCategoryExp(){
+            $postData = $this->input->post(null, true);
+            $cancelnewcategory = array(
+                'categoryOthers' => $postData['categoryothers']
+            );
+
+            $this->db->where('id', $postData['jobTableId']);
+            $this->db->update('seeker_experience', $cancelnewcategory);
+        }
+
+        function cancelNewCategoryArea(){
+            $postData = $this->input->post(null, true);
+            $cancelnewcategory = array(
+                'categoryOthers' => $postData['categoryothers']
+            );
+
+            $this->db->where('id', $postData['jobTableId']);
+            $this->db->update('seeker_area_of_interst', $cancelnewcategory);
+        }
+
+        function cancelNewCategoryJob(){
+            $postData = $this->input->post(null, true);
+            $cancelnewcategory = array(
+                'categoryOthers' => $postData['categoryothers']
+            );
+
+            $this->db->where('id', $postData['jobTableId']);
+            $this->db->update('provider_job', $cancelnewcategory);
+        }
+
 
         // Delete Employee from Table permanently
         // public function deleteEmployee($deleteEmployeeId)

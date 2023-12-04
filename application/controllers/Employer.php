@@ -194,8 +194,13 @@ class Employer extends CI_Controller
     {
         $id = $this->uri->segment(3);
         $this->data['method'] = "updateaddnew";
+
         $addjob = $this->EmployerModel->updatejob($id);
         $this->data['updateAddNew'] = $addjob;
+
+        $categoryList = $this->EmployerModel->getCategoryList();
+        $this->data['categoryList'] = $categoryList;
+        
         //$this->load->view('update_addnew_jobs.php',$this->data);
         $this->load->view('employerDashboard.php', $this->data);
     }

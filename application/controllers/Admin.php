@@ -333,7 +333,6 @@ class Admin extends CI_Controller
         $postData = $this->input->post(null, true);
         $deleteEmployeeDetails = $this->AdminModel->deleteEmployeeDetails();
         $this->deleteCandidateList();
-
     }
 
     public function restoreEmployeeform()
@@ -377,12 +376,6 @@ class Admin extends CI_Controller
     // }
 
 
-    public function categoryRequest()
-    {
-        $this->data['method'] = "categoryRequest";
-        $this->load->view('adminDashboard.php', $this->data);
-    }
-
     public function candidateRequestList()
     {
         $this->data['method'] = "candidateRequestList";
@@ -405,6 +398,63 @@ class Admin extends CI_Controller
         $this->candidateRequestList();
     }
 
+    public function categoryRequest()
+    {
+        $this->data['method'] = "categoryRequest";
+
+        $candidateNewCategory = $this->AdminModel->candidateNewCategory();
+        $this->data['candidateNewCategory'] = $candidateNewCategory;
+
+        $candidateNewCategoryArea = $this->AdminModel->candidateNewCategoryArea();
+        $this->data['candidateNewCategoryArea'] = $candidateNewCategoryArea;
+
+        $employerNewCategory = $this->AdminModel->employerNewCategory();
+        $this->data['employerNewCategory'] = $employerNewCategory;
+
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
+    public function addNewCategoryExperience()
+    {
+        $postData = $this->input->post(null, true);
+        $newcategory = $this->AdminModel->addcategoryExperience();
+        $this->categoryRequest();
+    }
+
+    public function addNewCategoryArea()
+    {
+        $postData = $this->input->post(null, true);
+        $newcategory = $this->AdminModel->addcategoryArea();
+        $this->categoryRequest();
+    }
+
+    public function employerNewCategory()
+    {
+        $postData = $this->input->post(null, true);
+        $newcategory = $this->AdminModel->addcategoryEmployerJob();
+        $this->categoryRequest();
+    }
+    
+    public function cancelNewCategoryExp()
+    {
+        $postData = $this->input->post(null, true);
+        $cancelnewcategory = $this->AdminModel->cancelNewCategoryExp();
+        $this->categoryRequest();
+    }
+
+    public function cancelNewCategoryArea()
+    {
+        $postData = $this->input->post(null, true);
+        $cancelnewcategory = $this->AdminModel->cancelNewCategoryArea();
+        $this->categoryRequest();
+    }
+
+    public function cancelNewCategoryJob()
+    {
+        $postData = $this->input->post(null, true);
+        $cancelnewcategory = $this->AdminModel->cancelNewCategoryJob();
+        $this->categoryRequest();
+    }
     public function logout()
     {
         $this->session->unset_userdata('adminLoggedIn');
