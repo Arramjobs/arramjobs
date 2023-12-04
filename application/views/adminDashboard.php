@@ -145,7 +145,7 @@
 
 .sidebar-nav .nav-link.collapsed i {
   color: #4154f1;
-  
+  background-color: transparent;
   }
 
   .sidebar-nav .nav-link:hover {
@@ -180,6 +180,24 @@
 
 }
 
+.sidebar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4154f1;
+  transition: 0.3;
+  background: transparent;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.sidebar-nav .nav-link1 {
+  
+  color: #4154f1;
+  background: black;
+  
+}
 
 
 /* End of changes */
@@ -293,15 +311,15 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item <?php echo isPageActive('admin/dashboard') ? 'active' : ''; ?>">
+            <li class="nav-item " id="dash" >
                 <a class="nav-link " href="<?php echo baseUrl . "admin/dashboard" ?>">
                     <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
+                    <span id="dashboardad">Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
-            <li>
-                <a class="nav-link collapsed <?php echo isPageActive('admin/createAdminUser') || isPageActive('admin/adminUsers') ? 'active' : ''; ?>" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+            <li class="mb-1">
+                <a class="nav-link collapsed " id="adminuser" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                     <!-- <i class="bi bi-menu-button-wide"></i> -->
                     <i class="bi bi-person"></i>
                     <span>Admin Users</span>
@@ -309,12 +327,12 @@
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a class="<?php echo isPageActive('admin/createAdminUser') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/createAdminUser" ?>">
+                        <a id="adminusernew" href="<?php echo baseUrl . "admin/createAdminUser" ?>">
                             <i class="bi bi-circle"></i><span>Create New User</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('admin/adminUsers') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/adminUsers" ?>">
+                        <a id="adminuserlist" href="<?php echo baseUrl . "admin/adminUsers" ?>">
                             <i class="bi bi-circle"></i><span>Users List</span>
                         </a>
                     </li>
@@ -322,37 +340,37 @@
             </li><!-- End Tables Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed <?php echo isPageActive('admin/createEmployer') || isPageActive('admin/newEmployersList')  || isPageActive('admin/verifiedEmployers')  || isPageActive('admin/pendingEmployers')  || isPageActive('admin/deleteEmployerList')  || isPageActive('admin/overallEmployers') || isPageActive('admin/manageEmployer/')? 'active' : ''; ?>" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                <a class="nav-link collapsed" id="employerslist" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-bar-chart"></i><span>Employers</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a class="<?php echo isPageActive('admin/createEmployer') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/createEmployer" ?>">
+                        <a id="employercreate" href="<?php echo baseUrl . "admin/createEmployer" ?>">
                             <i class="bi bi-circle"></i><span>Create New Employer</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('admin/newEmployersList') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/newEmployersList" ?>">
+                        <a id="employernewlist" href="<?php echo baseUrl . "admin/newEmployersList" ?>">
                             <i class="bi bi-circle"></i><span>New Employer List</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('admin/verifiedEmployers') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/verifiedEmployers" ?>">
+                        <a id="employerverifiedlist" href="<?php echo baseUrl . "admin/verifiedEmployers" ?>">
                             <i class="bi bi-circle"></i><span>Verified List</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('admin/pendingEmployers') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/pendingEmployers" ?>">
+                        <a id="employerpendinglist" href="<?php echo baseUrl . "admin/pendingEmployers" ?>">
                             <i class="bi bi-circle"></i><span>Pending List</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('admin/deleteEmployerList') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/deleteEmployerList" ?>">
+                        <a id="employerdeletedlist" href="<?php echo baseUrl . "admin/deleteEmployerList" ?>">
                             <i class="bi bi-circle"></i><span>Deleted List</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('admin/overallEmployers') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/overallEmployers" ?>">
+                        <a id="employeroveralllist" href="<?php echo baseUrl . "admin/overallEmployers" ?>">
                             <i class="bi bi-circle"></i><span>Overall List</span>
                         </a>
                     </li>
@@ -360,50 +378,50 @@
             </li><!-- End Charts Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed  <?php echo isPageActive('admin/createCandidates') || isPageActive('admin/newCandidateList')  || isPageActive('admin/verifiedCandidate')  || isPageActive('pendingCandidates')  || isPageActive('admin/deleteCandidateList')  || isPageActive('admin/overallCandidates') || isPageActive('admin/manageCandidate/')? 'active' : ''; ?>" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                <a class="nav-link collapsed" id="candidatelist" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-gem"></i><span>Candidates</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a class="<?php echo isPageActive('admin/createCandidates') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/createCandidates" ?>">
+                        <a id="candidatecreate" href="<?php echo baseUrl . "admin/createCandidates" ?>">
                             <i class="bi bi-circle"></i><span>Create New Candidate</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('admin/newCandidateList') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
+                        <a id="candidatenewlist" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
                             <i class="bi bi-circle"></i><span>New Candidate List</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('admin/verifiedCandidate') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/verifiedCandidate" ?>">
+                        <a id="candidateverifiedlist" href="<?php echo baseUrl . "admin/verifiedCandidate" ?>">
                             <i class="bi bi-circle"></i><span>Verified List</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('pendingCandidates') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/pendingCandidates" ?>">
+                        <a id="candidatependinglist" href="<?php echo baseUrl . "admin/pendingCandidates" ?>">
                             <i class="bi bi-circle"></i><span>Pending List</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('admin/deleteCandidateList') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/deleteCandidateList" ?>">
+                        <a id="candidatedeletedlist" href="<?php echo baseUrl . "admin/deleteCandidateList" ?>">
                             <i class="bi bi-circle"></i><span>Deleted List</span>
                         </a>
                     </li>
                     <li>
-                        <a class="<?php echo isPageActive('admin/overallCandidates') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/overallCandidates" ?>">
+                        <a id="candidateoveralllist" href="<?php echo baseUrl . "admin/overallCandidates" ?>">
                             <i class="bi bi-circle"></i><span>Overall List</span>
                         </a>
                     </li>
                 </ul>
             </li><!-- End Icons Nav -->
             <li class="nav-item ">
-                <a class="nav-link collapsed <?php echo isPageActive('admin/candidateRequestList') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/candidateRequestList" ?>">
+                <a class="nav-link collapsed" id="candidaterequest" href="<?php echo baseUrl . "admin/candidateRequestList" ?>">
                     <i class="bi bi-card-list"></i>
                     <span>Request For Candidate</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed <?php echo isPageActive('admin/categoryRequest') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/categoryRequest" ?>">
+                <a class="nav-link collapsed" id="categoryrequest" href="<?php echo baseUrl . "admin/categoryRequest" ?>">
                     <i class="bi bi-box-arrow-in-right"></i>
                     <span>Add Category Request</span>
                 </a>
@@ -505,7 +523,7 @@
 
     </aside><!-- End Sidebar-->
 
-        <?php
+        <!-- <?php
         function isPageActive($page)
         {
             // Get the current page URL
@@ -514,13 +532,18 @@
             // Check if the current page URL contains the specified page
             return strpos($currentUrl, $page) !== false || ($page === 'Employee/dash' && $currentUrl === '/');
         }
-    ?>
+    ?> -->
 
     <main id="main" class="main">
         <?php
         if ($method == "dashboard") {
             $admin = $this->data['admin']['totalRows'];
         ?>
+    <!-- Sidebar Active  -->
+        <script>
+         document.getElementById('dash').classList.add('active');
+        </script>
+
             <section class="section dashboard">
                 <div class="pagetitle">
                     <h1>Dashboard</h1>
@@ -762,6 +785,12 @@
         <?php
         } elseif ($method == "createAdminUser") {
         ?>
+<!-- Sidebar Active  -->
+            <script>
+                 document.getElementById('adminuser').classList.add('active');
+                 document.getElementById('adminusernew').classList.add('active');
+            </script> 
+
             <section class="Multi Columns Form">
                 <div class="pagetitle">
                     <h1>Create Admin User</h1>
@@ -852,6 +881,12 @@
         <?php
         } elseif ($method == "adminUsers") {
         ?>
+        <!-- Sidebar Active  -->
+         <script>
+                 document.getElementById('adminuser').classList.add('active');
+                 document.getElementById('adminuserlist').classList.add('active');
+            </script> 
+
             <section class="usertablewithscrool">
                 <div class="pagetitle">
                     <h1>Admin Users List</h1>
@@ -935,6 +970,11 @@
         <?php
         } elseif ($method == "createEmployer") {
         ?>
+        <!-- Sidebar Active  -->
+         <script>
+                 document.getElementById('employerslist').classList.add('active');
+                 document.getElementById('employercreate').classList.add('active');
+            </script> 
             <section class="Multi Columns Form">
                 <div class="pagetitle">
                     <h1>Create Employer</h1>
@@ -1040,6 +1080,11 @@
         <?php
         } elseif ($method == "unVerifiedEmployers") {
         ?>
+         <!-- Sidebar Active  -->
+         <script>
+                 document.getElementById('employerslist').classList.add('active');
+                 document.getElementById('employernewlist').classList.add('active');
+            </script> 
             <section class="usertable">
                 <div class="pagetitle">
                     <h1>New Employers List</h1>
@@ -1105,7 +1150,7 @@
                                                 <td><?php echo $value['mobile_number']; ?></td>
                                                 <td><?php echo $twelveHourTime;?></td>
                                                 <td><span class="badge bg-danger">Pending</span></td>
-                                                <td class="d-flex"><a class="<?php echo isPageActive('admin/manageEmployer/') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                <td class="d-flex"><a class="" href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                 <!-- <a class="ms-1" href="<?php echo baseUrl . "admin/deleteEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button> -->
                                                 <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployer"
                                                  onclick="deleteformnl(<?php echo $value['id'] ?>)">Delete</button>
@@ -1138,6 +1183,11 @@
         <?php
         } elseif ($method == "verifiedEmployers") {
         ?>
+         <!-- Sidebar Active  -->
+         <script>
+                 document.getElementById('employerslist').classList.add('active');
+                 document.getElementById('employerverifiedlist').classList.add('active');
+            </script> 
             <section class="usertable">
                 <div class="pagetitle">
                     <h1>Verified Employers</h1>
@@ -1234,6 +1284,11 @@
 <?php
         } elseif ($method == "pendingEmployers") {
         ?>
+         <!-- Sidebar Active  -->
+         <script>
+                 document.getElementById('employerslist').classList.add('active');
+                 document.getElementById('employerpendinglist').classList.add('active');
+            </script> 
             <section class="usertable">
                 <div class="pagetitle">
                     <h1>Pending Employers</h1>
@@ -1331,6 +1386,11 @@
             <?php 
         } elseif ($method == "deleteEmployerList") {
                 ?>
+                 <!-- Sidebar Active  -->
+            <script>
+                 document.getElementById('employerslist').classList.add('active');
+                 document.getElementById('employerdeletedlist').classList.add('active');
+            </script> 
                     <section class="usertable">
                         <div class="pagetitle">
                             <h1>Deleted Employers</h1>
@@ -1421,6 +1481,11 @@
             <?php
         } elseif ($method == "overallEmployers") {
         ?>
+         <!-- Sidebar Active  -->
+         <script>
+                 document.getElementById('employerslist').classList.add('active');
+                 document.getElementById('employeroveralllist').classList.add('active');
+            </script> 
             <section class="usertable">
                 <div class="pagetitle">
                     <h1>Overall Employers</h1>
@@ -1516,6 +1581,10 @@
         <?php
         } elseif ($method == 'manageEmployer') {
         ?>
+        <!-- Sidebar Active  -->
+        <script>
+                 document.getElementById('employerslist').classList.add('active');
+            </script> 
             <section class="Multi Columns Form">
                 <div class="pagetitle">
                     <h1>Employer Details</h1>
@@ -1738,6 +1807,11 @@
 <?php
         } elseif ($method == 'viewEmployer') {
     ?>
+    <!-- Sidebar Active  -->
+    <script>
+                 document.getElementById('employerslist').classList.add('active');
+                 document.getElementById('employeroveralllist').classList.add('active');
+            </script> 
         <section>
             <!-- <div class="pagetitle">
                 <h1>Employer Details</h1>
@@ -1906,6 +1980,11 @@
     <?php 
         } elseif ($method == "createEmployees") {
         ?>
+        <!-- Sidebar Active  -->
+        <script>
+                 document.getElementById('candidatelist').classList.add('active');
+                 document.getElementById('candidatecreate').classList.add('active');
+            </script> 
             <section class="Multi Columns Form">
                 <div class="pagetitle">
                     <h1>Create Candidates</h1>
@@ -1962,6 +2041,11 @@
         <?php
         } elseif ($method == "unVerifiedEmployees") {
         ?>
+         <!-- Sidebar Active  -->
+        <script>
+                 document.getElementById('candidatelist').classList.add('active');
+                 document.getElementById('candidatenewlist').classList.add('active');
+            </script> 
             <section class="usertable">
                 <div class="pagetitle">
                     <h1>New Candidate List</h1>
@@ -2058,6 +2142,11 @@
         <?php
         } elseif ($method == "verifiedEmployees") {
         ?>
+         <!-- Sidebar Active  -->
+         <script>
+                 document.getElementById('candidatelist').classList.add('active');
+                 document.getElementById('candidateverifiedlist').classList.add('active');
+            </script> 
             <section class="usertablewithscrool">
                 <div class="pagetitle">
                     <h1>Verified Candidates</h1>
@@ -2123,7 +2212,7 @@
                                                 <td><?php echo $twelveHourTime; ?></td>
                                                 <td><span class="badge bg-success">Verified</span></td>
                                                 <td class="d-flex">
-                                                    <a class="<?php echo isPageActive('admin/manageCandidate/') ? 'active' : ''; ?>" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                    <a class="" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                 <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployee"
                                                  onclick="deleteformvl(<?php echo $value['id'] ?>)">Delete</button>
                                         <script>
@@ -2156,6 +2245,11 @@
             <?php
         } elseif ($method == "pendingEmployees") {
                 ?>
+                 <!-- Sidebar Active  -->
+        <script>
+                 document.getElementById('candidatelist').classList.add('active');
+                 document.getElementById('candidatependinglist').classList.add('active');
+            </script> 
                     <section class="usertablewithscrool">
                         <div class="pagetitle">
                             <h1>Pending Candidates</h1>
@@ -2256,6 +2350,11 @@
                     <?php
         } elseif ($method == "deleteEmployeeList") {
         ?>
+         <!-- Sidebar Active  -->
+         <script>
+                 document.getElementById('candidatelist').classList.add('active');
+                 document.getElementById('candidatedeletedlist').classList.add('active');
+            </script> 
             <section class="usertable">
                 <div class="pagetitle">
                     <h1>Deleted Candidates</h1>
@@ -2366,6 +2465,11 @@
 <?php
         } elseif ($method == "overallEmployees") {
     ?>
+     <!-- Sidebar Active  -->
+     <script>
+                 document.getElementById('candidatelist').classList.add('active');
+                 document.getElementById('candidateoveralllist').classList.add('active');
+            </script> 
         <section class="usertablewithscrool">
             <div class="pagetitle">
                 <h1>All Candidates</h1>
@@ -2464,6 +2568,10 @@
         <?php
         } elseif ($method == "manageEmployee") {
         ?>
+         <!-- Sidebar Active  -->
+         <script>
+                 document.getElementById('candidatelist').classList.add('active');
+            </script> 
             <section>
                 <!-- Default Card -->
                 <div class="card">
@@ -2596,36 +2704,45 @@
                                                 <td><?php echo $value['percentage'] ?></td>
                                                 <td><?php echo $value['yearOfPassing'] ?></td>
                                                 <?php
-                                            if ($value['educational_qualification'] == 'sslc') {
-                                            ?>
-                                                    <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
-                                            <?php
-                                            } else if ($value['educational_qualification'] == 'hsc') {
-                                            ?>
-                                                    <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
-                                            <?php
-                                            } else if ($value['educational_qualification'] == 'diploma') {
-                                            ?>
-                                                    <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
-                                            <?php
-                                            } else if ($value['educational_qualification'] == 'bachelors') {
-                                            ?>
-                                                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
-                                            <?php
-                                            } else if ($value['educational_qualification'] == 'masters') {
-                                            ?>
-                                                    <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
-                                            <?php
-                                            } else if ($value['educational_qualification'] == 'doctorate') {
-                                            ?>
-                                                    <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
-                                            <?php
-                                            } else {
-                                            ?>
-                                                <td>NA</a></td>
-                                            <?php
-                                            }
-                                            ?>
+                                                        if ( $value['educational_qualification'] == '10th/SSLC' ) {
+                                                        ?>
+                                                                    <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
+                                                    <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == '12th/HSC' ) {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
+                                                        <?php
+                                                        } else if ($value['educational_qualification'] == 'DIPLOMA') {
+                                                        ?>
+                                                                <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
+                                                        <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                        $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" || 
+                                                        $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW") {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
+                                                        <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                        $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                        $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" ) {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
+                                                        <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == 'Ph.D' ) {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
+                                                        <?php
+                                                        }
+                                                        else {
+                                                        ?>
+                                                        <td>NA</a></td>
+                                                        <?php
+                                                    }
+                                                    ?>
                                             </tr>
                                         <?php
                                             $loopcount++;
@@ -2869,6 +2986,11 @@
 <?php 
         } elseif ($method == "viewEmployee") {
     ?>
+     <!-- Sidebar Active  -->
+     <script>
+                 document.getElementById('candidatelist').classList.add('active');
+                 document.getElementById('candidateoveralllist').classList.add('active');
+            </script> 
         <section>
             <!-- Default Card -->
             <div class="card" id="resumeprint">
@@ -3001,36 +3123,45 @@
                                             <td><?php echo $value['percentage'] ?></td>
                                             <td><?php echo $value['yearOfPassing'] ?></td>
                                             <?php
-                                        if ($value['educational_qualification'] == 'sslc') {
-                                        ?>
-                                                <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
-                                        <?php
-                                        } else if ($value['educational_qualification'] == 'hsc') {
-                                        ?>
-                                                <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
-                                        <?php
-                                        } else if ($value['educational_qualification'] == 'diploma') {
-                                        ?>
-                                                <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
-                                        <?php
-                                        } else if ($value['educational_qualification'] == 'bachelors') {
-                                        ?>
-                                                <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
-                                        <?php
-                                        } else if ($value['educational_qualification'] == 'masters') {
-                                        ?>
-                                                <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
-                                        <?php
-                                        } else if ($value['educational_qualification'] == 'doctorate') {
-                                        ?>
-                                                <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <td>NA</a></td>
-                                        <?php
-                                        }
-                                        ?>
+                                                        if ( $value['educational_qualification'] == '10th/SSLC' ) {
+                                                        ?>
+                                                                    <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
+                                                    <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == '12th/HSC' ) {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
+                                                        <?php
+                                                        } else if ($value['educational_qualification'] == 'DIPLOMA') {
+                                                        ?>
+                                                                <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
+                                                        <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                        $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" || 
+                                                        $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW") {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
+                                                        <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                        $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                        $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" ) {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
+                                                        <?php
+                                                        }
+                                                        else if ( $value['educational_qualification'] == 'Ph.D' ) {
+                                                        ?>
+                                                        <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
+                                                        <?php
+                                                        }
+                                                        else {
+                                                        ?>
+                                                        <td>NA</a></td>
+                                                        <?php
+                                                    }
+                                                    ?>
                                         </tr>
                                     <?php
                                         $loopcount++;
@@ -3184,6 +3315,10 @@
             <?php
         } elseif ($method == "categoryRequest") {
                 ?>
+                 <!-- Sidebar Active  -->
+        <script>
+                 document.getElementById('categoryrequest').classList.add('active');
+            </script> 
                     <section class="usertable">
                         <div class="pagetitle">
                             <h1>Category Request</h1>
@@ -3199,7 +3334,7 @@
         
                                 <div class="card-body">
                                     <?php
-                                    if (1 == "1") {
+                                    if (isset($this->data['candidateNewCategory'][0]['id']) || isset($this->data['candidateNewCategoryArea'][0]['id']) || isset($this->data['employerNewCategory'][0]['id'])) {
                                     ?>
                                         <h5 class="card-title">Add New Category<span></span></h5>
         
@@ -3207,37 +3342,94 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S.No</th>
-                                                    <th scope="col"></th>
-                                                    <th scope="col"></th>
-                                                    <th scope="col"> </th>
-                                                    <th scope="col"></th>
-                                                    <th scope="col"></th>
-                                                    <th scope="col"></th>
-                                                    <th scope="col"></th>
+                                                    <th scope="col">Candidate / Employer</th>
+                                                    <th scope="col">Category</th>
+                                                    <th scope="col">New Category</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                 $loopcount = 1;
-                                                // foreach ($this->data['overallEmployers'] as $key => $value) {
+                                                foreach ($this->data['candidateNewCategory'] as $key => $value) {
                                                 ?>
                                                     <tr>
-                                                        <td><a href="#"><?php echo $loopcount; ?>.</a></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>                     
-                                            <td class="d-flex"><a href="#"><button type="button" class="btn btn-success">View</button></a>
-                                                        <a class="ms-1" href="#"><button type="button" class="btn btn-danger">Delete</button></td>
+                                                        <td><a href="#"><?php echo $loopcount++; ?>.</a></td>
+                                                        <td>Candidate Experience</td>
+                                                        <td><?php echo $value['other_category'] ?></td>
+                                                        <td><?php echo $value['newCategory'] ?></td>
+                                                        <td class="d-flex">
+                                                        <button type="button" class="btn btn-success me-1" data-toggle="modal" data-target="#newcategoryexp"
+                                                        onclick="categoryexp('<?php echo $value['id']; ?>','<?php echo $value['newCategory']; ?>')">Add</button>
+                                                        <form action="<?php echo baseUrl . "admin/cancelNewCategoryExp" ?>" method="post" >
+                                                                <input class="form-check-input" type="text" name="jobTableId" id="" value="<?php echo $value['id'] ?>" hidden>
+                                                                <input class="form-check-input" type="text" name="categoryothers" id="" value="0" hidden>
+        
+                                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel?')">Delete</button>
+                                                            </form>
                                                     </tr>
+                                                    <script>
+                                                            function categoryexp(exptableID,expcategory){
+                                                                document.getElementById("expTableId").value = exptableID;
+                                                                document.getElementById("expnewcategory").value = expcategory;
+                                                            }
+                                                    </script>
                                                 <?php
-                                                    $loopcount++;
-                                                // }
+                                                }
+                                               
+                                                foreach ($this->data['candidateNewCategoryArea'] as $key => $value) {
                                                 ?>
+                                                    <tr>
+                                                        <td><a href="#"><?php echo $loopcount++; ?>.</a></td>
+                                                        <td>Candidate Job Interest</td>
+                                                        <td><?php echo $value['other_interst_category'] ?></td>
+                                                        <td><?php echo $value['newCategory'] ?></td>
+                                                        <td class="d-flex">
+                                                        <button type="button" class="btn btn-success me-1" data-toggle="modal" data-target="#newcategoryarea"
+                                                         onclick="categoryarea('<?php echo $value['id']; ?>','<?php echo $value['newCategory']; ?>')">Add</button>
+                                                         <form action="<?php echo baseUrl . "admin/cancelNewCategoryArea" ?>" method="post" >
+                                                                <input class="form-check-input" type="text" name="jobTableId" id="" value="<?php echo $value['id'] ?>" hidden>
+                                                                <input class="form-check-input" type="text" name="categoryothers" id="" value="0" hidden>
+        
+                                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel?')">Delete</button>
+                                                            </form>                                                        <script>
+                                                            function categoryarea(areatableID,areacategory){
+                                                                document.getElementById("areaTableId").value = areatableID;
+                                                                document.getElementById("areanewcategory").value = areacategory;
+                                                            }
+                                                        </script>
+                                                        </td>
+                                                    </tr>
+
+                         
+
+                                                <?php
+                                                }
+                                                foreach ($this->data['employerNewCategory'] as $key => $value) {
+                                                    ?>
+                                                        <tr>
+                                                            <td><a href="#"><?php echo $loopcount++; ?>.</a></td>
+                                                            <td>Employer Job</td>
+                                                            <td><?php echo $value['jobCategory'] ?></td>
+                                                            <td><?php echo $value['newCategory'] ?></td>
+                                                            <td class="d-flex">
+                                                            <button type="button" class="btn btn-success me-1" data-toggle="modal" data-target="#employerjobcategory"
+                                                         onclick="categoryjob('<?php echo $value['id']; ?>','<?php echo $value['newCategory']; ?>')">Add</button>
+                                                         <form action="<?php echo baseUrl . "admin/cancelNewCategoryJob" ?>" method="post" >
+                                                                <input class="form-check-input" type="text" name="jobTableId" id="" value="<?php echo $value['id'] ?>" hidden>
+                                                                <input class="form-check-input" type="text" name="categoryothers" id="" value="0" hidden>
+        
+                                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel?')">Delete</button>
+                                                            </form>                                                        </tr>
+                                                        <script>
+                                                            function categoryjod(jobtableID,jobcategory){
+                                                                document.getElementById("jobTableId").value = jobtableID;
+                                                                document.getElementById("jobnewcategory").value = jobcategory;
+                                                            }
+                                                        </script>
+                                                    <?php
+                                                    }
+                                                    ?>          
                                             </tbody>
                                         </table>
                                     <?php
@@ -3253,9 +3445,15 @@
                         </div><!-- End Recent Sales -->
                     </section>
 
+                    
+
                     <?php
-                    } elseif ($method == "candidateRequestList") {
+        } elseif ($method == "candidateRequestList") {
                         ?>
+                         <!-- Sidebar Active  -->
+        <script>
+                 document.getElementById('candidaterequest').classList.add('active');
+            </script> 
                             <section class="usertable">
                                 <div class="pagetitle">
                                     <h1>Request For Candidate List</h1>
@@ -3305,12 +3503,12 @@
                                                                 <form action="<?php echo baseUrl . "admin/approveCandidateRequest" ?>" method="post" >
                                                                     <input class="form-check-input" type="text" name="EmployeeId" id="" value="<?php echo $value['id']?>" hidden>
                                                                     <input class="form-check-input" type="text" name="approveCandidateRequest" id="" value="2" hidden>
-                                                                    <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to approve ?')">Approve to View</button>
+                                                                    <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to approve?')">Approve to View</button>
                                                                 </form>
                                                                 <form action="<?php echo baseUrl . "admin/cancelCandidateRequest" ?>" method="post" >
                                                                     <input class="form-check-input" type="text" name="EmployeeId" id="" value="<?php echo $value['id']?>" hidden>
                                                                     <input class="form-check-input" type="text" name="cancelCandidateRequest" id="" value="0" hidden>
-                                                                    <button type="submit" class="btn btn-danger ms-1" onclick="return confirm('Are you sure to cancel the request ?')">Cancel</button>
+                                                                    <button type="submit" class="btn btn-danger ms-1" onclick="return confirm('Are you sure to cancel the request?')">Cancel</button>
                                                                 </form>
                                                             </td>
                                                             </tr>
@@ -3800,7 +3998,7 @@
                     </div>
                     </div>
                 </div>
-                </div>
+    </div>
                 
         <!-- Popup Remark Employer -->
             <div class="modal fade" id="deleteemployer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -3830,8 +4028,88 @@
                     </div>
                     </div>
                 </div>
-                </div>
+            </div>
 
+        <!-- Popup add new category in candidate experience -->
+        <div class="modal fade" id="newcategoryexp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        <form class="needs-validation" novalidate action="<?php echo baseUrl . "admin/addNewCategoryExperience" ?>" method="post">
+                            
+                                <div class="col-12">
+                                        <label for="expnewcategory">New Category :</label>
+                                        <input type="text" id="expnewcategory" value="" name="new_category" >
+                                </div>
+                                <input class="form-check-input" type="text" name="categoryexp" id="" value="0" hidden>
+                                <input class="form-check-input" type="text" name="expTableId" id="expTableId" value="<?php echo $value['id'] ?>" hidden>
+                                
+                                <button type="submit" class="btn btn-success mt-4">Add</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+        </div>
+
+        <!-- Popup add new category in candidate area -->
+        <div class="modal fade" id="newcategoryarea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <form class="needs-validation" novalidate action="<?php echo baseUrl . "admin/addNewCategoryArea" ?>" method="post">
+                    
+                        <div class="col-12">
+                                <label for="expnewcategory">New Category :</label>
+                                <input type="text" id="areanewcategory" value="" name="new_category" >
+                        </div>
+                        <input class="form-check-input" type="text" name="categoryarea" id="" value="0" hidden>
+                        <input class="form-check-input" type="text" value="" id="areaTableId" name="areaTableId" hidden>
+                        
+                        <button type="submit" class="btn btn-success mt-4">Add</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup add new category in employer job -->
+        <div class="modal fade" id="employerjobcategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <form class="needs-validation" novalidate action="<?php echo baseUrl . "admin/employerNewCategory" ?>" method="post">
+                    
+                        <div class="col-12">
+                                <label for="expnewcategory">New Category :</label>
+                                <input type="text" id="jobnewcategory" value="" name="new_category" >
+                        </div>
+                        <input class="form-check-input" type="text" name="categoryjob" id="" value="0" hidden>
+                        <input class="form-check-input" type="text" name="jobTableId" id="jobTableId" value="<?php echo $value['id'] ?>" hidden>
+                        
+                        <button type="submit" class="btn btn-success mt-4">Add</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
 
 
     </main><!-- End #main -->

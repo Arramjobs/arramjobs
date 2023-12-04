@@ -204,10 +204,16 @@ class Candidate extends CI_Controller
     {
         $experienceId = $this->uri->segment(3);
         $this->data['method'] = "updateExperience";
+
         $updateExperience = $this->CandidateModel->updateExperience($experienceId);
         $this->data['updateExperience'] = $updateExperience;
+
         $basicDetails = $this->CandidateModel->getBasicDetails();
         $this->data['basicDetails'] = $basicDetails;
+
+        $categoryList = $this->CandidateModel->getCategoryList();
+        $this->data['categoryList'] = $categoryList;
+
         $this->load->view('candidateDashboard.php', $this->data);
     }
 
@@ -329,10 +335,16 @@ class Candidate extends CI_Controller
     {
         $updateAreaOfIntrestId = $this->uri->segment(3);
         $this->data['method'] = "updateAreaOfIntrest";
+
         $updateAreaOfIntrest = $this->CandidateModel->updateAreaOfIntrest($updateAreaOfIntrestId);
         $this->data['updateAreaOfIntrest'] = $updateAreaOfIntrest;
+
         $basicDetails = $this->CandidateModel->getBasicDetails();
         $this->data['basicDetails'] = $basicDetails;
+
+        $categoryList = $this->CandidateModel->getCategoryList();
+        $this->data['categoryList'] = $categoryList;
+        
         $this->load->view('candidateDashboard.php', $this->data);
     }
 

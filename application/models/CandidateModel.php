@@ -386,7 +386,10 @@ class CandidateModel extends CI_Model
     }
 
     public function getCategoryList(){
-        $category = "SELECT * FROM `category_master` ORDER BY `categoryName` ASC ";
+        // $category = "SELECT DISTINCT * FROM `category_master` ORDER BY `categoryName` ASC ";
+        $category = " SELECT * FROM category_master WHERE (categoryName, id) IN (
+                        SELECT DISTINCT categoryName, MIN(id) AS id FROM category_master GROUP BY categoryName )
+                        ORDER BY categoryName ASC";
         $select = $this->db->query($category);
         return $select->result(); 
     }
