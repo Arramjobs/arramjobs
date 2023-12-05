@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>அறம் அறக்கட்டளை</title>
+  <title>அறம் அறக்கட்டளை </title>
 
-  <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
+  <!-- Favicons -->
+  <link href="assets/img/title logo.png" rel="icon">
+  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,11 +21,12 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Fonts -->
 
-  <!-- Template Main CSS File -->
-  <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
+  <!-- My changes -->
+  
+    <!-- Template Main CSS File -->
+    <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
 
-<!-- END of my changes -->
-
+  <!-- END of my changes -->
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -36,105 +39,11 @@
     background-color: #F8F8F8;
   }
 
-  .section-padding {
-    padding: 100px 0;
+  .head {
+    margin-top: 40px;
   }
 
-  .carousel-item {
-    min-height: 100px;
-  }
-
-  .carousel-caption {
-    z-index: 2;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .wrapper {
-    margin: 0 auto;
-    width: 80%;
-  }
-
-  .carousel-item img {
-    width: 100%;
-    height: 200px;
-  }
-
-
-  /* Style for the h2 element inside carousel captions */
-  .carousel-caption h2 {
-    font-size: 24px;
-    /* Adjust the font size as needed */
-    font-weight: bold;
-    font-size: 80px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    /* Center-align the text */
-    /* margin: 20px 0;  */
-    /* Adjust the margin as needed */
-    color: teal;
-    font-style: bold;
-  }
-
-  /* Style for the p element inside carousel captions */
-  .carousel-caption p {
-    margin: auto;
-    font-size: 40px;
-    list-style: 1.9;
-    padding-bottom: 90px;
-    color: darkolivegreen;
-    text-align: center;
-    /* Center-align the text */
-    margin-bottom: 20px;
-    /* Adjust the margin as needed */
-    margin-bottom: 100px;
-  }
-
-  .carousel-caption h3 {
-    font-size: 24px;
-    /* Adjust the font size as needed */
-    font-weight: bold;
-    font-size: 60px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    /* Center-align the text */
-    margin: 20px 0;
-    /* Adjust the margin as needed */
-    padding-bottom: 0px;
-    color: teal;
-    font-style: bold;
-  }
-
-  .carousel-inner::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0%;
-    left: 0%;
-    /* background:; */
-    z-index: 1;
-  }
-
-
-  .carousel-item active {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 10%;
-    top: 0%;
-    left: 0%;
-    /* background:; */
-    z-index: 1;
-  }
-
-  .navbar-nav a {
-    font-size: 15px;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
+  /* Header section */
 
   .loginbutton {
     font-size: 18px;
@@ -166,57 +75,173 @@
     border-right: 2px solid white;
   }
 
-  .navbar-ligth .navbar-brand {
-    color: black;
-    font-size: 25px;
+  /* Home background */
+
+  .carousel-item {
+    min-height: 100px;
+  }
+
+  .carousel-caption {
+    z-index: 2;
+    text-align: center;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    height: 200px;
+  }
+
+  /* Style for the h2 element inside carousel captions */
+  .carousel-caption h2 {
+    font-size: 24px;
+    /* Adjust the font size as needed */
+    font-weight: bold;
+    font-size: 80px;
     text-transform: uppercase;
-    font-weight: 700;
     letter-spacing: 2px;
+    text-align: center;
+    /* Center-align the text */
+    /* margin: 20px 0;  */
+    /* Adjust the margin as needed */
+    color: teal;
+    font-style: bold;
   }
 
-  .navbar-ligth .navbar-brand:focus,
-  .navbar-ligth .navbar-brand:hover {
-    color: black;
+  /* Style for the p element inside carousel captions */
+  .carousel-caption p {
+    margin: auto;
+    font-size: 40px;
+    list-style: 1.9px;
+    padding-bottom: 90px;
+    color: darkolivegreen;
+    text-align: center;
+    /* Center-align the text */
+    /* Adjust the margin as needed */
+    margin-bottom: 200px;
   }
 
-  .navbar-ligth .navbar-nav .navbar-link {
-    color: black;
+  .carousel-caption h3 {
+    font-size: 24px;
+    /* Adjust the font size as needed */
+    font-weight: bold;
+    font-size: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    /* Center-align the text */
+    margin: 20px 0;
+    /* Adjust the margin as needed */
+    padding-bottom: 0px;
+    color: teal;
+    font-style: bold;
   }
 
-  .w-100 {
-    height: 130vh;
+   /* .carousel-inner::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 1;
+  }  */
+
+  .carousel-item image {
+    width: 100%;
+    height: 100px;
   }
 
   /* imagecss */
   .bgimage1 {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(banner\ 1.jpeg);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('assets/banner1.jpeg');
     height: 100vh;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+   
   }
 
   .bgimage2 {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(hero-bg.jpg);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('assets/banner2.jpg');
     height: 100vh;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    margin-bottom: 90px;
+    color: red;
+    }
+
+
+  /* About Arramjobs */
+
+  .section-padding1 {
+    margin-top: 0;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 80px;
+  }
+
+  .section-padding1 h2 {
+    margin-top: -15px;
+    margin-bottom: 10px;
+  }
+
+  .section-padding1 p {
+    font-size: 18px;
+    margin-bottom: 7px;
+  }
+    
+  /* What does arram offer */
+  .recent-posts .section-title h1 {
+    margin-top: -80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  /* Six Reasons For People Choosing Us */
+
+  .section-padding {
+    padding: 100px 0;
+  }
+
+  .card-sec {
+    margin-top: 15px;
+    cursor: pointer;  
+    transition: 0.3s;
+    border-radius: 10px;
+    background-color: #FAFAFA; 
+    
+    }
+  
+  .card-sec:hover {
+    background-color: #ebeff5;
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+    }
+
+  /* Last carousel */
+
+  .carousel-item active {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 0%;
+    left: 0%;
+    /* background:; */
+    z-index: 1;
   }
 
   .carousel-innerts {
     display: none;
-  }
-
-  .head {
-    margin-top: 40px;
-  }
-
-  .section-padding1 {
-    margin-top: 80px;
-    margin-bottom: 80px;
   }
 
   .wrapper {
@@ -224,147 +249,22 @@
     width: 80%;
   }
 
-  .carousel-item image {
-    width: 100%;
-    height: 100px;
-  }
-
-
-
-  @media only screen and (max-width:767px) {
-
-    .navbar-nav {
-      text-align: center;
-    }
-
-    .carousel-caption {
-      text-align: center;
-    }
-
-    .carousel-caption h2 {
-      font-size: 30px;
-    }
-
-    .carousel-caption h3 {
-      font-size: 25px;
-    }
-
-    .section-padding1 {
-      margin-top: 40px;
-      margin-bottom: 40px;
-    }
-
-    .section-padding,
-    fontsi {
-      padding-top: 50px;
-      font-size: 30px;
-    }
-
-    .section-paddings {
-      padding-bottom: 100px;
-    }
-
-    .head {
-      margin-top: 40px;
-    }
-
-    .carousel-caption p {
-      font-size: 18px;
-      padding-right: 10px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-bottom: 100px;
-    }
-
-    .card-sec {
-      margin-top: 30px;
-    }
-
-    .about-img-img {
-      padding-top: 30px;
-    }
-
-    .carousel-item active {
-      background-image: hero-bg;
-    }
-
-    .m-20 {
-      font-size: 10px;
-    }
-
-    .w-100 {
-      height: 50vh;
-    }
-
-    .dropdown-toggle {
-      margin-left: 70px;
-    }
-
-    .dropdown-menu {
-      margin-left: 45px;
-    }
-
-    .carousel-control-prev,
-    .carousel-control-next {
-      padding-bottom: 90px;
-    }
-
-    /* imagecss */
-    .bgimage1 {
-      background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(banner\ 1.jpeg);
-      height: 70vh;
-      width: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .bgimage2 {
-      background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(hero-bg.jpg);
-      height: 70vh;
-      width: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .recent-posts article {
-      box-shadow: 0 4px 16px rgba(var(--default-color-rgb), 0.1);
-      height: 100%;
-      border-radius: 10px;
-      overflow: visible;
-    }
-
-    .section-paddings {
-      padding-bottom: 10px;
-    }
-
-    .carousel-inners {
-      display: none;
-    }
-
-    section.pt-5.pb-5 {
-      display: none;
-    }
-
-    .carousel-innerts {
-      display: flex;
-      margin-top: 60px;
-      padding-bottom: 40px;
-    }
-
-  }
-
-  /* Recent-posts Section - Home Page
+/* Recent-posts Section - Home Page
 ------------------------------*/
-  .recent-posts article {
+
+.recent-posts {
+    padding-left: 67px;
+  }
+
+.recent-posts .card {
     box-shadow: 0 4px 16px rgba(var(--default-color-rgb), 0.1);
-    padding-top: 30px;
+    padding-top: 0px;
+    padding-bottom: 20px;
     height: 100%;
     border-radius: 10px;
     overflow: visible;
   }
-
+  
   .recent-posts .post-img {
     max-height: 240px;
     margin: -30px -30px 15px -30px;
@@ -409,10 +309,172 @@
     color: rgba(var(--default-color-rgb), 0.5);
     margin-bottom: 0;
   }
+
+
+
+  @media only screen and (max-width:767px) {
+
+    .navbar-nav {
+      text-align: center;
+    }
+
+    .carousel-caption {
+      text-align: center;
+    }
+
+    .carousel-caption h2 {
+      font-size: 30px;
+    }
+
+    .carousel-caption h3 {
+      font-size: 25px;
+    }
+
+    .section-padding1 {
+      margin-top: 0px;
+      padding-top: 2px;
+      margin-bottom: 40px;
+    }
+
+    .section-padding1 h2 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      padding-top: 0px;
+    }
+
+    .section-padding {
+      padding-top: 10px;
+      font-size: 30px;
+      padding-bottom: 60px;
+    }
+
+    .section-padding h3 {
+      padding-top: 0px;
+    }
+
+    .section-padding p {
+      margin-bottom: -20px;
+    }
+
+    .section-padding .card-body-s p {
+      padding-bottom: 18px;
+    }
+
+    .section-padding .about-text .candidate {
+      padding-top: 50px;
+      padding-bottom: 30px;
+    }
+
+    
+    .section-padding .about-text .employer {
+      padding-top: 0px;
+      padding-bottom: 30px;
+    }
+
+    .section-paddings {
+      padding-bottom: 100px;
+    }
+
+    .head {
+      margin-top: 40px;
+    }
+
+    .carousel-caption p {
+      font-size: 18px;
+      padding-right: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-bottom: 155px;
+    }
+
+        .card-sec {
+      margin-top: 25px;
+      margin-bottom: 30px;
+    }
+
+    .about-img-img {
+      padding-top: 30px;
+    }
+
+    .carousel-item active {
+      background-image: hero-bg;
+    }
+
+    .dropdown-toggle {
+      margin-left: 70px;
+    }
+
+    .dropdown-menu {
+      margin-left: 45px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      padding-bottom: 90px;
+    }
+
+    /* imagecss */
+    .bgimage1 {
+      background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('assets/banner1.jpeg');
+      height: 70vh;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .bgimage2 {
+      background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('assets/banner2.jpg');
+      height: 70vh;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .recent-posts {
+    padding-left: 30px;
+  }
+
+    .recent-posts article {
+      box-shadow: 0 4px 16px rgba(var(--default-color-rgb), 0.1);
+      height: 100%;
+      border-radius: 10px;
+      overflow: visible;
+      padding-top: 5px;
+      padding-bottom: 0px;
+    }
+
+    .recent-posts article h5 {
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    .section-paddings {
+      padding-bottom: 10px;
+    }
+
+    .carousel-inners {
+      display: none;
+    }
+
+    section.pt-5.pb-5 {
+      display: none;
+    }
+
+    .carousel-innerts {
+      display: flex;
+      margin-top: 30px;
+      padding-bottom: 20px;
+    }
+
+  }
+
+  
 </style>
 
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
 
@@ -428,41 +490,8 @@
         <span class="material-symbols-outlined text-light px-sm-4">menu</span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <!-- <ul class="navbar-nav"> -->
-        <!-- <li class="nav-item">
-        <a class="nav-link" href="#" style="color: white; padding-right: 40px;">Home</a>
-        </li> -->
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="#about" style="color: white; padding-right: 40px;">About Us</a>
-          </li> -->
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="#provider" style="color: white; padding-right: 40px;">Employer</a>
-          </li> -->
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="#seeker" style="color: white; padding-right: 40px;">Employee</a>
-          </li> -->
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="https://arramjobs.in/blog/" style="color: white; padding-right: 40px;">BLOG</a>
-          </li> -->
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="#contact" style="color: white; padding-right: 40px;">Contact</a>
-          </li> -->
-        <!-- </ul> -->
-        <!-- <div> -->
-        <!-- <form class="d-flex" role="search">
-         <button class="btn btn-danger btn-lg">LogIn</button>
-        </form> -->
-        <!-- <div class="dropdown" style="margin-left: 15px;">
-            <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              LogIn
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="<?php echo baseUrl . "provider/login" ?>">Employer LogIn</a></li>
-              <li><a class="dropdown-item" href="<?php echo baseUrl . "Employee" ?>">Employee LogIn</a></li>
-            </ul>
-          </div> -->
-
-        <div class="loginbutton">
+        
+      <div class="loginbutton">
         CANDIDATE
           <p class="loginlink">
             <a href="<?php echo baseUrl . "Candidate" ?>" class="signlink">Login</a>
@@ -480,7 +509,6 @@
 
       </div>
   </nav>
-
   <div id="carouselExampleCaptions" class="carousel slide">
 
     <div class="carousel-indicators">
@@ -518,14 +546,14 @@
       <div class="row">
         <div class="col-lg-4 col-md-12 col-12">
           <div class="about-img">
-            <img src="<?php echo baseUrl . "assets/blog-2.jpg" ?>" alt="" class="img-fluid">
+            <img src="<?php echo baseUrl . "assets/blog-2.jpg" ?>" alt="" class="img-fluid" style="border-radius:15px;">
           </div>
         </div>
         <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center"
           style="text-align: justify; font-size: medium;">
           <div class="about-text">
             <h2><b>About Arramjobs</b></h2>
-            <p>At Arram Jobs, we're committed to providing comprehensive solutions that cater to the unique needs of
+            <p>At Arram Jobs, we're committed to provide comprehensive solutions that cater to the unique needs of
               both job seekers and employers. Our platform is designed to offer a range of valuable services and
               benefits, ensuring a seamless and rewarding experience for all.</p>
             <p>At Arram Jobs, we are on a mission to connect talented individuals with the career opportunities that
@@ -541,7 +569,7 @@
 
 
   <!-- Recent-posts Section - Home Page -->
-  <section id="recent-posts" class="recent-posts" style="margin-bottom: 30px;">
+  <section id="recent-posts" class="recent-posts" style="margin-bottom: 30px; margin-top: 10px;">
 
     <!--  Section Title -->
     <div class="container section-title" data-aos="fade-up">
@@ -555,14 +583,14 @@
 
         <div class="col-xl-4 col-md-6 col-1" data-aos="fade-up" data-aos-delay="100">
           <article>
-            <div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2);">
-              <img src="<?php echo baseUrl . "assets/photo-1606857521015-7f9fcf423740 (1).jpeg" ?>" class="card-img-top"
+            <div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2);";>
+              <img src="<?php echo baseUrl . "assets/jobsearch.jpeg" ?>" class="card-img-top"
                 alt="...">
               <div class="card-body">
-                <h5 class="card-title" style="font-family:Arial, Helvetica, sans-serif ;"><b>JOB SEARCHING</b></h5>
+                <h5 class="card-title" style="font-family:Arial, Helvetica, sans-serif; padding-top:5px; padding-bottom:2px;"><b>JOB SEARCHING</b></h5>
                 <p class="card-text"
-                  style="text-align:justify; padding-right: 20px; padding-top: 10px; padding-bottom: 10px;">At Arram Job
-                  Portal, we're dedicated to helping you unlock your potential. Whether you're a recent graduate
+                  style="text-align:justify; padding-right: 20px; padding-bottom: 2px;">At Arram Job
+                  Portal, we're dedicated to help you unlock your potential. Whether you're a recent graduate
                   starting your career or a seasoned expert seeking new challenges, we're your trusted job search
                   partner.</p>
                 <!-- <a href="#seeker" class="btn btn-primary">See More</a> -->
@@ -574,15 +602,15 @@
 
         <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
           <article>
-            <div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2);">
-              <img src="<?php echo baseUrl . "assets/chairs-contemporary-daylight-1170412.jpg" ?>" class="card-img-top"
+            <div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2); ">
+              <img src="<?php echo baseUrl . "assets/jobprovide.jpg" ?>" class="card-img-top"
                 alt="...">
               <div class="card-body">
-                <h5 class="card-title"><b>JOB PROVIDING</b></h5>
+                <h5 class="card-title" style="font-family:Arial, Helvetica, sans-serif; padding-top:5px; padding-bottom:2px;"><b>JOB PROVIDING</b></h5>
                 <p class="card-text"
-                  style="text-align:justify; padding-right: 20px; padding-top: 10px; padding-bottom: 10px;">At Arram Job
-                  Providing, our team is dedicated to understanding your staffing needs and delivering tailored
-                  solutions. With industry knowledge, we ensure you find the right talent and build lasting connections
+                  style="text-align:justify; padding-right: 20px; padding-bottom: 2px;">At Arram Job
+                  Providing, our team is dedicated to understand your staffing needs and delivering tailored
+                  solutions. With industry knowledge, we ensure you to find the right talent and build lasting connections
                   fostering success.</p>
                 <!-- <a href="#provider" class="btn btn-primary">See More</a> -->
               </div>
@@ -593,11 +621,11 @@
         <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
           <article>
 
-            <div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2);">
-              <img src="<?php echo baseUrl . "assets/R.jpeg" ?>" class="card-img-top" alt="...">
+            <div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2); ">
+              <img src="<?php echo baseUrl . "assets/uniquefeature.jpeg" ?>" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title"><b>ARRAM UNIQUE FEATURES</b></h5>
-                <p class="card-text" style="text-align:justify; padding-right: 20px; padding-bottom: 15px;">Arram Job
+                <h5 class="card-title" style="font-family:Arial, Helvetica, sans-serif; padding-top:5px; padding-bottom:2px;"><b>ARRAM UNIQUE FEATURES</b></h5>
+                <p class="card-text" style="text-align:justify; padding-right: 20px; padding-bottom: 26px;">Arram Job
                   Providing stands out with unique features redefining recruitment. Our platform uses cutting-edge
                   algorithms to match skills, culture, and personality for ideal candidate-employer pairings.</p>
                 <!-- <a href="#about" class="btn btn-primary">See More</a> -->
@@ -616,12 +644,12 @@
 
   <!-- Six Reasons For People Choosing Us -->
 
-  <div class="section services section-padding" id="services" style="background-color:  #D6D3D1	;">
+  <div class="section services section-padding" id="services" style="padding-top: 40px;  margin-top:-50px; padding-bottom:5px;">
     <div class="container" style="padding-top:30px;">
       <div class="row">
         <div class="col-md-12">
           <div class="section-header text-center pb-5">
-            <h4><b>Why Choose Us</b></h4>
+            <h3><b>Why Choose Us</b></h3>
             <p style="font-size: 50px;" class="custom-paragraph">Six Reasons For People Choosing Us</p>
           </div>
         </div>
@@ -631,7 +659,7 @@
       <div class="row">
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-4"
-            style="background-color: #FAFAFA;  box-shadow: 0 0 11px rgba(33,33,33,.2);">
+            >
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-phone" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 33px; color: black;">Mobile
@@ -647,7 +675,7 @@
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-4"
-            style="background-color: #FAFAFA; box-shadow: 0 0 11px rgba(33,33,33,.2); ">
+            >
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-book-fill" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;"> Accredited</h4>
@@ -662,7 +690,7 @@
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-4"
-            style="background-color: #FAFAFA;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
+            ">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-laptop-fill" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 38px; color: black;">User-friendly
@@ -683,7 +711,7 @@
       <div class="row">
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-4"
-            style="background-color: #FAFAFA; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+            >
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-subtract" style="color: black;  font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Extensive Job
@@ -699,13 +727,13 @@
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-1"
-            style="background-color: #FAFAFA; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+            >
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-shield-shaded" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Quick Response</h4>
               <p class="lead"
                 style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                Quick response" in a job portal refers to the prompt and timely feedback or acknowledgment provided to
+                Quick response, the prompt and timely feedback or acknowledgment provided to
                 job seekers or employers when they take certain actions or submit applications within the platform. This
                 feature is designed to enhance the user experience by ensuring that users receive immediate
                 confirmation. </p>
@@ -715,13 +743,13 @@
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-4"
-            style="background-color: #FAFAFA; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+            >
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-tablet-landscape" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Advanced search and
                 filtering </h4>
               <p class="lead"
-                style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">The
+                style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; padding-bottom:2px; text-align: justify;">The
                 goal of advanced search and filtering features in a jobs portal is to empower job seekers to pinpoint
                 job listings that align closely with their unique preferences and qualifications, saving time and
                 increasing the likelihood of finding the most suitable job opportunities. </p>
@@ -736,19 +764,19 @@
 
 
 
-  <section id="candidate" class="seeker section-padding" style="background-color: #f7fee7">
+  <section id="seeker" class="seeker section-padding" style=" padding-top:50px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 col-12">
           <div class="about-img">
-            <img src="<?php echo baseUrl . "assets/blog-2.jpg" ?>" alt="" class="img-fluid">
+            <img src="<?php echo baseUrl . "assets/blog-2.jpg" ?>" alt="" class="img-fluid" style="border-radius:15px;">
           </div>
         </div>
         <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center"
-          style="text-align: justify; font-size: medium;">
-          <div class="about-text">
-            <p class="fs-1">Candidate</p>
-            <p>At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost
+          style="text-align: justify;">
+          <div class="about-text" style= "margin-top:-22px;">
+            <p class="candidate fs-1">Candidate</p>
+            <p style="font-size: 18px;">At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost
               potential. Regardless of where you stand in your career journey—whether you're a recent graduate venturing
               into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in
               between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you
@@ -756,7 +784,7 @@
               ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your
               unique needs. </p>
             <!-- <a href="#" class="btn btn-warning">Learn More</a> -->
-            <a href="#home" class="btn btn-warning">Home</a>
+            <!-- <a href="#home" class="btn btn-warning">Home</a> -->
           </div>
         </div>
       </div>
@@ -767,14 +795,14 @@
 
   <!-- provider -->
 
-  <section id="employer" class="provider section-padding" style="background-color: #ede9fe">
+  <section id="provider" class="provider section-padding" style="padding-top:10px; padding-bottom:20px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center"
-          style="text-align: justify; font-size: medium;">
-          <div class="about-text">
-            <p class="fs-1">Employer</p>
-            <p>At Arram Job Providing, we firmly believe that the key to a prosperous organization lies in having the
+          style="text-align: justify;">
+          <div class="about-text" style= "margin-top:-10px;">
+            <p class="employer fs-1">Employer</p>
+            <p style="font-size: 18px;">At Arram Job Providing, we firmly believe that the key to a prosperous organization lies in having the
               right people onboard. Be it team expansion, project initiation, or the need for specialized skills, we
               serve as your dependable partner in talent acquisition. With our extensive network and expertise, we
               identify and connect you with top-notch professionals who fit your unique requirements. Our commitment to
@@ -782,13 +810,13 @@
               dedicated to streamlining your recruitment process, saving you time and resources, so you can focus on
               what you do best - achieving your business goals.</p>
             <!-- <a href="#" class="btn btn-warning">Learn More</a> -->
-            <a href="#home" class="btn btn-warning">Home</a>
+            <!-- <a href="#home" class="btn btn-warning">Home</a> -->
 
           </div>
         </div>
         <div class="col-lg-4 col-md-12 col-12">
           <div class="about-img-img">
-            <img src="<?php echo baseUrl . "assets/blog-4.jpg" ?>" alt="" class="img-fluid">
+            <img src="<?php echo baseUrl . "assets/blog-4.jpg" ?>" alt="" class="img-fluid" style="border-radius:15px;">
           </div>
         </div>
       </div>
@@ -796,94 +824,14 @@
   </section>
   <!-- provider -->
 
-  <!-- Team section -->
-  <section id="team" class="team section-paddings">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-header text-center pb-5">
-            <!-- <p class="head" style="font-size: 50px;">Team</p> -->
-            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, voluptatem?</p> -->
-          </div>
-        </div>
-      </div>
-      <!-- <div class="row">
-      <div class="col-12 col-md-6 col-lg-3" id="card-sf">
-        <div class="card text-center">
-          <div class="card-body">
-            <img src="<?php echo baseUrl . "assets/team-6.jpg" ?>" alt="" class="img-fluid rounded-circle">
-            <h3 class="card-title py-2">Person 1</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-            <p class="socials">
-              <i class="bi bi-twitter text-dark mx-1"></i>
-              <i class="bi bi-facebook text-dark mx-1"></i>
-              <i class="bi bi-linkedin text-dark mx-1"></i>
-              <i class="bi bi-instagram text-dark mx-1"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-center">
-          <div class="card-body">
-            <img src="<?php echo baseUrl . "assets/team-3.jpg" ?>" alt="" class="img-fluid rounded-circle">
-            <h3 class="card-title py-2">Person 2</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-            <p class="socials">
-              <i class="bi bi-twitter text-dark mx-1"></i>
-              <i class="bi bi-facebook text-dark mx-1"></i>
-              <i class="bi bi-linkedin text-dark mx-1"></i>
-              <i class="bi bi-instagram text-dark mx-1"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-center">
-          <div class="card-body">
-            <img src="<?php echo baseUrl . "assets/team-4.jpg" ?>" alt="" class="img-fluid rounded-circle">
-            <h3 class="card-title py-2">Person 3</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-            <p class="socials">
-              <i class="bi bi-twitter text-dark mx-1"></i>
-              <i class="bi bi-facebook text-dark mx-1"></i>
-              <i class="bi bi-linkedin text-dark mx-1"></i>
-              <i class="bi bi-instagram text-dark mx-1"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-center">
-          <div class="card-body">
-            <img src="<?php echo baseUrl . "assets/team-1.jpg" ?>" alt="" class="img-fluid rounded-circle">
-            <h3 class="card-title py-2">Person 4</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-            <p class="socials">
-              <i class="bi bi-twitter text-dark mx-1"></i>
-              <i class="bi bi-facebook text-dark mx-1"></i>
-              <i class="bi bi-linkedin text-dark mx-1"></i>
-              <i class="bi bi-instagram text-dark mx-1"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    </div>
-  </section>
-
-
+  
   <section class="pt-5 pb-5">
     <div class="container">
       <div class="row">
-        <div class="col-6">
+        <div class="col-6" style="margin-top:10px">
           <!-- <h3 class="mb-3">Carousel cards title </h3> -->
         </div>
-        <div class="col-6 text-right">
+        <div class="col-6 text-right" >
           <a class="btn btn-primary ws-1 mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
             <i class="fa fa-arrow-left"></i>
           </a>
@@ -899,9 +847,9 @@
                 <div class="row">
 
                   <div class="col-md-4 mb-3">
-                    <div class="card">
-                      <img class="img-fluid s-10" alt=""
-                        src="<?php echo baseUrl . "assets/cute-schoolgirl-reading-book-surrounded-by-wisdom-generated-by-ai.jpg" ?>">
+                    <div class="card1">
+                      <img class="img-fluid s-10" alt="" style="border-radius:12px;"
+                        src="<?php echo baseUrl . "assets/special1.jpg" ?>" >
                       <div class="card-body">
                         <h4 class="card-title"><b>Special title treatment</b></h4>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -912,9 +860,9 @@
                   </div>
 
                   <div class="col-md-4 mb-3">
-                    <div class="card">
-                      <img class="img-fluid s-10" alt=""
-                        src="<?php echo baseUrl . "assets/man-search-hiring-job-online-from-laptop_1150-52728.jpg" ?>">
+                    <div class="card1">
+                      <img class="img-fluid s-10" alt="" style="border-radius:12px;"
+                        src="<?php echo baseUrl . "assets/special2.jpg" ?>">
                       <div class="card-body">
                         <h4 class="card-title"><b>Special title treatment</b></h4>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -923,9 +871,9 @@
                     </div>
                   </div>
                   <div class="col-md-4 mb-3">
-                    <div class="card">
-                      <img class="img-fluid s-10" alt="100%x280"
-                        src="<?php echo baseUrl . "assets/smiley-pregnant-woman-holding-clipboard-pointing-up-with-copy-space_23-2148765097.jpg" ?>">
+                    <div class="card1">
+                      <img class="img-fluid s-10" alt="" style="border-radius:12px;"
+                        src="<?php echo baseUrl . "assets/special3.jpg" ?>">
                       <div class="card-body">
                         <h4 class="card-title"><b>Special title treatment</b></h4>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -939,9 +887,9 @@
               <div class="carousel-item">
                 <div class="row">
                   <div class="col-md-4 mb-3">
-                    <div class="card">
-                      <img class="img-fluid s-10" alt="100%x280"
-                        src="<?php echo baseUrl . "assets/graduation-cap-sits-top-stack-books_188544-38727.jpg" ?>">
+                    <div class="card1">
+                      <img class="img-fluid s-10" alt="" style="border-radius:12px;"
+                        src="<?php echo baseUrl . "assets/special4.png" ?>">
                       <div class="card-body">
                         <h4 class="card-title"><b>Special title treatment</b></h4>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -951,9 +899,9 @@
                     </div>
                   </div>
                   <div class="col-md-4 mb-3">
-                    <div class="card">
-                      <img class="img-fluid s-10" alt="100%x280"
-                        src="<?php echo baseUrl . "assets/young-woman-reading-textbook-home-library-generated-by-ai_188544-26814.jpg" ?>">
+                    <div class="card1">
+                      <img class="img-fluid s-10" alt="" style="border-radius:12px;"
+                        src="<?php echo baseUrl . "assets/special5.jpg" ?>">
                       <div class="card-body">
                         <h4 class="card-title"><b>Special title treatment</b></h4>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -962,9 +910,9 @@
                     </div>
                   </div>
                   <div class="col-md-4 mb-3">
-                    <div class="card">
-                      <img class="img-fluid s-10" alt="100%x280"
-                        src="<?php echo baseUrl . "assets/old-fashioned-clock-antique-desk-reminds-studying-generated-by-ai_24640-90145.jpg" ?>">
+                    <div class="card1">
+                      <img class="img-fluid s-10" alt="" style="border-radius:12px;"
+                        src="<?php echo baseUrl . "assets/special6.jpg" ?>">
                       <div class="card-body">
                         <h4 class="card-title"><b>Special title treatment</b></h4>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -986,7 +934,7 @@
   <div class="wrapper">
     <div id="carousel-slider" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
       <!--Indicators-->
-      <ol class="carousel-indicators">
+      <ol class="carousel-indicators" >
         <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-slider" data-slide-to="1"></li>
         <li data-target="#carousel-slider" data-slide-to="2"></li>
@@ -1085,10 +1033,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-
-
-
-
   <!-- Footer -->
   <footer class="text-center text-lg-start text-muted" style="background-color: #131D3B;">
     <!-- Section: Social media -->
@@ -1127,31 +1071,11 @@
             <h3 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">
               <i class="fas fa-gem  me-3 " style="color: #EF4444;"></i>ARRAM JOBS
             </h3 style="color: white;">
-            <p style="color: white;text-align:justify">Arram Jobs has rapidly emerged as a trusted partner in the
+            <p style="color: white;text-align:justify; font-size:18px">Arram Jobs has rapidly emerged as a trusted partner in the
               recruitment industry. Our journey began with a simple yet powerful idea.
             </p>
           </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <!-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4"> -->
-          <!-- Links -->
-          <!-- <h6 class="text-uppercase fw-bold mb-4">
-            Products
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Angular</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">React</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Vue</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Laravel</a>
-          </p>
-        </div> -->
+          
           <!-- Grid column -->
 
           <!-- Grid column -->
@@ -1160,34 +1084,35 @@
             <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">
               Useful links
             </h5>
-            <p style="color: white;">
-              <a href="#about" class="text-reset" style="text-decoration: none;">About Us</a>
+            <p style="color: white;" >
+              <a href="#about" class="text-reset" style="text-decoration: none; font-size:18px">About Us</a>
             </p>
             <p style="color: white;">
-              <a href="#candidate" class="text-reset" style="text-decoration: none;">Candidate</a>
+              <a href="#provider" class="text-reset" style="text-decoration: none; font-size:18px">Employer</a>
             </p>
             <p style="color: white;">
-              <a href="#employer" class="text-reset" style="text-decoration: none;">Employer</a>
+              <a href="#seeker" class="text-reset" style="text-decoration: none; font-size:18px">Employee</a>
             </p>
             <!-- <p style="color: white;">
               <a href="https://arramjobs.in/blog/" class="text-reset" style="text-decoration: none;">Blog</a>
             </p> -->
             <p style="color: white;">
-              <a href="#contact" class="text-reset" style="text-decoration: none;"
+              <a href="#contact" class="text-reset" style="text-decoration: none; font-size:18px"
                 onclick="contactFunction()">Contact</a>
             </p>
           </div>
           <!-- Grid column -->
 
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" id="footercontact">
-            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">Contact</h5>
-            <p style="color: white;"><i class="fas fa-home me-3" style="color: white;"></i>H-72, Periyar Nagar, Erode.
+            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444; font-size:18px">Contact</h5>
+            <p class="address-container" onclick="openGoogleMaps()" style="color: white; font-size:18px"><i class="fas fa-home me-3" style="color: white; font-size:18px"></i>H-72, Periyar Nagar, Erode.
             </p>
             <p style="color: white;">
-              <i class="fas fa-envelope me-3" style="color: white;"></i>
-              <a href="mailto:arramjobs@gmail.com" style="color: white; text-decoration: none;"> arramjobs@gmail.com</a>
+              <i class="fas fa-envelope me-3" style="color: white; font-size:18px" ></i>
+              <a href="mailto:arramjobs@gmail.com" style="color: white; text-decoration: none; font-size:18px" onmouseover="this.style.color='#61d3ed'" onmouseout="this.style.color='white'"> arramjobs@gmail.com</a>
             </p>
-            <p style="color: white;"><i class="fas fa-phone me-3" style="color: white;"></i> <a href="tel:+7418334443" style="color: white; text-decoration: none;" >+91 7418334443</a> </p></p>
+            <p style="color: white;"><i class="fas fa-phone me-3" style="color: white; font-size:18px" ></i>
+            <a href="tel:+91 7418334443" style="color: white; text-decoration: none; font-size:18px"  onmouseover="this.style.color='#61d3ed'" onmouseout="this.style.color='white'">+91 7418334443</a> </p>
             <!-- <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p> -->
           </div>
           <!-- Grid column -->
