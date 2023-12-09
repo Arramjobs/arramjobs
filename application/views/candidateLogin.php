@@ -51,9 +51,9 @@
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
-                                <a href="<?php echo baseUrl; ?>/#seeker" class="logo d-flex align-items-center w-auto">
+                                <a href="<?php echo baseUrl; ?>/#candidate" class="logo d-flex align-items-center w-auto">
                                     <!-- <img src="assets/img/logo.png" alt=""> -->
-                                    <span class="d-none d-lg-block">Arramjobs Candidate</span>
+                                    <span class="d-block">Arramjobs Candidate</span>
                                 </a>
                             </div><!-- End Logo -->
 
@@ -66,7 +66,7 @@
                                         <p class="text-center small">Enter your mobile number to login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Candidate/seekerLogin" ?>" method="post" onsubmit="return validateForm()">
+                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Candidate/candidateLogin" ?>" method="post" onsubmit="return validateForm()">
 
                                         <!-- <div class="col-12">
                                             <label for="username" class="form-label">Registerd ID</label>

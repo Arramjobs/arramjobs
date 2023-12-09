@@ -78,57 +78,65 @@
                 method="post" >
                     
                     <div class="">
-                    <label for="name" class="form-label">Name:</label>
+                    <label for="name" class="form-label">Name: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter company name"
                         onkeypress="return allowOnlyLetters(event, this)" required>
                     <p id="nameerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="phno" class="form-label">Number:</label>
+                    <label for="phno" class="form-label">Number: <span class="text-danger">*</span></label>
                     <input type="number" class="form-control" id="phno" name="mobile"
                         placeholder="Enter company mobile number" required>
                     <p id="pherr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="email" class="form-label">Email-ID:</label>
+                    <label for="email" class="form-label">Email-ID: <span class="text-danger">*</span></label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter company Email" required>
                     <p id="mailerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="addr" class="form-label">Street Address:</label>
+                    <label for="addr" class="form-label">Street Address: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="addr" name="address"
                         placeholder="Enter company address" required>
                     <p id="adderr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="addr" class="form-label">Landmark:</label>
+                    <label for="addr" class="form-label">Landmark: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="landmark" name="landmark"
                         placeholder="Enter company landmark" required>
                     <p id="landerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="addr" class="form-label">City:</label>
+                    <label for="addr" class="form-label">City: <span class="text-danger">*</span> </label>
                     <input type="text" class="form-control" id="city" name="city" placeholder="Enter company city" required>
                     <p id="cityerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="addr" class="form-label">District:</label>
+                    <label for="addr" class="form-label">District: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="district" name="district"
                         placeholder="Enter company district" required>
                     <p id="diserr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="addr" class="form-label">State:</label>
+                    <label for="addr" class="form-label">State: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="state" name="state" placeholder="Enter company state" required>
                     <p id="stateerr" style="color: red;"></p>
                 </div>
 
                 <div class="">
-                    <label for="addr" class="form-label">Pincode:</label>
+                    <label for="addr" class="form-label">Pincode: <span class="text-danger">*</span></label>
                     <input type="number" class="form-control" id="pincode" name="pincode"
                         placeholder="Enter company pincode" required>
                     <p id="pinerr" style="color: red;"></p>
                 </div>
+
+                <div class="">
+                    <label for="locationUrl" class="form-label">Location URL:</label>
+                    <input type="text" class="form-control" id="locationUrl" name="locationUrl"
+                     placeholder="Enter company location link">
+                    <p id="lUrlerr" style="color: red;"></p>
+                </div>
+
                 <div class="">
                     <label for="logo" class="form-label">Logo:</label>
                     <input type="file" class="form-control" id="logo" name="logo" >
@@ -156,25 +164,25 @@
                 </div>
 
                 <div class="">
-                    <label for="name1" class="form-label">Name:</label>
+                    <label for="name1" class="form-label">Name: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="name1" name="name1"
                         placeholder="Enter contact person name" onkeypress="return allowOnlyLetters1(event, this)" required>
                     <p id="nameerr1" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="role" class="form-label">Role:</label>
+                    <label for="role" class="form-label">Role: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="role" name="role"
                         placeholder="Enter contact person role" required>
                     <p id="rolerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="phno1" class="form-label">Mobile Number:</label>
+                    <label for="phno1" class="form-label">Mobile Number: <span class="text-danger">*</span></label>
                     <input type="tel" class="form-control" id="phno1" name="mobile1"
                         placeholder="Enter contact person number" required>
                     <p id="pherr1" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="mail1" class="form-label">Email-ID:</label>
+                    <label for="mail1" class="form-label">Email-ID: <span class="text-danger">*</span></label>
                     <input type="email" class="form-control" id="mail1" name="email1"
                         placeholder="Enter contact person Email" required>
                     <p id="mailerr1" style="color: red;"></p>
@@ -330,7 +338,10 @@
                     document.forms.email.focus();
                     return false;
                 }
-            }
+            }  else {
+                    document.getElementById("mailerr").innerHTML = "";
+                }
+            
 
 
             if (y != "") {

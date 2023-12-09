@@ -68,24 +68,6 @@
 
 /* Sidebar css changes */
 
-.sidebar {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  z-index: 996;
-  transition: all 0.3s;
-  padding: 20px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #aab7cf transparent;
-  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background: #fff;
-  color: #4154f1;
-  border-radius: 10px;
-} 
-
 .sidebar ul li a:hover {
     background: #4154f1;
     color: #fff;
@@ -1034,6 +1016,10 @@
                                 <input type="text" class="form-control" id="inputPincode" name="pincode"  placeholder="Enter pincode" required>
                             </div>
                             <div class="col-md-6">
+                                <label for="locationUrl" class="form-label">Location URL</label>
+                                <input type="text" class="form-control" id="locationUrl" name="locationUrl"  placeholder="Enter company location link" >
+                            </div>
+                            <div class="col-md-6">
                                 <label for="inputFile" class="form-label">Logo</label>
                                 <input type="file" class="form-control" id="inputFile" name="logo">
                             </div>
@@ -1115,20 +1101,20 @@
                             <?php
                             if (isset($this->data['unVerifiedEmployers'][0]['company_name'])) {
                             ?>
-                                <h5 class="card-title">Unverified Employers<span></span></h5>
+                                <h5 class="card-title">New Employers<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Employer ID</th>
                                             <th scope="col">Company Name</th>
                                             <th scope="col"> Company Number</th>
                                             <th scope="col">Contact Person Name</th>
                                             <th scope="col">Contact Person Role</th>
                                             <th scope="col">Contact Person Mobile</th>
-                                            <th scope="col">Date</th>
                                             <th scope="col">Verification Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -1138,17 +1124,18 @@
                                         $loopcount = 1;
                                         foreach ($this->data['unVerifiedEmployers'] as $key => $value) {
                                             $dateap =  $value['dateTime'] ;
-                                            $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                            // $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                            $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                         ?>
                                             <tr>
                                                 <td><a href="#"><?php echo $loopcount; ?></a>.</td>
+                                                <td><?php echo $twelveHourTime;?></td>
                                                 <td><?php echo $value['erid']; ?></td>
-                                                <td><?php echo $value['company_name']; ?></td>
+                                                <td><p class="d-flex"><?php echo $value['company_name']; ?><a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" ><i class='bx bx-map'></i></a></p></td>
                                                 <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
                                                 <td><?php echo $value['name']; ?></td>
                                                 <td><?php echo $value['role']; ?></td>
                                                 <td><?php echo $value['mobile_number']; ?></td>
-                                                <td><?php echo $twelveHourTime;?></td>
                                                 <td><span class="badge bg-danger">Pending</span></td>
                                                 <td class="d-flex"><a class="" href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                 <!-- <a class="ms-1" href="<?php echo baseUrl . "admin/deleteEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button> -->
@@ -1166,6 +1153,7 @@
                                         }
                                         ?>
                                     </tbody>
+                                    <p class="text-end " style="margin-top:-40px" >Count : <b><?php echo $loopcount - 1; ?></b></p>
                                 </table>
                             <?php
                             } else {
@@ -1225,13 +1213,13 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Employer ID</th>
                                             <th scope="col">Company Name</th>
                                             <th scope="col"> Company Number</th>
                                             <th scope="col">Contact Person Name</th>
                                             <th scope="col">Contact Person Role</th>
                                             <th scope="col">Contact Person Mobile</th>
-                                            <th scope="col">Date</th>
                                             <th scope="col">Verification Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -1241,17 +1229,17 @@
                                         $loopcount = 1;
                                         foreach ($this->data['verifiedEmployers'] as $key => $value) {
                                             $dateap =  $value['dateTime'] ;
-                                            $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                            $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                         ?>
                                             <tr>
                                                 <td><a href="#"><?php echo $loopcount; ?>.</a></td>
+                                                <td><?php echo $twelveHourTime; ?></td>
                                                 <td><?php echo $value['erid']; ?></td>
-                                                <td><?php echo $value['company_name']; ?></td>
-                                                <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
+                                                <td><p class="d-flex"><?php echo $value['company_name']; ?><a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" ><i class='bx bx-map'></i></a></p></td>
+                                                <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a> </td>
                                                 <td><?php echo $value['name']; ?></td>
                                                 <td><?php echo $value['role']; ?></td>
                                                 <td><?php echo $value['mobile_number']; ?></td>
-                                                <td><?php echo $twelveHourTime; ?></td>
                                                 <td><span class="badge bg-success">Verified</span></td>
                                                 <td class="d-flex"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                 <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployer"
@@ -1268,6 +1256,7 @@
                                         }
                                         ?>
                                     </tbody>
+                                    <p class="text-end " style="margin-top:-40px" >Count : <b><?php echo $loopcount - 1; ?></b></p>
                                 </table>
                             <?php
                             } else {
@@ -1326,13 +1315,13 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Employer ID</th>
                                             <th scope="col">Company Name</th>
                                             <th scope="col"> Company Number</th>
                                             <th scope="col">Contact Person Name</th>
                                             <th scope="col">Contact Person Role</th>
                                             <th scope="col">Contact Person Mobile</th>
-                                            <th scope="col">Date</th>
                                             <th scope="col">Verification Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -1342,17 +1331,17 @@
                                         $loopcount = 1;
                                         foreach ($this->data['pendingEmployers'] as $key => $value) {
                                             $dateap =  $value['dateTime'] ;
-                                            $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                            $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                         ?>
                                             <tr>
                                                 <td><a href="#"><?php echo $loopcount; ?>.</a></td>
+                                                <td><?php echo $twelveHourTime; ?></td>
                                                 <td><?php echo $value['erid']; ?></td>
-                                                <td><?php echo $value['company_name']; ?></td>
+                                                <td><p class="d-flex"><?php echo $value['company_name']; ?><a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" ><i class='bx bx-map'></i></a></p></td>
                                                 <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
                                                 <td><?php echo $value['name']; ?></td>
                                                 <td><?php echo $value['role']; ?></td>
                                                 <td><?php echo $value['mobile_number']; ?></td>
-                                                <td><?php echo $twelveHourTime; ?></td>
                                                 <td><span class="badge bg-danger">Pending</span></td>
                                                 <td class="d-flex"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                 <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployer"
@@ -1369,6 +1358,7 @@
                                         }
                                         ?>
                                     </tbody>
+                                    <p class="text-end " style="margin-top:-40px" >Count : <b><?php echo $loopcount - 1; ?></b></p>
                                 </table>
                             <?php
                             } else {
@@ -1415,11 +1405,11 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S.No</th>
+                                                    <th scope="col">Date</th>
                                                     <th scope="col">Employer ID</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Mobile Number</th>
                                                     <th scope="col">Delete Remarks</th>
-                                                    <th scope="col">Date</th>
                                                     <th scope="col">Verification Status</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
@@ -1429,15 +1419,15 @@
                                                 $loopcount = 1;
                                                 foreach ($this->data['deleteEmployerList'] as $key => $value) {
                                                     $dateap =  $value['dateTime'] ;
-                                                    $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                                    $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                                 ?>
                                                     <tr>
                                                         <td><a href="#"><?php echo $loopcount; ?>.</a></td>
+                                                        <td><?php echo $twelveHourTime; ?></td>
                                                         <td><?php echo $value['erid']; ?></td>
-                                                        <td><?php echo $value['company_name']; ?></td>
+                                                        <td><p class="d-flex"><?php echo $value['company_name']; ?><a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" ><i class='bx bx-map'></i></a></p></td>
                                                         <td><?php echo $value['company_mobile_number']; ?></td>
                                                         <td><?php echo $value['deleteRemarks']; ?></td>
-                                                        <td><?php echo $twelveHourTime; ?></td>
                                             <?php 
                                             if($value['verifyOne']== 1 && $value['verifyTwo']== 1 ) {
                                             ?>
@@ -1464,6 +1454,7 @@
                                                 }
                                                 ?>
                                             </tbody>
+                                            <p class="text-end " style="margin-top:-40px" >Count : <b><?php echo $loopcount - 1; ?></b></p>
                                         </table>
                                     <?php
                                     } else {
@@ -1516,18 +1507,59 @@
                             <?php
                             if (isset($this->data['overallEmployers'][0]['company_name'])) {
                             ?>
-                                <h5 class="card-title">Overall List<span></span></h5>
+                                <div class="d-sm-flex ">
+                            <h5 class="card-title me-5">Overall List<span></span></h5>
+                        <div class="filter pt-3 ms-5">
+                        <p class="icon" href="#" data-bs-toggle="dropdown" style="cursor:pointer;"> Filter <i class="bi bi-chevron-down"></i>
+                        </p>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow p-4 z-3">
+                            <!-- <li class="mb-2"> <h4>Filter</h4> </li> -->
+                            <li> 
+                             <p>Select Year :  
+                            <select id="yearCd" onchange="filterByYearMonth()"  >
+                                <option value="">Year</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        <p>Select Month:
+                            <select id="monthCd" onchange="filterByYearMonth()" >
+                                <option value="">Month</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select></p>
+                         </li>
+                            <li><div class="d-sm-flex ">
+                                <p>From : <input type="date" id="fromDateEr" ></p>
+                                <p class="ms-2">To :  <input type="date" id="toDateEr" ></p>
+                                <p onclick="clearDateFields()" style="width: 18px;height:auto;" class="border border-secondary ms-1"><i class="bi bi-x"></i></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    </div> 
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="myTableEr">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Employer ID</th>
                                             <th scope="col">Company Name</th>
-                                            <th scope="col"> Company Number</th>
+                                            <th scope="col">Company Number</th>
                                             <th scope="col">Contact Person Name</th>
-                                            <th scope="col">Contact Person Role</th>
+                                            <!-- <th scope="col">Contact Person Role</th> -->
                                             <th scope="col">Contact Person Mobile</th>
                                             <th scope="col">Verification Status</th>
                                             <th scope="col">Action</th>
@@ -1537,14 +1569,17 @@
                                         <?php
                                         $loopcount = 1;
                                         foreach ($this->data['overallEmployers'] as $key => $value) {
+                                            $dateap =  $value['dateTime'] ;
+                                            $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                         ?>
                                             <tr>
                                                 <td><a href="#"><?php echo $loopcount; ?>.</a></td>
+                                                <td><?php echo $twelveHourTime; ?></td>
                                                 <td><?php echo $value['erid']; ?></td>
-                                                <td><?php echo $value['company_name']; ?></td>
+                                                <td><p class="d-flex"><?php echo $value['company_name']; ?><a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" ><i class='bx bx-map'></i></a></p></td>
                                                 <td><a href="#" class="text-primary"><?php echo $value['company_mobile_number']; ?></a></td>
                                                 <td><?php echo $value['name']; ?></td>
-                                                <td><?php echo $value['role']; ?></td>
+                                                <!-- <td><?php echo $value['role']; ?></td> -->
                                                 <td><?php echo $value['mobile_number']; ?></td>
                                     <?php 
                                     if($value['verifyOne']== 1 && $value['verifyTwo']== 1) {
@@ -1564,6 +1599,7 @@
                                         }
                                         ?>
                                     </tbody>
+                                    <p class="text-end " style="margin-top:-40px" >Count : <b><?php echo $loopcount - 1; ?></b></p>
                                 </table>
                             <?php
                             } else {
@@ -1573,10 +1609,100 @@
                             }
                             ?>
                         </div>
-
                     </div>
                 </div><!-- End Recent Sales -->
             </section>
+
+            <script>
+                function filterTableEr() {
+                    var fromDateInput = document.getElementById("fromDateEr").value;
+                    var toDateInput = document.getElementById("toDateEr").value;
+
+                    var table = document.getElementById("myTableEr");
+                    var rows = table.getElementsByTagName("tr");
+
+                    for (var i = 1; i < rows.length; i++) {
+                        var row = rows[i];
+                        var dateColumn = row.getElementsByTagName("td")[1]; // "Date" column
+
+                        if (dateColumn) {
+                            var dateValue = dateColumn.textContent || dateColumn.innerText;
+                            var date = parseDate(dateValue, "dd/mm/yyyy");
+
+                            var fromDate = fromDateInput ? parseDate(fromDateInput, "yyyy-mm-dd") : null;
+                            var toDate = toDateInput ? parseDate(toDateInput, "yyyy-mm-dd") : null;
+
+                            if ((fromDate === null || date >= fromDate) &&
+                                (toDate === null || date <= toDate)) {
+                                row.style.display = "";
+                            } else {
+                                row.style.display = "none";
+                            }
+                        }
+                    }
+                }
+
+                function parseDate(dateString, format) {
+                    var parts;
+                    if (format === "yyyy-mm-dd") {
+                        parts = dateString.split("-");
+                        return new Date(parts[0], parts[1] - 1, parts[2]);
+                    } else if (format === "dd/mm/yyyy") {
+                        parts = dateString.split("/");
+                        return new Date(parts[2], parts[1] - 1, parts[0]);
+                    }
+                }
+
+                function clearDateFields() {
+                    document.getElementById("yearCd").value = "";
+                    document.getElementById("monthCd").value = "";
+                        document.getElementById("fromDateEr").value = "";
+                        document.getElementById("toDateEr").value = "";
+                        filterTableEr();
+                    }
+
+                document.getElementById("fromDateEr").addEventListener("input", filterTableEr);
+                document.getElementById("toDateEr").addEventListener("input", filterTableEr);
+            </script>
+        <script>
+            function filterByYearMonth() {
+            var fromDateInput = document.getElementById("fromDateEr").value;
+            var toDateInput = document.getElementById("toDateEr").value;
+            var selectedYear = document.getElementById("yearCd").value;
+            var selectedMonth = document.getElementById("monthCd").value;
+
+            var table = document.getElementById("myTableEr");
+            var rows = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var dateColumn = row.getElementsByTagName("td")[1]; // Assuming the "Date" column is at index 1
+
+                if (dateColumn) {
+                var dateValue = dateColumn.textContent || dateColumn.innerText;
+                var date = parseDate(dateValue, "dd/mm/yyyy");
+
+                var fromDate = fromDateInput ? parseDate(fromDateInput, "yyyy-mm-dd") : null;
+                var toDate = toDateInput ? parseDate(toDateInput, "yyyy-mm-dd") : null;
+
+                var yearMatch = selectedYear === "" || date.getFullYear() == selectedYear;
+                var monthMatch = selectedMonth === "" || date.getMonth() + 1 == selectedMonth;
+
+                if ((fromDate === null || date >= fromDate) &&
+                    (toDate === null || date <= toDate) &&
+                    yearMatch && monthMatch) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+                }
+            }
+            }
+            document.getElementById("fromDateEr").addEventListener("input", filterByYearMonth);
+            document.getElementById("toDateEr").addEventListener("input", filterByYearMonth);
+            document.getElementById("yearCd").addEventListener("change", filterByYearMonth);
+            document.getElementById("monthCd").addEventListener("change", filterByYearMonth);
+        </script>
 
         <?php
         } elseif ($method == 'manageEmployer') {
@@ -1884,10 +2010,11 @@
                             <table class="table table-striped mt-2">
                                 <thead>
                                     <tr>
-                                        <th class="col-2" scope="col">Logo</th>
-                                        <th class="col-4" scope="col">Website</th>
+                                        <th class="col-3" scope="col">Location</th>
+                                        <th class="col-3" scope="col">Logo</th>
+                                        <th class="col-2" scope="col">Website</th>
                                         <th class="col-2" scope="col">PAN Number</th>
-                                        <th class="col-1" scope="col">GST Number</th>
+                                        <th class="col-2" scope="col">GST Number</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1895,9 +2022,33 @@
                         foreach ($this->data['manageEmployer'] as $key => $value) {
                             ?>
                                         <tr>
+
+                                        <?php if($value['companyLocationUrl'] != null){ ?>
+                                             <td> <a href="<?php echo $value['companyLocationUrl'] ;?>"
+                                              class=" text-primary" target="blank">Location</a></td>
+                                              <?php } else {  ?>  <td> Not Entered</td> <?php } ?>
+                                             
+                                             <?php if($value['company_logo'] == "None"){ ?>
+                                                <td> Not Entered</td>
+                                              <?php } else {  ?>  
+                                                <td> <a href="<?php echo $value['company_logourl'] ;?>"
+                                              class=" text-primary" target="blank">Logo</a></td> <?php } ?>
+                                        
+                                        <?php if($value['companywebsite'] != null){ ?>
+                                             <td> <a href="<?php echo $value['companywebsite'] ;?>"
+                                              class=" text-primary" target="blank">Website</a></td>
+                                              <?php }   else {  ?>  <td> Not Entered</td> <?php } ?>
+
+                                            <td><?php echo $value['companypan'] ?></td>
+                                            <td><?php echo $value['companygst'] ?></td>
+
+
+                                        <!-- <td><a href="<?php echo $value['companyLocationUrl'] ;?>"
+                                             class=" text-primary" target="blank">Location</a></td>
                                             <td><a href="<?php echo $value['company_logourl'] ;?>"
-                                             class="form-control text-primary" target="blank"><?php echo $value['company_logo'] ;?></a></td>
-                                            <td><?php echo $value['companywebsite'] ?></td>
+                                             class=" text-primary" target="blank"><?php echo $value['company_logo'] ;?></a></td>
+                                            <td><a href="<?php echo $value['companywebsite'] ?>"
+                                             class=" text-primary" target="blank">Website</a></td> -->
                                             <td><?php echo $value['companypan'] ?></td>
                                             <td><?php echo $value['companygst'] ?></td>
                                         </tr>
@@ -1923,14 +2074,15 @@
                                                  $countjobs = 1;
                                                 foreach ($this->data['jobDetails'] as $key => $value) {
                                                 $dateap =  $value['date'] ;
-                                                    $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                                    $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                                     ?>
 
                                                         <tr>
                                                             <td><a ><?php echo $countjobs++; ?>.</a></td>
                                                             <td><?php echo $value['jobCategory'] ?></td>
                                                             <td><?php echo $value['jobSubCategory'] ?> </td>
-                                                            <td><?php echo $value['location'] ?></td>
+                                                            <td><a href="<?php echo $value['locationUrl'] ?>"
+                                                            class=" text-primary" target="blank"><?php echo $value['location'] ?></a> </td>
                                                             <td><?php echo $value['job_type'] ?></td>
                                                             <td><?php echo $value['salary'] ?></td>
                                                         </tr>
@@ -1954,7 +2106,7 @@
                                                  $countjobs = 1;
                                                 foreach ($this->data['jobDetails'] as $key => $value) {
                                                 $dateap =  $value['date'] ;
-                                                    $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                                    $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                                     ?>
 
                                                         <tr>
@@ -2076,19 +2228,19 @@
                             <?php
                             if (isset($this->data['unVerifiedEmployees'][0]['name'])) {
                             ?>
-                                <h5 class="card-title">Unverified Candidates<span></span></h5>
+                                <h5 class="card-title">New Candidates<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Candidate ID</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Mobile Number</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">D.O.B</th>
-                                            <th scope="col">Date</th>
                                             <th scope="col">Verification Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -2098,16 +2250,16 @@
                                         $loopcount = 1;
                                         foreach ($this->data['unVerifiedEmployees'] as $key => $value) {
                                             $dateap =  $value['dateTime'] ;
-                                            $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                            $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                         ?>
                                             <tr>
                                                 <td><a href="#"><?php echo $loopcount; ?>.</a></td>
+                                                <td><?php echo $twelveHourTime; ?></td>
                                                 <td><?php echo $value['eeid']; ?></td>
                                                 <td><?php echo $value['name']; ?></td>
                                                 <td><?php echo $value['phonenumber']; ?></td>
                                                 <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
                                                 <td><?php echo $value['dateofbirth']; ?></td>
-                                                <td><?php echo $twelveHourTime; ?></td>
                                                 <td><span class="badge bg-danger">Pending</span></td>
                                                 <td class="d-flex"><a class="mx-1" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                 <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#deleteemployee"
@@ -2124,6 +2276,7 @@
                                         }
                                         ?>
                                     </tbody>
+                                    <p class="text-end " style="margin-top:-40px" >Count : <b><?php echo $loopcount - 1; ?></b></p>
                                 </table>
                             <?php
                             } else {
@@ -2185,12 +2338,12 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Candidate ID</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Mobile Number</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">D.O.B</th>
-                                            <th scope="col">Date</th>
                                             <th scope="col">Verification Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -2200,16 +2353,16 @@
                                         $loopcount = 1;
                                         foreach ($this->data['verifiedEmployees'] as $key => $value) {
                                             $dateap =  $value['dateTime'] ;
-                                            $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                            $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                         ?>
                                             <tr>
                                                 <td><a href="#"><?php echo $loopcount; ?>.</a></td>
+                                                <td><?php echo $twelveHourTime; ?></td>
                                                 <td><?php echo $value['eeid']; ?></td>
                                                 <td><?php echo $value['name']; ?></td>
                                                 <td><?php echo $value['phonenumber']; ?></td>
                                                 <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
                                                 <td><?php echo $value['dateofbirth']; ?></td>
-                                                <td><?php echo $twelveHourTime; ?></td>
                                                 <td><span class="badge bg-success">Verified</span></td>
                                                 <td class="d-flex">
                                                     <a class="" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
@@ -2227,6 +2380,7 @@
                                         }
                                         ?>
                                     </tbody>
+                                    <p class="text-end " style="margin-top:-40px" >Count : <b><?php echo $loopcount - 1; ?></b></p>
                                 </table>
                             <?php
                             } else {
@@ -2276,6 +2430,7 @@
                                         <li><a class="dropdown-item" href="#">This Year</a></li>
                                     </ul>
                                 </div> -->
+                                
         
                                 <div class="card-body">
                                     <?php
@@ -2288,13 +2443,13 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S.No</th>
+                                                    <th scope="col">Date</th>
                                                     <th scope="col">Candidate ID</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Mobile Number</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">D.O.B</th>
                                                     <th scope="col">Remarks</th>
-                                                    <th scope="col">Date</th>
                                                     <th scope="col">Verification Status</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
@@ -2304,17 +2459,17 @@
                                                 $loopcount = 1;
                                                 foreach ($this->data['pendingEmployees'] as $key => $value) {
                                                     $dateap =  $value['dateTime'] ;
-                                            $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                            $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                                 ?>
                                                     <tr>
                                                         <td><a href="#"><?php echo $loopcount; ?>.</a></td>
+                                                        <td><?php echo $twelveHourTime; ?></td>
                                                         <td><?php echo $value['eeid']; ?></td>
                                                         <td><?php echo $value['name']; ?></td>
                                                         <td><?php echo $value['phonenumber']; ?></td>
                                                         <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
                                                         <td><?php echo $value['dateofbirth']; ?></td>
                                                         <td><?php echo $value['verificationRemarks']; ?></td>
-                                                        <td><?php echo $twelveHourTime; ?></td>
                                                         <td><span class="badge bg-danger">Pending</span></td>
                                                         <td class="d-flex"><a href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                         <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployee"
@@ -2322,7 +2477,6 @@
                                         <script>
                                             function deleteformpl(employeetid){
                                                 document.getElementById("EmployeeId").value = employeetid;
-                                                // document.getElementById("demo").innerHTML = "I have changed!";
                                             }
                                         </script>
                                                     </td>
@@ -2332,6 +2486,7 @@
                                                 }
                                                 ?>
                                             </tbody>
+                                            <p class="text-end " style="margin-top:-40px" >Count : <b><?php echo $loopcount - 1; ?></b></p>
                                         </table>
                                     <?php
                                     } else {
@@ -2392,13 +2547,13 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Candidate ID</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Mobile Number</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">D.O.B</th>
                                             <th scope="col">Remarks</th>
-                                            <th scope="col">Date</th>
                                             <th scope="col">Verification Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -2408,17 +2563,17 @@
                                         $loopcount = 1;
                                         foreach ($this->data['deleteEmployeeList'] as $key => $value) {
                                             $dateap =  $value['dateTime'] ;
-                                            $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                            $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                         ?>
                                             <tr>
                                                 <td><a href="#"><?php echo $loopcount; ?>.</a></td>
+                                                <td><?php echo $twelveHourTime; ?></td>
                                                 <td><?php echo $value['eeid']; ?></td>
                                                 <td><?php echo $value['name']; ?></td>
                                                 <td><?php echo $value['phonenumber']; ?></td>
                                                 <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
                                                 <td><?php echo $value['dateofbirth']; ?></td>
                                                 <td><?php echo $value['deleteRemarks']; ?></td>
-                                                <td><?php echo $twelveHourTime; ?></td>
                                     <?php 
                                     if($value['identityverify']== 1 && $value['addressverify']== 1 && $value['employmentverify']== 1 && $value['educationverify']== 1) {
                                     ?>
@@ -2448,6 +2603,7 @@
                                         }
                                         ?>
                                     </tbody>
+                                    <p class="text-end " style="margin-top:-40px" >Count : <b><?php echo $loopcount - 1; ?></b></p>
                                 </table>
                             <?php
                             } else {
@@ -2484,36 +2640,62 @@
             <div class="col-12">
                 <div class="card recent-sales overflow-auto">
 
-                    <!-- <div class="filter">
-                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <li class="dropdown-header text-start">
-                                <h6>Filter</h6>
-                            </li>
-
-                            <li><a class="dropdown-item" href="#">Today</a></li>
-                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                        </ul>
-                    </div> -->
-
                     <div class="card-body">
+
                         <?php
                         if (isset($this->data['overallEmployees'][0]['name'])) {
                         ?>
-                            <h5 class="card-title">Overall List<span></span></h5>
-
+                        <div class="d-sm-flex ">
+                            <h5 class="card-title me-5">Overall List<span></span></h5>
+                        <div class="filter pt-3 ms-5">
+                        <p class="icon" href="#" data-bs-toggle="dropdown" style="cursor:pointer;"> Filter <i class="bi bi-chevron-down"></i>
+                        </p>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow p-4 z-3">
+                            <!-- <li class="mb-2"> <h4>Filter</h4> </li> -->
+                            <li> 
+                             <p>Select Year :  
+                            <select id="yearCd" onchange="filterByYearMonth()"  >
+                                <option value="">Year</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        <p>Select Month:
+                            <select id="monthCd" onchange="filterByYearMonth()" >
+                                <option value="">Month</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select></p>
+                         </li>
+                            <li><div class="d-sm-flex ">
+                                <p>From : <input type="date" id="fromDateCd" ></p>
+                                <p class="ms-2">To :  <input type="date" id="toDateCd" ></p>
+                                <p onclick="clearDateFields()" style="width: 18px;height:auto;" class="border border-secondary ms-1"><i class="bi bi-x"></i></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>   
                             <!-- <table class="table table-borderless datatable"> -->
-                            <table class="table">
+                            <table class="table" id="myTableCd">
                                 <thead>
                                     <tr>
                                         <th scope="col">S.No</th>
+                                        <th scope="col">Date</th>
                                         <th scope="col">Candidate ID</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Mobile Number</th>
                                         <th scope="col">Email</th>
-                                        <th scope="col">D.O.B</th>
-                                        <th scope="col">Date</th>
                                         <th scope="col">Verification Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -2523,27 +2705,22 @@
                                     $loopcount = 1;
                                     foreach ($this->data['overallEmployees'] as $key => $value) {
                                         $dateap =  $value['dateTime'] ;
-                                            $twelveHourTime = date(" F j, Y", strtotime($dateap));
+                                        $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                     ?>
                                         <tr>
                                             <td><a href="#"><?php echo $loopcount; ?>.</a></td>
+                                            <td><?php echo $twelveHourTime; ?></td>
                                             <td><?php echo $value['eeid']; ?></td>
                                             <td><?php echo $value['name']; ?></td>
                                             <td><?php echo $value['phonenumber']; ?></td>
                                             <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
-                                            <td><?php echo $value['dateofbirth']; ?></td>
-                                            <td><?php echo $twelveHourTime; ?></td>
                                             <?php 
                                     if($value['identityverify']== 1 && $value['addressverify']== 1 && $value['employmentverify']== 1 && $value['educationverify']== 1) {
                                     ?>
                                                 <td><span class="badge bg-success">Verified</span></td>
-                                    <?php 
-                                    } else{
-                                    ?>
+                                    <?php   } else{  ?>
                                                 <td><span class="badge bg-danger">Pending</span></td>
-                                    <?php
-                                    }        
-                                    ?>
+                                    <?php  }    ?>
                                         <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                         </tr>
                                     <?php
@@ -2551,7 +2728,9 @@
                                     }
                                     ?>
                                 </tbody>
+                                <p class="text-end " style="margin-top:-40px" >Count : <b><?php echo $loopcount - 1; ?></b></p>
                             </table>
+                            
                         <?php
                         } else {
                         ?>
@@ -2564,6 +2743,97 @@
                 </div>
             </div><!-- End Recent Sales -->
         </section>
+        <script>
+                function filterTableCd() {
+                    var fromDateInput = document.getElementById("fromDateCd").value;
+                    var toDateInput = document.getElementById("toDateCd").value;
+
+                    var table = document.getElementById("myTableCd");
+                    var rows = table.getElementsByTagName("tr");
+
+                    for (var i = 1; i < rows.length; i++) {
+                        var row = rows[i];
+                        var dateColumn = row.getElementsByTagName("td")[1]; // "Date" column
+
+                        if (dateColumn) {
+                            var dateValue = dateColumn.textContent || dateColumn.innerText;
+                            var date = parseDate(dateValue, "dd/mm/yyyy");
+
+                            var fromDate = fromDateInput ? parseDate(fromDateInput, "yyyy-mm-dd") : null;
+                            var toDate = toDateInput ? parseDate(toDateInput, "yyyy-mm-dd") : null;
+
+                            if ((fromDate === null || date >= fromDate) &&
+                                (toDate === null || date <= toDate)) {
+                                row.style.display = "";
+                            } else {
+                                row.style.display = "none";
+                            }
+                        }
+                    }
+                }
+
+                function parseDate(dateString, format) {
+                    var parts;
+                    if (format === "yyyy-mm-dd") {
+                        parts = dateString.split("-");
+                        return new Date(parts[0], parts[1] - 1, parts[2]);
+                    } else if (format === "dd/mm/yyyy") {
+                        parts = dateString.split("/");
+                        return new Date(parts[2], parts[1] - 1, parts[0]);
+                    }
+                }
+
+                function clearDateFields() {
+                    document.getElementById("yearCd").value = "";
+                    document.getElementById("monthCd").value = "";
+                        document.getElementById("fromDateCd").value = "";
+                        document.getElementById("toDateCd").value = "";
+                        filterTableCd();
+                    }
+
+                document.getElementById("fromDateCd").addEventListener("input", filterTableCd);
+                document.getElementById("toDateCd").addEventListener("input", filterTableCd);
+            </script>
+        <script>
+            function filterByYearMonth() {
+            var fromDateInput = document.getElementById("fromDateCd").value;
+            var toDateInput = document.getElementById("toDateCd").value;
+            var selectedYear = document.getElementById("yearCd").value;
+            var selectedMonth = document.getElementById("monthCd").value;
+
+            var table = document.getElementById("myTableCd");
+            var rows = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var dateColumn = row.getElementsByTagName("td")[1]; // Assuming the "Date" column is at index 1
+
+                if (dateColumn) {
+                var dateValue = dateColumn.textContent || dateColumn.innerText;
+                var date = parseDate(dateValue, "dd/mm/yyyy");
+
+                var fromDate = fromDateInput ? parseDate(fromDateInput, "yyyy-mm-dd") : null;
+                var toDate = toDateInput ? parseDate(toDateInput, "yyyy-mm-dd") : null;
+
+                var yearMatch = selectedYear === "" || date.getFullYear() == selectedYear;
+                var monthMatch = selectedMonth === "" || date.getMonth() + 1 == selectedMonth;
+
+                if ((fromDate === null || date >= fromDate) &&
+                    (toDate === null || date <= toDate) &&
+                    yearMatch && monthMatch) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+                }
+            }
+            }
+            document.getElementById("fromDateCd").addEventListener("input", filterByYearMonth);
+            document.getElementById("toDateCd").addEventListener("input", filterByYearMonth);
+            document.getElementById("yearCd").addEventListener("change", filterByYearMonth);
+            document.getElementById("monthCd").addEventListener("change", filterByYearMonth);
+        </script>
+            
 
         <?php
         } elseif ($method == "manageEmployee") {
@@ -3532,7 +3802,7 @@
                             </section>
 
         <?php
-        } elseif ($method == 'addNewAdminApprovel') {
+            } elseif ($method == 'addNewAdminApprovel') {
         ?>
         <!-- ******************************** Not in use ********************************* -->
             <section class="usertable">
@@ -3606,7 +3876,7 @@
                 </div><!-- End Recent Sales -->
             </section>
         <?php
-        } elseif ($method == 'addNewEmployerApprovel') {
+            } elseif ($method == 'addNewEmployerApprovel') {
             $addNewApprovel = $this->data['addNewEmployerApprovel']['response'];
             $deleteApprovel = $this->data['deleteEmployerApprovel']['response'];
         ?>
@@ -3719,7 +3989,7 @@
                 </div><!-- End Recent Sales -->
             </section>
         <?php
-        } elseif ($method == 'employerApprovel') {
+            } elseif ($method == 'employerApprovel') {
         ?>
                 <!-- ******************************** Not in use ********************************* -->
             <section class="Multi Columns Form">

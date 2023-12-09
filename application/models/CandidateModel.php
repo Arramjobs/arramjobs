@@ -247,6 +247,7 @@ class CandidateModel extends CI_Model
             'seekerId' => $seekerId,
             'educational_qualification' => $post['qualification'],
             'department' => $post['department'],
+            'educationmode' => $post['educationmode'],
             'school_college_name' => $post['school'],
             'percentage' => $post['percentage'],
             'yearOfPassing' => $post['year_passed'],
@@ -402,11 +403,13 @@ class CandidateModel extends CI_Model
 
         $add = array(
             'seekerId' => $seekerId,
-            'experience' => $post['experience'],
             'other_category' => $post['category'],
             'other_sub_category' => $post['subcategory'],
+            'expYear' => $post['expYear'],
+            'expMonth' => $post['expMonth'],
             'company_name' => $post['companyname'],
             'job_role' => $post['role'],
+            'profile' => $post['profile'],
             'previous_employer_name' => $post['nameofemployer'],
             'previous_employer_mobile' => $post['number'],
             'previous_employer_email' => $post['emailid'],
@@ -443,11 +446,14 @@ class CandidateModel extends CI_Model
         $post = $this->input->post(null, true);
         $experienceId = $post['id'];
         $updateInsertExperience = array(
-            'experience' => $post['experience'],
+            
             'other_category' => $post['category'],
             'other_sub_category' => $post['subcategory'],
+            'expYear' => $post['expYear'],
+            'expMonth' => $post['expMonth'],
             'company_name' => $post['companyname'],
             'job_role' => $post['role'],
+            'profile' => $post['profile'],
             'previous_employer_name' => $post['nameofemployer'],
             'previous_employer_mobile' => $post['number'],
             'previous_employer_email' => $post['emailid'],
@@ -551,7 +557,8 @@ class CandidateModel extends CI_Model
             'other_interst_category' => $post['category'],
             'other_sub_interst_category' => $post['subcategory'],
             'prefered_location' => $post['preferred-location'],
-            'experience' => $post['experience'],
+            // 'expYear' => $post['expYear'],
+            // 'expMonth' => $post['expMonth'],
             'job_type' => $post['jobtype'],
             'description' => $post['description'],
             'expected_salary' => $post['expected-salary'],
@@ -593,7 +600,8 @@ class CandidateModel extends CI_Model
             'other_interst_category' => $post['category'],
             'other_sub_interst_category' => $post['subcategory'],
             'prefered_location' => $post['preferred-location'],
-            'experience' => $post['experience'],
+            // 'expYear' => $post['expYear'],
+            // 'expMonth' => $post['expMonth'],
             'job_type' => $post['jobtype'],
             'description' => $post['description'],
             'expected_salary' => $post['expected-salary'],
@@ -632,6 +640,7 @@ class CandidateModel extends CI_Model
             'seekerId' => $seekerId,
             'skill' => $post['skillname'],
             'experience' => $post['skillexperience'],
+            // 'expMonth' => $post['skillexperience'],
             'skill_level' => $post['skilllevel']
         );
 
@@ -654,6 +663,7 @@ class CandidateModel extends CI_Model
         $updateInsertSkill = array(
             'skill' => $post['skillname'],
             'experience' => $post['skillexperience'],
+            // 'expMonth' => $post['skillexperience'],
             'skill_level' => $post['skilllevel']
         );
 

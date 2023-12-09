@@ -127,6 +127,12 @@
 }
 
     /* End of sidebar changes */
+
+/* .footer {
+  position: absolute; 
+     bottom: 0;
+   }
+      */
    </style>
 </head>
 
@@ -584,6 +590,33 @@
                          document.getElementById("existfileab").style.display= "none";
                          document.getElementById("existfilepp").style.display= "none";
                      </script>
+
+<script>
+    // Add an event listener to the date input
+    document.getElementById('dateofbirth').addEventListener('input', function () {
+        // Get the entered date of birth
+        var dob = new Date(this.value);
+
+        // Calculate the age
+        var age = calculateAge(dob);
+
+        // Set the calculated age to the age input
+        document.getElementById('age').value = age;
+    });
+
+    // Function to calculate age based on date of birth
+    function calculateAge(dob) {
+        var today = new Date();
+        var birthDate = new Date(dob);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+</script>
+
                                          <?php
                      }
                         }
@@ -883,8 +916,8 @@
             
                                     <a  href="#addeduform"><button  onclick="addeduformfunction()" type="button" class="btn btn-success mb-4">+ Add Education</button></a>
                                    <div>
-                                   <a class="" href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
-                                   <a class="" href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
+                                   <a class="" href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> Previous</button></a>
+                                   <a class="" href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next <i class="bi bi-arrow-right"></i></button></a>
                                    </div>
                                 </div>
                                 <?php
@@ -899,6 +932,7 @@
                                          <th scope="col">S.No</th>
                                          <th scope="col">Educational Qualification</th>
                                          <th scope="col">Specialiization</th>
+                                         <th scope="col">Mode of Education</th>
                                          <th scope="col">Institute</th>
                                          <th scope="col">Year of Passing</th>
                                          <th scope="col">Percentage</th>
@@ -919,6 +953,7 @@
                               <td><a><?php echo $count++; ?>.</a></td>
                               <td><?php echo $value['educational_qualification'] ?></td>
                               <td><?php echo $value['department'] ?></td>
+                              <td><?php echo $value['educationmode'] ?></td>
                               <td><?php echo $value['school_college_name'] ?></td>
                               <td><?php echo $value['yearOfPassing'] ?></td>
                               <td><?php echo $value['percentage'] ?></td>
@@ -1041,6 +1076,16 @@
                             <input type="text" class="form-control" id="department" name="department" placeholder="Enter specialization">
                             <div id="department_error" class="text-danger"></div>
                           </div>
+
+                          <div class="col-md-6" id="course-group" style="display: none;">
+                             <label for="educationmode" class="form-label" >Mode of Education</label>
+                             <select class="form-control" id="educationmode" name="educationmode" required>
+                                 <option value="">Select your mode of education </option>
+                                 <option value="Regular" >Regular course</option>
+                                 <option value="Corres" >Correspondence course</option>
+                                 </select>
+                             <div id="course_error" class="text-danger"></div>
+                             </div>
 
                           <div class="col-md-6" id="school-group" style="display: none;">
                             <label for="school" class="form-label">Institute</label>
@@ -1186,6 +1231,7 @@
                                     document.getElementById("school-group").style.display = "none";
                                     document.getElementById("percentage-group").style.display = "none";
                                     document.getElementById("department-group").style.display = "none";
+                                    document.getElementById("course-group").style.display = "none";
                                     document.getElementById("year-group").style.display = 'none';
                                     document.getElementById("certificate_10th-group").style.display = 'none';
                                     document.getElementById("certificate_12th-group").style.display = 'none';
@@ -1212,6 +1258,7 @@
                                     } 
                                     else if (selectedValue === "DIPLOMA") {
           document.getElementById("department-group").style.display = "block";
+          document.getElementById("course-group").style.display = "block";
           document.getElementById("school-group").style.display = "block";
             document.getElementById("percentage-group").style.display = "block";
             document.getElementById("year-group").style.display = 'block';
@@ -1219,6 +1266,7 @@
                                     } 
                                     else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW") {
           document.getElementById("department-group").style.display = "block";
+          document.getElementById("course-group").style.display = "block";
           document.getElementById("school-group").style.display = "block";
             document.getElementById("percentage-group").style.display = "block";
             document.getElementById("year-group").style.display = 'block';
@@ -1227,6 +1275,7 @@
                                     } 
                                     else if (selectedValue === "M.E" || selectedValue === "M.A" || selectedValue === "M.COM" || selectedValue === "M.ED" || selectedValue === "M.LIT" || selectedValue === "M.TECH" || selectedValue === "MCA" || selectedValue === "MBA" || selectedValue === "M.SC" || selectedValue === "MSW") {
           document.getElementById("department-group").style.display = "block";
+          document.getElementById("course-group").style.display = "block";
           document.getElementById("school-group").style.display = "block";
             document.getElementById("percentage-group").style.display = "block";
             document.getElementById("year-group").style.display = 'block';
@@ -1235,6 +1284,7 @@
                                     } 
                                     else if (selectedValue === "Ph.D"  ) {
           document.getElementById("department-group").style.display = "block";
+          document.getElementById("course-group").style.display = "block";
           document.getElementById("school-group").style.display = "block";
             document.getElementById("percentage-group").style.display = "block";
             document.getElementById("year-group").style.display = 'block';
@@ -1258,6 +1308,7 @@
               function validateForm() {
                         var q = document.educationform.qualification.value;
                         var dep = document.educationform.department.value;
+                        var edu = document.educationform.educationmode.value;
                         var scl = document.educationform.school.value;
                         var per = document.educationform.percentage.value;
                         var yop = document.educationform.year_passed.value;
@@ -1285,6 +1336,15 @@
                           return false;
                         } else {
                           document.getElementById("department_error").innerHTML = "";
+                        }
+
+                        if (edu == "" && document.getElementById('course-group').style.display != "none") {
+                          var namesms2 = "Mode of Education must be filled out";
+                          document.getElementById("course_error").innerHTML = namesms2;
+                          document.educationform.educationmode.focus();
+                          return false;
+                        } else {
+                          document.getElementById("course_error").innerHTML = "";
                         }
 
 
@@ -1394,7 +1454,7 @@
                     </script>
 
                                     <?php
-        } elseif ($method == "addEducationForm") {
+            } elseif ($method == "addEducationForm") {
           ?>
             <section class="Multi Columns Form">
                 <div class="pagetitle">
@@ -1439,6 +1499,16 @@
                             <input type="text" class="form-control" id="department" name="department" placeholder="Enter specialization">
                             <div id="department_error" class="text-danger"></div>
                           </div>
+
+                          <div class="col-md-6" id="course-group" style="display: none;">
+                             <label for="educationmode" class="form-label" >Mode of Education</label>
+                             <select class="form-control" id="educationmode" name="educationmode" required>
+                                 <option value="">Select your mode of education </option>
+                                 <option value="Regular" >Regular course</option>
+                                 <option value="Corres" >Correspondence course</option>
+                                 </select>
+                             <div id="course_error" class="text-danger"></div>
+                             </div>
 
                           <div class="col-md-6" id="school-group" style="display: none;">
                             <label for="school" class="form-label">Institute</label>
@@ -1585,6 +1655,7 @@
                                     document.getElementById("school-group").style.display = "none";
                                     document.getElementById("percentage-group").style.display = "none";
                                     document.getElementById("department-group").style.display = "none";
+                                    document.getElementById("course-group").style.display = "none";
                                     document.getElementById("year-group").style.display = 'none';
                                     document.getElementById("certificate_10th-group").style.display = 'none';
                                     document.getElementById("certificate_12th-group").style.display = 'none';
@@ -1612,12 +1683,14 @@
                                     else if (selectedValue === "DIPLOMA") {
           document.getElementById("department-group").style.display = "block";
           document.getElementById("school-group").style.display = "block";
+          document.getElementById("course-group").style.display = "none";
             document.getElementById("percentage-group").style.display = "block";
             document.getElementById("year-group").style.display = 'block';
             document.getElementById("certificate_dip-group").style.display = 'block';
                                     } 
                                     else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW") {
           document.getElementById("department-group").style.display = "block";
+          document.getElementById("course-group").style.display = "none";
           document.getElementById("school-group").style.display = "block";
             document.getElementById("percentage-group").style.display = "block";
             document.getElementById("year-group").style.display = 'block';
@@ -1626,6 +1699,7 @@
                                     } 
                                     else if (selectedValue === "M.E" || selectedValue === "M.A" || selectedValue === "M.COM" || selectedValue === "M.ED" || selectedValue === "M.LIT" || selectedValue === "M.TECH" || selectedValue === "MCA" || selectedValue === "MBA" || selectedValue === "M.SC" || selectedValue === "MSW") {
           document.getElementById("department-group").style.display = "block";
+          document.getElementById("course-group").style.display = "none";
           document.getElementById("school-group").style.display = "block";
             document.getElementById("percentage-group").style.display = "block";
             document.getElementById("year-group").style.display = 'block';
@@ -1634,6 +1708,7 @@
                                     } 
                                     else if (selectedValue === "Ph.D"  ) {
           document.getElementById("department-group").style.display = "block";
+          document.getElementById("course-group").style.display = "none";
           document.getElementById("school-group").style.display = "block";
             document.getElementById("percentage-group").style.display = "block";
             document.getElementById("year-group").style.display = 'block';
@@ -1657,6 +1732,7 @@
               function validateForm() {
                         var q = document.educationform.qualification.value;
                         var dep = document.educationform.department.value;
+                        var edu = document.educationform.educationmode.value;
                         var scl = document.educationform.school.value;
                         var per = document.educationform.percentage.value;
                         var yop = document.educationform.year_passed.value;
@@ -1684,6 +1760,15 @@
                           return false;
                         } else {
                           document.getElementById("department_error").innerHTML = "";
+                        }
+
+                        if (edu == "" && document.getElementById('course-group').style.display !== "none") {
+                          var namesms2 = "Mode of education must be filled out";
+                          document.getElementById("course_error").innerHTML = namesms2;
+                          document.educationform.educationmode.focus();
+                          return false;
+                        } else {
+                          document.getElementById("course_error").innerHTML = "";
                         }
 
 
@@ -1830,6 +1915,7 @@
                                          <th scope="col">S.No</th>
                                          <th scope="col">Educational Qualification</th>
                                          <th scope="col">Specialiization</th>
+                                         <th scope="col">Mode of Education</th>
                                          <th scope="col">Institute</th>
                                          <th scope="col">Year of Passing</th>
                                          <th scope="col">Percentage</th>
@@ -1849,6 +1935,7 @@
                               <td><a><?php echo $count++; ?>.</a></td>
                               <td><?php echo $value['educational_qualification'] ?></td>
                               <td><?php echo $value['department'] ?></td>
+                              <td><?php echo $value['educationmode'] ?></td>
                               <td><?php echo $value['school_college_name'] ?></td>
                               <td><?php echo $value['yearOfPassing'] ?></td>
                               <td><?php echo $value['percentage'] ?></td>
@@ -1893,7 +1980,7 @@
 
                       ?>
                       <td class="d-flex">
-                          <a class="" href="<?php echo baseUrl . "Candidate/updateEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                          <a class="" href="<?php echo baseUrl . "Candidate/updateEducation" ?>/<?php echo $value['id'] ?>#editeduform"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
                           <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                       </td>
                                                </tr>
@@ -1942,6 +2029,18 @@
                              <input type="text" class="form-control" id="department" name="department" value="<?php echo $value['department']; ?>">
                              <div id="department_error" class="text-danger"></div>
                          </div>
+
+                         <div class="col-md-6" id="course-group" style="display: none;">
+                             <label for="educationmode" class="form-label" >Mode of Education</label>
+                             <select class="form-control" id="educationmode" name="educationmode" required>
+                                 <option value="">Select your mode of education </option>
+                                 <option value="Regular" <?php if (isset($value['educationmode']) && $value['educationmode'] === 'Regular')
+                                   echo 'selected'; ?>>Regular course</option>
+                                 <option value="Corres" <?php if (isset($value['educationmode']) && $value['educationmode'] === 'Corres')
+                                   echo 'selected'; ?>>Correspondence course</option>
+                                 </select>
+                             <div id="course_error" class="text-danger"></div>
+                             </div>
 
                          <div class="col-md-6" id="school-group" >
                              <label class="form-label" for="school">Institution Name</label>
@@ -2157,6 +2256,7 @@
 
                       if (document.getElementById('qualification').value === 'DIPLOMA') {
                         document.getElementById('department-group').style.display = 'block';
+                        document.getElementById('course-group').style.display = 'block';
                         document.getElementById('certificate_dip-group').style.display = 'block';
                       }
 
@@ -2164,6 +2264,7 @@
                       qualify === "B.ED" || qualify === "B.LIT" || qualify === "B.TECH" || 
                       qualify === "BCA" || qualify === "BBA" || qualify === "B.SC" || qualify === "BSW") {
                         document.getElementById('department-group').style.display = 'block';
+                        document.getElementById('course-group').style.display = 'block';
                         document.getElementById('certificate_ug-group').style.display = 'block';
                         document.getElementById("additionalFieldLabelug").innerText = "Uploaded " + qualify + " Certificate";
                       }
@@ -2172,12 +2273,14 @@
                        || qualify === "M.LIT" || qualify === "M.TECH" || qualify === "MCA" || qualify === "MBA"
                         || qualify === "M.SC" || qualify === "MSW") {
                         document.getElementById('department-group').style.display = 'block';
+                        document.getElementById('course-group').style.display = 'block';
                         document.getElementById('certificate_pg-group').style.display = 'block';
                         document.getElementById("additionalFieldLabelpg").innerText = "Uploaded " + qualify + " Certificate";
                       }
 
                       if (document.getElementById('qualification').value === 'Ph.D') {
                         document.getElementById('department-group').style.display = 'block';
+                        document.getElementById('course-group').style.display = 'block';
                         document.getElementById('certificate_doctorate-group').style.display = 'block';
                       }
 
@@ -2186,6 +2289,7 @@
                       function validateForm() {
                         var q = document.educationform.qualification.value;
                         var dep = document.educationform.department.value;
+                        var edu = document.educationform.educationmode.value;
                         var scl = document.educationform.school.value;
                         var per = document.educationform.percentage.value;
                         var yop = document.educationform.year_passed.value;
@@ -2211,6 +2315,15 @@
                           return false;
                         } else {
                           document.getElementById("department_error").innerHTML = "";
+                        }
+
+                          if (edu == "" && document.getElementById('course-group').style.display !== "none") {
+                          var namesms2 = "Mode of education must be filled out";
+                          document.getElementById("course_error").innerHTML = namesms2;
+                          document.educationform.educationmode.focus();
+                          return false;
+                        } else {
+                          document.getElementById("course_error").innerHTML = "";
                         }
 
                         if (scl == "" && document.getElementById('school-group').style.display != "none") {
@@ -2275,15 +2388,15 @@
            
                                     <h5 class="card-title">Experience Table<span></span></h5>
                                     <div id="exptableheading" class="mb-4">
-         Are you a fresher ? <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"><button type="button" class="btn btn-danger mx-2">Skip</button></a> <br>
-         or Experienced ? <a class="" href="<?php echo baseUrl . "Candidate/addExperirenceForm" ?>"><button type="button" onclick="exptablevisible()" class="btn btn-success m-2">+ Add Experience</button></a>
+                                Are you a fresher ? <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"><button type="button" class="btn btn-danger mx-2">Skip</button></a> <br>
+                                or Experienced ? <a class="" href="#addexpform"><button type="button" onclick="exptablevisible()" class="btn btn-success m-2">+ Add Experience</button></a>
                                     </div>
                                     <div class="d-flex justify-content-between" >
-                                    <a class="" href="<?php echo baseUrl . "Candidate/addExperirenceForm" ?>">
-                                    <button id="expadd" style="display:none;" type="button" class="btn btn-success mb-4">+ Add Experience</button></a>
+                                    <a class="" href="#addexpform">
+                                    <button id="expadd" style="display:none;" type="button" onclick="addexpform()" class="btn btn-success mb-4">+ Add Experience</button></a>
                                    <div>
-                                   <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button id="expprevious" style="visibility: hidden;" type="button" class="btn btn-info mb-4 ">Previous</button></a>
-                                   <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button id="expnext" style="visibility: hidden;" type="button" class="btn btn-info mb-4 ">Next</button></a>
+                                   <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button id="expprevious" style="visibility: hidden;" type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> Previous</button></a>
+                                   <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button id="expnext" style="visibility: hidden;" type="button" class="btn btn-info mb-4 ">Next <i class="bi bi-arrow-right"></i></button></a>
                                    </div>
                                 </div>
                                 <?php
@@ -2316,7 +2429,7 @@
                               <td><?php echo $count++ ?>.</td>
                               <td><?php echo $value['other_category'] ?></td>
                               <td><?php echo $value['other_sub_category'] ?></td>
-                              <td><?php echo $value['experience'] ?></td>
+                              <td><?php echo $value['expYear'] ?> Years & <?php echo $value['expMonth'] ?> Months</td>
                               <td><?php echo $value['company_name'] ?></td>
                               <td><?php echo $value['job_role'] ?></td>
                               <td><?php echo $value['previous_employer_name'] ?></td>
@@ -2324,11 +2437,11 @@
                               <td><?php echo $value['previous_employer_email'] ?></td>
                               <td>
                               <div class="d-flex">
-                                  <a href="<?php echo baseUrl . "Candidate/updateExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1 ">Edit</button></a>
+                                  <a href="<?php echo baseUrl . "Candidate/updateExperience" ?>/<?php echo $value['id'] ?>#editexpform"><button type="button" class="btn btn-secondary mx-1 ">Edit</button></a>
                                   <a class="" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                               </div>
                               </td>
-                                               </tr>
+                            </tr>
                   <?php
                                    }
                                  }
@@ -2353,7 +2466,14 @@
                 document.getElementById("expadd").style.display = "block";
                 document.getElementById("expprevious").style.visibility = "visible";
                 document.getElementById("expnext").style.visibility = "visible";
-                document.getElementById("exptable").style.display = "block";}
+                document.getElementById("exptable").style.display = "block";
+               document.getElementById("exptable").style.display = "block";
+               document.getElementById("addexpform").style.display = "block";
+              }
+              function addexpform() {
+               document.getElementById("addexpform").style.display = "block";
+              }
+
             <?php
             if (isset($basicDetails)) {
               if ($basicDetails[0]['expsubmited'] === "1") {
@@ -2369,25 +2489,7 @@
             ?>
             </script>
 
-
-            <?php
-        } elseif ($method == "addExperirenceForm") {
-          ?>
-          <!-- Sidebar Active  -->
-        <script>
-             document.getElementById('experiences').classList.add('active');
-            </script>
-            <section class="Multi Columns Form">
-                <div class="pagetitle">
-                    <h1>Experience Details</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Add Experience</li>
-                        </ol>
-                    </nav>
-                </div><!-- End Page Title -->
-                <div class="card">
+<div class="card" id="addexpform" style="display:none">
                     <div class="card-body">
                         <h5 class="card-title">Add Experience Details</h5>
 
@@ -2425,6 +2527,7 @@
                             </select>
                             <div id="category_error" class="text-danger error"></div>
                         </div>
+                        
 
                         <div class="col-12" id="newcategory_group" style="display: none;">
                           <label for="newcategory" class="form-label">Reason for choosing category as others</label>
@@ -2439,23 +2542,49 @@
                   <div id="subcategory_error" class="text-danger error"></div>
                 </div>
 
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                   <label for="experience" class="form-label">Experience</label>
-                 <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required>
-                  <!-- <select class="form-control" id="experience" name="experience" required>
+                 <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required> 
+                  <select type="text" class="form-control" id="experience" name="experience" required>
                         <option value="">Select your experience</option>
-                        <option value="0-2">0-2</option>
-                        <option value="3-5">3-5</option>
-                        <option value="5-10">5-10</option>
-                        <option value="10-15">10-15</option>
-                        <option value="15-20">15-20</option>
+                        <option value="0-2">0-2 years</option>
+                        <option value="3-5">3-5 years</option>
+                        <option value="5-10">5-10 years</option>
+                        <option value="10-15">10-15 years</option>
+                        <option value="15-20">15-20 years</option>
                         <option value="above 20 years">Above 20 years</option>
-                      </select> -->
+                      </select>
                   <div id="experienceexp_error" class="text-danger error"></div>
-                </div>
+                </div> -->
 
+                <div class="col-md-3">
+                  <div class="experience-container">
+                      <label for="experience" class="form-label">Experience</label>
+                      <div class="d-flex">
+                          <select class="form-control col-3 me-2" id="expYear" name="expYear" required>
+                              <option value=""> Select year </option>
+                              <?php for ($i = 0; $i <= 30; $i++) : ?>
+                                
+                                  <option value="<?php echo $i; ?>"><?php echo $i; ?> Year<?php echo $i !== 1 ? 's' : ''; ?></option>
+                              <?php endfor; ?>
+                              <option value="30+ years" >30+ Years</option>
+                          </select>
+                          <!-- <div id="experienceexp_error" class="text-danger error"></div> -->
 
-                <div class="form-control" id="otherCategoryField" style="display: none;">
+                          <label for="experience" class="form-label"></label>
+                          <select class="form-control col-3" id="expMonth" name="expMonth" required>
+                              <option value=""> Select month </option>
+                              <?php for ($i = 0; $i <= 11; $i++) : ?>
+                                  <option value="<?php echo $i; ?>" ><?php echo $i; ?> Month<?php echo $i !== 1 ? 's' : ''; ?></option>
+                              <?php endfor; ?>
+                          </select>
+                          <!-- <div id="experienceexpmonth_error" class="text-danger error"></div> -->
+                      </div>
+                      
+                  </div>
+              </div>
+
+                <!-- <div class="form-control" id="otherCategoryField" style="display: none;">
                   <label for="othercategory">Other Category:</label>
                   <select class="form-control" id="experience" name="experience">
                     <input type="text" class="form-control" id="othercategory" name="othercategory">
@@ -2464,7 +2593,7 @@
                   <label for="othersubcategory">Other Subcategory:</label>
                   <select class="form-control" id="experience" name="experience">
                     <input type="text" class="form-control" id="othersubcategory" name="othersubcategory">
-                </div>
+                </div> -->
 
 
                 <div class="col-md-6">
@@ -2477,6 +2606,12 @@
                   <label for="role" class="form-label">Role in the Company</label>
                   <input type="text" class="form-control" id="role" name="role" placeholder="Enter role" required>
                   <div id="role_error" class="text-danger error"></div>
+                </div>
+              <!-- JOB PROFILE -->
+                <div class="col-md-12">
+                  <label for="profile" class="form-label">Job Profile</label>
+                  <input type="text" class="form-control" id="profile" name="profile" placeholder="Enter Job profile" required>
+                  <div id="profile_error" class="text-danger error"></div>
                 </div>
 
                 <h5 class="card-title">Previous Job's Manager Details</h5>
@@ -2531,9 +2666,13 @@
             var category = document.getElementById("category");
             var newothercategory = document.getElementById("newcategory_group");
             var subcategory = document.getElementById("subcategory");
-            var experience = document.getElementById("experience");
+            // var experience = document.getElementById("experience");
+            var expYear = document.getElementById("expYear");
+            var expMonth = document.getElementById("expMonth");
             var companyname = document.getElementById("companyname");
             var role = document.getElementById("role");
+// JOB PROFILE
+            var profile = document.getElementById("profile");
             var ename = document.getElementById("nameofemployer");
             var phonenumber1 = document.getElementById("number");
             var email1 = document.getElementById("emailid");
@@ -2553,8 +2692,18 @@
               return false;
             }
 
-            if (experience.value === '') {
-              displayError('Please select an experience', 'experienceexp_error');
+            // if (experience.value === '') {
+            //   displayError('Please select an experience', 'experienceexp_error');
+            //   return false;
+            // }
+
+            if (expYear.value === '') {
+              displayError('Please select the year', 'experienceexp_error');
+              return false;
+            }
+
+            if (expMonth.value === '') {
+              displayError('Please select the month', 'experienceexpmonth_error');
               return false;
             }
 
@@ -2565,6 +2714,297 @@
 
             if (role.value === '') {
               displayError('Role must be filled out', 'role_error');
+              return false;
+            }
+
+// JOB PROFILE
+
+            if (profile.value === '') {
+              displayError('Job profile must be filled out', 'profile_error');
+              return false;
+            }
+
+            if (ename.value === '') {
+              displayError('Employer name must be filled out', 'name_error');
+              return false;
+            }
+
+            if (phonenumber1.value === '') {
+              displayError('Mobile number must be filled out', 'mobilenum_error');
+              return false;
+            }
+
+            if (email1.value === '') {
+              displayError('Email id must be filled out', 'emailid_error');
+              return false;
+            }
+
+            return true;
+          }
+
+          function displayError(message, elementId) {
+            var errorElement = document.getElementById(elementId);
+            errorElement.innerHTML = message;
+            errorElement.style.color = 'red';
+          }
+
+          function clearErrorMessages() {
+            var errorElements = document.getElementsByClassName('error');
+            Array.from(errorElements).forEach(function (errorElement) {
+              errorElement.textContent = '';
+            });
+          }
+        </script>
+
+            <?php
+            } elseif ($method == "addExperirenceForm") {
+          ?>
+          <!-- Sidebar Active  -->
+        <script>
+             document.getElementById('experiences').classList.add('active');
+            </script>
+            <section class="Multi Columns Form">
+                <div class="pagetitle">
+                    <h1>Experience Details</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                            <li class="breadcrumb-item active">Add Experience</li>
+                        </ol>
+                    </nav>
+                </div><!-- End Page Title -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Experience Details</h5>
+
+                        <!-- Multi Columns Form -->
+                        <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
+                         onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Candidate/insertExperienceForm" ?>">
+
+                         <!-- <div class="col-12">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-control" id="category" name="category" required>
+                                  <option value="">Select a Category</option>
+                                  <option value="architech">Architech</option>
+                                  <option value="developer">Developer</option>
+                                  <option value="tester">Tester</option>
+                                  <option value="uiux">UI/UX Design</option>
+                                  <option value="datascience">Data Scientist</option>
+                                  <option value="databaseadmin">Database Admin</option>
+                                  <option value="teacher">Teacher</option>
+                                  <option value="professor">Professor</option>
+                                  <option value="others">Others</option>
+                                </select>
+                                <div id="category_error" class="text-danger error"></div>
+                            </div> -->
+                           
+                        <div class="col-12">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-control" id="category" name="category" autocomplete="off" onchange="showHideOtherField()" required>
+                            <option value="">Select a Category</option>
+                            <?php
+                            foreach ($categoryList as $key => $value) {
+                              ?>
+                       <option value="<?php echo $value->categoryName ?>"><?php echo $value->categoryName ?></option>
+                              <?php } ?>
+                              <option value="others">Others</option>
+                            </select>
+                            <div id="category_error" class="text-danger error"></div>
+                        </div>
+                        
+
+                        <div class="col-12" id="newcategory_group" style="display: none;">
+                          <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+                          <input class="form-control" id="newcategory" name="newcategory"  placeholder="Enter new category">
+                          <div id="newcategory_error" class="text-danger error"></div>
+                          <input id="categoryothers" name="categoryothers" value="1" hidden >
+                        </div>
+
+                <div class="col-md-6">
+                  <label for="subcategory" class="form-label">Subcategory</label>
+                  <input class="form-control" id="subcategory" name="subcategory"  placeholder="Enter subcategory" required>
+                  <div id="subcategory_error" class="text-danger error"></div>
+                </div>
+
+                <!-- <div class="col-md-6">
+                  <label for="experience" class="form-label">Experience</label>
+                 <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required> 
+                  <select type="text" class="form-control" id="experience" name="experience" required>
+                        <option value="">Select your experience</option>
+                        <option value="0-2">0-2 years</option>
+                        <option value="3-5">3-5 years</option>
+                        <option value="5-10">5-10 years</option>
+                        <option value="10-15">10-15 years</option>
+                        <option value="15-20">15-20 years</option>
+                        <option value="above 20 years">Above 20 years</option>
+                      </select>
+                  <div id="experienceexp_error" class="text-danger error"></div>
+                </div> -->
+
+                <div class="col-md-3">
+                  <div class="experience-container">
+                      <label for="experience" class="form-label">Experience</label>
+                      <div class="d-flex">
+                          <select class="form-control col-3 me-2" id="expYear" name="expYear" required>
+                              <option value=""> Select year </option>
+                              <?php for ($i = 0; $i <= 30; $i++) : ?>
+                                
+                                  <option value="<?php echo $i; ?>"><?php echo $i; ?> Year<?php echo $i !== 1 ? 's' : ''; ?></option>
+                              <?php endfor; ?>
+                              <option value="30+ years" >30+ Years</option>
+                          </select>
+                          <!-- <div id="experienceexp_error" class="text-danger error"></div> -->
+
+                          <label for="experience" class="form-label"></label>
+                          <select class="form-control col-3" id="expMonth" name="expMonth" required>
+                              <option value=""> Select month </option>
+                              <?php for ($i = 0; $i <= 11; $i++) : ?>
+                                  <option value="<?php echo $i; ?>" ><?php echo $i; ?> Month<?php echo $i !== 1 ? 's' : ''; ?></option>
+                              <?php endfor; ?>
+                          </select>
+                          <!-- <div id="experienceexpmonth_error" class="text-danger error"></div> -->
+                      </div>
+                      
+                  </div>
+              </div>
+
+                <!-- <div class="form-control" id="otherCategoryField" style="display: none;">
+                  <label for="othercategory">Other Category:</label>
+                  <select class="form-control" id="experience" name="experience">
+                    <input type="text" class="form-control" id="othercategory" name="othercategory">
+                </div>
+                <div class="form-control" id="otherSubcategoryField" style="display: none;">
+                  <label for="othersubcategory">Other Subcategory:</label>
+                  <select class="form-control" id="experience" name="experience">
+                    <input type="text" class="form-control" id="othersubcategory" name="othersubcategory">
+                </div> -->
+
+
+                <div class="col-md-6">
+                  <label for="company name" class="form-label">Company Name</label>
+                  <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Enter company name" required>
+                  <div id="companyname_error" class="text-danger error"></div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="role" class="form-label">Role in the Company</label>
+                  <input type="text" class="form-control" id="role" name="role" placeholder="Enter role" required>
+                  <div id="role_error" class="text-danger error"></div>
+                </div>
+              <!-- JOB PROFILE -->
+                <div class="col-md-12">
+                  <label for="profile" class="form-label">Job Profile</label>
+                  <input type="text" class="form-control" id="profile" name="profile" placeholder="Enter Job profile" required>
+                  <div id="profile_error" class="text-danger error"></div>
+                </div>
+
+                <h5 class="card-title">Previous Job's Manager Details</h5>
+
+                <div class="col-md-6">
+                  <label for="Name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" placeholder="Enter employer name" required>
+                  <div id="name_error" class="text-danger error"></div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="number" class="form-label">Mobile Number</label>
+                  <input type="text" class="form-control" id="number" name="number" placeholder="Enter mobile number" required>
+                  <div id="mobilenum_error" class="text-danger error"></div>
+                </div>
+
+                <div class="col-md-6" class="form-label">
+                  <label for="email">Email-Id</label>
+                  <input type="text" class="form-control" id="emailid" name="emailid" placeholder="Enter Email" required>
+                  <div id="emailid_error" class="text-danger error"></div>
+                </div>
+
+                <input type="number" class="form-control"  value="1" name="expsubmit" hidden>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+
+            </form><!-- End Multi Columns Form -->
+                    </div>
+                </div>
+            </section>
+
+            <script>
+
+                                    function showHideOtherField() {
+                var categoryDropdown = document.getElementById('category');
+                var otherCategoryField = document.getElementById('newcategory_group');
+
+                if (categoryDropdown.value === 'others') {
+                    otherCategoryField.style.display = 'block';
+                } else {
+                    otherCategoryField.style.display = 'none';
+                }
+            }
+
+
+          function validateexpForm() {
+            clearErrorMessages(); 
+
+            var category = document.getElementById("category");
+            var newothercategory = document.getElementById("newcategory_group");
+            var subcategory = document.getElementById("subcategory");
+            // var experience = document.getElementById("experience");
+            var expYear = document.getElementById("expYear");
+            var expMonth = document.getElementById("expMonth");
+            var companyname = document.getElementById("companyname");
+            var role = document.getElementById("role");
+// JOB PROFILE
+            var profile = document.getElementById("profile");
+            var ename = document.getElementById("nameofemployer");
+            var phonenumber1 = document.getElementById("number");
+            var email1 = document.getElementById("emailid");
+
+            if (category.value === '') {
+              displayError('Please select a category', 'category_error');
+              return false;
+            }
+
+            if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
+              displayError('Please enter newcategory', 'newcategory_error');
+              return false;
+            }
+
+            if (subcategory.value === '') {
+              displayError('Please select a subcategory', 'subcategory_error');
+              return false;
+            }
+
+            // if (experience.value === '') {
+            //   displayError('Please select an experience', 'experienceexp_error');
+            //   return false;
+            // }
+
+            if (expYear.value === '') {
+              displayError('Please select the year', 'experienceexp_error');
+              return false;
+            }
+
+            if (expMonth.value === '') {
+              displayError('Please select the month', 'experienceexpmonth_error');
+              return false;
+            }
+
+            if (companyname.value === '') {
+              displayError('Company name must be filled out', 'companyname_error');
+              return false;
+            }
+
+            if (role.value === '') {
+              displayError('Role must be filled out', 'role_error');
+              return false;
+            }
+
+// JOB PROFILE
+
+            if (profile.value === '') {
+              displayError('Job profile must be filled out', 'profile_error');
               return false;
             }
 
@@ -2606,7 +3046,8 @@
           <!-- Sidebar Active  -->
         <script>
              document.getElementById('experiences').classList.add('active');
-            </script>
+
+             </script>
             <section class="Multi Columns Form">
                 <div class="pagetitle">
                     <h1>Experience Details</h1>
@@ -2617,7 +3058,78 @@
                         </ol>
                     </nav>
                 </div><!-- End Page Title -->
-                <div class="card">
+
+                <div class="card recent-sales overflow-auto">
+                           
+                        <div class="card-body">
+           
+                                    <h5 class="card-title">Experience Table<span></span></h5>
+                                    <a class="" href="#addexpform"><button type="button" class="btn btn-success m-2" disabled>+ Add Experience</button></a>
+                                   <div style="float:right;>
+                                   <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> Previous</button></a>
+                                   <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next <i class="bi bi-arrow-right"></i></button></a>
+                                   </div>
+                                <?php
+                                if (isset($experienceTable[0]['id'])) {
+                                  $count = 1;
+                                  ?>
+                             <table class="table">
+                                 <thead>
+                                     <tr>
+                                         <th scope="col">S.No</th>
+                                         <th scope="col">Job Category</th>
+                                         <th scope="col">Job Subcategory</th>
+                                         <th scope="col">Experience</th>
+                                         <th scope="col">Company Name</th>
+                                         <th scope="col">Role</th>
+                                         <th scope="col">Name of Employer</th>
+                                         <th scope="col">Mobile Number of Employer</th>
+                                         <th scope="col">Email Id</th>
+                                         <th scope="col">Action</th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                 <?php
+                                 if (isset($experienceTable[0]['id'])) {
+                                   $count = 1;
+                                   foreach ($experienceTable as $key => $value) {
+                                     $seekerId = $_SESSION['seekerId'];
+                                     ?>
+                              <tr>
+                              <td><?php echo $count++ ?>.</td>
+                              <td><?php echo $value['other_category'] ?></td>
+                              <td><?php echo $value['other_sub_category'] ?></td>
+                              <td><?php echo $value['expYear'] ?> Years & <?php echo $value['expMonth'] ?> Months</td>
+                              <td><?php echo $value['company_name'] ?></td>
+                              <td><?php echo $value['job_role'] ?></td>
+                              <td><?php echo $value['previous_employer_name'] ?></td>
+                              <td><?php echo $value['previous_employer_mobile'] ?></td>
+                              <td><?php echo $value['previous_employer_email'] ?></td>
+                              <td>
+                              <div class="d-flex">
+                                  <a href="<?php echo baseUrl . "Candidate/updateExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1 ">Edit</button></a>
+                                  <a class="" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                              </div>
+                              </td>
+                                               </tr>
+                  <?php
+                                   }
+                                 }
+                                 ?>
+                                 </tbody>
+                             </table>
+                             <?php
+                                } else {
+                                  ?>
+                             <h5 class="card-title">No Records Found<span></span></h5>
+                         <?php
+                                }
+                                ?>
+                        </div>
+
+                    </div>
+   
+                <div class="card" id="editexpform">
                     <div class="card-body">
                         <h5 class="card-title">Update Experience Details</h5>
 
@@ -2636,7 +3148,8 @@
                            <label class="form-label" for="category">Category</label>
                            <select class="form-control" id="category" name="category" required>
                            <?php   
-                           $defaultSelectedValue = $value['other_category'];
+                           $defaultSelectedValue = $value['
+                           '];
                            foreach ($categoryList as $key => $cvalue) {
                               $selected = ($cvalue->categoryName == $defaultSelectedValue) ? 'selected' : ''; ?>
                               <option value="<?php echo $cvalue->categoryName ?>" <?php echo $selected ?>>
@@ -2652,28 +3165,33 @@
                            <div id="subcategory_error" class="error"></div>
                          </div>
 
-                         <div class="col-md-6">
-                           <label class="form-label" for="experience">Experience</label>
-                           <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" value="<?php echo $value['experience']; ?>" required>
-                           <!-- <select class="form-control" id="experience" name="experience" required>
-            <option value="">Select your experience</option>
-            <option value="0-2" <?php if ($value['experience'] === '0-2')
-              echo ' selected'; ?>>0-2</option>
-            <option value="3-5" <?php if ($value['experience'] === '3-5')
-              echo ' selected'; ?>>3-5</option>
-            <option value="5-10" <?php if ($value['experience'] === '5-10')
-              echo ' selected'; ?>>5-10</option>
-            <option value="10-15" <?php if ($value['experience'] === '10-15')
-              echo ' selected'; ?>>10-15</option>
-            <option value="15-20" <?php if ($value['experience'] === '15-20')
-              echo ' selected'; ?>>15-20</option>
-            <option value="above 20 years" <?php if ($value['experience'] === 'above 20 years')
-              echo ' selected'; ?>>Above 20 years</option>
-          </select> -->
-                           <div id="experience_error" class="error"></div>
-                         </div>
 
-                         <div class="col-md-6">
+                         <div class="col-md-3">
+    <div class="experience-container">
+        <label for="experience" class="form-label">Experience</label>
+        <div class="d-flex">
+            <select class="form-control col-3 me-2" id="expYear" name="expYear" required>
+            <option value="<?php echo $value['expYear']; ?>"><?php echo $value['expYear']; ?> years </option>
+                    <?php for ($i = 0; $i <= 30; $i++) : ?>
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?> Year<?php echo $i !== 1 ? 's' : ''; ?></option>
+                    <?php endfor; ?>
+                    <option value="30+ years" >30+ Years</option>
+            </select>
+
+            <label for="experience" class="form-label"></label>
+            <select class="form-control col-3" id="expMonth" name="expMonth" required>
+                            <option value="<?php echo $value['expMonth']; ?>"> <?php echo $value['expMonth']; ?> months </option>
+                              <?php for ($i = 0; $i <= 11; $i++) : ?>
+                                  <option value="<?php echo $i; ?>" ><?php echo $i; ?> Month<?php echo $i !== 1 ? 's' : ''; ?></option>
+                              <?php endfor; ?>
+            </select>
+        </div>
+        <div id="experienceexp_error" class="text-danger error"></div>
+    </div>
+</div>
+
+
+               <div class="col-md-6">
                            <label class="form-label" for="company name">Company Name</label>
                            <input type="text" class="form-control" value="<?php echo $value['company_name']; ?>" id="companyname" name="companyname" required>
                            <div id="companyname_error" class="error"></div>
@@ -2683,6 +3201,14 @@
                            <label class="form-label" for="role">Role in the Company</label>
                            <input type="text" class="form-control" value="<?php echo $value['job_role']; ?>" id="role" name="role" required>
                            <div id="role_error" class="error"></div>
+                         </div>
+
+<!-- JOB PROFILE -->
+
+                         <div class="col-md-6">
+                           <label class="form-label" for="profile">Job Profile</label>
+                           <input type="text" class="form-control" value="<?php echo $value['profile']; ?>" id="profile" name="profile" required>
+                           <div id="profile_error" class="error"></div>
                          </div>
 
                          <h5 class="card-title">Previous Job's Manager Details</h5>
@@ -2723,9 +3249,11 @@
 
               var category = document.getElementById("category");
               var subcategory = document.getElementById("subcategory");
-              var experience = document.getElementById("experience");
+              var expYear = document.getElementById("expYear");
+              var expMonth = document.getElementById("expMonth");
               var companyname = document.getElementById("companyname");
               var role = document.getElementById("role");
+              var profile = document.getElementById("profile");
               var ename = document.getElementById("nameofemployer");
               var phonenumber1 = document.getElementById("number");
               var email1 = document.getElementById("emailid");
@@ -2740,8 +3268,13 @@
                 return false;
               }
 
-              if (experience.value === '') {
-                displayError('Please select an experience', 'experienceexp_error');
+              if (expYear.value === '') {
+                displayError('Please select the year', 'experienceexp_error');
+                return false;
+              }
+
+              if (expMonth.value === '') {
+                displayError('Please select the month', 'experienceexp_error');
                 return false;
               }
 
@@ -2752,6 +3285,13 @@
 
               if (role.value === '') {
                 displayError('Role must be filled out', 'role_error');
+                return false;
+              }
+      
+// JOB PROFILE
+
+              if (profile.value === '') {
+                displayError('Job profile must be filled out', 'profile_error');
                 return false;
               }
 
@@ -2812,11 +3352,11 @@
                                     <h5 class="card-title">Area of Job Interest Table<span></span></h5>
             
                                     <div class="d-flex justify-content-between">
-                                    <a class="" href="<?php echo baseUrl . "Candidate/addAreaOfIntrestForm" ?>">
-                                    <button type="button" class="btn btn-success mb-4">+ Add Area of Job Interest</button></a>
+                                    <a class="" href="#addinterestform">
+                                    <button type="button" class="btn btn-success mb-4" onclick="addinterestform()">+ Add Area of Job Interest</button></a>
                                    <div>
-                                   <a class="" href="<?php echo baseUrl . "Candidate/experienceTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
-                                   <a class="" href="<?php echo baseUrl . "Candidate/resume" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
+                                   <a class="" href="<?php echo baseUrl . "Candidate/experienceTable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> Previous</button></a>
+                                   <a class="" href="<?php echo baseUrl . "Candidate/resume" ?>"> <button type="button" class="btn btn-info mb-4 ">Next <i class="bi bi-arrow-right"></i></button></a>
                                    </div>
                                 </div>
                                 <?php
@@ -2830,7 +3370,7 @@
                                          <th scope="col">Job Category</th>
                                          <th scope="col">Job Subcategory</th>
                                          <th scope="col">Prefered Location</th>
-                                         <th scope="col">Experience</th>
+                                         <!-- <th scope="col">Experience</th> -->
                                          <th scope="col">Job Type</th>
                                          <th scope="col">Description</th>
                                          <th scope="col">Expected Salary</th>
@@ -2849,13 +3389,13 @@
                               <td><?php echo $value['other_interst_category'] ?></td> 
                               <td><?php echo $value['other_sub_interst_category'] ?></td>
                               <td><?php echo $value['prefered_location'] ?></td>
-                              <td><?php echo $value['experience'] ?></td>
+                              <!-- <td><?php echo $value['expYear'] ?> Years & <?php echo $value['expMonth'] ?> Months</td> -->
                               <td><?php echo $value['job_type'] ?></td>
                               <td><?php echo $value['description'] ?></td>
                               <td><?php echo $value['expected_salary'] ?></td>
                               <td>
                               <div class="d-flex">
-                                  <a href="<?php echo baseUrl . "Candidate/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                  <a href="<?php echo baseUrl . "Candidate/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>#editinterestform"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
                                   <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                               </div>
                               </td>
@@ -2873,12 +3413,106 @@
                          <?php
                                 }
                                 ?>
+                        </div>
+                    </div>
 
-                                
+                    <div class="card" id="addinterestform" style="display:none">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Job Interest</h5>
+
+                        <!-- Multi Columns Form -->
+                        <form class="row g-3 needs-validation" novalidate  method="post"
+                        onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Candidate/insertAreaOfIntrest" ?>">
+
+                          <div class="col-12">
+                            <label class="form-label" for="category">Category</label>
+                            <select class="form-control" id="category" name="category" onchange="showHideOtherField()" required>
+                            <option value="">Select a Category</option>
+                            <?php
+                            foreach ($categoryList as $key => $value) { ?>
+                       <option value="<?php echo $value->categoryName ?>"><?php echo $value->categoryName ?></option>
+                              <?php } ?>
+                              <option value="others">Others</option>
+                            </select>
+                            <div id="areacat_error" class="error"></div>
+                          </div>
+
+                          <div class="col-12" id="newcategory_group" style="display: none;">
+                          <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+                          <input class="form-control" id="newcategory" name="newcategory"  placeholder="Enter new category">
+                          <div id="newcategory_error" class="text-danger error"></div>
+                          <input id="categoryothers" name="categoryothers" value="1" hidden >
+                        </div>
+
+                          <div class="col-md-6">
+                            <label class="form-label" for=" subcategory">Subcategory</label>
+                            <input type="text" class="form-control" id="subcategory" name="subcategory" placeholder="Enter subcategory" required>
+                            <div id="areasubcat_error" class="error"></div>
+                          </div>
+
+                          <div class="col-md-6" id="otherCategoryFields" style="display: none;">
+                            <label for="customCategoryInput">Custom Category</label>
+                            <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput" placeholder="Enter custom category">
+                            <label for="customSubcategoryInput">Custom Subcategory</label>
+                            <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput" placeholder="Enter custom subcategory">
+                          </div>
+                          <div class="col-md-6" id="customCategory" style="display: none;">
+                            <label for="customCategoryInput">Category Name</label>
+                            <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
+                          </div>
+
+                          <div class="col-md-6" id="customSubcategory" style="display: none;">
+                            <label for="customSubcategoryInput"> Subcategory Name</label>
+                            <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
+                          </div>
+
+                          <div class="col-md-6">
+                            <label for="preferred-location">Preferred Location to work</label>
+                            <input type="text" class="form-control" id="preferred-location" name="preferred-location" placeholder="Enter prefered location" required>
+                            <div id="arealocation_error" class="error"></div>
+                          </div>
+
+                          <div class="col-md-6">
+                            <label class="form-label" for="description">Description</label>
+                            <input class="form-control" id="description" name="description" rows="3" placeholder="Enter description" required>
+                            <div id="areades_error" class="error"></div>
+                          </div>
+
+                          <div class="col-md-6">
+                            <label class="form-label" for="jobtype">Job Type</label>
+                            <select class="form-control" id="jobtype" name="jobtype" required>
+                              <option value="">Select a Job Type</option>
+                              <option value="parttime">Part Time</option>
+                              <option value="fulltime">Full Time</option>
+                            </select>
+                            <div id="areajob_error" class="error"></div>
+                          </div>
+
+                          <div class="col-md-6">
+                            <label class="form-label" for="expected-salary">Expected Salary</label>
+                            <input type="text" class="form-control" id="expected-salary" name="expected-salary" placeholder="Enter salary expectation" required>
+                            <div id="areasalary_error" class="error"></div>
+                          </div>
+
+                      
+                        <input type="number" class="form-control"  value="1" name="areasubmit" hidden>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+
+            </form><!-- End Multi Columns Form -->
+
+                    </div>
+                </div>
+
+                        <div class="card recent-sales overflow-auto">      
+                        <div class="card-body">
                           <h5 class="card-title">Skill Table<span></span></h5>
                               <div>
-                                    <a class="" href="<?php echo baseUrl . "Candidate/addSkillForm" ?>">
-                                    <button type="button" class="btn btn-success mb-4">+ Add Skill</button></a>
+                                    <a class="" href="#addskillform">
+                                    <button type="button" class="btn btn-success mb-4" onclick="addskillform()" >+ Add Skill</button></a>
                               <div>
                                     <?php
                                     if (isset($areaOfIntrestTable[0]['id'])) {
@@ -2904,15 +3538,15 @@
                               <tr>
                               <td><?php echo $count++ ?>.</td>
                               <td><?php echo $value['skill'] ?></td>
-                              <td><?php echo $value['experience'] ?></td>
+                              <td><?php echo $value['experience'] ?> Years</td>
                               <td><?php echo $value['skill_level'] ?></td> 
                               <td>
                               <div class="d-flex">
-                                  <a class="" href="<?php echo baseUrl . "Candidate/updateSkill" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                  <a class="" href="<?php echo baseUrl . "Candidate/updateSkill" ?>/<?php echo $value['id'] ?>#editskillform"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
                                   <a class="" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteSkill" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                               </div>
                               </td>
-                                               </tr>
+                            </tr>
                   <?php
                                    }
                                  }
@@ -2927,15 +3561,93 @@
                                     }
                                     ?>
                         </div>
-
+                              </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                  </div><!-- End Recent Sales -->
             </section>
 
+            <div class="card" id="addskillform" style="display:none" >
+                    <div class="card-body">
+                        <h5 class="card-title">Add New Skill</h5>
 
+                        <!-- Multi Columns Form -->
+                        <form class="row g-3 needs-validation" novalidate  method="post"
+                        onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Candidate/insertSkillForm" ?>">
 
-                                    <?php
-        } elseif ($method == "addAreaOfIntrestForm") {
+                            
+                          <div class="col-12">
+                            <label class="form-label" for="skillname">Skill Name</label>
+                            <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name" required>
+                            <div id="sname_error" class="error"></div>
+                          </div>
+
+                          <!-- <div class="col-md-6">
+                            <label class="form-label" for="experience">Experience</label>
+                            <input type="text" class="form-control" name="skillexperience" id="skillexperience" placeholder="Enter skill experience" required>
+                            <select class="form-control" name="skillexperience" id="skillexperience" required>
+                                  <option value="">Select Experience</option>
+                                  <option value="fresher">Fresher</option>
+                                  <option value="0-2">0-2 years</option>
+                                  <option value="2-5">2-5 years</option>
+                                  <option value="5-10">5-10 years</option>
+                                  <option value="10-20">10-20 years</option>
+                                  <option value="20-above">20 years above</option>
+                                </select>
+                            <div id="sexp_error" class="error"></div>
+                          </div> -->
+
+                          <div class="col-md-6">
+                <div class="experience-container">
+            <label for="skillexperience" class="form-label">Experience</label>
+            <div class="d-flex">
+            <select class="form-control" id="skillexperience" name="skillexperience" required>
+            <option value=""> Select year </option>
+                <?php for ($i = 0; $i <= 20; $i++) : ?>
+                  
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?> Year<?php echo $i !== 1 ? 's' : ''; ?></option>
+                <?php endfor; ?>
+                <option value="20+ years"> 20+ Years </option>
+            </select>
+            
+            </div>
+            <div id="sexp_error" class="error"></div>
+                </div>
+                </div>               
+
+                          <div class="col-md-6">
+                            <label class="form-label" for="skillLevel">Skill Level</label>
+                            <select class="form-control" name="skilllevel" id="skilllevel" required>
+                              <option value="">Select Skill Level</option>
+                              <option value="beginner">Beginner</option>
+                              <option value="intermediate">Intermediate</option>
+                              <option value="advanced">Advanced</option>
+                            </select>
+                            <div id="slevel_error" class="error"></div>
+                          </div>
+
+                        <input type="number" class="form-control"  value="1" name="areasubmit" hidden>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+
+                    </form><!-- End Multi Columns Form -->
+
+                    </div>
+                </div>
+
+                <script>
+         function addinterestform(){
+               document.getElementById("addinterestform").style.display = "block";
+                }
+        function addskillform(){
+               document.getElementById("addskillform").style.display = "block";
+                }
+                </script>
+
+  <?php
+            } elseif ($method == "addAreaOfIntrestForm") {
           ?>
           <!-- Sidebar Active  -->
         <script>
@@ -3008,21 +3720,31 @@
                             <div id="arealocation_error" class="error"></div>
                           </div>
 
-                          <div class="col-md-6">
-                            <label class="form-label" for="experience">Experience</label>
-                            <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required>
-                            <!-- <select class="form-control" id="experience" name="experience" required>
-                                  <option value="">Select your experience</option>
-                                  <option value="fresher">Fresher</option>
-                                  <option value="0-2">0-2</option>
-                                  <option value="3-5">3-5</option>
-                                  <option value="5-10">5-10</option>
-                                  <option value="10-15">10-15</option>
-                                  <option value="15-20">15-20</option>
-                                  <option value="above 20 years">Above 20 years</option>
-                                </select> -->
-                            <div id="areaexp_error" class="error"></div>
-                          </div>
+                          
+                          <!-- <div class="col-md-3">
+                <div class="experience-container">
+            <label for="experience" class="form-label">Experience</label>
+            <div class="d-flex">
+            <select class="form-control col-3 me-2" id="expYear" name="expYear" required>
+            <option value="years"> Select year </option>
+                <?php for ($i = 0; $i <= 30; $i++) : ?>
+                  
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?> Year<?php echo $i !== 1 ? 's' : ''; ?></option>
+                <?php endfor; ?>
+                <option value="20+ years"> 20+ Years </option>
+            </select>
+            
+            <select class="form-control col-3" id="expMonth" name="expMonth" required>
+            <option value="months"> Select month </option>
+                <?php for ($i = 0; $i <= 11; $i++) : ?>
+                  
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?> Month<?php echo $i !== 1 ? 's' : ''; ?></option>
+                <?php endfor; ?>
+            </select>
+            </div>
+            <div id="experienceexp_error" class="text-danger error"></div>
+                </div>
+                </div>                -->
 
                           <div class="col-md-6">
                             <label class="form-label" for="description">Description</label>
@@ -3088,7 +3810,8 @@
           var subcategory = document.getElementById("subcategory").value;
           var preferredLocation = document.getElementById("preferred-location").value;
           var jobtype = document.getElementById("jobtype").value;
-          var experience = document.getElementById("experience").value;
+          // var expYear = document.getElementById("expYear").value;
+          // var expMonth = document.getElementById("expMonth").value;
           var description = document.getElementById("description").value;
           var expectedSalary = document.getElementById("expected-salary").value;
 
@@ -3112,10 +3835,15 @@
             return false;
           }
 
-          if (experience.trim() === "") {
-            displayError('Experience must be filled out', 'areaexp_error');
-            return false;
-          }
+          // if (expYear.trim() === "") {
+          //   displayError('Year must be filled out', 'areaexp_error');
+          //   return false;
+          // }
+
+          // if (expMonth.trim() === "") {
+          //   displayError('Month must be filled out', 'areaexp_error');
+          //   return false;
+          // }
 
           if (description.trim() === "") {
             displayError('Description must be filled out', 'areades_error');
@@ -3151,7 +3879,7 @@
 
 
                         <?php
-        } elseif ($method == "addSkillForm") {
+            } elseif ($method == "addSkillForm") {
           ?>
           <!-- Sidebar Active  -->
         <script>
@@ -3182,10 +3910,10 @@
                             <div id="sname_error" class="error"></div>
                           </div>
 
-                          <div class="col-md-6">
+                          <!-- <div class="col-md-6">
                             <label class="form-label" for="experience">Experience</label>
                             <input type="text" class="form-control" name="skillexperience" id="skillexperience" placeholder="Enter skill experience" required>
-                            <!-- <select class="form-control" name="skillexperience" id="skillexperience" required>
+                            <select class="form-control" name="skillexperience" id="skillexperience" required>
                                   <option value="">Select Experience</option>
                                   <option value="fresher">Fresher</option>
                                   <option value="0-2">0-2 years</option>
@@ -3193,9 +3921,27 @@
                                   <option value="5-10">5-10 years</option>
                                   <option value="10-20">10-20 years</option>
                                   <option value="20-above">20 years above</option>
-                                </select> -->
+                                </select>
                             <div id="sexp_error" class="error"></div>
-                          </div>
+                          </div> -->
+
+                          <div class="col-md-6">
+                <div class="experience-container">
+            <label for="skillexperience" class="form-label">Experience</label>
+            <div class="d-flex">
+            <select class="form-control" id="skillexperience" name="skillexperience" required>
+            <option value=""> Select year </option>
+                <?php for ($i = 0; $i <= 20; $i++) : ?>
+                  
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?> Year<?php echo $i !== 1 ? 's' : ''; ?></option>
+                <?php endfor; ?>
+                <option value="20+ years"> 20+ Years </option>
+            </select>
+            
+            </div>
+            <div id="sexp_error" class="error"></div>
+                </div>
+                </div>               
 
                           <div class="col-md-6">
                             <label class="form-label" for="skillLevel">Skill Level</label>
@@ -3279,7 +4025,79 @@
                         </ol>
                     </nav>
                 </div><!-- End Page Title -->
-                <div class="card">
+
+                <div class="card recent-sales overflow-auto">
+                           
+                           <div class="card-body">
+              
+                                       <h5 class="card-title">Area of Job Interest Table<span></span></h5>
+               
+                                       <div class="d-flex justify-content-between">
+                                       <a class="" href="#addinterestform">
+                                       <button type="button" class="btn btn-success mb-4" onclick="addinterestform()" disabled>+ Add Area of Job Interest</button></a>
+                                      <div>
+                                      <a class="" href="<?php echo baseUrl . "Candidate/experienceTable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> Previous</button></a>
+                                      <a class="" href="<?php echo baseUrl . "Candidate/resume" ?>"> <button type="button" class="btn btn-info mb-4 ">Next <i class="bi bi-arrow-right"></i></button></a>
+                                      </div>
+                                   </div>
+                                   <?php
+                                   if (isset($areaOfIntrestTable[0]['id'])) {
+                                     $count = 1;
+                                     ?>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">S.No</th>
+                                            <th scope="col">Job Category</th>
+                                            <th scope="col">Job Subcategory</th>
+                                            <th scope="col">Prefered Location</th>
+                                            <!-- <th scope="col">Experience</th> -->
+                                            <th scope="col">Job Type</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Expected Salary</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    if (isset($areaOfIntrestTable[0]['id'])) {
+                                      $count = 1;
+                                      foreach ($areaOfIntrestTable as $key => $value) {
+                                        $seekerId = $_SESSION['seekerId'];
+                                        ?>
+                                 <tr>
+                                 <td><?php echo $count++ ?>.</td>
+                                 <td><?php echo $value['other_interst_category'] ?></td> 
+                                 <td><?php echo $value['other_sub_interst_category'] ?></td>
+                                 <td><?php echo $value['prefered_location'] ?></td>
+                                 <!-- <td><?php echo $value['expYear'] ?> Years & <?php echo $value['expMonth'] ?> Months</td> -->
+                                 <td><?php echo $value['job_type'] ?></td>
+                                 <td><?php echo $value['description'] ?></td>
+                                 <td><?php echo $value['expected_salary'] ?></td>
+                                 <td>
+                                 <div class="d-flex">
+                                     <a href="<?php echo baseUrl . "Candidate/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>#editinterestform"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                     <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                 </div>
+                                 </td>
+                                                  </tr>
+                     <?php
+                                      }
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
+                                <?php
+                                   } else {
+                                     ?>
+                                <h5 class="card-title">No Records Found<span></span></h5>
+                            <?php
+                                   }
+                                   ?>
+                           </div>
+                       </div>
+
+                <div class="card" id="editinterestform">
                     <div class="card-body">
                         <h5 class="card-title">Update Job Interest</h5>
 
@@ -3331,34 +4149,33 @@
                                      <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
                                    </div>
 
-
                                    <div class="col-md-6">
                                      <label for="preferred-location">Preferred Location to work</label>
                                      <input type="text" class="form-control" id="preferred-location" name="preferred-location" value="<?php echo $value['prefered_location']; ?>" required>
                                      <div id="arealocation_error" class="error"></div>
 
                                    </div>
-                                   <div class="col-md-6">
+                                   <!-- <div class="col-md-6">
                                      <label class="form-label" for="experience">Experience</label>
                                      <input type="text" class="form-control" id="experience" name="experience" value="<?php echo $value['experience']; ?>" required>
-                                     <!-- <select class="form-control" id="experience" name="experience" value="<?php echo $value['experience']; ?>" required>
-                      <option value="fresher" <?php if ($value['experience'] === 'fresher')
-                        echo ' selected'; ?>>Fresher</option>
-                      <option value="0-2" <?php if ($value['experience'] === '0-2')
-                        echo ' selected'; ?>>0-2</option>
-                      <option value="3-5" <?php if ($value['experience'] === '3-5')
-                        echo ' selected'; ?>>3-5</option>
-                      <option value="5-10" <?php if ($value['experience'] === '5-10')
-                        echo ' selected'; ?>>5-10</option>
-                      <option value="10-15" <?php if ($value['experience'] === '10-15')
-                        echo ' selected'; ?>>10-15</option>
-                      <option value="15-20" <?php if ($value['experience'] === '15-20')
-                        echo ' selected'; ?>>15-20</option>
-                      <option value="above 20 years" <?php if ($value['experience'] === 'above 20 years')
-                        echo ' selected'; ?>>Above 20 years</option>
-                    </select> -->
+                                      <select class="form-control" id="experience" name="experience" value="<?php echo $value['experience']; ?>" required>
+                                          <option value="fresher" <?php if ($value['experience'] === 'fresher')
+                                            echo ' selected'; ?>>Fresher</option>
+                                          <option value="0-2" <?php if ($value['experience'] === '0-2')
+                                            echo ' selected'; ?>>0-2</option>
+                                          <option value="3-5" <?php if ($value['experience'] === '3-5')
+                                            echo ' selected'; ?>>3-5</option>
+                                          <option value="5-10" <?php if ($value['experience'] === '5-10')
+                                            echo ' selected'; ?>>5-10</option>
+                                          <option value="10-15" <?php if ($value['experience'] === '10-15')
+                                            echo ' selected'; ?>>10-15</option>
+                                          <option value="15-20" <?php if ($value['experience'] === '15-20')
+                                            echo ' selected'; ?>>15-20</option>
+                                          <option value="above 20 years" <?php if ($value['experience'] === 'above 20 years')
+                                            echo ' selected'; ?>>Above 20 years</option>
+                                        </select> 
                                      <div id="areaexp_error" class="error"></div>
-                                   </div>
+                                   </div> -->
 
                                    <div class="col-md-6">
                                      <label class="form-label" for="description">Description</label>
@@ -3383,45 +4200,6 @@
                                      <div id="areasalary_error" class="error"></div>
                                    </div>
 
-                                     <!-- <h4 class="card-title">Your Strength</h4>
-
-                  <div class="col-md-6">
-                    <label class="form-label" for="skillname">Skill Name</label>
-                    <input type="text" class="form-control" id="skillname" name="skillname" value="<?php echo $value['skillname']; ?>" placeholder="Enter skill name" required>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label class="form-label" for="experience">Experience</label>
-                    <select class="form-control" name="skillexperience" id="skillexperience" value="<?php echo $value['skillexperience']; ?>" required><br>
-                     <option value="">Select an experience</option>
-                      <option value="fresher" <?php if ($value['skillexperience'] === 'fresher')
-                        echo ' selected'; ?>>Fresher</option>
-                      <option value="0-2" <?php if ($value['skillexperience'] === '0-2')
-                        echo ' selected'; ?>>0-2 years</option>
-                      <option value="2-5" <?php if ($value['skillexperience'] === '2-5')
-                        echo ' selected'; ?>>2-5 years</option>
-                      <option value="5-10" <?php if ($value['skillexperience'] === '5-10')
-                        echo ' selected'; ?>>5-10 years</option>
-                      <option value="10-20" <?php if ($value['skillexperience'] === '10-20')
-                        echo ' selected'; ?>>10-20 years</option>
-                      <option value="20-above" <?php if ($value['skillexperience'] === '20-above')
-                        echo ' selected'; ?>>20 years above</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label" for="skillLevel">Skill Level</label>
-                    <select class="form-control" name="skilllevel" id="skilllevel" value="<?php echo $value['skilllevel']; ?>" required>
-                     <option value="">Select a skill level</option>
-                      <option value="beginner" <?php if ($value['skilllevel'] === 'beginner')
-                        echo ' selected'; ?>>Beginner</option>
-                      <option value="intermediate" <?php if ($value['skilllevel'] === 'intermediate')
-                        echo ' selected'; ?>>Intermediate</option>
-                      <option value="advanced" <?php if ($value['skilllevel'] === 'advanced')
-                        echo ' selected'; ?>>Advanced</option>
-                    </select>
-                  </div>
-                </div> -->
-
                                  <div class="text-center">
                                      <button type="submit" class="btn btn-primary">Submit</button>
                                      <button type="reset" class="btn btn-secondary">Reset</button>
@@ -3442,7 +4220,7 @@
                       var subcategory = document.getElementById("subcategory").value;
                       var preferredLocation = document.getElementById("preferred-location").value;
                       var jobtype = document.getElementById("jobtype").value;
-                      var experience = document.getElementById("experience").value;
+                      // var experience = document.getElementById("experience").value;
                       var description = document.getElementById("description").value;
                       var expectedSalary = document.getElementById("expected-salary").value;
 
@@ -3466,11 +4244,11 @@
                         return false;
                       }
 
-                      if (experience.trim() === "") {
-                        // alert("Experience must be filled out.");
-                        displayError('Experience must be filled out', 'areaexp_error');
-                        return false;
-                      }
+                      // if (experience.trim() === "") {
+                      //    alert("Experience must be filled out.");
+                      //   displayError('Experience must be filled out', 'areaexp_error');
+                      //   return false;
+                      // }
 
                       if (description.trim() === "") {
                         // alert("Description must be filled out.");
@@ -3531,7 +4309,62 @@
                         </ol>
                     </nav>
                 </div><!-- End Page Title -->
-                <div class="card">
+
+                <div class="card recent-sales overflow-auto">      
+                        <div class="card-body">
+                          <h5 class="card-title">Skill Table<span></span></h5>
+                              <div>
+                                    <a class="" href="#addskillform">
+                                    <button type="button" class="btn btn-success mb-4" onclick="addskillform()" disabled>+ Add Skill</button></a>
+                              <div>
+                                   
+                             <table class="table">
+                                 <thead>
+                                     <tr>
+                                         <th scope="col">S.No</th>
+                                         <th scope="col">Skill Name</th>
+                                         <th scope="col">Skill Experience</th>
+                                         <th scope="col">Skill Level</th>
+                                         <th scope="col">Action</th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                 <?php
+                                 if (isset($skillTable[0]['id'])) {
+                                   $count = 1;
+                                   foreach ($skillTable as $key => $value) {
+                                     $seekerId = $_SESSION['seekerId'];
+                                     ?>
+                              <tr>
+                              <td><?php echo $count++ ?>.</td>
+                              <td><?php echo $value['skill'] ?></td>
+                              <td><?php echo $value['experience'] ?> Years</td>
+                              <td><?php echo $value['skill_level'] ?></td> 
+                              <td>
+                              <div class="d-flex">
+                                  <a class="" href="<?php echo baseUrl . "Candidate/updateSkill" ?>/<?php echo $value['id'] ?>#editskillform"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                                  <a class="" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteSkill" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                              </div>
+                              </td>
+                            </tr>
+                  <?php
+                                 }
+                                 ?>
+                                 </tbody>
+                             </table>
+                             <?php
+                                    } else {
+                                      ?>
+                             <h5 class="card-title">No Records Found<span></span></h5>
+                         <?php
+                                    }
+                                    ?>
+                        </div>
+                              </div>
+                    </div>
+                  </div>
+
+                <div class="card" id="editskillforrm" >
                     <div class="card-body">
                         <h5 class="card-title">Update Skill</h5>
 
@@ -3553,31 +4386,49 @@
                                              <div id="sname_error" class="error"></div>
                                            </div>
 
-                                           <div class="col-md-6">
+                                           <!-- <div class="col-md-6">
                                              <label class="form-label" for="experience">Experience</label>
                                              <input type="text" class="form-control" name="skillexperience" id="skillexperience" value="<?php echo $value['experience']; ?>" required >
-                                             <!-- <select class="form-control" name="skillexperience" id="skillexperience" required>
-                                  <option value="fresher" <?php if ($value['experience'] === 'fresher')
-                                    echo ' selected'; ?>>Fresher</option>
-                                  <option value="0-2" <?php if ($value['experience'] === '0-2')
-                                    echo ' selected'; ?>>0-2 years</option>
-                                  <option value="2-5" <?php if ($value['experience'] === '2-5')
-                                    echo ' selected'; ?>>2-5 years</option>
-                                  <option value="5-10" <?php if ($value['experience'] === '5-10')
-                                    echo ' selected'; ?>>5-10 years</option>
-                                  <option value="10-20" <?php if ($value['experience'] === '10-20')
-                                    echo ' selected'; ?>>10-20 years</option>
-                                  <option value="20-above" <?php if ($value['experience'] === '20-above')
-                                    echo ' selected'; ?>>20 years above</option>
-                                </select> -->
+                                             <select class="form-control" name="skillexperience" id="skillexperience" required>
+                                                <option value="fresher" <?php if ($value['experience'] === 'fresher')
+                                                  echo ' selected'; ?>>Fresher</option>
+                                                <option value="0-2" <?php if ($value['experience'] === '0-2')
+                                                  echo ' selected'; ?>>0-2 years</option>
+                                                <option value="2-5" <?php if ($value['experience'] === '2-5')
+                                                  echo ' selected'; ?>>2-5 years</option>
+                                                <option value="5-10" <?php if ($value['experience'] === '5-10')
+                                                  echo ' selected'; ?>>5-10 years</option>
+                                                <option value="10-20" <?php if ($value['experience'] === '10-20')
+                                                  echo ' selected'; ?>>10-20 years</option>
+                                                <option value="20-above" <?php if ($value['experience'] === '20-above')
+                                                  echo ' selected'; ?>>20 years above</option>
+                                              </select> 
                                              <div id="sexp_error" class="error"></div>
-                                           </div>
+                                           </div> -->
+
+
+                            <div class="col-md-6">
+                              <div class="experience-container">
+                                  <label for="experience" class="form-label">Experience</label>
+                                  <div class="d-flex">
+                                  <select class="form-control col-3 me-2" id="experience" name="experience" required>
+                                  <option value="<?php echo $value['experience']; ?>"><?php echo $value['experience']; ?> years </option>
+                                  <?php for ($i = 0; $i <= 30; $i++) : ?>
+                                  <option value="<?php echo $i; ?>"><?php echo $i; ?> Year<?php echo $i !== 1 ? 's' : ''; ?></option>
+                                  <?php endfor; ?>
+                                  <option value="20+ years"> 20+ Years </option>
+                          </select>
+                              </div>
+                              <div id="sexp_error" class="error"></div>
+                              </div>
+                              </div>                
+
 
                                            <div class="col-md-6">
                                              <label class="form-label" for="skillLevel">Skill Level</label>
                                              <select class="form-control" name="skilllevel" id="skilllevel" required>
-                   <option value="beginner" <?php if ($value['skill_level'] === 'beginner')
-                     echo ' selected'; ?>>Beginner</option>
+                                            <option value="beginner" <?php if ($value['skill_level'] === 'beginner')
+                                              echo ' selected'; ?>>Beginner</option>
                                            <option value="intermediate" <?php if ($value['skill_level'] === 'intermediate')
                                              echo ' selected'; ?>>Intermediate</option>
                                            <option value="advanced" <?php if ($value['skill_level'] === 'advanced')
@@ -3650,7 +4501,7 @@
         <script>
              document.getElementById('resumes').classList.add('active');
             </script>
-            <section class="Multi Columns Form">
+            <section class="Multi Columns Form" style="padding-bottom: 290px;">
                 <div class="pagetitle">
                     <h1>Resume</h1>
                     <nav>
@@ -3737,13 +4588,14 @@
                                     <?php
         } elseif ($method == "thank") {
           ?>
-             <section class="Multi Columns Form">
+             <section class="Multi Columns Form" style="padding-bottom: 165px;">
                 <div class="pagetitle my-2">
-                    <h1>Registered Successfully</h1>
+                    <!-- <h1>Registered Successfully</h1> -->
                 </div><!-- End Page Title -->
-                <div class="card my-5">
-                    <div class="text-center">
-                        <img class="p-sm-5 img-fluid" src="<?php echo baseUrl . "assets/employee_thanks.png" ?>" alt="Thanks">
+                <!-- <div class="card my-5"> -->
+                  <div>
+                    <div class="text-center"><br><br><br>
+                        <img class="p-sm-5 img-fluid" src="<?php echo baseUrl . "assets/employee_thanks.png" ?>" alt="Thanks" style="width:70%; height:120%; align-items: center">
                     </div>
                 </div>
             </section>
@@ -3848,6 +4700,7 @@
                    <th scope="col">S.No</th>
                    <th scope="col">Educational Qualification</th>
                    <th scope="col">Specialiization</th>
+                   <th scope="col">Mode of Education</th>
                    <th scope="col">Institution Name</th>
                    <th scope="col">Percentage</th>
                    <th scope="col">Year of Passed Out</th>
@@ -3864,6 +4717,7 @@
                                            <td><?php echo $count; ?>.</td>
                                            <td><?php echo $value['educational_qualification'] ?></td>
                                            <td><?php echo $value['department'] ?></td>
+                                           <td><?php echo $value['educationmode'] ?></td>
                                            <td><?php echo $value['school_college_name'] ?></td>
                                            <td><?php echo $value['percentage'] ?></td>
                                            <td><?php echo $value['yearOfPassing'] ?></td>
@@ -3944,6 +4798,7 @@
                                            <td scope="row"><?php echo $loopcount; ?>.</td>
                                            <td><?php echo $ivalue['other_category'] ?></td>
                                            <td><?php echo $ivalue['other_sub_category'] ?></td>
+                                           <td><?php echo $value['expYear'] ?> Years & <?php echo $value['expMonth'] ?> Months</td>
                                            <td><?php echo $ivalue['company_name'] ?></td>
                                            <td><?php echo $ivalue['job_role'] ?></td>
                                            <td><?php echo $ivalue['previous_employer_name'] ?></td>
@@ -4064,7 +4919,7 @@
 
 
     <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
+    <footer id="footer" class="footer mt-auto py-3">
         <div class="copyright">
             &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
         </div>
