@@ -1961,11 +1961,10 @@
                     <table class="table table-striped mt-2">
                                 <thead>
                                     <tr>
-                                        <th class="col-4" scope="col">Mobile Number</th>
-                                        <th class="col-2" scope="col">Mail ID</th>
-                                        <th class="col-1" scope="col">Address</th>
-                                        <th class="col-1" scope="col">Landmark</th>
-                                        <th class="col-2" scope="col">City</th>
+                                        <th class="col-3" scope="col">Mobile Number</th>
+                                        <th class="col-3" scope="col">Mail ID</th>
+                                        <th class="col-4" scope="col">Address</th>
+                                        <th class="col-2" scope="col">Landmark</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1986,10 +1985,10 @@
                             <table class="table table-striped mt-2">
                                 <thead>
                                     <tr>
-                                        <th class="col-2" scope="col">City</th>
-                                        <th class="col-4" scope="col">District</th>
-                                        <th class="col-2" scope="col">State</th>
-                                        <th class="col-1" scope="col">Pincode</th>
+                                        <th class="col-3" scope="col">City</th>
+                                        <th class="col-3" scope="col">District</th>
+                                        <th class="col-3" scope="col">State</th>
+                                        <th class="col-3" scope="col">Pincode</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -2010,11 +2009,11 @@
                             <table class="table table-striped mt-2">
                                 <thead>
                                     <tr>
-                                        <th class="col-3" scope="col">Location</th>
-                                        <th class="col-3" scope="col">Logo</th>
+                                        <th class="col-2" scope="col">Location</th>
+                                        <th class="col-2" scope="col">Logo</th>
                                         <th class="col-2" scope="col">Website</th>
-                                        <th class="col-2" scope="col">PAN Number</th>
-                                        <th class="col-2" scope="col">GST Number</th>
+                                        <th class="col-3" scope="col">PAN Number</th>
+                                        <th class="col-3" scope="col">GST Number</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -2041,16 +2040,6 @@
 
                                             <td><?php echo $value['companypan'] ?></td>
                                             <td><?php echo $value['companygst'] ?></td>
-
-
-                                        <!-- <td><a href="<?php echo $value['companyLocationUrl'] ;?>"
-                                             class=" text-primary" target="blank">Location</a></td>
-                                            <td><a href="<?php echo $value['company_logourl'] ;?>"
-                                             class=" text-primary" target="blank"><?php echo $value['company_logo'] ;?></a></td>
-                                            <td><a href="<?php echo $value['companywebsite'] ?>"
-                                             class=" text-primary" target="blank">Website</a></td> -->
-                                            <td><?php echo $value['companypan'] ?></td>
-                                            <td><?php echo $value['companygst'] ?></td>
                                         </tr>
                                     <?php
                                     }
@@ -2064,7 +2053,7 @@
                                                     <th scope="col">Job Title</th>
                                                     <th scope="col">Job Subcategory</th>
                                                     <th scope="col">Location</th>
-                                                    <th scope="col">Job Type</th>
+                                                    <th scope="col">Job Timing</th>
                                                     <th scope="col">Salary</th>
 
                                                 </tr>
@@ -2097,7 +2086,7 @@
                                                     <th scope="col">S.No</th>
                                                     <th scope="col">Experience</th>
                                                     <th scope="col">Number of Openings</th>
-                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Job Description</th>
                                                     <th scope="col">Date</th>
                                                 </tr>
                                             </thead>
