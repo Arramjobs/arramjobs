@@ -114,12 +114,15 @@ class Employer extends CI_Controller
         $this->load->view('employerDashboard.php', $this->data);
     }
 
-
     public function jobViewTable()
     {
         $this->data['method'] = "jobview";
+
         $tab = $this->EmployerModel->addTab();
         $this->data['providerJobs'] = $tab;
+
+        $categoryList = $this->EmployerModel->getCategoryList();
+        $this->data['categoryList'] = $categoryList;
 
         $this->load->view('employerDashboard.php', $this->data);
     }
@@ -154,12 +157,10 @@ class Employer extends CI_Controller
     }
 
 
-
     public function update_record()
     {
         $postData = $this->input->post(null, true);
         $var = $this->EmployerModel->update_data();
-
         // echo "Record updated successfully";
         $this->jobViewTable();
         echo '<script>alert("Company profile updated successfully.");</script>';
@@ -167,15 +168,15 @@ class Employer extends CI_Controller
 
 
 
-    public function addNewJob()
-    {
-        $this->data['method'] = "addnew";
+    // public function addNewJob()
+    // {
+    //     $this->data['method'] = "addnew";
 
-        $categoryList = $this->EmployerModel->getCategoryList();
-        $this->data['categoryList'] = $categoryList;
+    //     $categoryList = $this->EmployerModel->getCategoryList();
+    //     $this->data['categoryList'] = $categoryList;
 
-        $this->load->view('employerDashboard.php', $this->data);
-    }
+    //     $this->load->view('employerDashboard.php', $this->data);
+    // }
 
 
 
@@ -183,9 +184,7 @@ class Employer extends CI_Controller
     {
         $this->data['method'] = "jobs";
         $addJob = $this->EmployerModel->addNew();
-
-        // $this->load->view('jobs.php');
-        echo "Record added seccessfuly";
+        // echo "Record added seccessfuly";
         $this->jobViewTable();
         echo '<script>alert("Job details inserted successfully.");</script>';
     }
@@ -194,6 +193,9 @@ class Employer extends CI_Controller
     {
         $id = $this->uri->segment(3);
         $this->data['method'] = "updateaddnew";
+
+        $tab = $this->EmployerModel->addTab();
+        $this->data['providerJobs'] = $tab;
 
         $addjob = $this->EmployerModel->updatejob($id);
         $this->data['updateAddNew'] = $addjob;

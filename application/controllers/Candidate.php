@@ -29,7 +29,7 @@ class Candidate extends CI_Controller
         $this->load->view('seekerOtp.php');
     }
 
-    public function seekerLogin()
+    public function candidateLogin()
     {
         $postData = $this->input->post(null, true);
         $login = $this->CandidateModel->seekerLogin();
@@ -45,7 +45,7 @@ class Candidate extends CI_Controller
             $this->dash();
         } else {
             $this->load->view('candidateLogin.php', $this->data);
-            echo '<script>alert("Please enter valid details.");</script>';
+            echo '<script>alert("Please enter registered mobile number.");</script>';
         }
     }
 
@@ -179,18 +179,19 @@ class Candidate extends CI_Controller
         $this->data['basicDetails'] = $basicDetails;
         $this->load->view('candidateDashboard.php', $this->data);
     }
-    public function addExperirenceForm()
-    {
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
 
-        $categoryList = $this->CandidateModel->getCategoryList();
-        $this->data['categoryList'] = $categoryList;
+    // public function addExperirenceForm()
+    // {
+    //     $basicDetails = $this->CandidateModel->getBasicDetails();
+    //     $this->data['basicDetails'] = $basicDetails;
 
-        $this->data['method'] = "addExperirenceForm";
-        $this->load->view('candidateDashboard.php', $this->data);
+    //     $categoryList = $this->CandidateModel->getCategoryList();
+    //     $this->data['categoryList'] = $categoryList;
 
-    }
+    //     $this->data['method'] = "addExperirenceForm";
+    //     $this->load->view('candidateDashboard.php', $this->data);
+    // }
+
     public function insertExperienceForm()
     {
         $insertExperienceForm = $this->CandidateModel->insertExperienceForm();
@@ -204,6 +205,9 @@ class Candidate extends CI_Controller
     {
         $experienceId = $this->uri->segment(3);
         $this->data['method'] = "updateExperience";
+
+        $experienceTable = $this->CandidateModel->experienceTable();
+        $this->data['experienceTable'] = $experienceTable;
 
         $updateExperience = $this->CandidateModel->updateExperience($experienceId);
         $this->data['updateExperience'] = $updateExperience;
@@ -240,53 +244,53 @@ class Candidate extends CI_Controller
 
     //    project
 
-    public function projectTable()
-    {
-        $this->data['method'] = "projectTable";
-        $projectTable = $this->CandidateModel->projectTable();
-        $this->data['projectTable'] = $projectTable;
+    // public function projectTable()
+    // {
+    //     $this->data['method'] = "projectTable";
+    //     $projectTable = $this->CandidateModel->projectTable();
+    //     $this->data['projectTable'] = $projectTable;
 
-        $this->load->view('seekerView.php', $this->data);
-    }
+    //     $this->load->view('seekerView.php', $this->data);
+    // }
 
-    public function addProjectForm()
-    {
-        $this->data['method'] = "addProjectForm";
-        $this->load->view('seekerView.php', $this->data);
-    }
+    // public function addProjectForm()
+    // {
+    //     $this->data['method'] = "addProjectForm";
+    //     $this->load->view('seekerView.php', $this->data);
+    // }
 
-    public function insertProjectForm()
-    {
-        $insertProjectForm = $this->CandidateModel->insertProjectForm();
-        $this->projectTable();
-    }
+    // public function insertProjectForm()
+    // {
+    //     $insertProjectForm = $this->CandidateModel->insertProjectForm();
+    //     $this->projectTable();
+    // }
 
-    public function updateProject()
-    {
-        $projectId = $this->uri->segment(3);
-        $this->data['method'] = "updateProject";
-        $updateProject = $this->CandidateModel->updateProject($projectId);
-        $this->data['updateProject'] = $updateProject;
-        $this->load->view('seekerView.php', $this->data);
-    }
+    // public function updateProject()
+    // {
+    //     $projectId = $this->uri->segment(3);
+    //     $this->data['method'] = "updateProject";
+    //     $updateProject = $this->CandidateModel->updateProject($projectId);
+    //     $this->data['updateProject'] = $updateProject;
+    //     $this->load->view('seekerView.php', $this->data);
+    // }
 
-    public function updateInsertProject()
-    {
-        $post = $this->input->post(null, true);
-        $updateInsertProject = $this->CandidateModel->updateInsertProject();
-        $this->projectTable();
-    }
+    // public function updateInsertProject()
+    // {
+    //     $post = $this->input->post(null, true);
+    //     $updateInsertProject = $this->CandidateModel->updateInsertProject();
+    //     $this->projectTable();
+    // }
 
-    public function deleteProject()
-    {
-        $deleteProjectId = $this->uri->segment(3);
-        $delete = $this->CandidateModel->deleteProject($deleteProjectId);
-        if ($delete == null) {
-            $this->projectTable();
-        } else {
-            echo "Error deleting record";
-        }
-    }
+    // public function deleteProject()
+    // {
+    //     $deleteProjectId = $this->uri->segment(3);
+    //     $delete = $this->CandidateModel->deleteProject($deleteProjectId);
+    //     if ($delete == null) {
+    //         $this->projectTable();
+    //     } else {
+    //         echo "Error deleting record";
+    //     }
+    // }
 
 
 
@@ -308,17 +312,17 @@ class Candidate extends CI_Controller
         $this->load->view('candidateDashboard.php', $this->data);
     }
 
-    public function addAreaOfIntrestForm()
-    {
-        $this->data['method'] = "addAreaOfIntrestForm";
-        $basicDetails = $this->CandidateModel->getBasicDetails();
+    // public function addAreaOfIntrestForm()
+    // {
+    //     $this->data['method'] = "addAreaOfIntrestForm";
+    //     $basicDetails = $this->CandidateModel->getBasicDetails();
 
-        $categoryList = $this->CandidateModel->getCategoryList();
-        $this->data['categoryList'] = $categoryList;
+    //     $categoryList = $this->CandidateModel->getCategoryList();
+    //     $this->data['categoryList'] = $categoryList;
         
-        $this->data['basicDetails'] = $basicDetails;
-        $this->load->view('candidateDashboard.php', $this->data);
-    }
+    //     $this->data['basicDetails'] = $basicDetails;
+    //     $this->load->view('candidateDashboard.php', $this->data);
+    // }
 
     public function insertAreaOfIntrest()
     {
@@ -335,6 +339,9 @@ class Candidate extends CI_Controller
     {
         $updateAreaOfIntrestId = $this->uri->segment(3);
         $this->data['method'] = "updateAreaOfIntrest";
+
+        $areaOfIntrestTable = $this->CandidateModel->areaOfIntrestTable();
+        $this->data['areaOfIntrestTable'] = $areaOfIntrestTable;
 
         $updateAreaOfIntrest = $this->CandidateModel->updateAreaOfIntrest($updateAreaOfIntrestId);
         $this->data['updateAreaOfIntrest'] = $updateAreaOfIntrest;
@@ -382,13 +389,13 @@ class Candidate extends CI_Controller
     }
 
 
-    public function addSkillForm()
-    {
-        $this->data['method'] = "addSkillForm";
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
-        $this->load->view('candidateDashboard.php', $this->data);
-    }
+    // public function addSkillForm()
+    // {
+    //     $this->data['method'] = "addSkillForm";
+    //     $basicDetails = $this->CandidateModel->getBasicDetails();
+    //     $this->data['basicDetails'] = $basicDetails;
+    //     $this->load->view('candidateDashboard.php', $this->data);
+    // }
 
     public function insertSkillForm()
     {
@@ -401,10 +408,16 @@ class Candidate extends CI_Controller
     {
         $updateSkillId = $this->uri->segment(3);
         $this->data['method'] = "updateSkill";
+
+        $skillTable = $this->CandidateModel->skillTable();
+        $this->data['skillTable'] = $skillTable;
+
         $updateSkill = $this->CandidateModel->updateSkill($updateSkillId);
         $this->data['updateSkill'] = $updateSkill;
+
         $basicDetails = $this->CandidateModel->getBasicDetails();
         $this->data['basicDetails'] = $basicDetails;
+
         $this->load->view('candidateDashboard.php', $this->data);
     }
 

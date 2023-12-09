@@ -1260,7 +1260,7 @@
             </p>
             <p style="color: white;">
               <i class="fas fa-phone me-3 text-reset" style="color: white;"></i>
-              <a href="tel:+7418334443" style="color: white; text-decoration: none; font-size:18px"
+              <a href="tel:7418334443" style="color: white; text-decoration: none; font-size:18px"
                 onmouseover="this.style.color='#61d3ed'" onmouseout="this.style.color='white'">+91 7418334443</a>
             </p>
             </p>
