@@ -173,10 +173,16 @@ class Candidate extends CI_Controller
     public function experienceTable()
     {
         $this->data['method'] = "experienceTable";
+
         $experienceTable = $this->CandidateModel->experienceTable();
         $this->data['experienceTable'] = $experienceTable;
+
         $basicDetails = $this->CandidateModel->getBasicDetails();
         $this->data['basicDetails'] = $basicDetails;
+
+        $categoryList = $this->CandidateModel->getCategoryList();
+        $this->data['categoryList'] = $categoryList;
+
         $this->load->view('candidateDashboard.php', $this->data);
     }
 
@@ -308,6 +314,9 @@ class Candidate extends CI_Controller
 
         $basicDetails = $this->CandidateModel->getBasicDetails();
         $this->data['basicDetails'] = $basicDetails;
+
+        $categoryList = $this->CandidateModel->getCategoryList();
+        $this->data['categoryList'] = $categoryList;
 
         $this->load->view('candidateDashboard.php', $this->data);
     }

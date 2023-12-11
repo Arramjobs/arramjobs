@@ -35,7 +35,13 @@
       #pincode::-webkit-outer-spin-button,
       #pincode::-webkit-inner-spin-button ,
       #year_passed::-webkit-outer-spin-button,
-      #year_passed::-webkit-inner-spin-button {
+      #year_passed::-webkit-inner-spin-button,
+      #percentage::-webkit-outer-spin-button,
+      #percentage::-webkit-inner-spin-button,
+      #phonenumber::-webkit-outer-spin-button,
+      #phonenumber::-webkit-inner-spin-button,
+      #number::-webkit-outer-spin-button,
+      #number::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
@@ -56,24 +62,7 @@
     }
 
     /* Sidebar changes */
-    .sidebar {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  z-index: 996;
-  transition: all 0.3s;
-  padding: 20px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #aab7cf transparent;
-  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background: #fff;
-  color: #4154f1;
-  border-radius: 10px;
-} 
-
+    
 .sidebar ul li a:hover {
     background: #4154f1;
     color: #fff;
@@ -168,6 +157,7 @@
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                               
                         <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['seekerName']; ?></span>
+                        <span class="d-block d-md-none dropdown-toggle ps-2"></span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -366,7 +356,7 @@
                         <div class="col-lg-12">
                             <div class="row">
 
-                                <h5 class="card-title">Welcome To Candidate Dashboard</h5>
+                                <h5 class="card-title ps-3">Welcome To Candidate Dashboard</h5>
                                 <div class="col-12">
                                     <div class="card info-card sales-card p-4 ">
          <p>At Arram Job Portal, our unwavering commitment is to empower individuals to realize their utmost potential. 
@@ -446,7 +436,7 @@
                              </div>
                              <div class="col-md-6">
                              <label for="phonenumber" class="form-label">Mobile Number *</label>
-                             <input type="tel" class="form-control" id="phonenumber" value="<?php echo $value['phonenumber']; ?>" 
+                             <input type="number" class="form-control" id="phonenumber" value="<?php echo $value['phonenumber']; ?>" 
                              name="phonenumber" placeholder="Enter your number" required>
                              <div id="phonenumber_error" style="color: red;"></div>
                              </div>
@@ -459,7 +449,7 @@
                              <div class="col-md-6">
                              <label for="age" class="form-label">Age *</label>
                              <input type="number" class="form-control" id="age" value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" 
-                             name="age" placeholder="Enter age" required>
+                             name="age" placeholder="Enter age" readonly required>
                              <div id="age_error" style="color: red;"></div>
                              </div>
                              <div class="col-md-6">
@@ -533,7 +523,7 @@
                                    <input type="file" class="form-control" id="aadharfrontphoto" name="aadharfrontphoto"
                                      accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
                                    <div class="uploadedfile" style="display:flex;">
-                                     <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control">Choose File</label>
+                                     <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control" style="cursor:pointer">Choose File</label>
                                      <a href="<?php echo $value['aadhar_front']; ?>" class="filelink" target="blank" id="existfileaf">
                                        <?php echo $value['aadharfront_filename']; ?>
                                      </a>
@@ -546,7 +536,7 @@
                                  <input type="text" class="form-control"  name="oldaadharback" value="<?php echo $value['aadharback_filename']; ?>" hidden>
                              <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
                              <div class="uploadedfile" style="display:flex;">
-                             <label id="file-input-labelab" for="aadharbackphoto" class="form-control">Choose File</label>  
+                             <label id="file-input-labelab" for="aadharbackphoto" class="form-control"  style="cursor:pointer">Choose File</label>  
                              <a href="<?php echo $value['aadhar_back']; ?>" class="filelink" target="blank" id="existfileab" ><?php echo $value['aadharback_filename']; ?></a>
                              </div>
                              <div id="aadharbackphoto_error" style="color: red;"></div>
@@ -555,9 +545,9 @@
                              <div class="col-md-6">
                              <label for="photo" class="form-label">Photo *</label>
                              <input type="text" class="form-control"  name="oldprofilephoto" value="<?php echo $value['photo_filename']; ?>" hidden>
-                             <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
+                             <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden>
                              <div class="uploadedfile" style="display:flex;">
-                             <label id="file-input-labelpp" for="photo" class="form-control">Choose File</label>  
+                             <label id="file-input-labelpp" for="photo" class="form-control" style="cursor:pointer">Choose File</label>  
                              <a href="<?php echo $value['photo']; ?>" class="filelink" target="blank" id="existfilepp" ><?php echo $value['photo_filename']; ?></a>
                              </div>
                              <div id="photo_error" style="color: red;"></div>
@@ -1095,7 +1085,7 @@
 
                           <div class="col-md-6" id="percentage-group" style="display: none;">
                             <label for="percentage" class="form-label">Percentage</label>
-                            <input type="text" class="form-control" id="percentage" id="school" name="percentage" placeholder="Enter percentage">
+                            <input type="number" class="form-control" id="percentage" id="school" name="percentage" placeholder="Enter percentage">
                             <div id="percentage_error" class="text-danger"></div>
                           </div>
 
@@ -2389,7 +2379,7 @@
                                     <h5 class="card-title">Experience Table<span></span></h5>
                                     <div id="exptableheading" class="mb-4">
                                 Are you a fresher ? <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"><button type="button" class="btn btn-danger mx-2">Skip</button></a> <br>
-                                or Experienced ? <a class="" href="#addexpform"><button type="button" onclick="exptablevisible()" class="btn btn-success m-2">+ Add Experience</button></a>
+                                or Experienced ? <a class="" href="#addexpform" onclick="addexpform()"><button type="button" onclick="exptablevisible()" class="btn btn-success m-2">Add Experience</button></a>
                                     </div>
                                     <div class="d-flex justify-content-between" >
                                     <a class="" href="#addexpform">
@@ -2467,7 +2457,6 @@
                 document.getElementById("expprevious").style.visibility = "visible";
                 document.getElementById("expnext").style.visibility = "visible";
                 document.getElementById("exptable").style.display = "block";
-               document.getElementById("exptable").style.display = "block";
                document.getElementById("addexpform").style.display = "block";
               }
               function addexpform() {
@@ -2624,7 +2613,7 @@
 
                 <div class="col-md-6">
                   <label for="number" class="form-label">Mobile Number</label>
-                  <input type="text" class="form-control" id="number" name="number" placeholder="Enter mobile number" required>
+                  <input type="number" class="form-control" id="number" name="number" placeholder="Enter mobile number" required>
                   <div id="mobilenum_error" class="text-danger error"></div>
                 </div>
 
@@ -2730,12 +2719,18 @@
             }
 
             if (phonenumber1.value === '') {
-              displayError('Mobile number must be filled out', 'mobilenum_error');
-              return false;
-            }
+                displayError('Mobile number must be filled out', 'mobilenum_error');
+                return false;
+              } else if (!/^\d{10}$/.test(phonenumber1.value)) {
+                displayError('Mobile number must have exactly 10 digits', 'mobilenum_error');
+                return false;
+              }
 
             if (email1.value === '') {
               displayError('Email id must be filled out', 'emailid_error');
+              return false;
+            } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email1.value)) {
+              displayError('Invalid email address', 'emailid_error');
               return false;
             }
 
@@ -3148,8 +3143,7 @@
                            <label class="form-label" for="category">Category</label>
                            <select class="form-control" id="category" name="category" required>
                            <?php   
-                           $defaultSelectedValue = $value['
-                           '];
+                           $defaultSelectedValue = $value['other_category'];
                            foreach ($categoryList as $key => $cvalue) {
                               $selected = ($cvalue->categoryName == $defaultSelectedValue) ? 'selected' : ''; ?>
                               <option value="<?php echo $cvalue->categoryName ?>" <?php echo $selected ?>>
@@ -3222,11 +3216,13 @@
                          <div class="col-md-6">
                            <label class="form-label" for="phone number">Mobile Number</label>
                            <input type="text" class="form-control" value="<?php echo $value['previous_employer_mobile']; ?>" id="number" name="number" required>
+                           <div id="mobilenum_error" class="error"></div>
                          </div>
 
                          <div class="col-md-6">
                            <label class="form-label" for="email">Email</label>
                            <input type="text" class="form-control" value="<?php echo $value['previous_employer_email']; ?>" id="emailid" name="emailid" required>
+                           <div id="emailid_error" class="error"></div>
                          </div>
 
                          <div class="text-center">
@@ -3255,8 +3251,8 @@
               var role = document.getElementById("role");
               var profile = document.getElementById("profile");
               var ename = document.getElementById("nameofemployer");
-              var phonenumber1 = document.getElementById("number");
-              var email1 = document.getElementById("emailid");
+              var phonenumberu = document.getElementById("number");
+              var emailu = document.getElementById("emailid");
 
               if (category.value === '') {
                 displayError('Please select a category', 'category_error');
@@ -3300,16 +3296,21 @@
                 return false;
               }
 
-              if (phonenumber1.value === '') {
+              if (phonenumberu.value === '') {
                 displayError('Mobile number must be filled out', 'mobilenum_error');
                 return false;
-              }
-
-              if (email1.value === '') {
-                displayError('Email id must be filled out', 'emailid_error');
+              } else if (!/^\d{10}$/.test(phonenumberu.value)) {
+                displayError('Mobile number must have exactly 10 digits', 'mobilenum_error');
                 return false;
               }
 
+              if (emailu.value === '') {
+                displayError('Email id must be filled out', 'emailid_error');
+                return false;
+              } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(emailu.value)) {
+                displayError('Invalid email address', 'emailid_error');
+                return false;
+  }
               return true;
             }
 
@@ -3467,7 +3468,7 @@
                           </div>
 
                           <div class="col-md-6">
-                            <label for="preferred-location">Preferred Location to work</label>
+                            <label class="form-label" for="preferred-location">Preferred Location to work</label>
                             <input type="text" class="form-control" id="preferred-location" name="preferred-location" placeholder="Enter prefered location" required>
                             <div id="arealocation_error" class="error"></div>
                           </div>
@@ -3482,8 +3483,8 @@
                             <label class="form-label" for="jobtype">Job Type</label>
                             <select class="form-control" id="jobtype" name="jobtype" required>
                               <option value="">Select a Job Type</option>
-                              <option value="parttime">Part Time</option>
                               <option value="fulltime">Full Time</option>
+                              <option value="parttime">Part Time</option>
                             </select>
                             <div id="areajob_error" class="error"></div>
                           </div>
@@ -3506,6 +3507,102 @@
 
                     </div>
                 </div>
+
+                <script>
+
+                              function showHideOtherField() {
+                                var categoryDropdown = document.getElementById('category');
+                                var otherCategoryField = document.getElementById('newcategory_group');
+
+                                if (categoryDropdown.value === 'others') {
+                                    otherCategoryField.style.display = 'block';
+                                } else {
+                                    otherCategoryField.style.display = 'none';
+                                }
+                                }
+
+                                    function clearFormFields(form) {
+          var fieldsToClear = form.querySelectorAll('input, select');
+          for (var i = 0; i < fieldsToClear.length; i++) {
+            fieldsToClear[i].value = '';
+          }
+                                    }
+
+                                    function validateAreaForm() {
+          clearErrorMessages();
+
+          var category = document.getElementById("category").value;
+          var newothercategory = document.getElementById("newcategory_group");
+          var subcategory = document.getElementById("subcategory").value;
+          var preferredLocation = document.getElementById("preferred-location").value;
+          var jobtype = document.getElementById("jobtype").value;
+          // var expYear = document.getElementById("expYear").value;
+          // var expMonth = document.getElementById("expMonth").value;
+          var description = document.getElementById("description").value;
+          var expectedSalary = document.getElementById("expected-salary").value;
+
+          if (category === "") {
+            displayError('Please select a category', 'areacat_error');
+            return false;
+          }
+
+          if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
+              displayError('Please enter newcategory', 'newcategory_error');
+              return false;
+            }
+
+          if (subcategory === "" && category !== "") {
+            displayError('Please select a subcategory', 'areasubcat_error');
+            return false;
+          }
+
+          if (preferredLocation.trim() === "") {
+            displayError('Preferred location must be filled out', 'arealocation_error');
+            return false;
+          }
+
+          // if (expYear.trim() === "") {
+          //   displayError('Year must be filled out', 'areaexp_error');
+          //   return false;
+          // }
+
+          // if (expMonth.trim() === "") {
+          //   displayError('Month must be filled out', 'areaexp_error');
+          //   return false;
+          // }
+
+          if (description.trim() === "") {
+            displayError('Description must be filled out', 'areades_error');
+            return false;
+          }
+
+          if (jobtype.trim() === "") {
+            displayError('Job type must be filled out', 'areajob_error');
+            return false;
+          }
+
+          if (expectedSalary.trim() === "") {
+            displayError('Expected salary must be filled out', 'areasalary_error');
+            return false;
+          }
+
+          return true;
+                                    }
+
+                                    function clearErrorMessages() {
+          var errorElements = document.querySelectorAll('.error');
+          errorElements.forEach(function (errorElement) {
+            errorElement.textContent = '';
+          });
+                                    }
+
+                                    function displayError(message, elementId) {
+          var errorElement = document.getElementById(elementId);
+          errorElement.innerHTML = message;
+          errorElement.style.color = 'red';
+                                    }
+                                  </script>
+
 
                         <div class="card recent-sales overflow-auto">      
                         <div class="card-body">
@@ -3636,6 +3733,47 @@
 
                     </div>
                 </div>
+
+                <script>
+              function validateSkillForm(){
+                var sname = document.getElementById("skillname").value;
+                var sexp = document.getElementById("skillexperience").value;
+                var slevel = document.getElementById("skilllevel").value;
+
+                clearErrorMessages();
+
+                if (sname.trim() === "") {
+                displayError('Skill name must be filled out', 'sname_error');
+                return false;
+              }
+
+              if (sexp.trim() === "") {
+                displayError('Select an experience', 'sexp_error');
+                return false;
+              }
+
+              if (slevel.trim() === "") {
+                displayError('Skill level must be filled out', 'slevel_error');
+                return false;
+              }
+
+              return true;
+            }
+
+            function displayError(message, elementId) {
+              var errorElement = document.getElementById(elementId);
+              errorElement.innerHTML = message;
+              errorElement.style.color = 'red';
+            }
+
+            function clearErrorMessages() {
+              var errorElements = document.getElementsByClassName('error');
+              Array.from(errorElements).forEach(function (errorElement) {
+                errorElement.textContent = '';
+              });
+            }
+                  
+            </script>
 
                 <script>
          function addinterestform(){
@@ -4781,6 +4919,7 @@
                    <th scope="col">S.No</th>
                    <th scope="col">Job Category</th>
                    <th scope="col">Job Sub Category</th>
+                   <th scope="col">Experience</th>
                    <th scope="col">Company Name</th>
                    <th scope="col">Job Role</th>
                    <th scope="col">Previous Job's Manager Name</th>
@@ -4798,7 +4937,7 @@
                                            <td scope="row"><?php echo $loopcount; ?>.</td>
                                            <td><?php echo $ivalue['other_category'] ?></td>
                                            <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                           <td><?php echo $value['expYear'] ?> Years & <?php echo $value['expMonth'] ?> Months</td>
+                                           <td><?php echo $ivalue['expYear'] ;?> Years & <?php echo $ivalue['expMonth'] ;?> Months</td>
                                            <td><?php echo $ivalue['company_name'] ?></td>
                                            <td><?php echo $ivalue['job_role'] ?></td>
                                            <td><?php echo $ivalue['previous_employer_name'] ?></td>

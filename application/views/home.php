@@ -584,7 +584,7 @@
     </button>
   </div>
 
-  <section id="about" class="about section-padding1" style="background-color:  #D6D3D1;">
+  <section id="about" class="about section-padding1" style="background-color:  #f7f6f5;">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 col-12">
@@ -613,7 +613,7 @@
 
   <!-- Recent-posts Section - Home Page -->
   <section id="recent-posts" class="recent-posts"
-    style="margin-bottom: 30px; margin-top: 10px; background-color:  #D6D3D1;">
+    style="margin-bottom: 30px; margin-top: 10px; background-color:  #f7f6f5;">
 
     <!--  Section Title -->
     <div class="container section-title" data-aos="fade-up">
@@ -686,7 +686,7 @@
   <!-- Six Reasons For People Choosing Us -->
 
   <div class="section services section-padding" id="services"
-    style="background-color: #D6D3D1; padding-top: 40px;  margin-top:-30px;padding-bottom:5px;">
+    style="background-color: #f7f6f5; padding-top: 40px;  margin-top:-30px;padding-bottom:5px;">
     <div class="container" style="padding-top:30px;">
       <div class="row">
         <div class="col-md-12">
@@ -701,7 +701,7 @@
       <div class="row">
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-4"
-            style="background-color: #FAFAFA;  box-shadow: 0 0 11px rgba(33,33,33,.2);">
+            style="background-color: #fff;  box-shadow: 0 0 11px rgba(33,33,33,.2);">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-phone" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 33px; color: black;">Mobile
@@ -717,7 +717,7 @@
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-4"
-            style="background-color: #FAFAFA; box-shadow: 0 0 11px rgba(33,33,33,.2); ">
+            style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2); ">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-book-fill" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;"> Accredited</h4>
@@ -732,7 +732,7 @@
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-4"
-            style="background-color: #FAFAFA;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
+            style="background-color: #fff;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-laptop-fill" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 38px; color: black;">User-friendly
@@ -753,7 +753,7 @@
       <div class="row">
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-4"
-            style="background-color: #FAFAFA; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+            style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-subtract" style="color: black;  font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Extensive Job
@@ -769,7 +769,7 @@
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-1"
-            style="background-color: #FAFAFA; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+            style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-shield-shaded" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Quick Response</h4>
@@ -785,7 +785,7 @@
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
           <div class="card-sec text-white text-center pb-4"
-            style="background-color: #FAFAFA; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+            style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-tablet-landscape" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Advanced search and
@@ -806,12 +806,12 @@
 
 
 
-  <section id="candidate" class="seeker section-padding" style="background-color: #f7fee7; padding-top:50px;">
+  <section id="candidate" class="seeker section-padding" style="background-color: #fff; padding-top:50px;padding-bottom:50px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 col-12">
           <div class="about-img">
-            <img src="<?php echo baseUrl . "assets/blog-2.jpg" ?>" alt="" class="img-fluid">
+            <img src="<?php echo baseUrl . "assets/blog-4.jpg" ?>" alt="" class="img-fluid">
           </div>
         </div>
         <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify;">
@@ -838,7 +838,7 @@
   <!-- provider -->
 
   <section id="employer" class="provider section-padding"
-    style="background-color: #f7fee7; padding-top:2px; padding-bottom:20px;">
+    style="background-color: #f2f8fa; padding-top:50px; padding-bottom:50px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify;">
@@ -859,7 +859,7 @@
         </div>
         <div class="col-lg-4 col-md-12 col-12">
           <div class="about-img-img">
-            <img src="<?php echo baseUrl . "assets/blog-4.jpg" ?>" alt="" class="img-fluid">
+            <img src="<?php echo baseUrl . "assets/employer.jpg" ?>" alt="" class="img-fluid">
           </div>
         </div>
       </div>
