@@ -662,8 +662,7 @@ class CandidateModel extends CI_Model
         $areaOfIntrest = $post['id'];
         $updateInsertSkill = array(
             'skill' => $post['skillname'],
-            'experience' => $post['skillexperience'],
-            // 'expMonth' => $post['skillexperience'],
+            'experience' => $post['experience'],
             'skill_level' => $post['skilllevel']
         );
 

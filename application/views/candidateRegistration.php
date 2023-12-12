@@ -78,7 +78,7 @@
                                         <p class="text-center small">Enter your details to create account</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate onsubmit="return validateForm()"
+                                    <form class="row g-3 needs-validation" novalidate oninput="return validateForm()"
                                         action="<?php echo baseUrl . "Candidate/candidateRegistration" ?>"
                                         name="registration_form" method="post">
 
@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="">
                                             <label for="phonenumber" class="form-label">Mobile number</label>
-                                            <input type="tel" class="form-control" id="phonenumber" name="phonenumber"
+                                            <input type="number" class="form-control" id="phonenumber" name="phonenumber"
                                                 placeholder="Enter your mobile number" required>
                                             <div id="phone_error"  style="color: red;" class="error" ></div>
                                         </div>

@@ -177,7 +177,7 @@
                 </div>
                 <div class="">
                     <label for="phno1" class="form-label">Mobile Number: <span class="text-danger">*</span></label>
-                    <input type="tel" class="form-control" id="phno1" name="mobile1"
+                    <input type="number" class="form-control" id="phno1" name="mobile1"
                         placeholder="Enter contact person number" required>
                     <p id="pherr1" style="color: red;"></p>
                 </div>

@@ -69,8 +69,9 @@
                                             <label for="userID" class="form-label">Mobile Number : </label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="mobilenumber" placeholder="Enter your mobile number" class="form-control" id="userID" required>
+                                                <input type="text" name="mobilenumber" placeholder="Enter your mobile number" class="form-control" id="userID" oninput="validatePhoneNumber(this)" required>
                                                 <div class="invalid-feedback">Please enter your registered mobile number.</div>
+                                                <div id="phoneError" class="text-danger"> </div>
                                             </div>
                                         </div>
 
@@ -96,6 +97,17 @@
                 </div>
 
             </section>
+
+<script>
+    function validatePhoneNumber(input) {
+    const phoneError = document.getElementById("phoneError");
+    if (!/^\d{10}$/.test(input.value)) {
+        phoneError.textContent = "Invalid phone number. Please enter 10 digits.";
+    } else {
+        phoneError.textContent = "";
+    }
+}
+</script>
 
         </div>
     </main><!-- End #main -->

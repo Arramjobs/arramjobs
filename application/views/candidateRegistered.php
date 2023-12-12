@@ -38,7 +38,7 @@
 
             <section>
                 <div class="my-5 py-md-5 text-center">
-                    <img class="img-fluid" src="<?php echo baseUrl . "assets/candidate_registered.png" ?>" alt="Thanks">
+                    <img class="img-fluid" src="<?php echo baseUrl . "assets/employee_registered.png" ?>" alt="Thanks">
                     <p class="ms-5">Use the registered mobile number to <a href="<?php echo baseUrl . "Candidate" ?>">Login</a>.</p>
 
                     </div>
