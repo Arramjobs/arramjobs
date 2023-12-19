@@ -643,6 +643,11 @@ class Candidate extends CI_Controller
         $this->index();
     }
 
+    // public function logout()
+    // {
+    //     $this->session->sess_destroy();
+    //     redirect('candidate'); 
+    // }
 
 
 }

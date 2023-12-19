@@ -95,6 +95,19 @@
                     <p id="mailerr" style="color: red;"></p>
                 </div>
                 <div class="">
+                    <label for="crpassword" class="form-label">Create Password: <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="crpassword" name="crpassword" placeholder="Enter password"  required>
+                    <p id="crpassworderr" style="color: red;"></p>
+                </div>
+                
+                    <p class="text-secondary" style="font-size:12px;display:none" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</p>
+                
+                <div class="">
+                    <label for="cmpassword" class="form-label">Confirm Password: <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="cmpassword" name="cmpassword" placeholder="Confirm password" required>
+                    <p id="cmpassworderr" style="color: red;"></p>
+                </div>
+                <div class="">
                     <label for="addr" class="form-label">Street Address: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="addr" name="address"
                         placeholder="Enter company address" required>
@@ -262,6 +275,13 @@
             }
         }
 
+        document.getElementById("crpassword").onfocus = function() {
+            document.getElementById("passwordmessage").style.display = "block";
+            }
+
+            document.getElementById("crpassword").onblur = function() {
+            document.getElementById("passwordmessage").style.display = "none";
+            }
 
 
         function group() {
@@ -282,6 +302,10 @@
             var p1 = document.forms.phno1.value;
             var a1 = document.forms.mail1.value;
             var r = document.forms.role.value;
+
+             var crp = document.forms.crpassword.value;
+            var cmp = document.forms.cmpassword.value;
+
 
 
             if (x != "") {
@@ -341,7 +365,38 @@
             }  else {
                     document.getElementById("mailerr").innerHTML = "";
                 }
-            
+
+
+            if (crp == "") {
+                var emailsms = "Password must be filled out";
+                document.getElementById("crpassworderr").innerHTML = emailsms;
+                document.forms.crpassword.focus();
+                return false;
+            } else if (crp != "") {
+                if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(crp)) {
+                    document.getElementById("crpassworderr").innerHTML = "";
+                } else {
+                    document.getElementById("crpassworderr").innerHTML = "Password does not matches the criteria";
+                    document.forms.crpassword.focus();
+                    return false;
+                }
+            }  else {
+                    document.getElementById("crpassword").innerHTML = "";
+                }
+
+
+                if (cmp == "") {
+                var emailsms = "Password must be filled out";
+                document.getElementById("cmpassworderr").innerHTML = emailsms;
+                document.forms.cmpassword.focus();
+                return false;
+            } else if (crp === cmp) {
+                 document.getElementById("cmpassworderr").innerHTML = "";
+                } else {
+                    document.getElementById("cmpassworderr").innerHTML = "Confirm password does not matches the password";
+                    document.forms.cmpassword.focus();
+                    return false;
+                }
 
 
             if (y != "") {

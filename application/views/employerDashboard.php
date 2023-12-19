@@ -263,7 +263,7 @@
                             <div class="col-lg-12">
                                 <div class="row">
 
-                                    <h5 class="card-title">Welcome To Employer Dashboard</h5>
+                                    <h5 class="card-title ps-4">Welcome To Employer Dashboard</h5>
                                     <div class="col-12">
                                         <div class="card info-card sales-card p-4 ">
 
@@ -700,9 +700,9 @@
                             <div class="card recent-sales overflow-auto">
 
                                 <div class="card-body">
-                                <h5 class="card-title">Jobs</h5>
+                                <!-- <h5 class="card-title">Jobs</h5> -->
 
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-between mt-4">
                                      
                                 <a  href="#addjobs"><button type="button" class="btn btn-success mb-4" onclick="addjob()">+ Add Job Requirements</button></a>
                                          <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left pe-2"></i>Previous</button></a>
@@ -1688,13 +1688,14 @@
                                         ?>
                                                 <h5 class="card-title">Matched Candidates<span></span></h5>
 
-                                                <table class="table">
+                                                <table class="table mt-4">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">S.No</th>
+                                                            <th scope="col">Candidate ID</th>
                                                             <th scope="col">Name</th>
+                                                            <th scope="col">Category</th>
                                                             <th scope="col">Subcategory</th>
-                                                            <th scope="col">Experience</th>
                                                             <th scope="col">Skill Name</th>
                                                             <th scope="col">Status</th>
                                                             <th scope="col">Action</th>
@@ -1707,11 +1708,19 @@
                                                         ?>
                                                                     <tr>
                                                                         <td><?php echo $count++; ?>.</td>
-                                                                        <td><?php echo $value['name'] ?></td>
+                                                                        <td><?php echo $value['cdid'] ?></td>
+                                                                        <td><?php echo $value['name'] ?> </td>
+                                                                        <td><?php echo $value['oic'] ?></td>
                                                                         <td><?php echo $value['oisc'] ?></td>
-                                                                        <td><?php echo $value['exps'] ?></td>
                                                                         <td><?php echo $value['skills'] ?></td>
-                                                                        <td><td><span class="badge bg-success">Requested</span></td></td>
+                                                                        <td>
+                                                                            <?php if($value['rqstCd']== 1){ ?>
+                                                                        <span class="badge bg-secondary">Requested</span></td>
+                                                                           <?php  } else if($value['rqstCd']== 2){ ?> 
+                                                                     <span class="badge bg-success">Approved</span></td>
+                                                                     <?php } else {?>
+                                                                     <span class="badge bg-primary">Add request</span></td>
+                                                                    <?php } ?>
                                                                         <td><a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
                                                                     </td>
                                                                     </tr>
@@ -1722,7 +1731,7 @@
                                                     <div class="d-flex justify-content-between">
                                             <p>Registered id : <?php echo $employerid = $_SESSION['employerid']; ?></p>
                                             <p>Category : <?php echo $this->data['category'] ?></p>
-                                            <p>Count :<?php echo $count - 1; ?></p>
+                                            <p>Count : <?php echo $count - 1; ?></p>
                                             </div>
                                                 </table>
                                             <?php
@@ -1766,18 +1775,26 @@
                                             <?php
                                             foreach($this->data['basicDetails'] as $nkey => $nvalue) {
                                                 ?>
-                                                <h2 class="d-md-none d-block"><?php echo $this->data['basicDetails'][0]['name']; ?></h2>
-                                                <div class="d-flex justify-content-between py-4 resumephoto">
+                                                <h2 class="d-md-none d-block h2 text-secondary p-2"><?php echo $this->data['basicDetails'][0]['name']; ?></h2>
+                                                <?php
+                                        if(($basicDetails[0]['requestCandidate'] == '2')) { ?>
+                                                <div class="d-sm-flex justify-content-between py-4 resumephoto">
                                                 <img  src="<?php echo baseUrl."uploads/".$nvalue['photo_filename'] ?>" class=" "  width="160" height="160"  alt="profile photo">
-                                                <h2 class="d-none d-md-block"><?php echo $this->data['basicDetails'][0]['name']; ?></h2>
-                                                <div class="text-end" >
-                                               <p> <?php echo $nvalue['phonenumber'] ?></p>
+                                                 <?php
+                                        }
+                                            ?>
+                                                 <h2 class="d-none d-md-block"><?php echo $this->data['basicDetails'][0]['name']; ?> </h2>
+                                                <?php
+                                        if(($basicDetails[0]['requestCandidate'] == '2')) { ?>
+                                            <div class="text-sm-end mt-4" >
+                                               <p><?php echo $nvalue['phonenumber'] ?></p>
                                                 <p><?php echo $nvalue['email'] ?></p>
                                                 <p><?php echo $nvalue['buildingName'] ?>, <?php echo $nvalue['address'] ?></p>
                                                 <p><?php echo $nvalue['district'] ?>, <?php echo $nvalue['pincode'] ?></p>
                                                 </div>
                                             </div>
                                           <?php
+                                        }
                                             }
                                             ?>
                                         <?php

@@ -84,9 +84,15 @@
 
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" name="password" class="form-control"
-                                                id="yourPassword" placeholder="Enter password" required>
-                                            <div class="invalid-feedback">Please enter your password!</div>
+                                            <div class="input-group has-validation">
+                                                <input type="password" name="password" class="form-control"
+                                                    id="yourPassword" placeholder="Enter password" required>
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    onclick="togglePasswordVisibility('yourPassword', 'visibilityIcon')">
+                                                    <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                                </button>
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
                                         </div>
 
                                         <!-- <div class="col-12">
@@ -116,6 +122,23 @@
                 </div>
 
             </section>
+
+            <script>
+                function togglePasswordVisibility(inputId, iconId) {
+                    var passwordInput = document.getElementById(inputId);
+                    var visibilityIcon = document.getElementById(iconId);
+
+                    if (passwordInput.type === "password") {
+                        passwordInput.type = "text";
+                        visibilityIcon.classList.remove("bi-eye-slash");
+                        visibilityIcon.classList.add("bi-eye");
+                    } else {
+                        passwordInput.type = "password";
+                        visibilityIcon.classList.remove("bi-eye");
+                        visibilityIcon.classList.add("bi-eye-slash");
+                    }
+                }
+            </script>
 
         </div>
     </main><!-- End #main -->

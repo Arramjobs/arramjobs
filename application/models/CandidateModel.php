@@ -21,7 +21,8 @@ class CandidateModel extends CI_Model
         $postData = $this->input->post(null, true);
         // $username = $postData['username'];
         $phonenumber = $postData['phonenumber'];
-        $query = "SELECT * FROM seeker_profile_form WHERE phonenumber='$phonenumber'";
+        $password = $postData['cdpassword'];
+        $query = "SELECT * FROM seeker_profile_form WHERE phonenumber = '$phonenumber' AND password = '$password'";
         $count = $this->db->query($query);
         return $count->result_array();
     }
@@ -49,10 +50,13 @@ class CandidateModel extends CI_Model
         $name = $this->input->post('name');
         $email = $this->input->post('email');
         $phonenumber = $this->input->post('phonenumber');
+        $password = $this->input->post('cmpassword');
+
         $insert = array(
             'name' => $name,
             'email' => $email,
             'phonenumber' => $phonenumber,
+            'password' => $password,
         );
 
         $this->db->insert('seeker_profile_form', $insert);
@@ -384,10 +388,10 @@ class CandidateModel extends CI_Model
         $seekerId = "SELECT * FROM `seeker_experience` Where `seekerId`= $seekerId";
         $addtab = $this->db->query($seekerId);
         return $addtab->result_array();
+        // return array('response' => $addtab->result_array(), "totalRows" => $addtab->num_rows());
     }
 
     public function getCategoryList(){
-        // $category = "SELECT DISTINCT * FROM `category_master` ORDER BY `categoryName` ASC ";
         $category = " SELECT * FROM category_master WHERE (categoryName, id) IN (
                         SELECT DISTINCT categoryName, MIN(id) AS id FROM category_master GROUP BY categoryName )
                         ORDER BY categoryName ASC";
@@ -861,6 +865,7 @@ class CandidateModel extends CI_Model
         $this->db->where('seekerId', $seekerId);
         $this->db->update('seeker_area_of_interst', $updateresume);
     }
+    
     public function insertSubmitResume()
     {
         $post = $this->input->post(null, true);
