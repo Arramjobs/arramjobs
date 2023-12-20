@@ -1140,10 +1140,10 @@
                                                             <td class="d-flex"><a class="" href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                             <!-- <a class="ms-1" href="<?php echo baseUrl . "admin/deleteEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button> -->
                                                             <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployer"
-                                                             onclick="deleteformnl(<?php echo $value['id'] ?>)">Delete</button>
+                                                             onclick="deleteformdl(<?php echo $value['id'] ?>)">Delete</button>
                                                     <script>
-                                                        function deleteformnl(employertid){
-                                                            document.getElementById("EmployerId").value = employertid;
+                                                        function deleteformdl(employertid){
+                                                            document.getElementById("EmployerID").value = employertid;
                                                         }
                                                     </script>
                                                         </td>
@@ -1246,7 +1246,7 @@
                                                              onclick="deleteformvl(<?php echo $value['id'] ?>)">Delete</button>
                                                     <script>
                                                         function deleteformvl(employertid){
-                                                            document.getElementById("EmployerId").value = employertid;
+                                                            document.getElementById("EmployerID").value = employertid;
                                                         }
                                                     </script>
                                                         </td>
@@ -1348,7 +1348,7 @@
                                                              onclick="deleteformpl(<?php echo $value['id'] ?>)">Delete</button>
                                                     <script>
                                                         function deleteformpl(employertid){
-                                                            document.getElementById("EmployerId").value = employertid;
+                                                            document.getElementById("EmployerID").value = employertid;
                                                         }
                                                     </script>
                                                         </td>
