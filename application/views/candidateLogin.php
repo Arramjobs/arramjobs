@@ -66,7 +66,7 @@
                                         <p class="text-center small">Enter your mobile number to login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Candidate/candidateLogin" ?>" method="post" onsubmit="return validateForm()">
+                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Candidate/candidateLogin" ?>" method="post">
 
                                         <!-- <div class="col-12">
                                             <label for="username" class="form-label">Registerd ID</label>
@@ -81,10 +81,22 @@
                                             <label for="phonenumber" class="form-label">Mobile Number</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="number" name="phonenumber" class="form-control" id="phonenumber" placeholder="Enter your mobile number" required>
+                                                <input type="number" name="phonenumber" class="form-control" id="phonenumber" placeholder="Enter your mobile number" oninput="validatePhoneNumber(this)" required>
                                                 <div class="invalid-feedback">Please enter your mobile number.</div>
                                             </div>
-                                            <p id="pherr" style="color: red;"></p>
+                                            <div id="phoneError" class="text-danger"> </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="erpassword" class="form-label">Password</label>
+                                            <div class="input-group has-validation">
+                                                <input type="password" name="cdpassword" placeholder="Enter your Password" class="form-control" id="cdpassword" oninput="validatePassword(this)" required />
+                                                <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('cdpassword', 'visibilityIcon')">
+                                                    <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                                </button>
+                                                <div class="invalid-feedback">Please enter your password.</div>
+                                                <div id="passwordError" class="text-danger"></div>
+                                            </div>
                                         </div>
 
                                         <!-- <div class="col-12">
@@ -117,34 +129,41 @@
     </main><!-- End #main -->
 
     <script>
-    function validateForm() {
-      var phoneNumber = document.getElementById("phonenumber").value;
-    
-      if (phoneNumber != "") {
-        if (phoneNumber.length < 10) {
-          document.getElementById("pherr").innerHTML = "Mobile number must be in 10 digits";
-          // document.forms.phno.focus();
-          return false;
-        } else if (phoneNumber.length > 10) {
-          document.getElementById("pherr").innerHTML = "Mobile number should not exceed 10 digits";
-          // document.forms.phno.focus();
-          return false;
+    function togglePasswordVisibility(inputId, iconId) {
+        var passwordInput = document.getElementById(inputId);
+        var visibilityIcon = document.getElementById(iconId);
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            visibilityIcon.classList.remove("bi-eye-slash");
+            visibilityIcon.classList.add("bi-eye");
         } else {
-          document.getElementById("pherr").innerHTML = "";
+            passwordInput.type = "password";
+            visibilityIcon.classList.remove("bi-eye");
+            visibilityIcon.classList.add("bi-eye-slash");
         }
-      } 
-    //   else if (phoneNumber == "") {
-    //     var phsms = "Mobile number must be filled out";
-    //     document.getElementById("pherr").innerHTML = phsms;
-    //     // document.forms.phno.focus();
-    //     return false;
-    //   }
-      else {
-          document.getElementById("pherr").innerHTML = "";
-        }
-      return true;
     }
-  </script>
+</script>
+
+    <script>
+    function validatePhoneNumber(input) {
+    const phoneError = document.getElementById("phoneError");
+    if (!/^\d{10}$/.test(input.value)) {
+        phoneError.textContent = "Invalid phone number. Please enter 10 digits.";
+    } else {
+        phoneError.textContent = "";
+    }
+}
+
+function validatePassword(input) {
+    const phoneError = document.getElementById("passwordError");
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(input.value)) {
+        phoneError.textContent = "Invalid password. Please enter valid password.";
+    } else {
+        phoneError.textContent = "";
+    }
+}
+</script>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

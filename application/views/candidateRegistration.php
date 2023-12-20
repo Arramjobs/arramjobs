@@ -78,7 +78,7 @@
                                         <p class="text-center small">Enter your details to create account</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate onsubmit="return validateForm()"
+                                    <form class="row g-3 needs-validation" novalidate oninput="return validateForm()"
                                         action="<?php echo baseUrl . "Candidate/candidateRegistration" ?>"
                                         name="registration_form" method="post">
 
@@ -96,18 +96,29 @@
                                         </div>
                                         <div class="">
                                             <label for="phonenumber" class="form-label">Mobile number</label>
-                                            <input type="tel" class="form-control" id="phonenumber" name="phonenumber"
+                                            <input type="number" class="form-control" id="phonenumber" name="phonenumber"
                                                 placeholder="Enter your mobile number" required>
                                             <div id="phone_error"  style="color: red;" class="error" ></div>
                                         </div>
+                                        <div class="">
+                                            <label for="crpassword" class="form-label">Create Password</label>
+                                            <input type="password" class="form-control" id="crpassword" name="crpassword" placeholder="Enter password"  required>
+                                            <div id="crpassworderr" style="color: red;" class="error" ></div>
+                                        </div>
+                                        <div class="">
+                                            <label for="cmpassword" class="form-label">Confirm Password</label>
+                                            <input type="text" class="form-control" id="cmpassword" name="cmpassword" placeholder="Confirm password" required>
+                                            <p id="cmpassworderr" style="color: red;" class="error" ></p>
+                                        </div>
+                                            <div class="text-secondary" style="font-size:12px;display:none;margin:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
 
                                         <!-- <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                        <div class="invalid-feedback">You must agree before submitting.</div>
-                      </div>
-                    </div> -->
+                                            <div class="form-check">
+                                                <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                                                <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                                                <div class="invalid-feedback">You must agree before submitting.</div>
+                                            </div>
+                                            </div> -->
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                         </div>
@@ -135,11 +146,20 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <script>
+document.getElementById("crpassword").onfocus = function() {
+            document.getElementById("passwordmessage").style.display = "block";
+            }
+
+            document.getElementById("crpassword").onblur = function() {
+            document.getElementById("passwordmessage").style.display = "none";
+            }
+
         function validateForm() {
             var username = document.getElementById('name').value;
             var email = document.getElementById('email').value;
             var phone = document.getElementById('phonenumber').value;
-
+            var crpassword = document.getElementById('crpassword').value;
+            var cmpassword = document.getElementById('cmpassword').value;
             clearErrors();
             if (!username.trim()) {
                 displayError('Name must be filled out', 'username_error');
@@ -162,6 +182,23 @@
 
                 return false;
             }
+
+             if (!crpassword.trim()) {
+                displayError('Password must be filled out', 'crpassworderr');
+                return false;
+            } else if (!validatePassword(crpassword)) {
+                displayError('Please enter a valid password', 'crpassworderr');
+                return false;
+            }
+
+             if (!cmpassword.trim()) {
+                displayError('Confirm password must be filled out', 'cmpassworderr');
+                return false;
+            } else if (!(crpassword == cmpassword)) {
+                displayError('Confirm password does not matches the password', 'cmpassworderr');
+                return false;
+            }
+
             return true;
         }
 
@@ -173,6 +210,11 @@
         function validatePhone(phone) {
             var regex = /^\d{10}$/;
             return regex.test(phone);
+        }
+
+        function validatePassword(crpassword) {
+            var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            return regex.test(crpassword);
         }
 
         function displayError(errorMessage, errorElementId) {

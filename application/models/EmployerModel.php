@@ -35,6 +35,7 @@ class EmployerModel extends CI_Model
       'company_name' => $postData['name'],
       'company_mobile_number' => $postData['mobile'],
       'company_email' => $postData['email'],
+      'password' => $postData['cmpassword'],
       'street_address' => $postData['address'],
       'Landmark' => $postData['landmark'],
       'City' => $postData['city'],
@@ -115,7 +116,8 @@ public function checkUserExistence($phone_number)
     $postData = $this->input->post(null, true);
     // $employerid = $postData['userName'];
     $companyMobile = $postData['mobilenumber'];
-    $query = "SELECT * FROM provider_registration_form WHERE company_mobile_number = '$companyMobile' AND verifyOne = '1' AND  verifyTwo = '1' AND deleteStatus = '0'";
+    $companyPassword = $postData['erpassword'];
+    $query = "SELECT * FROM provider_registration_form WHERE company_mobile_number = '$companyMobile' AND password = '$companyPassword' AND verifyOne = '1' AND  verifyTwo = '1' AND deleteStatus = '0'";
     $count = $this->db->query($query);
     return $count->result_array();
   }
@@ -287,11 +289,22 @@ public function checkUserExistence($phone_number)
 
   public function candidates($jobCategory)
   {
-    $query = "SELECT spf.id as seekerId, spf.name as name,  saoi.other_sub_interst_category as oisc, saoi.experience as exps, ssk.skill as skills 
-    FROM seeker_profile_form spf 
-    INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
-    INNER JOIN  seeker_skill ssk ON ssk.seekerId = spf.id
-    WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.identityVerify ='1' AND spf.addressVerify ='1' AND spf.employmentVerify ='1' AND spf.identityVerify ='1' AND spf.deleteStatus ='0' ;" ;
+    // $query = "SELECT spf.id as seekerId, spf.name as name,  saoi.other_sub_interst_category as oisc, saoi.experience as exps, ssk.skill as skills 
+    // FROM seeker_profile_form spf 
+    // INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
+    // INNER JOIN  seeker_skill ssk ON ssk.seekerId = spf.id
+    // WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.identityVerify ='1' AND spf.addressVerify ='1' AND spf.employmentVerify ='1' AND spf.educationVerify ='1' AND spf.deleteStatus ='0' ;" ;
+     $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.requestCandidate AS rqstCd, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(ssk.skill) AS skills
+      FROM seeker_profile_form spf 
+      INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
+      INNER JOIN seeker_skill ssk ON ssk.seekerId = spf.id 
+      WHERE saoi.other_interst_category = '" . $jobCategory . "' 
+      AND spf.identityVerify = '1'
+       AND spf.addressVerify = '1'
+        AND spf.employmentVerify = '1'
+         AND spf.identityVerify = '1'
+          AND spf.deleteStatus = '0'
+           GROUP BY spf.id, spf.name, saoi.experience;";
     $result = $this->db->query($query);
     return $result->result_array();
   }

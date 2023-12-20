@@ -69,11 +69,23 @@
                                             <label for="userID" class="form-label">Mobile Number : </label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="mobilenumber" placeholder="Enter your mobile number" class="form-control" id="userID" required>
+                                                <input type="text" name="mobilenumber" placeholder="Enter your mobile number" class="form-control" id="userID" oninput="validatePhoneNumber(this)" required>
                                                 <div class="invalid-feedback">Please enter your registered mobile number.</div>
+                                                <div id="phoneError" class="text-danger"> </div>
                                             </div>
                                         </div>
 
+                                <div class="col-12">
+                                    <label for="erpassword" class="form-label">Password : </label>
+                                    <div class="input-group has-validation">
+                                        <input type="password" name="erpassword" placeholder="Enter your Password" class="form-control" id="erpassword" oninput="validatePassword(this)" required>
+                                        <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('erpassword', 'visibilityIcon')">
+                                            <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                        </button>
+                                        <div class="invalid-feedback">Please enter your password.</div>
+                                        <div id="passwordError" class="text-danger"></div>
+                                    </div>
+                                </div>
                                         <div class="col-12">
                                             <br>
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
@@ -96,6 +108,43 @@
                 </div>
 
             </section>
+
+<script>
+    function togglePasswordVisibility(inputId, iconId) {
+        var passwordInput = document.getElementById(inputId);
+        var visibilityIcon = document.getElementById(iconId);
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            visibilityIcon.classList.remove("bi-eye-slash");
+            visibilityIcon.classList.add("bi-eye");
+        } else {
+            passwordInput.type = "password";
+            visibilityIcon.classList.remove("bi-eye");
+            visibilityIcon.classList.add("bi-eye-slash");
+        }
+    }
+</script>
+
+<script>
+    function validatePhoneNumber(input) {
+    const phoneError = document.getElementById("phoneError");
+    if (!/^\d{10}$/.test(input.value)) {
+        phoneError.textContent = "Invalid phone number. Please enter 10 digits.";
+    } else {
+        phoneError.textContent = "";
+    }
+}
+
+function validatePassword(input) {
+    const phoneError = document.getElementById("passwordError");
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(input.value)) {
+        phoneError.textContent = "Invalid password. Please enter valid password.";
+    } else {
+        phoneError.textContent = "";
+    }
+}
+</script>
 
         </div>
     </main><!-- End #main -->
