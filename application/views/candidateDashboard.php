@@ -429,13 +429,25 @@
                                            name="name" placeholder="Enter your name" required>
                                           <div id="Name_error" style="color: red;"></div>
                                           </div>
-
-                                          <div class="col-12">
+                                          <div class="col-md-6">
                                           <label for="emailid" class="form-label">Email <span class="text-danger">*</span></label><br>
                                           <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" 
                                           name="email" placeholder="Enter your email" required>
                                           <div id="emailid_error" style="color: red;"></div>
                                           </div>
+                                          <div class="col-md-6">
+                                            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" id="password" value="<?php echo $value['password']; ?>" name="password"
+                                                    placeholder="Enter password" required>
+                                                  <button type="button" class="btn btn-outline-secondary"
+                                                    onclick="togglePasswordVisibility('password', 'visibilityIcon')">
+                                                    <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                                  </button>
+                                                </div>
+                                                <div id="password_error" style="color: red;"></div>
+                                              </div>
+                                          <div class="text-secondary" style="font-size:12px;display:none" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
                                           <div class="col-md-6">
                                           <label for="phonenumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
                                           <input type="number" class="form-control" id="phonenumber" value="<?php echo $value['phonenumber']; ?>" 
@@ -525,7 +537,7 @@
                                         accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
                                           <div class="uploadedfile" style="display:flex;">
                                         <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control" style="cursor:pointer">Choose File</label>
-                                        <a href="<?php echo $value['aadhar_front']; ?>" class="filelink ps-2" target="blank" id="existfileaf">
+                                        <a href="<?php echo $value['aadhar_front']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileaf">
                                           <?php echo $value['aadharfront_filename']; ?>
                                         </a> </div>
                                             <div id="aadharfrontphoto_error" style="color: red;"></div>
@@ -537,7 +549,7 @@
                                           <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
                                           <div class="uploadedfile" style="display:flex;">
                                           <label id="file-input-labelab" for="aadharbackphoto" class="form-control"  style="cursor:pointer">Choose File</label>  
-                                          <a href="<?php echo $value['aadhar_back']; ?>" class="filelink ps-2" target="blank" id="existfileab" ><?php echo $value['aadharback_filename']; ?></a>
+                                          <a href="<?php echo $value['aadhar_back']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileab" ><?php echo $value['aadharback_filename']; ?></a>
                                           </div>
                                           <div id="aadharbackphoto_error" style="color: red;"></div>
                                           </div>
@@ -548,7 +560,7 @@
                                           <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden>
                                           <div class="uploadedfile" style="display:flex;">
                                           <label id="file-input-labelpp" for="photo" class="form-control" style="cursor:pointer">Choose File</label>  
-                                          <a href="<?php echo $value['photo']; ?>" class="filelink ps-2" target="blank" id="existfilepp" ><?php echo $value['photo_filename']; ?></a>
+                                          <a href="<?php echo $value['photo']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfilepp" ><?php echo $value['photo_filename']; ?></a>
                                           </div>
                                           <div id="photo_error" style="color: red;"></div>
                                           </div>
@@ -589,6 +601,30 @@
                               </div>
                           </div>
                       </section>
+
+                <script>
+                            document.getElementById("password").onfocus = function() {
+                            document.getElementById("passwordmessage").style.display = "block";
+                            }
+
+                            document.getElementById("password").onblur = function() {
+                            document.getElementById("passwordmessage").style.display = "none";
+                            }
+                    function togglePasswordVisibility(inputId, iconId) {
+                        var passwordInput = document.getElementById(inputId);
+                        var visibilityIcon = document.getElementById(iconId);
+
+                        if (passwordInput.type === "password") {
+                            passwordInput.type = "text";
+                            visibilityIcon.classList.remove("bi-eye-slash");
+                            visibilityIcon.classList.add("bi-eye");
+                        } else {
+                            passwordInput.type = "password";
+                            visibilityIcon.classList.remove("bi-eye");
+                            visibilityIcon.classList.add("bi-eye-slash");
+                        }
+                    }
+                </script>
 
                       <script>
                   document.addEventListener('DOMContentLoaded', function () {
@@ -665,6 +701,7 @@
                       function group() {
                       var x = document.applicationform.name.value;
                       var y = document.applicationform.email.value;
+                      var pwd = document.applicationform.password.value;
                       var p = document.applicationform.phonenumber.value;
                       var d = document.applicationform.dateofbirth.value;
                       var ag = document.applicationform.age.value;
@@ -728,6 +765,24 @@
                           }
                       }else {
                           document.getElementById("emailid_error").innerHTML = "";
+                          }
+
+                          if (pwd == "") {
+                          var emailsms = "Password must be filled out";
+                          document.getElementById("password_error").innerHTML = emailsms;
+                          document.applicationform.password.focus();
+                          return false;
+                      } else if (pwd != "") {
+                          document.getElementById("password_error").innerHTML = "";
+                          if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(pwd)) {
+                          document.getElementById("password_error").innerHTML = "";
+                          } else {
+                          document.getElementById("password_error").innerHTML = "You have entered an invalid password";
+                          document.applicationform.password.focus();
+                          return false;
+                          }
+                      }else {
+                          document.getElementById("password_error").innerHTML = "";
                           }
 
                       if (p != "") {
@@ -2412,11 +2467,12 @@
                                              foreach ($experienceTable as $key => $value) {
                                                $seekerId = $_SESSION['seekerId'];
                                                ?>
+                                               
                                                      <tr>
                                                      <td><?php echo $count++ ?>.</td>
                                                      <td><?php echo $value['other_category'] ?></td>
                                                      <td><?php echo $value['other_sub_category'] ?></td>
-                                                     <td><?php echo $value['expYear'] ?> Years & <?php echo $value['expMonth'] ?> Months</td>
+                                                     <td><?php echo $value['expYear'] ?> - <?php echo $value['expMonth'] ?></td>
                                                      <td><?php echo $value['company_name'] ?></td>
                                                      <td><?php echo $value['job_role'] ?></td>
                                                      <td><?php echo $value['previous_employer_name'] ?></td>
@@ -2507,7 +2563,7 @@
                     <?php
                     foreach ($categoryList as $key => $value) {
                       ?>
-                                           <option value="<?php echo $value->categoryName ?>"><?php echo $value->categoryName ?></option>
+                  <option value="<?php echo $value->categoryName ?>"><?php echo $value->categoryName ?></option>
                       <?php } ?>
                       <option value="others">Others</option>
                     </select>
@@ -2543,7 +2599,7 @@
                   <div id="experienceexp_error" class="text-danger error"></div>
                 </div> -->
 
-                          <div class="col-md-3">
+                          <!-- <div class="col-md-3">
                             <div class="experience-container">
                                 <label for="expYear" class="form-label">Experience</label>
                                 <div class="d-flex">
@@ -2570,9 +2626,27 @@
 
                                  </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                          <!-- <div class="form-control" id="otherCategoryField" style="display: none;">
+                        <div class="col-md-3">
+                            <div class="experience-container">
+                                <label for="expYear" class="form-label">Experience</label>
+                                <div class="d-md-flex">
+                                  <label for="fromDate" class="pt-1 pe-2">From</label>
+                                  <div class="col-md-8  me-2">
+                                    <input type="date" class="form-control" id="fromDate" name="fromDate" required>
+                                  <div id="experienceexp_error" class="text-danger error"></div>
+                                </div>
+                            <label for="toDate" class="pt-1 px-2">To</label>
+                                <div class="col-md-8 ">
+                                    <input type="date" class="form-control" id="toDate" name="toDate" required>
+                                  <div id="experienceexpmonth_error" class="text-danger error"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                            <!-- <div class="form-control" id="otherCategoryField" style="display: none;">
                   <label for="othercategory">Other Category:</label>
                   <select class="form-control" id="experience" name="experience">
                     <input type="text" class="form-control" id="othercategory" name="othercategory">
@@ -2584,171 +2658,177 @@
                 </div> -->
 
 
-                          <div class="col-md-6">
-                            <label for="company name" class="form-label">Company Name</label>
-                            <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Enter company name" required>
-                            <div id="companyname_error" class="text-danger error"></div>
-                          </div>
+                            <div class="col-md-6">
+                              <label for="company name" class="form-label">Company Name</label>
+                              <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Enter company name" required>
+                              <div id="companyname_error" class="text-danger error"></div>
+                            </div>
 
-                          <div class="col-md-6">
-                            <label for="role" class="form-label">Role in the Company</label>
-                            <input type="text" class="form-control" id="role" name="role" placeholder="Enter role" required>
-                            <div id="role_error" class="text-danger error"></div>
-                          </div>
-                        <!-- JOB PROFILE -->
-                          <div class="col-md-12">
-                            <label for="profile" class="form-label">Job Profile</label>
-                            <input type="text" class="form-control" id="profile" name="profile" placeholder="Enter Job profile" required>
-                            <div id="profile_error" class="text-danger error"></div>
-                          </div>
+                            <div class="col-md-6">
+                              <label for="role" class="form-label">Role in the Company</label>
+                              <input type="text" class="form-control" id="role" name="role" placeholder="Enter role" required>
+                              <div id="role_error" class="text-danger error"></div>
+                            </div>
+                          <!-- JOB PROFILE -->
+                            <div class="col-md-12">
+                              <label for="profile" class="form-label">Job Profile</label>
+                              <input type="text" class="form-control" id="profile" name="profile" placeholder="Enter Job profile" required>
+                              <div id="profile_error" class="text-danger error"></div>
+                            </div>
 
-                          <h5 class="card-title">Previous Job's Manager Details</h5>
+                            <h5 class="card-title">Previous Job's Manager Details</h5>
 
-                          <div class="col-md-6">
-                            <label for="Name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" placeholder="Enter employer name" required>
-                            <div id="name_error" class="text-danger error"></div>
-                          </div>
+                            <div class="col-md-6">
+                              <label for="Name" class="form-label">Name</label>
+                              <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" placeholder="Enter employer name" required>
+                              <div id="name_error" class="text-danger error"></div>
+                            </div>
 
-                          <div class="col-md-6">
-                            <label for="number" class="form-label">Mobile Number</label>
-                            <input type="number" class="form-control" id="number" name="number" placeholder="Enter mobile number" required>
-                            <div id="mobilenum_error" class="text-danger error"></div>
-                          </div>
+                            <div class="col-md-6">
+                              <label for="number" class="form-label">Mobile Number</label>
+                              <input type="number" class="form-control" id="number" name="number" placeholder="Enter mobile number" required>
+                              <div id="mobilenum_error" class="text-danger error"></div>
+                            </div>
 
-                          <div class="col-md-6" class="form-label">
-                            <label for="email">Email-Id</label>
-                            <input type="text" class="form-control" id="emailid" name="emailid" placeholder="Enter Email" required>
-                            <div id="emailid_error" class="text-danger error"></div>
-                          </div>
+                            <div class="col-md-6" class="form-label">
+                              <label for="email">Email-Id</label>
+                              <input type="text" class="form-control" id="emailid" name="emailid" placeholder="Enter Email" required>
+                              <div id="emailid_error" class="text-danger error"></div>
+                            </div>
 
-                          <input type="number" class="form-control"  value="1" name="expsubmit" hidden>
+                            <input type="number" class="form-control"  value="1" name="expsubmit" hidden>
 
-                          <div class="text-center">
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                              <button type="reset" class="btn btn-secondary">Reset</button>
-                          </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
 
-                      </form><!-- End Multi Columns Form -->
-                              </div>
-                          </div>
-                      </section>
+                        </form><!-- End Multi Columns Form -->
+                                </div>
+                            </div>
+                        </section>
 
-                      <script>
-
-                     function showHideOtherField() {
-                          var categoryDropdown = document.getElementById('category');
-                          var otherCategoryField = document.getElementById('newcategory_group');
-
-                          if (categoryDropdown.value === 'others') {
-                              otherCategoryField.style.display = 'block';
-                          } else {
-                              otherCategoryField.style.display = 'none';
-                          }
-                      }
+<script>
+    
+</script>
 
 
-                    function validateexpForm() {
-                      clearErrorMessages(); 
+                        <script>
+                       function showHideOtherField() {
+                            var categoryDropdown = document.getElementById('category');
+                            var otherCategoryField = document.getElementById('newcategory_group');
 
-                      var category = document.getElementById("category");
-                      var newothercategory = document.getElementById("newcategory_group");
-                      var subcategory = document.getElementById("subcategory");
-                      var expYear = document.getElementById("expYear");
-                      var expMonth = document.getElementById("expMonth");
-                      var expYear = document.getElementById("expYear");
-                      var expMonth = document.getElementById("expMonth");
-                      var companyname = document.getElementById("companyname");
-                      var role = document.getElementById("role");
-                      var profile = document.getElementById("profile");
-                      var ename = document.getElementById("nameofemployer");
-                      var phonenumber1 = document.getElementById("number");
-                      var email1 = document.getElementById("emailid");
+                            if (categoryDropdown.value === 'others') {
+                                otherCategoryField.style.display = 'block';
+                            } else {
+                                otherCategoryField.style.display = 'none';
+                            }
+                        }
 
-                      if (category.value === '') {
-                        displayError('Please select a category', 'category_error');
-                        return false;
-                      }
+                      function validateexpForm() {
+                        clearErrorMessages(); 
 
-                      if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
-                        displayError('Please enter newcategory', 'newcategory_error');
-                        return false;
-                      }
+                        var category = document.getElementById("category");
+                        var newothercategory = document.getElementById("newcategory_group");
+                        var subcategory = document.getElementById("subcategory");
+                        var expYear = document.getElementById("fromDate");
+                        var expMonth = document.getElementById("toDate");
+                        var companyname = document.getElementById("companyname");
+                        var role = document.getElementById("role");
+                        var profile = document.getElementById("profile");
+                        var ename = document.getElementById("nameofemployer");
+                        var phonenumber1 = document.getElementById("number");
+                        var email1 = document.getElementById("emailid");
 
-                      if (subcategory.value === '') {
-                        displayError('Please select a subcategory', 'subcategory_error');
-                        return false;
-                      }
-
-                      // if (experience.value === '') {
-                      //   displayError('Please select an experience', 'experienceexp_error');
-                      //   return false;
-                      // }
-
-                      if (expYear.value === '') {
-                        displayError('Please select the year', 'experienceexp_error');
-                        return false;
-                      }
-
-                      if (expMonth.value === '') {
-                        displayError('Please select the month', 'experienceexpmonth_error');
-                        return false;
-                      }
-
-                      if (companyname.value === '') {
-                        displayError('Company name must be filled out', 'companyname_error');
-                        return false;
-                      }
-
-                      if (role.value === '') {
-                        displayError('Role must be filled out', 'role_error');
-                        return false;
-                      }
-
-          // JOB PROFILE
-
-                      if (profile.value === '') {
-                        displayError('Job profile must be filled out', 'profile_error');
-                        return false;
-                      }
-
-                      if (ename.value === '') {
-                        displayError('Employer name must be filled out', 'name_error');
-                        return false;
-                      }
-
-                      if (phonenumber1.value === '') {
-                          displayError('Mobile number must be filled out', 'mobilenum_error');
-                          return false;
-                        } else if (!/^\d{10}$/.test(phonenumber1.value)) {
-                          displayError('Mobile number must have exactly 10 digits', 'mobilenum_error');
+                        if (category.value === '') {
+                          displayError('Please select a category', 'category_error');
                           return false;
                         }
 
-                      if (email1.value === '') {
-                        displayError('Email id must be filled out', 'emailid_error');
-                        return false;
-                      } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email1.value)) {
-                        displayError('Invalid email address', 'emailid_error');
-                        return false;
+                        if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
+                          displayError('Please enter newcategory', 'newcategory_error');
+                          return false;
+                        }
+
+                        if (subcategory.value === '') {
+                          displayError('Please select a subcategory', 'subcategory_error');
+                          return false;
+                        }
+
+                        // if (experience.value === '') {
+                        //   displayError('Please select an experience', 'experienceexp_error');
+                        //   return false;
+                        // }
+
+                        if (expYear.value === '') {
+                          displayError('From date must be filled out', 'experienceexp_error');
+                          return false;
+                        }
+
+                        if (expMonth.value === '') {
+                          displayError('To date must be filled out', 'experienceexpmonth_error');
+                          return false;
+                        }
+
+                        if (expYear.value >= expMonth.value) {
+                              displayError('To date must be after From date', 'experienceexpmonth_error');
+                              return false;
+                          } 
+
+                        if (companyname.value === '') {
+                          displayError('Company name must be filled out', 'companyname_error');
+                          return false;
+                        }
+
+                        if (role.value === '') {
+                          displayError('Role must be filled out', 'role_error');
+                          return false;
+                        }
+
+            // JOB PROFILE
+
+                        if (profile.value === '') {
+                          displayError('Job profile must be filled out', 'profile_error');
+                          return false;
+                        }
+
+                        if (ename.value === '') {
+                          displayError('Employer name must be filled out', 'name_error');
+                          return false;
+                        }
+
+                        if (phonenumber1.value === '') {
+                            displayError('Mobile number must be filled out', 'mobilenum_error');
+                            return false;
+                          } else if (!/^\d{10}$/.test(phonenumber1.value)) {
+                            displayError('Mobile number must have exactly 10 digits', 'mobilenum_error');
+                            return false;
+                          }
+
+                        if (email1.value === '') {
+                          displayError('Email id must be filled out', 'emailid_error');
+                          return false;
+                        } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email1.value)) {
+                          displayError('Invalid email address', 'emailid_error');
+                          return false;
+                        }
+
+                        return true;
                       }
 
-                      return true;
-                    }
+                      function displayError(message, elementId) {
+                        var errorElement = document.getElementById(elementId);
+                        errorElement.innerHTML = message;
+                        errorElement.style.color = 'red';
+                      }
 
-                    function displayError(message, elementId) {
-                      var errorElement = document.getElementById(elementId);
-                      errorElement.innerHTML = message;
-                      errorElement.style.color = 'red';
-                    }
-
-                    function clearErrorMessages() {
-                      var errorElements = document.getElementsByClassName('error');
-                      Array.from(errorElements).forEach(function (errorElement) {
-                        errorElement.textContent = '';
-                      });
-                    }
-                  </script>
+                      function clearErrorMessages() {
+                        var errorElements = document.getElementsByClassName('error');
+                        Array.from(errorElements).forEach(function (errorElement) {
+                          errorElement.textContent = '';
+                        });
+                      }
+                    </script>
 
                       <?php
         } elseif ($method == "addExperirenceForm") {
@@ -3159,7 +3239,7 @@
                            </div>
 
 
-                           <div class="col-md-3">
+                           <!-- <div class="col-md-3">
                             <div class="experience-container">
                                            <label for="experience" class="form-label">Experience</label>
                                            <div class="d-flex">
@@ -3182,16 +3262,33 @@
                                  </option>
                           <?php endfor; ?>
                           </select>
-                                           </div>
-                                           <div id="experienceexp_error" class="text-danger error"></div>
                             </div>
-                                          </div>
+                            <div id="experienceexp_error" class="text-danger error"></div>
+                            </div>
+                           </div> -->
 
+                        <div class="col-md-3">
+                            <div class="experience-container">
+                                <label for="expYear" class="form-label">Experience</label>
+                                <div class="d-md-flex">
+                                  <label for="fromDate" class="pt-1 pe-2">From</label>
+                                  <div class="col-md-8  me-2">
+                                    <input type="date" class="form-control" id="fromDate" name="fromDate" value="<?php echo $value['expYear']; ?>" required>
+                                      <div id="experienceexp_error" class="text-danger error"></div>
+                                    </div>
+                                <label for="toDate" class="pt-1 px-2">To</label>
+                                    <div class="col-md-8 ">
+                                        <input type="date" class="form-control" id="toDate" name="toDate" value="<?php echo $value['expMonth']; ?>" required>
+                                          <div id="experienceexpmonth_error" class="text-danger error"></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
 
-                                   <div class="col-md-6">
-                                        <label class="form-label" for="company name">Company Name</label>
-                                        <input type="text" class="form-control" value="<?php echo $value['company_name']; ?>" id="companyname" name="companyname" required>
-                                        <div id="companyname_error" class="error"></div>
+                                      <div class="col-md-6">
+                                          <label class="form-label" for="company name">Company Name</label>
+                                          <input type="text" class="form-control" value="<?php echo $value['company_name']; ?>" id="companyname" name="companyname" required>
+                              <div id="companyname_error" class="error"></div>
                            </div>
 
                            <div class="col-md-6">
@@ -3202,7 +3299,7 @@
 
                     <!-- JOB PROFILE -->
 
-                           <div class="col-md-6">
+                           <div class="col-12">
                                         <label class="form-label" for="profile">Job Profile</label>
                                         <input type="text" class="form-control" value="<?php echo $value['profile']; ?>" id="profile" name="profile" required>
                                         <div id="profile_error" class="error"></div>
@@ -3248,8 +3345,8 @@
 
                         var category = document.getElementById("category");
                         var subcategory = document.getElementById("subcategory");
-                        var expYear = document.getElementById("expYear");
-                        var expMonth = document.getElementById("expMonth");
+                        var expYear = document.getElementById("fromDate");
+                        var expMonth = document.getElementById("toDate");
                         var companyname = document.getElementById("companyname");
                         var role = document.getElementById("role");
                         var profile = document.getElementById("profile");
@@ -3268,14 +3365,19 @@
                         }
 
                         if (expYear.value === '') {
-                          displayError('Please select the year', 'experienceexp_error');
+                          displayError('From date must be filled out', 'experienceexp_error');
                           return false;
                         }
 
                         if (expMonth.value === '') {
-                          displayError('Please select the month', 'experienceexp_error');
+                          displayError('To dtae must be filled out', 'experienceexpmonth_error');
                           return false;
                         }
+
+                        if (expYear.value >= expMonth.value) {
+                              displayError('To date must be after From date', 'experienceexpmonth_error');
+                              return false;
+                          } 
 
                         if (companyname.value === '') {
                           displayError('Company name must be filled out', 'companyname_error');
@@ -3287,8 +3389,7 @@
                           return false;
                         }
       
-          // JOB PROFILE
-
+                       // JOB PROFILE
                         if (profile.value === '') {
                           displayError('Job profile must be filled out', 'profile_error');
                           return false;
@@ -4932,7 +5033,7 @@
                                                <td scope="row"><?php echo $loopcount; ?>.</td>
                                                <td><?php echo $ivalue['other_category'] ?></td>
                                                <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                               <td><?php echo $ivalue['expYear']; ?> Years & <?php echo $ivalue['expMonth']; ?> Months</td>
+                                               <td><?php echo $ivalue['expYear']; ?> - <?php echo $ivalue['expMonth']; ?></td>
                                                <td><?php echo $ivalue['company_name'] ?></td>
                                                <td><?php echo $ivalue['job_role'] ?></td>
                                                <td><?php echo $ivalue['previous_employer_name'] ?></td>
@@ -4994,7 +5095,7 @@
                              <th scope="col">Job Category</th>
                              <th scope="col">Job Sub Category</th>
                              <th scope="col">Prefered Location</th>
-                             <th scope="col">Experience</th>
+                             <!-- <th scope="col">Experience</th> -->
                              <th scope="col">Job Type</th>
                              <th scope="col">Description</th>
                              <th scope="col">Expected Salary</th>
@@ -5011,7 +5112,7 @@
                                   <td><?php echo $avalue['other_interst_category'] ?> </td>
                                   <td><?php echo $avalue['other_sub_interst_category'] ?></td>
                                   <td><?php echo $avalue['prefered_location'] ?></td>
-                                  <td><?php echo $avalue['experience'] ?></td>
+                                  <!-- <td><?php echo $avalue['experience'] ?></td> -->
                                   <td><?php echo $avalue['job_type'] ?></td>
                                   <td><?php echo $avalue['description'] ?></td>
                                   <td> <?php echo $avalue['expected_salary'] ?></td>

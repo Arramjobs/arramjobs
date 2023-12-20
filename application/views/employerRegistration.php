@@ -99,9 +99,7 @@
                     <input type="password" class="form-control" id="crpassword" name="crpassword" placeholder="Enter password"  required>
                     <p id="crpassworderr" style="color: red;"></p>
                 </div>
-                
-                    <p class="text-secondary" style="font-size:12px;display:none" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</p>
-                
+                    <div class="text-secondary" style="font-size:12px;display:none;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
                 <div class="">
                     <label for="cmpassword" class="form-label">Confirm Password: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="cmpassword" name="cmpassword" placeholder="Confirm password" required>

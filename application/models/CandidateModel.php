@@ -158,6 +158,7 @@ class CandidateModel extends CI_Model
         $updateData = array(
             'name' => $postData['name'],
             'email' => $postData['email'],
+            'password' => $postData['password'],
             'dateofbirth' => $postData['dateofbirth'],
             'age' => $postData['age'],
             'gender' => $postData['gender'],
@@ -409,8 +410,8 @@ class CandidateModel extends CI_Model
             'seekerId' => $seekerId,
             'other_category' => $post['category'],
             'other_sub_category' => $post['subcategory'],
-            'expYear' => $post['expYear'],
-            'expMonth' => $post['expMonth'],
+            'expYear' => $post['fromDate'],
+            'expMonth' => $post['toDate'],
             'company_name' => $post['companyname'],
             'job_role' => $post['role'],
             'profile' => $post['profile'],

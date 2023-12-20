@@ -2939,7 +2939,8 @@
                                             <tr>
                                                 <th scope="col">S.No</th>
                                                 <th scope="col">Educational Qualification</th>
-                                                <th scope="col">Department</th>
+                                                <th scope="col">Specialiization</th>
+                                                <th scope="col">Mode of education</th>
                                                 <th scope="col">Institution Name</th>
                                                 <th scope="col">Percentage</th>
                                                 <th scope="col">Year of Passed Out</th>
@@ -2955,6 +2956,7 @@
                                                         <td><?php echo $loopcount; ?>.</td>
                                                         <td><?php echo $value['educational_qualification'] ?></td>
                                                         <td><?php echo $value['department'] ?></td>
+                                                        <td><?php echo $value['educationmode'] ?></td>
                                                         <td><?php echo $value['school_college_name'] ?></td>
                                                         <td><?php echo $value['percentage'] ?></td>
                                                         <td><?php echo $value['yearOfPassing'] ?></td>
@@ -3055,7 +3057,6 @@
                                                 <th scope="col">Job Category</th>
                                                 <th scope="col">Job Sub Category</th>
                                                 <th scope="col">Prefered Location</th>
-                                                <th scope="col">Experience</th>
                                                 <th scope="col">Job Type</th>
                                                 <th scope="col">Description</th>
                                                 <th scope="col">Expected Salary</th>
@@ -3071,7 +3072,6 @@
                                                         <td><?php echo $avalue['other_interst_category'] ?> </td>
                                                         <td><?php echo $avalue['other_sub_interst_category'] ?></td>
                                                         <td><?php echo $avalue['prefered_location'] ?></td>
-                                                        <td><?php echo $avalue['experience'] ?></td>
                                                         <td><?php echo $avalue['job_type'] ?></td>
                                                         <td><?php echo $avalue['description'] ?></td>
                                                         <td> <?php echo $avalue['expected_salary'] ?></td>
@@ -3098,6 +3098,7 @@
                                                 <th scope="col">Job Category</th>
                                                 <th scope="col">Job Sub Category</th>
                                                 <th scope="col">Company Name</th>
+                                                <th scope="col">Company Name</th>
                                                 <th scope="col">Job Role</th>
                                                 <th scope="col">Previous Employer Name</th>
                                                 <th scope="col">Previous Employer Mobile</th>
@@ -3113,6 +3114,7 @@
                                                         <td scope="row"><?php echo $loopcount; ?>.</td>
                                                         <td><?php echo $ivalue['other_category'] ?></td>
                                                         <td><?php echo $ivalue['other_sub_category'] ?></td>
+                                                        <td><?php echo $ivalue['expYear'] ?> - <?php echo $ivalue['expMonth'] ?></td>
                                                         <td><?php echo $ivalue['company_name'] ?></td>
                                                         <td><?php echo $ivalue['job_role'] ?></td>
                                                         <td><?php echo $ivalue['previous_employer_name'] ?></td>
@@ -3349,7 +3351,8 @@
                                         <tr>
                                             <th scope="col">S.No</th>
                                             <th scope="col">Educational Qualification</th>
-                                            <th scope="col">Department</th>
+                                            <th scope="col">Specialiization</th>
+                                            <th scope="col">Mode of education</th>
                                             <th scope="col">Institution Name</th>
                                             <th scope="col">Percentage</th>
                                             <th scope="col">Year of Passed Out</th>
@@ -3365,7 +3368,8 @@
                                                     <td><?php echo $loopcount; ?>.</td>
                                                     <td><?php echo $value['educational_qualification'] ?></td>
                                                     <td><?php echo $value['department'] ?></td>
-                                                    <td><?php echo $value['school_college_name'] ?></td>
+                                                    <td><?php echo $value['educationmode'] ?></td>
+                                                   <td><?php echo $value['school_college_name'] ?></td>
                                                     <td><?php echo $value['percentage'] ?></td>
                                                     <td><?php echo $value['yearOfPassing'] ?></td>
                                                     <?php
@@ -3465,7 +3469,7 @@
                                             <th scope="col">Job Category</th>
                                             <th scope="col">Job Sub Category</th>
                                             <th scope="col">Prefered Location</th>
-                                            <th scope="col">Experience</th>
+                                            <!-- <th scope="col">Experience</th> -->
                                             <th scope="col">Job Type</th>
                                             <th scope="col">Description</th>
                                             <th scope="col">Expected Salary</th>
@@ -3481,7 +3485,7 @@
                                                     <td><?php echo $avalue['other_interst_category'] ?> </td>
                                                     <td><?php echo $avalue['other_sub_interst_category'] ?></td>
                                                     <td><?php echo $avalue['prefered_location'] ?></td>
-                                                    <td><?php echo $avalue['experience'] ?></td>
+                                                    <!-- <td><?php echo $avalue['experience'] ?></td> -->
                                                     <td><?php echo $avalue['job_type'] ?></td>
                                                     <td><?php echo $avalue['description'] ?></td>
                                                     <td> <?php echo $avalue['expected_salary'] ?></td>
@@ -3507,6 +3511,7 @@
                                             <th scope="col">S.No</th>
                                             <th scope="col">Job Category</th>
                                             <th scope="col">Job Sub Category</th>
+                                            <th scope="col">Experience</th>
                                             <th scope="col">Company Name</th>
                                             <th scope="col">Job Role</th>
                                             <th scope="col">Previous Employer Name</th>
@@ -3523,6 +3528,7 @@
                                                     <td scope="row"><?php echo $loopcount; ?>.</td>
                                                     <td><?php echo $ivalue['other_category'] ?></td>
                                                     <td><?php echo $ivalue['other_sub_category'] ?></td>
+                                                    <td><?php echo $ivalue['expYear'] ?> - <?php echo $ivalue['expMonth'] ?></td>
                                                     <td><?php echo $ivalue['company_name'] ?></td>
                                                     <td><?php echo $ivalue['job_role'] ?></td>
                                                     <td><?php echo $ivalue['previous_employer_name'] ?></td>

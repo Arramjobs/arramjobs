@@ -331,11 +331,24 @@
                                             <p id="mailerr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="inputAddres5s" class="form-label">Street Address:</label>
-                                            <input type="text" class="form-control" id="inputAddres5s" value='<?php echo $value['street_address']; ?>' 
-                                              name="addr" placeholder="Enter address" required>
+                                            <label for="password" class="form-label">Password:</label>
+                                            <div class="input-group">
+                                            <input type="password" class="form-control" id="password" name="password" 
+                                                value='<?php echo $value['password']; ?>' placeholder="Enter password" required>
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                onclick="togglePasswordVisibility('password', 'visibilityIcon')">
+                                                <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                            </button>
+                                            </div>
+                                            <p id="passworderr" style="color: red;"></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                        <label for="inputAddres5s" class="form-label">Street Address:</label>
+                                        <input type="text" class="form-control" id="inputAddres5s" value='<?php echo $value['street_address']; ?>' 
+                                        name="addr" placeholder="Enter address" required>
                                             <p id="adderr" style="color: red;"></p>
                                         </div>
+                                        <div class="text-secondary" style="font-size:12px;display:none;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
                                         <div class="col-md-6">
                                             <label for="inputAddress2" class="form-label">Landmark:</label>
                                             <input type="text" class="form-control" id="inputAddress2"  value='<?php echo $value['Landmark']; ?>' 
@@ -377,11 +390,10 @@
                                             <div class="uploadedfile" style="display:flex;">
                                             <input type="file" class="form-control" id="logo1" name="logo1" value="<?php echo $value['company_logo']; ?>" hidden/>
                                             <label id="file-input-label" class="form-control" for="logo1">Change File</label>  
-                                            <a href="<?php echo $value['company_logourl']; ?>" target="_blank" id="existfile" style="margin-top:10px"><?php echo $value['company_logo']; ?></a>
+                                            <a class="ps-2 pt-2" href="<?php echo $value['company_logourl']; ?>" target="_blank" id="existfile" ><?php echo $value['company_logo']; ?></a>
                                             </div>
                                             <input type="text" class="form-control" value='<?php echo $value['company_logo']; ?>' name="oldimgname" hidden>
                                             <p id="logerr" style="color: red;"></p>
-                                            <p style="color:grey;textalign:center;font-size:small;">PNG, JPG, JPEG, PDF Maximum size: 1024KB</p>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="cwebsite1" class="form-label">Website:</label>
@@ -435,7 +447,16 @@
                             </div>
                         </div>
                     </section>
+
                     <script>
+                            document.getElementById("password").onfocus = function() {
+                            document.getElementById("passwordmessage").style.display = "block";
+                            }
+
+                            document.getElementById("password").onblur = function() {
+                            document.getElementById("passwordmessage").style.display = "none";
+                            }
+
                          document.getElementById("file-input-label").addEventListener("click", function() {
                         document.getElementById("existfile").style.display = "none";
                     });
@@ -451,6 +472,24 @@
                     }
                 });
                     </script>
+
+                    <script>
+    function togglePasswordVisibility(inputId, iconId) {
+        var passwordInput = document.getElementById(inputId);
+        var visibilityIcon = document.getElementById(iconId);
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            visibilityIcon.classList.remove("bi-eye-slash");
+            visibilityIcon.classList.add("bi-eye");
+        } else {
+            passwordInput.type = "password";
+            visibilityIcon.classList.remove("bi-eye");
+            visibilityIcon.classList.add("bi-eye-slash");
+        }
+    }
+</script>
+
                     <script type="text/javascript">
                     function allowOnlyLetters(e, t) {
                         if (window.event) {
@@ -504,6 +543,7 @@
                         var namep = document.forms.name.value;
                         var phop = document.forms.phno.value;
                         var mailp = document.forms.email.value;
+                        var pswd = document.forms.password.value;
                         var addp =  document.forms.addr.value;
                         var landp = document.forms.landmark1.value;
                         var cityp = document.forms.city1.value;
@@ -554,6 +594,22 @@
                             } else {
                                 document.getElementById("mailerr").innerHTML = "You have entered an invalid email address";
                                 document.forms.email.focus();
+                                return false;
+                            }
+                        }
+
+                         if (pswd == "") {
+                            var emailsms = "Password must be filled out";
+                            document.getElementById("passworderr").innerHTML = emailsms;
+                            document.forms.password.focus();
+                            return false;
+                        } else if (mailp != "") {
+                            document.getElementById("passworderr").innerHTML = "";
+                            if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(pswd)) {
+                                document.getElementById("passworderr").innerHTML = "";
+                            } else {
+                                document.getElementById("passworderr").innerHTML = "You have entered an invalid password";
+                                document.forms.password.focus();
                                 return false;
                             }
                         }
@@ -845,7 +901,7 @@
                             <div id="preferred_location_url_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="jobtype">Job Timing :</label>
+                            <label class="form-label" for="jobtype">Job Timing:</label>
                             <select class="form-control" id="jobtype" name="jobtype" required>
                                 <option value="">Select jobtiming</option>
                                 <option value="Fulltime">Full Time</option>
@@ -1829,7 +1885,8 @@
                                                 <tr>
                                                     <th scope="col">S.No</th>
                                                     <th scope="col">Educational Qualification</th>
-                                                    <th scope="col">Department</th>
+                                                    <th scope="col">Specialiization</th>
+                                                    <th scope="col">Mode of Education</th>
                                                     <th scope="col">Institution Name</th>
                                                     <th scope="col">Percentage</th>
                                                     <th scope="col">Year of Passed Out</th>
@@ -1845,6 +1902,7 @@
                                                                 <th ><?php echo $countedu++; ?>.</th>
                                                                 <td><?php echo $value['educational_qualification'] ?></td>
                                                                 <td><?php echo $value['department'] ?></td>
+                                                                <td><?php echo $value['educationmode'] ?> </td>
                                                                 <td><?php echo $value['school_college_name'] ?></td>
                                                                 <td><?php echo $value['percentage'] ?></td>
                                                                 <td><?php echo $value['yearOfPassing'] ?></td>
@@ -1940,7 +1998,7 @@
                                                     <th scope="col">Job Category</th>
                                                     <th scope="col">Job Sub Category</th>
                                                     <th scope="col">Prefered Location</th>
-                                                    <th scope="col">Experience</th>
+                                                    <!-- <th scope="col">Experience</th> -->
                                                     <th scope="col">Job Type</th>
                                                     <th scope="col">Description</th>
                                                     <th scope="col">Expected Salary</th>
@@ -1956,7 +2014,7 @@
                                                                 <td><?php echo $avalue['other_interst_category'] ?> </td>
                                                                 <td><?php echo $avalue['other_sub_interst_category'] ?></td>
                                                                 <td><?php echo $avalue['prefered_location'] ?></td>
-                                                                <td><?php echo $avalue['experience'] ?></td>
+                                                                <!-- <td><?php echo $avalue['experience'] ?></td> -->
                                                                 <td><?php echo $avalue['job_type'] ?></td>
                                                                 <td><?php echo $avalue['description'] ?></td>
                                                                 <td> <?php echo $avalue['expected_salary'] ?></td>
@@ -1981,6 +2039,7 @@
                                                     <th scope="col">S.No</th>
                                                     <th scope="col">Job Category</th>
                                                     <th scope="col">Job Sub Category</th>
+                                                    <th scope="col">Experience</th>
                                                     <th scope="col">Company Name</th>
                                                     <th scope="col">Job Role</th>
                                                     <th scope="col">Previous Employer Name</th>
@@ -1997,6 +2056,7 @@
                                                                 <th><?php echo $countexp++; ?>.</th>
                                                                 <td><?php echo $ivalue['other_category'] ?></td>
                                                                 <td><?php echo $ivalue['other_sub_category'] ?></td>
+                                                                <td><?php echo $ivalue['expYear'] ?> - <?php echo $ivalue['expMonth'] ?></td>
                                                                 <td><?php echo $ivalue['company_name'] ?></td>
                                                                 <td><?php echo $ivalue['job_role'] ?></td>
                                                                 <td><?php echo $ivalue['previous_employer_name'] ?></td>
