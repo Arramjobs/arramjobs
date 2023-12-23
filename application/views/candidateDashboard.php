@@ -429,13 +429,13 @@
                                            name="name" placeholder="Enter your name" required>
                                           <div id="Name_error" style="color: red;"></div>
                                           </div>
-                                          <div class="col-md-6">
+                                          <div class="col-md-12">
                                           <label for="emailid" class="form-label">Email <span class="text-danger">*</span></label><br>
                                           <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" 
                                           name="email" placeholder="Enter your email" required>
                                           <div id="emailid_error" style="color: red;"></div>
                                           </div>
-                                          <div class="col-md-6">
+                                          <!-- <div class="col-md-6">
                                             <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <input type="password" class="form-control" id="password" value="<?php echo $value['password']; ?>" name="password"
@@ -447,7 +447,7 @@
                                                 </div>
                                                 <div id="password_error" style="color: red;"></div>
                                               </div>
-                                          <div class="text-secondary" style="font-size:12px;display:none" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
+                                          <div class="text-secondary" style="font-size:12px;display:none" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div> -->
                                           <div class="col-md-6">
                                           <label for="phonenumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
                                           <input type="number" class="form-control" id="phonenumber" value="<?php echo $value['phonenumber']; ?>" 
@@ -994,11 +994,65 @@
                <td class="eduid"> <input type="hidden" value="<?php echo $value['id']; ?>" />  </td> -->
                                                      <td><a><?php echo $count++; ?>.</a></td>
                                                      <td><?php echo $value['educational_qualification'] ?></td>
-                                                     <td><?php echo $value['department'] ?></td>
-                                                     <td><?php echo $value['educationmode'] ?></td>
+                                                     <!-- <td><?php echo $value['department'] ?></td> -->
+<!-- Department -->
+                                                     <?php                                                       
+                                                        if (
+                                                         $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                         $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                                                         $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                         $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                         $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] == "Ph.D"
+                                                       ) {
+                                                         ?>
+                                                                            <td><?php echo $value['department'] ?></td>                                         
+                                                     <?php
+                                                       } else {
+                                                         ?>
+                                                                          <td>NA</a></td>
+                                                                   <?php
+                                                       }
+                                                       ?>
+                                                   
+                                                     <!-- <td><?php echo $value['educationmode'] ?></td> -->
+<!-- Mode of education -->
+<?php
+                                                     if (
+                                                         $value['educationmode'] == "Corres" 
+                                                       ) {
+                                                         ?>
+                                                                            <td>Correspondence</td>                                                                           
+                                                     <?php
+                                                       } else {
+                                                         ?>
+                                                                          <td>Regular</td>
+                                                                   <?php
+                                                       }
+                                                       ?> 
                                                      <td><?php echo $value['school_college_name'] ?></td>
                                                      <td><?php echo $value['yearOfPassing'] ?></td>
-                                                     <td><?php echo $value['percentage'] ?></td>
+<!-- Percentage -->
+                                                     <!-- <td><?php echo $value['percentage'] ?></td> -->
+                                                     <?php                                                       
+                                                        if (
+                                                         $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                         $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                                                         $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "M.E" ||
+                                                         $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                         $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                         $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "Ph.D" ||
+                                                         $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC" 
+                                                       ) {
+                                                         ?>
+                                                                            <td><?php echo $value['percentage'] ?></td>                                         
+                                                     <?php
+                                                       } else {
+                                                         ?>
+                                                                          <td>NA</a></td>
+                                                                   <?php
+                                                       }
+                                                       ?>
+<!-- Certificate -->
                                                        <?php
                                                        if ($value['educational_qualification'] == '10th/SSLC') {
                                                          ?>
@@ -1039,6 +1093,7 @@
                                                        }
 
                                                        ?>
+                                                       
                                                        <td class="d-flex">
                                       <a class="" href="<?php echo baseUrl . "Candidate/updateEducation" ?>/<?php echo $value['id'] ?>#editeduform"><button type="button" class="btn btn-secondary mx-1">Edit</button></a>
                                       <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
@@ -1976,11 +2031,61 @@
                                                      <!-- <td><input type="checkbox" class="checkbox"></td> -->
                                                      <td><a><?php echo $count++; ?>.</a></td>
                                                      <td><?php echo $value['educational_qualification'] ?></td>
-                                                     <td><?php echo $value['department'] ?></td>
-                                                     <td><?php echo $value['educationmode'] ?></td>
+                                                     <!-- <td><?php echo $value['department'] ?></td> -->
+          <!-- Department -->
+          <?php                                                       
+                                                        if (
+                                                         $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                         $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                                                         $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                         $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                         $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] == "Ph.D"
+                                                       ) {
+                                                         ?>
+                                                                            <td><?php echo $value['department'] ?></td>                                         
+                                                     <?php
+                                                       } else {
+                                                         ?>
+                                                                          <td>NA</a></td>
+                                                                   <?php
+                                                       }
+                                                       ?>
+                                                       <?php
+                                                     if (
+                                                         $value['educationmode'] == "Corres" 
+                                                       ) {
+                                                         ?>
+                                                                            <td>Correspondence</td>                                                                           
+                                                     <?php
+                                                       } else {
+                                                         ?>
+                                                                          <td>Regular</td>
+                                                                   <?php
+                                                       }
+                                                       ?> 
                                                      <td><?php echo $value['school_college_name'] ?></td>
                                                      <td><?php echo $value['yearOfPassing'] ?></td>
-                                                     <td><?php echo $value['percentage'] ?></td>
+                                                     <!-- <td><?php echo $value['percentage'] ?></td> -->
+          <!-- Percentage -->
+          <?php                                                       
+                                                        if (
+                                                         $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                         $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                                                         $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "M.E" ||
+                                                         $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                         $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                         $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "Ph.D" ||
+                                                         $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC" 
+                                                       ) {
+                                                         ?>
+                                                                            <td><?php echo $value['percentage'] ?></td>                                         
+                                                     <?php
+                                                       } else {
+                                                         ?>
+                                                                          <td>NA</a></td>
+                                                                   <?php
+                                                       }
+                                                       ?>
                                                        <?php
                                                        if ($value['educational_qualification'] == '10th/SSLC') {
                                                          ?>
@@ -2468,41 +2573,42 @@
                                                $seekerId = $_SESSION['seekerId'];
                                                ?>
                                                
-                                                     <tr>
-                                                     <td><?php echo $count++ ?>.</td>
-                                                     <td><?php echo $value['other_category'] ?></td>
-                                                     <td><?php echo $value['other_sub_category'] ?></td>
-                                                     <td><?php echo $value['expYear'] ?> - <?php echo $value['expMonth'] ?></td>
-                                                     <td><?php echo $value['company_name'] ?></td>
-                                                     <td><?php echo $value['job_role'] ?></td>
-                                                     <td><?php echo $value['previous_employer_name'] ?></td>
-                                                     <td><?php echo $value['previous_employer_mobile'] ?></td>
-                                                     <td><?php echo $value['previous_employer_email'] ?></td>
-                                                     <td>
-                                                     <div class="d-flex">
-                                       <a href="<?php echo baseUrl . "Candidate/updateExperience" ?>/<?php echo $value['id'] ?>#editexpform"><button type="button" class="btn btn-secondary mx-1 ">Edit</button></a>
-                                       <a class="" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                                     </div>
-                                                     </td>
-                                        </tr>
-                                        <?php
-                                             }
-                                           }
-                                           ?>
-                                           </tbody>
-                                          </table>
-                                          <?php
-                                   } else {
-                                     ?>
-                                          <h5 class="card-title">No Records Found<span></span></h5>
-                           <?php
-                                   }
-                                   ?>
-                                  </div>
-
+                                               <tr>
+                              <td><?php echo $count++ ?>.</td>
+                              <td><?php echo $value['other_category'] ?></td>
+                              <td><?php echo $value['other_sub_category'] ?></td>
+                              <td><?php echo $value['expYear'] ?> - <?php echo $value['expMonth'] ?></td>
+                              <td><?php echo $value['company_name'] ?></td>
+                              <td><?php echo $value['job_role'] ?></td>
+                              <td><?php echo $value['previous_employer_name'] ?></td>
+                              <td><?php echo $value['previous_employer_mobile'] ?></td>
+                              <td><?php echo $value['previous_employer_email'] ?></td>
+                              <td>
+                              <div class="d-flex">
+                                  <a href="<?php echo baseUrl . "Candidate/updateExperience" ?>/<?php echo $value['id'] ?>#editexpform"><button type="button" class="btn btn-secondary mx-1 ">Edit</button></a>
+                                  <a class="" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Candidate/deleteExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                               </div>
-                          </div><!-- End Recent Sales -->
-                      </section>
+                              </td>
+                            </tr>
+                  <?php
+                                   }
+                                 }
+                                 ?>
+                                 </tbody>
+                             </table>
+                             <?php
+                                } else {
+                                  ?>
+                             <h5 class="card-title">No Records Found<span></span></h5>
+                         <?php
+                                }
+                                ?>
+                        </div>
+
+                    </div>
+                </div><!-- End Recent Sales -->
+            </section>
+
 
                       <script>
                         function exptablevisible() {
@@ -2584,6 +2690,12 @@
                             <div id="subcategory_error" class="text-danger error"></div>
                           </div>
 
+                          <div class="col-md-6">
+                              <label for="company name" class="form-label">Company Name</label>
+                              <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Enter company name" required>
+                              <div id="companyname_error" class="text-danger error"></div>
+                            </div>
+
                           <!-- <div class="col-md-6">
                   <label for="experience" class="form-label">Experience</label>
                  <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required> 
@@ -2628,23 +2740,27 @@
                             </div>
                         </div> -->
 
-                        <div class="col-md-3">
-                            <div class="experience-container">
-                                <label for="expYear" class="form-label">Experience</label>
-                                <div class="d-md-flex">
-                                  <label for="fromDate" class="pt-1 pe-2">From</label>
-                                  <div class="col-md-8  me-2">
-                                    <input type="date" class="form-control" id="fromDate" name="fromDate" required>
-                                  <div id="experienceexp_error" class="text-danger error"></div>
-                                </div>
-                            <label for="toDate" class="pt-1 px-2">To</label>
-                                <div class="col-md-8 ">
-                                    <input type="date" class="form-control" id="toDate" name="toDate" required>
-                                  <div id="experienceexpmonth_error" class="text-danger error"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                      <!--  <div class="col-md-3">
+     <div class="experience-container">
+      <div class="d-flex">
+        <label for="expYear" class="form-label" style="padding-top: 10px; padding-right: 10px;">From</label>
+        <input type="date" class="form-control col-3 me-2" id="fromDate" name="fromDate" required>
+        <div id="experienceexp_error" class="text-danger error"></div>
+
+        <label for="expMonth" class="form-label" style="padding-top: 10px; padding-left: 60px; padding-right: 10px;">To</label>
+        <input type="date" class="form-control col-3 me-2" id="toDate" name="toDate" required>
+        <div id="experienceexpmonth_error" class="text-danger error"></div>
+
+        <label for="till_now" class="form-check-label col-3">
+          <input type="checkbox" id="till_now" name="till_now" style="padding-top: 10px; padding-right: 10px;"> Till Now
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <p id="result">Total duration: <span id="years">0</span> years, <span id="months">0</span> months</p> -->
+
+  
 
                             <!-- <div class="form-control" id="otherCategoryField" style="display: none;">
                   <label for="othercategory">Other Category:</label>
@@ -2657,24 +2773,52 @@
                     <input type="text" class="form-control" id="othersubcategory" name="othersubcategory">
                 </div> -->
 
-
                             <div class="col-md-6">
-                              <label for="company name" class="form-label">Company Name</label>
-                              <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Enter company name" required>
-                              <div id="companyname_error" class="text-danger error"></div>
+                            <div class="experience-container">
+                                <label for="expYear" class="form-label">Experience</label>
+
+                                <div class="d-md-flex">
+
+                                  <label for="fromDate" class="pt-1 pe-2">From</label>
+
+                                  <div class="col-md-3  me-2">
+                                    <input type="date" class="form-control" id="fromDate" name="fromDate" required>
+                                  <div id="experienceexp_error" class="text-danger error"></div>
+                                </div>
+
+                                <label for="toDate" class="pt-1 px-2">To</label>
+
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" id="toDate" name="toDate" required>
+                                  <div id="experienceexpmonth_error" class="text-danger error"></div>
+                                </div>
+
+                                
+                                <input type="checkbox" id="till_now" name="till_now" class="ms-3"> 
+                                <label for="toDate" class="pt-1 px-2">Till now</label>
+                                
+                                  
+                              </div>
                             </div>
+                          </div> 
+                        
 
-                            <div class="col-md-6">
+                            <div class="col-md-6">                                 
+                              <label class="form-label">Total duration</label>
+                              <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months</p>
+                            </div>
+                          
+                           <div class="col-md-6">
                               <label for="role" class="form-label">Role in the Company</label>
                               <input type="text" class="form-control" id="role" name="role" placeholder="Enter role" required>
                               <div id="role_error" class="text-danger error"></div>
                             </div>
                           <!-- JOB PROFILE -->
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-6">
                               <label for="profile" class="form-label">Job Profile</label>
                               <input type="text" class="form-control" id="profile" name="profile" placeholder="Enter Job profile" required>
                               <div id="profile_error" class="text-danger error"></div>
-                            </div>
+                            </div> -->
 
                             <h5 class="card-title">Previous Job's Manager Details</h5>
 
@@ -2709,8 +2853,77 @@
                         </section>
 
 <script>
-    
-</script>
+    document.getElementById('fromDate').addEventListener('input', updateDateDifference);
+    document.getElementById('toDate').addEventListener('input', updateDateDifference);
+    document.getElementById('till_now').addEventListener('change', updateToDate);
+
+    function updateDateDifference() {
+      var fromDate = new Date(document.getElementById('fromDate').value);
+      var toDate = new Date(document.getElementById('toDate').value);
+
+      // Check if "Till Now" checkbox is checked
+      var tillNowChecked = document.getElementById('till_now').checked;
+
+      // Disable or enable "To Date" based on "Till Now" checkbox
+      document.getElementById('toDate').disabled = tillNowChecked;
+
+      // If "Till Now" is checked, set "To Date" to current date
+      if (tillNowChecked) {
+        var today = new Date();
+        var formattedDate = today.toISOString().split('T')[0]; // Get the date in YYYY-MM-DD format
+        document.getElementById('toDate').value = formattedDate;
+      }
+
+      if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
+        var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
+
+        var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
+        var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
+        var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
+
+        if (daysDiff < 0) {
+          monthsDiff--;
+          daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
+        }
+
+        if (monthsDiff < 0) {
+          yearsDiff--;
+          monthsDiff += 12;
+        }
+
+        document.getElementById('years').textContent = yearsDiff;
+        document.getElementById('months').textContent = monthsDiff;
+      }
+    }
+
+    function updateToDate() {
+  var today = new Date();
+
+  // Adjust to set the current date at midnight (start of the day)
+  today.setHours(0, 0, 0, 0);
+
+  var to_date_input = document.getElementById('toDate');
+  var till_now_checkbox = document.getElementById('till_now');
+
+  if (till_now_checkbox.checked) {
+    // Subtract one day (24 hours) from today's date
+    var yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+
+    to_date_input.valueAsDate = yesterday;
+  } else {
+    // Enable the "To Date" input field
+    to_date_input.disabled = false;
+  }
+
+  updateDateDifference();
+}
+
+window.onload = function() {
+      updateDateDifference();
+    };
+  </script>
+
 
 
                         <script>
@@ -2787,10 +3000,10 @@
 
             // JOB PROFILE
 
-                        if (profile.value === '') {
-                          displayError('Job profile must be filled out', 'profile_error');
-                          return false;
-                        }
+                        // if (profile.value === '') {
+                        //   displayError('Job profile must be filled out', 'profile_error');
+                        //   return false;
+                        // }
 
                         if (ename.value === '') {
                           displayError('Employer name must be filled out', 'name_error');
@@ -2966,11 +3179,11 @@
                             <div id="role_error" class="text-danger error"></div>
                           </div>
                         <!-- JOB PROFILE -->
-                          <div class="col-md-12">
+                          <!-- <div class="col-md-12">
                             <label for="profile" class="form-label">Job Profile</label>
                             <input type="text" class="form-control" id="profile" name="profile" placeholder="Enter Job profile" required>
                             <div id="profile_error" class="text-danger error"></div>
-                          </div>
+                          </div> -->
 
                           <h5 class="card-title">Previous Job's Manager Details</h5>
 
@@ -3030,7 +3243,7 @@
                       var companyname = document.getElementById("companyname");
                       var role = document.getElementById("role");
           // JOB PROFILE
-                      var profile = document.getElementById("profile");
+                      // var profile = document.getElementById("profile");
                       var ename = document.getElementById("nameofemployer");
                       var phonenumber1 = document.getElementById("number");
                       var email1 = document.getElementById("emailid");
@@ -3077,10 +3290,10 @@
 
           // JOB PROFILE
 
-                      if (profile.value === '') {
-                        displayError('Job profile must be filled out', 'profile_error');
-                        return false;
-                      }
+                      // if (profile.value === '') {
+                      //   displayError('Job profile must be filled out', 'profile_error');
+                      //   return false;
+                      // }
 
                       if (ename.value === '') {
                         displayError('Employer name must be filled out', 'name_error');
@@ -3139,7 +3352,7 @@
            
                      <h5 class="card-title">Experience Table<span></span></h5>
                      <a class="" href="#addexpform"><button type="button" class="btn btn-success m-2" disabled>+ Add Experience</button></a>
-                    <div style="float:right;>
+                    <div style="float:right;">
                             <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> Previous</button></a>
                     <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next <i class="bi bi-arrow-right"></i></button></a>
                     </div>
@@ -3173,7 +3386,7 @@
                                                      <td><?php echo $count++ ?>.</td>
                                                      <td><?php echo $value['other_category'] ?></td>
                                                      <td><?php echo $value['other_sub_category'] ?></td>
-                                                     <td><?php echo $value['expYear'] ?> Years & <?php echo $value['expMonth'] ?> Months</td>
+                                                     <td><?php echo $value['expYear'] ?> to <?php echo $value['expMonth'] ?></td>
                                                      <td><?php echo $value['company_name'] ?></td>
                                                      <td><?php echo $value['job_role'] ?></td>
                                                      <td><?php echo $value['previous_employer_name'] ?></td>
@@ -3267,7 +3480,7 @@
                             </div>
                            </div> -->
 
-                        <div class="col-md-3">
+                                  <!-- <div class="col-md-3">
                             <div class="experience-container">
                                 <label for="expYear" class="form-label">Experience</label>
                                 <div class="d-md-flex">
@@ -3276,15 +3489,16 @@
                                     <input type="date" class="form-control" id="fromDate" name="fromDate" value="<?php echo $value['expYear']; ?>" required>
                                       <div id="experienceexp_error" class="text-danger error"></div>
                                     </div>
-                                <label for="toDate" class="pt-1 px-2">To</label>
+                                <label for="expMonth" class="pt-1 px-2">To</label>
                                     <div class="col-md-8 ">
                                         <input type="date" class="form-control" id="toDate" name="toDate" value="<?php echo $value['expMonth']; ?>" required>
                                           <div id="experienceexpmonth_error" class="text-danger error"></div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  </div> -->
 
+                                 
                                       <div class="col-md-6">
                                           <label class="form-label" for="company name">Company Name</label>
                                           <input type="text" class="form-control" value="<?php echo $value['company_name']; ?>" id="companyname" name="companyname" required>
@@ -3292,6 +3506,42 @@
                            </div>
 
                            <div class="col-md-6">
+                            <div class="experience-container">
+                                <label for="expYear" class="form-label">Experience</label>
+
+                                <div class="d-md-flex">
+
+                                  <label for="fromDate" class="pt-1 pe-2">From</label>
+
+                                  <div class="col-md-3  me-2">
+                                    <input type="date" class="form-control" id="fromDate" name="fromDate" value="<?php echo $value['expYear']; ?>" required>
+                                  <div id="experienceexp_error" class="text-danger error"></div>
+                                </div>
+
+
+                                <label for="toDate" class="pt-1 px-2">To</label>
+
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" id="toDate" name="toDate" value="<?php echo $value['expMonth']; ?>" required>
+                                  <div id="experienceexpmonth_error" class="text-danger error"></div>
+                                </div>
+
+                                
+                                <input type="checkbox" id="till_now" name="till_now" class="ms-3"> 
+                                <label for="toDate" class="pt-1 px-2">Till now</label>
+                                
+                                  
+                              </div>
+                            </div>
+                          </div> 
+                        
+
+                            <div class="col-md-6">                                 
+                              <label class="form-label">Total duration</label>
+                              <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months</p>
+                            </div>
+
+                           <div class="col-md-12">
                                         <label class="form-label" for="role">Role in the Company</label>
                                         <input type="text" class="form-control" value="<?php echo $value['job_role']; ?>" id="role" name="role" required>
                                         <div id="role_error" class="error"></div>
@@ -3299,11 +3549,11 @@
 
                     <!-- JOB PROFILE -->
 
-                           <div class="col-12">
+                           <!-- <div class="col-12">
                                         <label class="form-label" for="profile">Job Profile</label>
                                         <input type="text" class="form-control" value="<?php echo $value['profile']; ?>" id="profile" name="profile" required>
                                         <div id="profile_error" class="error"></div>
-                           </div>
+                           </div> -->
 
                            <h5 class="card-title">Previous Job's Manager Details</h5>
 
@@ -3390,10 +3640,10 @@
                         }
       
                        // JOB PROFILE
-                        if (profile.value === '') {
-                          displayError('Job profile must be filled out', 'profile_error');
-                          return false;
-                        }
+                        // if (profile.value === '') {
+                        //   displayError('Job profile must be filled out', 'profile_error');
+                        //   return false;
+                        // }
 
                         if (ename.value === '') {
                           displayError('Employer name must be filled out', 'name_error');
@@ -3431,6 +3681,78 @@
                         });
                       }
                     </script>
+
+<script>
+    document.getElementById('fromDate').addEventListener('input', updateDateDifference);
+    document.getElementById('toDate').addEventListener('input', updateDateDifference);
+    document.getElementById('till_now').addEventListener('change', updateToDate);
+
+    function updateDateDifference() {
+      var fromDate = new Date(document.getElementById('fromDate').value);
+      var toDate = new Date(document.getElementById('toDate').value);
+
+      // Check if "Till Now" checkbox is checked
+      var tillNowChecked = document.getElementById('till_now').checked;
+
+      // Disable or enable "To Date" based on "Till Now" checkbox
+      document.getElementById('toDate').disabled = tillNowChecked;
+
+      // If "Till Now" is checked, set "To Date" to current date
+      if (tillNowChecked) {
+        var today = new Date();
+        var formattedDate = today.toISOString().split('T')[0]; // Get the date in YYYY-MM-DD format
+        document.getElementById('toDate').value = formattedDate;
+      }
+
+      if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
+        var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
+
+        var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
+        var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
+        var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
+
+        if (daysDiff < 0) {
+          monthsDiff--;
+          daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
+        }
+
+        if (monthsDiff < 0) {
+          yearsDiff--;
+          monthsDiff += 12;
+        }
+
+        document.getElementById('years').textContent = yearsDiff;
+        document.getElementById('months').textContent = monthsDiff;
+      }
+    }
+
+    function updateToDate() {
+  var today = new Date();
+
+  // Adjust to set the current date at midnight (start of the day)
+  today.setHours(0, 0, 0, 0);
+
+  var to_date_input = document.getElementById('toDate');
+  var till_now_checkbox = document.getElementById('till_now');
+
+  if (till_now_checkbox.checked) {
+    // Subtract one day (24 hours) from today's date
+    var yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+
+    to_date_input.valueAsDate = yesterday;
+  } else {
+    // Enable the "To Date" input field
+    to_date_input.disabled = false;
+  }
+
+  updateDateDifference();
+}
+
+window.onload = function() {
+      updateDateDifference();
+    };
+  </script>
 
                                   <?php
         } elseif ($method == "areaOfIntrestTable") {
@@ -3739,7 +4061,7 @@
                                                      <tr>
                                                      <td><?php echo $count++ ?>.</td>
                                                      <td><?php echo $value['skill'] ?></td>
-                                                     <td><?php echo $value['experience'] ?> Years</td>
+                                                     <td><?php echo $value['skillexperience'] ?> Years</td>
                                                      <td><?php echo $value['skill_level'] ?></td> 
                                                      <td>
                                                      <div class="d-flex">
@@ -4580,7 +4902,7 @@
                                 <tr>
                                 <td><?php echo $count++ ?>.</td>
                                 <td><?php echo $value['skill'] ?></td>
-                                <td><?php echo $value['experience'] ?> Years</td>
+                                <td><?php echo $value['skillexperience'] ?> Years</td>
                                 <td><?php echo $value['skill_level'] ?></td> 
                                 <td>
                                 <div class="d-flex">
@@ -4651,16 +4973,16 @@
 
                                  <div class="col-md-6">
                                 <div class="experience-container">
-                                               <label for="experience" class="form-label">Experience</label>
+                                               <label for="skillexperience" class="form-label">Experience</label>
                                                <div class="d-flex">
-                                               <select class="form-control col-3 me-2" id="experience" name="experience" required>
-                                               <?php $selectedValue = $value['experience'];
+                                               <select class="form-control col-3 me-2" id="skillexperience" name="skillexperience" required>
+                                               <?php $selectedValue = $value['skillexperience'];
                                                for ($i = 0; $i <= 20; $i++): ?>
                                                        <option value="<?php echo $i; ?>" <?php echo ($i == $selectedValue) ? 'selected' : ''; ?>>
                                       <?php echo $i; ?> Year<?php echo ($i !== 1) ? 's' : ''; ?>
                                                        </option>
                                                <?php endfor; ?>
-                                               <option value="20+" <?php if ($value['experience'] === '20+')
+                                               <option value="20+" <?php if ($value['skillexperience'] === '20+')
                                                  echo ' selected'; ?>>20+ Years</option>
                                                  </select>
                                 </div>
@@ -4864,7 +5186,7 @@
                                         ?>
                                 <div class="col d-md-flex justify-content-between my-4">
                                                      <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>" alt="profilep" width="150" height="150">
-                                                      <p class="h2 text-secondary p-2"><?php echo $value['name']; ?></p>
+                                                      <p class="h2 text-secondary p-2 text-uppercase"><?php echo $value['name']; ?></p>
                                                       <div class="text-end mt-2" >
                                                      <p><?php echo $value['phonenumber'] ?> </p>
                                                               <p> <?php echo $value['email'] ?>
@@ -4950,10 +5272,59 @@
                         <tr>
                           <td><?php echo $count; ?>.</td>
                           <td><?php echo $value['educational_qualification'] ?></td>
-                          <td><?php echo $value['department'] ?></td>
-                          <td><?php echo $value['educationmode'] ?></td>
+                          <!-- <td><?php echo $value['department'] ?></td> -->
+                          <?php                                                       
+                                                        if (
+                                                         $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                         $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                                                         $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                         $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                         $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] == "Ph.D"
+                                                       ) {
+                                                         ?>
+                                                                            <td><?php echo $value['department'] ?></td>                                         
+                                                     <?php
+                                                       } else {
+                                                         ?>
+                                                                          <td>NA</a></td>
+                                                                   <?php
+                                                       }
+                                                       ?>
+                          <!-- <td><?php echo $value['educationmode'] ?></td> -->
+                          <?php
+                                                     if (
+                                                         $value['educationmode'] == "Corres" 
+                                                       ) {
+                                                         ?>
+                                                                            <td>Correspondence</td>                                                                           
+                                                     <?php
+                                                       } else {
+                                                         ?>
+                                                                          <td>Regular</td>
+                                                                   <?php
+                                                       }
+                                                       ?> 
                           <td><?php echo $value['school_college_name'] ?></td>
-                          <td><?php echo $value['percentage'] ?></td>
+                          <!-- <td><?php echo $value['percentage'] ?></td> -->
+                          <?php                                                       
+                                                        if (
+                                                         $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                         $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                                                         $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "M.E" ||
+                                                         $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                         $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                         $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "Ph.D" ||
+                                                         $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC" 
+                                                       ) {
+                                                         ?>
+                                                                            <td><?php echo $value['percentage'] ?></td>                                         
+                                                     <?php
+                                                       } else {
+                                                         ?>
+                                                                          <td>NA</a></td>
+                                                                   <?php
+                                                       }
+                                                       ?>
                           <td><?php echo $value['yearOfPassing'] ?></td>
                           <?php
                           if ($value['educational_qualification'] == '10th/SSLC') {
@@ -5072,7 +5443,7 @@
                               <tr>
                                 <td><?php echo $loopcount; ?>.</td>
                                 <td><?php echo $svalue['skill'] ?></td>
-                                <td><?php echo $svalue['experience'] ?></td>
+                                <td><?php echo $svalue['skillexperience'] ?></td>
                                 <td><?php echo $svalue['skill_level'] ?></td>
                               </tr>
                                 <?php
