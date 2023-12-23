@@ -330,7 +330,7 @@
                                             value='<?php echo $value['company_email']; ?>' placeholder="Enter email" required >
                                             <p id="mailerr" style="color: red;"></p>
                                         </div>
-                                        <div class="col-md-6">
+                                        <!-- <div class="col-md-6">
                                             <label for="password" class="form-label">Password:</label>
                                             <div class="input-group">
                                             <input type="password" class="form-control" id="password" name="password" 
@@ -341,7 +341,7 @@
                                             </button>
                                             </div>
                                             <p id="passworderr" style="color: red;"></p>
-                                        </div>
+                                        </div> -->
                                         <div class="col-md-6">
                                         <label for="inputAddres5s" class="form-label">Street Address:</label>
                                         <input type="text" class="form-control" id="inputAddres5s" value='<?php echo $value['street_address']; ?>' 

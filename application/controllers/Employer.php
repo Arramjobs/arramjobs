@@ -58,11 +58,35 @@ class Employer extends CI_Controller
     // ,$this[data]
 
 
+    // public function viewDashboard()
+    // {
+    //     $postData = $this->input->post(null, true);
+    //     $response = $this->EmployerModel->providerLogin();
+    //     if (isset($response[0]['id'])) {
+    //         $userLoggedIn = array(
+    //             'jobProviderId' => $response[0]['id'],
+    //             'jobProviderUsername' => $response[0]['company_name'],
+    //             'jobProviderNumber' => $response[0]['company_mobile_number'],
+    //             'employerid' => $response[0]['erid'],
+    //         );
+    //         $this->session->set_userdata($userLoggedIn);
+    //         $this->data['method'] = "dashboard";
+    //         $this->load->view('employerDashboard.php', $this->data);
+    //     } else {
+
+    //         $this->load->view('employerLogin.php');
+    //         echo '<script>alert("Please enter registered company details.");</script>';
+    //     }
+    // }
+
     public function viewDashboard()
     {
         $postData = $this->input->post(null, true);
         $response = $this->EmployerModel->providerLogin();
-        if (isset($response[0]['id'])) {
+        $verifyOne = (isset($response[0]['verifyOne']))? ($response[0]['verifyOne']) : null;
+        $verifyTwo = (isset($response[0]['verifyTwo'])) ? ($response[0]['verifyTwo']) : null;
+        $deleteStatus = (isset($response[0]['deleteStatus'])) ? ($response[0]['deleteStatus']) : null;
+        if ($verifyOne == '1' && $verifyTwo == '1' && $deleteStatus == '0') {
             $userLoggedIn = array(
                 'jobProviderId' => $response[0]['id'],
                 'jobProviderUsername' => $response[0]['company_name'],
@@ -72,8 +96,10 @@ class Employer extends CI_Controller
             $this->session->set_userdata($userLoggedIn);
             $this->data['method'] = "dashboard";
             $this->load->view('employerDashboard.php', $this->data);
+        } else if ($verifyOne == '0' || $verifyTwo == '0' || $deleteStatus == '1') {
+            $this->load->view('employerLogin.php');
+            echo '<script>alert("Please wait. Your company details are under registration process.");</script>';
         } else {
-
             $this->load->view('employerLogin.php');
             echo '<script>alert("Please enter registered company details.");</script>';
         }

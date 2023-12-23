@@ -111,16 +111,27 @@ public function checkUserExistence($phone_number)
   // }
 
 
+  // public function providerLogin()
+  // {
+  //   $postData = $this->input->post(null, true);
+  //   // $employerid = $postData['userName'];
+  //   $companyMobile = $postData['mobilenumber'];
+  //   $companyPassword = $postData['erpassword'];
+  //   $query = "SELECT * FROM provider_registration_form WHERE company_mobile_number = '$companyMobile' AND password = '$companyPassword' AND verifyOne = '1' AND  verifyTwo = '1' AND deleteStatus = '0'";
+  //   $count = $this->db->query($query);
+  //   return $count->result_array();
+  // }
+
   public function providerLogin()
   {
     $postData = $this->input->post(null, true);
-    // $employerid = $postData['userName'];
     $companyMobile = $postData['mobilenumber'];
     $companyPassword = $postData['erpassword'];
-    $query = "SELECT * FROM provider_registration_form WHERE company_mobile_number = '$companyMobile' AND password = '$companyPassword' AND verifyOne = '1' AND  verifyTwo = '1' AND deleteStatus = '0'";
+    $query = "SELECT * FROM provider_registration_form WHERE company_mobile_number = '$companyMobile' AND password = '$companyPassword' ";
     $count = $this->db->query($query);
     return $count->result_array();
   }
+
 
   public function provider_detail()
   {

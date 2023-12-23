@@ -158,7 +158,7 @@ class CandidateModel extends CI_Model
         $updateData = array(
             'name' => $postData['name'],
             'email' => $postData['email'],
-            'password' => $postData['password'],
+            // 'password' => $postData['password'],
             'dateofbirth' => $postData['dateofbirth'],
             'age' => $postData['age'],
             'gender' => $postData['gender'],
@@ -355,6 +355,7 @@ class CandidateModel extends CI_Model
         $updateInsertEducation = array(
             'educational_qualification' => $post['qualification'],
             'department' => $post['department'],
+            'educationmode' => $post['educationmode'],
             'school_college_name' => $post['school'],
             'percentage' => $post['percentage'],
             'yearOfPassing' => $post['year_passed'],
@@ -406,15 +407,18 @@ class CandidateModel extends CI_Model
         $seekerId = $_SESSION['seekerId'];
         $post = $this->input->post(null, true);
 
+    $tillNowChecked = isset($post['till_now']);
+    $toDate = $tillNowChecked ? date("Y-m-d") : $post['toDate'];
+
         $add = array(
             'seekerId' => $seekerId,
             'other_category' => $post['category'],
             'other_sub_category' => $post['subcategory'],
             'expYear' => $post['fromDate'],
-            'expMonth' => $post['toDate'],
+            'expMonth' => $toDate,
             'company_name' => $post['companyname'],
             'job_role' => $post['role'],
-            'profile' => $post['profile'],
+            // 'profile' => $post['profile'],
             'previous_employer_name' => $post['nameofemployer'],
             'previous_employer_mobile' => $post['number'],
             'previous_employer_email' => $post['emailid'],
@@ -450,15 +454,18 @@ class CandidateModel extends CI_Model
     {
         $post = $this->input->post(null, true);
         $experienceId = $post['id'];
+
+ $tillNowChecked = isset($post['till_now']);
+ $toDate = $tillNowChecked ? date("Y-m-d") : $post['toDate'];
         $updateInsertExperience = array(
             
             'other_category' => $post['category'],
             'other_sub_category' => $post['subcategory'],
-            'expYear' => $post['expYear'],
-            'expMonth' => $post['expMonth'],
+            'expYear' => $post['fromDate'],
+            'expMonth' => $toDate,
             'company_name' => $post['companyname'],
             'job_role' => $post['role'],
-            'profile' => $post['profile'],
+            // 'profile' => $post['profile'],
             'previous_employer_name' => $post['nameofemployer'],
             'previous_employer_mobile' => $post['number'],
             'previous_employer_email' => $post['emailid'],
@@ -474,7 +481,6 @@ class CandidateModel extends CI_Model
         $delete = "DELETE FROM `seeker_experience` WHERE `id`=$deleteExperienceId";
         $del = $this->db->query($delete);
     }
-
 
     // project
 
@@ -644,7 +650,7 @@ class CandidateModel extends CI_Model
         $add = array(
             'seekerId' => $seekerId,
             'skill' => $post['skillname'],
-            'experience' => $post['skillexperience'],
+            'skillexperience' => $post['skillexperience'],
             // 'expMonth' => $post['skillexperience'],
             'skill_level' => $post['skilllevel']
         );
@@ -667,7 +673,7 @@ class CandidateModel extends CI_Model
         $areaOfIntrest = $post['id'];
         $updateInsertSkill = array(
             'skill' => $post['skillname'],
-            'experience' => $post['experience'],
+            'skillexperience' => $post['skillexperience'],
             'skill_level' => $post['skilllevel']
         );
 
