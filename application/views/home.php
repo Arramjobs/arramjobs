@@ -31,7 +31,9 @@
   /* * {
     font-family: montserrat;
   } */
-
+ html{
+        scroll-padding-top:120px;
+      }
 
   * {
     margin: 0;
@@ -104,12 +106,11 @@
   }
 
   .wrapper {
-    margin: 0 auto;
-    width: 80%;
+    margin: auto;
+    width: 75%;
     display: flex;
     overflow: hidden;
-    padding-left: 20px;
-    padding-left: 50px;
+    padding: 0 auto;
   }
 
   .carousel-item img {
@@ -142,8 +143,9 @@
     /* color: darkolivegreen; */
     color: #9acd32;
     text-align: center;
-    margin-bottom: 20px;
-    margin-bottom: 200px;
+    /* margin-bottom: 20px; */
+    /* margin-bottom: 100px; */
+    margin-bottom: 16%;
   }
 
   .carousel-caption h3 {
@@ -191,7 +193,7 @@
   }
 
   .bgimage1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.55)), url('assets/banner1.jpeg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/banner1.jpeg');
     height: 100vh;
     width: 100%;
     background-repeat: no-repeat;
@@ -280,12 +282,12 @@
   }
 
   .section-padding {
-    padding: 100px 0;
+    padding: 50px 0;
   }
 
   .wrapper .carousel {
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
     overflow: hidden;
     display: grid;
     grid-auto-flow: column;
@@ -304,181 +306,7 @@
     text-align: left;
   }
 
-
-  @media only screen and (max-width:991px) {
-
-    .loginbutton {
-      border-left: none;
-    }
-
-    .loginbutton2 {
-      border-right: none;
-    }
-  }
-
-  @media only screen and (max-width:767px) {
-
-    .headertitle {
-      font-size: 16px;
-    }
-
-    .headertitle img {
-      height: 45px;
-      width: 60px;
-    }
-
-    .navbar-nav {
-      text-align: center;
-    }
-
-    .carousel-caption {
-      text-align: center;
-    }
-
-    .carousel-caption h2 {
-      font-size: 30px;
-    }
-
-    .carousel-caption h3 {
-      font-size: 25px;
-    }
-
-    .section-padding1 {
-      margin-top: -10px;
-      margin-bottom: 40px;
-    }
-
-    .section-padding {
-      padding-top: 50px;
-      font-size: 30px;
-    }
-
-    .provider.section-padding {
-      div.about-text {
-        order: 2;
-      }
-
-      div.about-img-img {
-        order: 1;
-      }
-    }
-
-    .abtcandidate {
-      margin-top: 50px;
-    }
-
-    .section-paddings {
-      padding-bottom: 100px;
-    }
-
-    .head {
-      margin-top: 40px;
-    }
-
-    .carousel-caption p {
-      font-size: 18px;
-      padding-right: 10px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-bottom: 220px;
-    }
-
-    .card-sec {
-      margin-top: 30px;
-    }
-
-    .about-img-img {
-      padding-top: 30px;
-    }
-
-    .carousel-item active {
-      background-image: hero-bg;
-    }
-
-    .m-20 {
-      font-size: 10px;
-    }
-
-    .w-100 {
-      height: 50vh;
-    }
-
-    .dropdown-toggle {
-      margin-left: 70px;
-    }
-
-    .dropdown-menu {
-      margin-left: 45px;
-    }
-
-    /* imagecss */
-    .bgimage1 {
-      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('assets/banner1.jpeg');
-      height: 70vh;
-      width: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      display: flex;
-    }
-
-    .bgimage2 {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('assets/banner2.jpg');
-      height: 70vh;
-      width: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      display: flex;
-    }
-
-    /* .recent-posts article {
-      box-shadow: 0 4px 16px rgba(var(--default-color-rgb), 0.1);
-      height: 100%;
-      border-radius: 10px;
-      overflow: visible;
-    } */
-
-    .section-paddings {
-      padding-bottom: 10px;
-    }
-
-    .carousel-inners {
-      display: none;
-      margin-left: 50px;
-    }
-
-    section.pt-5.pb-5 {
-      display: none;
-    }
-
-    .carousel-innerts {
-      display: flex;
-      margin-top: 60px;
-      padding-bottom: 40px;
-    }
-
-    .footer2,
-    .footer3 {
-      text-align: center;
-    }
-
-    .about-text h2 {
-      margin-top: 25px;
-    }
-
-    .provider.section-padding .about-text p:nth-child(1) {
-      padding-top: 50px;
-    }
-
-    scroll-container {
-  padding: 5px 0px;
-}
-  }
-
-  /* Recent-posts Section - Home Page
+    /* Recent-posts Section - Home Page
 ------------------------------*/
   .recent-posts article {
     box-shadow: 0 4px 16px rgba(var(--default-color-rgb), 0.1);
@@ -605,6 +433,186 @@
   }
 }
 
+  @media only screen and (max-width:991px) {
+
+    .loginbutton {
+      border-left: none;
+    }
+
+    .loginbutton2 {
+      border-right: none;
+    }
+
+     .card-sec {
+      margin-top: 20px;
+    }
+  }
+
+  @media only screen and (max-width:767px) {
+
+    .headertitle {
+      font-size: 16px;
+    }
+
+    .headertitle img {
+      height: 45px;
+      width: 60px;
+    }
+
+    .navbar-nav {
+      text-align: center;
+    }
+
+    .carousel-caption {
+      text-align: center;
+    }
+
+    .carousel-caption h2 {
+      font-size: 30px;
+    }
+
+    .carousel-caption h3 {
+      font-size: 25px;
+    }
+
+    .section-padding1 {
+      margin-top: -10px;
+      margin-bottom: 40px;
+    }
+
+    .provider.section-padding {
+      div.about-text {
+        order: 2;
+      }
+
+      div.about-img-img {
+        order: 1;
+      }
+      .wrapper .card-text {
+        overflow: hidden;
+      }
+    }
+
+    /* .abtcandidate {
+      margin-top: 50px;
+    } */
+
+    .section-paddings {
+      padding-bottom: 100px;
+    }
+
+    .head {
+      margin-top: 40px;
+    }
+
+    .carousel-caption p {
+      font-size: 18px;
+      padding-right: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-bottom: 220px;
+    }
+
+    .card-sec {
+      margin-top: 30px;
+    }
+
+    .about-img-img {
+      padding-top: 30px;
+    }
+
+    .carousel-item active {
+      background-image: hero-bg;
+    }
+
+    .m-20 {
+      font-size: 10px;
+    }
+
+    .w-100 {
+      height: 50vh;
+    }
+
+    .dropdown-toggle {
+      margin-left: 70px;
+    }
+
+    .dropdown-menu {
+      margin-left: 45px;
+    }
+
+    /* imagecss */
+    .bgimage1 {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/banner1.jpeg');
+      height: 70vh;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+    }
+
+    .bgimage2 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('assets/banner2.jpg');
+      height: 70vh;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+    }
+
+    /* .recent-posts article {
+      box-shadow: 0 4px 16px rgba(var(--default-color-rgb), 0.1);
+      height: 100%;
+      border-radius: 10px;
+      overflow: visible;
+    } */
+
+    .section-paddings {
+      padding-bottom: 10px;
+    }
+
+    .carousel-inners {
+      display: none;
+      margin-left: 50px;
+    }
+
+    section.pt-5.pb-5 {
+      display: none;
+    }
+
+    .carousel-innerts {
+      display: flex;
+      margin-top: 60px;
+      padding-bottom: 40px;
+    }
+
+    .footer2,
+    .footer3 {
+      text-align: center;
+    }
+
+    .about-text h2 {
+      margin-top: 25px;
+    }
+
+    /* .provider.section-padding .about-text p:nth-child(1) {
+      padding-top: 50px;
+    } */
+
+    scroll-container {
+  padding: 5px 0px;
+}
+
+.RightToLeft {
+  animation: RightToLeft 4s linear infinite;
+}
+  }
+
+
 </style>
 
 <body>
@@ -717,27 +725,62 @@
  
   <div class="scroll-container">
     <div class="scroll">
-    <a href="#services" style="text-decoration: none;">
+    
       <div class="RightToLeft">
-        <p><i class="bi bi-phone" style="display:block;"><b> Mobile Accessibility </b></i></p>
-        <p><i class="bi bi-book-fill">  <b>Accredited</b></i></p>
-        <p><i class="bi bi-laptop-fill"> <b>User-friendly Interface</b></i></p>
-        <p><i class="bi bi-subtract">  <b>Extensive Job opportunities</b></i></p>
-        <p><i class="bi bi-shield-shaded"> <b>Quick Response</b></i></p>
-        <p><i class="bi bi-tablet-landscape"> <b>Advanced search and filtering</b></i></p>
-        <p><i class="bi bi-phone">  <b>Mobile Accessibility</b></i></p>
-        <p><i class="bi bi-book-fill"> <b>Accredited</b></i></p>
-        <p><i class="bi bi-laptop-fill">  <b>User-friendly Interface</b></i></p>
-        <p><i class="bi bi-subtract">  <b>Extensive Job opportunities</b></i></p>
-        <p><i class="bi bi-shield-shaded"><b> Quick Response</b></i></p>
-        <p> <i class="bi bi-tablet-landscape"><b> Advanced search and filtering</b></i></p>
+      <a href="#accessid" style="text-decoration: none;" onclick="highlightContent('accessid')">
+        <p><i class="bi bi-phone" style="display:block;"><b> Mobile Accessibility </b></i></p></a>
+
+      <a href="#accredit" style="text-decoration: none;" onclick="highlightContent('accredit')">
+        <p><i class="bi bi-book-fill">  <b>Accredited</b></i></p></a>
+
+      <a href="#interface" style="text-decoration: none;" onclick="highlightContent('interface')">
+        <p><i class="bi bi-laptop-fill"> <b>User-friendly Interface</b></i></p></a>
+
+      <a href="#jobid" style="text-decoration: none;" onclick="highlightContent('jobid')">
+        <p><i class="bi bi-subtract">  <b>Extensive Job opportunities</b></i></p></a>
+
+      <a href="#quickresponse" style="text-decoration: none;" onclick="highlightContent('quickresponse')">
+        <p><i class="bi bi-shield-shaded"> <b>Quick Response</b></i></p></a>
+
+      <a href="#search" style="text-decoration: none;" onclick="highlightContent('search')">
+        <p><i class="bi bi-tablet-landscape"> <b>Advanced search and filtering</b></i></p></a>
+
+      <a href="#accessid" style="text-decoration: none;" onclick="highlightContent('accessid')">
+        <p><i class="bi bi-phone">  <b>Mobile Accessibility</b></i></p></a>
+
+      <a href="#accredit" style="text-decoration: none;" onclick="highlightContent('accredit')">
+        <p><i class="bi bi-book-fill"> <b>Accredited</b></i></p></a>
+
+      <a href="#interface" style="text-decoration: none;" onclick="highlightContent('interface')">
+        <p><i class="bi bi-laptop-fill">  <b>User-friendly Interface</b></i></p></a>
+
+      <a href="#jobid" style="text-decoration: none;" onclick="highlightContent('jobid')">
+        <p><i class="bi bi-subtract">  <b>Extensive Job opportunities</b></i></p></a>
+
+      <a href="#quickresponse" style="text-decoration: none;" onclick="highlightContent('quickresponse')">
+        <p><i class="bi bi-shield-shaded"><b> Quick Response</b></i></p></a>
+
+      <a href="#search" style="text-decoration: none;" onclick="highlightContent('search')">
+        <p> <i class="bi bi-tablet-landscape"><b> Advanced search and filtering</b></i></p></a>
       </div>
-    </a>
+    
     </div>
   </div>
 
-  
-    <section id="about" class="about section-padding1" style="background-color:  #f7f6f5;">
+  <script>
+  function highlightContent(contentId) {
+
+   var element = document.getElementById(contentId);
+    
+    element.classList.add('bg-secondary');
+
+    setTimeout(function() {
+        element.classList.remove('bg-secondary');
+    }, 2000);
+  }
+</script>
+
+    <section id="about" class="about section-padding1" style="background-color: #f7f6f5;">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-12 col-12">
@@ -766,7 +809,7 @@
 
     <!-- Recent-posts Section - Home Page -->
     <section id="recent-posts" class="recent-posts"
-      style="margin-bottom: 30px; margin-top: 10px; background-color:  #f7f6f5;">
+      style="margin-bottom: 30px; margin-top: 10px; background-color: #f7f6f5; padding-left:40px">
 
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -856,9 +899,9 @@
       <!-- card1-3 strat -->
       <div class="row">
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-4"
-            style="background-color: #fff;  box-shadow: 0 0 11px rgba(33,33,33,.2);">
-            <div class="card-body-s" style="padding-top: 30px;">
+          <div class="card-sec text-white text-center pb-4 " id="accessid"
+            style="background-color: #fff;box-shadow: 0 0 11px rgba(33,33,33,.2);">
+            <div class="card-body-s"  style="padding-top: 30px;">
               <i class="bi bi-phone" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 33px; color: black;">Mobile
                 Accessibility</h4>
@@ -872,9 +915,9 @@
           </div>
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-4"
+          <div class="card-sec text-white text-center pb-4" id="accredit"
             style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2); ">
-            <div class="card-body-s" style="padding-top: 30px;">
+            <div class="card-body-s"  style="padding-top: 30px;">
               <i class="bi bi-book-fill" style="color: black; font-size: 30px;"></i>
               <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;"> Accredited</h4>
               <p class="lead"
@@ -887,7 +930,7 @@
           </div>
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-4"
+          <div class="card-sec text-white text-center pb-4" id="interface"
             style="background-color: #fff;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-laptop-fill" style="color: black; font-size: 30px;"></i>
@@ -908,7 +951,7 @@
       <!-- card2-3 strat -->
       <div class="row">
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-4"
+          <div class="card-sec text-white text-center pb-4" id="jobid"
             style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-subtract" style="color: black;  font-size: 30px;"></i>
@@ -924,7 +967,7 @@
           </div>
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-1"
+          <div class="card-sec text-white text-center pb-1" id="quickresponse"
             style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-shield-shaded" style="color: black; font-size: 30px;"></i>
@@ -940,7 +983,7 @@
           </div>
         </div>
         <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-4"
+          <div class="card-sec text-white text-center pb-4" id="search"
             style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
             <div class="card-body-s" style="padding-top: 30px;">
               <i class="bi bi-tablet-landscape" style="color: black; font-size: 30px;"></i>
@@ -963,7 +1006,7 @@
 
 
   <section id="candidate" class="seeker section-padding"
-    style="background-color: #fff; padding-top:50px;padding-bottom:50px;">
+    style="background-color: #fff;padding-bottom:50px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 col-12">
@@ -972,8 +1015,8 @@
           </div>
         </div>
         <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify;">
-          <div class="about-text1" style="margin-top:-22px;">
-            <p class="abtcandidate fs-1">Candidate</p>
+          <div class="about-text1 pt-4 pt-lg-0" style="margin-top:-22px;">
+            <p class="abtcandidate fs-1" style="padding-top:20px; ">Candidate</p>
             <p style="font-size: 18px;">At Arram Job Portal, our unwavering commitment is to empower individuals to
               realize their utmost
               potential. Regardless of where you stand in your career journey—whether you're a recent graduate venturing
@@ -998,9 +1041,9 @@
     style="background-color: #f2f8fa; padding-top:50px; padding-bottom:50px;">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-12 col-12 order-lg-1 order-2 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify;">
-          <div class="about-text" style="margin-top:-25px;">
-            <p class="fs-1">Employer</p>
+        <div class="col-lg-8 col-md-12 col-12 order-lg-1 order-2 ps-lg-5 mt-md-2 justify-content-center " style="text-align: justify;">
+          <div class="about-text pt-4 pt-lg-0" style="margin-top:-25px; margin-right:20px;">
+            <p class="fs-1" style="padding-top:20px; ">Employer</p>
             <p style="font-size: 18px;">At Arram Job Providing, we firmly believe that the key to a prosperous
               organization lies in having the
               right people onboard. Be it team expansion, project initiation, or the need for specialized skills, we
@@ -1131,7 +1174,7 @@
                     <div class="col-md-4 mb-3">
                       <div class="card">
                         <img class="img-fluid s-10" alt="" src="<?php echo baseUrl . "assets/special1.jpg" ?>">
-                        <div class="card-body">
+                        <div class="card-body" style="padding:1rem">
                           <h4 class="card-title"><b>Special title treatment</b></h4>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.
                           </p>
@@ -1144,7 +1187,7 @@
                     <div class="col-md-4 mb-3">
                       <div class="card">
                         <img class="img-fluid s-10" alt="" src="<?php echo baseUrl . "assets/special2.jpg" ?>">
-                        <div class="card-body">
+                        <div class="card-body" style="padding:1rem">
                           <h4 class="card-title"><b>Special title treatment</b></h4>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.
                           </p>
@@ -1155,9 +1198,9 @@
                     <div class="col-md-4 mb-3">
                       <div class="card">
                         <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special3.png" ?>">
-                        <div class="card-body">
+                        <div class="card-body" style="padding:1rem">
                           <h4 class="card-title"><b>Special title treatment</b></h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                          <p class="card-text" >With supporting text below as a natural lead-in to additional content.
                           </p>
 
                         </div>
@@ -1171,7 +1214,7 @@
                     <div class="col-md-4 mb-3">
                       <div class="card">
                         <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special4.jpg" ?>">
-                        <div class="card-body">
+                        <div class="card-body" style="padding:1rem">
                           <h4 class="card-title"><b>Special title treatment</b></h4>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.
                           </p>
@@ -1183,7 +1226,7 @@
                     <div class="col-md-4 mb-3">
                       <div class="card">
                         <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special53.jpg" ?>">
-                        <div class="card-body">
+                        <div class="card-body" style="padding:1rem">
                           <h4 class="card-title"><b>Special title treatment</b></h4>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.
                           </p>
@@ -1194,7 +1237,7 @@
                     <div class="col-md-4 mb-3">
                       <div class="card">
                         <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special6.jpg" ?>">
-                        <div class="card-body">
+                        <div class="card-body" style="padding:1rem">
                           <h4 class="card-title"><b>Special title treatment</b></h4>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.
                           </p>
@@ -1229,8 +1272,8 @@
           <div class="col-md-4 mb-3">
             <div class="card">
               <image class="img-fluid" alt=""
-                src="<?php echo baseUrl . "assets/cute-schoolgirl-reading-book-surrounded-by-wisdom-generated-by-ai.jpg" ?>">
-                <div class="card-body">
+                src="<?php echo baseUrl . "assets/special1.jpg" ?>">
+                <div class="card-body" style="padding:1rem">
                   <h4 class="card-title"><b>Special title treatment</b></h4>
                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
@@ -1244,8 +1287,8 @@
         <div class="carousel-item">
           <div class="card">
             <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/man-search-hiring-job-online-from-laptop_1150-52728.jpg" ?>">
-              <div class="card-body">
+              src="<?php echo baseUrl . "assets/special2.jpg" ?>">
+              <div class="card-body" style="padding:1rem">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
               </div>
@@ -1256,8 +1299,8 @@
         <div class="carousel-item">
           <div class="card">
             <image class="img-fluid" alt="100%x280"
-              src="<?php echo baseUrl . "assets/smiley-pregnant-woman-holding-clipboard-pointing-up-with-copy-space_23-2148765097.jpg" ?>">
-              <div class="card-body">
+              src="<?php echo baseUrl . "assets/special3.png" ?>">
+              <div class="card-body" style="padding:1rem">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
@@ -1269,8 +1312,8 @@
         <div class="carousel-item">
           <div class="card">
             <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/old-fashioned-clock-antique-desk-reminds-studying-generated-by-ai_24640-90145.jpg" ?>">
-              <div class="card-body">
+              src="<?php echo baseUrl . "assets/special4.jpg" ?>">
+              <div class="card-body" style="padding:1rem">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
               </div>
@@ -1281,8 +1324,8 @@
         <div class="carousel-item">
           <div class="card">
             <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/young-woman-reading-textbook-home-library-generated-by-ai_188544-26814.jpg" ?>">
-              <div class="card-body">
+              src="<?php echo baseUrl . "assets/special53.jpg" ?>">
+              <div class="card-body" style="padding:1rem">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
               </div>
@@ -1293,8 +1336,8 @@
         <div class="carousel-item">
           <div class="card">
             <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/graduation-cap-sits-top-stack-books_188544-38727.jpg" ?>">
-              <div class="card-body">
+              src="<?php echo baseUrl . "assets/special6.jpg" ?>">
+              <div class="card-body" style="padding:1rem">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
               </div>

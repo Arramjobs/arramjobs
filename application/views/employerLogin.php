@@ -34,6 +34,13 @@
     <!-- Template Main CSS File -->
     <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
 
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -48,7 +55,8 @@
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
-                                <a href="<?php echo baseUrl; ?>/#employer" class="logo d-flex align-items-center w-auto">
+                                <a href="<?php echo baseUrl; ?>/#employer"
+                                    class="logo d-flex align-items-center w-auto">
                                     <!-- <img src="assets/img/logo.png" alt=""> -->
                                     <span class="d-block">Arramjobs Employer</span>
                                 </a>
@@ -63,29 +71,37 @@
                                         <p class="text-center small">Enter your registered mobile number to login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Employer/viewDashboard" ?>" onsubmit="return validateForm()" method="post" >
+                                    <form class="row g-3 needs-validation" novalidate
+                                        action="<?php echo baseUrl . "Employer/viewDashboard" ?>"
+                                        onsubmit="return validateForm()" method="post">
 
                                         <div class="col-12">
                                             <label for="userID" class="form-label">Mobile Number : </label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="mobilenumber" placeholder="Enter your mobile number" class="form-control" id="userID" oninput="validatePhoneNumber(this)" required>
-                                                <div class="invalid-feedback">Please enter your registered mobile number.</div>
+                                                <input type="number" name="mobilenumber"
+                                                    placeholder="Enter your mobile number" class="form-control"
+                                                    id="userID" oninput="validatePhoneNumber(this)" required>
+                                                <div class="invalid-feedback">Please enter your registered mobile
+                                                    number.</div>
                                                 <div id="phoneError" class="text-danger"> </div>
                                             </div>
                                         </div>
 
-                                <div class="col-12">
-                                    <label for="erpassword" class="form-label">Password : </label>
-                                    <div class="input-group has-validation">
-                                        <input type="password" name="erpassword" placeholder="Enter your Password" class="form-control" id="erpassword" oninput="validatePassword(this)" required>
-                                        <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('erpassword', 'visibilityIcon')">
-                                            <i id="visibilityIcon" class="bi bi-eye-slash"></i>
-                                        </button>
-                                        <div class="invalid-feedback">Please enter your password.</div>
-                                        <div id="passwordError" class="text-danger"></div>
-                                    </div>
-                                </div>
+                                        <div class="col-12">
+                                            <label for="erpassword" class="form-label">Password : </label>
+                                            <div class="input-group has-validation">
+                                                <input type="password" name="erpassword"
+                                                    placeholder="Enter your Password" class="form-control"
+                                                    id="erpassword" oninput="validatePassword(this)" required>
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    onclick="togglePasswordVisibility('erpassword', 'visibilityIcon')">
+                                                    <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                                </button>
+                                                <div class="invalid-feedback">Please enter your password.</div>
+                                                <div id="passwordError" class="text-danger"></div>
+                                            </div>
+                                        </div>
                                         <div class="col-12">
                                             <br>
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
@@ -93,9 +109,11 @@
                                     </form>
 
                                     <div class="col-12">
-                                    <br>
+                                        <br>
                                         <div class="form-check">
-                                                <p>Create an account ? <a href="<?php echo baseUrl . "Employer/registration" ?>">Register</a></p>
+                                            <p>Create an account ? <a
+                                                    href="<?php echo baseUrl . "Employer/registration" ?>">Register</a>
+                                            </p>
                                         </div>
                                     </div>
 
@@ -109,42 +127,62 @@
 
             </section>
 
-<script>
-    function togglePasswordVisibility(inputId, iconId) {
-        var passwordInput = document.getElementById(inputId);
-        var visibilityIcon = document.getElementById(iconId);
+            <script>
+                function togglePasswordVisibility(inputId, iconId) {
+                    var passwordInput = document.getElementById(inputId);
+                    var visibilityIcon = document.getElementById(iconId);
 
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            visibilityIcon.classList.remove("bi-eye-slash");
-            visibilityIcon.classList.add("bi-eye");
-        } else {
-            passwordInput.type = "password";
-            visibilityIcon.classList.remove("bi-eye");
-            visibilityIcon.classList.add("bi-eye-slash");
-        }
-    }
-</script>
+                    if (passwordInput.type === "password") {
+                        passwordInput.type = "text";
+                        visibilityIcon.classList.remove("bi-eye-slash");
+                        visibilityIcon.classList.add("bi-eye");
+                    } else {
+                        passwordInput.type = "password";
+                        visibilityIcon.classList.remove("bi-eye");
+                        visibilityIcon.classList.add("bi-eye-slash");
+                    }
+                }
+            </script>
 
-<script>
-    function validatePhoneNumber(input) {
-    const phoneError = document.getElementById("phoneError");
-    if (!/^\d{10}$/.test(input.value)) {
-        phoneError.textContent = "Invalid phone number. Please enter 10 digits.";
-    } else {
-        phoneError.textContent = "";
-    }
-}
+            <script>
+                function validateForm() {
+                    var phno = document.getElementById("userID").value;
+                    var password = document.getElementById("erpassword").value;
 
-function validatePassword(input) {
-    const phoneError = document.getElementById("passwordError");
-    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(input.value)) {
-        phoneError.textContent = "Invalid password. Please enter valid password.";
-    } else {
-        phoneError.textContent = "";
-    }
-}
-</script>
+                    if (phno != "") {
+                        if (phno.length < 10) {
+                            return false;
+                        } else if (phno.length > 10) {
+                            return false;
+                        }
+                    }
+
+                    if (password != "") {
+                        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/.test(password)) {
+                            return false;
+                        }
+                    }
+                }
+
+
+                function validatePhoneNumber(input) {
+                    const phoneError = document.getElementById("phoneError");
+                    if (!/^\d{10}$/.test(input.value)) {
+                        phoneError.textContent = "Invalid phone number. Please enter 10 digits.";
+                    } else {
+                        phoneError.textContent = "";
+                    }
+                }
+
+                function validatePassword(input) {
+                    const phoneError = document.getElementById("passwordError");
+                    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(input.value)) {
+                        phoneError.textContent = "Invalid password. Please enter valid password.";
+                    } else {
+                        phoneError.textContent = "";
+                    }
+                }
+            </script>
 
         </div>
     </main><!-- End #main -->

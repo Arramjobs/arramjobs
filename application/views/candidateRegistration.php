@@ -78,7 +78,7 @@
                                         <p class="text-center small">Enter your details to create account</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate oninput="return validateForm()"
+                                    <form class="row g-3 needs-validation" novalidate onsubmit="return validateForm()"
                                         action="<?php echo baseUrl . "Candidate/candidateRegistration" ?>"
                                         name="registration_form" method="post">
 

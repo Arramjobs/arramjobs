@@ -181,6 +181,9 @@
   
 }
 
+.highlighted {
+      background-color: yellow;
+    }
 
 /* End of changes */
    </style>
@@ -1140,14 +1143,14 @@
                                                             <td class="d-flex"><a class="" href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                             <!-- <a class="ms-1" href="<?php echo baseUrl . "admin/deleteEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button> -->
                                                             <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployer"
-                                                             onclick="deleteformdl(<?php echo $value['id'] ?>)">Delete</button>
-                                                    <script>
-                                                        function deleteformdl(employertid){
-                                                            document.getElementById("EmployerID").value = employertid;
-                                                        }
-                                                    </script>
-                                                        </td>
-                                                        </tr>
+                                                             onclick="(function(id, button) { deleteformdl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" >Delete</button>
+                                                                <script>
+                                                                    function deleteformdl(employertid){
+                                                                        document.getElementById("EmployerID").value = employertid;
+                                                                    }
+                                                                </script>
+                                                                    </td>
+                                                                    </tr>
                                                     <?php
                                                     $loopcount++;
                                                 }
@@ -1167,6 +1170,27 @@
                         </div>
                     </div><!-- End Recent Sales -->
                 </section>
+
+                <script>
+                     function highlightRow(button) {
+                            var row = button.closest('tr');
+
+                            var allRows = document.querySelectorAll('.table tbody tr');
+                            allRows.forEach(function (row) {
+                            row.classList.remove('table-active');
+                            });
+
+                            row.classList.add('table-active');
+
+                            document.body.addEventListener('click', function (event) {
+                                var targetElement = event.target;
+
+                                if (!row.contains(targetElement)) {
+                                    row.classList.remove('table-active');
+                                }
+                            });
+                        }
+                </script>
 
             <?php
         } elseif ($method == "verifiedEmployers") {
@@ -1241,16 +1265,16 @@
                                                             <td><?php echo $value['role']; ?></td>
                                                             <td><?php echo $value['mobile_number']; ?></td>
                                                             <td><span class="badge bg-success">Verified</span></td>
-                                                            <td class="d-flex"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                            <td class="d-flex py-3"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                             <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployer"
-                                                             onclick="deleteformvl(<?php echo $value['id'] ?>)">Delete</button>
-                                                    <script>
-                                                        function deleteformvl(employertid){
-                                                            document.getElementById("EmployerID").value = employertid;
-                                                        }
-                                                    </script>
-                                                        </td>
-                                                        </tr>
+                                                             onclick="(function(id, button) { deleteformvl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)">Delete</button>
+                                                                <script>
+                                                                    function deleteformvl(employertid){
+                                                                        document.getElementById("EmployerID").value = employertid;
+                                                                    }
+                                                                </script>
+                                                                    </td>
+                                                                    </tr>
                                                     <?php
                                                     $loopcount++;
                                                 }
@@ -1270,6 +1294,28 @@
                         </div>
                     </div><!-- End Recent Sales -->
                 </section>
+
+                <script>
+                     function highlightRow(button) {
+                            var row = button.closest('tr');
+
+                            var allRows = document.querySelectorAll('.table tbody tr');
+                            allRows.forEach(function (row) {
+                            row.classList.remove('table-active');
+                            });
+
+                            row.classList.add('table-active');
+
+                            document.body.addEventListener('click', function (event) {
+                                var targetElement = event.target;
+
+                                if (!row.contains(targetElement)) {
+                                    row.classList.remove('table-active');
+                                }
+                            });
+                        }
+                </script>
+
     <?php
         } elseif ($method == "pendingEmployers") {
             ?>
@@ -1343,9 +1389,9 @@
                                                             <td><?php echo $value['role']; ?></td>
                                                             <td><?php echo $value['mobile_number']; ?></td>
                                                             <td><span class="badge bg-danger">Pending</span></td>
-                                                            <td class="d-flex"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                            <td class="d-flex py-3"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                             <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployer"
-                                                             onclick="deleteformpl(<?php echo $value['id'] ?>)">Delete</button>
+                                                             onclick="(function(id, button) { deleteformpl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)">Delete</button>
                                                     <script>
                                                         function deleteformpl(employertid){
                                                             document.getElementById("EmployerID").value = employertid;
@@ -1372,6 +1418,27 @@
                         </div>
                     </div><!-- End Recent Sales -->
                 </section>
+
+                <script>
+                     function highlightRow(button) {
+                            var row = button.closest('tr');
+
+                            var allRows = document.querySelectorAll('.table tbody tr');
+                            allRows.forEach(function (row) {
+                            row.classList.remove('table-active');
+                            });
+
+                            row.classList.add('table-active');
+
+                            document.body.addEventListener('click', function (event) {
+                                var targetElement = event.target;
+
+                                if (!row.contains(targetElement)) {
+                                    row.classList.remove('table-active');
+                                }
+                            });
+                        }
+                </script>
 
             <?php
         } elseif ($method == "deleteEmployerList") {
@@ -2264,9 +2331,9 @@
                                                             <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
                                                             <td><?php echo $value['dateofbirth']; ?></td>
                                                             <td><span class="badge bg-danger">Pending</span></td>
-                                                            <td class="d-flex"><a class="mx-1" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                            <td class="d-flex py-3"><a class="mx-1" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                             <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#deleteemployee"
-                                                             onclick="deleteformnl(<?php echo $value['id'] ?>)">Delete</button>
+                                                             onclick="(function(id, button) { deleteformnl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" >Delete</button>
                                                     <script>
                                                         function deleteformnl(employeetid){
                                                             document.getElementById("EmployeeId").value =employeetid;
@@ -2294,6 +2361,28 @@
                     </div>
                                             
                 </section>
+
+                <script>
+                     function highlightRow(button) {
+                            var row = button.closest('tr');
+
+                            var allRows = document.querySelectorAll('.table tbody tr');
+                            allRows.forEach(function (row) {
+                            row.classList.remove('table-active');
+                            });
+
+                            row.classList.add('table-active');
+
+                            document.body.addEventListener('click', function (event) {
+                                var targetElement = event.target;
+
+                                if (!row.contains(targetElement)) {
+                                    row.classList.remove('table-active');
+                                }
+                            });
+                        }
+                </script>
+                
 
             <?php
         } elseif ($method == "verifiedEmployees") {
@@ -2367,10 +2456,10 @@
                                                             <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
                                                             <td><?php echo $value['dateofbirth']; ?></td>
                                                             <td><span class="badge bg-success">Verified</span></td>
-                                                            <td class="d-flex">
+                                                            <td class="d-flex py-3">
                                                                 <a class="" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                             <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployee"
-                                                             onclick="deleteformvl(<?php echo $value['id'] ?>)">Delete</button>
+                                                             onclick="(function(id, button) { deleteformvl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" >Delete</button>
                                                     <script>
                                                         function deleteformvl(employeetid){
                                                             document.getElementById("EmployeeId").value =employeetid;
@@ -2398,6 +2487,27 @@
                     </div><!-- End Recent Sales -->
 
                 </section>
+
+                <script>
+                     function highlightRow(button) {
+                            var row = button.closest('tr');
+
+                            var allRows = document.querySelectorAll('.table tbody tr');
+                            allRows.forEach(function (row) {
+                            row.classList.remove('table-active');
+                            });
+
+                            row.classList.add('table-active');
+
+                            document.body.addEventListener('click', function (event) {
+                                var targetElement = event.target;
+
+                                if (!row.contains(targetElement)) {
+                                    row.classList.remove('table-active');
+                                }
+                            });
+                        }
+                </script>
 
                 <?php
         } elseif ($method == "pendingEmployees") {
@@ -2474,9 +2584,9 @@
                                                                     <td><?php echo $value['dateofbirth']; ?></td>
                                                                     <td><?php echo $value['verificationRemarks']; ?></td>
                                                                     <td><span class="badge bg-danger">Pending</span></td>
-                                                                    <td class="d-flex"><a href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                                    <td class="d-flex py-3"><a href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
                                                                     <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployee"
-                                                             onclick="deleteformpl(<?php echo $value['id'] ?>)">Delete</button>
+                                                             onclick="(function(id, button) { deleteformpl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" >Delete</button>
                                                     <script>
                                                         function deleteformpl(employeetid){
                                                             document.getElementById("EmployeeId").value = employeetid;
@@ -2504,6 +2614,27 @@
                             </div><!-- End Recent Sales -->
 
                         </section>
+
+                        <script>
+                     function highlightRow(button) {
+                            var row = button.closest('tr');
+
+                            var allRows = document.querySelectorAll('.table tbody tr');
+                            allRows.forEach(function (row) {
+                            row.classList.remove('table-active');
+                            });
+
+                            row.classList.add('table-active');
+
+                            document.body.addEventListener('click', function (event) {
+                                var targetElement = event.target;
+
+                                if (!row.contains(targetElement)) {
+                                    row.classList.remove('table-active');
+                                }
+                            });
+                        }
+                </script>
 
                         <?php
         } elseif ($method == "deleteEmployeeList") {
@@ -2955,10 +3086,32 @@
                                                     <tr>
                                                         <td><?php echo $loopcount; ?>.</td>
                                                         <td><?php echo $value['educational_qualification'] ?></td>
-                                                        <td><?php echo $value['department'] ?></td>
-                                                        <td><?php echo $value['educationmode'] ?></td>
+                                                        <?php if (
+                                                                    $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                                    $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
+                                                                ) { ?>
+                                                                    <td>NA</td>
+                                                                <?php } else { ?>
+                                                                    <td>
+                                                                        <?php echo $value['department'] ?>
+                                                                    </td>
+                                                                <?php }
+                                                                if ($value['educationmode'] == 'Corres') { ?>
+                                                                    <td>Correspondance</td>
+                                                                <?php } else { ?>
+                                                                    <td>Regular</td>
+                                                                <?php } ?>
                                                         <td><?php echo $value['school_college_name'] ?></td>
-                                                        <td><?php echo $value['percentage'] ?></td>
+                                                        <?php if (
+                                                                    $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                                    $value['educational_qualification'] === "11th"
+                                                                ) { ?>
+                                                                    <td>NA</td>
+                                                                <?php } else { ?>
+                                                                    <td>
+                                                                        <?php echo $value['percentage'] ?>
+                                                                    </td>
+                                                                <?php } ?>
                                                         <td><?php echo $value['yearOfPassing'] ?></td>
                                                         <?php
                                                         if ($value['educational_qualification'] == '10th/SSLC') {
@@ -3366,11 +3519,25 @@
                                             ?>
                                                 <tr>
                                                     <td><?php echo $loopcount; ?>.</td>
-                                                    <td><?php echo $value['educational_qualification'] ?></td>
-                                                    <td><?php echo $value['department'] ?></td>
-                                                    <td><?php echo $value['educationmode'] ?></td>
+                                                    <td><?php echo $value['educational_qualification'] ?></td> 
+                                                    <?php if ($value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                     $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC") { ?>
+                                                                <td>NA</td>
+                                                            <?php } else { ?>
+                                                                <td><?php echo $value['department'] ?></td>
+                                                            <?php }
+                                                             if ($value['educationmode'] == 'Corres') { ?>
+                                                                <td>Correspondance</td>
+                                                            <?php } else { ?>
+                                                                <td>Regular</td>
+                                                            <?php } ?>
                                                    <td><?php echo $value['school_college_name'] ?></td>
-                                                    <td><?php echo $value['percentage'] ?></td>
+                                                    <?php if ($value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                     $value['educational_qualification'] === "11th") { ?>
+                                                                <td>NA</td>
+                                                            <?php } else { ?>
+                                                                <td><?php echo $value['percentage'] ?></td>
+                                                            <?php } ?>
                                                     <td><?php echo $value['yearOfPassing'] ?></td>
                                                     <?php
                                                     if ($value['educational_qualification'] == '10th/SSLC') {
