@@ -534,7 +534,7 @@
                                           <label for="aadharfrontphoto" class="form-label">Aadhaar Front Photo <span class="text-danger">*</span></label>
                                           <input type="text" class="form-control"  name="oldaadharfront" value="<?php echo $value['aadharfront_filename']; ?>" hidden>
                                             <input type="file" class="form-control" id="aadharfrontphoto" name="aadharfrontphoto"
-                                        accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden required>
+                                        accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden >
                                           <div class="uploadedfile" style="display:flex;">
                                         <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control" style="cursor:pointer">Choose File</label>
                                         <a href="<?php echo $value['aadhar_front']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileaf">
@@ -546,7 +546,7 @@
                                            <div class="col-md-6">
                                            <label for="aadharbackphoto" class="form-label">Aadhaar Back Photo <span class="text-danger">*</span></label>
                                            <input type="text" class="form-control"  name="oldaadharback" value="<?php echo $value['aadharback_filename']; ?>" hidden>
-                                          <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden required>
+                                          <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden >
                                           <div class="uploadedfile" style="display:flex;">
                                           <label id="file-input-labelab" for="aadharbackphoto" class="form-control"  style="cursor:pointer">Choose File</label>  
                                           <a href="<?php echo $value['aadhar_back']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileab" ><?php echo $value['aadharback_filename']; ?></a>
@@ -557,7 +557,7 @@
                                           <div class="col-md-6">
                                           <label for="photo" class="form-label">Photo <span class="text-danger">*</span></label>
                                           <input type="text" class="form-control"  name="oldprofilephoto" value="<?php echo $value['photo_filename']; ?>" hidden>
-                                          <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden required>
+                                          <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden>
                                           <div class="uploadedfile" style="display:flex;">
                                           <label id="file-input-labelpp" for="photo" class="form-control" style="cursor:pointer">Choose File</label>  
                                           <a href="<?php echo $value['photo']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfilepp" ><?php echo $value['photo_filename']; ?></a>
@@ -649,286 +649,266 @@
               }
           </script>
 
+                       <script>
 
-                      <script>
-                      document.getElementById("file-input-labelaf").addEventListener("click", function() {
-                                  document.getElementById("existfileaf").style.display = "none";
-                              });
+            document.getElementById("file-input-labelaf").addEventListener("click", function() {
+                        document.getElementById("existfileaf").style.display = "none";
+                    });
 
-                          const fileInputaf = document.getElementById("aadharfrontphoto");
-                          const fileInputLabelaf = document.getElementById("file-input-labelaf");
+                const fileInputaf = document.getElementById("aadharfrontphoto");
+                const fileInputLabelaf = document.getElementById("file-input-labelaf");
 
-                          fileInputaf.addEventListener("change", function () {
-                              if (fileInputaf.files.length > 0) {
-                              fileInputLabelaf.textContent = fileInputaf.files[0].name;
-                              } else {
-                              fileInputLabelaf.textContent = "Select a File";
-                              }
-                          });
+                fileInputaf.addEventListener("change", function () {
+                    if (fileInputaf.files.length > 0) {
+                    fileInputLabelaf.textContent = fileInputaf.files[0].name;
+                    } else {
+                    fileInputLabelaf.textContent = "Select a File";
+                    }
+                });
 
-                          document.getElementById("file-input-labelab").addEventListener("click", function() {
-                                  document.getElementById("existfileab").style.display = "none";
-                              });
+                document.getElementById("file-input-labelab").addEventListener("click", function() {
+                        document.getElementById("existfileab").style.display = "none";
+                    });
 
-                          const fileInputab = document.getElementById("aadharbackphoto");
-                          const fileInputLabelab = document.getElementById("file-input-labelab");
+                const fileInputab = document.getElementById("aadharbackphoto");
+                const fileInputLabelab = document.getElementById("file-input-labelab");
 
-                          fileInputab.addEventListener("change", function () {
-                              if (fileInputab.files.length > 0) {
-                              fileInputLabelab.textContent = fileInputab.files[0].name;
-                              } else {
-                              fileInputLabelab.textContent = "Select a File";
-                              }
-                          });
+                fileInputab.addEventListener("change", function () {
+                    if (fileInputab.files.length > 0) {
+                    fileInputLabelab.textContent = fileInputab.files[0].name;
+                    } else {
+                    fileInputLabelab.textContent = "Select a File";
+                    }
+                });
 
-                          document.getElementById("file-input-labelpp").addEventListener("click", function() {
-                                  document.getElementById("existfilepp").style.display = "none";
-                              });
+                document.getElementById("file-input-labelpp").addEventListener("click", function() {
+                        document.getElementById("existfilepp").style.display = "none";
+                    });
 
-                          const fileInputpp = document.getElementById("photo");
-                          const fileInputLabelpp = document.getElementById("file-input-labelpp");
+                const fileInputpp = document.getElementById("photo");
+                const fileInputLabelpp = document.getElementById("file-input-labelpp");
 
-                          fileInputpp.addEventListener("change", function () {
-                              if (fileInputpp.files.length > 0) {
-                              fileInputLabelpp.textContent = fileInputpp.files[0].name;
-                              } else {
-                              fileInputLabelpp.textContent = "Select a File";
-                              }
-                          });
+                fileInputpp.addEventListener("change", function () {
+                    if (fileInputpp.files.length > 0) {
+                    fileInputLabelpp.textContent = fileInputpp.files[0].name;
+                    } else {
+                    fileInputLabelpp.textContent = "Select a File";
+                    }
+                });
 
-                </script>
-                <script>
-
-                      function group() {
-                      var x = document.applicationform.name.value;
-                      var y = document.applicationform.email.value;
-                      var pwd = document.applicationform.password.value;
-                      var p = document.applicationform.phonenumber.value;
-                      var d = document.applicationform.dateofbirth.value;
-                      var ag = document.applicationform.age.value;
-                      var g = document.applicationform.gender.value;
-                      var b = document.applicationform.doorno.value;
-                      var s = document.applicationform.streetaddress.value;
-                      var l = document.applicationform.landmark.value;
-                      var pin = document.applicationform.pincode.value;
-                      var m = document.applicationform.maritalstatus.value;
-                      var aa = document.applicationform.aadharfrontphoto.value;
-                      var ab = document.applicationform.aadharbackphoto.value;
-                      var photo = document.applicationform.photo.value;
-
-                      //Age validation
-                          var dob = new Date(d);
-                          var age = parseInt(ag);
-                          var currentDate = new Date();
-                          var ageFromDateOfBirth = currentDate.getFullYear() - dob.getFullYear();
-                        
-                      if (x != "") {
-                          if (x.length < 2) {
-                          document.getElementById("Name_error").innerHTML = "Name should be in atleast 3 characters";
-                          document.applicationform.name.focus();
-                          // alert("Name should be in atleast 4 characters");
-                          return false;
-                          } else if (x.length > 50) {
-                          document.getElementById("Name_error").innerHTML = "Name should not exceed 50 characters";
-                          document.applicationform.name.focus();
-                          // alert("Name should not exceed 50 characters");
-                          return false;
-                          } else {
-                          document.getElementById("Name_error").innerHTML = "";
-                          }
-                      } else if (x == "") {
-                          var namesms1 = "Name must be filled out";
-                          // alert("* Name must be filled out");
-                          document.getElementById("Name_error").innerHTML = namesms1;
-                          document.applicationform.name.focus();
-                          return false;
-                      }else {
-                          document.getElementById("Name_error").innerHTML = "";
-                          }
-
-                      if (y == "") {
-                          var emailsms = "Email must be filled out";
-                          // alert("email must be filled out");
-                          document.getElementById("emailid_error").innerHTML = emailsms;
-                          document.applicationform.email.focus();
-                          return false;
-                      } else if (y != "") {
-                          document.getElementById("emailid_error").innerHTML = "";
-                          /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
-                          if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(y)) {
-                          document.getElementById("emailid_error").innerHTML = "";
-                          // return (true);
-                          } else {
-                          document.getElementById("emailid_error").innerHTML = "You have entered an invalid email address";
-                          document.applicationform.email.focus();
-                          // alert("you have entered an invalid email address");
-                          return false;
-                          }
-                      }else {
-                          document.getElementById("emailid_error").innerHTML = "";
-                          }
-
-                          if (pwd == "") {
-                          var emailsms = "Password must be filled out";
-                          document.getElementById("password_error").innerHTML = emailsms;
-                          document.applicationform.password.focus();
-                          return false;
-                      } else if (pwd != "") {
-                          document.getElementById("password_error").innerHTML = "";
-                          if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(pwd)) {
-                          document.getElementById("password_error").innerHTML = "";
-                          } else {
-                          document.getElementById("password_error").innerHTML = "You have entered an invalid password";
-                          document.applicationform.password.focus();
-                          return false;
-                          }
-                      }else {
-                          document.getElementById("password_error").innerHTML = "";
-                          }
-
-                      if (p != "") {
-                          if (p.length !== 10) {
-                          document.getElementById("phonenumber_error").innerHTML = "Mobile number  must be in 10 digits";
-                          document.applicationform.phonenumber.focus();
-                          // alert("Phone number  must be in 10 digits")
-                          return false;
-                          } else if (p.length > 11) {
-                          document.getElementById("phonenumber_error").innerHTML = "Mobile number should not exceed 10 digits";
-                          document.applicationform.phonenumber.focus();
-                          // alert("phone number should not exceed 10 digits");
-                          return false;
-                          } else {
-                          document.getElementById("phonenumber_error").innerHTML = "";
-                          }
-                      } else if (p == "") {
-                          var phsms = "Mobile number must be filled out";
-                          document.getElementById("phonenumber_error").innerHTML = phsms;
-                          document.applicationform.phonenumber.focus();
-                          return false;
-                      }else {
-                          document.getElementById("phonenumber_error").innerHTML = "";
-                          }
                 
 
-                      if (d == "") {
-                          var namesms2 = "Date of birth must be filled out";
-                          document.getElementById("dob_error").innerHTML = namesms2;
-                          document.applicationform.dateofbirth.focus();
-                          return false;
-                      } else {
-                          document.getElementById("dob_error").innerHTML = "";
-                      }
+            function group() {
+            var x = document.applicationform.name.value;
+            var y = document.applicationform.email.value;
+            var p = document.applicationform.phonenumber.value;
+            var d = document.applicationform.dateofbirth.value;
+            var ag = document.applicationform.age.value;
+            var g = document.applicationform.gender.value;
+            var b = document.applicationform.doorno.value;
+            var s = document.applicationform.streetaddress.value;
+            var l = document.applicationform.landmark.value;
+            var pin = document.applicationform.pincode.value;
+            var m = document.applicationform.maritalstatus.value;
+            var aa = document.applicationform.aadharfrontphoto.value;
+            var ab = document.applicationform.aadharbackphoto.value;
+            var photo = document.applicationform.photo.value;
 
-                      if (ag == "") {
-                          var namesms2 = "Age must be filled out";
-                          document.getElementById("age_error").innerHTML = namesms2;
-                          document.applicationform.age.focus();
-                          return false;
-                          } else if (ag!= '' && age !== ageFromDateOfBirth) {
-                          document.getElementById("age_error").textContent = "Age does not match with Date of Birth and current date.";
-                          document.applicationform.age.focus();
-                          return false;
-                          } else {
-                          document.getElementById("age_error").innerHTML = "";
-                      }
+            //Age validation
+                var dob = new Date(d);
+                var age = parseInt(ag);
+                var currentDate = new Date();
+                var ageFromDateOfBirth = currentDate.getFullYear() - dob.getFullYear();
+                        
+            if (x != "") {
+                if (x.length < 2) {
+                document.getElementById("Name_error").innerHTML = "Name should be in atleast 3 characters";
+                document.applicationform.name.focus();
+                // alert("Name should be in atleast 4 characters");
+                return false;
+                } else if (x.length > 50) {
+                document.getElementById("Name_error").innerHTML = "Name should not exceed 50 characters";
+                document.applicationform.name.focus();
+                // alert("Name should not exceed 50 characters");
+                return false;
+                } else {
+                document.getElementById("Name_error").innerHTML = "";
+                }
+            } else if (x == "") {
+                var namesms1 = "Name must be filled out";
+                // alert("* Name must be filled out");
+                document.getElementById("Name_error").innerHTML = namesms1;
+                document.applicationform.name.focus();
+                return false;
+            }else {
+                document.getElementById("Name_error").innerHTML = "";
+                }
 
-                      if (g == "") {
-                          var namesms2 = "Gender must be filled out";
-                          document.getElementById("gender_error").innerHTML = namesms2;
-                          document.applicationform.gender.focus();
-                          return false;
-                      } else {
-                          document.getElementById("gender_error").innerHTML = "";
-                      }
+            if (y == "") {
+                var emailsms = "Email must be filled out";
+                // alert("email must be filled out");
+                document.getElementById("emailid_error").innerHTML = emailsms;
+                document.applicationform.email.focus();
+                return false;
+            } else if (y != "") {
+                document.getElementById("emailid_error").innerHTML = "";
+                /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(y)) {
+                document.getElementById("emailid_error").innerHTML = "";
+                // return (true);
+                } else {
+                document.getElementById("emailid_error").innerHTML = "You have entered an invalid email address";
+                document.applicationform.email.focus();
+                // alert("you have entered an invalid email address");
+                return false;
+                }
+            }else {
+                document.getElementById("emailid_error").innerHTML = "";
+                }
 
-                      if (b == "") {
-                          var namesms2 = "Door no & Building name must be filled out";
-                          document.getElementById("doorno_error").innerHTML = namesms2;
-                          document.applicationform.doorno.focus();
-                          return false;
-                      } else {
-                          document.getElementById("doorno_error").innerHTML = "";
+            if (p != "") {
+                if (p.length !== 10) {
+                document.getElementById("phonenumber_error").innerHTML = "Mobile number  must be in 10 digits";
+                document.applicationform.phonenumber.focus();
+                // alert("Phone number  must be in 10 digits")
+                return false;
+                } else if (p.length > 11) {
+                document.getElementById("phonenumber_error").innerHTML = "Mobile number should not exceed 10 digits";
+                document.applicationform.phonenumber.focus();
+                // alert("phone number should not exceed 10 digits");
+                return false;
+                } else {
+                document.getElementById("phonenumber_error").innerHTML = "";
+                }
+            } else if (p == "") {
+                var phsms = "Mobile number must be filled out";
+                document.getElementById("phonenumber_error").innerHTML = phsms;
+                document.applicationform.phonenumber.focus();
+                return false;
+            }else {
+                document.getElementById("phonenumber_error").innerHTML = "";
+                }
+                
 
-                      }
+            if (d == "") {
+                var namesms2 = "Date of birth must be filled out";
+                document.getElementById("dob_error").innerHTML = namesms2;
+                document.applicationform.dateofbirth.focus();
+                return false;
+            } else {
+                document.getElementById("dob_error").innerHTML = "";
+            }
 
-                      if (s == "") {
-                          var namesms2 = "Street Address must be filled out";
-                          document.getElementById("streetaddress_error").innerHTML = namesms2;
-                          document.applicationform.streetaddress.focus();
-                          return false;
-                      } else {
-                          document.getElementById("streetaddress_error").innerHTML = "";
-                      }
+            if (ag == "") {
+                var namesms2 = "Age must be filled out";
+                document.getElementById("age_error").innerHTML = namesms2;
+                document.applicationform.age.focus();
+                return false;
+                } else if (ag!= '' && age !== ageFromDateOfBirth) {
+                document.getElementById("age_error").textContent = "Age does not match with Date of Birth and current date.";
+                document.applicationform.age.focus();
+                return false;
+                } else {
+                document.getElementById("age_error").innerHTML = "";
+            }
 
-                      if (l == "") {
-                          var namesms2 = "Landmark must be filled out";
-                          document.getElementById("landmark_error").innerHTML = namesms2;
-                          document.applicationform.landmark.focus();
-                          return false;
-                      } else {
-                          document.getElementById("landmark_error").innerHTML = "";
-                      }
+            if (g == "") {
+                var namesms2 = "Gender must be filled out";
+                document.getElementById("gender_error").innerHTML = namesms2;
+                document.applicationform.gender.focus();
+                return false;
+            } else {
+                document.getElementById("gender_error").innerHTML = "";
+            }
 
-                      if (pin != "") {
-                          if (pin.length !== 6) {
-                          document.getElementById("pincode_error").innerHTML = "Pincode  must be in 6 digits";
-                          document.applicationform.pincode.focus();
-                          return false;
-                          } else if (pin.length > 6) {
-                          document.getElementById("pincode_error").innerHTML = "Pincode should not exceed 6 digits";
-                          document.applicationform.pincode.focus();
-                          return false;
-                          } else {
-                          document.getElementById("pincode_error").innerHTML = "";
-                          }
-                      } else if (pin == "") {
-                          var pincode = "Pincode must be filled out";
-                          document.getElementById("pincode_error").innerHTML = pincode;
-                          document.applicationform.pincode.focus();
-                          return false;
-                      }else {
-                          document.getElementById("pincode_error").innerHTML = "";
-                          }
+            if (b == "") {
+                var namesms2 = "Door no & Building name must be filled out";
+                document.getElementById("doorno_error").innerHTML = namesms2;
+                document.applicationform.doorno.focus();
+                return false;
+            } else {
+                document.getElementById("doorno_error").innerHTML = "";
 
-                      if (m == "") {
-                          var namesms2 = "Marital status must be filled out";
-                          document.getElementById("maritalstatus_error").innerHTML = namesms2;
-                          document.applicationform.maritalstatus.focus();
-                          return false;
-                      } else {
-                          document.getElementById("maritalstatus_error").innerHTML = "";
-                      }
+            }
 
-                      if (aa == "" && document.getElementById('existfileaf').style.display == "none") {
-                          var namesms2 = "Aadhaar Front Photo must be uploaded";
-                          document.getElementById("aadharfrontphoto_error").innerHTML = namesms2;
-                          document.applicationform.aadharfrontphoto.focus();
-                          return false;
-                      } else {
-                          document.getElementById("aadharfrontphoto_error").innerHTML = "";
-                      }
+            if (s == "") {
+                var namesms2 = "Street Address must be filled out";
+                document.getElementById("streetaddress_error").innerHTML = namesms2;
+                document.applicationform.streetaddress.focus();
+                return false;
+            } else {
+                document.getElementById("streetaddress_error").innerHTML = "";
+            }
 
-                      if (ab == "" && document.getElementById('existfileab').style.display == "none") {
-                          var namesms2 = "Aadhaar Back Photo must be uploaded";
-                          document.getElementById("aadharbackphoto_error").innerHTML = namesms2;
-                          document.applicationform.aadharbackphoto.focus();
-                          return false;
-                      } else {
-                          document.getElementById("aadharbackphoto_error").innerHTML = "";
-                      }
+            if (l == "") {
+                var namesms2 = "Landmark must be filled out";
+                document.getElementById("landmark_error").innerHTML = namesms2;
+                document.applicationform.landmark.focus();
+                return false;
+            } else {
+                document.getElementById("landmark_error").innerHTML = "";
+            }
 
-                      if (photo == "" && document.getElementById('existfilepp').style.display == "none") {
-                          var namesms2 = "Photo must be uploaded";
-                          document.getElementById("photo_error").innerHTML = namesms2;
-                          document.applicationform.photo.focus();
-                          return false;
-                      } else {
-                          document.getElementById("photo_error").innerHTML = "";
-                      }
+            if (pin != "") {
+                if (pin.length !== 6) {
+                document.getElementById("pincode_error").innerHTML = "Pincode  must be in 6 digits";
+                document.applicationform.pincode.focus();
+                return false;
+                } else if (pin.length > 6) {
+                document.getElementById("pincode_error").innerHTML = "Pincode should not exceed 6 digits";
+                document.applicationform.pincode.focus();
+                return false;
+                } else {
+                document.getElementById("pincode_error").innerHTML = "";
+                }
+            } else if (pin == "") {
+                var pincode = "Pincode must be filled out";
+                document.getElementById("pincode_error").innerHTML = pincode;
+                document.applicationform.pincode.focus();
+                return false;
+            }else {
+                document.getElementById("pincode_error").innerHTML = "";
+                }
 
-                      }
+            if (m == "") {
+                var namesms2 = "Marital status must be filled out";
+                document.getElementById("maritalstatus_error").innerHTML = namesms2;
+                document.applicationform.maritalstatus.focus();
+                return false;
+            } else {
+                document.getElementById("maritalstatus_error").innerHTML = "";
+            }
 
-                      </script>
+            if (aa == "" && document.getElementById('existfileaf').style.display == "none") {
+                var namesms2 = "Aadhaar Front Photo must be uploaded";
+                document.getElementById("aadharfrontphoto_error").innerHTML = namesms2;
+                document.applicationform.aadharfrontphoto.focus();
+                return false;
+            } else {
+                document.getElementById("aadharfrontphoto_error").innerHTML = "";
+            }
+
+            if (ab == "" && document.getElementById('existfileab').style.display == "none") {
+                var namesms2 = "Aadhaar Back Photo must be uploaded";
+                document.getElementById("aadharbackphoto_error").innerHTML = namesms2;
+                document.applicationform.aadharbackphoto.focus();
+                return false;
+            } else {
+                document.getElementById("aadharbackphoto_error").innerHTML = "";
+            }
+
+            if (photo == "" && document.getElementById('existfilepp').style.display == "none") {
+                var namesms2 = "Photo must be uploaded";
+                document.getElementById("photo_error").innerHTML = namesms2;
+                document.applicationform.photo.focus();
+                return false;
+            } else {
+                document.getElementById("photo_error").innerHTML = "";
+            }
+
+            }
+
+            </script>
 
                                   <?php
         } elseif ($method == "educationTable") {
