@@ -315,7 +315,7 @@ public function checkUserExistence($phone_number)
         AND spf.employmentVerify = '1'
          AND spf.identityVerify = '1'
           AND spf.deleteStatus = '0'
-           GROUP BY spf.id, spf.name, saoi.experience;";
+           GROUP BY spf.id, spf.name;";
     $result = $this->db->query($query);
     return $result->result_array();
   }
