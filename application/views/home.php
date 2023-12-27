@@ -11,14 +11,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha384-0lG3cFw5FvJ8uBpWGpj4MlOOwDlelpzcvr7n3D5y/A8sPk5L4fhFV+XDI7KC5F5q" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha384-0lG3cFw5FvJ8uBpWGpj4MlOOwDlelpzcvr7n3D5y/A8sPk5L4fhFV+XDI7KC5F5q" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <!-- Google Fonts -->
-
   <!-- Template Main CSS File -->
   <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
 
@@ -1154,7 +1155,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                       <div class="card">
-                        <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special3.png" ?>">
+                        <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special3.jpg" ?>">
                         <div class="card-body">
                           <h4 class="card-title"><b>Special title treatment</b></h4>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.
@@ -1182,7 +1183,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                       <div class="card">
-                        <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special53.jpg" ?>">
+                        <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special5.jpg" ?>">
                         <div class="card-body">
                           <h4 class="card-title"><b>Special title treatment</b></h4>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.
@@ -1229,7 +1230,7 @@
           <div class="col-md-4 mb-3">
             <div class="card">
               <image class="img-fluid" alt=""
-                src="<?php echo baseUrl . "assets/cute-schoolgirl-reading-book-surrounded-by-wisdom-generated-by-ai.jpg" ?>">
+                src="<?php echo baseUrl . "assets/special1.jpg" ?>">
                 <div class="card-body">
                   <h4 class="card-title"><b>Special title treatment</b></h4>
                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1244,7 +1245,7 @@
         <div class="carousel-item">
           <div class="card">
             <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/man-search-hiring-job-online-from-laptop_1150-52728.jpg" ?>">
+              src="<?php echo baseUrl . "assets/special2.jpg" ?>">
               <div class="card-body">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1256,7 +1257,7 @@
         <div class="carousel-item">
           <div class="card">
             <image class="img-fluid" alt="100%x280"
-              src="<?php echo baseUrl . "assets/smiley-pregnant-woman-holding-clipboard-pointing-up-with-copy-space_23-2148765097.jpg" ?>">
+              src="<?php echo baseUrl . "assets/special3.jpg" ?>">
               <div class="card-body">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1269,7 +1270,7 @@
         <div class="carousel-item">
           <div class="card">
             <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/old-fashioned-clock-antique-desk-reminds-studying-generated-by-ai_24640-90145.jpg" ?>">
+              src="<?php echo baseUrl . "assets/special4.jpg" ?>">
               <div class="card-body">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1281,7 +1282,7 @@
         <div class="carousel-item">
           <div class="card">
             <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/young-woman-reading-textbook-home-library-generated-by-ai_188544-26814.jpg" ?>">
+              src="<?php echo baseUrl . "assets/special5.jpg" ?>">
               <div class="card-body">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1293,7 +1294,7 @@
         <div class="carousel-item">
           <div class="card">
             <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/graduation-cap-sits-top-stack-books_188544-38727.jpg" ?>">
+              src="<?php echo baseUrl . "assets/special6.jpg" ?>">
               <div class="card-body">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1327,15 +1328,18 @@
 
       <!-- Right -->
       <div class="me-md-5">
-        <a href="https://www.facebook.com/Arram.2019?mibextid=ZbWKwL" class="me-4 link-secondary">
-          <i class="fab fa-facebook-f" style="color: white;"></i>
+        <a href="https://www.facebook.com/Arram.2019?mibextid=ZbWKwL" class="me-4 link-secondary" target="_blank">
+          <!-- <i class="fab fa-facebook-f" style="color: white;"></i> -->
+          <i class="fa-brands fa-facebook-f" style="color: white;"></i>
         </a>
-        <a href="https://www.youtube.com/@arramcharitytrust" class="me-4 link-secondary">
-          <i class="fab fa-youtube" style="color: white;"></i>
+        <a href="https://www.youtube.com/@arramcharitytrust" class="me-4 link-secondary" target="_blank">
+          <!-- <i class="fab fa-youtube" style="color: white;"></i> -->
+          <i class="fa-brands fa-youtube" style="color: white;"></i>
         </a>
         <a href="https://www.instagram.com/arramcharitytrust/?utm_source=qr&igshid=ZDc4ODBmNjlmNQ%3D%3D"
-          class="me-4 link-secondary">
-          <i class="fab fa-instagram" style="color: white;"></i>
+          class="me-4 link-secondary" target="_blank">
+          <!-- <i class="fab fa-instagram" style="color: white;"></i> -->
+          <i class="fa-brands fa-instagram" style="color: white;"></i>
         </a>
       </div>
       <!-- Right -->

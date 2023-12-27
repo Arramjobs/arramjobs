@@ -644,7 +644,7 @@ class CandidateModel extends CI_Model
         $add = array(
             'seekerId' => $seekerId,
             'skill' => $post['skillname'],
-            'experience' => $post['skillexperience'],
+            'experience' => $post['experience'],
             // 'expMonth' => $post['skillexperience'],
             'skill_level' => $post['skilllevel']
         );

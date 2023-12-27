@@ -276,7 +276,7 @@
 
                         // if (isset($experienceTable['totalRows']) > 0) {
                         ?>
-                             <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">
+                             <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">                    
                              <?php
                       } else {
                         ?>
@@ -534,7 +534,7 @@
                                           <label for="aadharfrontphoto" class="form-label">Aadhaar Front Photo <span class="text-danger">*</span></label>
                                           <input type="text" class="form-control"  name="oldaadharfront" value="<?php echo $value['aadharfront_filename']; ?>" hidden>
                                             <input type="file" class="form-control" id="aadharfrontphoto" name="aadharfrontphoto"
-                                        accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
+                                        accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden required>
                                           <div class="uploadedfile" style="display:flex;">
                                         <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control" style="cursor:pointer">Choose File</label>
                                         <a href="<?php echo $value['aadhar_front']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileaf">
@@ -546,7 +546,7 @@
                                            <div class="col-md-6">
                                            <label for="aadharbackphoto" class="form-label">Aadhaar Back Photo <span class="text-danger">*</span></label>
                                            <input type="text" class="form-control"  name="oldaadharback" value="<?php echo $value['aadharback_filename']; ?>" hidden>
-                                          <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
+                                          <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden required>
                                           <div class="uploadedfile" style="display:flex;">
                                           <label id="file-input-labelab" for="aadharbackphoto" class="form-control"  style="cursor:pointer">Choose File</label>  
                                           <a href="<?php echo $value['aadhar_back']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileab" ><?php echo $value['aadharback_filename']; ?></a>
@@ -557,7 +557,7 @@
                                           <div class="col-md-6">
                                           <label for="photo" class="form-label">Photo <span class="text-danger">*</span></label>
                                           <input type="text" class="form-control"  name="oldprofilephoto" value="<?php echo $value['photo_filename']; ?>" hidden>
-                                          <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden>
+                                          <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden required>
                                           <div class="uploadedfile" style="display:flex;">
                                           <label id="file-input-labelpp" for="photo" class="form-control" style="cursor:pointer">Choose File</label>  
                                           <a href="<?php echo $value['photo']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfilepp" ><?php echo $value['photo_filename']; ?></a>
@@ -3139,7 +3139,7 @@
            
                      <h5 class="card-title">Experience Table<span></span></h5>
                      <a class="" href="#addexpform"><button type="button" class="btn btn-success m-2" disabled>+ Add Experience</button></a>
-                    <div style="float:right;>
+                    <div style="float:right;">
                             <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> Previous</button></a>
                     <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next <i class="bi bi-arrow-right"></i></button></a>
                     </div>
@@ -3784,8 +3784,8 @@
 
                                     <!-- <div class="col-md-6">
                             <label class="form-label" for="experience">Experience</label>
-                            <input type="text" class="form-control" name="skillexperience" id="skillexperience" placeholder="Enter skill experience" required>
-                            <select class="form-control" name="skillexperience" id="skillexperience" required>
+                            <input type="text" class="form-control" name="experience" id="experience" placeholder="Enter skill experience" required>
+                            <select class="form-control" name="experience" id="experience" required>
                 <option value="">Select Experience</option>
                 <option value="fresher">Fresher</option>
                 <option value="0-2">0-2 years</option>
@@ -3799,9 +3799,9 @@
 
                                     <div class="col-md-6">
                           <div class="experience-container">
-                      <label for="skillexperience" class="form-label">Experience</label>
+                      <label for="experience" class="form-label">Experience</label>
                       <div class="d-flex">
-                      <select class="form-control" id="skillexperience" name="skillexperience" required>
+                      <select class="form-control" id="experience" name="experience" required>
                       <option value=""> Select year </option>
                           <?php for ($i = 0; $i <= 20; $i++): ?>
                   
@@ -3841,7 +3841,7 @@
                           <script>
                         function validateSkillForm(){
                           var sname = document.getElementById("skillname").value;
-                          var sexp = document.getElementById("skillexperience").value;
+                          var sexp = document.getElementById("experience").value;
                           var slevel = document.getElementById("skilllevel").value;
 
                           clearErrorMessages();
@@ -4154,8 +4154,8 @@
 
                                     <!-- <div class="col-md-6">
                             <label class="form-label" for="experience">Experience</label>
-                            <input type="text" class="form-control" name="skillexperience" id="skillexperience" placeholder="Enter skill experience" required>
-                            <select class="form-control" name="skillexperience" id="skillexperience" required>
+                            <input type="text" class="form-control" name="experience" id="experience" placeholder="Enter skill experience" required>
+                            <select class="form-control" name="experience" id="experience" required>
                 <option value="">Select Experience</option>
                 <option value="fresher">Fresher</option>
                 <option value="0-2">0-2 years</option>
@@ -4169,9 +4169,9 @@
 
                                     <div class="col-md-6">
                           <div class="experience-container">
-                      <label for="skillexperience" class="form-label">Experience</label>
+                      <label for="experience" class="form-label">Experience</label>
                       <div class="d-flex">
-                      <select class="form-control" id="skillexperience" name="skillexperience" required>
+                      <select class="form-control" id="experience" name="experience" required>
                       <option value=""> Select year </option>
                           <?php for ($i = 0; $i <= 20; $i++): ?>
                   
@@ -4212,7 +4212,7 @@
                       <script>
                         function validateSkillForm(){
                           var sname = document.getElementById("skillname").value;
-                          var sexp = document.getElementById("skillexperience").value;
+                          var sexp = document.getElementById("experience").value;
                           var slevel = document.getElementById("skilllevel").value;
 
                           clearErrorMessages();
@@ -4630,8 +4630,8 @@
 
                                                <!-- <div class="col-md-6">
                             <label class="form-label" for="experience">Experience</label>
-                            <input type="text" class="form-control" name="skillexperience" id="skillexperience" value="<?php echo $value['experience']; ?>" required >
-                            <select class="form-control" name="skillexperience" id="skillexperience" required>
+                            <input type="text" class="form-control" name="experience" id="experience" value="<?php echo $value['experience']; ?>" required >
+                            <select class="form-control" name="experience" id="experience" required>
                                <option value="fresher" <?php if ($value['experience'] === 'fresher')
                                  echo ' selected'; ?>>Fresher</option>
                                <option value="0-2" <?php if ($value['experience'] === '0-2')
@@ -4698,7 +4698,7 @@
                                                  <script>
                                  function validateSkillForm(){
                                               var sname = document.getElementById("skillname").value;
-                                              var sexp = document.getElementById("skillexperience").value;
+                                              var sexp = document.getElementById("experience").value;
                                               var slevel = document.getElementById("skilllevel").value;
 
                                               clearErrorMessages();
