@@ -39,8 +39,9 @@
             <section>
                 <div class="my-5 py-md-5 text-center">
                     <img class="img-fluid" src="<?php echo baseUrl . "assets/employee_registered.png" ?>" alt="Thanks">
-                    <p>Your registration is successful and is in working process. Please wait...</p>
-                    <p>Use the registered mobile number to <a href="<?php echo baseUrl . "Employer/login" ?>">Login</a>.</p>
+                    <p>Thanks for your registration details!</p>
+                    <p>The approval  for  your login is under process. Please wait ……</p>
+                   <!-- <p>Use the registered mobile number to <a href="<?php echo baseUrl . "Employer/login" ?>">Login</a>.</p> -->
                     </div>
             </section>
 
