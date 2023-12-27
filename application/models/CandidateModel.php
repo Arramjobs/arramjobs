@@ -650,7 +650,7 @@ class CandidateModel extends CI_Model
         $add = array(
             'seekerId' => $seekerId,
             'skill' => $post['skillname'],
-            'skillexperience' => $post['experience'],
+            'experience' => $post['experience'],
             // 'expMonth' => $post['skillexperience'],
             'skill_level' => $post['skilllevel']
         );
@@ -673,7 +673,7 @@ class CandidateModel extends CI_Model
         $areaOfIntrest = $post['id'];
         $updateInsertSkill = array(
             'skill' => $post['skillname'],
-            'skillexperience' => $post['experience'],
+            'experience' => $post['experience'],
             'skill_level' => $post['skilllevel']
         );
 
