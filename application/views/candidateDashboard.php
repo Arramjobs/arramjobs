@@ -534,7 +534,7 @@
                                           <label for="aadharfrontphoto" class="form-label">Aadhaar Front Photo <span class="text-danger">*</span></label>
                                           <input type="text" class="form-control"  name="oldaadharfront" value="<?php echo $value['aadharfront_filename']; ?>" hidden>
                                             <input type="file" class="form-control" id="aadharfrontphoto" name="aadharfrontphoto"
-                                        accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
+                                        accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden required>
                                           <div class="uploadedfile" style="display:flex;">
                                         <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control" style="cursor:pointer">Choose File</label>
                                         <a href="<?php echo $value['aadhar_front']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileaf">
@@ -546,7 +546,7 @@
                                            <div class="col-md-6">
                                            <label for="aadharbackphoto" class="form-label">Aadhaar Back Photo <span class="text-danger">*</span></label>
                                            <input type="text" class="form-control"  name="oldaadharback" value="<?php echo $value['aadharback_filename']; ?>" hidden>
-                                          <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
+                                          <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden required>
                                           <div class="uploadedfile" style="display:flex;">
                                           <label id="file-input-labelab" for="aadharbackphoto" class="form-control"  style="cursor:pointer">Choose File</label>  
                                           <a href="<?php echo $value['aadhar_back']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileab" ><?php echo $value['aadharback_filename']; ?></a>
@@ -557,7 +557,7 @@
                                           <div class="col-md-6">
                                           <label for="photo" class="form-label">Photo <span class="text-danger">*</span></label>
                                           <input type="text" class="form-control"  name="oldprofilephoto" value="<?php echo $value['photo_filename']; ?>" hidden>
-                                          <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden>
+                                          <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden required>
                                           <div class="uploadedfile" style="display:flex;">
                                           <label id="file-input-labelpp" for="photo" class="form-control" style="cursor:pointer">Choose File</label>  
                                           <a href="<?php echo $value['photo']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfilepp" ><?php echo $value['photo_filename']; ?></a>
@@ -696,7 +696,8 @@
                               }
                           });
 
-                
+                </script>
+                <script>
 
                       function group() {
                       var x = document.applicationform.name.value;
@@ -4061,7 +4062,7 @@ window.onload = function() {
                                                      <tr>
                                                      <td><?php echo $count++ ?>.</td>
                                                      <td><?php echo $value['skill'] ?></td>
-                                                     <td><?php echo $value['skillexperience'] ?> Years</td>
+                                                     <td><?php echo $value['experience'] ?> Years</td>
                                                      <td><?php echo $value['skill_level'] ?></td> 
                                                      <td>
                                                      <div class="d-flex">
@@ -4121,9 +4122,9 @@ window.onload = function() {
 
                                     <div class="col-md-6">
                           <div class="experience-container">
-                      <label for="skillexperience" class="form-label">Experience</label>
+                      <label for="experience" class="form-label">Experience</label>
                       <div class="d-flex">
-                      <select class="form-control" id="skillexperience" name="skillexperience" required>
+                      <select class="form-control" id="experience" name="experience" required>
                       <option value=""> Select year </option>
                           <?php for ($i = 0; $i <= 20; $i++): ?>
                   
@@ -4163,7 +4164,7 @@ window.onload = function() {
                           <script>
                         function validateSkillForm(){
                           var sname = document.getElementById("skillname").value;
-                          var sexp = document.getElementById("skillexperience").value;
+                          var sexp = document.getElementById("experience").value;
                           var slevel = document.getElementById("skilllevel").value;
 
                           clearErrorMessages();
@@ -4491,9 +4492,9 @@ window.onload = function() {
 
                                     <div class="col-md-6">
                           <div class="experience-container">
-                      <label for="skillexperience" class="form-label">Experience</label>
+                      <label for="experience" class="form-label">Experience</label>
                       <div class="d-flex">
-                      <select class="form-control" id="skillexperience" name="skillexperience" required>
+                      <select class="form-control" id="experience" name="experience" required>
                       <option value=""> Select year </option>
                           <?php for ($i = 0; $i <= 20; $i++): ?>
                   
@@ -4534,7 +4535,7 @@ window.onload = function() {
                       <script>
                         function validateSkillForm(){
                           var sname = document.getElementById("skillname").value;
-                          var sexp = document.getElementById("skillexperience").value;
+                          var sexp = document.getElementById("experience").value;
                           var slevel = document.getElementById("skilllevel").value;
 
                           clearErrorMessages();
@@ -4902,7 +4903,7 @@ window.onload = function() {
                                 <tr>
                                 <td><?php echo $count++ ?>.</td>
                                 <td><?php echo $value['skill'] ?></td>
-                                <td><?php echo $value['skillexperience'] ?> Years</td>
+                                <td><?php echo $value['experience'] ?> Years</td>
                                 <td><?php echo $value['skill_level'] ?></td> 
                                 <td>
                                 <div class="d-flex">
@@ -4973,16 +4974,16 @@ window.onload = function() {
 
                                  <div class="col-md-6">
                                 <div class="experience-container">
-                                               <label for="skillexperience" class="form-label">Experience</label>
+                                               <label for="experience" class="form-label">Experience</label>
                                                <div class="d-flex">
-                                               <select class="form-control col-3 me-2" id="skillexperience" name="skillexperience" required>
-                                               <?php $selectedValue = $value['skillexperience'];
+                                               <select class="form-control col-3 me-2" id="experience" name="experience" required>
+                                               <?php $selectedValue = $value['experience'];
                                                for ($i = 0; $i <= 20; $i++): ?>
                                                        <option value="<?php echo $i; ?>" <?php echo ($i == $selectedValue) ? 'selected' : ''; ?>>
                                       <?php echo $i; ?> Year<?php echo ($i !== 1) ? 's' : ''; ?>
                                                        </option>
                                                <?php endfor; ?>
-                                               <option value="20+" <?php if ($value['skillexperience'] === '20+')
+                                               <option value="20+" <?php if ($value['experience'] === '20+')
                                                  echo ' selected'; ?>>20+ Years</option>
                                                  </select>
                                 </div>
@@ -5020,7 +5021,7 @@ window.onload = function() {
                                                  <script>
                                  function validateSkillForm(){
                                               var sname = document.getElementById("skillname").value;
-                                              var sexp = document.getElementById("skillexperience").value;
+                                              var sexp = document.getElementById("experience").value;
                                               var slevel = document.getElementById("skilllevel").value;
 
                                               clearErrorMessages();
@@ -5443,7 +5444,7 @@ window.onload = function() {
                               <tr>
                                 <td><?php echo $loopcount; ?>.</td>
                                 <td><?php echo $svalue['skill'] ?></td>
-                                <td><?php echo $svalue['skillexperience'] ?></td>
+                                <td><?php echo $svalue['experience'] ?></td>
                                 <td><?php echo $svalue['skill_level'] ?></td>
                               </tr>
                                 <?php
