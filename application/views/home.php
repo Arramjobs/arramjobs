@@ -32,9 +32,9 @@
   /* * {
     font-family: montserrat;
   } */
- html{
-        scroll-padding-top:120px;
-      }
+  html {
+    scroll-padding-top: 120px;
+  }
 
   * {
     margin: 0;
@@ -307,7 +307,7 @@
     text-align: left;
   }
 
-    /* Recent-posts Section - Home Page
+  /* Recent-posts Section - Home Page
 ------------------------------*/
   .recent-posts article {
     box-shadow: 0 4px 16px rgba(var(--default-color-rgb), 0.1);
@@ -369,70 +369,107 @@
     font-size: 18px;
   }
 
-  .recent-posts .card:hover {
+  /* .recent-posts .cards:hover {
     transform: scale(1.1);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
     transition: 0.5s;
     cursor: default;
-  }
+  } */
 
-  .recent-posts .card {
+  /* .recent-posts .card {
     padding-bottom: 430px;
+  } */
+
+  .scroll-container {
+    /* display: flex; */
+    align-items: center;
+    /* height: 10vh; */
+    overflow: hidden;
+    padding: 10px 0px;
+    background: white;
+    white-space: nowrap;
+    position: relative;
   }
 
-.scroll-container {
-  /* display: flex; */
-  align-items: center;
-  /* height: 10vh; */
-  overflow: hidden;
-  padding: 10px 0px;
-  background: white;
-  white-space: nowrap;
-  position: relative;
-}
-
-.scroll:hover .RightToLeft {
-  animation-play-state: paused;
-  cursor: pointer;
-}
-
-.scroll {
-  white-space: nowrap;
-  margin: 0.5em 6em;
-  padding: 2px 0px;
-}
-
-.scroll div {
-  display: flex;
-  gap: 3em;
-}
-
-.scroll p {
-  font-size: 1.2em; 
-  display: inline-block;
-  color: black;
-  /* font-weight: bold; */
-  margin-bottom: 0;
-  /* line-height: 2px; */
-  text-decoration: none;
-  
-}
-
-.RightToLeft {
-  display: inline-block;
-  white-space: nowrap;
-  animation: RightToLeft 15s linear infinite;
-  text-decoration: none;
-}
-
-@keyframes  RightToLeft {
-  0% {
-    transform: translateX(0%);
+  .scroll:hover .RightToLeft {
+    animation-play-state: paused;
+    cursor: pointer;
   }
-  100% {
-    transform: translateX(-100%);
+
+  .scroll {
+    white-space: nowrap;
+    /* margin: 0.5em 6em; */
+    padding: 2px 0px;
   }
-}
+
+  .scroll div {
+    display: flex;
+    gap: 3em;
+  }
+
+  .scroll p {
+    font-size: 1.2em;
+    display: inline-block;
+    color: black;
+    /* font-weight: bold; */
+    margin-bottom: 0;
+    /* line-height: 2px; */
+    text-decoration: none;
+
+  }
+
+  .RightToLeft {
+    display: inline-block;
+    white-space: nowrap;
+    animation: RightToLeft 10s linear infinite;
+    text-decoration: none;
+  }
+
+  @keyframes RightToLeft {
+    0% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+
+ .scroll-container {
+    overflow: hidden;
+    background: white;
+  }
+
+  .scroll {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .RightToLeft {
+    display: inline-block;
+    white-space: nowrap;
+    animation: RightToLeft 15s linear infinite; /* Adjust the duration as needed */
+  }
+
+  .RightToLeft a {
+    display: inline-block;
+    padding: 0 1em; /* Adjust the spacing between items */
+    color: black;
+    text-decoration: none;
+  }
+
+  @keyframes RightToLeft {
+    0% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
 
   @media only screen and (max-width:991px) {
 
@@ -444,7 +481,7 @@
       border-right: none;
     }
 
-     .card-sec {
+    .card-sec {
       margin-top: 20px;
     }
   }
@@ -489,6 +526,7 @@
       div.about-img-img {
         order: 1;
       }
+
       .wrapper .card-text {
         overflow: hidden;
       }
@@ -604,16 +642,15 @@
       padding-top: 50px;
     } */
 
-    scroll-container {
-  padding: 5px 0px;
-}
+    .scroll-container {
+      padding: 5px 0px;
+    }
 
-.RightToLeft {
-  animation: RightToLeft 4s linear infinite;
-}
+    .RightToLeft {
+      animation: RightToLeft 10s linear infinite;
+    }
+     
   }
-
-
 </style>
 
 <body>
@@ -723,63 +760,75 @@
     </div>
 
     <!-- Home page scroll -->
- 
-  <div class="scroll-container">
-    <div class="scroll">
-    
-      <div class="RightToLeft">
-      <a href="#accessid" style="text-decoration: none;" onclick="highlightContent('accessid')">
-        <p><i class="bi bi-phone" style="display:block;"><b> Mobile Accessibility </b></i></p></a>
 
-      <a href="#accredit" style="text-decoration: none;" onclick="highlightContent('accredit')">
-        <p><i class="bi bi-book-fill">  <b>Accredited</b></i></p></a>
+    <div class="scroll-container">
+      <div class="scroll">
 
-      <a href="#interface" style="text-decoration: none;" onclick="highlightContent('interface')">
-        <p><i class="bi bi-laptop-fill"> <b>User-friendly Interface</b></i></p></a>
+        <div class="RightToLeft" id="scrollContent">
+          <a href="#accessid" style="text-decoration: none;" onclick="highlightContent('accessid')">
+            <p><i class="bi bi-phone" style="display:block;"><b> Mobile Accessibility </b></i></p>
+          </a>
 
-      <a href="#jobid" style="text-decoration: none;" onclick="highlightContent('jobid')">
-        <p><i class="bi bi-subtract">  <b>Extensive Job opportunities</b></i></p></a>
+          <a href="#accredit" style="text-decoration: none;" onclick="highlightContent('accredit')">
+            <p><i class="bi bi-book-fill"> <b>Accredited</b></i></p>
+          </a>
 
-      <a href="#quickresponse" style="text-decoration: none;" onclick="highlightContent('quickresponse')">
-        <p><i class="bi bi-shield-shaded"> <b>Quick Response</b></i></p></a>
+          <a href="#interface" style="text-decoration: none;" onclick="highlightContent('interface')">
+            <p><i class="bi bi-laptop-fill"> <b>User-friendly Interface</b></i></p>
+          </a>
 
-      <a href="#search" style="text-decoration: none;" onclick="highlightContent('search')">
-        <p><i class="bi bi-tablet-landscape"> <b>Advanced search and filtering</b></i></p></a>
+          <a href="#jobid" style="text-decoration: none;" onclick="highlightContent('jobid')">
+            <p><i class="bi bi-subtract"> <b>Extensive Job opportunities</b></i></p>
+          </a>
 
-      <a href="#accessid" style="text-decoration: none;" onclick="highlightContent('accessid')">
-        <p><i class="bi bi-phone">  <b>Mobile Accessibility</b></i></p></a>
+          <a href="#quickresponse" style="text-decoration: none;" onclick="highlightContent('quickresponse')">
+            <p><i class="bi bi-shield-shaded"> <b>Quick Response</b></i></p>
+          </a>
 
-      <a href="#accredit" style="text-decoration: none;" onclick="highlightContent('accredit')">
-        <p><i class="bi bi-book-fill"> <b>Accredited</b></i></p></a>
+          <a href="#search" style="text-decoration: none;" onclick="highlightContent('search')">
+            <p><i class="bi bi-tablet-landscape"> <b>Advanced search and filtering</b></i></p>
+          </a>
 
-      <a href="#interface" style="text-decoration: none;" onclick="highlightContent('interface')">
-        <p><i class="bi bi-laptop-fill">  <b>User-friendly Interface</b></i></p></a>
+          <!-- <a href="#accessid" style="text-decoration: none;" onclick="highlightContent('accessid')">
+            <p><i class="bi bi-phone"> <b>Mobile Accessibility</b></i></p>
+          </a>
 
-      <a href="#jobid" style="text-decoration: none;" onclick="highlightContent('jobid')">
-        <p><i class="bi bi-subtract">  <b>Extensive Job opportunities</b></i></p></a>
+          <a href="#accredit" style="text-decoration: none;" onclick="highlightContent('accredit')">
+            <p><i class="bi bi-book-fill"> <b>Accredited</b></i></p>
+          </a>
 
-      <a href="#quickresponse" style="text-decoration: none;" onclick="highlightContent('quickresponse')">
-        <p><i class="bi bi-shield-shaded"><b> Quick Response</b></i></p></a>
+          <a href="#interface" style="text-decoration: none;" onclick="highlightContent('interface')">
+            <p><i class="bi bi-laptop-fill"> <b>User-friendly Interface</b></i></p>
+          </a>
 
-      <a href="#search" style="text-decoration: none;" onclick="highlightContent('search')">
-        <p> <i class="bi bi-tablet-landscape"><b> Advanced search and filtering</b></i></p></a>
+          <a href="#jobid" style="text-decoration: none;" onclick="highlightContent('jobid')">
+            <p><i class="bi bi-subtract"> <b>Extensive Job opportunities</b></i></p>
+          </a>
+
+          <a href="#quickresponse" style="text-decoration: none;" onclick="highlightContent('quickresponse')">
+            <p><i class="bi bi-shield-shaded"><b> Quick Response</b></i></p>
+          </a>
+
+          <a href="#search" style="text-decoration: none;" onclick="highlightContent('search')">
+            <p> <i class="bi bi-tablet-landscape"><b> Advanced search and filtering</b></i></p>
+          </a> -->
+        </div>
+
       </div>
-    
     </div>
-  </div>
 
-  <script>
-  function highlightContent(contentId) {
+    <script>
+      function highlightContent(contentId) {
 
-   var element = document.getElementById(contentId);
-    
-    element.classList.add('bg-secondary');
+        var element = document.getElementById(contentId);
 
-    setTimeout(function() {
-        element.classList.remove('bg-secondary');
-    }, 2000);
-  }
-</script>
+        element.classList.add('bg-secondary');
+
+        setTimeout(function () {
+          element.classList.remove('bg-secondary');
+        }, 2000);
+      }
+    </script>
 
     <section id="about" class="about section-padding1" style="background-color: #f7f6f5;">
       <div class="container">
@@ -809,8 +858,8 @@
 
 
     <!-- Recent-posts Section - Home Page -->
-    <section id="recent-posts" class="recent-posts"
-      style="margin-bottom: 30px; margin-top: 10px; background-color: #f7f6f5; padding-left:40px">
+    <section id="recent-posts" class="recent-posts px-4"
+      style="margin-bottom: 30px; margin-top: 10px; background-color: #f7f6f5;">
 
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -819,267 +868,260 @@
       </div><!-- End Section Title -->
 
       <div class="container">
-
-        <div class="row gy-4" style="margin-left:8px" ;>
-
-          <div class="col-xl-4 col-md-6 col-1" data-aos="fade-up" data-aos-delay="100">
-            <article>
-              <div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2); ">
+        <div class="row">
+          <div class="cards col-12 col-md-12 col-lg-4 mb-lg-5">
+            <div class="card-sec text-white text-center pb-4"
+              style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+              <div class="card-body-s">
                 <img src="<?php echo baseUrl . "assets/jobsearch.jpeg" ?>" class="card-img-top" alt="...">
-                <div class="card-body" style="padding-bottom:50px">
-                  <h5 class="card-title" style="font-family:Arial, Helvetica, sans-serif ; padding:0 0px;"><b>JOB
-                      SEARCHING</b></h5>
-                  <p class="card-text" style="text-align:justify; padding-right: 20px; padding-bottom: 2px;">At Arram
-                    Job
-                    Portal, we're dedicated to help you to unlock your potential. Whether you're a recent graduate
-                    starting your career or a seasoned expert seeking new challenges, we're your trusted job search
-                    partner.</p>
-                  <!-- <a href="#seeker" class="btn btn-primary">See More</a> -->
-                </div>
+                <h5 class="card-title pt-4"><b>JOB
+                    SEARCHING</b></h5>
+                <p class="lead px-4" style="color: black; font-size: 16px; text-align: justify;">
+                  At Arram Job Portal, we're dedicated to help you to unlock your potential. Whether you're a recent
+                  graduate
+                  starting your career or a seasoned expert seeking new challenges, we're your trusted job search
+                  partner.</p>
               </div>
+            </div>
+          </div>
 
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <article>
-              <div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+          <div class="cards col-12 col-md-12 col-lg-4 mb-lg-5">
+            <div class="card-sec text-white text-center pb-4"
+              style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+              <div class="card-body-s">
                 <img src="<?php echo baseUrl . "assets/jobprovide.jpg" ?>" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title" style="padding:0 0px;"><b>JOB PROVIDING</b></h5>
-                  <p class="card-text" style="text-align:justify; padding-right: 20px; padding-bottom: 2px;">At Arram
-                    Job
-                    Providing, our team has dedicated to understand your staffing needs and delivering tailored
-                    solutions. With industry knowledge, we ensure you to find the right talent and build lasting
-                    connections
-                    fostering success.</p>
-                  <!-- <a href="#provider" class="btn btn-primary">See More</a> -->
-                </div>
+                <h5 class="card-title pt-4"><b>JOB SEARCHING</b></h5>
+                <p class="lead px-4" style="color: black; font-size: 16px; text-align: justify;">
+                  Job Portal, we're dedicated to help you to unlock your potential. Whether you're a recent graduate
+                  starting your career or a seasoned expert seeking new challenges, we're your trusted job search
+                  partner.</p>
               </div>
-            </article>
-          </div><!-- End post list item -->
+            </div>
+          </div>
 
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <article>
-
-              <div class="card" style="width: 18rem; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+          <div class="cards col-12 col-md-12 col-lg-4 mb-lg-5">
+            <div class="card-sec text-white text-center pb-4"
+              style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+              <div class="card-body-s">
                 <img src="<?php echo baseUrl . "assets/uniquefeature.jpeg" ?>" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title" style="padding:0 0px;"><b>ARRAM UNIQUE FEATURES</b></h5>
-                  <p class="card-text" style="text-align:justify; padding-right: 20px; padding-bottom: 25px;">Arram Job
-                    Providing stands out with unique features redefining recruitment. Our platform uses cutting-edge
-                    algorithms to match skills, culture, and personality for ideal candidate-employer pairings.</p>
-                  <!-- <a href="#about" class="btn btn-primary">See More</a> -->
-                </div>
+                <h5 class="card-title pt-4"><b>ARRAM UNIQUE FEATURES</b></h5>
+                <p class="lead px-4" style="color: black; font-size: 16px; text-align: justify;">
+                  Arram Job Providing stands out with unique features redefining recruitment. Our platform uses
+                  cutting-edge
+                  algorithms to match skills, culture, and personality for ideal candidate-employer pairings.</p>
               </div>
-          </div>
-
-          </article>
-        </div><!-- End post list item -->
-
-      </div><!-- End recent posts list -->
-
-  </div>
-
-  </section><!-- End Recent-posts Section -->
-
-  <!-- Six Reasons For People Choosing Us -->
-
-  <div class="section services section-padding" id="services"
-    style="background-color: #f7f6f5; padding-top: 40px;  margin-top:-30px;padding-bottom:5px;">
-    <div class="container" style="padding-top:30px;">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-header text-center pb-5">
-            <h4><b>Why Choose Us</b></h4>
-            <p style="font-size: 50px;" class="custom-paragraph">Six Reasons For People Choosing Us</p>
+            </div>
           </div>
         </div>
+
       </div>
+    </section><!-- End Recent-posts Section -->
 
-      <!-- card1-3 strat -->
-      <div class="row">
-        <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-4 " id="accessid"
-            style="background-color: #fff;box-shadow: 0 0 11px rgba(33,33,33,.2);">
-            <div class="card-body-s"  style="padding-top: 30px;">
-              <i class="bi bi-phone" style="color: black; font-size: 30px;"></i>
-              <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 33px; color: black;">Mobile
-                Accessibility</h4>
-              <p class="lead"
-                style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                Mobile accessibility aims to remove barriers, enhance user experiences, and enable all users, including
-                those with disabilities and those using mobile devices exclusively, to access and interact with job
-                listings, apply for positions, and navigate the portal's features effortlessly.</p>
 
+    <!-- Six Reasons For People Choosing Us -->
+
+    <div class="section services section-padding" id="services"
+      style="background-color: #f7f6f5; padding-top: 40px;  margin-top:-30px;padding-bottom:5px;">
+      <div class="container" style="padding-top:30px;">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-header text-center pb-5">
+              <h4><b>Why Choose Us</b></h4>
+              <p style="font-size: 50px;" class="custom-paragraph">Six Reasons For People Choosing Us</p>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-4" id="accredit"
-            style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2); ">
-            <div class="card-body-s"  style="padding-top: 30px;">
-              <i class="bi bi-book-fill" style="color: black; font-size: 30px;"></i>
-              <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;"> Accredited</h4>
-              <p class="lead"
-                style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">An
-                accredited job portal connects job seekers and employers after obtaining official recognition and
-                certification from accrediting bodies. Accreditation involves evaluating the portal's operations,
-                features, and compliance with industry standards, legal regulations, and ethics.</p>
 
+        <!-- card1-3 strat -->
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
+            <div class="card-sec text-white text-center pb-4 " id="accessid"
+              style="background-color: #fff;box-shadow: 0 0 11px rgba(33,33,33,.2);">
+              <div class="card-body-s" style="padding-top: 30px;">
+                <i class="bi bi-phone" style="color: black; font-size: 30px;"></i>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 22px; color: black;">Mobile
+                  Accessibility</h4>
+                <p class="lead"
+                  style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  Mobile accessibility aims to remove barriers, enhance user experiences, and enable all users,
+                  including
+                  those with disabilities and those using mobile devices exclusively, to access and interact with job
+                  listings, apply for positions, and navigate the portal's features effortlessly.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
+            <div class="card-sec text-white text-center  pb-4 pb-xl-1" id="accredit"
+              style="background-color: #fff;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
+              <div class="card-body-s" style="padding-top: 30px;">
+                <i class="bi bi-book-fill" style="color: black; font-size: 30px;"></i>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 20px; color: black;"> Accredited</h4>
+                <p class="lead"
+                  style="color: black; font-size: 16px; padding-bottom: 0px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  An accredited job portal connects job seekers and employers after obtaining official recognition and
+                  certification from accrediting bodies. Accreditation involves evaluating the portal's operations,
+                  features, and compliance with industry standards, legal regulations, and ethics.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
+            <div class="card-sec text-white text-center pb-4" id="interface"
+              style="background-color: #fff;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
+              <div class="card-body-s" style="padding-top: 30px;">
+                <i class="bi bi-laptop-fill" style="color: black; font-size: 30px;"></i>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 32px; color: black;">User-friendly
+                  Interface</h4>
+                <p class="lead"
+                  style="color: black; font-size: 16px; padding-bottom: 12px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  A job portal's user-friendly interface prioritizes easy navigation, clarity, and effectiveness,
+                  benefiting the job seekers and the employers by simplifying the search for their employment
+                  opportunities and hiring processes.</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-4" id="interface"
-            style="background-color: #fff;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
-            <div class="card-body-s" style="padding-top: 30px;">
-              <i class="bi bi-laptop-fill" style="color: black; font-size: 30px;"></i>
-              <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 38px; color: black;">User-friendly
-                Interface</h4>
-              <p class="lead"
-                style="color: black; font-size: 16px; padding-bottom: 20px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                A job portal's user-friendly interface prioritizes easy navigation, clarity, and effectiveness,
-                benefiting the job seekers and the employers by simplifying the search for their employment
-                opportunities and hiring processes.</p>
+        <!-- card1-3 end -->
 
+        <!-- card2-3 strat -->
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
+            <div class="card-sec text-white text-center pb-4" id="jobid"
+              style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+              <div class="card-body-s" style="padding-top: 30px;">
+                <i class="bi bi-subtract" style="color: black;  font-size: 30px;"></i>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Extensive Job
+                  opportunities</h4>
+                <p class="lead"
+                  style="color: black; font-size: 16px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  An abundance of 'extensive job opportunities' signifies a robust job market, offering plentiful
+                  prospects. This is highly advantageous for job seekers, career changers, and professionals aiming to
+                  explore new roles or industries, facilitating diverse career growth.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
+            <div class="card-sec text-white text-center pb-1" id="quickresponse"
+              style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+              <div class="card-body-s" style="padding-top: 30px;">
+                <i class="bi bi-shield-shaded" style="color: black; font-size: 30px;"></i>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Quick Response
+                </h4>
+                <p class="lead"
+                  style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  Quick response" the prompt and timely feedback or acknowledgment provided to
+                  job seekers or employers when they take certain actions or submit applications within the platform.
+                  This
+                  feature is designed to enhance the user experience by ensuring that users receive immediate
+                  confirmation. </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
+            <div class="card-sec text-white text-center pb-4" id="search"
+              style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
+              <div class="card-body-s" style="padding-top: 30px;">
+                <i class="bi bi-tablet-landscape" style="color: black; font-size: 30px;"></i>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 13px; color: black;">Advanced search
+                  and
+                  filtering </h4>
+                <p class="lead"
+                  style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  The
+                  goal of advanced search and filtering features in a jobs portal is to empower job seekers to pinpoint
+                  job listings that align closely with their unique preferences and qualifications, saving time and
+                  increasing the likelihood of finding the most suitable job opportunities. </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- card1-3 end -->
-
-      <!-- card2-3 strat -->
-      <div class="row">
-        <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-4" id="jobid"
-            style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
-            <div class="card-body-s" style="padding-top: 30px;">
-              <i class="bi bi-subtract" style="color: black;  font-size: 30px;"></i>
-              <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Extensive Job
-                opportunities</h4>
-              <p class="lead"
-                style="color: black; font-size: 16px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                An abundance of 'extensive job opportunities' signifies a robust job market, offering plentiful
-                prospects. This is highly advantageous for job seekers, career changers, and professionals aiming to
-                explore new roles or industries, facilitating diverse career growth.</p>
-
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-1" id="quickresponse"
-            style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
-            <div class="card-body-s" style="padding-top: 30px;">
-              <i class="bi bi-shield-shaded" style="color: black; font-size: 30px;"></i>
-              <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Quick Response</h4>
-              <p class="lead"
-                style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                Quick response" the prompt and timely feedback or acknowledgment provided to
-                job seekers or employers when they take certain actions or submit applications within the platform. This
-                feature is designed to enhance the user experience by ensuring that users receive immediate
-                confirmation. </p>
-
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-          <div class="card-sec text-white text-center pb-4" id="search"
-            style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
-            <div class="card-body-s" style="padding-top: 30px;">
-              <i class="bi bi-tablet-landscape" style="color: black; font-size: 30px;"></i>
-              <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 13px; color: black;">Advanced search and
-                filtering </h4>
-              <p class="lead"
-                style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">The
-                goal of advanced search and filtering features in a jobs portal is to empower job seekers to pinpoint
-                job listings that align closely with their unique preferences and qualifications, saving time and
-                increasing the likelihood of finding the most suitable job opportunities. </p>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- card2 3 end -->
-    </div>
-  </div>
-
-
-
-  <section id="candidate" class="seeker section-padding"
-    style="background-color: #fff;padding-bottom:50px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-12 col-12">
-          <div class="about-img">
-            <img src="<?php echo baseUrl . "assets/blog-4.jpg" ?>" alt="" class="img-fluid">
-          </div>
-        </div>
-        <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify;">
-          <div class="about-text1 pt-4 pt-lg-0" style="margin-top:-22px;">
-            <p class="abtcandidate fs-1" style="padding-top:20px; ">Candidate</p>
-            <p style="font-size: 18px;">At Arram Job Portal, our unwavering commitment is to empower individuals to
-              realize their utmost
-              potential. Regardless of where you stand in your career journey—whether you're a recent graduate venturing
-              into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in
-              between—we are your steadfast companion in the job search expedition. With our comprehensive platform, you
-              gain access to a wealth of opportunities, career resources, and expert guidance to navigate the
-              ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your
-              unique needs. </p>
-            <!-- <a href="#" class="btn btn-warning">Learn More</a> -->
-            <!-- <a href="#home" class="btn btn-warning">Home</a> -->
-          </div>
-        </div>
+        <!-- card2 3 end -->
       </div>
     </div>
-  </section>
 
-  <!-- seeker -->
 
-  <!-- provider -->
 
-  <section id="employer" class="provider section-padding"
-    style="background-color: #f2f8fa; padding-top:50px; padding-bottom:50px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-12 col-12 order-lg-1 order-2 ps-lg-5 mt-md-2 justify-content-center " style="text-align: justify;">
-          <div class="about-text pt-4 pt-lg-0" style="margin-top:-25px; margin-right:20px;">
-            <p class="fs-1" style="padding-top:20px; ">Employer</p>
-            <p style="font-size: 18px;">At Arram Job Providing, we firmly believe that the key to a prosperous
-              organization lies in having the
-              right people onboard. Be it team expansion, project initiation, or the need for specialized skills, we
-              serve as your dependable partner in talent acquisition. With our extensive network and expertise, we
-              identify and connect you with top-notch professionals who fit your unique requirements. Our commitment to
-              excellence ensures that you receive candidates who not only meet but exceed your expectations. We're
-              dedicated to streamlining your recruitment process, saving you time and resources, so you can focus on
-              what you do best - achieving your business goals.</p>
-            <!-- <a href="#" class="btn btn-warning">Learn More</a> -->
-            <!-- <a href="#home" class="btn btn-warning">Home</a> -->
-
+    <section id="candidate" class="seeker section-padding" style="background-color: #fff;padding-bottom:50px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-12 col-12">
+            <div class="about-img">
+              <img src="<?php echo baseUrl . "assets/blog-4.jpg" ?>" alt="" class="img-fluid">
+            </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-12 col-12 order-lg-2 order-1">
-          <div class="about-img-img">
-            <img src="<?php echo baseUrl . "assets/employer.jpg" ?>" alt="" class="img-fluid">
+          <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify;">
+            <div class="about-text1 pt-4 pt-lg-0" style="margin-top:-22px;">
+              <p class="abtcandidate fs-1" style="padding-top:20px; ">Candidate</p>
+              <p style="font-size: 18px;">At Arram Job Portal, our unwavering commitment is to empower individuals to
+                realize their utmost
+                potential. Regardless of where you stand in your career journey—whether you're a recent graduate
+                venturing
+                into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in
+                between—we are your steadfast companion in the job search expedition. With our comprehensive platform,
+                you
+                gain access to a wealth of opportunities, career resources, and expert guidance to navigate the
+                ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to
+                your
+                unique needs. </p>
+              <!-- <a href="#" class="btn btn-warning">Learn More</a> -->
+              <!-- <a href="#home" class="btn btn-warning">Home</a> -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- provider -->
+    </section>
 
-  <!-- Team section -->
-  <!-- <section id="team" class="team section-paddings">
+    <!-- seeker -->
+
+    <!-- provider -->
+
+    <section id="employer" class="provider section-padding"
+      style="background-color: #f2f8fa; padding-top:50px; padding-bottom:50px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-12 order-lg-1 order-2 ps-lg-5 mt-md-2 justify-content-center "
+            style="text-align: justify;">
+            <div class="about-text pt-4 pt-lg-0" style="margin-top:-25px; margin-right:20px;">
+              <p class="fs-1" style="padding-top:20px; ">Employer</p>
+              <p style="font-size: 18px;">At Arram Job Providing, we firmly believe that the key to a prosperous
+                organization lies in having the
+                right people onboard. Be it team expansion, project initiation, or the need for specialized skills, we
+                serve as your dependable partner in talent acquisition. With our extensive network and expertise, we
+                identify and connect you with top-notch professionals who fit your unique requirements. Our commitment
+                to
+                excellence ensures that you receive candidates who not only meet but exceed your expectations. We're
+                dedicated to streamlining your recruitment process, saving you time and resources, so you can focus on
+                what you do best - achieving your business goals.</p>
+              <!-- <a href="#" class="btn btn-warning">Learn More</a> -->
+              <!-- <a href="#home" class="btn btn-warning">Home</a> -->
+
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 col-12 order-lg-2 order-1">
+            <div class="about-img-img">
+              <img src="<?php echo baseUrl . "assets/employer.jpg" ?>" alt="" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- provider -->
+
+    <!-- Team section -->
+    <!-- <section id="team" class="team section-paddings">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="section-header text-center pb-5"> -->
-  <!-- <p class="head" style="font-size: 50px;">Team</p> -->
-  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, voluptatem?</p> -->
-  <!-- </div>
+    <!-- <p class="head" style="font-size: 50px;">Team</p> -->
+    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, voluptatem?</p> -->
+    <!-- </div>
         </div>
       </div> -->
-  <!-- <div class="row">
+    <!-- <div class="row">
       <div class="col-12 col-md-6 col-lg-3" id="card-sf">
         <div class="card text-center">
           <div class="card-body">
@@ -1149,99 +1191,105 @@
   </section>-->
 
 
-  <section class="pt-5 pb-5">
-    <div class="wrapper">
-      <div class="container">
-        <div class="row">
-          <div class="col-6" style="margin-top:10px;">
-            <!-- <h3 class="mb-3">Carousel cards title </h3> -->
-          </div>
-          <div class="col-6 text-right">
-            <a class="btn btn-secondary ws-1 mb-3 mr-1" href="#carouselExampleIndicators2" role="button"
-              data-slide="prev">
-              <i class="fa fa-arrow-left"></i>
-            </a>
-            <a class="btn btn-secondary mb-3 ws-1 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-              <i class="fa fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="col-12">
-            <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="5000">
+    <section class="pt-5 pb-5">
+      <div class="wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-6" style="margin-top:10px;">
+              <!-- <h3 class="mb-3">Carousel cards title </h3> -->
+            </div>
+            <div class="col-6 text-right">
+              <a class="btn btn-secondary ws-1 mb-3 mr-1" href="#carouselExampleIndicators2" role="button"
+                data-slide="prev">
+                <i class="fa fa-arrow-left"></i>
+              </a>
+              <a class="btn btn-secondary mb-3 ws-1 " href="#carouselExampleIndicators2" role="button"
+                data-slide="next">
+                <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="col-12">
+              <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="5000">
 
-              <div class="carousel-inners">
-                <div class="carousel-item active">
-                  <div class="row">
+                <div class="carousel-inners">
+                  <div class="carousel-item active">
+                    <div class="row">
 
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid s-10" alt="" src="<?php echo baseUrl . "assets/special1.jpg" ?>">
-                        <div class="card-body" style="padding:1rem">
-                          <h4 class="card-title"><b>Special title treatment</b></h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                          </p>
+                      <div class="col-md-4 mb-3">
+                        <div class="card">
+                          <img class="img-fluid s-10" alt="" src="<?php echo baseUrl . "assets/special1.jpg" ?>">
+                          <div class="card-body" style="padding:1rem">
+                            <h4 class="card-title"><b>Special title treatment</b></h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                            </p>
 
-                        </div>
-
-                      </div>
-                    </div>
-
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid s-10" alt="" src="<?php echo baseUrl . "assets/special2.jpg" ?>">
-                        <div class="card-body" style="padding:1rem">
-                          <h4 class="card-title"><b>Special title treatment</b></h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                          </p>
+                          </div>
 
                         </div>
                       </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special3.jpg" ?>">
-                        <div class="card-body" style="padding:1rem">
-                          <h4 class="card-title"><b>Special title treatment</b></h4>
-                          <p class="card-text" >With supporting text below as a natural lead-in to additional content.
-                          </p>
 
+                      <div class="col-md-4 mb-3">
+                        <div class="card">
+                          <img class="img-fluid s-10" alt="" src="<?php echo baseUrl . "assets/special2.jpg" ?>">
+                          <div class="card-body" style="padding:1rem">
+                            <h4 class="card-title"><b>Special title treatment</b></h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                            </p>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <div class="card">
+                          <img class="img-fluid s-10" alt="100%x280"
+                            src="<?php echo baseUrl . "assets/special3.jpg" ?>">
+                          <div class="card-body" style="padding:1rem">
+                            <h4 class="card-title"><b>Special title treatment</b></h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                            </p>
+
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="carousel-item">
-                  <div class="row">
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special4.jpg" ?>">
-                        <div class="card-body" style="padding:1rem">
-                          <h4 class="card-title"><b>Special title treatment</b></h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                          </p>
+                  <div class="carousel-item">
+                    <div class="row">
+                      <div class="col-md-4 mb-3">
+                        <div class="card">
+                          <img class="img-fluid s-10" alt="100%x280"
+                            src="<?php echo baseUrl . "assets/special4.jpg" ?>">
+                          <div class="card-body" style="padding:1rem">
+                            <h4 class="card-title"><b>Special title treatment</b></h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                            </p>
 
-                        </div>
-
-                      </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special5.jpg" ?>">
-                        <div class="card-body" style="padding:1rem">
-                          <h4 class="card-title"><b>Special title treatment</b></h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                          </p>
+                          </div>
 
                         </div>
                       </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid s-10" alt="100%x280" src="<?php echo baseUrl . "assets/special6.jpg" ?>">
-                        <div class="card-body" style="padding:1rem">
-                          <h4 class="card-title"><b>Special title treatment</b></h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                          </p>
+                      <div class="col-md-4 mb-3">
+                        <div class="card">
+                          <img class="img-fluid s-10" alt="100%x280"
+                            src="<?php echo baseUrl . "assets/special5.jpg" ?>">
+                          <div class="card-body" style="padding:1rem">
+                            <h4 class="card-title"><b>Special title treatment</b></h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                            </p>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <div class="card">
+                          <img class="img-fluid s-10" alt="100%x280"
+                            src="<?php echo baseUrl . "assets/special6.jpg" ?>">
+                          <div class="card-body" style="padding:1rem">
+                            <h4 class="card-title"><b>Special title treatment</b></h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1252,8 +1300,7 @@
           </div>
         </div>
       </div>
-    </div>
-    </div>
+  </div>
   </section>
 
 
@@ -1272,8 +1319,7 @@
         <div class="carousel-item active">
           <div class="col-md-4 mb-3">
             <div class="card">
-              <image class="img-fluid" alt=""
-                src="<?php echo baseUrl . "assets/special1.jpg" ?>">
+              <image class="img-fluid" alt="" src="<?php echo baseUrl . "assets/special1.jpg" ?>">
                 <div class="card-body" style="padding:1rem">
                   <h4 class="card-title"><b>Special title treatment</b></h4>
                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1287,8 +1333,7 @@
         <!--Second slide-->
         <div class="carousel-item">
           <div class="card">
-            <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/special2.jpg" ?>">
+            <image class="img-fluid " alt="" src="<?php echo baseUrl . "assets/special2.jpg" ?>">
               <div class="card-body" style="padding:1rem">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1299,8 +1344,7 @@
         <!--Third slide-->
         <div class="carousel-item">
           <div class="card">
-            <image class="img-fluid" alt="100%x280"
-              src="<?php echo baseUrl . "assets/special3.jpg" ?>">
+            <image class="img-fluid" alt="100%x280" src="<?php echo baseUrl . "assets/special3.jpg" ?>">
               <div class="card-body" style="padding:1rem">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1312,8 +1356,7 @@
         <!--fourth slide-->
         <div class="carousel-item">
           <div class="card">
-            <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/special4.jpg" ?>">
+            <image class="img-fluid " alt="" src="<?php echo baseUrl . "assets/special4.jpg" ?>">
               <div class="card-body" style="padding:1rem">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1324,8 +1367,7 @@
         <!--Second slide-->
         <div class="carousel-item">
           <div class="card">
-            <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/special5.jpg" ?>">
+            <image class="img-fluid " alt="" src="<?php echo baseUrl . "assets/special5.jpg" ?>">
               <div class="card-body" style="padding:1rem">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1336,8 +1378,7 @@
         <!--Second slide-->
         <div class="carousel-item">
           <div class="card">
-            <image class="img-fluid " alt=""
-              src="<?php echo baseUrl . "assets/special6.jpg" ?>">
+            <image class="img-fluid " alt="" src="<?php echo baseUrl . "assets/special6.jpg" ?>">
               <div class="card-body" style="padding:1rem">
                 <h4 class="card-title"><b>Special title treatment</b></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>

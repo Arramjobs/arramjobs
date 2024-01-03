@@ -155,17 +155,32 @@ class Candidate extends CI_Controller
 
     }
 
-    public function deleteEducation()
+    // public function deleteEducation()
+    // {
+    //     $deleteEducationId = $this->uri->segment(3);
+    //     $delete = $this->CandidateModel->deleteEducation($deleteEducationId);
+    //     if ($delete == null) {
+    //         $this->educationTable();
+    //     } else {
+    //         echo "Error deleting record";
+    //     }
+    // }
+
+    public function delete_selected()
     {
-        $deleteEducationId = $this->uri->segment(3);
-        $delete = $this->CandidateModel->deleteEducation($deleteEducationId);
-        if ($delete == null) {
-            $this->educationTable();
-        } else {
-            echo "Error deleting record";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
+                $selectedItems = $_POST['selected_items'];
+                foreach ($selectedItems as $itemId) {
+                    $this->CandidateModel->delete_item($itemId);
+                }
+                $this->educationTable();
+            } else {
+                $this->educationTable();
+                echo '<script>alert("Please select the checkbox to delete.");</script>';
+            }
         }
     }
-
 
 
     // experience
@@ -235,14 +250,30 @@ class Candidate extends CI_Controller
         echo '<script>alert("Experience details updated successfully.");</script>';
     }
 
+    // public function deleteExperience()
+    // {
+    //     $deleteExperienceId = $this->uri->segment(3);
+    //     $delete = $this->CandidateModel->deleteExperience($deleteExperienceId);
+    //     if ($delete == null) {
+    //         $this->experienceTable();
+    //     } else {
+    //         echo "Error deleting record";
+    //     }
+    // }
+
     public function deleteExperience()
     {
-        $deleteExperienceId = $this->uri->segment(3);
-        $delete = $this->CandidateModel->deleteExperience($deleteExperienceId);
-        if ($delete == null) {
-            $this->experienceTable();
-        } else {
-            echo "Error deleting record";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
+                $selectedItems = $_POST['selected_items'];
+                foreach ($selectedItems as $itemId) {
+                    $this->CandidateModel->deleteExp($itemId);
+                }
+                $this->experienceTable();
+            } else {
+                $this->experienceTable();
+                echo '<script>alert("Please select the checkbox to delete.");</script>';
+            }
         }
     }
 
@@ -374,18 +405,34 @@ class Candidate extends CI_Controller
 
     }
 
-    public function deleteAreaOfIntrest()
+    // public function deleteAreaOfIntrest()
+    // {
+    //     $deleteAreaOfIntrestId = $this->uri->segment(3);
+    //     $delete = $this->CandidateModel->deleteAreaOfIntrest($deleteAreaOfIntrestId);
+    //     if ($delete == null) {
+    //         $this->areaOfIntrestTable();
+    //     } else {
+    //         echo "Error deleting record";
+    //     }
+    // }
+
+    public function deleteAreaInterest()
     {
-        $deleteAreaOfIntrestId = $this->uri->segment(3);
-        $delete = $this->CandidateModel->deleteAreaOfIntrest($deleteAreaOfIntrestId);
-        if ($delete == null) {
-            $this->areaOfIntrestTable();
-        } else {
-            echo "Error deleting record";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
+                $selectedItems = $_POST['selected_items'];
+                foreach ($selectedItems as $itemId) {
+                    $this->CandidateModel->deleteArea($itemId);
+                }
+                $this->areaOfIntrestTable();
+            } else {
+                $this->areaOfIntrestTable();
+                echo '<script>alert("Please select the checkbox to delete.");</script>';
+            }
         }
     }
-
     
+
 
     // skills
 
@@ -437,16 +484,35 @@ class Candidate extends CI_Controller
         $this->areaOfIntrestTable();
     }
 
+    // public function deleteSkill()
+    // {
+    //     $deleteSkillId = $this->uri->segment(3);
+    //     $delete = $this->CandidateModel->deleteSkill($deleteSkillId);
+    //     if ($delete == null) {
+    //         $this->areaOfIntrestTable();
+    //     } else {
+    //         echo "Error deleting record";
+    //     }
+    // }
+
     public function deleteSkill()
     {
-        $deleteSkillId = $this->uri->segment(3);
-        $delete = $this->CandidateModel->deleteSkill($deleteSkillId);
-        if ($delete == null) {
-            $this->areaOfIntrestTable();
-        } else {
-            echo "Error deleting record";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
+                $selectedItems = $_POST['selected_items'];
+                foreach ($selectedItems as $itemId) {
+                    $this->CandidateModel->deleteSkill($itemId);
+                }
+                $this->areaOfIntrestTable();
+            } else {
+                $this->areaOfIntrestTable();
+                echo '<script>alert("Please select the checkbox to delete.");</script>';
+            }
         }
     }
+
+
+
 
     public function myProfile()
     {

@@ -377,11 +377,19 @@ class CandidateModel extends CI_Model
         $this->db->update('seeker_educational_details', $updateInsertEducation);
     }
 
-    public function deleteEducation($deleteEducationId)
+    // public function deleteEducation($deleteEducationId)
+    // {
+    //     $delete = "DELETE FROM `seeker_educational_details` WHERE `id`=$deleteEducationId";
+    //     $del = $this->db->query($delete);
+    // }
+
+
+    public function delete_item($item_id)
     {
-        $delete = "DELETE FROM `seeker_educational_details` WHERE `id`=$deleteEducationId";
-        $del = $this->db->query($delete);
+        $this->db->where('id', $item_id);
+        $this->db->delete('seeker_educational_details');
     }
+
 
 
     public function experienceTable()
@@ -475,12 +483,19 @@ class CandidateModel extends CI_Model
         $this->db->update('seeker_experience', $updateInsertExperience);
     }
 
-    public function deleteExperience($deleteExperienceId)
-    {
+    // public function deleteExperience($deleteExperienceId)
+    // {
+    //     $delete = "DELETE FROM `seeker_experience` WHERE `id`=$deleteExperienceId";
+    //     $del = $this->db->query($delete);
+    // }
 
-        $delete = "DELETE FROM `seeker_experience` WHERE `id`=$deleteExperienceId";
-        $del = $this->db->query($delete);
+    public function deleteExp($item_id)
+    {
+        $this->db->where('id', $item_id);
+        $this->db->delete('seeker_experience');
     }
+
+
 
     // project
 
@@ -491,7 +506,6 @@ class CandidateModel extends CI_Model
         $addtab = $this->db->query($seekerId);
         return $addtab->result_array();
     }
-
 
     public function insertProjectForm()
     {
@@ -511,7 +525,6 @@ class CandidateModel extends CI_Model
 
         $this->db->insert('seeker_projects', $add);
     }
-
 
 
     public function updateProject($projectId)
@@ -541,7 +554,6 @@ class CandidateModel extends CI_Model
 
     public function deleteProject($deleteProjectId)
     {
-
         $delete = "DELETE FROM `seeker_projects` WHERE `id`=$deleteProjectId";
         $del = $this->db->query($delete);
     }
@@ -625,11 +637,18 @@ class CandidateModel extends CI_Model
         $this->db->update('seeker_area_of_interst', $updateInsertAreaOfIntrest);
     }
 
-    public function deleteAreaOfIntrest($deleteAreaOfIntrestId)
+    // public function deleteAreaOfIntrest($deleteAreaOfIntrestId)
+    // {
+    //     $delete = "DELETE FROM `seeker_area_of_interst` WHERE `id`=$deleteAreaOfIntrestId";
+    //     $del = $this->db->query($delete);
+    // }
+
+    public function deleteArea($item_id)
     {
-        $delete = "DELETE FROM `seeker_area_of_interst` WHERE `id`=$deleteAreaOfIntrestId";
-        $del = $this->db->query($delete);
+        $this->db->where('id', $item_id);
+        $this->db->delete('seeker_area_of_interst');
     }
+
 
 
 
