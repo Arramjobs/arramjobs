@@ -88,7 +88,7 @@
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
                                                 <input type="number" name="phonenumber" class="form-control"
-                                                    id="phonenumber" placeholder="Enter your mobile number"
+                                                    id="phonenumber" placeholder="9876543210"
                                                     oninput="validatePhoneNumber(this)" required>
                                                 <div class="invalid-feedback">Please enter your mobile number.</div>
                                             </div>
@@ -99,7 +99,7 @@
                                             <label for="erpassword" class="form-label">Password</label>
                                             <div class="input-group has-validation">
                                                 <input type="password" name="cdpassword"
-                                                    placeholder="Enter your Password" class="form-control"
+                                                    placeholder="01051996" class="form-control"
                                                     id="cdpassword" oninput="validatePassword(this)" required />
                                                 <button type="button" class="btn btn-outline-secondary"
                                                     onclick="togglePasswordVisibility('cdpassword', 'visibilityIcon')">
@@ -170,7 +170,7 @@
             }
         
              if (password != "") {
-            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/.test(password)) { 
+            if (!/^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])\d{4}$/.test(password)) { 
                 return false;
             }
         } 
@@ -191,8 +191,8 @@
 
         function validatePassword(input) {
             const phoneError = document.getElementById("passwordError");
-            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(input.value)) {
-                phoneError.textContent = "Invalid password. Please enter valid password.";
+            if (!/^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])\d{4}$/.test(input.value)) {
+                phoneError.textContent = "Invalid password. Please enter password in DDMMYYYY.";
             } else {
                 phoneError.textContent = "";
             }

@@ -3332,7 +3332,16 @@
 
                                                 <input class="form-check-input" type="text" name="newList" id="" value="1" hidden>
 
-                                                <!-- <div class="form-check">
+                                            
+
+                                            <!-- <div class="col-md-6">
+                                                    <div class="form-floating mb-3">
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"><?php echo $this->data['basicDetails'][0]['verificationRemarks'] ?></textarea>
+                                                            <label for="floatingTextarea">Remarkser</label>
+                                                        </div>
+                                                    </div> -->
+
+                                                                <!-- <div class="form-check">
                                             <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios"
                                             value="2" <?php if ($this->data['basicDetails'][0]['verificationStatus'] == '2') {
                                                 echo 'checked';
@@ -3340,6 +3349,16 @@
                                             <label class="form-check-label" for="gridRadios3"> Rejected </label>
                                         </div> -->
                                             </div>
+                                            </fieldset>
+                                            <div class="col-md-6">
+                                                    <div class="form-floating mb-3">
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;" ><?php echo $this->data['basicDetails'][0]['verificationRemarks'] ?> </textarea>
+                                                            <label for="floatingTextarea">Remarks</label>
+                                                            <div class="invalid-feedback">
+                                                                Please enter a remark.
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                         <?php
                                     } else {
                                         ?>
@@ -3365,14 +3384,16 @@
                                             </div>
                                     <?php }
                                     ?>
-                                </fieldset>
-                                <div class="col-md-6">
+                                
+
+                                <!-- <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;" required>
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;" >
                                         <?php echo $this->data['basicDetails'][0]['verificationRemarks'] ?></textarea>
                                         <label for="floatingTextarea">Remarks</label>
                                     </div>
-                                </div>
+                                </div> -->
+
                                 <div class="d-flex justify-content-around">
                                 <button type="submit" class="btn btn-success"  id="verifyButton" disabled>Verified</button>
                                 <button type="submit" class="btn btn-danger"  id="pendingButton">Pending</button>
