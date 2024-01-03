@@ -16,7 +16,9 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="<?php echo baseUrl; ?>/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,26 +30,57 @@
     <link href="<?php echo baseUrl; ?>/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">   
+    <!-- <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">    -->
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container1 {
+            text-align: center;
+            background-color: #ededfa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container1 p {
+            color: #0F52BA;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
     <main>
-        <div class="container">
+        <div class="container1 mx-5">
 
             <section>
-                <div class="my-5 py-md-5 text-center">
-                    <img class="img-fluid" src="<?php echo baseUrl . "assets/employee_registered.png" ?>" alt="Thanks">
-                    <p class="ms-5">Use the registered mobile number to <a href="<?php echo baseUrl . "Candidate" ?>">Login</a>.</p>
-
-                    </div>
+                <div class="">
+                    <!-- <img class="img-fluid" src="<?php echo baseUrl . "assets/employee_registered.png" ?>" alt="Thanks">
+                    <p class="ms-5">Use the registered mobile number to <a href="<?php echo baseUrl . "Candidate" ?>">Login</a>.</p> -->
+                    <p style=" font-size: 30px;"><b>THANK YOU FOR SIGINING UP WITH <span style="color:  #7aa12b;">ARRAM
+                                JOBS</span> !</b>
+                    <p>
+                    <p style="color: black;">You now have access to <a><b>LOGIN</b></a> with your <span
+                            style="color: #0F52BA;">mobile number </span>and <span
+                            style="color: #0F52BA;">password.</span></p><br>
+                    <p style="color: black; font-size: 18px;">If you have any doubts, Please contact us : <span
+                            style="color: #0F52BA;"><b><a href="tel:7418334443"
+                                    style="color:#0F52BA ; text-decoration: none; font-size:18px"
+                                    onmouseover="this.style.color='#668722'" onmouseout="this.style.color='blue'">+91
+                                    7418334443</a></b></span></p>
+                </div>
             </section>
 
         </div>
     </main><!-- End #main -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
 
     <!-- Vendor JS Files -->
     <script src="<?php echo baseUrl; ?>/assets/vendor/apexcharts/apexcharts.min.js"></script>
