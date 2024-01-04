@@ -96,14 +96,24 @@ class Employer extends CI_Controller
             $this->session->set_userdata($userLoggedIn);
             $this->data['method'] = "dashboard";
             $this->load->view('employerDashboard.php', $this->data);
+            echo '<script>alert("You now have access to login with your mobile number and password.");</script>';
         } else if ($verifyOne == '0' || $verifyTwo == '0' || $deleteStatus == '1') {
             $this->load->view('employerLogin.php');
-            echo '<script>alert("Please wait. Your company details are under registration process.");</script>';
+            echo '<script>alert("Approval for your login is under process. Please wait ...");</script>';
         } else {
             $this->load->view('employerLogin.php');
-            echo '<script>alert("Please enter registered company details.");</script>';
+            echo '<script>alert("Please enter registered Mobile number and password.");</script>';
         }
     }
+
+public function checkMobileNumber() {
+    $mobileNumber = $this->input->post('mobilenumber');
+
+    $existsInDatabase = $this->EmployerModel->checkMobileNumberExists($mobileNumber);
+
+    header('Content-Type: application/json');
+    echo json_encode(['exists' => $existsInDatabase]);
+}
 
     // public function viewDashboard()
     // {

@@ -132,6 +132,16 @@ public function checkUserExistence($phone_number)
     return $count->result_array();
   }
 
+  // YourModel.php
+
+public function checkMobileNumberExists($mobileNumber) {
+  // Implement your logic to check if the mobile number exists in the database
+  // Return true if it exists, false otherwise
+  // Example:
+  $query = $this->db->get_where('provider_registration_form', ['company_mobile_number' => $mobileNumber]);
+  return $query->num_rows() > 0;
+}
+
 
   public function provider_detail()
   {
