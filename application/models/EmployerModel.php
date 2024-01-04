@@ -98,6 +98,12 @@ public function checkUserExistence($phone_number)
         $query = $this->db->get('provider_registration_form');
         return $query->num_rows() > 0;
     }
+    public function checkUserExistence($phone_number)
+    {
+        $this->db->where('company_mobile_number', $phone_number);
+        $query = $this->db->get('provider_registration_form');
+        return $query->num_rows() > 0;
+    }
 
 
   // public function database_login()

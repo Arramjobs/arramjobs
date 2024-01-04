@@ -28,22 +28,43 @@
     <link href="<?php echo baseUrl; ?>/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">   
+    <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet"> 
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container1 {
+            text-align: center;
+            background-color: #ededfa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container1 p {
+            color: #0F52BA;
+            font-size: 20px;
+        }
+    </style>  
 </head>
 
 <body>
 
     <main>
-        <div class="container">
+        <div class="container1 mx-5">
 
-            <section>
-                <div class="my-5 py-md-5 text-center">
-                    <img class="img-fluid" src="<?php echo baseUrl . "assets/employee_registered.png" ?>" alt="Thanks">
-                    <p>Thanks for your registration details!</p>
-                    <p>The approval  for  your login is under process. Please wait ……</p>
-                   <!-- <p>Use the registered mobile number to <a href="<?php echo baseUrl . "Employer/login" ?>">Login</a>.</p> -->
+        <section>
+                <div class="my-5 py-md-5 text-center">                                            
+                    <p style=" font-size: 30px;"><b>THANK YOU FOR SIGINING UP WITH <a href="<?php echo baseUrl; ?>"><span style="color:  #7aa12b;">ARRAM JOBS</span></a> !</b></p>
+                        <p style="color: black;">Approval for your login is under process. <span style="color: #0F52BA;">Please wait ... </span></p><br>
+                        <p style="color: black; font-size: 14px;">If you have any doubts, Please contact us : <span style="color: #0F52BA;"><b><a href="tel:7418334443" style="color:#0F52BA ; text-decoration: none; font-size:14px"
+                            onmouseover="this.style.color='#668722'" onmouseout="this.style.color='blue'">+91 7418334443</a></b></span></p>
                     </div>
-            </section>
+</section>
 
         </div>
     </main><!-- End #main -->
