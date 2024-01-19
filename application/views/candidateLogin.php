@@ -84,7 +84,7 @@
                                         </div> -->
 
                                         <div class="col-12">
-                                            <label for="phonenumber" class="form-label">Mobile Number</label>
+                                            <label for="phonenumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
                                                 <input type="number" name="phonenumber" class="form-control"
@@ -96,7 +96,7 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="erpassword" class="form-label">Password</label>
+                                            <label for="erpassword" class="form-label">Password <span class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
                                                 <input type="password" name="cdpassword"
                                                     placeholder="01051996" class="form-control"

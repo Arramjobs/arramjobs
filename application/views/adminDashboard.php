@@ -276,7 +276,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="<?php echo baseUrl . "admin/logout" ?>">
+                            <a class="dropdown-item d-flex align-items-center" onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "admin/logout" ?>">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Log Out</span>
                             </a>
@@ -300,6 +300,7 @@
                 <a class="nav-link " href="<?php echo baseUrl . "admin/dashboard" ?>">
                     <i class="bi bi-grid"></i>
                     <span id="dashboardad">Dashboard</span>
+                    </p>
                 </a>
             </li><!-- End Dashboard Nav -->
 
@@ -393,6 +394,16 @@
                         </a>
                     </li>
                     <li>
+                        <a id="candidatereappliedlist" href="#">
+                            <i class="bi bi-circle"></i><span>Reapplied List</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="candidateplacedlist" href="#">
+                            <i class="bi bi-circle"></i><span>Placed List</span>
+                        </a>
+                    </li>
+                    <li>
                         <a id="candidateoveralllist" href="<?php echo baseUrl . "admin/overallCandidates" ?>">
                             <i class="bi bi-circle"></i><span>Overall List</span>
                         </a>
@@ -402,7 +413,10 @@
             <li class="nav-item ">
                 <a class="nav-link collapsed" id="candidaterequest" href="<?php echo baseUrl . "admin/candidateRequestList" ?>">
                     <i class="bi bi-card-list"></i>
-                    <span>Request For Candidate</span>
+                    <span>Request For Candidate View</span>
+                    <?php if($canReqTotalRows > 0){ ?>
+                    <div class="border border-success border-2 rounded-circle bg-success text-light" style="width: 25px; height:25px;background-color:green;text-align:center;"><?php echo isset($canReqTotalRows) ? $canReqTotalRows : null; ?></div>
+                    <?php } ?>
                 </a>
             </li>
             <li class="nav-item">
@@ -793,57 +807,57 @@
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/insertAdminUser" ?>" method="post">
                                 <div class="col-md-6">
-                                    <label for="inputName5" class="form-label">Name</label>
+                                    <label for="inputName5" class="form-label">Name: <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="inputName5" name="name" placeholder="Enter name" required>
                                     <div class="invalid-feedback">Please, enter your name!</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputUserrole" class="form-label">User Role</label>
+                                    <label for="inputUserrole" class="form-label">User Role: <span class="text-danger">*</span></label>
                                     <select id="inputUserrole" class="form-select" name="userRole" required>
                                         <option selected value="adm">Admin</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Email</label>
+                                    <label for="inputEmail5" class="form-label">Email: <span class="text-danger">*</span></label>
                                     <input type="email" class="form-control" id="inputEmail5" name="email" placeholder="Enter email" required>
                                     <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword5" class="form-label">Mobile Number</label>
+                                    <label for="inputPassword5" class="form-label">Mobile Number: <span class="text-danger">*</span></label>
                                     <input type="number" class="form-control" id="inputMobileNumber5" name="mobileNumber" placeholder="Enter number" required>
                                     <div class="invalid-feedback">Please enter a Mobile Number!</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">UserName</label>
+                                    <label for="inputEmail5" class="form-label">UserName: <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="inputUserName5" name="userName" placeholder="Enter username" required>
                                     <div class="invalid-feedback">Please choose a username.</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword5" class="form-label">Password</label>
+                                    <label for="inputPassword5" class="form-label">Password: <span class="text-danger">*</span></label>
                                     <input type="password" class="form-control" id="inputPassword5" name="password" placeholder="Enter password" required>
                                     <div class="invalid-feedback">Please enter your password!</div>
                                 </div>
                                 <div class="col-12">
-                                    <label for="inputAddress5" class="form-label">Address</label>
+                                    <label for="inputAddress5" class="form-label">Address:</label>
                                     <input type="text" class="form-control" id="inputAddres5s" name="address"  placeholder="Enter address">
                                 </div>
                                 <div class="col-12">
-                                    <label for="inputAddress2" class="form-label">Address 2</label>
+                                    <label for="inputAddress2" class="form-label">Address 2:</label>
                                     <input type="text" class="form-control" id="inputAddress2" name="address2"  placeholder="Enter address 2">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputCity" class="form-label">City</label>
+                                    <label for="inputCity" class="form-label">City:</label>
                                     <input type="text" class="form-control" id="inputCity" name="city"  placeholder="Enter city" >
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="inputState" class="form-label">State</label>
+                                    <label for="inputState" class="form-label">State:</label>
                                     <select id="inputState" name="state" class="form-select" disabled>
                                         <option selected>Tamil Nadu</option>
                                         <!-- <option>...</option> -->
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="inputZip" class="form-label">Pincode</label>
+                                    <label for="inputZip" class="form-label">Pincode:</label>
                                     <input type="text" class="form-control" id="inputZip" name="pincode"  placeholder="Enter pincode">
                                 </div>
                                 <!-- <div class="col-12">
@@ -938,7 +952,7 @@
                                                     <td><?php echo $twelveHourTime; ?></td>
                                                     <!-- <td><span class="badge bg-success">Approved</span></td> -->
                                                    <td><a href="<?php echo baseUrl . "admin/deleteAdminuser/" . $value['id'] ?>">
-                                                   <button type="button" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">Remove</button></a></td>
+                                                   <button type="button" class="btn btn-danger d-flex" onclick="return confirm('Are you sure you want to delete?')"><i class="bi bi-trash pe-1"></i> Remove</button></a></td>
                                                 </tr>
                                             <?php
                                             $loopcount++;
@@ -977,15 +991,15 @@
                             <!-- Multi Columns Form -->
                             <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/insertEmployer" ?>" method="post">
                                 <div class="col-md-12">
-                                    <label for="inputName5" class="form-label">Company Name</label>
+                                    <label for="inputName5" class="form-label">Company Name: <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="inputName5" name="name" placeholder="Enter company name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputNumber5" class="form-label">Company Number</label>
+                                    <label for="inputNumber5" class="form-label">Company Number: <span class="text-danger">*</span></label>
                                     <input type="number" class="form-control" id="inputNumber5" name="mobile" placeholder="Enter company number" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Company Email</label>
+                                    <label for="inputEmail5" class="form-label">Company Email: <span class="text-danger">*</span></label>
                                     <input type="email" class="form-control" id="inputEmail5" name="email" placeholder="Enter company email" required>
                                 </div>
                                 <!-- <div class="col-md-6">
@@ -993,34 +1007,51 @@
                                 <input type="password" class="form-control" id="inputPassword5">
                             </div> -->
                                 <div class="col-md-6">
-                                    <label for="inputAddress5" class="form-label">Street Address</label>
+                                    <label for="crpassword" class="form-label">Create Password: <span class="text-danger">*</span></label>
+                                    <input type="password" class="form-control" id="crpassword" name="crpassword" placeholder="Abc@1234"  required>
+                                    <p id="crpassworderr" style="color: red;"></p>
+                                    <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cmpassword" class="form-label">Confirm Password: <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="cmpassword" name="cmpassword" placeholder="Abc@1234" required>
+                                    <p id="cmpassworderr" style="color: red;"></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputAddress5" class="form-label">Street Address: <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="inputAddres5s" name="address" placeholder="Enter street address" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputAddress2" class="form-label">Landmark</label>
+                                    <label for="inputAddress2" class="form-label">Landmark: <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="inputAddress2" name="landmark" placeholder="Enter landmark" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputCity" class="form-label">City</label>
+                                    <label for="inputCity" class="form-label">City: <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="inputCity" name="city" placeholder="Enter city" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputCity" class="form-label">District</label>
-                                    <input type="text" class="form-control" id="inputDistrict" name="district" placeholder="Enter district" required>
+                                    <label for="inputCity" class="form-label">District: <span class="text-danger">*</span></label>
+                                    <select class="form-control" id="inputDistrict" name="district" required>
+                                        <option value="">Select district</option>
+                                        <option value="Erode">Erode</option>
+                                        <option value="Karur">Karur</option>
+                                        <option value="Namakkal">Namakkal</option>
+                                        <option value="Tirupur">Tirupur</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputState" class="form-label">State</label>
+                                    <label for="inputState" class="form-label">State: <span class="text-danger">*</span></label>
                                     <select id="inputState" class="form-select" name="state">
                                         <option selected value="tamil nadu">Tamil Nadu</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputZip" class="form-label">Pincode</label>
+                                    <label for="inputZip" class="form-label">Pincode: <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="inputPincode" name="pincode"  placeholder="Enter pincode" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="locationUrl" class="form-label">Location URL</label>
-                                    <input type="text" class="form-control" id="locationUrl" name="locationUrl"  placeholder="Enter company location link" >
+                                    <label for="locationUrl" class="form-label">Location URL: <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="locationUrl" name="locationUrl"  placeholder="Enter company location link" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputFile" class="form-label">Logo</label>
@@ -1042,19 +1073,19 @@
                                 <h5 class="card-title">Contact Person Details</h5>
 
                                 <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Name</label>
+                                    <label for="inputEmail5" class="form-label">Name: <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="inputEmail5" name="name1" placeholder="Enter cp name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Role</label>
+                                    <label for="inputEmail5" class="form-label">Role: <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="inputEmail5" name="role" placeholder="Enter cp role" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputNumber5" class="form-label">Mobile Number</label>
+                                    <label for="inputNumber5" class="form-label">Mobile Number: <span class="text-danger">*</span></label>
                                     <input type="number" class="form-control" id="inputNumber5" name="mobile1" placeholder="Enter cp number" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputEmail5" class="form-label">Email-ID</label>
+                                    <label for="inputEmail5" class="form-label">Email-ID: <span class="text-danger">*</span></label>
                                     <input type="email" class="form-control" id="inputEmail5" name="email1" placeholder="Enter cp email" required>
                                 </div>
                                 <div class="text-center">
@@ -1140,10 +1171,10 @@
                                                             <td><?php echo $value['role']; ?></td>
                                                             <td><?php echo $value['mobile_number']; ?></td>
                                                             <td><span class="badge bg-danger">Pending</span></td>
-                                                            <td class="d-flex"><a class="" href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                            <td class="d-flex"><a class="" href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
                                                             <!-- <a class="ms-1" href="<?php echo baseUrl . "admin/deleteEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button> -->
-                                                            <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployer"
-                                                             onclick="(function(id, button) { deleteformdl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" >Delete</button>
+                                                            <button type="button" class="btn btn-danger d-flex ms-1" data-toggle="modal" data-target="#deleteemployer"
+                                                             onclick="(function(id, button) { deleteformdl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" ><i class="bi bi-trash pe-1"></i>Delete</button>
                                                                 <script>
                                                                     function deleteformdl(employertid){
                                                                         document.getElementById("EmployerID").value = employertid;
@@ -1244,7 +1275,7 @@
                                                     <th scope="col">Contact Person Name</th>
                                                     <th scope="col">Contact Person Role</th>
                                                     <th scope="col">Contact Person Mobile</th>
-                                                    <th scope="col">Verification Status</th>
+                                                    <th scope="col">Verified By</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
@@ -1264,10 +1295,10 @@
                                                             <td><?php echo $value['name']; ?></td>
                                                             <td><?php echo $value['role']; ?></td>
                                                             <td><?php echo $value['mobile_number']; ?></td>
-                                                            <td><span class="badge bg-success">Verified</span></td>
-                                                            <td class="d-flex py-3"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
-                                                            <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployer"
-                                                             onclick="(function(id, button) { deleteformvl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)">Delete</button>
+                                                            <td><?php echo $value['verifiedBy']; ?></td>
+                                                            <td class="d-flex py-3"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
+                                                            <button type="button" class="btn btn-danger ms-1 d-flex" data-toggle="modal" data-target="#deleteemployer"
+                                                             onclick="(function(id, button) { deleteformvl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)"><i class="bi bi-trash pe-1"></i> Delete</button>
                                                                 <script>
                                                                     function deleteformvl(employertid){
                                                                         document.getElementById("EmployerID").value = employertid;
@@ -1389,9 +1420,9 @@
                                                             <td><?php echo $value['role']; ?></td>
                                                             <td><?php echo $value['mobile_number']; ?></td>
                                                             <td><span class="badge bg-danger">Pending</span></td>
-                                                            <td class="d-flex py-3"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
-                                                            <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployer"
-                                                             onclick="(function(id, button) { deleteformpl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)">Delete</button>
+                                                            <td class="d-flex py-3"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
+                                                            <button type="button" class="btn btn-danger d-flex ms-1" data-toggle="modal" data-target="#deleteemployer"
+                                                             onclick="(function(id, button) { deleteformpl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)"><i class="bi bi-trash pe-1"></i>Delete</button>
                                                     <script>
                                                         function deleteformpl(employertid){
                                                             document.getElementById("EmployerID").value = employertid;
@@ -1498,7 +1529,8 @@
                                                         <?php
                                                         if ($value['verifyOne'] == 1 && $value['verifyTwo'] == 1) {
                                                             ?>
-                                                                        <td><span class="badge bg-success">Verified</span></td>
+                                                                        <td><span class="badge bg-success">Verified By</span><br><?php echo $value['verifiedBy']; ?>
+                                                                                        </td>
                                                         <?php
                                                         } else {
                                                             ?>
@@ -1511,9 +1543,9 @@
                                                                             <input class="form-check-input" type="text" name="EmployerId" id="" value="<?php echo $value['id'] ?>" hidden>
                                                                             <input class="form-check-input" type="text" name="deleteStatus" id="" value="0" hidden>
         
-                                                                            <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to restore?')">Restore</button>
+                                                                            <button type="submit" class="btn btn-success d-flex" onclick="return confirm('Are you sure you want to restore?')"><i class="bi bi-arrow-counterclockwise pe-1"></i>Restore</button>
                                                                         </form>
-                                                                    <a class="ms-1" href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                                    <a class="ms-1" href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
 
                                                                 </tr>
                                                             <?php
@@ -1651,7 +1683,7 @@
                                                 <?php
                                                 if ($value['verifyOne'] == 1 && $value['verifyTwo'] == 1) {
                                                     ?>
-                                                                <td><span class="badge bg-success">Verified</span></td>
+                                                                <td><span class="badge bg-success">Verified By</span><br><?php echo $value['verifiedBy']; ?></td>
                                                 <?php
                                                 } else {
                                                     ?>
@@ -1659,7 +1691,7 @@
                                                     <?php
                                                 }
                                                 ?>                                                
-                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['id'] ?>"><button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
                                                         </tr>
                                                     <?php
                                                     $loopcount++;
@@ -1978,6 +2010,7 @@
 
                                         <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
                                         <input class="form-check-input" type="text" name="newList" id="" value="1" hidden>
+                                        <input class="form-check-input" type="text" name="verifiedName" id="" value="<?php echo $_SESSION['adminName'] . ' / ' . $_SESSION['adminid'] ?>" hidden>
 
                                          <div class="d-flex justify-content-around">
                                             <button type="submit" class="btn btn-success"  id="verifyButton" disabled>Verified</button>
@@ -2133,7 +2166,7 @@
                                                         <th scope="col">S.No</th>
                                                         <th scope="col">Job Title</th>
                                                         <th scope="col">Job Subcategory</th>
-                                                        <th scope="col">Location</th>
+                                                        <th scope="col">Job Location</th>
                                                         <th scope="col">Job Timing</th>
                                                         <th scope="col">Salary</th>
 
@@ -2227,23 +2260,33 @@
 
                             <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "admin/employeeRegistration" ?>" method="post">
                                 <div class="col-12">
-                                    <label for="yourName" class="form-label">Candidate Name</label>
+                                    <label for="yourName" class="form-label">Candidate Name: <span class="text-danger">*</span></label>
                                     <input type="text" name="name" class="form-control" id="yourName" placeholder="Enter name" required>
                                     <div class="invalid-feedback">Please, enter your name!</div>
                                 </div>
 
                                 <div class="col-12">
-                                    <label for="yourEmail" class="form-label">Candidate Email</label>
+                                    <label for="yourEmail" class="form-label">Candidate Email: <span class="text-danger">*</span></label>
                                     <input type="email" name="email" class="form-control" id="yourEmail" placeholder="Enter email" required>
                                     <div class="invalid-feedback">Please, enter a valid Email adddress!</div>
                                 </div>
 
                                 <div class="col-12">
-                                    <label for="yourEmail" class="form-label">Candidate Mobile Number</label>
+                                    <label for="yourEmail" class="form-label">Candidate Mobile Number: <span class="text-danger">*</span></label>
                                     <input type="number" name="phonenumber" class="form-control" id="yourEmail" placeholder="Enter number" required>
                                     <div class="invalid-feedback">Please, enter mobile number!</div>
                                 </div>
-
+                                <div class="col-12">
+                                    <label for="createpassword" class="form-label">Create Password: <span class="text-danger">*</span></label>
+                                    <input type="password" name="createpassword" class="form-control" id="createpassword" placeholder="Enter new password" required>
+                                    <div class="invalid-feedback">Please, enter new password!</div>
+                                <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="confirmpassword" class="form-label">Confirm Password: <span class="text-danger">*</span></label>
+                                    <input type="text" name="cmpassword" class="form-control" id="confirmpassword" placeholder="Enter retype password" required>
+                                    <div class="invalid-feedback">Please, retype the password!</div>
+                                </div>
                                 <!-- <div class="col-12">
                                 <div class="form-check">
                                     <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
@@ -2331,9 +2374,9 @@
                                                             <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
                                                             <td><?php echo $value['dateofbirth']; ?></td>
                                                             <td><span class="badge bg-danger">Pending</span></td>
-                                                            <td class="d-flex py-3"><a class="mx-1" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
-                                                            <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#deleteemployee"
-                                                             onclick="(function(id, button) { deleteformnl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" >Delete</button>
+                                                            <td class="d-flex py-3"><a class="mx-1" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
+                                                            <button type="button" class="btn btn-danger  d-flex" data-toggle="modal" data-target="#deleteemployee"
+                                                             onclick="(function(id, button) { deleteformnl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" ><i class="bi bi-trash pe-1"></i>Delete</button>
                                                     <script>
                                                         function deleteformnl(employeetid){
                                                             document.getElementById("EmployeeId").value =employeetid;
@@ -2436,7 +2479,7 @@
                                                     <th scope="col">Mobile Number</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">D.O.B</th>
-                                                    <th scope="col">Verification Status</th>
+                                                    <th scope="col">Verified By</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
@@ -2455,11 +2498,11 @@
                                                             <td><?php echo $value['phonenumber']; ?></td>
                                                             <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
                                                             <td><?php echo $value['dateofbirth']; ?></td>
-                                                            <td><span class="badge bg-success">Verified</span></td>
+                                                            <td><?php echo $value['verifiedBy']; ?></td>
                                                             <td class="d-flex py-3">
-                                                                <a class="" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
-                                                            <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployee"
-                                                             onclick="(function(id, button) { deleteformvl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" >Delete</button>
+                                                                <a class="" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
+                                                            <button type="button" class="btn btn-danger d-flex ms-1" data-toggle="modal" data-target="#deleteemployee"
+                                                             onclick="(function(id, button) { deleteformvl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" ><i class="bi bi-trash pe-1"></i>Delete</button>
                                                     <script>
                                                         function deleteformvl(employeetid){
                                                             document.getElementById("EmployeeId").value =employeetid;
@@ -2584,9 +2627,9 @@
                                                                     <td><?php echo $value['dateofbirth']; ?></td>
                                                                     <td><?php echo $value['verificationRemarks']; ?></td>
                                                                     <td><span class="badge bg-danger">Pending</span></td>
-                                                                    <td class="d-flex py-3"><a href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
-                                                                    <button type="button" class="btn btn-danger ms-1" data-toggle="modal" data-target="#deleteemployee"
-                                                             onclick="(function(id, button) { deleteformpl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" >Delete</button>
+                                                                    <td class="d-flex py-3"><a href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
+                                                                    <button type="button" class="btn btn-danger d-flex ms-1" data-toggle="modal" data-target="#deleteemployee"
+                                                             onclick="(function(id, button) { deleteformpl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)" ><i class="bi bi-trash pe-1"></i>Delete</button>
                                                     <script>
                                                         function deleteformpl(employeetid){
                                                             document.getElementById("EmployeeId").value = employeetid;
@@ -2711,7 +2754,8 @@
                                                 <?php
                                                 if ($value['identityverify'] == 1 && $value['addressverify'] == 1 && $value['employmentverify'] == 1 && $value['educationverify'] == 1) {
                                                     ?>
-                                                                <td><span class="badge bg-success">Verified</span></td>
+                                                                <td><span class="badge bg-success">Verified By</span><br><?php echo $value['verifiedBy']; ?>
+                                                                                </td>
                                                 <?php
                                                 } else {
                                                     ?>
@@ -2725,7 +2769,7 @@
                                                                     <input class="form-check-input" type="text" name="EmployeeId" id="" value="<?php echo $value['id'] ?>" hidden>
                                                                     <input class="form-check-input" type="text" name="restoreEmployee" id="" value="0" hidden>
 
-                                                                    <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to restore?')">Restore</button>
+                                                                    <button type="submit" class="btn btn-success d-flex" onclick="return confirm('Are you sure you want to restore?')"><i class="bi bi-arrow-counterclockwise pe-1"></i>Restore</button>
                                                                 </form>
                                                             </span>
                                                             <a class="ms-1" href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button>
@@ -2851,11 +2895,12 @@
                                                         <?php
                                                         if ($value['identityverify'] == 1 && $value['addressverify'] == 1 && $value['employmentverify'] == 1 && $value['educationverify'] == 1) {
                                                             ?>
-                                                                <td><span class="badge bg-success">Verified</span></td>
+                                                                <td><span class="badge bg-success">Verified By</span><br><?php echo $value['verifiedBy']; ?>
+                                                                                </td>
                                                 <?php } else { ?>
                                                                 <td><span class="badge bg-danger">Pending</span></td>
                                                 <?php } ?>
-                                                    <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success">View</button></a>
+                                                    <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['id'] ?>"><button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
                                                     </tr>
                                                 <?php
                                                 $loopcount++;
@@ -3012,17 +3057,17 @@
 
                                                     <div class="d-sm-flex justify-content-between pt-4" >
                                                         <div>
-                                                        <p>D.O.B : <?php echo $value['dateofbirth'] ?>
+                                                        <p><b>D.O.B :</b> <?php echo $value['dateofbirth'] ?>
                                                                     </p>
-                                                                    <p>Age :
+                                                                    <p><b>Age :</b>
                                                                         <?php echo $value['age'] ?>
                                                                     </p>
                                                                 </div>
                                                                 <div>
-                                                                    <p>Gender :
+                                                                    <p><b>Gender :</b>
                                                                         <?php echo $value['gender'] ?>
                                                                     </p>
-                                                                    <p>Marital Status :
+                                                                    <p><b>Marital Status :</b>
                                                                         <?php echo $value['maritalStatus'] ?>
                                                                     </p>
                                                                 </div>
@@ -3331,6 +3376,7 @@
                                                 </div>
 
                                                 <input class="form-check-input" type="text" name="newList" id="" value="1" hidden>
+                                                <input class="form-check-input" type="text" name="verifiedName" id="" value="<?php echo $_SESSION['adminName'] .' / '.$_SESSION['adminid']?>" hidden>
 
                                             
 
@@ -3467,17 +3513,17 @@
 
                                                     <div class="d-sm-flex justify-content-between pt-4" >
                                                         <div>
-                                                        <p>D.O.B : <?php echo $value['dateofbirth'] ?>
+                                                        <p><b>D.O.B : </b><?php echo $value['dateofbirth'] ?>
                                                                     </p>
-                                                                    <p>Age :
+                                                                    <p><b>Age :</b>
                                                                         <?php echo $value['age'] ?>
                                                                     </p>
                                                                 </div>
                                                                 <div>
-                                                                    <p>Gender :
+                                                                    <p><b>Gender :</b>
                                                                         <?php echo $value['gender'] ?>
                                                                     </p>
-                                                                    <p>Marital Status :
+                                                                    <p><b>Marital Status :</b>
                                                                         <?php echo $value['maritalStatus'] ?>
                                                                     </p>
                                                                 </div>
@@ -3798,13 +3844,13 @@
                                                                     <td><?php echo $value['other_category'] ?></td>
                                                                     <td><?php echo $value['newCategory'] ?></td>
                                                                     <td class="d-flex">
-                                                                    <button type="button" class="btn btn-success me-1" data-toggle="modal" data-target="#newcategoryexp"
-                                                                    onclick="categoryexp('<?php echo $value['id']; ?>','<?php echo $value['newCategory']; ?>')">Add</button>
+                                                                    <button type="button" class="btn btn-success d-flex me-1" data-toggle="modal" data-target="#newcategoryexp"
+                                                                    onclick="categoryexp('<?php echo $value['id']; ?>','<?php echo $value['newCategory']; ?>')"><i class="bi bi-check2 pe-1"></i>Add</button>
                                                                     <form action="<?php echo baseUrl . "admin/cancelNewCategoryExp" ?>" method="post" >
                                                                             <input class="form-check-input" type="text" name="jobTableId" id="" value="<?php echo $value['id'] ?>" hidden>
                                                                             <input class="form-check-input" type="text" name="categoryothers" id="" value="0" hidden>
         
-                                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel?')">Delete</button>
+                                                                            <button type="submit" class="btn btn-danger d-flex" onclick="return confirm('Are you sure you want to cancel?')"><i class="bi bi-trash pe-1"></i>Delete</button>
                                                                         </form>
                                                                 </tr>
                                                                 <script>
@@ -3918,10 +3964,10 @@
                                                             <th scope="col">S.No</th>
                                                             <th scope="col">Employer ID</th>
                                                             <th scope="col">Candidate ID</th>
-                                                            <th scope="col">Name</th>
-                                                            <th scope="col">Mobile Number</th>
-                                                            <th scope="col">Email</th>
-                                                            <th scope="col">D.O.B</th>
+                                                            <th scope="col">Candidate Name</th>
+                                                            <th scope="col">Candidate Mobile Number</th>
+                                                            <!-- <th scope="col">Email</th> -->
+                                                            <!-- <th scope="col">D.O.B</th> -->
                                                             <th scope="col">Action</th>
                                                                 </tr>
                                                             </thead>
@@ -3931,23 +3977,24 @@
                                                                 foreach ($this->data['candidateRequestList'] as $key => $value) {
                                                                     ?>
                                                                         <tr>
-                                                                            <td><a href="#"><?php echo $loopcount; ?></a>.</td>
-                                                                            <td><?php echo $value['requestedEmployer']; ?></td>
-                                                                            <td><?php echo $value['eeid']; ?></td>
+                                                                            <td><?php echo $loopcount; ?>.</td>
+                                                                            <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>"><?php echo $value['emprid']; ?></a></td>
+                                                                            <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>"><?php echo $value['cdid']; ?></a></td>
                                                                             <td><?php echo $value['name']; ?></td>
-                                                                            <td><?php echo $value['phonenumber']; ?></td>
-                                                                            <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td>
-                                                                            <td><?php echo $value['dateofbirth']; ?></td>
+                                                                            <td><?php echo $value['mobilenum']; ?></td>
+                                                                            <!-- <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td> -->
+                                                                            <!-- <td><?php echo $value['dateofbirth']; ?></td> -->
                                                                             <td class="d-flex">
                                                                             <form action="<?php echo baseUrl . "admin/approveCandidateRequest" ?>" method="post" >
-                                                                                <input class="form-check-input" type="text" name="EmployeeId" id="" value="<?php echo $value['id'] ?>" hidden>
+                                                                                <input class="form-check-input" type="text" name="employerId" id="" value="<?php echo $value['emprid'] ?>" hidden>
+                                                                                <input class="form-check-input" type="text" name="seekerId" id="" value="<?php echo $value['seekerId'] ?>" hidden>
                                                                                 <input class="form-check-input" type="text" name="approveCandidateRequest" id="" value="2" hidden>
-                                                                                <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to approve?')">Approve to View</button>
+                                                                                <button type="submit" class="btn btn-success d-flex" onclick="return confirm('Are you sure you want to approve?')"><i class="bi bi-check2 pe-1"></i>Approve to View</button>
                                                                             </form>
                                                                             <form action="<?php echo baseUrl . "admin/cancelCandidateRequest" ?>" method="post" >
-                                                                                <input class="form-check-input" type="text" name="EmployeeId" id="" value="<?php echo $value['id'] ?>" hidden>
-                                                                                <input class="form-check-input" type="text" name="cancelCandidateRequest" id="" value="0" hidden>
-                                                                                <button type="submit" class="btn btn-danger ms-1" onclick="return confirm('Are you sure to cancel the request?')">Cancel</button>
+                                                                                <input class="form-check-input" type="text" name="employerId" id="" value="<?php echo $value['emprid'] ?>" hidden>
+                                                                                <input class="form-check-input" type="text" name="seekerId" id="" value="<?php echo $value['seekerId'] ?>" hidden>                                                                                <input class="form-check-input" type="text" name="cancelCandidateRequest" id="" value="0" hidden>
+                                                                                <button type="submit" class="btn btn-danger d-flex ms-1" onclick="return confirm('Are you sure to cancel the request?')"><i class="bi bi-x pe-1"></i>Cancel</button>
                                                                             </form>
                                                                         </td>
                                                                         </tr>

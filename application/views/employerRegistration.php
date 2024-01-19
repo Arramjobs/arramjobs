@@ -84,7 +84,7 @@
                     <p id="nameerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="phno" class="form-label">Comapny Number: <span class="text-danger">*</span></label>
+                    <label for="phno" class="form-label">Company Number: <span class="text-danger">*</span></label>
                     <input type="number" class="form-control" id="phno" name="mobile"
                         placeholder="9638527419" required>
                     <p id="pherr" style="color: red;"></p>
@@ -124,13 +124,21 @@
                 </div>
                 <div class="">
                     <label for="addr" class="form-label">District: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="district" name="district"
-                        placeholder="Erode" required>
+                        <select class="form-control" id="district" name="district" required>
+                                <option value="">Select district</option>
+                                <option value="Erode">Erode</option>
+                                <option value="Karur">Karur</option>
+                                <option value="Namakkal">Namakkal</option>
+                                <option value="Tirupur">Tirupur</option>
+                            </select>
                     <p id="diserr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="addr" class="form-label">State: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="state" name="state" placeholder="Tamil Nadu" required>
+                    <select class="form-control" id="state" name="state" required>
+                                <option value="">Select district</option>
+                                <option value="Tamilnadu">Tamil Nadu</option>
+                            </select>
                     <p id="stateerr" style="color: red;"></p>
                 </div>
 
@@ -142,9 +150,9 @@
                 </div>
 
                 <div class="">
-                    <label for="locationUrl" class="form-label">Location URL:</label>
+                    <label for="locationUrl" class="form-label">Location URL: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="locationUrl" name="locationUrl"
-                     placeholder="https://www.example.com/company-location">
+                     placeholder="https://www.example.com/company-location" required>
                     <p id="lUrlerr" style="color: red;"></p>
                 </div>
 
@@ -292,6 +300,7 @@
             var y3 = document.forms.pincode.value;
             var y5 = document.forms.district.value;
             var y4 = document.forms.state.value;
+             var lu = document.forms.locationUrl.value;
             var l = document.forms.logo.value;
             var web = document.forms.cwebsite.value;
             var pan = document.forms.cpan.value;
@@ -456,44 +465,21 @@
                 return false;
             }
 
-
-
-            if (y5 != "") {
-                if (y5.length < 2) {
-                    document.getElementById("diserr").innerHTML = "District should be in atleast 2 characters";
+            if (y5 == "") {
+                    document.getElementById("diserr").innerHTML = "Please select a district";
                     document.forms.district.focus();
                     return false;
-                } else if (y5.length > 50) {
-                    document.getElementById("diserr").innerHTML = "District should not exceed 50 characters";
-                    document.forms.district.focus();
-                    return false;
-                } else {
-                    document.getElementById("diserr").innerHTML = "";
-                }
-            } else if (y5 == "") {
-                var district = "District must be filled out";
-                document.getElementById("diserr").innerHTML = district;
-                document.forms.district.focus();
-                return false;
+            } else {
+                document.getElementById("diserr").innerHTML = "";
             }
 
-            if (y4 != "") {
-                if (y4.length < 2) {
-                    document.getElementById("stateerr").innerHTML = "State should be in atleast 2 characters";
-                    document.forms.state.focus();
-                    return false;
-                } else if (y4.length > 50) {
-                    document.getElementById("stateerr").innerHTML = "State should not exceed 50 characters";
-                    document.forms.state.focus();
-                    return false;
-                } else {
-                    document.getElementById("stateerr").innerHTML = "";
-                }
-            } else if (y4 == "") {
-                var state = "State must be filled out";
+            if (y4 == "") {
+                var state = "Please select a State";
                 document.getElementById("stateerr").innerHTML = state;
                 document.forms.state.focus();
                 return false;
+            } else {
+                document.getElementById("stateerr").innerHTML = "";
             }
 
             if (y3 != "") {
@@ -506,11 +492,18 @@
 
                 }
             } else if (y3 == "") {
-
                 var pincode = "Pincode must be filled out";
                 document.getElementById("pinerr").innerHTML = pincode;
                 document.forms.pincode.focus();
                 return false;
+            }
+
+             if (lu == "") {
+                    document.getElementById("lUrlerr").innerHTML = "Location url must be filled out";
+                    document.forms.locationUrl.focus();
+                    return false;
+            } else {
+                    document.getElementById("lUrlerr").innerHTML = "";
             }
 
             // website pan gst

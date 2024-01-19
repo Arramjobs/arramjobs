@@ -287,6 +287,8 @@ class Employer extends CI_Controller
         $seekerName = $this->EmployerModel->candidate($id);
         $this->data['basicDetails'] = $seekerName;
 
+        $reqStatus = $this->EmployerModel->canRequestStatus($id);
+        $this->data['canReqStatus'] = $reqStatus;
 
         $this->load->view('employerDashboard.php', $this->data);
     }
