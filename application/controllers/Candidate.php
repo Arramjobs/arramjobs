@@ -78,21 +78,41 @@ class Candidate extends CI_Controller
     }
 
 
+    public function setVariable()
+    {
+        $basicDetails = $this->CandidateModel->getBasicDetails();
+        $this->data['basicDetails'] = $basicDetails;
+
+        $eduTotalRows = $this->CandidateModel->educationTable();
+        $this->data['eduTotalRows'] = $eduTotalRows["totalRows"];
+
+        $expTotalRows = $this->CandidateModel->experienceTable();
+        $this->data['expTotalRows'] = $expTotalRows["totalRows"];
+
+        $resume = $this->CandidateModel->areaOfIntrestTable();
+        $this->data['resume'] = $resume["response"];
+
+        $areaTotalRows = $this->CandidateModel->areaOfIntrestTable();
+        $this->data['areaTotalRows'] = $areaTotalRows["totalRows"];
+    }
+
 
     public function dash()
     {
         $basicDetails = $this->CandidateModel->getBasicDetails();
-        $data['basicDetails'] = $basicDetails;
-        $data['method'] = "dash";
-        $this->load->view('candidateDashboard.php', $data);
+        $this->data['basicDetails'] = $basicDetails;
+        $this->data['method'] = "dash";
+        $this->setVariable();
+        $this->load->view('candidateDashboard.php',  $this->data);
     }
 
 
     public function basicDetails()
     {
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
+        // $basicDetails = $this->CandidateModel->getBasicDetails();
+        // $this->data['basicDetails'] = $basicDetails;
         $this->data['method'] = 'basicdetails';
+        $this->setVariable();
         $this->load->view('candidateDashboard.php', $this->data);
     }
 
@@ -112,9 +132,8 @@ class Candidate extends CI_Controller
     {
         $this->data['method'] = "educationTable";
         $educationTable = $this->CandidateModel->educationTable();
-        $this->data['educationTable'] = $educationTable;
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
+        $this->data['educationTable'] = $educationTable['response'];
+        $this->setVariable();
         $this->load->view('candidateDashboard.php', $this->data);
     }
 
@@ -135,14 +154,13 @@ class Candidate extends CI_Controller
     }
     public function updateEducation()
     {
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
         $educationTable = $this->CandidateModel->educationTable();
-        $this->data['educationTable'] = $educationTable;
+        $this->data['educationTable'] = $educationTable['response'];
         $educationId = $this->uri->segment(3);
         $this->data['method'] = "updateEducation";
         $updateEducation = $this->CandidateModel->updateEducation($educationId);
         $this->data['updateEducation'] = $updateEducation;
+        $this->setVariable();
         $this->load->view('candidateDashboard.php', $this->data);
     }
     public function updateInsertEducation()
@@ -190,13 +208,12 @@ class Candidate extends CI_Controller
         $this->data['method'] = "experienceTable";
 
         $experienceTable = $this->CandidateModel->experienceTable();
-        $this->data['experienceTable'] = $experienceTable;
-
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
+        $this->data['experienceTable'] = $experienceTable['response'];
 
         $categoryList = $this->CandidateModel->getCategoryList();
         $this->data['categoryList'] = $categoryList;
+
+        $this->setVariable();
 
         $this->load->view('candidateDashboard.php', $this->data);
     }
@@ -222,22 +239,29 @@ class Candidate extends CI_Controller
         echo '<script>alert("Experience details inserted successfully.");</script>';
     }
 
+    public function insertFresherForm()
+    {
+        $insertExperienceForm = $this->CandidateModel->insertFresherForm();
+
+        $this->areaOfIntrestTable();
+        echo '<script>alert("Experience is inserted as No experience.");</script>';
+    }
+
     public function updateExperience()
     {
         $experienceId = $this->uri->segment(3);
         $this->data['method'] = "updateExperience";
 
         $experienceTable = $this->CandidateModel->experienceTable();
-        $this->data['experienceTable'] = $experienceTable;
+        $this->data['experienceTable'] = $experienceTable['response'];
 
         $updateExperience = $this->CandidateModel->updateExperience($experienceId);
         $this->data['updateExperience'] = $updateExperience;
 
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
-
         $categoryList = $this->CandidateModel->getCategoryList();
         $this->data['categoryList'] = $categoryList;
+
+        $this->setVariable();
 
         $this->load->view('candidateDashboard.php', $this->data);
     }
@@ -338,16 +362,15 @@ class Candidate extends CI_Controller
         $this->data['method'] = "areaOfIntrestTable";
 
         $areaOfIntrestTable = $this->CandidateModel->areaOfIntrestTable();
-        $this->data['areaOfIntrestTable'] = $areaOfIntrestTable;
+        $this->data['areaOfIntrestTable'] = $areaOfIntrestTable['response'];
 
         $skillTable = $this->CandidateModel->skillTable();
         $this->data['skillTable'] = $skillTable;
 
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
-
         $categoryList = $this->CandidateModel->getCategoryList();
         $this->data['categoryList'] = $categoryList;
+
+        $this->setVariable();
 
         $this->load->view('candidateDashboard.php', $this->data);
     }
@@ -381,16 +404,15 @@ class Candidate extends CI_Controller
         $this->data['method'] = "updateAreaOfIntrest";
 
         $areaOfIntrestTable = $this->CandidateModel->areaOfIntrestTable();
-        $this->data['areaOfIntrestTable'] = $areaOfIntrestTable;
+        $this->data['areaOfIntrestTable'] = $areaOfIntrestTable['response'];
 
         $updateAreaOfIntrest = $this->CandidateModel->updateAreaOfIntrest($updateAreaOfIntrestId);
         $this->data['updateAreaOfIntrest'] = $updateAreaOfIntrest;
 
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
-
         $categoryList = $this->CandidateModel->getCategoryList();
         $this->data['categoryList'] = $categoryList;
+
+        $this->setVariable();
         
         $this->load->view('candidateDashboard.php', $this->data);
     }
@@ -471,8 +493,7 @@ class Candidate extends CI_Controller
         $updateSkill = $this->CandidateModel->updateSkill($updateSkillId);
         $this->data['updateSkill'] = $updateSkill;
 
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
+        $this->setVariable();
 
         $this->load->view('candidateDashboard.php', $this->data);
     }
@@ -516,20 +537,19 @@ class Candidate extends CI_Controller
 
     public function myProfile()
     {
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
-
         $educationTable = $this->CandidateModel->educationTable();
-        $this->data['educationTable'] = $educationTable;
+        $this->data['educationTable'] = $educationTable['response'];
 
         $experienceTable = $this->CandidateModel->experienceTable();
-        $this->data['experienceTable'] = $experienceTable;
+        $this->data['experienceTable'] = $experienceTable['response'];
 
         $areaOfIntrestTable = $this->CandidateModel->areaOfIntrestTable();
-        $this->data['areaOfIntrestTable'] = $areaOfIntrestTable;
+        $this->data['areaOfIntrestTable'] = $areaOfIntrestTable['response'];
 
         $skillTable = $this->CandidateModel->skillTable();
         $this->data['skillTable'] = $skillTable;
+
+        $this->setVariable();
 
         $this->data['method'] = 'myProfile';
         $this->load->view('candidateDashboard.php', $this->data);
@@ -679,9 +699,8 @@ class Candidate extends CI_Controller
         $resume = $this->CandidateModel->do_upload();
         $this->data['resume'] = $resume;
         $arearesume = $this->CandidateModel->areaOfIntrestTable();
-        $this->data['arearesume'] = $arearesume;
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
+        $this->data['arearesume'] = $arearesume['response'];
+        $this->setVariable();
         $this->load->view('candidateDashboard.php', $this->data);
     }
 
@@ -698,8 +717,7 @@ class Candidate extends CI_Controller
     public function thank()
     {
         $this->data['method'] = "thank";
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
+        $this->setVariable();
         $this->load->view('candidateDashboard.php', $this->data);
     }
 

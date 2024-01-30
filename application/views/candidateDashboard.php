@@ -41,7 +41,9 @@
       #phonenumber::-webkit-outer-spin-button,
       #phonenumber::-webkit-inner-spin-button,
       #number::-webkit-outer-spin-button,
-      #number::-webkit-inner-spin-button {
+      #number::-webkit-inner-spin-button,
+      #company_mobilenum::-webkit-outer-spin-button,
+      #company_mobilenum::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
@@ -251,8 +253,8 @@
                     <div><i class="bi bi-bar-chart"></i>
                     <span>Education Details</span></div>
                     <?php
-                    if (isset($basicDetails)) {
-                      if ($basicDetails[0]['edusubmited'] === "1") {
+                    if (isset($eduTotalRows)) {
+                      if ($eduTotalRows >= "1") {
                         ?>
                                  <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">
                                  <?php
@@ -271,11 +273,8 @@
                     <div><i class="bi bi-gem"></i>
                     <span>Experience Details</span></div>
                     <?php
-                    if (isset($basicDetails)) {
-                      if ($basicDetails[0]['expsubmited'] === "1") {
-
-                        // if (isset($experienceTable['totalRows']) > 0) {
-                        ?>
+                    if (isset($expTotalRows)) {
+                      if ($expTotalRows >= "1") { ?>
                                  <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">
                                  <?php
                       } else {
@@ -293,8 +292,8 @@
             <div><i class="bi bi-box-arrow-in-right"></i>
                     <span>Area of Job Interest</span></div>
                     <?php
-                    if (isset($basicDetails)) {
-                      if ($basicDetails[0]['areasubmited'] === "1") {
+                    if (isset($areaTotalRows)) {
+                      if ($areaTotalRows >= "1") {
                         ?>
                                  <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">
                                  <?php
@@ -313,8 +312,7 @@
             <div><i class="bi bi-file-earmark"></i>
                     <span>Resume</span></div>
                     <?php
-                    if (isset($basicDetails)) {
-                      if ($basicDetails[0]['resumesubmited'] === "1") {
+                      if (isset($resume[0]['resume_filename']) && ($resume[0]['resume_filename']) != null) {
                         ?>
                                  <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile" class="rounded-circle">
                                  <?php
@@ -323,7 +321,6 @@
                                  <div class="border border-secondary border-5 rounded-circle" style="width: 15px; height:15px;"></div>
                                <?php
                       }
-                    }
                     ?>
                 </a>
             </li><!-- End Icons Nav -->
@@ -421,18 +418,18 @@
                                       ?>
 
                                              <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>"
-                                              name="id" placeholder="Enter your name" onkeypress="return allowOnltLetters(event,this)">
+                                              name="id" placeholder="Enter your name">
 
                                               <div class="col-12">
                                               <label for="Name" class="form-label">Name <span class="text-danger">*</span></label>
                                               <input type="text" class="form-control" id="name" value="<?php echo $value['name']; ?>"
-                                               name="name" placeholder="Enter your name" required>
+                                               name="name" placeholder="Michael" oninput="validateName(this)" required>
                                               <div id="Name_error" style="color: red;"></div>
                                               </div>
                                               <div class="col-md-12">
                                               <label for="emailid" class="form-label">Email <span class="text-danger">*</span></label><br>
                                               <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" 
-                                              name="email" placeholder="Enter your email" required>
+                                              name="email" placeholder="example@gmail.com" required>
                                               <div id="emailid_error" style="color: red;"></div>
                                               </div>
                                               <!-- <div class="col-md-6">
@@ -451,7 +448,7 @@
                                               <div class="col-md-6">
                                               <label for="phonenumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
                                               <input type="number" class="form-control" id="phonenumber" value="<?php echo $value['phonenumber']; ?>" 
-                                              name="phonenumber" placeholder="Enter your number" required>
+                                              name="phonenumber" placeholder="9879879879" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber1(this)" required>
                                               <div id="phonenumber_error" style="color: red;"></div>
                                               </div>
                                               <div class="col-md-6">
@@ -463,7 +460,7 @@
                                               <div class="col-md-6">
                                               <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
                                               <input type="number" class="form-control" id="age" value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" 
-                                              name="age" placeholder="Enter age" readonly required>
+                                              name="age" placeholder="Your age" readonly required>
                                               <div id="age_error" style="color: red;"></div>
                                               </div>
                                               <div class="col-md-6">
@@ -485,32 +482,52 @@
                                               <div class="col-md-6">
                                               <label for="Door no" class="form-label">Door no / Building Name <span class="text-danger">*</span></label>
                                               <input type="text" class="form-control" id="doorno" value="<?php echo isset($value['buildingName']) ? $value['buildingName'] : ''; ?>" 
-                                              name="doorno" placeholder="Enter door no / building name" required>
+                                              name="doorno" placeholder="15 / Appartment 4" required>
                                               <div id="doorno_error" style="color: red;"></div>
                                               </div>
                                               <div class="col-md-6">
                                               <label for="street address" class="form-label">Street Address <span class="text-danger">*</span></label>
                                               <input type="text" class="form-control" id="streetaddress" value="<?php echo isset($value['address']) ? $value['address'] : ''; ?>" 
-                                              name="streetaddress" placeholder="Enter street address" required>
+                                              name="streetaddress" placeholder="Gandhi nagar" required>
                                               <div id="streetaddress_error" style="color: red;"></div>
                                               </div>
                                               <div class="col-md-6">
                                               <label for="landmark" class="form-label">Landmark <span class="text-danger">*</span></label>
                                               <input type="text" class="form-control" id="landmark" value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" 
-                                              name="landmark" placeholder="Enter landmark" required>
+                                              name="landmark" placeholder="Near temple" required>
                                               <div id="landmark_error" style="color: red;"></div>
                                               </div>
                                               <div class="col-md-6">
                                               <label for="pincode" class="form-label">Pincode <span class="text-danger">*</span></label>
-                                              <input type="number" class="form-control" id="pincode" value="<?php echo ($value['pincode']) ? $value['pincode'] : ''; ?>" 
-                                              name="pincode" placeholder="Enter pincode" required>
+                                              <input type="text" class="form-control" id="pincode" value="<?php echo ($value['pincode']) ? $value['pincode'] : ''; ?>" 
+                                              name="pincode" placeholder="638100" maxlength="6" oninput="validatePincode(this)" required>
                                               <div id="pincode_error" style="color: red;"></div>
                                               </div>
-                                              <div class="col-md-6">
+                                              <!-- <div class="col-md-6">
                                               <label for="district">District <span class="text-danger">*</span></label>
                                               <input type="text" class="form-control" id="district" value="Erode" name="district" readonly>
                                               <div id="district_error" style="color: red;"></div>
+                                              </div> -->
+
+                                              <div class="col-md-6">
+                                              <label for="district" class="form-label">District <span class="text-danger">*</span></label>
+
+                                              <select class="form-control" id="district" value="<?php echo isset($value['district']) ? $value['district'] : ''; ?>"
+                                               name="district" required>
+                                               <option value="">Select your District</option>
+
+                                               <option value="erode" <?php if (isset($value['district']) && $value['district'] === 'erode')
+                                                 echo 'selected'; ?>>Erode</option>
+                                               <option value="namakkal" <?php if (isset($value['district']) && $value['district'] === 'namakkal')
+                                                 echo 'selected'; ?>>Namakkal</option>
+                                               <option value="tirupur" <?php if (isset($value['district']) && $value['district'] === 'tirupur')
+                                                 echo 'selected'; ?>>Tirupur</option>
+                                               <option value="karur" <?php if (isset($value['district']) && $value['district'] === 'karur')
+                                                 echo 'selected'; ?>>Karur</option>
+                                              </select>
+                                              <div id="district_error" style="color: red;"></div>
                                               </div>
+
                                               <div class="col-md-6">
                                               <label for="maritalstatus" class="form-label">Marital Status <span class="text-danger">*</span></label>
 
@@ -555,6 +572,13 @@
                                               </div>
 
                                               <div class="col-md-6">
+                                              <label for="aadharnumber" class="form-label">Aadhaar number <span class="text-danger">*</span></label>
+                                              <input type="text" class="form-control" id="aadharnumber" value="<?php echo ($value['aadharnumber']) ? $value['aadharnumber'] : ''; ?>" 
+                                              name="aadharnumber" placeholder="1234 5678 9012" maxlength="14" pattern="\d{4} \d{4} \d{4}" oninput="validateAadharNumber(this)" required>
+                                              <div id="aadharnumber_error" style="color: red;"></div>
+                                              </div>
+
+                                              <div class="col-md-6">
                                               <label for="photo" class="form-label">Photo <span class="text-danger">*</span></label>
                                               <input type="text" class="form-control"  name="oldprofilephoto" value="<?php echo $value['photo_filename']; ?>" hidden>
                                               <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden>
@@ -563,12 +587,12 @@
                                               <a href="<?php echo $value['photo']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfilepp" ><?php echo $value['photo_filename']; ?></a>
                                               </div>
                                               <div id="photo_error" style="color: red;"></div>
-                                              </div>
+                                              
 
                                               <input type="number" class="form-control"  value="1" name="bdsubmit" hidden>
 
                                               <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF Maximum size: 1024KB</p>
-
+                                              </div>
                                <div class="text-center">
                                               <button type="submit" class="btn btn-primary">Submit</button>
                                               <button type="reset" class="btn btn-secondary">Reset</button>
@@ -602,6 +626,81 @@
                             </div>
                         </section>
 
+<!-- NAME CHARACTERS VALIDATION -->
+<script>
+    function validateName(input) {
+        input.value = input.value.replace(/[^A-Za-z]/g, '');
+    }
+</script>
+<!-- PHONE NUMBER SCRIPTING -->
+<script>
+function validatePhoneNumber1(input) {
+    var phoneNumber1 = input.value.replace(/\D/g, '');
+
+    if (phoneNumber1.length > 15) {
+        input.value = phoneNumber1.slice(0, 15);
+    }
+
+    var phoneNumberError = document.getElementById('phonenumber_error');
+    if (/[^0-9]/.test(input.value)) {
+        phoneNumberError.innerHTML = 'Please enter only numeric characters';
+    } else {
+        phoneNumberError.innerHTML = '';
+    }
+}
+</script>
+<!-- Pincode -->
+<script>
+  function validatePincode(input) {
+    input.value = input.value.replace(/\D/g, '');
+
+    if (input.value.length > 6) {
+        input.value = input.value.slice(0, 6);
+    }
+
+    var pincodeError = document.getElementById('pincode_error');
+    if (/[^0-9]/.test(input.value)) {
+        pincodeError.innerHTML = 'Please enter only numeric characters';
+    } else {
+        pincodeError.innerHTML = '';
+    }
+}
+</script>
+<!-- AADHAR NUMBER SPACE SCRIPTING -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#aadharnumber').on('input', function() {
+
+      var inputVal = $(this).val().replace(/\s/g, '');
+
+      var formattedVal = inputVal.replace(/(\d{4})/g, '$1 ').trim();
+
+      $(this).val(formattedVal);
+    });
+  });
+
+  function validateAadharNumber(input) {
+        var aadharNumber = input.value.replace(/\D/g, '');
+
+        if (aadharNumber.length > 4 && aadharNumber.length <= 8) {
+            aadharNumber = aadharNumber.slice(0, 4) + ' ' + aadharNumber.slice(4);
+        } else if (aadharNumber.length > 8) {
+            aadharNumber = aadharNumber.slice(0, 4) + ' ' + aadharNumber.slice(4, 8) + ' ' + aadharNumber.slice(8);
+        }
+
+        input.value = aadharNumber;
+        var errorDiv = document.getElementById('aadharnumber_error');
+        if (!/^\d{4} \d{4} \d{4}$/.test(aadharNumber)) {
+            input.setCustomValidity('Enter a valid Aadhaar number.');
+            errorDiv.textContent = 'Enter a valid Aadhaar number.';
+        } else {
+            input.setCustomValidity('');
+            errorDiv.textContent = '';
+        }
+    }
+</script>
+<!-- PASSWORD VALIDATION -->
                   <script>
                               document.getElementById("password").onfocus = function() {
                               document.getElementById("passwordmessage").style.display = "block";
@@ -625,7 +724,7 @@
                           }
                       }
                   </script>
-
+<!-- DATE OF BIRTH VALIDATION -->
                         <script>
                     document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('dateofbirth').addEventListener('input', function () {
@@ -648,9 +747,8 @@
                     return age;
                 }
             </script>
-
+<!-- AADHAR PHOTO UPLOAD -->
                          <script>
-
               document.getElementById("file-input-labelaf").addEventListener("click", function() {
                           document.getElementById("existfileaf").style.display = "none";
                       });
@@ -695,7 +793,6 @@
                       fileInputLabelpp.textContent = "Select a File";
                       }
                   });
-
                 
 
               function group() {
@@ -709,9 +806,11 @@
               var s = document.applicationform.streetaddress.value;
               var l = document.applicationform.landmark.value;
               var pin = document.applicationform.pincode.value;
+              var dt = document.applicationform.district.value;
               var m = document.applicationform.maritalstatus.value;
               var aa = document.applicationform.aadharfrontphoto.value;
               var ab = document.applicationform.aadharbackphoto.value;
+              var an = document.applicationform.aadharnumber.value;
               var photo = document.applicationform.photo.value;
 
               //Age validation
@@ -799,18 +898,18 @@
                   document.getElementById("dob_error").innerHTML = "";
               }
 
-              if (ag == "") {
-                  var namesms2 = "Age must be filled out";
-                  document.getElementById("age_error").innerHTML = namesms2;
-                  document.applicationform.age.focus();
-                  return false;
-                  } else if (ag!= '' && age !== ageFromDateOfBirth) {
-                  document.getElementById("age_error").textContent = "Age does not match with Date of Birth and current date.";
-                  document.applicationform.age.focus();
-                  return false;
-                  } else {
-                  document.getElementById("age_error").innerHTML = "";
-              }
+              // if (ag == "") {
+              //     var namesms2 = "Age must be filled out";
+              //     document.getElementById("age_error").innerHTML = namesms2;
+              //     document.applicationform.age.focus();
+              //     return false;
+              //     } else if (ag!= '' && age !== ageFromDateOfBirth) {
+              //     document.getElementById("age_error").textContent = "Age does not match with Date of Birth and current date.";
+              //     document.applicationform.age.focus();
+              //     return false;
+              //     } else {
+              //     document.getElementById("age_error").innerHTML = "";
+              // }
 
               if (g == "") {
                   var namesms2 = "Gender must be filled out";
@@ -871,6 +970,15 @@
                   }
 
               if (m == "") {
+                  var namesms2 = "District must be filled out";
+                  document.getElementById("district_error").innerHTML = namesms2;
+                  document.applicationform.district.focus();
+                  return false;
+              } else {
+                  document.getElementById("district_error").innerHTML = "";
+              }
+
+              if (m == "") {
                   var namesms2 = "Marital status must be filled out";
                   document.getElementById("maritalstatus_error").innerHTML = namesms2;
                   document.applicationform.maritalstatus.focus();
@@ -895,6 +1003,15 @@
                   return false;
               } else {
                   document.getElementById("aadharbackphoto_error").innerHTML = "";
+              }
+
+              if (an == "" && document.getElementById('existfileab').style.display == "none") {
+                  var namesms2 = "Aadhaar Number is required";
+                  document.getElementById("aadharnumber_error").innerHTML = namesms2;
+                  document.applicationform.aadharnumber.focus();
+                  return false;
+              } else {
+                  document.getElementById("aadharnumber_error").innerHTML = "";
               }
 
               if (photo == "" && document.getElementById('existfilepp').style.display == "none") {
@@ -931,7 +1048,7 @@
                                 <div class="card recent-sales overflow-auto">
                            
                                     <div class="card-body pt-4">
-           
+                                    <p><b style="color:blue;">Note:</b> Kindly provide your education history, starting from your <b>HIGHEST QUALIFICATION</b> to the lowest, ensuring a sequential order for accurate and efficient processing.</p>
                        <!-- <h5 class="card-title">Education Table<span></span></h5> -->
                        <div class="d-flex justify-content-between">
                        <!-- <a href="<?php echo baseUrl . "Candidate/addEducationForm" ?>">
@@ -971,7 +1088,7 @@
                                    
                                                              <tr>
                                                             <td> <form method="post" action="<?php echo baseUrl . 'Candidate/delete_selected'; ?>" id="form_<?= $value['id']; ?>">
-                                                                <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>">
+                                                                <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton2(this)">
                                                                               
                                                             </td>
 
@@ -1102,7 +1219,7 @@
                                               </table>
 
                                         
-                                              <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                                              <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                                                         </form>
                                               <?php
                                      } else {
@@ -1119,7 +1236,11 @@
 
                         <div class="card" id="addeduform" style="display:none">
                                 <div class="card-body">
+                                <div class="d-flex justify-content-between">
                                     <h5 class="card-title">Add Education Details</h5>
+                                    <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>">
+                                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+                                    </div>
 
                                     <!-- Multi Columns Form -->
                                     <form class="row g-3" autocomplete="off" novalidate name="educationform" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" 
@@ -1211,6 +1332,22 @@
 
                                 </div>
                             </div>
+
+                            <script>
+                              function updateDeleteButton2(checkbox) {
+        var deleteButton2 = document.getElementById('deleteList2');
+
+        if (checkbox.checked) {
+            deleteButton2.classList.remove('disabled');
+        } else {
+            deleteButton2.classList.add('disabled');
+        }
+    }
+
+    function confirmDelete2() {
+        return confirm('Are you sure you want to delete?');
+    }
+                            </script>
                 
                                 <script>
                        function autocomplete(inp, arr) {
@@ -1962,8 +2099,8 @@
             
                        <a href="#addeduform"><button  onclick="addeduformfunction()" type="button" class="btn btn-success mb-4" disabled>+ Add Education</button></a>
                       <div>
-                      <a  href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
-                      <a  href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next</button></a>
+                      <a  href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                      <a  href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
                       </div>
                                      </div>
                                      <?php
@@ -1993,7 +2130,7 @@
                                    ?>
                                                              <tr>
                                                               <td> <form method="post" action="<?php echo baseUrl . 'Candidate/delete_selected'; ?>" id="form_<?= $value['id']; ?>">
-                                                                          <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>">
+                                                                          <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton2(this)">
                                                                      <td><a><?php echo $count++; ?>.</a></td>
                                                              <td><?php echo $value['educational_qualification'] ?></td>
                                                              <!-- <td><?php echo $value['department'] ?></td> -->
@@ -2126,7 +2263,7 @@
                                ?>
                                                </tbody>
                                               </table>
-                                              <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                                              <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                                                         </form>
                                               <?php
                                      } else {
@@ -2142,7 +2279,11 @@
                             </div>
                             <div class="card">
                                 <div class="card-body" id="editeduform">
+                                    <div class="d-flex justify-content-between">
                                     <h5 class="card-title">Update Education Details</h5>
+                                    <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>">
+                                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+                                    </div>
 
                                     <!-- Multi Columns Form -->
                                     <form class="row g-3" novalidate name="educationform" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" 
@@ -2188,7 +2329,7 @@
 
                                <div class="col-md-6" id="percentage-group">
                                               <label class="form-label" for="percentage">Percentage</label>
-                                              <input type="text" class="form-control" id="percentage" id="school" value="<?php echo $value['percentage']; ?>" name="percentage">
+                                              <input type="number" class="form-control" id="percentage" id="school" value="<?php echo $value['percentage']; ?>" name="percentage">
                                               <div id="percentage_error" class="text-danger"></div>
                                </div>
 
@@ -2275,7 +2416,17 @@
                                 </div>
                             </div>
                         </section>
-               
+                        <script>
+    function updateDeleteButton2(checkbox) {
+        var deleteButton2 = document.getElementById('deleteList2');
+
+        if (checkbox.checked) {
+            deleteButton2.classList.remove('disabled');
+        } else {
+            deleteButton2.classList.add('disabled');
+        }
+    }
+</script>
                         <script>
                                     document.getElementById("file-input-label").addEventListener("click", function() {
                       document.getElementById("existfile").style.display = "none";
@@ -2530,34 +2681,242 @@
                                 <div class="card recent-sales overflow-auto">
                            
                                     <div class="card-body">
-           
+                    <div class="d-flex justify-content-between">
                        <h5 class="card-title">Experience Table<span></span></h5>
-                       <div id="exptableheading" class="mb-4">
-                                     Are you a fresher ? <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"><button type="button" class="btn btn-danger mx-2">Skip</button></a> <br>
-                                     or Experienced ? <a class="" href="#addexpform" onclick="addexpform()"><button type="button" onclick="exptablevisible()" class="btn btn-success m-2">Add Experience</button></a>
-                       </div>
+                       <div class="pt-4" >
+                      <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button  type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                      <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button  type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
+                      </div>
+                      </div>
+
+                    <div class="exptableheading" id="fresherExp">
+                        <p style="font-size:18px; font-weight: bold; color: #007BFF;">Kindly mention your work experience and work status.</p>
+                        <p><b style="color:blue;">Note:</b> Indicate <b>'No Experience'</b> if you are a <b>Fresher</b> or have had <b>no professional experience</b> since graduation.</p>
+                          <input type="radio" name="fresherExperience" value="experience" id="exp" onclick="showContent('experience')" hidden> 
+                          <label for="exp" class="btn btn-success">Experienced</label>
+                          <input type="radio" name="fresherExperience" value="fresher" id="fre" onclick="showContent('fresher')" hidden>
+                          <label for="fre" class="btn btn-danger"> Fresher / No Experience</label>
+                      </div>
+
+                      <div id="experience" class="button-content" style="display: none;">
+                                <div class="d-flex justify-content-between pt-4">
+                                    <h5 class="card-title">Add Experience Details</h5>
+                                    <a class="" href="<?php echo baseUrl . "Candidate/experiencetable" ?>">
+                                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+                                 </div>
+                                    <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
+                                     onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Candidate/insertExperienceForm" ?>">
+
+                                    <div class="col-6">
+                                      <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
+                                      <select class="form-control" id="category" name="category" autocomplete="off" onchange="showHideOtherField()" required>
+                                      <option value="">Select a Category</option>
+                                      <?php
+                                      foreach ($categoryList as $key => $value) {
+                                        ?>
+                                      <option value="<?php echo $value->categoryName ?>"><?php echo $value->categoryName ?></option>
+                                        <?php } ?>
+                                        <option value="others">Others</option>
+                                      </select>
+                                      <div id="category_error" class="text-danger error"></div>
+                                                    </div>                        
+
+                                    <div class="col-6" id="newcategory_group" style="display: none;">
+                                      <label for="newcategory" class="form-label">Reason for choosing category as others <span class="text-danger">*</span></label>
+                                      <input class="form-control" id="newcategory" name="newcategory"  placeholder="Enter new category">
+                                      <div id="newcategory_error" class="text-danger error"></div>
+                                      <input id="categoryothers" name="categoryothers" value="1" hidden >
+                                    </div>
+
+                            <div class="col-md-6">
+                              <label for="subcategory" class="form-label">Subcategory <span class="text-danger">*</span></label>
+                              <input class="form-control" id="subcategory" name="subcategory"  placeholder="Enter subcategory" required>
+                              <div id="subcategory_error" class="text-danger error"></div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="company name" class="form-label">Company Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Enter company name" required>
+                                <div id="companyname_error" class="text-danger error"></div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="company location" class="form-label">Company Location <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="companylocation" name="companylocation" placeholder="Enter company location" required>
+                                <div id="companylocation_error" class="text-danger error"></div>
+                              </div>
+                            <div class="col-md-6">
+                              <div class="experience-container">
+                                  <label for="expYear" class="form-label">Experience <span class="text-danger">*</span></label>
+                                  <div class="d-md-flex">
+                                    <label for="fromDate" class="pt-1 pe-2">From</label>
+                                    <div class="col-md-3  me-2">
+                                      <input type="date" class="form-control" id="fromDate" name="fromDate" required>
+                                    <div id="experienceexp_error" class="text-danger error"></div>
+                                  </div>
+                                  <label for="toDate" class="pt-1 px-2">To</label>
+                                  <div class="col-md-3">
+                                      <input type="date" class="form-control" id="toDate" name="toDate" required>
+                                    <div id="experienceexpmonth_error" class="text-danger error"></div>
+                                  </div>
+                                
+                                  <input type="checkbox" id="till_now" name="till_now" class="ms-3"> 
+                                  <label for="toDate" class="pt-1 px-2">Till now</label>
+                                  
+                                </div>
+                              </div>
+                            </div> 
+                        
+                              <div class="col-md-6">                                 
+                                <label class="form-label">Total duration <span class="text-danger">*</span></label>
+                                <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months</p>
+                              </div>
+                          
+                             <div class="col-md-6">
+                                <label for="role" class="form-label">Role in the Company <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="role" name="role" placeholder="Enter role" required>
+                                <div id="role_error" class="text-danger error"></div>
+                              </div>
+                              <div class="col-md-6">
+                                              <label for="mobilenumber" class="form-label">Company Mobile Number <span class="text-danger">*</span></label>
+                                              <input type="number" class="form-control" id="company_mobilenum"
+                                              name="company_mobilenum" placeholder="9879879879" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
+                                              <div id="compmobile_error" class="text-danger error"></div>
+                                              </div>
+
+                              <h5 class="card-title">Previous Job's reference details</h5>
+
+                              <div class="col-md-6">
+                                <label for="Name" class="form-label">Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" placeholder="Krishna" oninput="validateName1(this)" required>
+                                <div id="name_error" class="text-danger error"></div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="number" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="number" name="number" placeholder="9999999999" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
+                                <div id="mobilenum_error" class="text-danger error"></div>
+                              </div>
+
+                              <div class="col-md-6" class="form-label">
+                                <label for="email">Email-Id <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="emailid" name="emailid" placeholder="manager@gmail.com" required>
+                                <div id="emailid_error" class="text-danger error"></div>
+                              </div>
+
+                              <input type="number" class="form-control"  value="1" name="expsubmit" hidden>
+
+                              <div class="text-center">
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                                  <button type="reset" class="btn btn-secondary">Reset</button>
+                              </div>
+                                    </form>
+                        </div>
+
+                      <div id="fresher" class="button-content mt-4" style="display: none;">
+                          <p>Now you can proceed to the <b>'Area of Job Interest'</b> section to specify your career preferences.</p>
+                          <form  method="post" action=" <?php echo baseUrl . "Candidate/insertFresherForm" ?>">
+                        <input name="fresher" value="1" hidden>
+                        <button type="submit" class="btn btn-danger" >Next</button>
+                        </form>
+                      </div>
+
                        <div class="d-flex justify-content-between" >
                        <a class="" href="#addexpform">
-                       <button id="expadd" style="display:none;" type="button" onclick="addexpform()" class="btn btn-success mb-4">+ Add Experience</button></a>
-                      <div>
-                      <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button id="expprevious" style="visibility: hidden;" type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
-                      <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button id="expnext" style="visibility: hidden;" type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
-                      </div>
+                       <button id="expAddButton" style="display:none;" type="button" onclick="addexpform()" class="btn btn-success mb-4">+ Add Experience</button></a>
+                      
                                      </div>
-                                     <?php
+                                     <!-- <?php
                                      if (isset($experienceTable[0]['id'])) {
                                        $count = 1;
                                        ?>
-                                              <table class="table" id="exptable" style="display:none;">
+                                              <table class="table" id="exptable" >
                                                <thead>
                                             <tr>
-                                               <th scope="col"></th>
+                                          <th scope="col"></th>
                                           <th scope="col">S.No</th>
                                           <th scope="col">Job Category</th> 
                                           <th scope="col">Job Subcategory</th>
                                           <th scope="col">Experience</th>
                                           <th scope="col">Company Name</th>
+                                          <th scope="col">Company Location</th>
                                           <th scope="col">Role</th>
+                                          <th scope="col">Company Mobile Number</th>
+                                          <th scope="col">Name of Employer</th>
+                                          <th scope="col">Mobile Number of Employer</th>
+                                          <th scope="col">Email Id</th>
+                                          <th scope="col">Action</th>
+                                            </tr>
+                                               </thead>
+                                               <tbody>
+                                               <?php
+                                               if (isset($experienceTable[0]['id'])) {
+                                                 $count = 1;
+                                                 foreach ($experienceTable as $key => $value) {
+                                                   $seekerId = $_SESSION['seekerId'];
+                                                   ?>                                               
+                                                       <tr>
+                                                        <td> <form method="post" action="<?php echo baseUrl . 'Candidate/deleteExperience'; ?>" id="form_<?= $value['id']; ?>">
+                                                                    <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton5(this)">
+                                              <td><?php echo $count++ ?>.</td>
+                                      <td><?php echo $value['other_category'] ?></td>
+                                      <td><?php echo $value['other_sub_category'] ?></td>
+                                      <td><?php echo $value['expYear'] ?> - <?php echo $value['expMonth'] ?></td>
+                                      <td><?php echo $value['company_name'] ?></td>
+                                      <td><?php echo $value['company_location'] ?></td>
+                                      <td><?php echo $value['job_role'] ?></td>
+                                      <td><?php echo $value['company_mobilenum'] ?></td>
+                                      <td><?php echo $value['previous_employer_name'] ?></td>
+                                      <td><?php echo $value['previous_employer_mobile'] ?></td>
+                                      <td><?php echo $value['previous_employer_email'] ?></td>
+                                      <td>
+                                      <div class="d-flex">
+                                          <a href="<?php echo baseUrl . "Candidate/updateExperience" ?>/<?php echo $value['id'] ?>#editexpform"><button type="button" class="btn btn-secondary mx-1 ">Edit</button></a>
+                                      </div>
+                                      </td>
+                                    </tr>
+
+                                    <div id="fresherNoexp" style="display:none;" >
+                                      <form method="post" action="<?php echo baseUrl . 'Candidate/deleteExperience'; ?>" id="form_<?= $value['id']; ?>">
+                                      <div style="display:flex;">
+                                            <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton3(this)">
+                                            <p style="padding-left:10px; padding-top: 18px;"> Not a Fresher?</p> 
+                                          </div> 
+                                            <button type="submit" name="submit" id="deleteList3" class="btn btn-danger disabled"  onclick="return confirm('Are you sure you want to delete?')">Delete</button>    
+                            <?php
+                                  }
+                                }
+                                ?></form>
+                                </div>
+                                     </tbody>
+                                 </table>                                
+                                 <button type="button" id="deleteList5" name="submit" class="btn btn-danger disabled"  onclick="return confirm('Are you sure you want to delete?')">Delete</button>       
+                                 <?php
+                                     } else {
+                                       ?>
+                                 <h5 class="card-title">No Records Found<span></span></h5>
+                             <?php
+                                     }
+                                     ?>
+                          </div>
+
+                      </div> -->
+                      <?php
+                                     if (isset($experienceTable[0]['id'])) {
+                                       $count = 1;
+                                       ?>
+                                              <table class="table" id="exptable" >
+                                               <thead>
+                                            <tr>
+                                          <th scope="col"></th>
+                                          <th scope="col">S.No</th>
+                                          <th scope="col">Job Category</th> 
+                                          <th scope="col">Job Subcategory</th>
+                                          <th scope="col">Experience</th>
+                                          <th scope="col">Company Name</th>
+                                          <th scope="col">Company Location</th>
+                                          <th scope="col">Role</th>
+                                          <th scope="col">Company Mobile Number</th>
                                           <th scope="col">Name of Employer</th>
                                           <th scope="col">Mobile Number of Employer</th>
                                           <th scope="col">Email Id</th>
@@ -2574,13 +2933,15 @@
                                                
                                                        <tr>
                                                         <td> <form method="post" action="<?php echo baseUrl . 'Candidate/deleteExperience'; ?>" id="form_<?= $value['id']; ?>">
-                                                                    <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>">
+                                                                    <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton5(this)"></td>
                                               <td><?php echo $count++ ?>.</td>
                                       <td><?php echo $value['other_category'] ?></td>
                                       <td><?php echo $value['other_sub_category'] ?></td>
                                       <td><?php echo $value['expYear'] ?> - <?php echo $value['expMonth'] ?></td>
                                       <td><?php echo $value['company_name'] ?></td>
+                                      <td><?php echo $value['company_location'] ?></td>
                                       <td><?php echo $value['job_role'] ?></td>
+                                      <td><?php echo $value['company_mobilenum'] ?></td>
                                       <td><?php echo $value['previous_employer_name'] ?></td>
                                       <td><?php echo $value['previous_employer_mobile'] ?></td>
                                       <td><?php echo $value['previous_employer_email'] ?></td>
@@ -2591,14 +2952,27 @@
                                       </div>
                                       </td>
                                     </tr>
-                          <?php
-                                                 }
-                                               }
-                                               ?>
+                                    <?php
+                                  }
+                                }
+                                ?>
+                                
                                      </tbody>
                                  </table>
-                                 <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                                 
+                                 <button type="submit" name="submit" id="deleteList5" class="btn btn-danger disabled" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+                                 
                                                                         </form>
+
+                                    <div id="fresherNoexp" style="display:none;" >
+                                      <form method="post" action="<?php echo baseUrl . 'Candidate/deleteExperience'; ?>" id="form_<?= $value['id']; ?>">
+                                      <div style="display:flex;">      
+                                      <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton3(this)">
+                                      <p style="padding-left:10px; padding-top: 18px;"> Not a Fresher?</p>
+                                      </div>
+                                      <button type="submit" name="submit" id="deleteList3" class="btn btn-danger disabled" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+                                    </form></div>
+                           
                                  <?php
                                      } else {
                                        ?>
@@ -2610,63 +2984,111 @@
 
                       </div>
                   </div><!-- End Recent Sales -->
+
+                  </div><!-- End Recent Sales -->
               </section>
 
+              <script>
+    function validateName1(input) {
+        input.value = input.value.replace(/[^A-Za-z]/g, '');
+    }
+</script>
+              <script>
+              function showContent(button) {
+                  document.querySelectorAll('.button-content').forEach(function(element) {
+                      element.style.display = 'none';
+                  });
+                  document.getElementById(button).style.display = 'block';
+              }
 
-                        <script>
-                          function exptablevisible() {
-                            document.getElementById("expadd").style.display = "block";
-                            document.getElementById("expprevious").style.visibility = "visible";
-                            document.getElementById("expnext").style.visibility = "visible";
-                            document.getElementById("exptable").style.display = "block";
-                           document.getElementById("addexpform").style.display = "block";
-                          }
-                          function addexpform() {
-                           document.getElementById("addexpform").style.display = "block";
-                          }
+              function addexpform() {
+                document.getElementById("addexpform").style.display = "block";
+              }
 
-                        <?php
-                        if (isset($basicDetails)) {
-                          if ($basicDetails[0]['expsubmited'] === "1") {
-                            ?>
-                                                       document.getElementById("expadd").style.display = "block";
-                                                       document.getElementById("expprevious").style.visibility = "visible";
-                                                       document.getElementById("expnext").style.visibility = "visible";
-                                                       document.getElementById("exptable").style.display = "block";
-                                                       document.getElementById("exptableheading").style.display = "none";          
-                                       <?php
-                          }
-                        }
-                        ?>
-                        </script>
+            <?php
+            if (isset($expTotalRows)) {
+              if ($expTotalRows >= "1" && $experienceTable[0]['workStatus'] == '0') {
+                ?>
+                  document.getElementById("fresherExp").style.display = "none";
+                  document.getElementById("expAddButton").style.display = "block";
+              <?php
+              } else if($expTotalRows >= "1" && $experienceTable[0]['workStatus'] == '1'){?>
+                  document.getElementById("fresherExp").style.display = "none";
+                  document.getElementById("fresherNoexp").style.display = "block";
+                  document.getElementById("exptable").style.display = "none";
+              <?php
+            } 
+          }?>
+             </script>
+<!-- Delete button script -->
+             <!-- <script>
+    function updateDeleteButton(checkbox) {
+      var deleteButton = checkbox.form.querySelector('[name="submit"]');
+      deleteButton.disabled = !checkbox.checked;      
+    }
+
+    function confirmDelete() {
+      var checkbox = document.querySelector('[name="selected_items[]"]');
+      if (checkbox.checked) {
+        return confirm('Are you sure you want to delete?');
+      }
+      return false;
+    }
+  </script> -->
+  <script>
+    function updateDeleteButton3(checkbox) {
+        var deleteButton3 = document.getElementById('deleteList3');
+
+        if (checkbox.checked) {
+            deleteButton3.classList.remove('disabled');
+        } else {
+            deleteButton3.classList.add('disabled');
+        }
+    }
+
+    function updateDeleteButton5(checkbox) {
+        var deleteButton5 = document.getElementById('deleteList5');
+
+        if (checkbox.checked) {
+            deleteButton5.classList.remove('disabled');
+        } else {
+            deleteButton5.classList.add('disabled');
+        }
+    }
+</script>
+
 
             <div class="card" id="addexpform" style="display:none">
                                 <div class="card-body">
+                                <div class="d-flex justify-content-between">
                                     <h5 class="card-title">Add Experience Details</h5>
+                                    <a class="" href="<?php echo baseUrl . "Candidate/experiencetable" ?>">
+                                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+                                    </div>
 
                                     <!-- Multi Columns Form -->
                                     <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
                                      onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Candidate/insertExperienceForm" ?>">
 
                                      <!-- <div class="col-12">
-              <label for="category" class="form-label">Category</label>
-              <select class="form-control" id="category" name="category" required>
-                <option value="">Select a Category</option>
-                <option value="architech">Architech</option>
-                <option value="developer">Developer</option>
-                <option value="tester">Tester</option>
-                <option value="uiux">UI/UX Design</option>
-                <option value="datascience">Data Scientist</option>
-                <option value="databaseadmin">Database Admin</option>
-                <option value="teacher">Teacher</option>
-                <option value="professor">Professor</option>
-                <option value="others">Others</option>
-              </select>
-              <div id="category_error" class="text-danger error"></div>
-                            </div> -->
+                                        <label for="category" class="form-label">Category</label>
+                                        <select class="form-control" id="category" name="category" required>
+                                          <option value="">Select a Category</option>
+                                          <option value="architech">Architech</option>
+                                          <option value="developer">Developer</option>
+                                          <option value="tester">Tester</option>
+                                          <option value="uiux">UI/UX Design</option>
+                                          <option value="datascience">Data Scientist</option>
+                                          <option value="databaseadmin">Database Admin</option>
+                                          <option value="teacher">Teacher</option>
+                                          <option value="professor">Professor</option>
+                                          <option value="others">Others</option>
+                                        </select>
+                                        <div id="category_error" class="text-danger error"></div>
+                                                      </div> -->
                            
-                                    <div class="col-12">
-                      <label for="category" class="form-label">Category</label>
+                                    <div class="col-6">
+                      <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
                       <select class="form-control" id="category" name="category" autocomplete="off" onchange="showHideOtherField()" required>
                       <option value="">Select a Category</option>
                       <?php
@@ -2680,7 +3102,7 @@
                                     </div>
                         
 
-                                    <div class="col-12" id="newcategory_group" style="display: none;">
+                                    <div class="col-6" id="newcategory_group" style="display: none;">
                                       <label for="newcategory" class="form-label">Reason for choosing category as others</label>
                                       <input class="form-control" id="newcategory" name="newcategory"  placeholder="Enter new category">
                                       <div id="newcategory_error" class="text-danger error"></div>
@@ -2688,15 +3110,21 @@
                                     </div>
 
                             <div class="col-md-6">
-                              <label for="subcategory" class="form-label">Subcategory</label>
+                              <label for="subcategory" class="form-label">Subcategory <span class="text-danger">*</span></label>
                               <input class="form-control" id="subcategory" name="subcategory"  placeholder="Enter subcategory" required>
                               <div id="subcategory_error" class="text-danger error"></div>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="company name" class="form-label">Company Name</label>
+                                <label for="company name" class="form-label">Company Name <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Enter company name" required>
                                 <div id="companyname_error" class="text-danger error"></div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="company location" class="form-label">Company Location <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="companylocation" name="companylocation" placeholder="Enter company location" required>
+                                <div id="companylocation_error" class="text-danger error"></div>
                               </div>
 
                             <!-- <div class="col-md-6">
@@ -2714,58 +3142,7 @@
                   <div id="experienceexp_error" class="text-danger error"></div>
                 </div> -->
 
-                            <!-- <div class="col-md-3">
-                            <div class="experience-container">
-                                <label for="expYear" class="form-label">Experience</label>
-                                <div class="d-flex">
-                                  <div class="col-6 col-md-12 me-2">
-                                    <select class="form-control" id="expYear" name="expYear" required>
-                      <option value=""> Select year </option>
-                      <?php for ($i = 0; $i <= 30; $i++): ?>
-                          <option value="<?php echo $i; ?>"><?php echo $i; ?> Year<?php echo $i !== 1 ? 's' : ''; ?></option>
-                      <?php endfor; ?>
-                      <option value="30+ years" >30+ Years</option>
-                                    </select>
-                      <div  id="experienceexp_error" class="text-danger error"></div>
-                                </div>
-
-                                     <div class=" col-6 col-md-12">
-                                    <select class="form-control" id="expMonth" name="expMonth" required>
-                      <option value=""> Select month </option>
-                      <?php for ($i = 0; $i <= 11; $i++): ?>
-                          <option value="<?php echo $i; ?>" ><?php echo $i; ?> Month<?php echo $i !== 1 ? 's' : ''; ?></option>
-                      <?php endfor; ?>
-                                    </select>
-                                  <div id="experienceexpmonth_error" class="text-danger error"></div>
-                                </div>
-
-                                 </div>
-                            </div>
-                        </div> -->
-
-                        <!--  <div class="col-md-3">
-     <div class="experience-container">
-      <div class="d-flex">
-        <label for="expYear" class="form-label" style="padding-top: 10px; padding-right: 10px;">From</label>
-        <input type="date" class="form-control col-3 me-2" id="fromDate" name="fromDate" required>
-        <div id="experienceexp_error" class="text-danger error"></div>
-
-        <label for="expMonth" class="form-label" style="padding-top: 10px; padding-left: 60px; padding-right: 10px;">To</label>
-        <input type="date" class="form-control col-3 me-2" id="toDate" name="toDate" required>
-        <div id="experienceexpmonth_error" class="text-danger error"></div>
-
-        <label for="till_now" class="form-check-label col-3">
-          <input type="checkbox" id="till_now" name="till_now" style="padding-top: 10px; padding-right: 10px;"> Till Now
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <p id="result">Total duration: <span id="years">0</span> years, <span id="months">0</span> months</p> -->
-
-  
-
-                              <!-- <div class="form-control" id="otherCategoryField" style="display: none;">
+                <!-- <div class="form-control" id="otherCategoryField" style="display: none;">
                   <label for="othercategory">Other Category:</label>
                   <select class="form-control" id="experience" name="experience">
                     <input type="text" class="form-control" id="othercategory" name="othercategory">
@@ -2778,43 +3155,39 @@
 
                               <div class="col-md-6">
                               <div class="experience-container">
-                                  <label for="expYear" class="form-label">Experience</label>
+                                  <label for="expYear" class="form-label">Experience<span class="text-danger">*</span></label>
 
                                   <div class="d-md-flex">
-
                                     <label for="fromDate" class="pt-1 pe-2">From</label>
-
                                     <div class="col-md-3  me-2">
                                       <input type="date" class="form-control" id="fromDate" name="fromDate" required>
                                     <div id="experienceexp_error" class="text-danger error"></div>
                                   </div>
-
                                   <label for="toDate" class="pt-1 px-2">To</label>
-
                                   <div class="col-md-3">
                                       <input type="date" class="form-control" id="toDate" name="toDate" required>
                                     <div id="experienceexpmonth_error" class="text-danger error"></div>
                                   </div>
-
-                                
                                   <input type="checkbox" id="till_now" name="till_now" class="ms-3"> 
                                   <label for="toDate" class="pt-1 px-2">Till now</label>
-                                
-                                  
                                 </div>
                               </div>
                             </div> 
-                        
-
-                              <div class="col-md-6">                                 
-                                <label class="form-label">Total duration</label>
-                                <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months</p>
-                              </div>
+                            <div class="col-md-6">                                 
+                              <label class="form-label">Total duration</label>
+                              <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months</p>
+                            </div>
                           
                              <div class="col-md-6">
-                                <label for="role" class="form-label">Role in the Company</label>
+                                <label for="role" class="form-label">Role in the Company <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="role" name="role" placeholder="Enter role" required>
                                 <div id="role_error" class="text-danger error"></div>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="mobilenumber" class="form-label">Company Mobile Number <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="company_mobilenum"
+                                name="company_mobilenum" placeholder="9879879879" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
+                                <div id="compmobile_error" class="text-danger error"></div>
                               </div>
                             <!-- JOB PROFILE -->
                               <!-- <div class="col-md-6">
@@ -2823,22 +3196,22 @@
                               <div id="profile_error" class="text-danger error"></div>
                             </div> -->
 
-                              <h5 class="card-title">Previous Job's Manager Details</h5>
+                              <h5 class="card-title">Previous Job's reference details</h5>
 
                               <div class="col-md-6">
-                                <label for="Name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" placeholder="Enter employer name" required>
+                                <label for="Name" class="form-label">Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" placeholder="Enter employer name" oninput="validateName1(this)" required>
                                 <div id="name_error" class="text-danger error"></div>
                               </div>
 
                               <div class="col-md-6">
-                                <label for="number" class="form-label">Mobile Number</label>
-                                <input type="number" class="form-control" id="number" name="number" placeholder="Enter mobile number" required>
+                                <label for="number" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="number" name="number" placeholder="Enter mobile number" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
                                 <div id="mobilenum_error" class="text-danger error"></div>
                               </div>
 
                               <div class="col-md-6" class="form-label">
-                                <label for="email">Email-Id</label>
+                                <label for="email">Email-Id <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="emailid" name="emailid" placeholder="Enter Email" required>
                                 <div id="emailid_error" class="text-danger error"></div>
                               </div>
@@ -2854,75 +3227,77 @@
                                   </div>
                               </div>
                           </section>
-
-  <script>
-      document.getElementById('fromDate').addEventListener('input', updateDateDifference);
-      document.getElementById('toDate').addEventListener('input', updateDateDifference);
-      document.getElementById('till_now').addEventListener('change', updateToDate);
-
-      function updateDateDifference() {
-        var fromDate = new Date(document.getElementById('fromDate').value);
-        var toDate = new Date(document.getElementById('toDate').value);
-
-        var tillNowChecked = document.getElementById('till_now').checked;
-
-        document.getElementById('toDate').disabled = tillNowChecked;
-
-        if (tillNowChecked) {
-          var today = new Date();
-          var formattedDate = today.toISOString().split('T')[0];
-          document.getElementById('toDate').value = formattedDate;
-        }
-
-        if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
-          var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
-
-          var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
-          var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
-          var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
-
-          if (daysDiff < 0) {
-            monthsDiff--;
-            daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
-          }
-
-          if (monthsDiff < 0) {
-            yearsDiff--;
-            monthsDiff += 12;
-          }
-
-          document.getElementById('years').textContent = yearsDiff;
-          document.getElementById('months').textContent = monthsDiff;
-        }
-      }
-
-      function updateToDate() {
-    var today = new Date();
-
-    today.setHours(0, 0, 0, 0);
-
-    var to_date_input = document.getElementById('toDate');
-    var till_now_checkbox = document.getElementById('till_now');
-
-    if (till_now_checkbox.checked) {
-    
-      var yesterday = new Date(today);
-      yesterday.setDate(today.getDate() - 1);
-
-      to_date_input.valueAsDate = yesterday;
-    } else {
-      to_date_input.disabled = false;
+                          <script>
+    function validateName1(input) {
+        input.value = input.value.replace(/[^A-Za-z]/g, '');
     }
+</script>
+                          <script>
+                              document.getElementById('fromDate').addEventListener('input', updateDateDifference);
+                              document.getElementById('toDate').addEventListener('input', updateDateDifference);
+                              document.getElementById('till_now').addEventListener('change', updateToDate);
 
-    updateDateDifference();
-  }
+                              function updateDateDifference() {
+                                var fromDate = new Date(document.getElementById('fromDate').value);
+                                var toDate = new Date(document.getElementById('toDate').value);
 
-  window.onload = function() {
-        updateDateDifference();
-      };
-    </script>
+                                var tillNowChecked = document.getElementById('till_now').checked;
 
+                                document.getElementById('toDate').disabled = tillNowChecked;
 
+                                if (tillNowChecked) {
+                                  var today = new Date();
+                                  var formattedDate = today.toISOString().split('T')[0];
+                                  document.getElementById('toDate').value = formattedDate;
+                                }
+
+                                if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
+                                  var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
+
+                                  var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
+                                  var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
+                                  var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
+
+                                  if (daysDiff < 0) {
+                                    monthsDiff--;
+                                    daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
+                                  }
+
+                                  if (monthsDiff < 0) {
+                                    yearsDiff--;
+                                    monthsDiff += 12;
+                                  }
+
+                                  document.getElementById('years').textContent = yearsDiff;
+                                  document.getElementById('months').textContent = monthsDiff;
+                                }
+                              }
+
+                              function updateToDate() {
+                            var today = new Date();
+
+                            today.setHours(0, 0, 0, 0);
+
+                            var to_date_input = document.getElementById('toDate');
+                            var till_now_checkbox = document.getElementById('till_now');
+
+                            if (till_now_checkbox.checked) {
+                            
+                              var yesterday = new Date(today);
+                              yesterday.setDate(today.getDate() - 1);
+
+                              to_date_input.valueAsDate = yesterday;
+                            } else {
+                              to_date_input.disabled = false;
+                            }
+
+                            updateDateDifference();
+                          }
+
+                          window.onload = function() {
+                                updateDateDifference();
+                              };
+                            </script>
 
                           <script>
                          function showHideOtherField() {
@@ -2945,7 +3320,9 @@
                           var expYear = document.getElementById("fromDate");
                           var expMonth = document.getElementById("toDate");
                           var companyname = document.getElementById("companyname");
+                          var companylocation = document.getElementById("companylocation");
                           var role = document.getElementById("role");
+                          var compMobile = document.getElementById("company_mobilenum");
                           var profile = document.getElementById("profile");
                           var ename = document.getElementById("nameofemployer");
                           var phonenumber1 = document.getElementById("number");
@@ -2971,6 +3348,17 @@
                           //   return false;
                           // }
 
+                         
+                          if (companyname.value === '') {
+                            displayError('Company name must be filled out', 'companyname_error');
+                            return false;
+                          }
+
+                          if (companylocation.value === '') {
+                            displayError('Company location must be filled out', 'companylocation_error');
+                            return false;
+                          }
+
                           if (expYear.value === '') {
                             displayError('From date must be filled out', 'experienceexp_error');
                             return false;
@@ -2986,18 +3374,20 @@
                                 return false;
                             } 
 
-                          if (companyname.value === '') {
-                            displayError('Company name must be filled out', 'companyname_error');
-                            return false;
-                          }
-
                           if (role.value === '') {
                             displayError('Role must be filled out', 'role_error');
                             return false;
                           }
 
-              // JOB PROFILE
+                          if (compMobile.value === '') {
+                            displayError('Company mobile number must be filled out', 'compmobile_error');
+                            return false;
+                          } else if (!/^\d{10}$/.test(compMobile.value)) {
+                              displayError('Mobile number must have exactly 10 digits', 'compmobile_error');
+                              return false;
+                            }
 
+                         // JOB PROFILE
                           // if (profile.value === '') {
                           //   displayError('Job profile must be filled out', 'profile_error');
                           //   return false;
@@ -3083,7 +3473,7 @@
               <div id="category_error" class="text-danger error"></div>
                             </div> -->
                            
-                                    <div class="col-12">
+                                    <div class="col-6">
                       <label for="category" class="form-label">Category</label>
                       <select class="form-control" id="category" name="category" autocomplete="off" onchange="showHideOtherField()" required>
                       <option value="">Select a Category</option>
@@ -3098,7 +3488,7 @@
                                     </div>
                         
 
-                                    <div class="col-12" id="newcategory_group" style="display: none;">
+                                    <div class="col-6" id="newcategory_group" style="display: none;">
                                       <label for="newcategory" class="form-label">Reason for choosing category as others</label>
                                       <input class="form-control" id="newcategory" name="newcategory"  placeholder="Enter new category">
                                       <div id="newcategory_error" class="text-danger error"></div>
@@ -3172,6 +3562,12 @@
                             </div>
 
                             <div class="col-md-6">
+                              <label for="company location" class="form-label">Company location</label>
+                              <input type="text" class="form-control" id="companylocation" name="companylocation" placeholder="Enter company location" required>
+                              <div id="companylocation_error" class="text-danger error"></div>
+                            </div>
+
+                            <div class="col-md-6">
                               <label for="role" class="form-label">Role in the Company</label>
                               <input type="text" class="form-control" id="role" name="role" placeholder="Enter role" required>
                               <div id="role_error" class="text-danger error"></div>
@@ -3193,7 +3589,7 @@
 
                             <div class="col-md-6">
                               <label for="number" class="form-label">Mobile Number</label>
-                              <input type="text" class="form-control" id="number" name="number" placeholder="Enter mobile number" required>
+                              <input type="number" class="form-control" id="number" name="number" placeholder="Enter mobile number" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
                               <div id="mobilenum_error" class="text-danger error"></div>
                             </div>
 
@@ -3239,6 +3635,7 @@
                         var expYear = document.getElementById("expYear");
                         var expMonth = document.getElementById("expMonth");
                         var companyname = document.getElementById("companyname");
+                        var companylocation = document.getElementById("companylocation");
                         var role = document.getElementById("role");
             // JOB PROFILE
                         // var profile = document.getElementById("profile");
@@ -3278,6 +3675,11 @@
 
                         if (companyname.value === '') {
                           displayError('Company name must be filled out', 'companyname_error');
+                          return false;
+                        }
+
+                        if (companylocation.value === '') {
+                          displayError('Company location must be filled out', 'companylocation_error');
                           return false;
                         }
 
@@ -3331,8 +3733,8 @@
                       <!-- Sidebar Active  -->
                     <script>
                          document.getElementById('experiences').classList.add('active');
-
                          </script>
+
                         <section class="Multi Columns Form">
                             <div class="pagetitle">
                                 <h1>Experience Details</h1>
@@ -3351,8 +3753,8 @@
                        <h5 class="card-title">Experience Table<span></span></h5>
                        <a class="" href="#addexpform"><button type="button" class="btn btn-success m-2" disabled>+ Add Experience</button></a>
                       <div style="float:right;">
-                              <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> Previous</button></a>
-                      <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button type="button" class="btn btn-info mb-4 ">Next <i class="bi bi-arrow-right"></i></button></a>
+                        <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                        <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
                       </div>
                                      <?php
                                      if (isset($experienceTable[0]['id'])) {
@@ -3367,7 +3769,9 @@
                               <th scope="col">Job Subcategory</th>
                               <th scope="col">Experience</th>
                               <th scope="col">Company Name</th>
+                              <th scope="col">Company Location</th>
                               <th scope="col">Role</th>
+                              <th scope="col">Company Mobile Number</th>
                               <th scope="col">Name of Employer</th>
                               <th scope="col">Mobile Number of Employer</th>
                               <th scope="col">Email Id</th>
@@ -3383,13 +3787,15 @@
                                                    ?>
                                                              <tr>
                                                               <td> <form method="post" action="<?php echo baseUrl . 'Candidate/deleteExperience'; ?>" id="form_<?= $value['id']; ?>">
-                                                                          <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>">
+                                                                          <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton5(this)">
                                                                      <td><?php echo $count++ ?>.</td>
                                                              <td><?php echo $value['other_category'] ?></td>
                                                              <td><?php echo $value['other_sub_category'] ?></td>
                                                              <td><?php echo $value['expYear'] ?> to <?php echo $value['expMonth'] ?></td>
                                                              <td><?php echo $value['company_name'] ?></td>
+                                                             <td><?php echo $value['company_location'] ?></td>
                                                              <td><?php echo $value['job_role'] ?></td>
+                                                             <td><?php echo $value['company_mobilenum'] ?></td>
                                                              <td><?php echo $value['previous_employer_name'] ?></td>
                                                              <td><?php echo $value['previous_employer_mobile'] ?></td>
                                                              <td><?php echo $value['previous_employer_email'] ?></td>
@@ -3406,7 +3812,7 @@
                                                ?>
                                                </tbody>
                                               </table>
-                                              <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                                              <button type="submit" name="submit" id="deleteList5" class="btn btn-danger disabled" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                                                         </form>
                                               <?php
                                      } else {
@@ -3421,7 +3827,12 @@
    
                             <div class="card" id="editexpform">
                                 <div class="card-body">
+                                    <div class="d-flex justify-content-between">
                                     <h5 class="card-title">Update Experience Details</h5>
+                                    <a class="" href="<?php echo baseUrl . "Candidate/experiencetable" ?>">
+                                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+                                    </div>
+
 
                                     <!-- Multi Columns Form -->
                                     <form class="row g-3 needs-validation" novalidate name="experienceform" method="post" 
@@ -3434,7 +3845,7 @@
                                <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
                                <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id" >
 
-                               <div class="col-12">
+                               <div class="col-6">
                                             <label class="form-label" for="category">Category</label>
                                             <select class="form-control" id="category" name="category" required>
                                             <?php
@@ -3509,6 +3920,12 @@
                                </div>
 
                                <div class="col-md-6">
+                                              <label class="form-label" for="company location">Company Location</label>
+                                              <input type="text" class="form-control" value="<?php echo $value['company_location']; ?>" id="companylocation" name="companylocation" required>
+                                  <div id="companylocation_error" class="error"></div>
+                               </div>
+
+                               <div class="col-md-6">
                                 <div class="experience-container">
                                     <label for="expYear" class="form-label">Experience</label>
 
@@ -3544,11 +3961,18 @@
                                   <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months</p>
                                 </div>
 
-                               <div class="col-md-12">
+                               <div class="col-md-6">
                                             <label class="form-label" for="role">Role in the Company</label>
                                             <input type="text" class="form-control" value="<?php echo $value['job_role']; ?>" id="role" name="role" required>
                                             <div id="role_error" class="error"></div>
                                </div>
+
+                               <div class="col-md-6">
+                                              <label for="mobilenumber" class="form-label">Company Mobile Number <span class="text-danger">*</span></label>
+                                              <input type="number" class="form-control" id="company_mobilenum" value="<?php echo $value['company_mobilenum']; ?>"
+                                              name="company_mobilenum" placeholder="9879879879" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
+                                              <div id="compmobile_error" class="text-danger error"></div>
+                                              </div>
 
                         <!-- JOB PROFILE -->
 
@@ -3558,17 +3982,17 @@
                                         <div id="profile_error" class="error"></div>
                            </div> -->
 
-                               <h5 class="card-title">Previous Job's Manager Details</h5>
+                               <h5 class="card-title">Previous Job's Reference Details</h5>
 
                                <div class="col-md-6">
                                             <label class="form-label" for="Name">Name</label>
-                                            <input type="text" class="form-control" value="<?php echo $value['previous_employer_name']; ?>" id="nameofemployer" name="nameofemployer" required>
+                                            <input type="text" class="form-control" value="<?php echo $value['previous_employer_name']; ?>" id="nameofemployer" name="nameofemployer" oninput="validateName1(this)" required>
                                             <div id="name_error" class="error"></div>
                                </div>
 
                                <div class="col-md-6">
                                             <label class="form-label" for="phone number">Mobile Number</label>
-                                            <input type="text" class="form-control" value="<?php echo $value['previous_employer_mobile']; ?>" id="number" name="number" required>
+                                            <input type="number" class="form-control" value="<?php echo $value['previous_employer_mobile']; ?>" id="number" name="number" placeholder="9879879879" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
                                             <div id="mobilenum_error" class="error"></div>
                                </div>
 
@@ -3591,6 +4015,27 @@
                                 </div>
                             </div>
                         </section>
+<!-- NAME CHARACTERS VALIDATION -->
+<script>
+    function validateName1(input) {
+        input.value = input.value.replace(/[^A-Za-z]/g, '');
+    }
+</script>
+                        <script>
+    function updateDeleteButton5(checkbox) {
+        var deleteButton5 = document.getElementById('deleteList5');
+
+        if (checkbox.checked) {
+            deleteButton5.classList.remove('disabled');
+        } else {
+            deleteButton5.classList.add('disabled');
+        }
+    }
+    
+    function confirmDelete5() {
+        return confirm('Are you sure you want to delete?');
+    }
+</script>
 
                         <script>
                         function validateexpForm() {
@@ -3601,7 +4046,9 @@
                           var expYear = document.getElementById("fromDate");
                           var expMonth = document.getElementById("toDate");
                           var companyname = document.getElementById("companyname");
+                          var companylocation = document.getElementById("companylocation");
                           var role = document.getElementById("role");
+                          var compMobile = document.getElementById("company_mobilenum");
                           var profile = document.getElementById("profile");
                           var ename = document.getElementById("nameofemployer");
                           var phonenumberu = document.getElementById("number");
@@ -3614,6 +4061,16 @@
 
                           if (subcategory.value === '') {
                             displayError('Please select a subcategory', 'subcategory_error');
+                            return false;
+                          }
+
+                          if (companyname.value === '') {
+                            displayError('Company name must be filled out', 'companyname_error');
+                            return false;
+                          }
+
+                          if (companylocation.value === '') {
+                            displayError('Company location must be filled out', 'companylocation_error');
                             return false;
                           }
 
@@ -3632,15 +4089,18 @@
                                 return false;
                             } 
 
-                          if (companyname.value === '') {
-                            displayError('Company name must be filled out', 'companyname_error');
-                            return false;
-                          }
-
                           if (role.value === '') {
                             displayError('Role must be filled out', 'role_error');
                             return false;
                           }
+
+                          if (compMobile.value === '') {
+                            displayError('Company mobile number must be filled out', 'compmobile_error');
+                            return false;
+                          } else if (!/^\d{10}$/.test(compMobile.value)) {
+                              displayError('Mobile number must have exactly 10 digits', 'compmobile_error');
+                              return false;
+                            }
       
                          // JOB PROFILE
                           // if (profile.value === '') {
@@ -3800,7 +4260,7 @@
                               <th scope="col">S.No</th>
                               <th scope="col">Job Category</th>
                               <th scope="col">Job Subcategory</th>
-                              <th scope="col">Prefered Location</th>
+                              <th scope="col">Preferred Location</th>
                               <!-- <th scope="col">Experience</th> -->
                               <th scope="col">Job Type</th>
                               <th scope="col">Description</th>
@@ -3817,11 +4277,11 @@
                                                    ?>
                                                              <tr>
                                                                <td> <form method="post" action="<?php echo baseUrl . 'Candidate/deleteAreaInterest'; ?>" id="form_<?= $value['id']; ?>">
-                                                                          <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>">
+                                                                          <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton2(this)">
                                                                      <td><?php echo $count++ ?>.</td>
                                                              <td><?php echo $value['other_interst_category'] ?></td> 
                                                              <td><?php echo $value['other_sub_interst_category'] ?></td>
-                                                             <td><?php echo $value['prefered_location'] ?></td>
+                                                             <td><?php echo $value['prefered_location'] ?></td>                                                             
                                                              <!-- <td><?php echo $value['expYear'] ?> Years & <?php echo $value['expMonth'] ?> Months</td> -->
                                                              <td><?php echo $value['job_type'] ?></td>
                                                              <td><?php echo $value['description'] ?></td>
@@ -3839,7 +4299,7 @@
                                                ?>
                                                </tbody>
                                               </table>
-                                              <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                                              <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                                 </form>
                                               <?php
                                      } else {
@@ -3853,13 +4313,16 @@
 
                                 <div class="card" id="addinterestform" style="display:none">
                                 <div class="card-body">
+                                <div class="d-flex justify-content-between">
                                     <h5 class="card-title">Add Job Interest</h5>
-
+                                    <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
+                                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+                                    </div>
                                     <!-- Multi Columns Form -->
                                     <form class="row g-3 needs-validation" novalidate  method="post"
                                     onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Candidate/insertAreaOfIntrest" ?>">
 
-                                      <div class="col-12">
+                                      <div class="col-md-6">
                       <label class="form-label" for="category">Category</label>
                       <select class="form-control" id="category" name="category" onchange="showHideOtherField()" required>
                       <option value="">Select a Category</option>
@@ -3903,7 +4366,13 @@
 
                                       <div class="col-md-6">
                       <label class="form-label" for="preferred-location">Preferred Location to work</label>
-                      <input type="text" class="form-control" id="preferred-location" name="preferred-location" placeholder="Enter prefered location" required>
+                      <select class="form-control" id="preferred-location" name="preferred-location" required>
+                                <option value="">Select district</option>
+                                <option value="Erode">Erode</option>
+                                <option value="Karur">Karur</option>
+                                <option value="Namakkal">Namakkal</option>
+                                <option value="Tirupur">Tirupur</option>
+                            </select>
                       <div id="arealocation_error" class="error"></div>
                                       </div>
 
@@ -3943,7 +4412,21 @@
                             </div>
 
                             <script>
+                              function updateDeleteButton2(checkbox) {
+        var deleteButton2 = document.getElementById('deleteList2');
 
+        if (checkbox.checked) {
+            deleteButton2.classList.remove('disabled');
+        } else {
+            deleteButton2.classList.add('disabled');
+        }
+    }
+
+    function confirmDelete2() {
+        return confirm('Are you sure you want to delete?');
+    }
+                            </script>
+                            <script>
                         function showHideOtherField() {
                                      var categoryDropdown = document.getElementById('category');
                                      var otherCategoryField = document.getElementById('newcategory_group');
@@ -4042,8 +4525,7 @@
                                     <div class="card-body">
                                       <h5 class="card-title">Skill Table<span></span></h5>
                         <div>
-                       <a class="" href="#addskillform">
-                       <button type="button" class="btn btn-success mb-4" onclick="addskillform()" >+ Add Skill</button></a>
+                       <button type="button" class="btn btn-success mb-4" onclick="addskillform()" >+ Add Skill</button>
                         <div>
                        <?php
                        if (isset($skillTable[0]['id'])) {
@@ -4069,7 +4551,7 @@
                                                    ?>
                                                              <tr>
                                                               <td> <form method="post" action="<?php echo baseUrl . 'Candidate/deleteSkill'; ?>" id="form_<?= $value['id']; ?>">
-                                                                          <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>">
+                                                                          <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton1(this)">
                                                                      <td><?php echo $count++ ?>.</td>
                                                              <td><?php echo $value['skill'] ?></td>
                                                              <td><?php echo $value['experience'] ?> Years</td>
@@ -4087,7 +4569,7 @@
                                                ?>
                                                </tbody>
                                               </table>
-                                              <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                                              <button type="submit" name="submit" id="deleteList1" class="btn btn-danger disabled" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                                 </form>
                                               <?php
                        } else {
@@ -4104,7 +4586,12 @@
 
                         <div class="card" id="addskillform" style="display:none" >
                                 <div class="card-body">
+                                <div class="d-flex justify-content-between">
                                     <h5 class="card-title">Add New Skill</h5>
+                                    <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
+                                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+                                    </div>
+                                    
 
                                     <!-- Multi Columns Form -->
                                     <form class="row g-3 needs-validation" novalidate  method="post"
@@ -4173,7 +4660,7 @@
                                 </div>
                             </div>
 
-                            <script>
+                            <!-- <script>
                           function validateSkillForm(){
                             var sname = document.getElementById("skillname").value;
                             var sexp = document.getElementById("experience").value;
@@ -4212,7 +4699,7 @@
                           });
                         }
                   
-                        </script>
+                        </script> -->
 
                             <script>
                      function addinterestform(){
@@ -4220,8 +4707,24 @@
                             }
                     function addskillform(){
                            document.getElementById("addskillform").style.display = "block";
-                            }
-                            </script> 
+                           document.getElementById("skillname").focus();
+                            }</script>
+
+                            <script>
+                              function updateDeleteButton1(checkbox) {
+        var deleteButton1 = document.getElementById('deleteList1');
+
+        if (checkbox.checked) {
+            deleteButton1.classList.remove('disabled');
+        } else {
+            deleteButton1.classList.add('disabled');
+        }
+    }
+
+    function confirmDelete1() {
+        return confirm('Are you sure you want to delete?');
+    }
+                            </script>
 
               <?php
         } elseif ($method == "addAreaOfIntrestForm") {
@@ -4293,7 +4796,7 @@
 
                                       <div class="col-md-6">
                       <label for="preferred-location">Preferred Location to work</label>
-                      <input type="text" class="form-control" id="preferred-location" name="preferred-location" placeholder="Enter prefered location" required>
+                      <input type="text" class="form-control" id="preferred-location" name="preferred-location" placeholder="Enter preferred location" required>
                       <div id="arealocation_error" class="error"></div>
                                       </div>
 
@@ -4544,7 +5047,7 @@
                             </div>
                         </section>
 
-                        <script>
+                        <!-- <script>
                           function validateSkillForm(){
                             var sname = document.getElementById("skillname").value;
                             var sexp = document.getElementById("experience").value;
@@ -4583,7 +5086,7 @@
                           });
                         }
                   
-                        </script>
+                        </script> -->
                 
                        <?php
         } elseif ($method == 'updateAreaOfIntrest') {
@@ -4592,6 +5095,7 @@
                     <script>
                          document.getElementById('areaofinterest').classList.add('active');
                         </script> 
+
                         <section class="Multi Columns Form">
                             <div class="pagetitle">
                                 <h1>Area of Job Interest Details</h1>
@@ -4607,14 +5111,13 @@
                            
                                        <div class="card-body">
               
-                       <h5 class="card-title">Area of Job Interest Table<span></span></h5>
-               
+                       <h5 class="card-title">Area of Job Interest Table<span></span></h5>               
                        <div class="d-flex justify-content-between">
                        <a class="" href="#addinterestform">
-                       <button type="button" class="btn btn-success mb-4" onclick="addinterestform()" disabled>+ Add Area of Job Interest</button></a>
+                       <button type="button" class="btn btn-success mb-4" disabled>+ Add Area of Job Interest</button></a>
                       <div>
-                      <a class="" href="<?php echo baseUrl . "Candidate/experienceTable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> Previous</button></a>
-                      <a class="" href="<?php echo baseUrl . "Candidate/resume" ?>"> <button type="button" class="btn btn-info mb-4 ">Next <i class="bi bi-arrow-right"></i></button></a>
+                        <a href="<?php echo baseUrl . "Candidate/experienceTable" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                        <a href="<?php echo baseUrl . "Candidate/resume" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
                       </div>
                       </div>
                       <?php
@@ -4628,7 +5131,7 @@
                                              <th scope="col">S.No</th>
                                              <th scope="col">Job Category</th>
                                              <th scope="col">Job Subcategory</th>
-                                             <th scope="col">Prefered Location</th>
+                                             <th scope="col">Preferred Location</th>
                                              <!-- <th scope="col">Experience</th> -->
                                              <th scope="col">Job Type</th>
                                              <th scope="col">Description</th>
@@ -4638,14 +5141,14 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                if (isset($areaOfIntrestTable[0]['id'])) {
+                                if (1) {
                                   $count = 1;
                                   foreach ($areaOfIntrestTable as $key => $value) {
                                     $seekerId = $_SESSION['seekerId'];
                                     ?>
                                               <tr>
                                                  <td> <form method="post" action="<?php echo baseUrl . 'Candidate/deleteAreaInterest'; ?>" id="form_<?= $value['id']; ?>">
-                                                            <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>">
+                                                            <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton2(this)">
                                                       <td><?php echo $count++ ?>.</td>
                                               <td><?php echo $value['other_interst_category'] ?></td> 
                                               <td><?php echo $value['other_sub_interst_category'] ?></td>
@@ -4667,7 +5170,7 @@
                                 ?>
                                 </tbody>
                                </table>
-                               <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                               <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                </form>
                                <?php
                       } else {
@@ -4681,8 +5184,11 @@
 
                             <div class="card" id="editinterestform">
                                 <div class="card-body">
+                                    <div class="d-flex justify-content-between">
                                     <h5 class="card-title">Update Job Interest</h5>
-
+                                    <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
+                                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+                                    </div>
                                     <!-- Multi Columns Form -->
                                     <form class="row g-3 needs-validation" novalidate  method="post"
                                     onsubmit="return validateAreaForm()" action="<?php echo baseUrl . "Candidate/updateInsertAreaOfIntrest" ?>">
@@ -4694,7 +5200,7 @@
                               <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
                               <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id">
               
-                               <div class="col-12">
+                               <div class="col-md-6">
                                             <label class="form-label" for="category">Category</label>
                                             <select class="form-control" id="category" name="category" value="<?php echo $value['other_interst_category']; ?>" >
                                             <?php
@@ -4732,8 +5238,17 @@
                                </div>
 
                                <div class="col-md-6">
-                                            <label for="preferred-location">Preferred Location to work</label>
-                                            <input type="text" class="form-control" id="preferred-location" name="preferred-location" value="<?php echo $value['prefered_location']; ?>" required>
+                                            <label class="form-label" for="preferred-location">Preferred Location to work</label>
+                                            <select class="form-control" id="preferred-location" name="preferred-location" value="<?php echo $value['prefered_location']; ?>" required>
+                                                <option value="Erode" <?php if ($value['prefered_location'] === 'Erode')
+                                                            echo ' selected'; ?>>Erode</option>
+                                                <option value="Karur" <?php if ($value['prefered_location'] === 'Karur')
+                                                            echo ' selected'; ?>>Karur</option>
+                                                <option value="Namakkal" <?php if ($value['prefered_location'] === 'Namakkal')
+                                                            echo ' selected'; ?>>Namakkal</option>
+                                                <option value="Tirupur" <?php if ($value['prefered_location'] === 'Tirupur')
+                                                            echo ' selected'; ?>>Tirupur</option>
+                                            </select>
                                             <div id="arealocation_error" class="error"></div>
 
                                </div>
@@ -4794,7 +5309,21 @@
                                 </div>
                             </div>
                         </section>     
+                        <script>
+                              function updateDeleteButton2(checkbox) {
+        var deleteButton2 = document.getElementById('deleteList2');
 
+        if (checkbox.checked) {
+            deleteButton2.classList.remove('disabled');
+        } else {
+            deleteButton2.classList.add('disabled');
+        }
+    }
+
+    function confirmDelete2() {
+        return confirm('Are you sure you want to delete?');
+    }
+                            </script>
                         <script>
                       
                                 function validateAreaForm() {
@@ -4920,7 +5449,7 @@
                                           ?>
                                       <tr>
                                         <td> <form method="post" action="<?php echo baseUrl . 'Candidate/deleteSkill'; ?>" id="form_<?= $value['id']; ?>">
-                                                  <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>">
+                                                  <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>" onchange="updateDeleteButton1(this)">
                                             <td><?php echo $count++ ?>.</td>
                                       <td><?php echo $value['skill'] ?></td>
                                       <td><?php echo $value['experience'] ?> Years</td>
@@ -4937,7 +5466,7 @@
                                         ?>
                                                </tbody>
                                               </table>
-                                              <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                                              <button type="submit" name="submit" id="deleteList1" class="btn btn-danger disabled" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                                 </form>
                                               <?php
                                       } else {
@@ -4953,8 +5482,11 @@
 
                             <div class="card" id="editskillforrm" >
                                 <div class="card-body">
+                                    <div class="d-flex justify-content-between">
                                     <h5 class="card-title">Update Skill</h5>
-
+                                    <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
+                                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+                                    </div>
                                     <!-- Multi Columns Form -->
                                     <form class="row g-3 needs-validation" novalidate  method="post"
                                     onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Candidate/updateInsertSkill" ?>">
@@ -5030,7 +5562,7 @@
                                                       <input type="number" class="form-control"  value="1" name="areasubmit" hidden>
 
                                                       <div class="text-center">
-                                              <button type="submit" class="btn btn-primary">Submit</button>
+                                              <button type="submit" class="btn btn-primary">Update</button>
                                               <button type="reset" class="btn btn-secondary">Reset</button>
                                                       </div>
 
@@ -5040,7 +5572,7 @@
                                                     </div>
                                                        </section>
 
-                                                       <script>
+                                                       <!-- <script>
                                        function validateSkillForm(){
                                                     var sname = document.getElementById("skillname").value;
                                                     var sexp = document.getElementById("experience").value;
@@ -5079,12 +5611,27 @@
                                        });
                                                        }
                   
-                                                       </script>
+                                                       </script> -->
+                                                       <script>
+                              function updateDeleteButton1(checkbox) {
+        var deleteButton1 = document.getElementById('deleteList1');
 
+        if (checkbox.checked) {
+            deleteButton1.classList.remove('disabled');
+        } else {
+            deleteButton1.classList.add('disabled');
+        }
+    }
+
+    function confirmDelete1() {
+        return confirm('Are you sure you want to delete?');
+    }
+                            </script>
                 
                                                       <?php
                                       }
                                     }
+                                    
         } elseif ($method == "resume") {
           ?>
                       <!-- Sidebar Active  -->
@@ -5102,7 +5649,9 @@
                                 </nav>
                             </div><!-- End Page Title -->
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-body pt-4">
+                                <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button type="button" class="btn btn-info"><i class="bi bi-arrow-left"></i></button></a>
+
                                     <h5 class="card-title">Upload Resume</h5>
 
                                     <!-- Multi Columns Form -->
@@ -5178,17 +5727,34 @@
                        <?php
         } elseif ($method == "thank") {
           ?>
-                         <section class="Multi Columns Form" style="padding-bottom: 165px;">
-                            <div class="pagetitle my-2">
-                                <!-- <h1>Registered Successfully</h1> -->
-                            </div><!-- End Page Title -->
-                            <!-- <div class="card my-5"> -->
+
+
+<?php
+                        if (($basicDetails[0]['bdsubmited'] != '1')) { ?>
+                          <p>Basic Details no data</p>
+                      <?php } else if (isset($eduTotalRows) && $eduTotalRows < "1") {  ?>
+                           <p>Edu no data</p> 
+                     <?php } else if((isset($expTotalRows) && $expTotalRows < "1")) {  ?>
+                      <p>Exp no data</p> 
+                     <?php } else if((isset($wreaTotalRows) && $areaTotalRows < "1")) {  ?>
+                      <p>Area no data</p> 
+                        <?php } else {  ?>
+                          <section class="Multi Columns Form" style="padding-bottom: 165px;">
                               <div>
                                 <div class="text-center"><br><br><br>
                                     <img class="p-sm-5 img-fluid" src="<?php echo baseUrl . "assets/employee_thanks.png" ?>" alt="Thanks" style="width:70%; height:120%; align-items: center">
                                 </div>
                             </div>
                         </section>
+                          <?php }  ?>
+
+                         <!-- <section class="Multi Columns Form" style="padding-bottom: 165px;">
+                              <div>
+                                <div class="text-center"><br><br><br>
+                                    <img class="p-sm-5 img-fluid" src="<?php echo baseUrl . "assets/employee_thanks.png" ?>" alt="Thanks" style="width:70%; height:120%; align-items: center">
+                                </div>
+                            </div>
+                        </section> -->
 
                         <?php
         } elseif ($method == "myProfile") {
@@ -5214,8 +5780,9 @@
                                                            <p><?php echo $value['phonenumber'] ?> </p>
                                                                     <p> <?php echo $value['email'] ?>
                                                                     </p>
-                                                                    <p> <?php echo $value['buildingName'] ?>, <?php echo $value['address'] ?>
+                                                                    <p> <?php echo $value['buildingName'] ?>, <?php echo $value['address'] ?>,
                                                                     </p>
+                                                                    <p><?php echo $value['landmark'] ?>,</p>
                                                                     <p> <?php echo $value['district'] ?>,
                                                                       <?php echo $value['pincode'] ?>
                                                                     </p>
@@ -5252,6 +5819,7 @@
                                           <th class="col-4" scope="col">Profile Photo</th>
                                           <th class="col-4" scope="col">Aadhaar Front</th>
                                           <th class="col-4" scope="col">Aadhaar Back</th>
+                                          <th class="col-4" scope="col">Aadhaar Number</th>
                                             </tr>
                                        </thead>
                                     <tbody>
@@ -5259,6 +5827,7 @@
                                           <td><a href="<?php echo $value['photo'] ?>" target="_blank" ><?php echo $value['photo_filename'] ?></a></td>
                                           <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank" ><?php echo $value['aadharfront_filename'] ?></a></td>
                                           <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank" ><?php echo $value['aadharback_filename'] ?></a></td>
+                                          <td><a href="<?php echo $value['aadharnumber'] ?>"><?php echo $value['aadharnumber'] ?></a></td>
                                         </tr>
                                                     <?php
                                         }
@@ -5426,81 +5995,98 @@
 
                         <div class="card recent-sales overflow-auto">
                                        <div class="card-body">
-                      <h5 class="card-title">Experience Details</h5>
-          
-                      <table class="table table-striped">
-                       <thead>
-                           <tr>
-                               <th scope="col">S.No</th>
-                               <th scope="col">Job Category</th>
-                               <th scope="col">Job Sub Category</th>
-                               <th scope="col">Experience</th>
-                               <th scope="col">Company Name</th>
-                               <th scope="col">Job Role</th>
-                               <th scope="col">Previous Job's Manager Name</th>
-                               <th scope="col">Previous Job's Manager Mobile</th>
-                               <th scope="col">Previous Job's Manager Email</th>
-                           </tr>
-                       </thead>
-                       <tbody>
+                                       <div id="experiencedContent">
+                      <h5 class="card-title">Experience Details</h5>          
+                                          
                        <?php
-                       if (isset($experienceTable[0]['id'])) {
-                         $loopcount = 1;
-                         foreach ($experienceTable as $key => $ivalue) {
-                           ?>
-                                                    <tr>
-                                                     <td scope="row"><?php echo $loopcount; ?>.</td>
-                                                     <td><?php echo $ivalue['other_category'] ?></td>
-                                                     <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                                     <td><?php echo $ivalue['expYear']; ?> - <?php echo $ivalue['expMonth']; ?></td>
-                                                     <td><?php echo $ivalue['company_name'] ?></td>
-                                                     <td><?php echo $ivalue['job_role'] ?></td>
-                                                     <td><?php echo $ivalue['previous_employer_name'] ?></td>
-                                                     <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
-                                                     <td><?php echo $ivalue['previous_employer_email'] ?></td>
-                                                    </tr>
-                                                      <?php
-                                                      $loopcount++;
-                         }
-                       }
-                       ?>
+if (isset($experienceTable[0]['id'])) {
+    $loopcount = 1;
+    foreach ($experienceTable as $key => $ivalue) {
+        if ($ivalue['workStatus'] === '1') {
+            echo '<div id="fresherContent">
+                    <p>I am a Fresher</p>
+                  </div>';
+        } else {
+          echo '<table class="table table-striped">
+                     <thead>
+                         <tr>
+                             <th scope="col">S.No</th>
+                             <th scope="col">Job Category</th>
+                             <th scope="col">Job Sub Category</th>
+                             <th scope="col">Experience</th>
+                             <th scope="col">Company Name</th>
+                             <th scope="col">Company Location</th>
+                             <th scope="col">Job Role</th>
+                             <th scope="col">Company Mobile Number</th>
+                             <th scope="col">Previous Job\'s Reference Name</th>
+                             <th scope="col">Previous Job\'s Reference Mobile number</th>
+                             <th scope="col">Previous Job\'s Reference Email</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                             <td>' . $loopcount . '.</td>
+                             <td>' . $ivalue['other_category'] . '</td>
+                             <td>' . $ivalue['other_sub_category'] . '</td>
+                             <td>' . $ivalue['expYear'] . ' - ' . $ivalue['expMonth'] . '</td>
+                             <td>' . $ivalue['company_name'] . '</td>
+                             <td>' . $ivalue['company_location'] . '</td>
+                             <td>' . $ivalue['job_role'] . '</td>
+                             <td>' . $ivalue['previous_employer_name'] . '</td>
+                             <td>' . $ivalue['previous_employer_mobile'] . '</td>
+                             <td>' . $ivalue['previous_employer_email'] . '</td>
+                         </tr>
+                     </tbody>
+                 </table>';
+      }
+  }
+}
+?>
+
                        </tbody>
-                      </table>
+                      </table></div>
                                        </div>
                         </div>
-
                         <div class="card recent-sales overflow-auto">
                                        <div class="card-body">
                       <h5 class="card-title">Skills</h5>
           
-                      <table class="table table-striped">
-                       <thead>
-                           <tr>
-                               <th class="col-2" scope="col">S.No</th>
-                               <th class="col-4" scope="col">Skill</th>
-                               <th class="col-3" scope="col">Experience</th>
-                               <th class="col-3" scope="col">Skill Level</th>
-                           </tr>
-                       </thead>
-                       <tbody>
-                           <?php
-                           if (isset($skillTable[0]['id'])) {
-                             $loopcount = 1;
-                             foreach ($skillTable as $key => $svalue) {
-                               ?>
-                                    <tr>
-                                      <td><?php echo $loopcount; ?>.</td>
-                                      <td><?php echo $svalue['skill'] ?></td>
-                                      <td><?php echo $svalue['experience'] ?> years</td>
-                                      <td><?php echo $svalue['skill_level'] ?></td>
-                                    </tr>
-                                      <?php
-                                      $loopcount++;
-                             }
-                           }
-                           ?>
-                       </tbody>
-                      </table>          
+<?php
+        if (isset($skillTable[0]['id']) && !empty($skillTable)) {
+            ?>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-2" scope="col">S.No</th>
+                        <th class="col-4" scope="col">Skill</th>
+                        <th class="col-3" scope="col">Experience</th>
+                        <th class="col-3" scope="col">Skill Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $loopcount = 1;
+                    foreach ($skillTable as $key => $svalue) {
+                        ?>
+                        <tr>
+                            <td><?php echo $loopcount; ?>.</td>
+                            <td><?php echo $svalue['skill'] ?></td>
+                            <td><?php echo $svalue['experience'] ?> years</td>
+                            <td><?php echo $svalue['skill_level'] ?></td>
+                        </tr>
+                        <?php
+                        $loopcount++;
+                    }
+                    ?>
+                </tbody>
+            </table>
+        <?php
+        } else {
+            // Display "No skills" message
+            echo '<p>No skills</p>';
+        }
+        ?>
+                                
                        </div>
                         </div>
 
@@ -5513,7 +6099,7 @@
                                <th scope="col">S.No</th>
                                <th scope="col">Job Category</th>
                                <th scope="col">Job Sub Category</th>
-                               <th scope="col">Prefered Location</th>
+                               <th scope="col">Preferred Location</th>
                                <!-- <th scope="col">Experience</th> -->
                                <th scope="col">Job Type</th>
                                <th scope="col">Description</th>
@@ -5566,7 +6152,22 @@
 
                           </div>
                         </section>
+                        <script>
+    function showContent(selection) {
+        // Hide all content initially
+        document.getElementById('experiencedContent').style.display = 'none';
+        document.getElementById('fresherContent').style.display = 'none';
 
+        // Show content based on the selection
+        if (selection === 'experience') {
+            document.getElementById('experiencedContent').style.display = 'block';
+            // Your logic for Experienced goes here
+        } else if (selection === 'fresher') {
+            document.getElementById('fresherContent').style.display = 'block';
+            // Your logic for Fresher goes here
+        }
+    }
+</script>
         <?php
         }
         ?>
@@ -5596,7 +6197,17 @@
 
     <!-- Template Main JS File -->
     <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
+    <script>
+    function validatePhoneNumber(input) {
+        // Remove non-numeric characters
+        var phoneNumber = input.value.replace(/\D/g, '');
 
+        // Limit to 15 digits
+        if (phoneNumber.length > 15) {
+            input.value = phoneNumber.slice(0, 15);
+        }
+    }
+</script>
 </body>
 
 </html>

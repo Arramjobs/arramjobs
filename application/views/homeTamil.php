@@ -26,14 +26,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Tamil:ital@0;1&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <style>
-  
+ 
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
   html {
     scroll-padding-top: 120px;
   }
+  /* .tiro-tamil-regular {
+  font-family: "Tiro Tamil", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.tiro-tamil-regular-italic {
+  font-family: "Tiro Tamil", serif;
+  font-weight: 400;
+  font-style: italic;
+} */
 
   * {
     margin: 0;
@@ -43,7 +57,8 @@
     border: none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: montserrat;
+    font-family: "Tiro Tamil", serif;
+    line-height: 24px;
   }
 
   body {
@@ -58,6 +73,13 @@
     min-height: 100px;
   }
 
+  .carousel-caption {
+    z-index: 2;
+    text-align: center;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
   .wrapper {
     margin: auto;
     width: 75%;
@@ -70,6 +92,42 @@
     width: 100%;
     height: 200px;
   }
+
+
+  .carousel-caption h2 {
+    font-size: 24px;
+    font-weight: bold;
+    font-size: 65px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #1ea6ec;
+    font-style: bold;
+  }
+
+  .carousel-caption p {
+    margin: auto;
+    font-size: 35px;
+    list-style: 1.9;
+    padding-bottom: 160px;
+    color: #9acd32;
+    text-align: center;
+    margin-bottom: 16%;
+  }
+
+  .carousel-caption h3 {
+    font-size: 24px;
+    font-weight: bold;
+    font-size: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 20px 0;
+    padding-bottom: 0px;
+    color: #1ea6ec;
+    font-style: bold;
+  }
+
   .carousel-inner::after {
     content: '';
     position: absolute;
@@ -97,7 +155,7 @@
   }
 
   .home-container {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/Home_images/img.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('<?php echo baseUrl . "assets/Home_images/img.jpg" ?>');
     height: 100vh;
     width: 100%;
     background-repeat: no-repeat;
@@ -115,49 +173,45 @@
     cursor: pointer;
     margin-left: 40px;
   }
-
   .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 3rem 6%; 
+    padding: 50px 45px; 
     background: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .header.sticky {
-    background-color: #131D3B; 
-    backdrop-filter: blur(10px);
-}
-.header .title1 {
-  color: white;
+   background-color: #131D3B; 
+   backdrop-filter: blur(10px);
 }
 .header ul {
-  margin-right: 20px;
+  margin-right: 2px;
 }
 .header ul li {
   display: inline-block;
-  line-height: 30px;
-  margin: 0 20px;
+  line-height: 60px;
+  margin:0 20px;
   list-style: none;
 }
 .header ul li a {
   display: inline-block;
   position: relative;
-  padding: 10px;
+  padding: 18px 8px;
   border-radius: 8px;
   text-decoration: none;
   color: #fff;
-  font-size: 20px;
+  font-size: 15px;
   transition: all 0.3s ease;
 }
 .header ul li a:hover {
-  background: white;
   color: #131D3B;
-  padding: 10px;
+  padding: 18px 8px;
   border-radius: 8px;
+  background-color: white;
 }
 label #btns,
 label #cancel {
@@ -168,6 +222,7 @@ label #cancel {
   margin-right: 40px;
   cursor: pointer;
   display: none;  
+  margin-top: 20px;
 }
 #check {
   display: none;
@@ -175,11 +230,10 @@ label #cancel {
 .header ul .dropdown {
   position: absolute;
   width: 200px;
-  /* background-color: #445964; */
   background-color: #333;
+  z-index: -999;
   opacity: 0;
   padding-left: 15px;
-  z-index: -999;
   transition: all ease 0.5s;
   line-height: 60px;
 }
@@ -189,7 +243,7 @@ label #cancel {
   border-radius: 8px;
 }
 .header .btn {
-  width: 150px;
+  width: 135px;
   height: 45px;
   border: 2px solid #fff;
   outline: none;
@@ -197,7 +251,7 @@ label #cancel {
   background: transparent;
   color: #fff;
   transition: transform .6s;
-  font-size: 18px;
+  font-size: 15px;
 }
 .header .btn:hover {
   background: white;
@@ -222,17 +276,16 @@ label #cancel {
   flex-basis: 50%;
 }
 .column1 h1 {
-  color: #fff;
-  font-size: 60px;
-  font-weight: 600;
+  font-size: 65px;
   margin-bottom: 10px;
+  color: #fff;
 }
 .column1 p {
+  font-size: 25px;
+  margin-bottom: 20px;
   color: #fff;
-  font-size: 35px;                                                                                                                                                                                  0px;
-  line-height: 35px;
+  line-height: 45px;
 }
- 
   .w-100 {
     height: 130vh;
   }
@@ -242,26 +295,27 @@ label #cancel {
   }
 
   .section-padding1 {
-    margin-top: 0;
-    padding-top: 60px;
+    /* margin-top: 0; */
+    padding-top: 50px;
     padding-bottom: 50px;
     margin-bottom: 80px;
+    text-align: justify;
   }
 
   .section-padding1 h2 {
-    margin-top: 0px;
-    margin-bottom: 8px;
+    font-size: 25px;
   }
 
   .section-padding1 p {
-    font-size: 18px;
+    font-size: 12px;
     margin-bottom: 7px;
   }
 
   .recent-posts .section-title h1 {
     margin-top: -80px;
     padding-top: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 40px;
+    font-size: 32px;
   }
 
   .section-padding {
@@ -287,8 +341,9 @@ label #cancel {
   .footer2,
   .footer3 {
     text-align: left;
+    font-size: 12px;
   }
-
+  
   .recent-posts article {
     box-shadow: 0 4px 16px rgba(var(--default-color-rgb), 0.1);
     padding-top: 30px;
@@ -317,7 +372,11 @@ label #cancel {
   }
 
   .text-reset {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  .text-reset1 {
+    font-size: 16px;
   }
 
   .recent-posts .cards:hover {
@@ -382,6 +441,7 @@ label #cancel {
  .scroll-container {
     overflow: hidden;
     background: #e8e6e6;
+    font-size: 14px;
   }
 
   .scroll {
@@ -403,6 +463,13 @@ label #cancel {
     text-decoration: none;
   }
 
+  .about-text p {
+      font-size: 14px;
+    }
+    .about-img-img {
+      margin-top: 25px;
+    }
+
   @keyframes RightToLeft {
     0% {
       transform: translateX(0%);
@@ -412,9 +479,18 @@ label #cancel {
       transform: translateX(-100%);
     }
   }
+  .custom-paragraph {
+    font-size: 32px; 
+  padding-top: 30px;
+  margin-bottom: 40px;
+  }
+  .lead.px-4{
+    color: black;
+    text-align: justify;
+    font-size: 16px;
+  }
 
   @media only screen and (max-width:991px) {
-
     .card-sec {
       margin-top: 20px;
     }
@@ -427,7 +503,8 @@ label #cancel {
     }
   }
 
-  @media only screen and (max-width:590px) {
+
+  /* @media only screen and (max-width:590px) {
     .row1 {
     flex-direction: column;
     width: 100%;
@@ -441,21 +518,25 @@ label #cancel {
       font-size: 24px;
       text-align: center;
     } 
-  }
-  
-  @media only screen and (max-width:1100px) {
+  } */
+
+  @media only screen and (max-width:1200px) {
     .row1 {
     flex-direction: column;
     width: 100%;
-    margin-top: 30%;
+    margin-top: 25%;
   }
     .column1 h1 {
-      font-size: 45px;
+      font-size: 42px;
       text-align: center;
+      font-weight: bold;
+      color: #E63B60;
     }
     .column1 p {
-      font-size: 28px;
+      font-size: 25px;
       text-align: center;
+      padding-top: 20px;
+      color: bisque;
     }
     .column2 h2 {
       font-size: 25px;
@@ -477,8 +558,8 @@ label #cancel {
       padding-left: 60px;
     }
   }
-  
-  @media only screen and (max-width:1206px) {
+
+  @media only screen and (max-width:1420px) {
     label #btns {
       display: block;
       font-size: 25px;
@@ -496,7 +577,7 @@ label #cancel {
       top: 80px;
       left: 100%;
       transition: all .5s;
-      padding: 15px 10px;
+      padding: 5px 10px;
       background: black;
     }
     .header ul li {
@@ -531,24 +612,68 @@ label #cancel {
     #check:checked ~ label #cancel {
       display: block;
     }
+    /* .profile-container{
+      padding-top: 30px;
+    }
+    .column1 h1 {
+      font-size: 35px;
+    }
+    .column1 p {
+      font-size: 20px;
+      line-height: 30px;
+    }
+    .column2 h2 {
+      font-size: 25px;
+    }
+    .row1 {
+      margin-top: 80px;
+    } */
     .language-selector {
       opacity: 0;
     }
   }
 
   @media only screen and (max-width:767px) {
+    .carousel-caption {
+      text-align: center;
+    }
+
+    .carousel-caption h2 {
+      font-size: 35px;
+    }
+
+    .carousel-caption h3 {
+      font-size: 25px;
+    }
+
     .section-padding1 {
-      margin-top: -10px;
       margin-bottom: 40px;
+    }
+
+    .section-padding1 h2 {
+      font-size: 20px;
+    }
+    .section-padding1 p {
+      font-size: 14px;
+    }
+    .lead.px-4 {
+      color: black;
+      font-size: 14px;
+      text-align: justify;
+    }
+    .recent-posts .section-title h1{
+      font-size: 26px;
     }
 
     .provider.section-padding {
       div.about-text {
         order: 2;
       }
+
       div.about-img-img {
         order: 1;
       }
+
       .wrapper .card-text {
         overflow: hidden;
       }
@@ -562,12 +687,20 @@ label #cancel {
       margin-top: 40px;
     }
 
+    .carousel-caption p {
+      font-size: 18px;
+      padding-right: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-bottom: 150px;
+    }
+
     .card-sec {
       margin-top: 30px;
     }
 
     .about-img-img {
-      padding-top: 30px;
+      margin-top: 0px;
     }
 
     .carousel-item active {
@@ -580,6 +713,14 @@ label #cancel {
 
     .w-100 {
       height: 50vh;
+    }
+
+    .dropdown-toggle {
+      margin-left: 70px;
+    }
+
+    .dropdown-menu {
+      margin-left: 45px;
     }
 
     .section-paddings {
@@ -612,12 +753,20 @@ label #cancel {
 
     .scroll-container {
       padding: 5px 0px;
+      font-size: 12px;
     }
 
     .RightToLeft {
-      animation: RightToLeft 10s linear infinite;
+      animation: RightToLeft 5s linear infinite;
     }
-  
+    .custom-paragraph {
+      font-size: 26px;
+      overflow: hidden;
+    }
+    .section-header h4 {
+      font-size: 20px;
+    }
+
     ul {
       position: fixed;
       width: 100%;
@@ -660,16 +809,19 @@ label #cancel {
     #check:checked ~ label #cancel {
       display: block;
     }
+    /* .row1 {
+      flex-direction: column;
+      width: 20%;
+    } */
     .language-selector {
       opacity: 0;
     }
   }
-
-    .language-selector {
+  .language-selector {
       position: relative;
       display: inline-block;
       cursor: pointer;
-      margin-left: 20px;
+      margin-left:20px;
     }
 
     .language-icon {
@@ -685,7 +837,7 @@ label #cancel {
     .language-dropdown {
       position: absolute;
       width: 95px;
-      background-color: #444;
+      background-color: #333;
       opacity: 0;
       z-index: -999;
       transition: all ease 0.5s;
@@ -702,13 +854,12 @@ label #cancel {
       border-radius: 8px;
       color: white;      
     }
-
+  
     .language-selector:hover .language-dropdown {
       z-index: 99;
       opacity: 1;
       border-radius: 8px;
     }
-
     img {
       max-width: 100%;
       height: auto; 
@@ -724,9 +875,9 @@ label #cancel {
     .verticals-container {
       display: flex;
       flex-direction: column;
-      float: left;
+      align-items: flex-start;
       padding: 20px;
-      width: 100%;
+      width: 90%;
       gap: 10px;
       transition: .6s;
       cursor: default;
@@ -751,7 +902,7 @@ label #cancel {
       background-position: 500%;
     }
   }
-  .verticals-title {
+    .verticals-title {
       position: relative;
       text-transform: uppercase;
       font-size: 40px;
@@ -768,12 +919,12 @@ label #cancel {
   @keyframes animate {
     0% {
       background-position: -500%;
-    }
+    } 
     100% {
       background-position: 500%;
     }
   }
-
+  
 .verticals a{
   position: relative;
   color: #2061ca;;
@@ -802,6 +953,9 @@ label #cancel {
 .column2 {
   margin-top: 20%;
   align-items: center;
+}
+.column2  h4 {
+  font-size: 20px;
 }
 .column2 .profile {
   display: flex;
@@ -856,7 +1010,7 @@ label #cancel {
     transform: translateY(-40px);
     opacity: 1;
     transition: .6s;
-    font-size: 20px;
+    font-size: 18px;
     padding-top: 20px;
     color: white;
 }
@@ -865,9 +1019,9 @@ label #cancel {
     transform: translateY(-90px);
     opacity: 0;
     transition: .6s;
-    font-size: 17px;
+    font-size: 14px;
     color: #567812;
-    margin: 3px 0 0 0;
+    margin: 1px 0 0 0;
     font-weight: bold;
 }
 .profile-card:hover .caption p {
@@ -877,6 +1031,7 @@ label #cancel {
     color: black;
     font-size: 20px;
     transition: .6s;
+    overflow: hidden;
     transform: translateY(-70px);
     opacity: 0;
     display: flex;
@@ -922,7 +1077,7 @@ label #cancel {
     font-size: 25px;
     padding-left: 20px;
 }
-.words span{
+span{
     display: block;
     height: 100%;
     padding-left: 10px;
@@ -960,7 +1115,8 @@ label #cancel {
   border: 2px solid #fff;
   border-radius: 8px;
 }
-  </style>
+
+</style>
 
 <body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -971,27 +1127,27 @@ label #cancel {
            <header class="header" id="header">
             <img src="<?php echo baseUrl; ?>/assets/title logo.png" alt="Arram jobs" class="logo">
             <nav>
-              <input type="checkbox" id="check">
+               <input type="checkbox" id="check">
               <label for="check">
                 <i class="fas fa-bars" id="btns"></i>
                 <i class="fas fa-times" id="cancel"></i></label>
               <ul>
-                <li><a href="#">Home</a></li>
-                  <li><a href="#about">About Us</a></li>
-                  <li><a href="#footercontact">Contact</a></li>
-                  <li class="btn2"><a href="<?php echo baseUrl . "Candidate" ?>">Login</a></li>
-                  <li class="btn2"><a href="<?php echo baseUrl . "Candidate/registration" ?>">Register</a></li>
-                
-               <li><a href="#" class="dropdown-toggle">For employers</a>
+                <li><a href="#">முகப்பு பக்கம்</a></li>
+                  <li><a href="#about">எங்களை பற்றி</a></li>
+                  <li><a href="#footercontact">தொடர்பு</a></li>
+                  <li class="btn2"><a href="<?php echo baseUrl . "Candidate" ?>">உள்நுழைய</a></li>
+                  <li class="btn2"><a href="<?php echo baseUrl . "Candidate/registration" ?>">பதிவு செய்தல்</a></li>
+                  
+                  <li> <li><a href="#" class="dropdown-toggle">முதலாளி</a>
                   <ul class="dropdown">
-                  <li><a href="<?php echo baseUrl . "Employer/login" ?>">Login</a></li>
-                    <li><a href="<?php echo baseUrl . "Employer/registration" ?>">Register</a></li>
+                  <li><a href="<?php echo baseUrl . "Employer/login" ?>">உள்நுழைய</a></li>
+                    <li><a href="<?php echo baseUrl . "Employer/registration" ?>">பதிவு செய்தல்</a></li>
                   </ul></li>
 
                 <li><div class="language-selector">
     <div class="language-icon"><i class="fa-solid fa-globe trans"></i></div>
     <div class="language-dropdown">
-      <div class="language-option dropdown-toggle" onclick="changeLanguage('ta')"><a href="<?php echo baseUrl . "Welcome/indexTamil" ?>">தமிழ்</a></div>
+      <div class="language-option dropdown-toggle" onclick="changeLanguage('ta')"><a href="<?php echo baseUrl; ?>">English</a></div>
     </div>
   </div></li>
               </ul>
@@ -1000,21 +1156,21 @@ label #cancel {
 
            <div class="row1">
             <div class="column1">
-              <h1>ARRAM JOBS</h1>
-              <p>"Find Your Dream Job with Us"</p>
+              <h1>அறம் அறக்கட்டளை</h1>
+              <p>"உங்கள் கனவு வேலையை எங்களுடன் தேடுங்கள்"</p>
             </div>
 
             <div class="column2">           
         <div class="profile-container">
-    <h2>TRUSTEES</h2>
+    <h2>நிர்வாகிகள்</h2>
     <div class="profile" >
   <div class="profile-card">
             <div class="img">
-            <img src="assets/Saraswathi4.png" alt="Dr.C. Saraswathi">
+            <img src="<?php echo baseUrl . "assets/Saraswathi4.png" ?>" alt="Dr.C. Saraswathi">
             </div>
             <div class="caption">
-                <h4>Dr.C. Saraswathi</h4>
-                <p>Secretary</p>
+                <h4>C. சரஸ்வதி</h4>
+                <p>செயலாளர்</p>
                 <div class="social-links">
                     <a href="https://www.youtube.com/@arramcharitytrust" target="_blank"><i class="fab fa-youtube" style="color:red;"></i></a>
                     <a href="https://www.instagram.com/drcksaraswathi/" target="_blank"><i class="fab fa-instagram" style="color:#e64096;"></i></a>
@@ -1023,11 +1179,11 @@ label #cancel {
         </div>
         <div class="profile-card">
             <div class="img">
-            <img src="assets/Kiruthika2.png" alt="Mrs. Kirthika Shivkumar">
+            <img src="<?php echo baseUrl . "assets/Kiruthika2.png" ?>" alt="Mrs. Kirthika Shivkumar">
             </div>
             <div class="caption">
-                <h4>Mrs. Kirthika</h4>
-                <p>Managing Trustee</p>
+                <h4>Mrs. கிர்த்திகா</h4>
+                <p>பொறுப்பாட்சியர்</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/kirthikashivkumarerode" target="_blank"><i class="fab fa-facebook" style="color:#316FF6;"></i></a>
                     <a href="https://www.instagram.com/kirthika_shivkumar/" target="_blank"><i class="fab fa-instagram" style="color:#e64096;"></i></a>
@@ -1038,7 +1194,7 @@ label #cancel {
         </div>
         </div>
             </div>
-           </div>
+          </div>
           <script>
     document.addEventListener('DOMContentLoaded', function() {
       var header = document.getElementById('header');
@@ -1058,65 +1214,64 @@ label #cancel {
       });
     });
   </script>
-    <!-- Home page scroll -->
-    <section class="image-section">
-   
-   <div class="verticals-container">
-    <h3>We largely work and touch on</h3>
-  <div class="wrapper2"><h2>Five Verticals</h2>
-  <div class="words">
-    <!-- <div class="word" id="health"> -->
-      <span>Health</span>
-    <!-- </div><br> -->
-    <!-- <div class="word" id="food"> -->
-      <span>Food</span>
-    <!-- </div><br> -->
-    <!-- <div class="word" id="spiritual"> -->
-      <span>Spiritual</span>
-    <!-- </div><br> -->
-    <!-- <div class="word" id="education"> -->
-      <span>Education</span>
-    <!-- </div><br> -->
-    <!-- <div class="word" id="environment"> -->
-      <span>Environment</span>
-    <!-- </div><br> -->
-    </div>
-  </div>
-  <div class="verticals">
-  <a href="https://arramsei.org/"  target="_blank">Read more</a>
-  </div>
-  </div>
-  
-    </section>
+  <section class="image-section">
+    
+    <!-- Profile images and content -->
+    <div class="verticals-container">
+     <h3>We largely work and touch on</h3>
+   <div class="wrapper2"><h2>Five Verticals</h2>
+   <div class="words">
+     <!-- <div class="word" id="health"> -->
+       <span>Health</span>
+     <!-- </div><br> -->
+     <!-- <div class="word" id="food"> -->
+       <span>Food</span>
+     <!-- </div><br> -->
+     <!-- <div class="word" id="spiritual"> -->
+       <span>Spiritual</span>
+     <!-- </div><br> -->
+     <!-- <div class="word" id="education"> -->
+       <span>Education</span>
+     <!-- </div><br> -->
+     <!-- <div class="word" id="environment"> -->
+       <span>Environment</span>
+     <!-- </div><br> -->
+     </div>
+   </div>
+   <div class="verticals">
+   <a href="https://arramsei.org/"  target="_blank">Read more</a>
+   </div>
+   </div>
+     </section>
+
     <div class="scroll-container">
       <div class="scroll">
 
         <div class="RightToLeft" id="scrollContent">
           <a href="#accessid" style="text-decoration: none;" onclick="highlightContent('accessid')">
-            <p><i class="bi bi-phone" style="display:block; color:#053686;"><b> Mobile Accessibility </b></i></p>
+            <p><i class="bi bi-phone" style="display:block;"><b> மொபைல் அணுகல் </b></i></p>
           </a>
 
           <a href="#accredit" style="text-decoration: none;" onclick="highlightContent('accredit')">
-            <p><i class="bi bi-book-fill" style="display:block; color:#053686;"> <b>Accredited</b></i></p>
+            <p><i class="bi bi-book-fill"> <b>அங்கீகாரம் பெற்றது</b></i></p>
           </a>
 
           <a href="#interface" style="text-decoration: none;" onclick="highlightContent('interface')">
-            <p><i class="bi bi-laptop-fill" style="display:block; color:#053686;"> <b>User-friendly Interface</b></i></p>
+            <p><i class="bi bi-laptop-fill"> <b>பயனர் நட்பு இடைமுகம்</b></i></p>
           </a>
 
           <a href="#jobid" style="text-decoration: none;" onclick="highlightContent('jobid')">
-            <p><i class="bi bi-subtract" style="display:block; color:#053686;"> <b>Extensive Job opportunities</b></i></p>
+            <p><i class="bi bi-subtract"> <b>விரிவான வேலை வாய்ப்புகள்</b></i></p>
           </a>
 
           <a href="#quickresponse" style="text-decoration: none;" onclick="highlightContent('quickresponse')">
-            <p><i class="bi bi-shield-shaded" style="display:block; color:#053686;"> <b>Quick Response</b></i></p>
+            <p><i class="bi bi-shield-shaded"> <b>உடனடி பதிலளிப்பு</b></i></p>
           </a>
 
           <a href="#search" style="text-decoration: none;" onclick="highlightContent('search')">
-            <p><i class="bi bi-tablet-landscape" style="display:block; color:#053686;"> <b>Advanced search and filtering</b></i></p>
+            <p><i class="bi bi-tablet-landscape"> <b>மேம்பட்ட தேடல் மற்றும் வடிகட்டுதல்</b></i></p>
           </a>
         </div>
-
       </div>
     </div>
 
@@ -1141,28 +1296,24 @@ label #cancel {
               <img src="<?php echo baseUrl . "assets/blog-2.jpg" ?>" alt="" class="img-fluid">
             </div>
           </div>
-          <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center"
-            style="text-align: justify; font-size: medium;">
+          <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center">
             <div class="about-text">
-              <h2><b>About Arramjobs</b></h2>
-              <p>At Arram Jobs, we're committed to providing comprehensive solutions that cater to the unique needs of
-                both job seekers and employers. Our platform is designed to offer a range of valuable services and
-                benefits, ensuring a seamless and rewarding experience for all.</p>
-              <p>At Arram Jobs, we are on a mission to connect talented individuals with the career opportunities that
-                align with their aspirations. We believe that the right job can transform lives, foster personal growth,
-                and drive organizational success. With our innovative approach to recruitment, we aim to bridge the gap
-                between exceptional talent and top-tier employers, creating a brighter future for both.</p>
-            </div>
+              <h2><b>அறம் வேலைவாய்ப்பு</b></h2>
+              <p>அறம் வேலைவாய்ப்பில், வேலை தேடுபவர்கள் மற்றும் முதலாளிகளின் தனிப்பட்ட தேவைகளைப் பூர்த்தி செய்யும் விரிவான தீர்வுகளை வழங்க நாங்கள் கடமைப்பட்டுள்ளோம். அனைவருக்கும் தடையற்ற மற்றும் பலனளிக்கும் அனுபவத்தை உறுதிசெய்யும் வகையில், மதிப்புமிக்க சேவைகள் மற்றும் பலன்களை வழங்குவதற்காக எங்கள் தளம் வடிவமைக்கப்பட்டுள்ளது.</p>
+              <p>வேலைவாய்ப்பில், திறமையான நபர்களை அவர்களின் அபிலாஷைகளுடன் ஒத்துப்போகும் தொழில் வாய்ப்புகளுடன் இணைக்கும் பணியில் நாங்கள் ஈடுபட்டுள்ளோம். சரியான வேலை வாழ்க்கையை மாற்றும், தனிப்பட்ட வளர்ச்சியை வளர்க்கும் மற்றும் நிறுவன வெற்றியை உந்தும் என்று நாங்கள் நம்புகிறோம். ஆட்சேர்ப்புக்கான எங்களின் புதுமையான அணுகுமுறையின் மூலம், விதிவிலக்கான திறமை மற்றும் உயர்மட்ட முதலாளிகளுக்கு இடையே உள்ள இடைவெளியைக் குறைத்து, இருவருக்கும் பிரகாசமான எதிர்காலத்தை உருவாக்குவதை நோக்கமாகக் கொண்டுள்ளோம்.</p>
+              </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Recent-posts Section - Home Page -->
     <section id="recent-posts" class="recent-posts px-4"
       style="margin-bottom: 30px; margin-top: 10px; background-color: #f7f6f5;">
 
+      <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h1 class="text-center"><b>What does Arram Offer</b></h1>
+        <h1 class="text-center"><b>அறம் என்ன வழங்குகிறது</b></h1>
       </div>
 
       <div class="container">
@@ -1171,13 +1322,10 @@ label #cancel {
             <div class="card-sec text-white text-center pb-4"
               style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
               <div class="card-body-s">
-                <img src="<?php echo baseUrl . "assets/Home_images/search.jpg" ?>" class="card-img-top" alt="...">
-                <h5 class="card-title pt-4"><b>JOB SEARCHING</b></h5>
-                <p class="lead px-4" style="color: black; font-size: 16px; text-align: justify;">
-                  At Arram Job Portal, we're dedicated to help you to unlock your potential. Whether you're a recent
-                  graduate
-                  starting your career or a seasoned expert seeking new challenges, we're your trusted job search
-                  partner.</p>
+                <img src="<?php echo baseUrl . "assets/Home_images/search.jpg" ?>" class="card-img-top" alt="Search">
+                <h5 class="card-title pt-4"><b>வேலை தேடுதல்</b></h5>
+                <p class="lead px-4">
+                  அறம் வேலை போர்ட்டலில், உங்கள் திறனைத் திறக்க உங்களுக்கு உதவ நாங்கள் அர்ப்பணித்துள்ளோம். நீங்கள் உங்கள் வாழ்க்கையைத் தொடங்கும் சமீபத்திய பட்டதாரியாக இருந்தாலும் அல்லது புதிய சவால்களைத் தேடும் அனுபவமிக்க நிபுணராக இருந்தாலும், நாங்கள் உங்களின் நம்பகமான வேலை தேடல் கூட்டாளியாக இருக்கிறோம்.</p>
               </div>
             </div>
           </div>
@@ -1186,31 +1334,26 @@ label #cancel {
             <div class="card-sec text-white text-center pb-4"
               style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
               <div class="card-body-s">
-                <img src="<?php echo baseUrl . "assets/jobprovide.jpg" ?>" class="card-img-top" alt="...">
-                <h5 class="card-title pt-4"><b>JOB PROVIDING</b></h5>
-                <p class="lead px-4" style="color: black; font-size: 16px; text-align: justify;">
-                  Job Portal, we're dedicated to help you to unlock your potential. Whether you're a recent graduate
-                  starting your career or a seasoned expert seeking new challenges, we're your trusted job search
-                  partner.</p>
+                <img src="<?php echo baseUrl . "assets/jobprovide.jpg" ?>" class="card-img-top" alt="provide">
+                <h5 class="card-title pt-4"><b>வேலை வழங்குதல்</b></h5>
+                <p class="lead px-4">
+                  வேலை போர்ட்டல், உங்கள் திறனைத் திறக்க உங்களுக்கு உதவ நாங்கள் அர்ப்பணித்துள்ளோம். நீங்கள் உங்கள் வாழ்க்கையைத் தொடங்கும் சமீபத்திய பட்டதாரியாக இருந்தாலும் அல்லது புதிய சவால்களைத் தேடும் அனுபவமிக்க நிபுணராக இருந்தாலும், நாங்கள் உங்களின் நம்பகமான வேலை தேடல் கூட்டாளியாக இருக்கிறோம்.</p>
               </div>
             </div>
           </div>
 
           <div class="cards col-12 col-md-12 col-lg-4 mb-lg-5">
-            <div class="card-sec text-white text-center pb-4"
+            <div class="card-sec text-white text-center pb-5"
               style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
               <div class="card-body-s">
-                <img src="<?php echo baseUrl . "assets/uniquefeature.jpeg" ?>" class="card-img-top" alt="...">
-                <h5 class="card-title pt-4"><b>ARRAM UNIQUE FEATURES</b></h5>
-                <p class="lead px-4" style="color: black; font-size: 16px; text-align: justify;">
-                  Arram Job Providing stands out with unique features redefining recruitment. Our platform uses
-                  cutting-edge
-                  algorithms to match skills, culture, and personality for ideal candidate-employer pairings.</p>
+                <img src="<?php echo baseUrl . "assets/uniquefeature.jpeg" ?>" class="card-img-top" alt="Feature">
+                <h5 class="card-title pt-4"><b>அறமின்  தனித்துவமான  <br> அம்சங்கள்</b></h5>
+                <p class="lead px-4">
+                  அறம் வேலை வழங்குதலானது ஆட்சேர்ப்பை மறுவரையறை செய்யும் தனித்துவமான அம்சங்களுடன் தனித்து நிற்கிறது. திறமைகள், கலாச்சாரம் மற்றும் ஆளுமைத் திறன் ஆகியவற்றைப் பொருத்துவதற்கு எங்கள் இயங்குதளம் அதிநவீன அல்காரிதங்களைப் பயன்படுத்துகிறது.</p>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -1221,9 +1364,9 @@ label #cancel {
       <div class="container" style="padding-top:30px;">
         <div class="row">
           <div class="col-md-12">
-            <div class="section-header text-center pb-5">
-              <h4><b>Why Choose Us</b></h4>
-              <p style="font-size: 50px;" class="custom-paragraph">Six Reasons For People Choosing Us</p>
+            <div class="section-header text-center">
+              <h4><b>எங்களை தேர்ந்தெடுக்கும் காரணங்கள்</b></h4>
+              <p class="custom-paragraph"><b>மக்கள் எங்களை தேர்ந்தெடுப்பதற்கான ஆறு காரணங்கள்</b></p>
             </div>
           </div>
         </div>
@@ -1234,14 +1377,10 @@ label #cancel {
               style="background-color: #fff;box-shadow: 0 0 11px rgba(33,33,33,.2);">
               <div class="card-body-s" style="padding-top: 30px;">
                 <i class="bi bi-phone" style="color: black; font-size: 30px;"></i>
-                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 22px; color: black;">Mobile
-                  Accessibility</h4>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 20px; color: black;">மொபைல் அணுகல்</h4>
                 <p class="lead"
-                  style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                  Mobile accessibility aims to remove barriers, enhance user experiences, and enable all users,
-                  including
-                  those with disabilities and those using mobile devices exclusively, to access and interact with job
-                  listings, apply for positions, and navigate the portal's features effortlessly.</p>
+                  style="color: black; font-size: 15px; padding-left: 20px; padding-right: 20px; padding-bottom: 5px; text-align: justify;">
+                  மொபைல் அணுகல்தன்மை என்பது தடைகளை நீக்குதல், பயனர் அனுபவங்களை மேம்படுத்துதல் மாற்றுத்திறனாளிகள் மற்றும் மொபைல் சாதனங்களை பயன்படுத்துபவர்கள் உட்பட அனைத்து பயனர்களையும் வேலைப் பட்டியல்களை அணுகவும் தொடர்பு கொள்ளவும், பதவிகளுக்கு விண்ணப்பிக்கவும், போர்ட்டலின் அம்சங்களை சிரமமின்றி செல்லவும் உதவுகிறது.</p>
               </div>
             </div>
           </div>
@@ -1251,12 +1390,10 @@ label #cancel {
               style="background-color: #fff;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
               <div class="card-body-s" style="padding-top: 30px;">
                 <i class="bi bi-book-fill" style="color: black; font-size: 30px;"></i>
-                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 20px; color: black;"> Accredited</h4>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 20px; color: black;">அங்கீகாரம் பெற்றது</h4>
                 <p class="lead"
-                  style="color: black; font-size: 16px; padding-bottom: 0px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                  An accredited job portal connects job seekers and employers after obtaining official recognition and
-                  certification from accrediting bodies. Accreditation involves evaluating the portal's operations,
-                  features, and compliance with industry standards, legal regulations, and ethics.</p>
+                  style="color: black; font-size: 15px; padding-left: 20px; padding-right: 20px; padding-bottom: 0px; text-align: justify;">
+                  அங்கீகாரம் பெற்ற வேலை போர்ட்டல், அங்கீகாரம் பெற்ற அமைப்புகளிடமிருந்து அதிகாரப்பூர்வ அங்கீகாரம் மற்றும் சான்றிதழைப் பெற்ற பிறகு வேலை தேடுபவர்களையும் முதலாளிகளையும் இணைக்கிறது. அங்கீகாரம் என்பது போர்ட்டலின் செயல்பாடுகள், அம்சங்கள், தொழில் தரநிலைகள், சட்ட விதிமுறைகள் மற்றும் நெறிமுறைகளுடன் இணங்குதல் ஆகியவற்றை உள்ளடக்கியது.</p>
               </div>
             </div>
           </div>
@@ -1266,31 +1403,25 @@ label #cancel {
               style="background-color: #fff;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
               <div class="card-body-s" style="padding-top: 30px;">
                 <i class="bi bi-laptop-fill" style="color: black; font-size: 30px;"></i>
-                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 32px; color: black;">User-friendly
-                  Interface</h4>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 20px; color: black;">பயனர் நட்பு இடைமுகம்</h4>
                 <p class="lead"
-                  style="color: black; font-size: 16px; padding-bottom: 12px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                  A job portal's user-friendly interface prioritizes easy navigation, clarity, and effectiveness,
-                  benefiting the job seekers and the employers by simplifying the search for their employment
-                  opportunities and hiring processes.</p>
+                  style="color: black; font-size: 15px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  ஒரு ஜாப் போர்ட்டல் தெளிவு மற்றும் செயல்திறன் ஆகியவற்றிற்கு முன்னுரிமை அளிக்கிறது, இதன் மூலம் வேலை தேடுபவர்கள் மற்றும் முதலாளிகள் இருவருக்கும் பயனளிக்கிறது. இந்த போர்டல் வேலை வாய்ப்புகளுக்கான தேடலை எளிதாக்குகிறது மற்றும் பணியமர்த்தல் செயல்முறைகளை ஒழுங்குபடுத்துகிறது, தடையற்ற மற்றும் திறமையான அனுபவத்தை உறுதி செய்கிறது.</p>
               </div>
             </div>
           </div>
         </div>
-        
+       
         <div class="row">
           <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
             <div class="card-sec text-white text-center pb-4" id="jobid"
               style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
               <div class="card-body-s" style="padding-top: 30px;">
                 <i class="bi bi-subtract" style="color: black;  font-size: 30px;"></i>
-                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Extensive Job
-                  opportunities</h4>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 0px; color: black;">விரிவான வேலை வாய்ப்புகள்</h4>
                 <p class="lead"
-                  style="color: black; font-size: 16px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                  An abundance of 'extensive job opportunities' signifies a robust job market, offering plentiful
-                  prospects. This is highly advantageous for job seekers, career changers, and professionals aiming to
-                  explore new roles or industries, facilitating diverse career growth.</p>
+                  style="color: black; font-size: 15px;  padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  ஏராளமான விரிவான வேலை வாய்ப்புகள் ஒரு வலுவான வேலை சந்தையைக் குறிக்கிறது. இது ஏராளமான வாய்ப்புகளை வழங்குகிறது. இது வேலை தேடுபவர்கள், தொழில் மாற்றுபவர்கள் மற்றும் பல்வேறு தொழில் வளர்ச்சியை எளிதாக்கும் புதிய பாத்திரங்கள் அல்லது தொழில்களை ஆராய்வதை நோக்கமாகக் கொண்ட தொழில் வல்லுநர்களுக்கு மிகவும் சாதகமானது.</p>
               </div>
             </div>
           </div>
@@ -1300,15 +1431,11 @@ label #cancel {
               style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
               <div class="card-body-s" style="padding-top: 30px;">
                 <i class="bi bi-shield-shaded" style="color: black; font-size: 30px;"></i>
-                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Quick Response
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 30px; color: black;">உடனடி பதிலளிப்பு
                 </h4>
                 <p class="lead"
-                  style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                  Quick response" the prompt and timely feedback or acknowledgment provided to
-                  job seekers or employers when they take certain actions or submit applications within the platform.
-                  This
-                  feature is designed to enhance the user experience by ensuring that users receive immediate
-                  confirmation. </p>
+                  style="color: black; font-size: 15px; padding-left: 20px; padding-right: 20px; padding-bottom: 18px;text-align: justify;">
+                  விரைவான பதில் வேலை தேடுபவர்கள் அல்லது வேலை வழங்குபவர்கள் சில செயல்களைச் செய்யும்போது அல்லது மேடையில் விண்ணப்பங்களைச் சமர்ப்பிக்கும் போது அவர்களுக்கு உடனடி மற்றும் சரியான நேரத்தில் பின்னூட்டம் அல்லது ஒப்புதல் வழங்கப்படுகிறது. பயனர்கள் உடனடி உறுதிப்படுத்தலைப் பெறுவதை உறுதிசெய்வதன் மூலம் பயனர் அனுபவத்தை மேம்படுத்த இந்த அம்சம் வடிவமைக்கப்பட்டுள்ளது. </p>
               </div>
             </div>
           </div>
@@ -1318,15 +1445,10 @@ label #cancel {
               style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
               <div class="card-body-s" style="padding-top: 30px;">
                 <i class="bi bi-tablet-landscape" style="color: black; font-size: 30px;"></i>
-                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 13px; color: black;">Advanced search
-                  and
-                  filtering </h4>
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">மேம்பட்ட தேடல் மற்றும் வடிகட்டுதல்</h4>
                 <p class="lead"
-                  style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                  The
-                  goal of advanced search and filtering features in a jobs portal is to empower job seekers to pinpoint
-                  job listings that align closely with their unique preferences and qualifications, saving time and
-                  increasing the likelihood of finding the most suitable job opportunities. </p>
+                  style="color: black; font-size: 15px; padding-left: 20px; padding-right: 20px; padding-bottom: 15px; text-align: justify;">
+                  வேலைகள் போர்ட்டலில் மேம்பட்ட தேடல் மற்றும் வடிகட்டுதல் அம்சங்களின் குறிக்கோள், வேலை தேடுபவர்களுக்கு அவர்களின் தனிப்பட்ட விருப்பத்தேர்வுகள் மற்றும் தகுதிகளுடன் நெருக்கமாக இருக்கும் வேலைப் பட்டியலைக் குறிக்க அதிகாரம் அளிப்பதாகும், நேரத்தைச் சேமிக்கிறது மற்றும் மிகவும் பொருத்தமான வேலை வாய்ப்புகளைக் கண்டறியும் வாய்ப்பை அதிகரிக்கிறது. </p>
               </div>
             </div>
           </div>
@@ -1341,26 +1463,24 @@ label #cancel {
         <div class="row">
           <div class="col-lg-4 col-md-12 col-12">
             <div class="about-img">
-              <img src="<?php echo baseUrl . "assets/Home_images/employee4.jpg" ?>" alt="" class="img-fluid">
+              <img src="<?php echo baseUrl . "assets/Home_images/employee4.jpg" ?>" alt="Candidate" class="img-fluid">
             </div>
           </div>
-          <div class="col-lg-8 col-md-12 col-12 ps-lg-5 justify-content-center" style="text-align: justify;">
-            <div class="about-text1 pt-4 pt-lg-0" style="margin-top:-35px;">
-              <p class="abtcandidate fs-1" style="padding-top:20px; ">Candidate</p>
-              <p style="font-size: 18px;">At Arram Job Portal, our unwavering commitment is to empower individuals to
-                realize their utmost potential. Regardless of where you stand in your career journey—whether you're a recent graduate
-                venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in
-                between—we are your steadfast companion in the job search expedition. With our comprehensive platform,
-                you gain access to a wealth of opportunities, career resources, and expert guidance to navigate the
-                ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to
-                your unique needs. </p>
+          <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center" style="text-align: justify;">
+            <div class="about-text pt-4 pt-lg-0" style="margin-top:-22px; ">
+              <p class="abtcandidate fs-3">விண்ணப்பதாரர்</p>
+              <p style="font-size: 15px;">அறம் வேலை போர்ட்டலில், தனிநபர்கள் தங்களின் அதிகபட்ச திறனை உணர அதிகாரம் அளிப்பதே எங்கள் அசைக்க முடியாத அர்ப்பணிப்பாகும். 
+                உங்கள் வாழ்க்கைப் பயணத்தில் நீங்கள் எந்த இடத்தில் நிற்கிறீர்கள் என்பதைப் பொருட்படுத்தாமல் நீங்கள் தொழில்முறை நிலப்பரப்பில் ஈடுபடும் சமீபத்திய பட்டதாரியாக இருந்தாலும் சரி, 
+                புதிய சவால்களுக்காக ஏங்கும் அனுபவமுள்ள தொழில்முறையாக இருந்தாலும் சரி அல்லது இடையில் எங்காவது இருந்தாலும், வேலை தேடல் பயணத்தில் நாங்கள் உங்களின் உறுதியான துணை. 
+                எங்களின் விரிவான தளத்தின் மூலம், எப்போதும் உருவாகி வரும் வேலைச் சந்தையில் செல்ல, ஏராளமான வாய்ப்புகள், தொழில் வளங்கள் மற்றும் நிபுணர்களின் வழிகாட்டுதலுக்கான அணுகலைப் பெறுவீர்கள். 
+                உங்கள் அபிலாஷைகளுக்கு முன்னுரிமை அளிக்கிறோம், உங்களின் தனிப்பட்ட தேவைகளுக்கு ஏற்ப ஆதரவையும் தீர்வுகளையும் வழங்குகிறோம்.</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </section>    
 
-     <!-- provider -->
+    <!-- provider -->
 
     <section id="employer" class="provider section-padding"
       style="background-color: #f2f8fa; padding-top:50px; padding-bottom:50px;">
@@ -1369,107 +1489,21 @@ label #cancel {
           <div class="col-lg-8 col-md-12 col-12 order-lg-1 order-2 mt-md-2 justify-content-center "
             style="text-align: justify;">
             <div class="about-text pt-4 pt-lg-0" style="margin-top:-25px; margin-right:20px;">
-              <p class="fs-1" style="padding-top:20px; ">Employer</p>
-              <p style="font-size: 18px;">At Arram Job Providing, we firmly believe that the key to a prosperous
-                organization lies in having the
-                right people onboard. Be it team expansion, project initiation, or the need for specialized skills, we
-                serve as your dependable partner in talent acquisition. With our extensive network and expertise, we
-                identify and connect you with top-notch professionals who fit your unique requirements. Our commitment
-                to
-                excellence ensures that you receive candidates who not only meet but exceed your expectations. We're
-                dedicated to streamlining your recruitment process, saving you time and resources, so you can focus on
-                what you do best - achieving your business goals.</p>
-            </div>
+              <p class="fs-3" style="padding-right:200px; ">முதலாளி</p>
+              <p style="font-size: 15px;">அறம் வேலை வழங்குதலில், ஒரு வளமான நிறுவனத்திற்கான திறவுகோல் சரியான நபர்களை கப்பலில் வைத்திருப்பது என்று நாங்கள் உறுதியாக நம்புகிறோம். குழு விரிவாக்கம், திட்ட துவக்கம் அல்லது சிறப்புத் திறன்களின் தேவை என எதுவாக இருந்தாலும், திறமையைப் பெறுவதில் உங்களின் நம்பகமான பங்காளியாக நாங்கள் பணியாற்றுகிறோம். 
+                எங்களின் விரிவான நெட்வொர்க் மற்றும் நிபுணத்துவம் மூலம், உங்களின் தனிப்பட்ட தேவைகளுக்கு ஏற்ற உயர்மட்ட நிபுணர்களை நாங்கள் அடையாளம் கண்டு அவர்களை இணைக்கிறோம். சிறந்து விளங்குவதற்கான எங்கள் அர்ப்பணிப்பு உங்கள் எதிர்பார்ப்புகளை பூர்த்தி செய்வது மட்டுமல்லாமல், அதை மீறும் வேட்பாளர்களைப் பெறுவதை உறுதி செய்கிறது. 
+                உங்களின் ஆட்சேர்ப்பு செயல்முறையை ஒழுங்குபடுத்துவதற்கும், நேரத்தையும் வளங்களையும் சேமிப்பதற்கும் நாங்கள் அர்ப்பணித்துள்ளோம். எனவே நீங்கள் சிறப்பாகச் செய்வதில் கவனம் செலுத்தலாம் - உங்கள் வணிக இலக்குகளை அடைதல்.</p>
+                </div>
           </div>
           <div class="col-lg-4 col-md-12 col-12 order-lg-2 order-1">
             <div class="about-img-img">
-              <img src="<?php echo baseUrl . "assets/Home_images/img.jpg" ?>" alt="" class="img-fluid">
+              <img src="<?php echo baseUrl . "assets/Home_images/img.jpg" ?>" alt="Employer" class="img-fluid">
             </div>
           </div>
         </div>
       </div>
     </section>
    
-    <!-- Team section -->
-    <section id="team" class="team section-paddings">
-    <!-- <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-header text-center pb-5">
-    <p class="head" style="font-size: 50px;">Team</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, voluptatem?</p>
-    </div>
-        </div>
-      </div>
-    <div class="row">
-      <div class="col-12 col-md-6 col-lg-3" id="card-sf">
-        <div class="card text-center">
-          <div class="card-body">
-            <img src="<?php echo baseUrl . "assets/team-6.jpg" ?>" alt="" class="img-fluid rounded-circle">
-            <h3 class="card-title py-2">Person 1</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-            <p class="socials">
-              <i class="bi bi-twitter text-dark mx-1"></i>
-              <i class="bi bi-facebook text-dark mx-1"></i>
-              <i class="bi bi-linkedin text-dark mx-1"></i>
-              <i class="bi bi-instagram text-dark mx-1"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-center">
-          <div class="card-body">
-            <img src="<?php echo baseUrl . "assets/team-3.jpg" ?>" alt="" class="img-fluid rounded-circle">
-            <h3 class="card-title py-2">Person 2</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-            <p class="socials">
-              <i class="bi bi-twitter text-dark mx-1"></i>
-              <i class="bi bi-facebook text-dark mx-1"></i>
-              <i class="bi bi-linkedin text-dark mx-1"></i>
-              <i class="bi bi-instagram text-dark mx-1"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-center">
-          <div class="card-body">
-            <img src="<?php echo baseUrl . "assets/team-4.jpg" ?>" alt="" class="img-fluid rounded-circle">
-            <h3 class="card-title py-2">Person 3</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-            <p class="socials">
-              <i class="bi bi-twitter text-dark mx-1"></i>
-              <i class="bi bi-facebook text-dark mx-1"></i>
-              <i class="bi bi-linkedin text-dark mx-1"></i>
-              <i class="bi bi-instagram text-dark mx-1"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-center">
-          <div class="card-body">
-            <img src="<?php echo baseUrl . "assets/team-1.jpg" ?>" alt="" class="img-fluid rounded-circle">
-            <h3 class="card-title py-2">Person 4</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, in.</p>
-
-            <p class="socials">
-              <i class="bi bi-twitter text-dark mx-1"></i>
-              <i class="bi bi-facebook text-dark mx-1"></i>
-              <i class="bi bi-linkedin text-dark mx-1"></i>
-              <i class="bi bi-instagram text-dark mx-1"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div> 
-    </div> -->
-  </section>
-
     <section class="pt-5 pb-5">
       <div class="wrapper">
         <div class="container">
@@ -1496,37 +1530,34 @@ label #cancel {
 
                       <div class="col-md-4 mb-3">
                         <div class="card">
-                          <img class="img-fluid s-10" alt="" src="<?php echo baseUrl . "assets/special1.jpg" ?>">
+                          <img class="img-fluid s-10" alt="One" src="<?php echo baseUrl . "assets/special1.jpg" ?>">
+                          <div class="card-body" style="padding:1rem">
+                            <h4 class="card-title"><b>Special title treatment</b></h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 mb-3">
+                        <div class="card">
+                          <img class="img-fluid s-10" alt="Two" src="<?php echo baseUrl . "assets/special2.jpg" ?>">
                           <div class="card-body" style="padding:1rem">
                             <h4 class="card-title"><b>Special title treatment</b></h4>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.
                             </p>
 
                           </div>
-
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 mb-3">
-                        <div class="card">
-                          <img class="img-fluid s-10" alt="" src="<?php echo baseUrl . "assets/special2.jpg" ?>">
-                          <div class="card-body" style="padding:1rem">
-                            <h4 class="card-title"><b>Special title treatment</b></h4>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-
-                          </div>
                         </div>
                       </div>
                       <div class="col-md-4 mb-3">
                         <div class="card">
-                          <img class="img-fluid s-10" alt="100%x280"
+                          <img class="img-fluid s-10" alt="Three"
                             src="<?php echo baseUrl . "assets/special3.jpg" ?>">
                           <div class="card-body" style="padding:1rem">
                             <h4 class="card-title"><b>Special title treatment</b></h4>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.
                             </p>
-
                           </div>
                         </div>
                       </div>
@@ -1537,32 +1568,30 @@ label #cancel {
                     <div class="row">
                       <div class="col-md-4 mb-3">
                         <div class="card">
-                          <img class="img-fluid s-10" alt="100%x280"
+                          <img class="img-fluid s-10" alt="Four"
                             src="<?php echo baseUrl . "assets/special4.jpg" ?>">
                           <div class="card-body" style="padding:1rem">
                             <h4 class="card-title"><b>Special title treatment</b></h4>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.
                             </p>
-
                           </div>
 
                         </div>
                       </div>
                       <div class="col-md-4 mb-3">
                         <div class="card">
-                          <img class="img-fluid s-10" alt="100%x280"
+                          <img class="img-fluid s-10" alt="Five"
                             src="<?php echo baseUrl . "assets/special5.jpg" ?>">
                           <div class="card-body" style="padding:1rem">
                             <h4 class="card-title"><b>Special title treatment</b></h4>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-
+                           </p>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-4 mb-3">
                         <div class="card">
-                          <img class="img-fluid s-10" alt="100%x280"
+                          <img class="img-fluid s-10" alt="Six"
                             src="<?php echo baseUrl . "assets/special6.jpg" ?>">
                           <div class="card-body" style="padding:1rem">
                             <h4 class="card-title"><b>Special title treatment</b></h4>
@@ -1580,7 +1609,6 @@ label #cancel {
         </div>
       </div>
   </section>
-
 
   <div class="wrapper">
     <div id="carousel-slider" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
@@ -1667,6 +1695,7 @@ label #cancel {
       </div>
     </div>
   </div>
+
   <!-- Include Bootstrap JS and jQuery -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -1682,10 +1711,12 @@ label #cancel {
     <!-- Section: Social media -->
     <section class="d-flex justify-content-center justify-content-lg-around p-4 border-bottom" id="contact">
       <!-- Left -->
-      <div class="me-5 d-none d-lg-block" style="color:white ;">
-        <h5>Get connected with us on social networks:</h5>
+      <div class="me-5 d-none d-lg-block" style="color:white;">
+        <h6>சமூக வலைப்பின்னல்களில் எங்களுடன் இணைந்திருங்கள்:</h6>
       </div>
-     
+      <!-- Left -->
+
+      <!-- Right -->
       <div class="me-md-5">
         <a href="https://www.facebook.com/Arram.2019?mibextid=ZbWKwL" class="me-4 link-secondary" target="_blank">
           <i class="fa-brands fa-facebook-f" style="color: white;"></i>
@@ -1700,41 +1731,39 @@ label #cancel {
       </div>
       <!-- Right -->
     </section>
-    <!-- Section: Social media -->
-
+    
     <section class="">
       <div class="container text-center text-md-start" style="margin-top: 40px;">
         <div class="row mt-3">
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">
-              <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" height="50" width="65">
-              ARRAM JOBS
+              <img src="" alt="AJ" height="50" width="65">
+              அறம் வேலைவாய்ப்பு
             </h5>
-            <p style="color: white;text-align:justify;font-size:18px">Arram Jobs has rapidly emerged as a trusted
-              partner in the recruitment industry. Our journey began with a simple yet powerful idea.
+            <p style="color: white;text-align:justify;font-size:15px">அறம் வேலைவாய்ப்பு ஆட்சேர்ப்பு துறையில் நம்பகமான பங்குதாரராக வேகமாக உருவெடுத்துள்ளது. எங்கள் பயணம் எளிமையான ஆனால் சக்திவாய்ந்த யோசனையுடன் தொடங்கியது.
             </p>
           </div>
-          
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 footer2">
-            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">
-              Who We Are
-            </h5>
-            <p style="color: white;" onmouseover="this.style.color='#61d3ed'" onmouseout="this.style.color='white'">
-              <a href="#about" class="text-reset" style="text-decoration: none; ">About Us</a>
-            </p>
-            <p style="color: white;" onmouseover="this.style.color='#61d3ed'" onmouseout="this.style.color='white'">
-              <a href="#candidate" class="text-reset" style="text-decoration: none;">Candidate</a>
-            </p>
-            <p style="color: white;" onmouseover="this.style.color='#61d3ed'" onmouseout="this.style.color='white'">
-              <a href="#employer" class="text-reset" style="text-decoration: none;">Employer</a>
-            </p>          
-          </div>
+         
           <!-- Grid column -->
-
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 footer2">
+            <!-- Links -->
+            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">
+            நாங்கள் யார் 
+            </h5>
+            <p style="color: white;" onmouseover="this.style.color='#61d3ed'" onmouseout="this.style.color='white'">
+              <a href="#about" class="text-reset" style="text-decoration: none; ">எங்களை பற்றி</a>
+            </p>
+            <p style="color: white;" onmouseover="this.style.color='#61d3ed'" onmouseout="this.style.color='white'">
+              <a href="#candidate" class="text-reset" style="text-decoration: none;">விண்ணப்பதாரர்</a>
+            </p>
+            <p style="color: white;" onmouseover="this.style.color='#61d3ed'" onmouseout="this.style.color='white'">
+              <a href="#employer" class="text-reset" style="text-decoration: none;">முதலாளி</a>
+            </p>
+          </div>
+         
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 footer3" id="footercontact">
-            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">Contact</h5>
-            <p style="color: white;"><i class="fas fa-home me-3 text-reset" style="color: white;"></i>H-72, Periyar
-              Nagar, Erode.
+            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">தொடர்பு கொள்ளவும்</h5>
+            <p  class="text-reset1" style="color: white;"><i class="fas fa-home me-3 text-reset" style="color: white;"></i>H-72, பெரியார் நகர், ஈரோடு.
             </p>
             <p style="color: white;">
               <i class="fas fa-envelope me-3 text-reset" style="color: white;"></i>
@@ -1751,9 +1780,7 @@ label #cancel {
         </div>
         <!-- Grid row -->
       </div>
-
     </section>
-    <!-- Section: Links  -->
 
     <!-- Copyright -->
     <div class="text-center p-4" style="color: white;">

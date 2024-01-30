@@ -173,6 +173,7 @@ class CandidateModel extends CI_Model
             'photo' => $profilephoto,
             'aadharfront_filename' => $aadharf,
             'aadharback_filename' => $aadharb,
+            'aadharnumber' => $postData['aadharnumber'],
             'photo_filename' => $photop,
             'bdsubmited' => $postData['bdsubmit'],
         );
@@ -187,7 +188,8 @@ class CandidateModel extends CI_Model
         $seekerId = $_SESSION['seekerId'];
         $seekerId = "SELECT * FROM `seeker_educational_details` Where `seekerId`= $seekerId";
         $addtab = $this->db->query($seekerId);
-        return $addtab->result_array();
+        // return $addtab->result_array();
+        return array("response" =>$addtab->result_array(), "totalRows" => $addtab->num_rows());
     }
 
     public function insertEducationForm()
@@ -397,8 +399,8 @@ class CandidateModel extends CI_Model
         $seekerId = $_SESSION['seekerId'];
         $seekerId = "SELECT * FROM `seeker_experience` Where `seekerId`= $seekerId";
         $addtab = $this->db->query($seekerId);
-        return $addtab->result_array();
-        // return array('response' => $addtab->result_array(), "totalRows" => $addtab->num_rows());
+        // return $addtab->result_array();
+        return array('response' => $addtab->result_array(), "totalRows" => $addtab->num_rows());
     }
 
     public function getCategoryList(){
@@ -425,13 +427,28 @@ class CandidateModel extends CI_Model
             'expYear' => $post['fromDate'],
             'expMonth' => $toDate,
             'company_name' => $post['companyname'],
+            'company_location' => $post['companylocation'],
             'job_role' => $post['role'],
+            'company_mobilenum' => $post['company_mobilenum'],
             // 'profile' => $post['profile'],
             'previous_employer_name' => $post['nameofemployer'],
             'previous_employer_mobile' => $post['number'],
             'previous_employer_email' => $post['emailid'],
             'categoryOthers' =>isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
             'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0",
+        );
+
+        $this->db->insert('seeker_experience', $add);
+    }
+
+    public function insertFresherForm()
+    {
+        $seekerId = $_SESSION['seekerId'];
+        $post = $this->input->post(null, true);
+
+        $add = array(
+            'seekerId' => $seekerId,
+            'workStatus' => $post['fresher']
         );
 
         $this->db->insert('seeker_experience', $add);
@@ -472,7 +489,9 @@ class CandidateModel extends CI_Model
             'expYear' => $post['fromDate'],
             'expMonth' => $toDate,
             'company_name' => $post['companyname'],
+            'company_location' => $post['companylocation'],
             'job_role' => $post['role'],
+            'company_mobilenum' => $post['company_mobilenum'],
             // 'profile' => $post['profile'],
             'previous_employer_name' => $post['nameofemployer'],
             'previous_employer_mobile' => $post['number'],
@@ -567,7 +586,8 @@ class CandidateModel extends CI_Model
         $seekerId = $_SESSION['seekerId'];
         $seekerId = "SELECT * FROM `seeker_area_of_interst` Where `seekerId`= $seekerId";
         $addtab = $this->db->query($seekerId);
-        return $addtab->result_array();
+        // return $addtab->result_array();
+        return array("response" =>$addtab->result_array(), "totalRows" => $addtab->num_rows());
     }
 
     public function insertAreaOfIntrest()
