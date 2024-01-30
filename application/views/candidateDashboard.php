@@ -2793,7 +2793,7 @@ function validatePhoneNumber1(input) {
                               </div>
 
                               <div class="col-md-6">
-                                <label for="number" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                <label for="number" class="form-label">Mobile Number <span class="text-danger"></span></label>
                                 <input type="number" class="form-control" id="number" name="number" placeholder="9999999999" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
                                 <div id="mobilenum_error" class="text-danger error"></div>
                               </div>
