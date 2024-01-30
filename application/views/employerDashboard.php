@@ -45,7 +45,9 @@
         #expected_salary::-webkit-outer-spin-button,
         #expected_salary::-webkit-inner-spin-button,
         #expected_salaryu::-webkit-outer-spin-button,
-        #expected_salaryu::-webkit-inner-spin-button{
+        #expected_salaryu::-webkit-inner-spin-button,
+        #inputPincode::-webkit-outer-spin-button,
+        #inputPincode::-webkit-inner-spin-button{
             -webkit-appearance: none;
             margin: 0;
             }
@@ -304,7 +306,11 @@
                         </div><!-- End Page Title -->
                         <div class="card">
                             <div class="card-body">
+                            <div class="d-flex justify-content-between">
                                 <h5 class="card-title">Company Details</h5>
+                                <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info mt-4 "> Next  <i class="bi bi-arrow-right pe-2"></i></button></a>
+                                </div>
+
 
                                 <?php
                                 foreach($this->data['providerDetail'] as $key => $value) {
@@ -384,7 +390,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="inputPincode" class="form-label">Pincode: <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="inputPincode" value='<?php echo $value['pincode']; ?>' 
+                                                    <input type="number" class="form-control" id="inputPincode" value='<?php echo $value['pincode']; ?>' 
                                             name="pincode1" placeholder="Enter pincode" required>
                                         <p id="pinerr1" style="color: red;"></p>
                                         </div>
@@ -1991,7 +1997,7 @@
                                 <div class="card recent-sales overflow-auto">
                                     <div class="card-body">
                                         <h5 class="card-title">Skills</h5>
-<?php if(isset($this->data['skills'][0]['skill'])){?>
+                                <?php if(isset($this->data['skills'][0]['skill'])){?>
                                         <!-- Table with stripped rows -->
                                         <table class="table table-striped">
                                             <thead>
@@ -2072,7 +2078,7 @@
                                         <h5 class="card-title">Experience Details</h5>
 
                                         <!-- Table with stripped rows -->
-                                        <table class="table table-striped">
+                                        <table class="table table-striped" id="expTable">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S.No</th>
@@ -2080,6 +2086,7 @@
                                                     <th scope="col">Job Sub Category</th>
                                                     <th scope="col">Experience</th>
                                                     <th scope="col">Company Name</th>
+                                                    <th scope="col">Company Location</th>
                                                     <th scope="col">Job Role</th>
                                                     <th scope="col">Previous Employer Name</th>
                                                     <th scope="col">Previous Employer Mobile</th>
@@ -2095,8 +2102,9 @@
                                                                 <th><?php echo $countexp++; ?>.</th>
                                                                 <td><?php echo $ivalue['other_category'] ?></td>
                                                                 <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                                                <td><?php echo $ivalue['expYear'] ?> - <?php echo $ivalue['expMonth'] ?></td>
+                                                                <td><?php echo $ivalue['expYear'] ?> to <?php echo $ivalue['expMonth'] ?></td>
                                                                 <td><?php echo $ivalue['company_name'] ?></td>
+                                                                <td><?php echo $ivalue['company_location'] ?></td>
                                                                 <td><?php echo $ivalue['job_role'] ?></td>
                                                                 <td><?php echo $ivalue['previous_employer_name'] ?></td>
                                                                 <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
@@ -2107,8 +2115,27 @@
                                             ?>
                                             </tbody>
                                         </table>
+
+                                        <p id="noexperience">This candidate is a fresher or did not have any work experience after graduation.</p>
                                         </div>
                                 </div>
+
+                  <script>
+                        <?php
+                    if ($experienceDetails[0]['workStatus'] == '0') {
+                        ?>
+                        document.getElementById("expTable").style.display = "block";
+                        document.getElementById("noexperience").style.display = "none";
+
+                    <?php
+                    } else if($experienceDetails[0]['workStatus'] == '1'){?>
+                        document.getElementById("expTable").style.display = "none";
+                        document.getElementById("noexperience").style.display = "block";
+
+                    <?php
+                    }  ?>
+                 </script>
+
                                         <!-- End Table with stripped rows -->
                                         <?php
                                               if (isset($canReqStatus[0]['request_status']) && $canReqStatus[0]['request_status'] == '2') {

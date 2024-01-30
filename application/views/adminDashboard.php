@@ -3084,9 +3084,10 @@
                                                 <table class="table table-striped mt-2">
                                                 <thead>
                                                     <tr>
-                                                        <th class="col-4" scope="col">Profile Photo</th>
-                                                        <th class="col-4" scope="col">Aadhaar Front</th>
-                                                        <th class="col-4" scope="col">Aadhaar Back</th>
+                                                        <th class="col-3" scope="col">Profile Photo</th>
+                                                        <th class="col-3" scope="col">Aadhaar Front</th>
+                                                        <th class="col-3" scope="col">Aadhaar Back</th>
+                                                        <th class="col-3" scope="col">Aadhaar Number</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -3094,6 +3095,7 @@
                                                                 <td><a href="<?php echo $value['photo'] ?>" target="_blank" ><?php echo $value['photo_filename'] ?></a></td>
                                                         <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank" ><?php echo $value['aadharfront_filename'] ?></a></td>
                                                         <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank" ><?php echo $value['aadharback_filename'] ?></a></td>
+                                                        <td><?php echo $value['aadharnumber'] ?></td>
                                                     </tr>
                                                 
                                         </tbody>
@@ -3213,6 +3215,9 @@
                                     <h5 class="card-title">Skills</h5>
 
                                     <!-- Table with stripped rows -->
+                                    <?php
+                                    if (isset($skills[0]['id']) && !empty($skills)) {
+                                        ?>
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
@@ -3240,9 +3245,15 @@
                                         </tbody>
                                     </table>
                                     <!-- End Table with stripped rows -->
-
+                                    <?php } else { ?>
+                                        <p>No Skills</p>
+                                    <?php }?>
                                 </div>
                             </div>
+
+
+
+
                             <div class="card recent-sales overflow-auto">
                                 <div class="card-body">
                                     <h5 class="card-title">Area of Interest</h5>
@@ -3284,51 +3295,74 @@
 
                                 </div>
                             </div>
+                           
+                            
                             <div class="card recent-sales overflow-auto">
-                                <div class="card-body">
-                                    <h5 class="card-title">Experience Details</h5>
+                            <div class="card-body">
+                                <h5 class="card-title">Experience Details</h5>
 
-                                    <!-- Table with stripped rows -->
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">S.No</th>
-                                                <th scope="col">Job Category</th>
-                                                <th scope="col">Job Sub Category</th>
-                                                <th scope="col">Company Name</th>
-                                                <th scope="col">Company Name</th>
-                                                <th scope="col">Job Role</th>
-                                                <th scope="col">Previous Employer Name</th>
-                                                <th scope="col">Previous Employer Mobile</th>
-                                                <th scope="col">Previous Employer Email</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $loopcount = 1;
-                                            foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
-                                                ?>
-                                                    <tr>
-                                                        <td scope="row"><?php echo $loopcount; ?>.</td>
-                                                        <td><?php echo $ivalue['other_category'] ?></td>
-                                                        <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                                        <td><?php echo $ivalue['expYear'] ?> - <?php echo $ivalue['expMonth'] ?></td>
-                                                        <td><?php echo $ivalue['company_name'] ?></td>
-                                                        <td><?php echo $ivalue['job_role'] ?></td>
-                                                        <td><?php echo $ivalue['previous_employer_name'] ?></td>
-                                                        <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
-                                                        <td><?php echo $ivalue['previous_employer_email'] ?></td>
-                                                    </tr>
-                                                <?php
-                                                $loopcount++;
-                                            }
+                                <!-- Table with stripped rows -->
+                                <table class="table table-striped" id="expTable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">S.No</th>
+                                            <th scope="col">Job Category</th>
+                                            <th scope="col">Job Sub Category</th>
+                                            <th scope="col">Experience</th>
+                                            <th scope="col">Company Name</th>
+                                            <th scope="col">Company Location</th>
+                                            <th scope="col">Job Role</th>
+                                            <th scope="col">Previous Employer Name</th>
+                                            <th scope="col">Previous Employer Mobile</th>
+                                            <th scope="col">Previous Employer Email</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $loopcount = 1;
+                                        foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
                                             ?>
-                                        </tbody>
-                                    </table>
-                                    <!-- End Table with stripped rows -->
+                                                <tr>
+                                                    <td scope="row"><?php echo $loopcount; ?>.</td>
+                                                    <td><?php echo $ivalue['other_category'] ?></td>
+                                                    <td><?php echo $ivalue['other_sub_category'] ?></td>
+                                                    <td><?php echo $ivalue['expYear'] ?> to <?php echo $ivalue['expMonth'] ?></td>
+                                                    <td><?php echo $ivalue['company_name'] ?></td>
+                                                    <td><?php echo $ivalue['company_location'] ?></td>
+                                                    <td><?php echo $ivalue['job_role'] ?></td>
+                                                    <td><?php echo $ivalue['previous_employer_name'] ?></td>
+                                                    <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
+                                                    <td><?php echo $ivalue['previous_employer_email'] ?></td>
+                                                </tr>
+                                            <?php
+                                            $loopcount++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                                <!-- End Table with stripped rows -->
 
-                                </div>
+                                <p id="noexperience">This candidate is a fresher or did not have any work experience after graduation.</p>
                             </div>
+                        </div>
+
+                    <script>
+                        <?php
+                                if ($experienceDetails[0]['workStatus'] == '0') {
+                            ?>
+                            document.getElementById("expTable").style.display = "block";
+                            document.getElementById("noexperience").style.display = "none";
+
+                        <?php
+                        } else if($experienceDetails[0]['workStatus'] == '1'){?>
+                            document.getElementById("expTable").style.display = "none";
+                            document.getElementById("noexperience").style.display = "block";
+
+                        <?php
+                        }  ?>
+                        </script>
+
+                        
                             <div class="card recent-sales overflow-auto">
                                 <div class="card-body">
                                     <h5 class="card-title">Resume</h5>
@@ -3528,8 +3562,6 @@
                                                                     </p>
                                                                 </div>
                                                             </div>
-
-                                                            
                                         </div>
                                         </div>
 
@@ -3540,9 +3572,10 @@
                                                 <table class="table table-striped mt-2">
                                                 <thead>
                                                     <tr>
-                                                        <th class="col-4" scope="col">Profile Photo</th>
-                                                        <th class="col-4" scope="col">Aadhaar Front</th>
-                                                        <th class="col-4" scope="col">Aadhaar Back</th>
+                                                        <th class="col-3" scope="col">Profile Photo</th>
+                                                        <th class="col-3" scope="col">Aadhaar Front</th>
+                                                        <th class="col-3" scope="col">Aadhaar Back</th>
+                                                        <th class="col-3" scope="col">Aadhaar Number</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -3550,6 +3583,7 @@
                                                                 <td><a href="<?php echo $value['photo'] ?>" target="_blank" ><?php echo $value['photo_filename'] ?></a></td>
                                                         <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank" ><?php echo $value['aadharfront_filename'] ?></a></td>
                                                         <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank" ><?php echo $value['aadharback_filename'] ?></a></td>
+                                                        <td><?php echo $value['aadharnumber'] ?></td>
                                                     </tr>
                                                 
                                         </tbody>
@@ -3571,7 +3605,7 @@
                                         <tr>
                                             <th scope="col">S.No</th>
                                             <th scope="col">Educational Qualification</th>
-                                            <th scope="col">Specialiization</th>
+                                            <th scope="col">Specialization</th>
                                             <th scope="col">Mode of education</th>
                                             <th scope="col">Institution Name</th>
                                             <th scope="col">Percentage</th>
@@ -3660,6 +3694,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">Skills</h5>
 
+                                <?php
+                                    if (isset($skills[0]['id']) && !empty($skills)) {
+                                        ?>
                                 <!-- Table with stripped rows -->
                                 <table class="table table-striped">
                                     <thead>
@@ -3688,7 +3725,9 @@
                                     </tbody>
                                 </table>
                                 <!-- End Table with stripped rows -->
-
+                    <?php } else { ?>
+                        <p>No skills </p>
+                    <?php } ?>
                             </div>
                         </div>
                         <div class="card recent-sales overflow-auto">
@@ -3739,7 +3778,7 @@
                                 <h5 class="card-title">Experience Details</h5>
 
                                 <!-- Table with stripped rows -->
-                                <table class="table table-striped">
+                                <table class="table table-striped" id="expTable">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -3747,6 +3786,7 @@
                                             <th scope="col">Job Sub Category</th>
                                             <th scope="col">Experience</th>
                                             <th scope="col">Company Name</th>
+                                            <th scope="col">Company Location</th>
                                             <th scope="col">Job Role</th>
                                             <th scope="col">Previous Employer Name</th>
                                             <th scope="col">Previous Employer Mobile</th>
@@ -3762,8 +3802,9 @@
                                                     <td scope="row"><?php echo $loopcount; ?>.</td>
                                                     <td><?php echo $ivalue['other_category'] ?></td>
                                                     <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                                    <td><?php echo $ivalue['expYear'] ?> - <?php echo $ivalue['expMonth'] ?></td>
+                                                    <td><?php echo $ivalue['expYear'] ?> to <?php echo $ivalue['expMonth'] ?></td>
                                                     <td><?php echo $ivalue['company_name'] ?></td>
+                                                    <td><?php echo $ivalue['company_location'] ?></td>
                                                     <td><?php echo $ivalue['job_role'] ?></td>
                                                     <td><?php echo $ivalue['previous_employer_name'] ?></td>
                                                     <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
@@ -3777,8 +3818,26 @@
                                 </table>
                                 <!-- End Table with stripped rows -->
 
+                                <p id="noexperience">This candidate is a fresher or did not have any work experience after graduation.</p>
                             </div>
                         </div>
+
+                    <script>
+                        <?php
+                                if ($experienceDetails[0]['workStatus'] == '0') {
+                            ?>
+                            document.getElementById("expTable").style.display = "block";
+                            document.getElementById("noexperience").style.display = "none";
+
+                        <?php
+                        } else if($experienceDetails[0]['workStatus'] == '1'){?>
+                            document.getElementById("expTable").style.display = "none";
+                            document.getElementById("noexperience").style.display = "block";
+
+                        <?php
+                        }  ?>
+                        </script>
+
                         <div class="card recent-sales overflow-auto">
                             <div class="card-body">
                                 <h5 class="card-title">Resume</h5>
