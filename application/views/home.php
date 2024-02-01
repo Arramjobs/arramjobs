@@ -135,7 +135,7 @@
   color: white;
 }
 .header ul {
-  margin-right: 20px;
+  margin-right: 0;
 }
 .header ul li {
   display: inline-block;
@@ -531,9 +531,6 @@ label #cancel {
     #check:checked ~ label #cancel {
       display: block;
     }
-    .language-selector {
-      opacity: 0;
-    }
   }
 
   @media only screen and (max-width:767px) {
@@ -660,16 +657,13 @@ label #cancel {
     #check:checked ~ label #cancel {
       display: block;
     }
-    .language-selector {
-      opacity: 0;
-    }
   }
 
     .language-selector {
       position: relative;
       display: inline-block;
       cursor: pointer;
-      margin-left: 20px;
+      margin-right: 30px;
     }
 
     .language-icon {
@@ -680,12 +674,13 @@ label #cancel {
       align-items: center;
       justify-content: center;
       color: white;
+      padding-right: 15px;
     }
 
     .language-dropdown {
       position: absolute;
-      width: 95px;
-      background-color: #444;
+      width: auto;
+      background-color: #222;
       opacity: 0;
       z-index: -999;
       transition: all ease 0.5s;
@@ -697,18 +692,24 @@ label #cancel {
       cursor: pointer;
     }
 
+    .language-option a {
+      color: white;
+      padding: 8px;
+    }
     .language-option a:hover {
       text-decoration: none;
       border-radius: 8px;
-      color: white;      
+      color: #333; 
+      background-color: white;   
+      padding: 8px;  
     }
 
     .language-selector:hover .language-dropdown {
       z-index: 99;
       opacity: 1;
       border-radius: 8px;
+      color: white;
     }
-
     img {
       max-width: 100%;
       height: auto; 
@@ -988,14 +989,14 @@ label #cancel {
                     <li><a href="<?php echo baseUrl . "Employer/registration" ?>">Register</a></li>
                   </ul></li>
 
-                <li><div class="language-selector">
+              </ul>
+            </nav>
+            <div class="language-selector">
     <div class="language-icon"><i class="fa-solid fa-globe trans"></i></div>
     <div class="language-dropdown">
       <div class="language-option dropdown-toggle" onclick="changeLanguage('ta')"><a href="<?php echo baseUrl . "Welcome/indexTamil" ?>">தமிழ்</a></div>
     </div>
-  </div></li>
-              </ul>
-            </nav>
+  </div>
            </header>
 
            <div class="row1">

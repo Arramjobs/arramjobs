@@ -628,9 +628,6 @@ label #cancel {
     .row1 {
       margin-top: 80px;
     } */
-    .language-selector {
-      opacity: 0;
-    }
   }
 
   @media only screen and (max-width:767px) {
@@ -713,10 +710,6 @@ label #cancel {
 
     .w-100 {
       height: 50vh;
-    }
-
-    .dropdown-toggle {
-      margin-left: 70px;
     }
 
     .dropdown-menu {
@@ -813,15 +806,13 @@ label #cancel {
       flex-direction: column;
       width: 20%;
     } */
-    .language-selector {
-      opacity: 0;
-    }
+   
   }
   .language-selector {
       position: relative;
       display: inline-block;
       cursor: pointer;
-      margin-left:20px;
+      margin-right: 32px;
     }
 
     .language-icon {
@@ -832,12 +823,14 @@ label #cancel {
       align-items: center;
       justify-content: center;
       color: white;
+      padding-right: 12px;
     }
 
     .language-dropdown {
       position: absolute;
-      width: 95px;
-      background-color: #333;
+      width: auto;
+      background-color: #222;
+      color: white;
       opacity: 0;
       z-index: -999;
       transition: all ease 0.5s;
@@ -848,17 +841,23 @@ label #cancel {
       padding: 8px;
       cursor: pointer;
     }
-
+    .language-option a {
+      color: white;
+      padding: 8px;
+    }
     .language-option a:hover {
       text-decoration: none;
       border-radius: 8px;
-      color: white;      
+      color: #333;   
+      padding: 8px;
+      background-color: white;  
     }
   
     .language-selector:hover .language-dropdown {
       z-index: 99;
       opacity: 1;
       border-radius: 8px;
+      color: white;
     }
     img {
       max-width: 100%;
@@ -1143,15 +1142,15 @@ span{
                   <li><a href="<?php echo baseUrl . "Employer/login" ?>">உள்நுழைய</a></li>
                     <li><a href="<?php echo baseUrl . "Employer/registration" ?>">பதிவு செய்தல்</a></li>
                   </ul></li>
-
-                <li><div class="language-selector">
+              </ul>
+            </nav>
+            
+            <div class="language-selector">
     <div class="language-icon"><i class="fa-solid fa-globe trans"></i></div>
     <div class="language-dropdown">
       <div class="language-option dropdown-toggle" onclick="changeLanguage('ta')"><a href="<?php echo baseUrl; ?>">English</a></div>
     </div>
-  </div></li>
-              </ul>
-            </nav>
+  </div>
            </header>
 
            <div class="row1">
