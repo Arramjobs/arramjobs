@@ -83,30 +83,37 @@
                                         name="registration_form" method="post">
 
                                         <div class="">
+                                            
+
                                             <label for="username" class="form-label">Name<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" onkeypress="return allowOnlyLetters(event, this)" required>
                                             <div id="username_error"  style="color: red;" class="error"></div>
                                         </div>
                                         <div class="">
                                             <label for="email" class="form-label">Email ID<span class="text-danger">*</span></label>
+
                                             <input type="email" class="form-control" id="email" name="email"
                                                 placeholder="example@gmail.com" required>
                                             <div id="email_error"  style="color: red;" class="error" ></div>
                                         </div>
                                         <div class="">
+
                                             <label for="phonenumber" class="form-label">Mobile number<span class="text-danger">*</span></label>
                                             <input type="number" class="form-control" id="phonenumber" name="phonenumber" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)"
+
                                                 placeholder="9876543210" required>
                                             <div id="phone_error"  style="color: red;" class="error" ></div>
                                         </div>
                                         <div class="">
+
+
                                             <label for="crpassword" class="form-label">Create Password<span class="text-danger">*</span></label>
                                             <input type="password" class="form-control" id="crpassword" name="crpassword" placeholder="01051996"  required>
                                             <div id="crpassworderr" style="color: red;" class="error" ></div>
                                         </div>
                                         <div class="text-secondary" style="font-size:15px;display:none;margin:0px" id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
 
-                                        <div class="">
+                                        <div class="">                                     
                                             <label for="cmpassword" class="form-label">Confirm Password<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="cmpassword" name="cmpassword" placeholder="01051996" required>
                                             <p id="cmpassworderr" style="color: red;" class="error" ></p>

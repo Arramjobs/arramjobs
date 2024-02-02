@@ -3,6 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
+
+    private $yourVariable;
+
     function __construct()
     {
         parent::__construct();
@@ -22,6 +25,12 @@ class Admin extends CI_Controller
         $this->load->view('adminLogin.php');
     }
 
+    // To set the total no of rows in the candidate request
+    public function setVariable()
+    {
+        $candidateTotalRows = $this->AdminModel->candidateRequestDetails();
+        $this->data['canReqTotalRows'] = $candidateTotalRows["totalRows"];
+    }
 
     public function verifyLogin()
     {
@@ -53,12 +62,14 @@ class Admin extends CI_Controller
         $employee = $this->AdminModel->employee();
         $this->data['employee'] = $employee;
         $this->data['method'] = "dashboard";
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function createAdminUser()
     {
         $this->data['method'] = "createAdminUser";
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -75,12 +86,14 @@ class Admin extends CI_Controller
         $this->data['method'] = "adminUsers";
         $adminUsers = $this->AdminModel->adminUsers();
         $this->data['adminUsers'] = $adminUsers;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function createEmployer()
     {
         $this->data['method'] = "createEmployer";
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -108,6 +121,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "unVerifiedEmployers";
         $unVerifiedEmployers = $this->AdminModel->unVerifiedEmployers();
         $this->data['unVerifiedEmployers'] = $unVerifiedEmployers;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -116,6 +130,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "verifiedEmployers";
         $verifiedEmployers = $this->AdminModel->verifiedEmployers();
         $this->data['verifiedEmployers'] = $verifiedEmployers;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -124,6 +139,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "pendingEmployers";
         $pendingEmployers = $this->AdminModel->pendingEmployers();
         $this->data['pendingEmployers'] = $pendingEmployers;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -132,6 +148,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "deleteEmployerList";
         $deleteEmployerList = $this->AdminModel->deleteEmployerList();
         $this->data['deleteEmployerList'] = $deleteEmployerList;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
     public function overallEmployers()
@@ -139,6 +156,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "overallEmployers";
         $overallEmployers = $this->AdminModel->overallEmployers();
         $this->data['overallEmployers'] = $overallEmployers;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -148,6 +166,8 @@ class Admin extends CI_Controller
 
         $verifyEmployerDetails = $this->AdminModel->verifyEmployerDetails($id);
         $this->data['manageEmployer'] = $verifyEmployerDetails;
+
+        $this->setVariable();
 
         $this->data['method'] = "manageEmployer";
         $this->load->view('adminDashboard.php', $this->data);
@@ -162,6 +182,8 @@ class Admin extends CI_Controller
 
         $employerJobDetails = $this->AdminModel->employerJobDetails($id);
         $this->data['jobDetails'] = $employerJobDetails;
+
+        $this->setVariable();
 
         $this->data['method'] = "viewEmployer";
         $this->load->view('adminDashboard.php', $this->data);
@@ -221,6 +243,7 @@ class Admin extends CI_Controller
     public function createCandidates()
     {
         $this->data['method'] = "createEmployees";
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -229,7 +252,7 @@ class Admin extends CI_Controller
         $postData = $this->input->post(null, true);
         $register = $this->CandidateModel->register();
         $generatedeeid = $this->CandidateModel->generate_customer_id();
-        $this->newEmployeeList();
+        $this->newCandidateList();
         echo '<script>alert("Candidate registered successfully.");</script>';
     }
 
@@ -238,6 +261,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "unVerifiedEmployees";
         $unVerifiedEmployees = $this->AdminModel->unVerifiedEmployees();
         $this->data['unVerifiedEmployees'] = $unVerifiedEmployees;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -246,6 +270,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "verifiedEmployees";
         $verifiedEmployees = $this->AdminModel->verifiedEmployees();
         $this->data['verifiedEmployees'] = $verifiedEmployees;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
     public function pendingCandidates()
@@ -253,6 +278,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "pendingEmployees";
         $pendingEmployees = $this->AdminModel->pendingEmployees();
         $this->data['pendingEmployees'] = $pendingEmployees;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
     
@@ -261,6 +287,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "deleteEmployeeList";
         $deleteEmployeeList = $this->AdminModel->deleteEmployeeList();
         $this->data['deleteEmployeeList'] = $deleteEmployeeList;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -269,6 +296,7 @@ class Admin extends CI_Controller
         $this->data['method'] = "overallEmployees";
         $overallEmployees = $this->AdminModel->overallEmployees();
         $this->data['overallEmployees'] = $overallEmployees;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -295,6 +323,8 @@ class Admin extends CI_Controller
         $basicDetails = $this->EmployerModel->candidate($id);
         $this->data['basicDetails'] = $basicDetails;
 
+        $this->setVariable();
+
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -317,6 +347,8 @@ class Admin extends CI_Controller
 
         $basicDetails = $this->EmployerModel->candidate($id);
         $this->data['basicDetails'] = $basicDetails;
+
+        $this->setVariable();
 
         $this->load->view('adminDashboard.php', $this->data);
     }
@@ -380,7 +412,8 @@ class Admin extends CI_Controller
     {
         $this->data['method'] = "candidateRequestList";
         $candidateRequestList = $this->AdminModel->candidateRequestDetails();
-        $this->data['candidateRequestList'] = $candidateRequestList;
+        $this->data['candidateRequestList'] = $candidateRequestList["response"];
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
@@ -410,6 +443,8 @@ class Admin extends CI_Controller
 
         $employerNewCategory = $this->AdminModel->employerNewCategory();
         $this->data['employerNewCategory'] = $employerNewCategory;
+
+        $this->setVariable();
 
         $this->load->view('adminDashboard.php', $this->data);
     }

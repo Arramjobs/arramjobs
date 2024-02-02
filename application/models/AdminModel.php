@@ -146,6 +146,7 @@
                 'verifyOne' => isset($postData['verifyone']) ? $postData['verifyone'] : "0",
                 'verifyTwo' => isset($postData['verifytwo']) ? $postData['verifytwo'] : "0",
                 'verificationRemarks' => $postData['verificationRemarks'],
+                'verifiedBy' => $postData['verifiedName'],
                 'newList' => $postData['newList']
             );
 
@@ -252,6 +253,7 @@
                 'employmentverify' => isset($postData['employmentVerify']) ? $postData['employmentVerify'] : "0",
                 'educationverify' => isset($postData['educationVerify']) ? $postData['educationVerify'] : "0",
                 'verificationRemarks' => $postData['verificationRemarks'],
+                'verifiedBy' => $postData['verifiedName'],
                 'newList' => $postData['newList']
             );
 
@@ -284,33 +286,46 @@
         }
 
 
+        // public function candidateRequestDetails()
+        // {
+        //     $candidateRequestList = "SELECT * FROM `seeker_profile_form` WHERE identityVerify ='1' AND addressVerify ='1' AND employmentVerify ='1' AND educationverify ='1' AND deleteStatus ='0' AND requestCandidate ='1'";
+        //     $response = $this->db->query($candidateRequestList);
+        //     // return $response->result_array();
+        //  return array("response" =>$response->result_array(), "totalRows" => $response->num_rows());
+        // }
         public function candidateRequestDetails()
         {
-            $candidateRequestList = "SELECT * FROM `seeker_profile_form` WHERE identityVerify ='1' AND addressVerify ='1' AND employmentVerify ='1' AND educationverify ='1' AND deleteStatus ='0' AND requestCandidate ='1'";
+            $candidateRequestList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
+            prf.id AS providerId, prf.erid AS emprid
+             FROM  candidate_requests cr
+             INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
+             INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+             WHERE cr.request_status = '1' ;";
+
             $response = $this->db->query($candidateRequestList);
-            return $response->result_array();
+            return array("response" =>$response->result_array(), "totalRows" => $response->num_rows());
         }
 
         public function approveRequest()
         {
             $postData = $this->input->post(null, true);
             $updateRequestApprovel = array(
-                'requestCandidate' => $postData['approveCandidateRequest']
+                'request_status' => $postData['approveCandidateRequest']
             );
 
-            $this->db->where('id', $postData['EmployeeId']);
-            $this->db->update('seeker_profile_form', $updateRequestApprovel);
+            $this->db->where(array('employer_id' => $postData['employerId'], 'candidate_id' => $postData['seekerId']));
+            $this->db->update('candidate_requests', $updateRequestApprovel);
         }
 
         public function cancelRequest()
         {
             $postData = $this->input->post(null, true);
             $updateRequestApprovel = array(
-                'requestCandidate' => $postData['cancelCandidateRequest']
+                'request_status' => $postData['cancelCandidateRequest']
             );
 
-            $this->db->where('id', $postData['EmployeeId']);
-            $this->db->update('seeker_profile_form', $updateRequestApprovel);
+            $this->db->where(array('employer_id' => $postData['employerId'], 'candidate_id' => $postData['seekerId']));
+            $this->db->update('candidate_requests', $updateRequestApprovel);
         }
 
        

@@ -280,7 +280,6 @@ public function checkUserExistence($phone_number)
 
   public function deleteAddJob($deleteId)
   {
-
     $delete = "DELETE FROM `provider_job` WHERE `id`=$deleteId";
     $del = $this->db->query($delete);
     // $this->db->where('id', $deleteId);
@@ -304,6 +303,7 @@ public function checkUserExistence($phone_number)
   //       return $result->result();
   //   }
 
+
   public function candidates($jobCategory)
   {
     // $query = "SELECT spf.id as seekerId, spf.name as name,  saoi.other_sub_interst_category as oisc, saoi.experience as exps, ssk.skill as skills 
@@ -311,10 +311,27 @@ public function checkUserExistence($phone_number)
     // INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
     // INNER JOIN  seeker_skill ssk ON ssk.seekerId = spf.id
     // WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.identityVerify ='1' AND spf.addressVerify ='1' AND spf.employmentVerify ='1' AND spf.educationVerify ='1' AND spf.deleteStatus ='0' ;" ;
-     $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.requestCandidate AS rqstCd, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(ssk.skill) AS skills
+   
+  //  $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.requestCandidate AS rqstCd, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(ssk.skill) AS skills
+  //     FROM seeker_profile_form spf 
+  //     INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
+  //     INNER JOIN seeker_skill ssk ON ssk.seekerId = spf.id 
+  //     WHERE saoi.other_interst_category = '" . $jobCategory . "' 
+  //     AND spf.identityVerify = '1'
+  //      AND spf.addressVerify = '1'
+  //       AND spf.employmentVerify = '1'
+  //        AND spf.identityVerify = '1'
+  //         AND spf.deleteStatus = '0'
+  //          GROUP BY spf.id, spf.name;";
+  //   $result = $this->db->query($query);
+  //   return $result->result_array();
+
+    $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(ssk.skill) AS skills,
+     cr.employer_id AS eprid, cr.candidate_id AS cndid, cr.request_status AS rqsts
       FROM seeker_profile_form spf 
       INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
-      INNER JOIN seeker_skill ssk ON ssk.seekerId = spf.id 
+      LEFT JOIN seeker_skill ssk ON ssk.seekerId = spf.id 
+      LEFT JOIN candidate_requests cr ON cr.employer_id = '" . $_SESSION['employerid'] . "' AND cr.candidate_id = spf.id 
       WHERE saoi.other_interst_category = '" . $jobCategory . "' 
       AND spf.identityVerify = '1'
        AND spf.addressVerify = '1'
@@ -324,20 +341,30 @@ public function checkUserExistence($phone_number)
            GROUP BY spf.id, spf.name;";
     $result = $this->db->query($query);
     return $result->result_array();
+  
   }
 
 
+  // public function requestForCandidate()
+  // {
+  //     $postData = $this->input->post(null, true);
+  //     $updateRequestStatus = array(
+  //         'requestCandidate' => $postData['requestadmin'],
+  //         'requestedEmployer' => $postData['employer_id']
+  //     );
+  //     $this->db->where('id', $postData['candidateid']);
+  //     $this->db->update('seeker_profile_form', $updateRequestStatus);
+  // }
+
   public function requestForCandidate()
   {
-      $postData = $this->input->post(null, true);
-      $updateRequestStatus = array(
-          'requestCandidate' => $postData['requestadmin'],
-          'requestedEmployer' => $postData['employer_id']
-
-      );
-
-      $this->db->where('id', $postData['candidateid']);
-      $this->db->update('seeker_profile_form', $updateRequestStatus);
+    $postData = $this->input->post(null, true);
+    $updateRequestStatus = array(
+      'employer_id' => $postData['employer_id'],
+      'candidate_id' => $postData['candidateid'],
+      'request_status' => $postData['requestadmin'],
+    );
+    $this->db->insert('candidate_requests', $updateRequestStatus);
   }
 
   public function allTableJoin()
@@ -426,6 +453,12 @@ public function checkUserExistence($phone_number)
     return $seekerName->result_array();
   }
 
+  public function canRequestStatus($id)
+  {
+    $reqStatus = "SELECT * FROM candidate_requests WHERE  `candidate_id`=$id AND  `employer_id`= '" . $_SESSION['employerid'] . "' ";
+    $reqStatus = $this->db->query($reqStatus);
+    return $reqStatus->result_array();
+  }
 
   public function matchedAllCandidate()
   {
@@ -438,15 +471,17 @@ public function checkUserExistence($phone_number)
     return $result->result_array();
   }
 
-  public function filterCandidate($jobCategory, $jobSubCategory)
-  {
-    $query = "SELECT spf.id as seekerId, spf.name as name, sed.educational_qualification as eq, sed.percentage as per, se.experience as exp,
-    saoi.skillname as skill,saoi.id as id, saoi.other_interst_category as oic, saoi.other_sub_interst_category as osic  
-    FROM seeker_profile_form spf INNER JOIN seeker_educational_details sed ON sed.seekerId = spf.id INNER JOIN seeker_experience se 
-    ON se.seekerId = spf.id INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND  saoi.other_sub_interst_category = '" . $jobSubCategory . "' AND spf.verificationStatus = '1'";
-    $result = $this->db->query($query);
-    return $result->result_array();
-  }
+
+  // public function filterCandidate($jobCategory, $jobSubCategory)
+  // {
+  //   $query = "SELECT spf.id as seekerId, spf.name as name, sed.educational_qualification as eq, sed.percentage as per, se.experience as exp,
+  //   saoi.skillname as skill,saoi.id as id, saoi.other_interst_category as oic, saoi.other_sub_interst_category as osic  
+  //   FROM seeker_profile_form spf INNER JOIN seeker_educational_details sed ON sed.seekerId = spf.id INNER JOIN seeker_experience se 
+  //   ON se.seekerId = spf.id INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND  saoi.other_sub_interst_category = '" . $jobSubCategory . "' AND spf.verificationStatus = '1'";
+  //   $result = $this->db->query($query);
+  //   return $result->result_array();
+  // }
+
 
   // public function getFilteredRecords($category, $subcategory) {
   //         $this->db->select('*');
@@ -463,6 +498,7 @@ public function checkUserExistence($phone_number)
   //         $query = $this->db->get();
   //         return $query->result();
   //     }
+
 
 
   // To upload company logo
