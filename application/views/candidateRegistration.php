@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -83,32 +83,31 @@
                                         name="registration_form" method="post">
 
                                         <div class="">
-                                            <label for="username" class="form-label">Name</label>
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                placeholder="John Doe" required>
+                                            <label for="username" class="form-label">Name<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" onkeypress="return allowOnlyLetters(event, this)" required>
                                             <div id="username_error"  style="color: red;" class="error"></div>
                                         </div>
                                         <div class="">
-                                            <label for="email" class="form-label">Email ID</label>
+                                            <label for="email" class="form-label">Email ID<span class="text-danger">*</span></label>
                                             <input type="email" class="form-control" id="email" name="email"
                                                 placeholder="example@gmail.com" required>
                                             <div id="email_error"  style="color: red;" class="error" ></div>
                                         </div>
                                         <div class="">
-                                            <label for="phonenumber" class="form-label">Mobile number</label>
-                                            <input type="number" class="form-control" id="phonenumber" name="phonenumber"
+                                            <label for="phonenumber" class="form-label">Mobile number<span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="phonenumber" name="phonenumber" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)"
                                                 placeholder="9876543210" required>
                                             <div id="phone_error"  style="color: red;" class="error" ></div>
                                         </div>
                                         <div class="">
-                                            <label for="crpassword" class="form-label">Create Password</label>
+                                            <label for="crpassword" class="form-label">Create Password<span class="text-danger">*</span></label>
                                             <input type="password" class="form-control" id="crpassword" name="crpassword" placeholder="01051996"  required>
                                             <div id="crpassworderr" style="color: red;" class="error" ></div>
                                         </div>
                                         <div class="text-secondary" style="font-size:15px;display:none;margin:0px" id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
 
                                         <div class="">
-                                            <label for="cmpassword" class="form-label">Confirm Password</label>
+                                            <label for="cmpassword" class="form-label">Confirm Password<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="cmpassword" name="cmpassword" placeholder="01051996" required>
                                             <p id="cmpassworderr" style="color: red;" class="error" ></p>
                                         </div>
@@ -145,8 +144,31 @@
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
+            
+<!-- Name -->
+
+<script>
+    function allowOnlyLetters(e, t) {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        } else if (e) {
+            var charCode = e.which;
+        } else {
+            return true;
+        }
+
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode == 32)) {
+            document.getElementById("username_error").innerHTML = "";
+            return true;
+        } else {
+            document.getElementById("username_error").innerHTML = "Numbers not allowed. Please enter only letters";
+            return false;
+        }
+    }
+</script>
 
     <script>
+       
 document.getElementById("crpassword").onfocus = function() {
             document.getElementById("passwordmessage").style.display = "block";
             }
