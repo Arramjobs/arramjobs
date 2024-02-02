@@ -3016,6 +3016,7 @@ function validatePhoneNumber1(input) {
                   document.getElementById("fresherExp").style.display = "none";
                   document.getElementById("fresherNoexp").style.display = "block";
                   document.getElementById("exptable").style.display = "none";
+                  document.getElementById("deleteList5").style.display = "none";
               <?php
             } 
           }?>
@@ -6032,6 +6033,7 @@ if (isset($experienceTable[0]['id'])) {
                              <td>' . $ivalue['company_name'] . '</td>
                              <td>' . $ivalue['company_location'] . '</td>
                              <td>' . $ivalue['job_role'] . '</td>
+                             <td>' . $ivalue['company_mobilenum'] . '</td>
                              <td>' . $ivalue['previous_employer_name'] . '</td>
                              <td>' . $ivalue['previous_employer_mobile'] . '</td>
                              <td>' . $ivalue['previous_employer_email'] . '</td>
