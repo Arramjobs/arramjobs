@@ -225,12 +225,12 @@ label #cancel {
   color: #fff;
   font-size: 60px;
   font-weight: 600;
-  margin-bottom: 10px;
+
 }
 .column1 p {
   color: #fff;
   font-size: 35px;                                                                                                                                                                                  0px;
-  line-height: 35px;
+  line-height: 65px;
 }
  
   .w-100 {
@@ -412,7 +412,7 @@ label #cancel {
       transform: translateX(-100%);
     }
   }
-
+ 
   @media only screen and (max-width:991px) {
 
     .card-sec {
@@ -423,7 +423,53 @@ label #cancel {
       top: 20px;
     }
     .row1 {
-      margin-top: 30%;
+    flex-direction: column;
+  }
+  .column1 {
+    margin-top: 15%;
+  }
+    .column1 h1 {
+      font-size: 54px;
+      text-align: center;
+    }
+    .column1 p {
+      padding-top: 5%;
+      font-size: 28px;
+      text-align: center;
+    } 
+    .column2 h2 {
+      margin-top: -20%;
+      font-size: 25px;
+    }
+    .column2 .profile-card h4 {
+      font-size: 20px;
+    }
+    .column2 .profile-card p {
+      font-size: 14px;
+    }
+    .column2 .profile-card {
+      height: 230px;
+      width: 165px;
+    }
+    .column2 .profile-card:hover {
+      height: 220px;
+    }
+    .column2 .profile-card:hover .social-links {
+      padding-left: 60px;
+    }
+    .language-selector {
+      margin-bottom: 12px;
+    }
+    .verticals-container .wrapper2 {
+      width: 100%;
+      display: flex;
+      /* height: 15%; */
+    }
+    .verticals-container .wrapper2 h2 {
+      font-size: 21px;
+    }
+    .verticals-container .wrapper2 .words {
+      font-size: 20px;
     }
   }
 
@@ -431,50 +477,45 @@ label #cancel {
     .row1 {
     flex-direction: column;
     width: 100%;
-    margin-top: 30%;
+  }
+  .column1 {
+    margin-top: 45%;
   }
     .column1 h1 {
-      font-size: 35px;
+      font-size: 30px;
       text-align: center;
+      /* margin-top: 80%; */
     }
     .column1 p {
-      font-size: 24px;
+      padding-top: 5%;
+      font-size: 20px;
       text-align: center;
     } 
-  }
-  
-  @media only screen and (max-width:1100px) {
-    .row1 {
-    flex-direction: column;
-    width: 100%;
-    margin-top: 30%;
-  }
-    .column1 h1 {
-      font-size: 45px;
-      text-align: center;
-    }
-    .column1 p {
-      font-size: 28px;
-      text-align: center;
-    }
     .column2 h2 {
+      margin-top: 8%;
       font-size: 25px;
     }
+    .column2 .profile-card h4 {
+      font-size: 16px;
+    }
     .column2 .profile-card p {
-      font-size: 18px;
+      font-size: 12px;
     }
     .column2 .profile-card {
-      height: 230px;
-      width: 185px;
+      height: 210px;
+      width: 135px;
     }
     .column2 .profile-card:hover {
-      height: 220px;
+      height: 225px;
     }
-    .column2 .profile-card h4 {
-      font-size: 21px;
+    .language-selector {
+      margin-bottom: 12px;
     }
-    .column2 .profile-card:hover .social-links {
-      padding-left: 60px;
+    .language-icon {
+      display: none;
+    }
+    .fa-globe {
+      display: block;
     }
   }
   
@@ -657,6 +698,13 @@ label #cancel {
     #check:checked ~ label #cancel {
       display: block;
     }
+    .profile-card:hover .caption .social-links {
+  opacity: 1;
+  transform: translateY(-70px);
+  padding-left: 15%;
+  font-size: 8px;
+  /* display: flex; */
+}
   }
 
     .language-selector {
@@ -667,16 +715,23 @@ label #cancel {
     }
 
     .language-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
+      display: block;
       align-items: center;
       justify-content: center;
       color: white;
       padding-right: 15px;
+      border-radius: 8px;
+      border: 2px solid #a899a0;
+      padding: 8px; 
+      font-size: 18px;
     }
-
+    .language-icon:hover {
+      color: #333;
+      background-color: white;
+    }
+    .fa-globe {
+      display: none;
+    }
     .language-dropdown {
       position: absolute;
       width: auto;
@@ -685,6 +740,7 @@ label #cancel {
       z-index: -999;
       transition: all ease 0.5s;
       line-height: 30px;
+      padding-top: 10px;
     }
 
     .language-option {
@@ -734,7 +790,7 @@ label #cancel {
     }
     .verticals-container h3 {
       position: relative;
-      font-size: 2.4em;
+      font-size: 40px ;
       font-weight: bold;
       letter-spacing: 1px;
       background: linear-gradient(90deg, #000, #567812, #000);
@@ -800,6 +856,13 @@ label #cancel {
   font-family: Exo;
   src: url(./fonts/Exo2.0-Medium.otf);
 }
+.column1 h1 {
+  margin-top: 10%;
+  margin-bottom: 20px;
+}
+/* .column2 p {
+  padding-top: 55%;
+} */
 .column2 {
   margin-top: 20%;
   align-items: center;
@@ -807,11 +870,11 @@ label #cancel {
 .column2 .profile {
   display: flex;
 }
-.column2 h2 {
+.column2 h2 {  
   text-align: center;
   color: white;
   font-weight: bold;
-  padding: 30px;
+  padding-bottom: 30px;
 }
 .profile-card {
     position: relative;
@@ -885,7 +948,7 @@ label #cancel {
 .profile-card:hover .caption .social-links {
   opacity: 1;
   transform: translateY(-70px);
-  padding-left: 40px;
+  padding-left: 32%;
   display: flex;
 }
 
@@ -896,7 +959,7 @@ label #cancel {
     width: 40%;
     padding: 20px;
     display: flex;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 20px 25px rgba(0,0,0,0.2);
     margin-bottom: 30px;
 }
@@ -926,7 +989,6 @@ label #cancel {
 .words span{
     display: block;
     height: 100%;
-    padding-left: 10px;
     color: #0e6ffc;
     animation: spin_words 6s infinite;
     font-weight: 600;
@@ -992,9 +1054,11 @@ label #cancel {
               </ul>
             </nav>
             <div class="language-selector">
-    <div class="language-icon"><i class="fa-solid fa-globe trans"></i></div>
+    <div class="language-icon dropdown-toggle"><a>Language</a>
+    <i class="fa-solid fa-globe trans"></i>
+  </div>
     <div class="language-dropdown">
-      <div class="language-option dropdown-toggle" onclick="changeLanguage('ta')"><a href="<?php echo baseUrl . "Welcome/indexTamil" ?>">தமிழ்</a></div>
+      <div class="language-option" onclick="changeLanguage('ta')"><a href="<?php echo baseUrl . "Welcome/Tamil" ?>">தமிழ்</a></div>
     </div>
   </div>
            </header>
@@ -1014,7 +1078,7 @@ label #cancel {
             <img src="assets/Saraswathi4.png" alt="Dr.C. Saraswathi">
             </div>
             <div class="caption">
-                <h4>Dr.C. Saraswathi</h4>
+                <h4>Dr.C.Saraswathi</h4>
                 <p>Secretary</p>
                 <div class="social-links">
                     <a href="https://www.youtube.com/@arramcharitytrust" target="_blank"><i class="fab fa-youtube" style="color:red;"></i></a>
@@ -1027,7 +1091,7 @@ label #cancel {
             <img src="assets/Kiruthika2.png" alt="Mrs. Kirthika Shivkumar">
             </div>
             <div class="caption">
-                <h4>Mrs. Kirthika</h4>
+                <h4>Mrs.Kirthika</h4>
                 <p>Managing Trustee</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/kirthikashivkumarerode" target="_blank"><i class="fab fa-facebook" style="color:#316FF6;"></i></a>
@@ -1766,8 +1830,7 @@ label #cancel {
   </footer>
   <!-- Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
 </body>
