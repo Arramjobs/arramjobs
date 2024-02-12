@@ -84,7 +84,8 @@
                                         </div> -->
 
                                         <div class="col-12">
-                                            <label for="phonenumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                            <label for="phonenumber" class="form-label">Mobile Number <span
+                                                    class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
                                                 <input type="number" name="phonenumber" class="form-control"
@@ -96,11 +97,12 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="erpassword" class="form-label">Password <span class="text-danger">*</span></label>
+                                            <label for="erpassword" class="form-label">Password <span
+                                                    class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
-                                                <input type="password" name="cdpassword"
-                                                    placeholder="01051996" class="form-control"
-                                                    id="cdpassword" oninput="validatePassword(this)" required />
+                                                <input type="password" name="cdpassword" placeholder="01051996"
+                                                    class="form-control" id="cdpassword"
+                                                    oninput="validatePassword(this)" required />
                                                 <button type="button" class="btn btn-outline-secondary"
                                                     onclick="togglePasswordVisibility('cdpassword', 'visibilityIcon')">
                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
@@ -156,7 +158,7 @@
                 visibilityIcon.classList.add("bi-eye-slash");
             }
         }
-        
+
         function validateform() {
             var phno = document.getElementById("phonenumber").value;
             var password = document.getElementById("cdpassword").value;
@@ -166,14 +168,14 @@
                     return false;
                 } else if (phno.length > 10) {
                     return false;
-                } 
+                }
             }
-        
-             if (password != "") {
-            if (!/^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])\d{4}$/.test(password)) { 
-                return false;
+
+            if (password != "") {
+                if (!/^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])\d{4}$/.test(password)) {
+                    return false;
+                }
             }
-        } 
         }
 
     </script>
