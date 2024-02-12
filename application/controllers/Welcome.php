@@ -42,7 +42,7 @@ class Welcome extends CI_Controller
 		// $this->load->view('viewCandidates.php');
 	}
 
-	public function indexTamil()
+	public function Tamil()
 	{
 		$this->load->view('homeTamil.php');
 	}

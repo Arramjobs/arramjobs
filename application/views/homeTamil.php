@@ -194,7 +194,7 @@
 .header ul li {
   display: inline-block;
   line-height: 60px;
-  margin:0 20px;
+  margin:0 10px;
   list-style: none;
 }
 .header ul li a {
@@ -276,13 +276,14 @@ label #cancel {
   flex-basis: 50%;
 }
 .column1 h1 {
-  font-size: 65px;
+  font-size: 62px;
   margin-bottom: 10px;
   color: #fff;
+  margin-top: 30%;
 }
 .column1 p {
   font-size: 25px;
-  margin-bottom: 20px;
+  margin-top: 40px;
   color: #fff;
   line-height: 45px;
 }
@@ -498,68 +499,46 @@ label #cancel {
       left: 8%;
       top: 20px;
     }
-    .row1 {
-      margin-top: 30%;
-    }
+    
   }
-
-
-  /* @media only screen and (max-width:590px) {
-    .row1 {
-    flex-direction: column;
-    width: 100%;
-    margin-top: 30%;
-  }
-    .column1 h1 {
-      font-size: 35px;
-      text-align: center;
-    }
-    .column1 p {
-      font-size: 24px;
-      text-align: center;
-    } 
-  } */
 
   @media only screen and (max-width:1200px) {
     .row1 {
     flex-direction: column;
     width: 100%;
-    margin-top: 25%;
   }
     .column1 h1 {
-      font-size: 42px;
+      font-size: 35px;
       text-align: center;
       font-weight: bold;
       color: #E63B60;
+    margin-top: 24%;
     }
     .column1 p {
-      font-size: 25px;
+      font-size: 20px;
       text-align: center;
-      padding-top: 20px;
+      padding-top: 5px;
       color: bisque;
     }
     .column2 h2 {
-      font-size: 25px;
+      font-size: 22px;
     }
     .column2 .profile-card p {
-      font-size: 18px;
+      font-size: 13px;
     }
     .column2 .profile-card {
       height: 230px;
-      width: 185px;
+      width: 165px;
     }
     .column2 .profile-card:hover {
       height: 220px;
     }
     .column2 .profile-card h4 {
-      font-size: 21px;
-    }
-    .column2 .profile-card:hover .social-links {
-      padding-left: 60px;
+      font-size: 16px;
     }
   }
 
-  @media only screen and (max-width:1420px) {
+  @media only screen and (max-width:1164px) {
     label #btns {
       display: block;
       font-size: 25px;
@@ -577,12 +556,12 @@ label #cancel {
       top: 80px;
       left: 100%;
       transition: all .5s;
-      padding: 5px 10px;
+      /* padding: 5px 10px; */
       background: black;
     }
     .header ul li {
       display: block;
-      margin: 30px 0;
+      margin: 10px 0;
       line-height: 10px;
       width: 100%;
     }
@@ -612,24 +591,67 @@ label #cancel {
     #check:checked ~ label #cancel {
       display: block;
     }
-    /* .profile-container{
-      padding-top: 30px;
-    }
+  }
+  @media only screen and (max-width:550px) {
+  
     .column1 h1 {
-      font-size: 35px;
+      margin-top: 35%;
+      font-size: 30px;
+      text-align: center;
     }
     .column1 p {
+      /* padding-top: 5%; */
       font-size: 20px;
-      line-height: 30px;
-    }
+      text-align: center;
+    } 
     .column2 h2 {
-      font-size: 25px;
+      /* margin-top: 8%; */
+      font-size: 22px;
     }
-    .row1 {
-      margin-top: 80px;
-    } */
+    .column2 .profile-card h4 {
+      font-size: 16px;
+    }
+    .column2 .profile-card p {
+      font-size: 12px;
+    }
+    .column2 .profile-card {
+      height: 210px;
+      width: 155px;
+    }
+    .column2 .profile-card:hover {
+      height: 225px;
+    }
   }
-
+  @media only screen and (max-width:370px) {
+  
+  .column1 h1 {
+    margin-top: 43%;
+    font-size: 30px;
+    text-align: center;
+  }
+  .column1 p {
+    /* padding-top: 5%; */
+    font-size: 18px;
+    text-align: center;
+  } 
+  .column2 h2 {
+    /* margin-top: 8%; */
+    font-size: 22px;
+  }
+  .column2 .profile-card h4 {
+    font-size: 14px;
+  }
+  .column2 .profile-card p {
+    font-size: 12px;
+  }
+  .column2 .profile-card {
+    height: 210px;
+    width: 125px;
+  }
+  .column2 .profile-card:hover {
+    height: 205px;
+  }
+}
   @media only screen and (max-width:767px) {
     .carousel-caption {
       text-align: center;
@@ -816,14 +838,19 @@ label #cancel {
     }
 
     .language-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
+      display: block;
       align-items: center;
       justify-content: center;
       color: white;
-      padding-right: 12px;
+      padding-right: 15px;
+      border-radius: 8px;
+      border: 2px solid #a899a0;
+      padding: 8px; 
+      font-size: 14px;
+    }
+    .language-icon:hover {
+      color: #333;
+      background-color: white;
     }
 
     .language-dropdown {
@@ -1028,7 +1055,7 @@ label #cancel {
 }
 .caption .social-links {
     color: black;
-    font-size: 20px;
+    font-size: 18px;
     transition: .6s;
     overflow: hidden;
     transform: translateY(-70px);
@@ -1038,7 +1065,7 @@ label #cancel {
 .profile-card:hover .caption .social-links {
   opacity: 1;
   transform: translateY(-70px);
-  padding-left: 40px;
+  padding-left: 20px;
   display: flex;
 }
 
@@ -1079,7 +1106,7 @@ label #cancel {
 span{
     display: block;
     height: 100%;
-    padding-left: 10px;
+    padding-top: 10px;
     color: #0e6ffc;
     animation: spin_words 6s infinite;
     font-weight: 600;
@@ -1146,9 +1173,11 @@ span{
             </nav>
             
             <div class="language-selector">
-    <div class="language-icon"><i class="fa-solid fa-globe trans"></i></div>
+            <div class="language-icon dropdown-toggle"><a>மொழி</a>
+    <!-- <i class="fa-solid fa-globe trans"></i> -->
+  </div>
     <div class="language-dropdown">
-      <div class="language-option dropdown-toggle" onclick="changeLanguage('ta')"><a href="<?php echo baseUrl; ?>">English</a></div>
+      <div class="language-option" onclick="changeLanguage('ta')"><a href="<?php echo baseUrl; ?>">English</a></div>
     </div>
   </div>
            </header>
@@ -1168,7 +1197,7 @@ span{
             <img src="<?php echo baseUrl . "assets/Saraswathi4.png" ?>" alt="Dr.C. Saraswathi">
             </div>
             <div class="caption">
-                <h4>C. சரஸ்வதி</h4>
+                <h4>C.சரஸ்வதி</h4>
                 <p>செயலாளர்</p>
                 <div class="social-links">
                     <a href="https://www.youtube.com/@arramcharitytrust" target="_blank"><i class="fab fa-youtube" style="color:red;"></i></a>
@@ -1181,7 +1210,7 @@ span{
             <img src="<?php echo baseUrl . "assets/Kiruthika2.png" ?>" alt="Mrs. Kirthika Shivkumar">
             </div>
             <div class="caption">
-                <h4>Mrs. கிர்த்திகா</h4>
+                <h4>Mrs.கிர்த்திகா</h4>
                 <p>பொறுப்பாட்சியர்</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/kirthikashivkumarerode" target="_blank"><i class="fab fa-facebook" style="color:#316FF6;"></i></a>
@@ -1221,24 +1250,24 @@ span{
    <div class="wrapper2"><h2>Five Verticals</h2>
    <div class="words">
      <!-- <div class="word" id="health"> -->
-       <span>Health</span>
+       <span>ஆரோக்கியம்</span>
      <!-- </div><br> -->
      <!-- <div class="word" id="food"> -->
-       <span>Food</span>
+       <span>உணவு</span>
      <!-- </div><br> -->
      <!-- <div class="word" id="spiritual"> -->
-       <span>Spiritual</span>
+       <span>ஆன்மீகம்</span>
      <!-- </div><br> -->
      <!-- <div class="word" id="education"> -->
-       <span>Education</span>
+       <span>கல்வி</span>
      <!-- </div><br> -->
      <!-- <div class="word" id="environment"> -->
-       <span>Environment</span>
+       <span>சுற்றுச்சூழல்</span>
      <!-- </div><br> -->
      </div>
    </div>
    <div class="verticals">
-   <a href="https://arramsei.org/"  target="_blank">Read more</a>
+   <a href="https://arramsei.org/"  target="_blank">மேலும் படிக்க</a>
    </div>
    </div>
      </section>
