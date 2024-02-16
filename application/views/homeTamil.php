@@ -2016,7 +2016,10 @@ span{
           </div>
          
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 footer3" id="footercontact">
+
+
             <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444; font-size:17px">தொடர்பு கொள்ளவும்</h5>
+
             <p  class="text-reset1" style="color: white; font-size:14px;"><i class="fas fa-home me-3 text-reset" style="color: white;"></i>
             யூனியன் அலுவலக பேருந்து நிறுத்தம் அருகில்,<br>
             மூதூர் பிரதான வீதி, ஆலங்காட்டுவலசு,<br>
