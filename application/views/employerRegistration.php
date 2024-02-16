@@ -136,7 +136,7 @@
                 <div class="">
                     <label for="addr" class="form-label">State: <span class="text-danger">*</span></label>
                     <select class="form-control" id="state" name="state" required>
-                                <option value="">Select district</option>
+                                <option value="">Select state</option>
                                 <option value="Tamilnadu">Tamil Nadu</option>
                             </select>
                     <p id="stateerr" style="color: red;"></p>

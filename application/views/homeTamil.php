@@ -502,7 +502,7 @@ label #cancel {
     
   }
 
-  @media only screen and (max-width:1200px) {
+  @media only screen and (max-width:1175px) {
     .row1 {
     flex-direction: column;
     width: 100%;
@@ -512,13 +512,16 @@ label #cancel {
       text-align: center;
       font-weight: bold;
       color: #E63B60;
-    margin-top: 24%;
+    margin-top: 25%;
     }
     .column1 p {
       font-size: 20px;
       text-align: center;
       padding-top: 5px;
       color: bisque;
+    }
+    .column2 {
+      margin-top: -20%;
     }
     .column2 h2 {
       font-size: 22px;
@@ -538,7 +541,7 @@ label #cancel {
     }
   }
 
-  @media only screen and (max-width:1164px) {
+  @media only screen and (max-width:1223px) {
     label #btns {
       display: block;
       font-size: 25px;
@@ -591,21 +594,49 @@ label #cancel {
     #check:checked ~ label #cancel {
       display: block;
     }
+
+    .column1 h1 {
+      font-size: 35px;
+      text-align: center;
+      font-weight: bold;
+      color: white;
+    margin-top: 40%;
+    }
+    .column1 p {
+      font-size: 20px;
+      text-align: center;
+      padding-top: 5px;
+      color: bisque;
+    }
+    .column2 h2 {
+      font-size: 32px;
+    }
+    .column2 .profile-card p {
+      font-size: 13px;
+    }
+    .column2 .profile-card {
+      height: 230px;
+      width: 165px;
+    }
+    .column2 .profile-card:hover {
+      height: 220px;
+    }
+    .column2 .profile-card h4 {
+      font-size: 16px;
+    }
   }
-  @media only screen and (max-width:550px) {
+  @media only screen and (max-width:850px) {
   
     .column1 h1 {
-      margin-top: 35%;
+      margin-top: 30%;
       font-size: 30px;
       text-align: center;
     }
     .column1 p {
-      /* padding-top: 5%; */
       font-size: 20px;
       text-align: center;
     } 
     .column2 h2 {
-      /* margin-top: 8%; */
       font-size: 22px;
     }
     .column2 .profile-card h4 {
@@ -622,20 +653,21 @@ label #cancel {
       height: 225px;
     }
   }
-  @media only screen and (max-width:370px) {
+  @media only screen and (max-width:640px) {
   
   .column1 h1 {
-    margin-top: 43%;
+    margin-top: 40%;
     font-size: 30px;
     text-align: center;
   }
   .column1 p {
-    /* padding-top: 5%; */
     font-size: 18px;
     text-align: center;
+  }
+  .column2 {
+    margin-top: -30%;
   } 
   .column2 h2 {
-    /* margin-top: 8%; */
     font-size: 22px;
   }
   .column2 .profile-card h4 {
@@ -645,11 +677,205 @@ label #cancel {
     font-size: 12px;
   }
   .column2 .profile-card {
-    height: 210px;
-    width: 125px;
+    height: 200px;
+    width: 145px;
   }
   .column2 .profile-card:hover {
     height: 205px;
+  }
+}
+
+@media only screen and (max-width:375px) {
+  .row1 {
+    width: 100%;
+    flex-direction: column;
+  }
+  .column1 h1 {
+    margin-top: 50%;
+    font-size: 30px;
+    text-align: center;
+  }
+  .column1 p {
+    font-size: 18px;
+    text-align: center;
+  }
+  .column2 {
+    margin-top: -60%;
+  } 
+  .column2 h2 {
+    font-size: 22px;
+  }
+  .column2 .profile-card h4 {
+    font-size: 14px;
+  }
+  .column2 .profile-card p {
+    font-size: 12px;
+  }
+  .column2 .profile-card {
+    height: 200px;
+    width: 145px;
+  }
+  .column2 .profile-card:hover {
+    height: 205px;
+  }
+}
+@media only screen and (max-width:820px) {
+  
+  .column1 h1 {
+    margin-top: 50%;
+    font-size: 30px;
+    text-align: center;
+  }
+  .column1 p {
+    font-size: 20px;
+    text-align: center;
+  }
+  .column2 {
+    margin-top: -10%;
+  } 
+  .column2 h2 {
+    font-size: 22px;
+  }
+  .column2 .profile-card h4 {
+    font-size: 14px;
+  }
+  .column2 .profile-card p {
+    font-size: 12px;
+  }
+  .column2 .profile-card {
+    height: 200px;
+    width: 145px;
+  }
+  .column2 .profile-card:hover {
+    height: 205px;
+  }
+}
+@media only screen and (max-width:1024px) {
+  
+  .column1 h1 {
+    margin-top: 40%;
+    font-size: 35px;
+    text-align: center;
+  }
+  .column1 p {
+    font-size: 28px;
+    text-align: center;
+  }
+  .column2 {
+    margin-top: -10%;
+  } 
+  .column2 h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .column2 .profile-card h4 {
+    font-size: 18px;
+  }
+  .column2 .profile-card p {
+    font-size: 14px;
+  }
+  .column2 .profile-card {
+    height: 240px;
+    width: 175px;
+  }
+  .column2 .profile-card:hover {
+    height: 205px;
+  }
+}
+
+@media only screen and (max-width:540px) {
+  
+  .column1 h1 {
+    margin-top: 32%;
+    font-size: 30px;
+    text-align: center;
+  }
+  .column1 p {
+    font-size: 22px;
+    text-align: center;
+  }
+  .column2 {
+    margin-top: -40%;
+  } 
+  .column2 h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  .column2 .profile-card h4 {
+    font-size: 18px;
+  }
+  .column2 .profile-card p {
+    font-size: 13px;
+  }
+  .column2 .profile-card {
+    height: 220px;
+    width: 165px;
+  }
+  .column2 .profile-card:hover {
+    height: 205px;
+  }
+}
+@media only screen and (max-width:280px) {
+  
+  .column1 h1 {
+    margin-top: 51%;
+    font-size: 22px;
+    text-align: center;
+  }
+  .column1 p {
+    font-size: 16px;
+    text-align: center;
+  }
+  .column2 {
+    margin-top: -76%;
+  } 
+  .column2 h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .column2 .profile-card h4 {
+    font-size: 13px;
+  }
+  .column2 .profile-card p {
+    font-size: 10px;
+  }
+  .column2 .profile-card {
+    height: 175px;
+    width: 122px;
+  }
+  .column2 .profile-card:hover {
+    height: 165px;
+  }
+}
+@media only screen and (max-width:1024px) {
+  
+  .column1 h1 {
+    margin-top: 25%;
+    font-size: 32px;
+    text-align: center;
+  }
+  .column1 p {
+    font-size: 22px;
+    text-align: center;
+  }
+  .column2 {
+    margin-top: -24%;
+  } 
+  .column2 h2 {
+    font-size: 25px;
+  }
+  .column2 .profile-card h4 {
+    font-size: 16px;
+  }
+  .column2 .profile-card p {
+    font-size: 12px;
+  }
+  .column2 .profile-card {
+    height: 212px;
+    width: 152px;
+  }
+  .column2 .profile-card:hover {
+    height: 225px;
   }
 }
   @media only screen and (max-width:767px) {
@@ -977,16 +1203,16 @@ label #cancel {
   src: url(./fonts/Exo2.0-Medium.otf);
 }
 .column2 {
-  margin-top: 20%;
   align-items: center;
 }
-.column2  h4 {
+.column2 h4 {
   font-size: 20px;
 }
 .column2 .profile {
   display: flex;
 }
 .column2 h2 {
+  margin-top: 50%;
   text-align: center;
   color: white;
   font-weight: bold;
@@ -1764,8 +1990,8 @@ span{
       <div class="container text-center text-md-start" style="margin-top: 40px;">
         <div class="row mt-3">
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">
-              <img src="" alt="AJ" height="50" width="65">
+            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444; font-size: 17px;">
+              <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="AJ" height="30" width="45">
               அறம் வேலைவாய்ப்பு
             </h5>
             <p style="color: white;text-align:justify;font-size:15px">அறம் வேலைவாய்ப்பு ஆட்சேர்ப்பு துறையில் நம்பகமான பங்குதாரராக வேகமாக உருவெடுத்துள்ளது. எங்கள் பயணம் எளிமையான ஆனால் சக்திவாய்ந்த யோசனையுடன் தொடங்கியது.
@@ -1775,7 +2001,7 @@ span{
           <!-- Grid column -->
           <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 footer2">
             <!-- Links -->
-            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">
+            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444; font-size:17px">
             நாங்கள் யார் 
             </h5>
             <p style="color: white;" onmouseover="this.style.color='#61d3ed'" onmouseout="this.style.color='white'">
@@ -1790,7 +2016,10 @@ span{
           </div>
          
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 footer3" id="footercontact">
-            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">தொடர்பு கொள்ளவும்</h5>
+
+
+            <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444; font-size:17px">தொடர்பு கொள்ளவும்</h5>
+
             <p  class="text-reset1" style="color: white; font-size:14px;"><i class="fas fa-home me-3 text-reset" style="color: white;"></i>
             யூனியன் அலுவலக பேருந்து நிறுத்தம் அருகில்,<br>
             மூதூர் பிரதான வீதி, ஆலங்காட்டுவலசு,<br>
