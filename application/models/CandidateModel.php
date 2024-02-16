@@ -62,12 +62,13 @@ class CandidateModel extends CI_Model
         $this->db->insert('seeker_profile_form', $insert);
     }
 
-    public function generate_customer_id() {
+    public function generate_customer_id()
+    {
         $current_year = date('Y');
 
         $latest_customer_id = $this->get_latest_customer_id();
-        $incremented_id = str_pad((int)substr($latest_customer_id, -4) + 1, 4, '0', STR_PAD_LEFT);
-        
+        $incremented_id = str_pad((int) substr($latest_customer_id, -4) + 1, 4, '0', STR_PAD_LEFT);
+
         $customer_id = "AJEE" . $current_year . $incremented_id;
 
         $insert = array(
@@ -76,14 +77,15 @@ class CandidateModel extends CI_Model
 
         $phonenumber = $this->input->post('phonenumber');
 
-        $this->db->where('phonenumber',$phonenumber);
+        $this->db->where('phonenumber', $phonenumber);
         $this->db->update('seeker_profile_form', $insert);
         return $customer_id;
     }
 
-    public function get_latest_customer_id() {
+    public function get_latest_customer_id()
+    {
         $this->db->select('eeid');
-        $this->db->from('seeker_profile_form'); 
+        $this->db->from('seeker_profile_form');
         $this->db->order_by('eeid', 'DESC');
         $this->db->limit(1);
 
@@ -123,15 +125,15 @@ class CandidateModel extends CI_Model
         // var_dump($postData);
 
         $config['upload_path'] = "./uploads/";
-        $basepath =  base_url().'uploads/';
+        $basepath = base_url() . 'uploads/';
         $config['allowed_types'] = "jpg|png|pdf|jpeg";
         $config['max_size'] = 1024;
 
         $this->load->library('upload', $config);
 
-        $aadharf= $postData['oldaadharfront'];
-        $aadharb= $postData['oldaadharback'];
-        $photop= $postData['oldprofilephoto'];
+        $aadharf = $postData['oldaadharfront'];
+        $aadharb = $postData['oldaadharback'];
+        $photop = $postData['oldprofilephoto'];
 
 
         if ($this->upload->do_upload('aadharfrontphoto')) {
@@ -189,7 +191,7 @@ class CandidateModel extends CI_Model
         $seekerId = "SELECT * FROM `seeker_educational_details` Where `seekerId`= $seekerId";
         $addtab = $this->db->query($seekerId);
         // return $addtab->result_array();
-        return array("response" =>$addtab->result_array(), "totalRows" => $addtab->num_rows());
+        return array("response" => $addtab->result_array(), "totalRows" => $addtab->num_rows());
     }
 
     public function insertEducationForm()
@@ -197,9 +199,14 @@ class CandidateModel extends CI_Model
         // $seekerId=$_SESSION['seekerId'];
         $post = $this->input->post(null, true);
 
-
+        if ($post['seekerId'] != NULL) {
+            $seekerId = $post['seekerId'];
+         } else {
+              $seekerId = $_SESSION['seekerId'];
+         }
+         
         $config['upload_path'] = "./uploads/";
-        $basepath =  base_url().'uploads/';
+        $basepath = base_url() . 'uploads/';
         $config['allowed_types'] = "jpg|png|pdf|jpeg";
         $config['max_size'] = 1024;
 
@@ -220,12 +227,12 @@ class CandidateModel extends CI_Model
         }
         if ($this->upload->do_upload('certificate_12th')) {
             $data = $this->upload->data();
-             $cer12 = $data['file_name'];
-         }
-         if ($this->upload->do_upload('certificate_dip')) {
+            $cer12 = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_dip')) {
             $data = $this->upload->data();
-             $cerdip = $data['file_name'];
-         }
+            $cerdip = $data['file_name'];
+        }
 
         if ($this->upload->do_upload('certificate_ug')) {
             $data = $this->upload->data();
@@ -249,7 +256,6 @@ class CandidateModel extends CI_Model
         $urlpg = $basepath . $cerpg;
         $urldoc = $basepath . $cerdoct;
 
-        $seekerId = $_SESSION['seekerId'];
         $add = array(
             'seekerId' => $seekerId,
             'educational_qualification' => $post['qualification'],
@@ -258,19 +264,19 @@ class CandidateModel extends CI_Model
             'school_college_name' => $post['school'],
             'percentage' => $post['percentage'],
             'yearOfPassing' => $post['year_passed'],
-            'tencer_url' =>   $urlten,
-            'twelvecer_url' =>   $urltwelve,
-            'diplomacer_url' =>   $urldiploma,
-            'ugcer_url' =>  $urlug,
-            'pgcer_url' =>  $urlpg,
-            'doccer_url' =>  $urldoc,
-            'ten_cer' =>  $cer10,
-            'twelve_cer' =>  $cer12,
-            'diploma_cer' =>  $cerdip,
-            'ug_cer' =>  $cerug,
-            'pg_cer' =>  $cerpg,
-            'doc_cer' =>  $cerdoct
-        ); 
+            'tencer_url' => $urlten,
+            'twelvecer_url' => $urltwelve,
+            'diplomacer_url' => $urldiploma,
+            'ugcer_url' => $urlug,
+            'pgcer_url' => $urlpg,
+            'doccer_url' => $urldoc,
+            'ten_cer' => $cer10,
+            'twelve_cer' => $cer12,
+            'diploma_cer' => $cerdip,
+            'ug_cer' => $cerug,
+            'pg_cer' => $cerpg,
+            'doc_cer' => $cerdoct
+        );
 
 
         $this->db->insert('seeker_educational_details', $add);
@@ -287,7 +293,7 @@ class CandidateModel extends CI_Model
         );
         $this->db->where('id', $seekerId);
 
-      $this->db->update('seeker_profile_form', $addsubmit);
+        $this->db->update('seeker_profile_form', $addsubmit);
 
     }
 
@@ -304,53 +310,53 @@ class CandidateModel extends CI_Model
 
         $config['upload_path'] = "./uploads/";
         // $basepath = 'http://localhost/arramjobs/uploads/';
-        $basepath =  base_url().'uploads/';
+        $basepath = base_url() . 'uploads/';
 
-         $config['allowed_types'] = "jpg|png|pdf";
-         $config['max_size'] = 1024;
- 
-         $this->load->library('upload', $config);
- 
-         $ucer10 = $post['old10cer'];
-         $ucer12 = $post['old12cer'];
-         $ucerdip = $post['olddipcer'];
-         $ucerug = $post['oldugcer'];
-         $ucerpg = $post['oldpgcer'];
-         $ucerdoct = $post['olddoccer'];
+        $config['allowed_types'] = "jpg|png|pdf";
+        $config['max_size'] = 1024;
 
-         if ($this->upload->do_upload('certificate_10th')) {
-             $data = $this->upload->data();
-             $ucer10 = $data['file_name'];
-         }
-         if ($this->upload->do_upload('certificate_12th')) {
-             $data = $this->upload->data();
-             $ucer12 = $data['file_name'];
-         }
-         if ($this->upload->do_upload('certificate_dip')) {
+        $this->load->library('upload', $config);
+
+        $ucer10 = $post['old10cer'];
+        $ucer12 = $post['old12cer'];
+        $ucerdip = $post['olddipcer'];
+        $ucerug = $post['oldugcer'];
+        $ucerpg = $post['oldpgcer'];
+        $ucerdoct = $post['olddoccer'];
+
+        if ($this->upload->do_upload('certificate_10th')) {
+            $data = $this->upload->data();
+            $ucer10 = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_12th')) {
+            $data = $this->upload->data();
+            $ucer12 = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_dip')) {
             $data = $this->upload->data();
             $ucerdip = $data['file_name'];
         }
-         if ($this->upload->do_upload('certificate_ug')) {
-             $data = $this->upload->data();
-             $ucerug = $data['file_name'];
-         }
-         if ($this->upload->do_upload('certificate_pg')) {
-             $data = $this->upload->data();
-             $ucerpg = $data['file_name'];
-         }
-         if ($this->upload->do_upload('certificate_doctorate')) {
-             $data = $this->upload->data();
-             $ucerdoct = $data['file_name'];
-         } else {
-             $error = $this->upload->display_errors();
-         }
+        if ($this->upload->do_upload('certificate_ug')) {
+            $data = $this->upload->data();
+            $ucerug = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_pg')) {
+            $data = $this->upload->data();
+            $ucerpg = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_doctorate')) {
+            $data = $this->upload->data();
+            $ucerdoct = $data['file_name'];
+        } else {
+            $error = $this->upload->display_errors();
+        }
 
-         $urltenu = $basepath . $ucer10;
-         $urltwelveu = $basepath . $ucer12;
-         $urldiplomau = $basepath . $ucerdip;
-         $urlugu = $basepath . $ucerug;
-         $urlpgu = $basepath . $ucerpg;
-         $urldocu = $basepath . $ucerdoct;
+        $urltenu = $basepath . $ucer10;
+        $urltwelveu = $basepath . $ucer12;
+        $urldiplomau = $basepath . $ucerdip;
+        $urlugu = $basepath . $ucerug;
+        $urlpgu = $basepath . $ucerpg;
+        $urldocu = $basepath . $ucerdoct;
 
 
         $educationId = $post['id'];
@@ -361,18 +367,18 @@ class CandidateModel extends CI_Model
             'school_college_name' => $post['school'],
             'percentage' => $post['percentage'],
             'yearOfPassing' => $post['year_passed'],
-            'tencer_url' =>   $urltenu,
-            'twelvecer_url' =>   $urltwelveu,
-            'diplomacer_url' =>   $urldiplomau,
-            'ugcer_url' =>  $urlugu,
-            'pgcer_url' =>  $urlpgu,
-            'doccer_url' =>  $urldocu,
-            'ten_cer' =>  $ucer10,
-            'twelve_cer' =>  $ucer12,
-            'diploma_cer' =>  $ucerdip,
-            'ug_cer' =>  $ucerug,
-            'pg_cer' =>  $ucerpg,
-            'doc_cer' =>  $ucerdoct
+            'tencer_url' => $urltenu,
+            'twelvecer_url' => $urltwelveu,
+            'diplomacer_url' => $urldiplomau,
+            'ugcer_url' => $urlugu,
+            'pgcer_url' => $urlpgu,
+            'doccer_url' => $urldocu,
+            'ten_cer' => $ucer10,
+            'twelve_cer' => $ucer12,
+            'diploma_cer' => $ucerdip,
+            'ug_cer' => $ucerug,
+            'pg_cer' => $ucerpg,
+            'doc_cer' => $ucerdoct
 
         );
         $this->db->where('id', $educationId);
@@ -403,23 +409,29 @@ class CandidateModel extends CI_Model
         return array('response' => $addtab->result_array(), "totalRows" => $addtab->num_rows());
     }
 
-    public function getCategoryList(){
+    public function getCategoryList()
+    {
         $category = " SELECT * FROM category_master WHERE (categoryName, id) IN (
                         SELECT DISTINCT categoryName, MIN(id) AS id FROM category_master GROUP BY categoryName )
                         ORDER BY categoryName ASC";
         $select = $this->db->query($category);
-        return $select->result(); 
+        return $select->result();
     }
 
 
     public function insertExperienceForm()
     {
-        $seekerId = $_SESSION['seekerId'];
         $post = $this->input->post(null, true);
 
-    $tillNowChecked = isset($post['till_now']);
-    $toDate = $tillNowChecked ? date("Y-m-d") : $post['toDate'];
+        $tillNowChecked = isset($post['till_now']);
+        $toDate = $tillNowChecked ? date("Y-m-d") : $post['toDate'];
 
+        if ($post['seekerId'] != NULL) {
+            $seekerId = $post['seekerId'];
+         } else {
+              $seekerId = $_SESSION['seekerId'];
+         }
+        
         $add = array(
             'seekerId' => $seekerId,
             'other_category' => $post['category'],
@@ -434,7 +446,7 @@ class CandidateModel extends CI_Model
             'previous_employer_name' => $post['nameofemployer'],
             'previous_employer_mobile' => $post['number'],
             'previous_employer_email' => $post['emailid'],
-            'categoryOthers' =>isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
+            'categoryOthers' => isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
             'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0",
         );
 
@@ -464,7 +476,7 @@ class CandidateModel extends CI_Model
         );
         $this->db->where('id', $seekerId);
 
-      $this->db->update('seeker_profile_form', $submitexp);
+        $this->db->update('seeker_profile_form', $submitexp);
     }
 
     public function updateExperience($experienceId)
@@ -480,10 +492,10 @@ class CandidateModel extends CI_Model
         $post = $this->input->post(null, true);
         $experienceId = $post['id'];
 
- $tillNowChecked = isset($post['till_now']);
- $toDate = $tillNowChecked ? date("Y-m-d") : $post['toDate'];
+        $tillNowChecked = isset($post['till_now']);
+        $toDate = $tillNowChecked ? date("Y-m-d") : $post['toDate'];
         $updateInsertExperience = array(
-            
+
             'other_category' => $post['category'],
             'other_sub_category' => $post['subcategory'],
             'expYear' => $post['fromDate'],
@@ -587,13 +599,19 @@ class CandidateModel extends CI_Model
         $seekerId = "SELECT * FROM `seeker_area_of_interst` Where `seekerId`= $seekerId";
         $addtab = $this->db->query($seekerId);
         // return $addtab->result_array();
-        return array("response" =>$addtab->result_array(), "totalRows" => $addtab->num_rows());
+        return array("response" => $addtab->result_array(), "totalRows" => $addtab->num_rows());
     }
 
     public function insertAreaOfIntrest()
     {
-        $seekerId = $_SESSION['seekerId'];
+        // $seekerId = $_SESSION['seekerId'];
+        
         $post = $this->input->post(null, true);
+        if ($post['seekerId'] != NULL) {
+            $seekerId = $post['seekerId'];
+         } else {
+              $seekerId = $_SESSION['seekerId'];
+         }
 
         $add = array(
             'seekerId' => $seekerId,
@@ -605,7 +623,7 @@ class CandidateModel extends CI_Model
             'job_type' => $post['jobtype'],
             'description' => $post['description'],
             'expected_salary' => $post['expected-salary'],
-            'categoryOthers' =>isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
+            'categoryOthers' => isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
             'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0",
             // 'skillname' => $post['skillname'],
             // 'skillexperience' => $post['skillexperience'],
@@ -625,7 +643,7 @@ class CandidateModel extends CI_Model
         );
         $this->db->where('id', $seekerId);
 
-      $this->db->update('seeker_profile_form', $submitarea);
+        $this->db->update('seeker_profile_form', $submitarea);
     }
 
     public function updateAreaOfIntrest($updateAreaOfIntrestId)
@@ -683,8 +701,13 @@ class CandidateModel extends CI_Model
 
     public function insertSkillForm()
     {
-        $seekerId = $_SESSION['seekerId'];
+        // $seekerId = $_SESSION['seekerId'];
         $post = $this->input->post(null, true);
+        if ($post['seekerId'] != NULL) {
+            $seekerId = $post['seekerId'];
+         } else {
+              $seekerId = $_SESSION['seekerId'];
+         }
 
         $add = array(
             'seekerId' => $seekerId,
@@ -903,15 +926,15 @@ class CandidateModel extends CI_Model
     public function updateresumefilename($resumefilename)
     {
         $seekerId = $_SESSION['seekerId'];
-        $basepath =  base_url().'uploads/';
-       
+        $basepath = base_url() . 'uploads/';
+
         $updateresume['resume_filename'] = $resumefilename;
-        $updateresume['resume_filename_url'] = $basepath.$resumefilename;
+        $updateresume['resume_filename_url'] = $basepath . $resumefilename;
 
         $this->db->where('seekerId', $seekerId);
         $this->db->update('seeker_area_of_interst', $updateresume);
     }
-    
+
     public function insertSubmitResume()
     {
         $post = $this->input->post(null, true);
@@ -922,7 +945,7 @@ class CandidateModel extends CI_Model
         );
         $this->db->where('id', $seekerId);
 
-      $this->db->update('seeker_profile_form', $submitresume);
+        $this->db->update('seeker_profile_form', $submitresume);
     }
 
     public function do_upload()

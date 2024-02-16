@@ -104,14 +104,17 @@ class Employer extends CI_Controller
             echo '<script>alert("Please enter registered company details.");</script>';
         }
     }
-    public function checkMobileNumber() {
-        $mobileNumber = $this->input->post('mobilenumber');
     
-        $existsInDatabase = $this->EmployerModel->checkMobileNumberExists($mobileNumber);
+    // public function checkMobileNumber() {
+    //     $mobileNumber = $this->input->post('mobilenumber');
     
-        header('Content-Type: application/json');
-        echo json_encode(['exists' => $existsInDatabase]);
-    }
+    //     $existsInDatabase = $this->EmployerModel->checkMobileNumberExists($mobileNumber);
+    
+    //     header('Content-Type: application/json');
+    //     echo json_encode(['exists' => $existsInDatabase]);
+    // }
+
+
     // public function viewDashboard()
     // {
     //     $postData = $this->input->post(null, true);

@@ -26,7 +26,7 @@ class Admin extends CI_Controller
     }
 
     // To set the total no of rows in the candidate request
-    
+
     public function setVariable()
     {
         $candidateTotalRows = $this->AdminModel->candidateRequestDetails();
@@ -247,7 +247,7 @@ class Admin extends CI_Controller
         $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
-    
+
 
     public function employeeRegistration()
     {
@@ -299,7 +299,7 @@ class Admin extends CI_Controller
         $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
-    
+
     public function deleteCandidateList()
     {
         $this->data['method'] = "deleteEmployeeList";
@@ -403,7 +403,7 @@ class Admin extends CI_Controller
     //         echo "Error deleting record";
     //     }
     // }
-    
+
 
     // public function addNewAdminApprovel()
     // {
@@ -425,6 +425,32 @@ class Admin extends CI_Controller
     //     $this->load->view('adminDashboard.php', $this->data);
     // }
 
+
+    public function candidateChart()
+    {
+        $this->data['method'] = "candidateChart";
+        $candidateChartList = $this->AdminModel->candidateChartDetails();
+        $this->data['candidateChartList'] = $candidateChartList["response"];
+        $this->setVariable();
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
+    public function updateCurrentStatus()
+    {
+        $postData = $this->input->post(null, true);
+        $updateStatus = $this->AdminModel->candidateStatus();
+        $currentStatus = $this->AdminModel->currentStatusSpf();
+        $this->candidateChart();
+    }
+
+    public function placedCandidate()
+    {
+        $this->data['method'] = "placedCandidates";
+        $candidateplaced = $this->AdminModel->placedCandidatesList();
+        $this->data['candidateChartList'] = $candidateplaced["response"];
+        $this->setVariable();
+        $this->load->view('adminDashboard.php', $this->data);
+    }
 
     public function candidateRequestList()
     {
@@ -487,7 +513,7 @@ class Admin extends CI_Controller
         $newcategory = $this->AdminModel->addcategoryEmployerJob();
         $this->categoryRequest();
     }
-    
+
     public function cancelNewCategoryExp()
     {
         $postData = $this->input->post(null, true);
@@ -519,14 +545,14 @@ class Admin extends CI_Controller
 
     // CANDIDATE FORM
 
-    public function dash()
-    {
-        $basicDetails = $this->CandidateModel->getBasicDetails();
-        $this->data['basicDetails'] = $basicDetails;
-        $this->data['method'] = "dash";
-        $this->setVariable();
-        $this->load->view('candidateDashboard.php',  $this->data);
-    }
+    // public function dash()
+    // {
+    //     $basicDetails = $this->CandidateModel->getBasicDetails();
+    //     $this->data['basicDetails'] = $basicDetails;
+    //     $this->data['method'] = "dash";
+    //     $this->setVariable();
+    //     $this->load->view('candidateDashboard.php', $this->data);
+    // }
 
     public function basicDetails()
     {
@@ -540,115 +566,79 @@ class Admin extends CI_Controller
 
     public function updateBasicDetails()
     {
-        // $id = $this->uri->segment(3);
         $postData = $this->input->post(null, true);
-        
         $updateBasicDetails = $this->CandidateModel->updateBasicDetails();
-        $this->educationTable();
-        echo '<script>alert("Basic details inserted successfully.");</script>';
+        $this->newCandidateList();
+        echo '<script>alert("Basic details inserted successfully by admin.");</script>';
     }
 
 
-     // education
+    // education
 
-     public function educationTable()
-     {
-         $id = $this->uri->segment(3);
-         $educationTable = $this->AdminModel->educationTable($id);
-         $this->data['educationTable'] = $educationTable;
+    public function educationTable()
+    {
+        $id = $this->uri->segment(3);
+        //  $educationTable = $this->AdminModel->educationTable($id);
+        //  $this->data['educationTable'] = $educationTable;
+        $this->data['candidateId'] = $id;
          $this->setVariable();
-         $this->data['method'] = 'educationTable';
-         $this->load->view('adminDashboard.php', $this->data);
-     }
- 
-     public function insertEducationForm()
-     {
-         $insertEducationForm = $this->CandidateModel->insertEducationForm();
-         $insertEducationForm = $this->CandidateModel->insertSubmit();
- 
-         $this->educationTable();
-         echo '<script>alert("Education details inserted successfully.");</script>';
- 
-     }
-     public function updateEducation()
-     {
-         $educationTable = $this->CandidateModel->educationTable();
-         $this->data['educationTable'] = $educationTable['response'];
-         $educationId = $this->uri->segment(3);
-         $this->data['method'] = "updateEducation";
-         $updateEducation = $this->CandidateModel->updateEducation($educationId);
-         $this->data['updateEducation'] = $updateEducation;
-         $this->setVariable();
-         $this->load->view('adminDashboard.php', $this->data);
-     }
-     public function updateInsertEducation()
-     {
-         $post = $this->input->post(null, true);
-         $updateInsertEducation = $this->CandidateModel->updateInsertEducation();
- 
-         $this->educationTable();
-         echo '<script>alert("Education details updated successfully.");</script>';
- 
-     }
- 
-     public function delete_selected()
-     {
-         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-             if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
-                 $selectedItems = $_POST['selected_items'];
-                 foreach ($selectedItems as $itemId) {
-                     $this->CandidateModel->delete_item($itemId);
-                 }
-                 $this->educationTable();
-             } else {
-                 $this->educationTable();
-                 echo '<script>alert("Please select the checkbox to delete.");</script>';
-             }
-         }
-     }
-      // experience
+        $this->data['method'] = 'educationTable';
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
+    public function insertEducationForm()
+    {
+        $insertEducationForm = $this->CandidateModel->insertEducationForm();
+        // $insertEducationForm = $this->CandidateModel->insertSubmit();
+
+        $this->newCandidateList();
+        echo '<script>alert("Education details inserted successfully by admin.");</script>';
+
+    }
+
+
+    // experience
 
     public function experienceTable()
     {
-        $this->data['method'] = "experienceTable";
-
-        $experienceTable = $this->CandidateModel->experienceTable();
-        $this->data['experienceTable'] = $experienceTable['response'];
+        $id = $this->uri->segment(3);
+        $this->data['candidateId'] = $id;
+       
+        // $experienceTable = $this->CandidateModel->experienceTable();
+        // $this->data['experienceTable'] = $experienceTable['response'];
 
         $categoryList = $this->CandidateModel->getCategoryList();
         $this->data['categoryList'] = $categoryList;
 
         $this->setVariable();
+        $this->data['method'] = "experienceTable";
         $this->load->view('adminDashboard.php', $this->data);
     }
 
     public function insertExperienceForm()
     {
         $insertExperienceForm = $this->CandidateModel->insertExperienceForm();
-        $insertExperienceForm = $this->CandidateModel->insertSubmitExp();
+        // $insertExperienceForm = $this->CandidateModel->insertSubmitExp();
 
-        $this->experienceTable();
-        echo '<script>alert("Experience details inserted successfully.");</script>';
+        $this->newCandidateList();
+        echo '<script>alert("Experience details inserted successfully my admin.");</script>';
     }
 
-    public function insertFresherForm()
+
+    // area of interest
+
+    public function areaOfIntrestTable()
     {
-        $insertExperienceForm = $this->CandidateModel->insertFresherForm();
+        $id = $this->uri->segment(3);
+        $this->data['candidateId'] = $id;
 
-        $this->areaOfIntrestTable();
-        echo '<script>alert("Experience is inserted as No experience.");</script>';
-    }
+        $this->data['method'] = "areaOfIntrestTable";
 
-    public function updateExperience()
-    {
-        $experienceId = $this->uri->segment(3);
-        $this->data['method'] = "updateExperience";
+        // $areaOfIntrestTable = $this->CandidateModel->areaOfIntrestTable();
+        // $this->data['areaOfIntrestTable'] = $areaOfIntrestTable['response'];
 
-        $experienceTable = $this->CandidateModel->experienceTable();
-        $this->data['experienceTable'] = $experienceTable['response'];
-
-        $updateExperience = $this->CandidateModel->updateExperience($experienceId);
-        $this->data['updateExperience'] = $updateExperience;
+        // $skillTable = $this->CandidateModel->skillTable();
+        // $this->data['skillTable'] = $skillTable;
 
         $categoryList = $this->CandidateModel->getCategoryList();
         $this->data['categoryList'] = $categoryList;
@@ -657,178 +647,34 @@ class Admin extends CI_Controller
         $this->load->view('adminDashboard.php', $this->data);
     }
 
-    public function updateInsertExperience()
+    public function insertAreaOfIntrest()
     {
-        $post = $this->input->post(null, true);
-        $updateInsertExperience = $this->CandidateModel->updateInsertExperience();
-        $this->experienceTable();
-        echo '<script>alert("Experience details updated successfully.");</script>';
+        $insertAreaOfIntrest = $this->AdminModel->jobInterestResume();
+
+        $this->newCandidateList();
+        echo '<script>alert("Area of interest inserted successfully by admin.");</script>';
     }
 
-    public function deleteExperience()
+   
+
+    // skills
+    public function skillTable()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
-                $selectedItems = $_POST['selected_items'];
-                foreach ($selectedItems as $itemId) {
-                    $this->CandidateModel->deleteExp($itemId);
-                }
-                $this->experienceTable();
-            } else {
-                $this->experienceTable();
-                echo '<script>alert("Please select the checkbox to delete.");</script>';
-            }
-        }
+        $this->data['method'] = "addSkillForm";
+        $id = $this->uri->segment(3);
+        $this->data['candidateId'] = $id;
+        // $skillTable = $this->CandidateModel->skillTable();
+        // $this->data['skillTable'] = $skillTable;
+        $this->load->view('adminDashboard.php', $this->data);
     }
 
-     // area of interest
+    public function insertSkillForm()
+    {
+        $insertSkillForm = $this->CandidateModel->insertSkillForm();
+        $this->newCandidateList();
+        echo '<script>alert("Skill inserted successfully by admin.");</script>';
+    }
 
-     public function areaOfIntrestTable()
-     {
-         $this->data['method'] = "areaOfIntrestTable";
- 
-         $areaOfIntrestTable = $this->CandidateModel->areaOfIntrestTable();
-         $this->data['areaOfIntrestTable'] = $areaOfIntrestTable['response'];
- 
-         $skillTable = $this->CandidateModel->skillTable();
-         $this->data['skillTable'] = $skillTable;
- 
-         $categoryList = $this->CandidateModel->getCategoryList();
-         $this->data['categoryList'] = $categoryList;
- 
-         $this->setVariable(); 
-         $this->load->view('adminDashboard.php', $this->data);
-     }
- 
-     public function insertAreaOfIntrest()
-     {
-         $insertAreaOfIntrest = $this->CandidateModel->insertAreaOfIntrest();
-         $insertAreaOfIntrest = $this->CandidateModel->insertSubmitArea();
-  
-         $this->areaOfIntrestTable();
-         echo '<script>alert("Area of interest inserted successfully.");</script>';
- 
-     }
- 
-     public function updateAreaOfIntrest()
-     {
-         $updateAreaOfIntrestId = $this->uri->segment(3);
-         $this->data['method'] = "updateAreaOfIntrest";
- 
-         $areaOfIntrestTable = $this->CandidateModel->areaOfIntrestTable();
-         $this->data['areaOfIntrestTable'] = $areaOfIntrestTable['response'];
- 
-         $updateAreaOfIntrest = $this->CandidateModel->updateAreaOfIntrest($updateAreaOfIntrestId);
-         $this->data['updateAreaOfIntrest'] = $updateAreaOfIntrest;
- 
-         $categoryList = $this->CandidateModel->getCategoryList();
-         $this->data['categoryList'] = $categoryList;
- 
-         $this->setVariable();         
-         $this->load->view('adminDashboard.php', $this->data);
-     }
- 
- 
-     public function updateInsertAreaOfIntrest()
-     {
-         $post = $this->input->post(null, true);
-         $updateInsertAreaOfIntrest = $this->CandidateModel->updateInsertAreaOfIntrest();
-         $this->areaOfIntrestTable();
-         echo '<script>alert("Area of interest updated successfully.");</script>'; 
-     }
- 
-     public function deleteAreaInterest()
-     {
-         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-             if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
-                 $selectedItems = $_POST['selected_items'];
-                 foreach ($selectedItems as $itemId) {
-                     $this->CandidateModel->deleteArea($itemId);
-                 }
-                 $this->areaOfIntrestTable();
-             } else {
-                 $this->areaOfIntrestTable();
-                 echo '<script>alert("Please select the checkbox to delete.");</script>';
-             }
-         }
-     }
-     
- 
-     // skills
- 
-     public function skillTable()
-     {
-         $this->data['method'] = "skillTable";
-         $skillTable = $this->CandidateModel->skillTable();
-         $this->data['skillTable'] = $skillTable;
-         $this->load->view('adminDashboard.php', $this->data);
-     }
- 
-     public function insertSkillForm()
-     {
-         $insertSkillForm = $this->CandidateModel->insertSkillForm();
-         $this->areaOfIntrestTable();
-         echo '<script>alert("Skill inserted successfully.");</script>';
-     }
- 
-     public function updateSkill()
-     {
-         $updateSkillId = $this->uri->segment(3);
-         $this->data['method'] = "updateSkill";
- 
-         $skillTable = $this->CandidateModel->skillTable();
-         $this->data['skillTable'] = $skillTable;
- 
-         $updateSkill = $this->CandidateModel->updateSkill($updateSkillId);
-         $this->data['updateSkill'] = $updateSkill;
- 
-         $this->setVariable();
- 
-         $this->load->view('adminDashboard.php', $this->data);
-     }
- 
-     public function updateInsertSkill()
-     {
-         $post = $this->input->post(null, true);
-         $updateInsertSkill = $this->CandidateModel->updateInsertSkill();
-         $this->areaOfIntrestTable();
-     }
- 
- 
-     public function deleteSkill()
-     {
-         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-             if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
-                 $selectedItems = $_POST['selected_items'];
-                 foreach ($selectedItems as $itemId) {
-                     $this->CandidateModel->deleteSkill($itemId);
-                 }
-                 $this->areaOfIntrestTable();
-             } else {
-                 $this->areaOfIntrestTable();
-                 echo '<script>alert("Please select the checkbox to delete.");</script>';
-             }
-         }
-     }
+   
 
-     public function resume()
-     {
-         $this->data['method'] = "resume";
-         $resume = $this->CandidateModel->do_upload();
-         $this->data['resume'] = $resume;
-         $arearesume = $this->CandidateModel->areaOfIntrestTable();
-         $this->data['arearesume'] = $arearesume['response'];
-         $this->setVariable();
-         $this->load->view('adminDashboard.php', $this->data);
-     }
- 
-     public function registered()
-     {
-         $this->data['method'] = "resume";
-         $resume = $this->CandidateModel->do_upload();
-         $submitresume = $this->CandidateModel->insertSubmitResume();
-         $this->data['resume'] = $resume;
-         $this->thank();
-     }
- 
 }
