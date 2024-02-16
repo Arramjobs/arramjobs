@@ -1798,8 +1798,10 @@ label #cancel {
 
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 footer3" id="footercontact">
             <h5 class="text-uppercase fw-bold mb-4" style="color: #EF4444;">Contact</h5>
-            <p style="color: white;"><i class="fas fa-home me-3 text-reset" style="color: white;"></i>H-72, Periyar
-              Nagar, Erode.
+            <p style="color: white;"><i class="fas fa-home me-3 text-reset" style="color: white;"></i>
+            Near Union Office Bus Stop, <br>
+            Muthur main road, Aalankattuvalasu, <br>
+            Modakkurichi, Erode - 638 104
             </p>
             <p style="color: white;">
               <i class="fas fa-envelope me-3 text-reset" style="color: white;"></i>

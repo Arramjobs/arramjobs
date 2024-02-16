@@ -1,5 +1,5 @@
  <?php
-    class AdminModel extends CI_Model
+     class AdminModel extends CI_Model
     {
         public function __construct()
         {
@@ -475,6 +475,539 @@
         //     $response = $this->db->query($addNewAdminApprovel);
         //     return array('response' => $response->result_array(), "totalRows" => $response->num_rows());
         // }
+
+
+        // Candidate details entered by Admin
+
+        public function getBasicDetails($id)
+    {
+            $getBasicDetails = "SELECT * FROM `seeker_profile_form` WHERE id = $id";
+            $response = $this->db->query($getBasicDetails);
+            return $response->result_array();
+    }
+
+    public function educationTable($id)
+    {
+        $educationTable = "SELECT * FROM `seeker_educational_details` WHERE id = $id";
+        $response = $this->db->query($educationTable);
+        // $addtab = $this->db->query($id);
+        // return $addtab->result_array();
+        
+        return $response->result_array();
+        // return array("response" =>$addtab->result_array(), "totalRows" => $addtab->num_rows());
+    }
+
+    public function insertEducationForm()
+    {
+        // $seekerId=$_SESSION['seekerId'];
+        $post = $this->input->post(null, true);
+
+
+        $config['upload_path'] = "./uploads/";
+        $basepath =  base_url().'uploads/';
+        $config['allowed_types'] = "jpg|png|pdf|jpeg";
+        $config['max_size'] = 1024;
+
+
+        $this->load->library('upload', $config);
+
+        $cer10 = "None";
+        $cer12 = "None";
+        $cerdip = 'None';
+        $cerug = "None";
+        $cerpg = "None";
+        $cerdoct = "None";
+
+
+        if ($this->upload->do_upload('certificate_10th')) {
+            $data = $this->upload->data();
+            $cer10 = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_12th')) {
+            $data = $this->upload->data();
+             $cer12 = $data['file_name'];
+         }
+         if ($this->upload->do_upload('certificate_dip')) {
+            $data = $this->upload->data();
+             $cerdip = $data['file_name'];
+         }
+
+        if ($this->upload->do_upload('certificate_ug')) {
+            $data = $this->upload->data();
+            $cerug = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_pg')) {
+            $data = $this->upload->data();
+            $cerpg = $data['file_name'];
+        }
+        if ($this->upload->do_upload('certificate_doctorate')) {
+            $data = $this->upload->data();
+            $cerdoct = $data['file_name'];
+        } else {
+            $error = $this->upload->display_errors();
+        }
+
+        $urlten = $basepath . $cer10;
+        $urltwelve = $basepath . $cer12;
+        $urldiploma = $basepath . $cerdip;
+        $urlug = $basepath . $cerug;
+        $urlpg = $basepath . $cerpg;
+        $urldoc = $basepath . $cerdoct;
+
+        $seekerId = $_SESSION['seekerId'];
+        $add = array(
+            'seekerId' => $seekerId,
+            'educational_qualification' => $post['qualification'],
+            'department' => $post['department'],
+            'educationmode' => $post['educationmode'],
+            'school_college_name' => $post['school'],
+            'percentage' => $post['percentage'],
+            'yearOfPassing' => $post['year_passed'],
+            'tencer_url' =>   $urlten,
+            'twelvecer_url' =>   $urltwelve,
+            'diplomacer_url' =>   $urldiploma,
+            'ugcer_url' =>  $urlug,
+            'pgcer_url' =>  $urlpg,
+            'doccer_url' =>  $urldoc,
+            'ten_cer' =>  $cer10,
+            'twelve_cer' =>  $cer12,
+            'diploma_cer' =>  $cerdip,
+            'ug_cer' =>  $cerug,
+            'pg_cer' =>  $cerpg,
+            'doc_cer' =>  $cerdoct
+        ); 
+
+
+        $this->db->insert('seeker_educational_details', $add);
+    }
+
+    public function insertSubmit()
+    {
+        $post = $this->input->post(null, true);
+
+        $seekerId = $_SESSION['seekerId'];
+
+        $addsubmit = array(
+            'edusubmited' => $post['edusubmit'],
+        );
+        $this->db->where('id', $seekerId);
+
+      $this->db->update('seeker_profile_form', $addsubmit);
+
+    }
+
+    public function updateEducation($educationId)
+    {
+        $update = "SELECT * FROM `seeker_educational_details` Where `id`=$educationId";
+        $add = $this->db->query($update);
+        return $add->result_array();
+    }
+
+    public function updateInsertEducation()
+    {
+        $post = $this->input->post(null, true);
+
+        $config['upload_path'] = "./uploads/";
+        // $basepath = 'http://localhost/arramjobs/uploads/';
+        $basepath =  base_url().'uploads/';
+
+         $config['allowed_types'] = "jpg|png|pdf";
+         $config['max_size'] = 1024;
+ 
+         $this->load->library('upload', $config);
+ 
+         $ucer10 = $post['old10cer'];
+         $ucer12 = $post['old12cer'];
+         $ucerdip = $post['olddipcer'];
+         $ucerug = $post['oldugcer'];
+         $ucerpg = $post['oldpgcer'];
+         $ucerdoct = $post['olddoccer'];
+
+         if ($this->upload->do_upload('certificate_10th')) {
+             $data = $this->upload->data();
+             $ucer10 = $data['file_name'];
+         }
+         if ($this->upload->do_upload('certificate_12th')) {
+             $data = $this->upload->data();
+             $ucer12 = $data['file_name'];
+         }
+         if ($this->upload->do_upload('certificate_dip')) {
+            $data = $this->upload->data();
+            $ucerdip = $data['file_name'];
+        }
+         if ($this->upload->do_upload('certificate_ug')) {
+             $data = $this->upload->data();
+             $ucerug = $data['file_name'];
+         }
+         if ($this->upload->do_upload('certificate_pg')) {
+             $data = $this->upload->data();
+             $ucerpg = $data['file_name'];
+         }
+         if ($this->upload->do_upload('certificate_doctorate')) {
+             $data = $this->upload->data();
+             $ucerdoct = $data['file_name'];
+         } else {
+             $error = $this->upload->display_errors();
+         }
+
+         $urltenu = $basepath . $ucer10;
+         $urltwelveu = $basepath . $ucer12;
+         $urldiplomau = $basepath . $ucerdip;
+         $urlugu = $basepath . $ucerug;
+         $urlpgu = $basepath . $ucerpg;
+         $urldocu = $basepath . $ucerdoct;
+
+
+        $educationId = $post['id'];
+        $updateInsertEducation = array(
+            'educational_qualification' => $post['qualification'],
+            'department' => $post['department'],
+            'educationmode' => $post['educationmode'],
+            'school_college_name' => $post['school'],
+            'percentage' => $post['percentage'],
+            'yearOfPassing' => $post['year_passed'],
+            'tencer_url' =>   $urltenu,
+            'twelvecer_url' =>   $urltwelveu,
+            'diplomacer_url' =>   $urldiplomau,
+            'ugcer_url' =>  $urlugu,
+            'pgcer_url' =>  $urlpgu,
+            'doccer_url' =>  $urldocu,
+            'ten_cer' =>  $ucer10,
+            'twelve_cer' =>  $ucer12,
+            'diploma_cer' =>  $ucerdip,
+            'ug_cer' =>  $ucerug,
+            'pg_cer' =>  $ucerpg,
+            'doc_cer' =>  $ucerdoct
+
+        );
+        $this->db->where('id', $educationId);
+        $this->db->update('seeker_educational_details', $updateInsertEducation);
+    }
+
+    // public function deleteEducation($deleteEducationId)
+    // {
+    //     $delete = "DELETE FROM `seeker_educational_details` WHERE `id`=$deleteEducationId";
+    //     $del = $this->db->query($delete);
+    // }
+
+
+    public function delete_item($item_id)
+    {
+        $this->db->where('id', $item_id);
+        $this->db->delete('seeker_educational_details');
+    }
+
+
+
+    public function experienceTable()
+    {
+        $seekerId = $_SESSION['seekerId'];
+        $seekerId = "SELECT * FROM `seeker_experience` Where `seekerId`= $seekerId";
+        $addtab = $this->db->query($seekerId);
+        // return $addtab->result_array();
+        return array('response' => $addtab->result_array(), "totalRows" => $addtab->num_rows());
+    }
+
+    public function getCategoryList(){
+        $category = " SELECT * FROM category_master WHERE (categoryName, id) IN (
+                        SELECT DISTINCT categoryName, MIN(id) AS id FROM category_master GROUP BY categoryName )
+                        ORDER BY categoryName ASC";
+        $select = $this->db->query($category);
+        return $select->result(); 
+    }
+
+
+    public function insertExperienceForm()
+    {
+        $seekerId = $_SESSION['seekerId'];
+        $post = $this->input->post(null, true);
+
+    $tillNowChecked = isset($post['till_now']);
+    $toDate = $tillNowChecked ? date("Y-m-d") : $post['toDate'];
+
+        $add = array(
+            'seekerId' => $seekerId,
+            'other_category' => $post['category'],
+            'other_sub_category' => $post['subcategory'],
+            'expYear' => $post['fromDate'],
+            'expMonth' => $toDate,
+            'company_name' => $post['companyname'],
+            'company_location' => $post['companylocation'],
+            'job_role' => $post['role'],
+            'company_mobilenum' => $post['company_mobilenum'],
+            // 'profile' => $post['profile'],
+            'previous_employer_name' => $post['nameofemployer'],
+            'previous_employer_mobile' => $post['number'],
+            'previous_employer_email' => $post['emailid'],
+            'categoryOthers' =>isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
+            'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0",
+        );
+
+        $this->db->insert('seeker_experience', $add);
+    }
+
+    public function insertFresherForm()
+    {
+        $seekerId = $_SESSION['seekerId'];
+        $post = $this->input->post(null, true);
+
+        $add = array(
+            'seekerId' => $seekerId,
+            'workStatus' => $post['fresher']
+        );
+
+        $this->db->insert('seeker_experience', $add);
+    }
+
+    public function insertSubmitExp()
+    {
+        $post = $this->input->post(null, true);
+        $seekerId = $_SESSION['seekerId'];
+
+        $submitexp = array(
+            'expsubmited' => $post['expsubmit'],
+        );
+        $this->db->where('id', $seekerId);
+
+      $this->db->update('seeker_profile_form', $submitexp);
+    }
+
+    public function updateExperience($experienceId)
+    {
+        $update = "SELECT * FROM `seeker_experience` Where `id`=$experienceId";
+        $add = $this->db->query($update);
+        return $add->result_array();
+    }
+
+
+    public function updateInsertExperience()
+    {
+        $post = $this->input->post(null, true);
+        $experienceId = $post['id'];
+
+ $tillNowChecked = isset($post['till_now']);
+ $toDate = $tillNowChecked ? date("Y-m-d") : $post['toDate'];
+        $updateInsertExperience = array(
+            
+            'other_category' => $post['category'],
+            'other_sub_category' => $post['subcategory'],
+            'expYear' => $post['fromDate'],
+            'expMonth' => $toDate,
+            'company_name' => $post['companyname'],
+            'company_location' => $post['companylocation'],
+            'job_role' => $post['role'],
+            'company_mobilenum' => $post['company_mobilenum'],
+            // 'profile' => $post['profile'],
+            'previous_employer_name' => $post['nameofemployer'],
+            'previous_employer_mobile' => $post['number'],
+            'previous_employer_email' => $post['emailid'],
+        );
+
+        $this->db->where('id', $experienceId);
+        $this->db->update('seeker_experience', $updateInsertExperience);
+    }
+
+    // public function deleteExperience($deleteExperienceId)
+    // {
+    //     $delete = "DELETE FROM `seeker_experience` WHERE `id`=$deleteExperienceId";
+    //     $del = $this->db->query($delete);
+    // }
+
+    public function deleteExp($item_id)
+    {
+        $this->db->where('id', $item_id);
+        $this->db->delete('seeker_experience');
+    }
+
+    public function areaOfIntrestTable()
+    {
+        $seekerId = $_SESSION['seekerId'];
+        $seekerId = "SELECT * FROM `seeker_area_of_interst` Where `seekerId`= $seekerId";
+        $addtab = $this->db->query($seekerId);
+        // return $addtab->result_array();
+        return array("response" =>$addtab->result_array(), "totalRows" => $addtab->num_rows());
+    }
+
+    public function insertAreaOfIntrest()
+    {
+        $seekerId = $_SESSION['seekerId'];
+        $post = $this->input->post(null, true);
+
+        $add = array(
+            'seekerId' => $seekerId,
+            'other_interst_category' => $post['category'],
+            'other_sub_interst_category' => $post['subcategory'],
+            'prefered_location' => $post['preferred-location'],
+            // 'expYear' => $post['expYear'],
+            // 'expMonth' => $post['expMonth'],
+            'job_type' => $post['jobtype'],
+            'description' => $post['description'],
+            'expected_salary' => $post['expected-salary'],
+            'categoryOthers' =>isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
+            'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0",
+            // 'skillname' => $post['skillname'],
+            // 'skillexperience' => $post['skillexperience'],
+            // 'skilllevel' => $post['skilllevel']
+        );
+
+        $this->db->insert('seeker_area_of_interst', $add);
+    }
+
+    public function insertSubmitArea()
+    {
+        $post = $this->input->post(null, true);
+        $seekerId = $_SESSION['seekerId'];
+
+        $submitarea = array(
+            'areasubmited' => $post['areasubmit'],
+        );
+        $this->db->where('id', $seekerId);
+
+      $this->db->update('seeker_profile_form', $submitarea);
+    }
+
+    public function updateAreaOfIntrest($updateAreaOfIntrestId)
+    {
+        $update = "SELECT * FROM `seeker_area_of_interst` Where `id`= $updateAreaOfIntrestId";
+        $add = $this->db->query($update);
+        return $add->result_array();
+    }
+
+    public function updateInsertAreaOfIntrest()
+    {
+        $post = $this->input->post(null, true);
+        $areaOfIntrest = $post['id'];
+        $updateInsertAreaOfIntrest = array(
+            'other_interst_category' => $post['category'],
+            'other_sub_interst_category' => $post['subcategory'],
+            'prefered_location' => $post['preferred-location'],
+            // 'expYear' => $post['expYear'],
+            // 'expMonth' => $post['expMonth'],
+            'job_type' => $post['jobtype'],
+            'description' => $post['description'],
+            'expected_salary' => $post['expected-salary'],
+            // 'skillname' => $post['skillname'],
+            // 'skillexperience' => $post['skillexperience'],
+            // 'skilllevel' => $post['skilllevel']
+        );
+
+        $this->db->where('id', $areaOfIntrest);
+        $this->db->update('seeker_area_of_interst', $updateInsertAreaOfIntrest);
+    }
+
+    // public function deleteAreaOfIntrest($deleteAreaOfIntrestId)
+    // {
+    //     $delete = "DELETE FROM `seeker_area_of_interst` WHERE `id`=$deleteAreaOfIntrestId";
+    //     $del = $this->db->query($delete);
+    // }
+
+    public function deleteArea($item_id)
+    {
+        $this->db->where('id', $item_id);
+        $this->db->delete('seeker_area_of_interst');
+    }
+
+
+
+
+    //  skill,
+    public function skillTable()
+    {
+        $seekerId = $_SESSION['seekerId'];
+        $seekerId = "SELECT * FROM `seeker_skill` Where `seekerId`= $seekerId";
+        $addtab = $this->db->query($seekerId);
+        return $addtab->result_array();
+    }
+
+    public function insertSkillForm()
+    {
+        $seekerId = $_SESSION['seekerId'];
+        $post = $this->input->post(null, true);
+
+        $add = array(
+            'seekerId' => $seekerId,
+            'skill' => $post['skillname'],
+            'experience' => $post['experience'],
+            // 'expMonth' => $post['skillexperience'],
+            'skill_level' => $post['skilllevel']
+        );
+
+        $this->db->insert('seeker_skill', $add);
+    }
+
+    public function updateSkill($updateSkillId)
+    {
+        $update = "SELECT * FROM `seeker_skill` Where `id`= $updateSkillId";
+        $add = $this->db->query($update);
+        return $add->result_array();
+    }
+
+
+
+    public function updateInsertSkill()
+    {
+        $post = $this->input->post(null, true);
+        $areaOfIntrest = $post['id'];
+        $updateInsertSkill = array(
+            'skill' => $post['skillname'],
+            'experience' => $post['experience'],
+            'skill_level' => $post['skilllevel']
+        );
+
+        $this->db->where('id', $areaOfIntrest);
+        $this->db->update('seeker_skill', $updateInsertSkill);
+    }
+
+    public function deleteSkill($deleteSkillId)
+    {
+        $delete = "DELETE FROM `seeker_skill` WHERE `id`=$deleteSkillId";
+        $del = $this->db->query($delete);
+    }
+    public function updateresumefilename($resumefilename)
+    {
+        $seekerId = $_SESSION['seekerId'];
+        $basepath =  base_url().'uploads/';
+       
+        $updateresume['resume_filename'] = $resumefilename;
+        $updateresume['resume_filename_url'] = $basepath.$resumefilename;
+
+        $this->db->where('seekerId', $seekerId);
+        $this->db->update('seeker_area_of_interst', $updateresume);
+    }
+    
+    public function insertSubmitResume()
+    {
+        $post = $this->input->post(null, true);
+        $seekerId = $_SESSION['seekerId'];
+
+        $submitresume = array(
+            'resumesubmited' => $post['resumesubmit'],
+        );
+        $this->db->where('id', $seekerId);
+
+      $this->db->update('seeker_profile_form', $submitresume);
+    }
+
+    public function do_upload()
+    {
+
+        $config['upload_path'] = "./uploads/";
+        $config['allowed_types'] = "jpg|png|pdf";
+        $config['max_size'] = 1024;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file')) {
+            $data = $this->upload->data();
+            $resumefilename = $data['file_name'];
+            $this->updateresumefilename($resumefilename);
+
+        } else {
+            $error = $this->upload->display_errors();
+        }
+
+
+    }
 
     }
 
