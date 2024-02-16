@@ -1336,8 +1336,11 @@
             enctype="multipart/form-data" onsubmit="return validateForm()"
             action="<?php echo baseUrl . "Candidate/insertEducationForm" ?>">
 
+            <input type="hidden" class="form-control" id="id" value="" name="seekerId">
+
             <div class="col-12 autocomplete">
-              <label for="qualification" class="form-label">Educational Qualification <span class="text-danger">*</span></label>
+              <label for="qualification" class="form-label">Educational Qualification <span
+                  class="text-danger">*</span></label>
               <input id="qualification" class="form-control" type="text" name="qualification" onchange="toggleFields()"
                 placeholder="Enter qualification">
               <div id="qualification_error" class="text-danger"></div>
@@ -1381,41 +1384,47 @@
             </div>
 
             <div class="col-md-6" id="certificate_10th-group" style="display: none;">
-              <label for="certificate_10th" class="form-label">10th Certificate Upload <span class="text-danger">*</span></label>
+              <label for="certificate_10th" class="form-label">10th Certificate Upload <span
+                  class="text-danger">*</span></label>
               <input type="file" class="form-control" id="certificate_10th" name="certificate_10th"
                 accept="image/png ,image/jpg, image/jpeg, application/pdf">
               <div id="certificate_10th_error" class="text-danger"></div>
             </div>
 
             <div class="col-md-6" id="certificate_12th-group" style="display: none;">
-              <label for="certificate_12th" class="form-label">12th Certificate Upload <span class="text-danger">*</span></label>
+              <label for="certificate_12th" class="form-label">12th Certificate Upload <span
+                  class="text-danger">*</span></label>
               <input type="file" class="form-control" id="certificate_12th" name="certificate_12th"
                 accept="image/png ,image/jpg, image/jpeg, application/pdf">
               <div id="certificate_12th_error" class="text-danger"></div>
             </div>
 
             <div class="col-md-6" id="certificate_dip-group" style="display: none;">
-              <label id="additionalFieldLabeldip" for="certificate_dip" class="form-label">Diploma Certificate Upload <span class="text-danger">*</span></label>
+              <label id="additionalFieldLabeldip" for="certificate_dip" class="form-label">Diploma Certificate Upload
+                <span class="text-danger">*</span></label>
               <input type="file" class="form-control" id="certificate_dip" name="certificate_dip">
               <div id="certificate_dip_error" class="text-danger"></div>
             </div>
 
             <div class="col-md-6" id="certificate_ug-group" style="display: none;">
-              <label id="additionalFieldLabelug" for="certificate_ug" class="form-label">UG Degree Certificate Upload <span class="text-danger">*</span></label>
+              <label id="additionalFieldLabelug" for="certificate_ug" class="form-label">UG Degree Certificate Upload
+                <span class="text-danger">*</span></label>
               <input type="file" class="form-control" id="certificate_ug" name="certificate_ug"
                 accept="image/png ,image/jpg, image/jpeg, application/pdf">
               <div id="certificate_ug_error" class="text-danger"></div>
             </div>
 
             <div class="col-md-6" id="certificate_pg-group" style="display: none;">
-              <label id="additionalFieldLabelpg" for="certificate_pg" class="form-label">PG Certificate Upload <span class="text-danger">*</span></label>
+              <label id="additionalFieldLabelpg" for="certificate_pg" class="form-label">PG Certificate Upload <span
+                  class="text-danger">*</span></label>
               <input type="file" class="form-control" id="certificate_pg" name="certificate_pg"
                 accept="image/png ,image/jpg, image/jpeg, application/pdf">
               <div id="certificate_pg_error" class="text-danger"></div>
             </div>
 
             <div class="col-md-6" id="certificate_doctorate-group" style="display: none;">
-              <label id="additionalFieldLabeldoc" for="certificate_doctorate" class="form-label">Doctorate Certificate Upload <span class="text-danger">*</span></label>
+              <label id="additionalFieldLabeldoc" for="certificate_doctorate" class="form-label">Doctorate Certificate
+                Upload <span class="text-danger">*</span></label>
               <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate"
                 accept="image/png ,image/jpg, image/jpeg, application/pdf">
               <div id="certificate_doctorate_error" class="text-danger"></div>
@@ -2441,7 +2450,8 @@
                 <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
                 <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id">
                 <div class="col-12">
-                  <label class="form-label" for="qualification">Educational Qualification <span class="text-danger">*</span></label>
+                  <label class="form-label" for="qualification">Educational Qualification <span
+                      class="text-danger">*</span></label>
                   <select class="form-control" id="qualification" value="<?php echo $value['educational_qualification']; ?>"
                     name="qualification" onchange="toggleFields()" readonly>
                     <option value="<?php echo $value['educational_qualification']; ?>">
@@ -2492,7 +2502,8 @@
                 </div>
 
                 <div class="col-md-6" id="certificate_10th-group" style="display: none;">
-                  <label class="form-label" for="certificate_10th">10th Certificate Upload <span class="text-danger">*</span></label>
+                  <label class="form-label" for="certificate_10th">10th Certificate Upload <span
+                      class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="old10cer" value="<?php echo $value['ten_cer']; ?>" hidden>
                   <div class="uploadedfile" style="display:flex;">
                     <input type="file" class="form-control cer10upload" id="certificate_10th" name="certificate_10th"
@@ -2506,7 +2517,8 @@
                 </div>
 
                 <div class="col-md-6" id="certificate_12th-group" style="display: none;">
-                  <label class="form-label" for="certificate_12th">12th Certificate Upload <span class="text-danger">*</span></label>
+                  <label class="form-label" for="certificate_12th">12th Certificate Upload <span
+                      class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="old12cer" value="<?php echo $value['twelve_cer']; ?>"
                     hidden>
                   <div class="uploadedfile" style="display:flex;">
@@ -2521,7 +2533,8 @@
                 </div>
 
                 <div class="col-md-6" id="certificate_dip-group" style="display: none;">
-                  <label id="additionalFieldLabeldip" class="form-label" for="certificate_dip">Diploma Certificate Upload <span class="text-danger">*</span></label>
+                  <label id="additionalFieldLabeldip" class="form-label" for="certificate_dip">Diploma Certificate Upload
+                    <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="olddipcer" value="<?php echo $value['diploma_cer']; ?>"
                     hidden>
                   <div class="uploadedfile" style="display:flex;">
@@ -2536,7 +2549,8 @@
                 </div>
 
                 <div class="col-md-6" id="certificate_ug-group" style="display: none;">
-                  <label id="additionalFieldLabelug" class="form-label" for="certificate_ug">UG Degree Certificate Upload <span class="text-danger">*</span></label>
+                  <label id="additionalFieldLabelug" class="form-label" for="certificate_ug">UG Degree Certificate Upload
+                    <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="oldugcer" value="<?php echo $value['ug_cer']; ?>" hidden>
                   <div class="uploadedfile" style="display:flex;">
                     <input type="file" class="form-control cerugupload" id="certificate_ug" name="certificate_ug"
@@ -2550,7 +2564,8 @@
                 </div>
 
                 <div class="col-md-6" id="certificate_pg-group" style="display: none;">
-                  <label id="additionalFieldLabelpg" class="form-label" for="certificate_pg">PG Certificate Upload <span class="text-danger">*</span></label>
+                  <label id="additionalFieldLabelpg" class="form-label" for="certificate_pg">PG Certificate Upload <span
+                      class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="oldpgcer" value="<?php echo $value['pg_cer']; ?>" hidden>
                   <div class="uploadedfile" style="display:flex;">
                     <input type="file" class="form-control cerpgupload" id="certificate_pg" name="certificate_pg"
@@ -2564,7 +2579,8 @@
                 </div>
 
                 <div class="col-md-6" id="certificate_doctorate-group" style="display: none;">
-                  <label id="additionalFieldLabeldoc" class="form-label" for="certificate_doctorate">Doctorate Certificate Upload <span class="text-danger">*</span></label>
+                  <label id="additionalFieldLabeldoc" class="form-label" for="certificate_doctorate">Doctorate Certificate
+                    Upload <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="olddoccer" value="<?php echo $value['doc_cer']; ?>" hidden>
                   <div class="uploadedfile" style="display:flex;">
                     <input type="file" class="form-control cerdocupload" id="certificate_doctorate"
@@ -2885,6 +2901,8 @@
                 <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
                   onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Candidate/insertExperienceForm" ?>">
 
+                  <input type="hidden" class="form-control" id="id" value="" name="seekerId">
+
                   <div class="col-6">
                     <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
                     <select class="form-control" id="category" name="category" autocomplete="off"
@@ -2911,20 +2929,25 @@
                   </div>
 
                   <div class="col-md-6">
-                    <label for="subcategory" class="form-label">Subcategory  <span class="text-danger">*</span><span class="text-danger">*</span></label>
-                    <input class="form-control" id="subcategory" name="subcategory" placeholder="Enter subcategory" required>
+                    <label for="subcategory" class="form-label">Subcategory <span class="text-danger">*</span><span
+                        class="text-danger">*</span></label>
+                    <input class="form-control" id="subcategory" name="subcategory" placeholder="Enter subcategory"
+                      required>
                     <div id="subcategory_error" class="text-danger error"></div>
                   </div>
 
                   <div class="col-md-6">
                     <label for="company name" class="form-label">Company Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Enter company name" required>
+                    <input type="text" class="form-control" id="companyname" name="companyname"
+                      placeholder="Enter company name" required>
                     <div id="companyname_error" class="text-danger error"></div>
                   </div>
 
                   <div class="col-md-6">
-                    <label for="company location" class="form-label">Company Location <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="companylocation" name="companylocation" placeholder="Enter company location" required>
+                    <label for="company location" class="form-label">Company Location <span
+                        class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="companylocation" name="companylocation"
+                      placeholder="Enter company location" required>
                     <div id="companylocation_error" class="text-danger error"></div>
                   </div>
                   <div class="col-md-6">
@@ -3294,6 +3317,8 @@
           <!-- Multi Columns Form -->
           <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
             onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Candidate/insertExperienceForm" ?>">
+
+            <input type="hidden" class="form-control" id="id" value="" name="seekerId">
 
             <!-- <div class="col-12">
                                         <label for="category" class="form-label">Category</label>
@@ -4201,7 +4226,8 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="company location">Company Location <span class="text-danger">*</span></label>
+                  <label class="form-label" for="company location">Company Location <span
+                      class="text-danger">*</span></label>
                   <input type="text" class="form-control" value="<?php echo $value['company_location']; ?>"
                     id="companylocation" name="companylocation" required>
                   <div id="companylocation_error" class="error"></div>
@@ -4253,7 +4279,8 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label for="mobilenumber" class="form-label">Company Mobile Number <span class="text-danger">*</span></label>
+                  <label for="mobilenumber" class="form-label">Company Mobile Number <span
+                      class="text-danger">*</span></label>
                   <input type="number" class="form-control" id="company_mobilenum"
                     value="<?php echo $value['company_mobilenum']; ?>" name="company_mobilenum" placeholder="9879879879"
                     pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
@@ -4280,7 +4307,8 @@
                 <div class="col-md-6">
                   <label class="form-label" for="phone number">Mobile Number <span class="text-danger">*</span></label>
                   <input type="number" class="form-control" value="<?php echo $value['previous_employer_mobile']; ?>"
-                    id="number" name="number" placeholder="9879879879" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
+                    id="number" name="number" placeholder="9879879879" pattern="[0-9]{1,15}" maxlength="15"
+                    oninput="validatePhoneNumber(this)" required>
                   <div id="mobilenum_error" class="error"></div>
                 </div>
 
@@ -4532,7 +4560,8 @@
 
               <div class="d-flex justify-content-between">
                 <a class="" href="#addinterestform">
-                  <button type="button" class="btn btn-success mb-4" onclick="addinterestform()">+ Add Area of Job interest</button></a>
+                  <button type="button" class="btn btn-success mb-4" onclick="addinterestform()">+ Add Area of Job
+                    interest</button></a>
                 <div>
                   <a class="" href="<?php echo baseUrl . "Candidate/experienceTable" ?>"> <button type="button"
                       class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
@@ -4681,7 +4710,8 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="preferred-location">Preferred Location to work <span class="text-danger">*</span></label>
+                  <label class="form-label" for="preferred-location">Preferred Location to work <span
+                      class="text-danger">*</span></label>
                   <select class="form-control" id="preferred-location" name="preferred-location" required>
                     <option value="">Select district</option>
                     <option value="Erode">Erode</option>
@@ -4694,7 +4724,8 @@
 
                 <div class="col-md-6">
                   <label class="form-label" for="description">Description <span class="text-danger">*</span></label>
-                  <input class="form-control" id="description" name="description" rows="3" placeholder="Enter description" required>
+                  <input class="form-control" id="description" name="description" rows="3" placeholder="Enter description"
+                    required>
                   <div id="areades_error" class="error"></div>
                 </div>
 
@@ -4709,7 +4740,8 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="expected-salary">Expected Salary <span class="text-danger">*</span></label>
+                  <label class="form-label" for="expected-salary">Expected Salary <span
+                      class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="expected-salary" name="expected-salary"
                     placeholder="Enter salary expectation" required>
                   <div id="areasalary_error" class="error"></div>
@@ -4928,10 +4960,12 @@
           <form class="row g-3 needs-validation" novalidate method="post" onsubmit="return validateSkillForm()"
             action="<?php echo baseUrl . "Candidate/insertSkillForm" ?>">
 
+            <input type="hidden" class="form-control" id="id" value="" name="seekerId">
 
             <div class="col-12">
               <label class="form-label" for="skillname">Skill Name <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name" required>
+              <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name"
+                required>
               <div id="sname_error" class="error"></div>
             </div>
 
@@ -4959,8 +4993,8 @@
                     <?php for ($i = 0; $i <= 20; $i++): ?>
 
                       <option value="<?php echo $i; ?>">
-                        <?php echo $i; ?> Year
-                        <?php echo $i !== 1 ? 's' : ''; ?>
+                        <?php echo $i; ?>
+                        <?php echo $i !== 1 ? 'years' : 'year'; ?>
                       </option>
                     <?php endfor; ?>
                     <option value="20+"> 20+ Years</option>
@@ -5328,7 +5362,8 @@
 
               <div class="col-12">
                 <label class="form-label" for="skillname">Skill Name <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name" required>
+                <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name"
+                  required>
                 <div id="sname_error" class="error"></div>
               </div>
 
@@ -5609,7 +5644,8 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="preferred-location">Preferred Location to work <span class="text-danger">*</span></label>
+                  <label class="form-label" for="preferred-location">Preferred Location to work <span
+                      class="text-danger">*</span></label>
                   <select class="form-control" id="preferred-location" name="preferred-location"
                     value="<?php echo $value['prefered_location']; ?>" required>
                     <option value="Erode" <?php if ($value['prefered_location'] === 'Erode')
@@ -6139,13 +6175,13 @@
 
       <?php
       if (($basicDetails[0]['bdsubmited'] != '1')) { ?>
-        <p>Basic Details no data</p>
+        <p>Please enter your Basic Details to complete the process.</p>
       <?php } else if (isset($eduTotalRows) && $eduTotalRows < "1") { ?>
-          <p>Edu no data</p>
+          <p>Please enter your Education Details to complete the process.</p>
       <?php } else if ((isset($expTotalRows) && $expTotalRows < "1")) { ?>
-            <p>Exp no data</p>
+            <p>Please enter your Experience Details to complete the process.</p>
       <?php } else if ((isset($wreaTotalRows) && $areaTotalRows < "1")) { ?>
-              <p>Area no data</p>
+              <p>Please enter your Area of Job Interest to complete the process.</p>
       <?php } else { ?>
               <section class="Multi Columns Form" style="padding-bottom: 165px;">
                 <div>

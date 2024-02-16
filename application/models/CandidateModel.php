@@ -604,14 +604,14 @@ class CandidateModel extends CI_Model
 
     public function insertAreaOfIntrest()
     {
-        // $seekerId = $_SESSION['seekerId'];
+        $seekerId = $_SESSION['seekerId'];
         
         $post = $this->input->post(null, true);
-        if ($post['seekerId'] != NULL) {
-            $seekerId = $post['seekerId'];
-         } else {
-              $seekerId = $_SESSION['seekerId'];
-         }
+        // if ($post['seekerId'] != NULL) {
+        //     $seekerId = $post['seekerId'];
+        //  } else {
+        //       $seekerId = $_SESSION['seekerId'];
+        //  }
 
         $add = array(
             'seekerId' => $seekerId,

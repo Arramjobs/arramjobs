@@ -248,7 +248,7 @@ class Employer extends CI_Controller
         $postData = $this->input->post(null, true);
         $add = $this->EmployerModel->update_job();
 
-        echo "Record updated Successfully";
+        // echo "Record updated Successfully";
         $this->jobViewTable();
         echo '<script>alert("Job details updated successfully.");</script>';
     }

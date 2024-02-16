@@ -4287,8 +4287,8 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="company location" class="form-label">Company Location <span <input
-                                                type="text" class="form-control" id="companylocation" name="companylocation"
+                                        <label for="company location" class="form-label">Company Location</label> 
+                                        <input type="text" class="form-control" id="companylocation" name="companylocation"
                                                 placeholder="Enter company location">
                                                 <div id="companylocation_error" class="text-danger error"></div>
                                     </div>
@@ -4328,8 +4328,8 @@
                                         <div id="role_error" class="text-danger error"></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="mobilenumber" class="form-label">Company Mobile Number <span <input
-                                                type="number" class="form-control" id="company_mobilenum"
+                                        <label for="mobilenumber" class="form-label">Company Mobile Number </label>
+                                        <input type="number" class="form-control" id="company_mobilenum"
                                                 name="company_mobilenum" placeholder="9879879879" pattern="[0-9]{1,15}"
                                                 maxlength="15" oninput="validatePhoneNumber(this)">
                                                 <div id="compmobile_error" class="text-danger error"></div>

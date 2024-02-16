@@ -665,6 +665,7 @@ class Admin extends CI_Controller
         $this->data['candidateId'] = $id;
         // $skillTable = $this->CandidateModel->skillTable();
         // $this->data['skillTable'] = $skillTable;
+        $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
 
