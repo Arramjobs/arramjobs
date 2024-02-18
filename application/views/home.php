@@ -175,7 +175,6 @@ label #cancel {
 .header ul .dropdown {
   position: absolute;
   width: 200px;
-  /* background-color: #445964; */
   background-color: #333;
   opacity: 0;
   padding-left: 15px;
@@ -217,9 +216,6 @@ label #cancel {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-.column1 {
-  /* flex-basis: 50%; */
 }
 .column1 h1 {
   color: #fff;
@@ -608,38 +604,6 @@ label #cancel {
     .row1 {
     flex-direction: column;
   }
-    /* .column1 h1 {
-      font-size: 54px;
-      text-align: center;
-    }
-    .column1 p {
-      padding-top: 5%;
-      font-size: 28px;
-      text-align: center;
-    } 
-    .column2 h2 {
-      margin-top: -20%;
-      font-size: 25px;
-    }
-    .column2 .profile-card h4 {
-      font-size: 20px;
-    }
-    .column2 .profile-card p {
-      font-size: 14px;
-    }
-    .column2 .profile-card {
-      height: 230px;
-      width: 165px;
-    }
-    .column2 .profile-card:hover {
-      height: 220px;
-    }
-    .column2 .profile-card:hover .social-links {
-      padding-left: 60px;
-    }
-    .language-selector {
-      margin-bottom: 12px;
-    } */
     .verticals-container .wrapper2 {
       width: 100%;
       display: flex;
@@ -652,46 +616,6 @@ label #cancel {
     }
   }
 
-  /* @media only screen and (max-width:590px) {
-  .column1 {
-    margin-top: 35%;
-  }
-    .column1 h1 {
-      font-size: 30px;
-      text-align: center;
-    }
-    .column1 p {
-      padding-top: 5%;
-      font-size: 20px;
-      text-align: center;
-    } 
-    .column2 h2 {
-      margin-top: 8%;
-      font-size: 25px;
-    }
-    .column2 .profile-card h4 {
-      font-size: 16px;
-    }
-    .column2 .profile-card p {
-      font-size: 12px;
-    }
-    .column2 .profile-card {
-      height: 210px;
-      width: 135px;
-    }
-    .column2 .profile-card:hover {
-      height: 205px;
-    }
-    .language-selector {
-      margin-bottom: 12px;
-    }
-    .language-icon {
-      display: none;
-    }
-    .fa-globe {
-      display: block;
-    }
-  } */
   @media only screen and (max-width:375px) {
   .column1 {
     margin-top: 45%;
@@ -722,72 +646,7 @@ label #cancel {
       height: 205px;
     }
   }
-  /* @media only screen and (max-width:1024px) {
-  .row1 {
-    width: 100%;
-    flex-direction: column;
-  }
-    .column1 h1 {
-    margin-top: 55%;
-    font-size: 32px;
-    text-align: center;
-  }
-  .column1 p {
-    font-size: 22px;
-    text-align: center;
-  }
-  .column2 {
-    margin-top: -24%;
-  } 
-  .column2 h2 {
-    font-size: 25px;
-  }
-  .column2 .profile-card h4 {
-    font-size: 16px;
-  }
-  .column2 .profile-card p {
-    font-size: 12px;
-  }
-  .column2 .profile-card {
-    height: 212px;
-    width: 152px;
-  }
-  .column2 .profile-card:hover {
-    height: 225px;
-  }
-} */
-/* @media only screen and (max-width:768px) {
-  .row1 {
-    flex-direction: column;
-  }
-  .column1 h1 {
-    font-size: 30px;
-    text-align: center;
-  }
-  .column1 p {
-    font-size: 20px;
-    text-align: center;
-  } 
-  .column2 h2 {
-    font-size: 22px;
-  }
-  .column2 .profile-card h4 {
-    font-size: 16px;
-  }
-  .column2 .profile-card p {
-    font-size: 12px;
-  }
-  .column2 .profile-card {
-    height: 210px;
-    width: 155px;
-  }
-  .column2 .profile-card:hover {
-    height: 225px;
-  }
-} */
 
-
-  
   @media only screen and (max-width:1206px) {
     label #btns {
       display: block;
@@ -841,36 +700,6 @@ label #cancel {
     #check:checked ~ label #cancel {
       display: block;
     }
-    /* .column1 {
-      margin-top: 15%;
-    }
-    .column1 h1 {
-    font-size: 36px;
-    text-align: center;
-  }
-  .column1 p {
-    font-size: 24px;
-    text-align: center;
-  }
-  .column2 {
-    margin-top: -24%;
-  } 
-  .column2 h2 {
-    font-size: 25px;
-  }
-  .column2 .profile-card h4 {
-    font-size: 16px;
-  }
-  .column2 .profile-card p {
-    font-size: 14px;
-  }
-  .column2 .profile-card {
-    height: 212px;
-    width: 152px;
-  }
-  .column2 .profile-card:hover {
-    height: 225px;
-  } */
   }
 
   @media only screen and (max-width:767px) {
@@ -1002,7 +831,6 @@ label #cancel {
   transform: translateY(-70px);
   padding-left: 15%;
   font-size: 8px;
-  /* display: flex; */
 }
 
   }
@@ -1163,11 +991,7 @@ label #cancel {
 .row1 {
   margin-top: 15%;
 }
-/* .column2 p {
-  padding-top: 55%;
-} */
 .column2 {
-  /* margin-top: 20%; */
   align-items: center;
 }
 .column2 .profile {
@@ -1269,7 +1093,6 @@ label #cancel {
 .wrapper2 h2 {
   background: linear-gradient(90deg, #3798d4, #000, #3798d4);
   overflow: hidden;
-  /* background: linear-gradient(90deg, red, yellow, red); */
   animation: animate 5s linear infinite;
   background-size: 80%;
   -webkit-background-clip: text;
@@ -1431,23 +1254,14 @@ label #cancel {
    
    <div class="verticals-container">
     <h3>We largely work and touch on</h3>
-  <div class="wrapper2"><h2>Five Verticals</h2>
+  <div class="wrapper2"><h2>Six Verticals</h2>
   <div class="words">
-    <!-- <div class="word" id="health"> -->
       <span>Health</span>
-    <!-- </div><br> -->
-    <!-- <div class="word" id="food"> -->
       <span>Food</span>
-    <!-- </div><br> -->
-    <!-- <div class="word" id="spiritual"> -->
       <span>Spiritual</span>
-    <!-- </div><br> -->
-    <!-- <div class="word" id="education"> -->
-      <span>Education</span>
-    <!-- </div><br> -->
-    <!-- <div class="word" id="environment"> -->
+      <span>Education</span> 
       <span>Environment</span>
-    <!-- </div><br> -->
+      <span>Arram Jobs</span>
     </div>
   </div>
   <div class="verticals">
@@ -1512,10 +1326,11 @@ label #cancel {
           <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-2 justify-content-center"
             style="text-align: justify; font-size: medium;">
             <div class="about-text">
-              <h2><b>About Arramjobs</b></h2>
+              <h2><b>About ArramJobs</b></h2>
               <p>At Arram Jobs, we're committed to providing comprehensive solutions that cater to the unique needs of
                 both job seekers and employers. Our platform is designed to offer a range of valuable services and
                 benefits, ensuring a seamless and rewarding experience for all.</p>
+
               <p>At Arram Jobs, we are on a mission to connect talented individuals with the career opportunities that
                 align with their aspirations. We believe that the right job can transform lives, foster personal growth,
                 and drive organizational success. With our innovative approach to recruitment, we aim to bridge the gap
@@ -1541,11 +1356,9 @@ label #cancel {
               <div class="card-body-s">
                 <img src="<?php echo baseUrl . "assets/Home_images/search.jpg" ?>" class="card-img-top" alt="...">
                 <h5 class="card-title pt-4"><b>JOB SEARCHING</b></h5>
-                <p class="lead px-4" style="color: black; font-size: 16px; text-align: justify;">
+                <p class="px-4" style="color: black; font-size: 16px; text-align: justify;">
                   At Arram Job Portal, we're dedicated to help you to unlock your potential. Whether you're a recent
-                  graduate
-                  starting your career or a seasoned expert seeking new challenges, we're your trusted job search
-                  partner.</p>
+                  graduate starting your career or a seasoned expert seeking new challenges, we're your trusted job search partner.</p>
               </div>
             </div>
           </div>
@@ -1556,10 +1369,9 @@ label #cancel {
               <div class="card-body-s">
                 <img src="<?php echo baseUrl . "assets/jobprovide.jpg" ?>" class="card-img-top" alt="...">
                 <h5 class="card-title pt-4"><b>JOB PROVIDING</b></h5>
-                <p class="lead px-4" style="color: black; font-size: 16px; text-align: justify;">
+                <p class="px-4" style="color: black; font-size: 16px; text-align: justify;">
                   Job Portal, we're dedicated to help you to unlock your potential. Whether you're a recent graduate
-                  starting your career or a seasoned expert seeking new challenges, we're your trusted job search
-                  partner.</p>
+                  starting your career or a seasoned expert seeking new challenges, we're your trusted job search partner.</p>
               </div>
             </div>
           </div>
@@ -1570,15 +1382,13 @@ label #cancel {
               <div class="card-body-s">
                 <img src="<?php echo baseUrl . "assets/uniquefeature.jpeg" ?>" class="card-img-top" alt="...">
                 <h5 class="card-title pt-4"><b>ARRAM UNIQUE FEATURES</b></h5>
-                <p class="lead px-4" style="color: black; font-size: 16px; text-align: justify;">
+                <p class="px-4" style="color: black; font-size: 16px; text-align: justify;">
                   Arram Job Providing stands out with unique features redefining recruitment. Our platform uses
-                  cutting-edge
-                  algorithms to match skills, culture, and personality for ideal candidate-employer pairings.</p>
+                  cutting-edge algorithms to match skills, culture, and personality for ideal candidate-employer pairings.</p>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -1598,16 +1408,12 @@ label #cancel {
 
         <div class="row">
           <div class="col-12 col-md-12 col-lg-4 mb-lg-5">
-            <div class="card-sec text-white text-center pb-4 " id="accessid"
-              style="background-color: #fff;box-shadow: 0 0 11px rgba(33,33,33,.2);">
+            <div class="card-sec text-white text-center pb-4 " id="accessid" style="background-color: #fff;box-shadow: 0 0 11px rgba(33,33,33,.2);">
               <div class="card-body-s" style="padding-top: 30px;">
                 <i class="bi bi-phone" style="color: black; font-size: 30px;"></i>
-                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 22px; color: black;">Mobile
-                  Accessibility</h4>
-                <p class="lead"
-                  style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                  Mobile accessibility aims to remove barriers, enhance user experiences, and enable all users,
-                  including
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 22px; color: black;">Mobile Accessibility</h4>
+                <p style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  Mobile accessibility aims to remove barriers, enhance user experiences, and enable all users, including
                   those with disabilities and those using mobile devices exclusively, to access and interact with job
                   listings, apply for positions, and navigate the portal's features effortlessly.</p>
               </div>
@@ -1620,8 +1426,7 @@ label #cancel {
               <div class="card-body-s" style="padding-top: 30px;">
                 <i class="bi bi-book-fill" style="color: black; font-size: 30px;"></i>
                 <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 20px; color: black;"> Accredited</h4>
-                <p class="lead"
-                  style="color: black; font-size: 16px; padding-bottom: 0px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                <p style="color: black; font-size: 16px; padding-bottom: 0px; padding-left: 20px; padding-right: 20px; text-align: justify;">
                   An accredited job portal connects job seekers and employers after obtaining official recognition and
                   certification from accrediting bodies. Accreditation involves evaluating the portal's operations,
                   features, and compliance with industry standards, legal regulations, and ethics.</p>
@@ -1634,10 +1439,8 @@ label #cancel {
               style="background-color: #fff;  box-shadow: 0 0 11px rgba(33,33,33,.2); ">
               <div class="card-body-s" style="padding-top: 30px;">
                 <i class="bi bi-laptop-fill" style="color: black; font-size: 30px;"></i>
-                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 32px; color: black;">User-friendly
-                  Interface</h4>
-                <p class="lead"
-                  style="color: black; font-size: 16px; padding-bottom: 12px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 32px; color: black;">User-friendly Interface</h4>
+                <p style="color: black; font-size: 16px; padding-bottom: 12px; padding-left: 20px; padding-right: 20px; text-align: justify;">
                   A job portal's user-friendly interface prioritizes easy navigation, clarity, and effectiveness,
                   benefiting the job seekers and the employers by simplifying the search for their employment
                   opportunities and hiring processes.</p>
@@ -1652,10 +1455,8 @@ label #cancel {
               style="background-color: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2);">
               <div class="card-body-s" style="padding-top: 30px;">
                 <i class="bi bi-subtract" style="color: black;  font-size: 30px;"></i>
-                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Extensive Job
-                  opportunities</h4>
-                <p class="lead"
-                  style="color: black; font-size: 16px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Extensive Job opportunities</h4>
+                <p style="color: black; font-size: 16px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; text-align: justify;">
                   An abundance of 'extensive job opportunities' signifies a robust job market, offering plentiful
                   prospects. This is highly advantageous for job seekers, career changers, and professionals aiming to
                   explore new roles or industries, facilitating diverse career growth.</p>
@@ -1670,13 +1471,9 @@ label #cancel {
                 <i class="bi bi-shield-shaded" style="color: black; font-size: 30px;"></i>
                 <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 10px; color: black;">Quick Response
                 </h4>
-                <p class="lead"
-                  style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                  Quick response" the prompt and timely feedback or acknowledgment provided to
-                  job seekers or employers when they take certain actions or submit applications within the platform.
-                  This
-                  feature is designed to enhance the user experience by ensuring that users receive immediate
-                  confirmation. </p>
+                <p style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  Quick response" the prompt and timely feedback or acknowledgment provided to job seekers or employers when they take certain actions or submit applications within the platform.
+                  This feature is designed to enhance the user experience by ensuring that users receive immediate confirmation. </p>
               </div>
             </div>
           </div>
@@ -1689,10 +1486,8 @@ label #cancel {
                 <h4 class="card-tittle" style="padding-top: 10px; padding-bottom: 13px; color: black;">Advanced search
                   and
                   filtering </h4>
-                <p class="lead"
-                  style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
-                  The
-                  goal of advanced search and filtering features in a jobs portal is to empower job seekers to pinpoint
+                <p style="color: black; font-size: 16px; padding-left: 20px; padding-right: 20px; text-align: justify;">
+                  The goal of advanced search and filtering features in a jobs portal is to empower job seekers to pinpoint
                   job listings that align closely with their unique preferences and qualifications, saving time and
                   increasing the likelihood of finding the most suitable job opportunities. </p>
               </div>
@@ -1720,8 +1515,7 @@ label #cancel {
                 venturing into the professional landscape, a seasoned professional yearning for fresh challenges, or somewhere in
                 between—we are your steadfast companion in the job search expedition. With our comprehensive platform,
                 you gain access to a wealth of opportunities, career resources, and expert guidance to navigate the
-                ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to
-                your unique needs. </p>
+                ever-evolving job market. We prioritize your aspirations, offering support and solutions tailored to your unique needs. </p>
             </div>
           </div>
         </div>
@@ -1739,11 +1533,9 @@ label #cancel {
             <div class="about-text pt-4 pt-lg-0" style="margin-top:-25px; margin-right:20px;">
               <p class="fs-1" style="padding-top:20px; ">Employer</p>
               <p style="font-size: 18px;">At Arram Job Providing, we firmly believe that the key to a prosperous
-                organization lies in having the
-                right people onboard. Be it team expansion, project initiation, or the need for specialized skills, we
-                serve as your dependable partner in talent acquisition. With our extensive network and expertise, we
-                identify and connect you with top-notch professionals who fit your unique requirements. Our commitment
-                to
+                organization lies in having the right people onboard. Be it team expansion, project initiation, or the need for specialized skills, we
+                serve as your dependable partner in talent acquisition. With our extensive network and expertise, we identify and connect you with 
+                top-notch professionals who fit your unique requirements. Our commitment to 
                 excellence ensures that you receive candidates who not only meet but exceed your expectations. We're
                 dedicated to streamlining your recruitment process, saving you time and resources, so you can focus on
                 what you do best - achieving your business goals.</p>
@@ -1843,7 +1635,6 @@ label #cancel {
         <div class="container">
           <div class="row">
             <div class="col-6" style="margin-top:10px;">
-              <!-- <h3 class="mb-3">Carousel cards title </h3> -->
             </div>
             <div class="col-6 text-right">
               <a class="btn btn-secondary ws-1 mb-3 mr-1" href="#carouselExampleIndicators2" role="button"
