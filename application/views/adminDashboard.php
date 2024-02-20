@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
-
+    
     <!-- Favicons -->
     <!-- <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
@@ -58,9 +58,10 @@
             body {
                 visibility: hidden;
             }
-
             #resumeprint,
-            #employerprint {
+            #employerprint,
+            #printCandidate,
+            #printEmployer {
                 visibility: visible;
             }
 
@@ -75,8 +76,6 @@
             background: #4154f1;
             color: #fff;
             transition: .3s ease;
-            /* border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px; */
         }
 
         .sidebar ul li.active {
@@ -89,7 +88,6 @@
         .sidebar ul li.active a {
             color: #fff;
             background: #4154f1;
-
         }
 
         .sidebar ul .nav-item.active,
@@ -116,7 +114,6 @@
         .sidebar-nav .nav-link.collapsed.active i,
         .sidebar-nav .nav-link.collapsed:hover i {
             color: #fff;
-            /* background: #4154f1; */
             padding-top: 0.1rem;
             padding-bottom: 0.1rem;
 
@@ -205,30 +202,10 @@
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        <!-- <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
-        </div>End Search Bar -->
-
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
-                <!-- <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link nav-icon search-bar-toggle " href="#">
-                        <i class="bi bi-search"></i>
-                    </a>
-                </li>End Search Icon -->
-
                 <li class="nav-item dropdown">
-
-                    <!-- <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-chat-left-text"></i>
-                        <span class="badge bg-success badge-number">3</span>
-                    </a>End Messages Icon -->
-
-
 
                 </li><!-- End Messages Nav -->
 
@@ -260,47 +237,25 @@
                                 <span>My Profile</span>
                             </a>
                         </li>
-                        <!-- <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-gear"></i>
-                                <span>Account Settings</span>
-                            </a>
-                        </li> -->
-                        <!-- <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
-                            </a>
-                        </li> -->
+                        
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center"
-                                onclick="return confirm('Are you sure to logout?')"
-                                href="<?php echo baseUrl . "admin/logout" ?>">
+                            <a class="dropdown-item d-flex align-items-center" onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "admin/logout" ?>">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Log Out</span>
                             </a>
                         </li>
 
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
+                    </ul>
+                </li>
 
             </ul>
         </nav>
-        <!-- End Icons Navigation -->
 
-    </header><!-- End Header -->
+    </header>
 
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
@@ -312,12 +267,10 @@
                     <i class="bi bi-grid"></i>
                     <span id="dashboardad">Dashboard</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li>
 
             <li class="mb-1">
-                <a class="nav-link collapsed " id="adminuser" data-bs-target="#components-nav" data-bs-toggle="collapse"
-                    href="#">
-                    <!-- <i class="bi bi-menu-button-wide"></i> -->
+                <a class="nav-link collapsed " id="adminuser" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-person"></i>
                     <span>Admin Users</span>
                     <i class="bi bi-chevron-down ms-auto"></i>
@@ -335,10 +288,10 @@
                     </li>
                 </ul>
             </li><!-- End Tables Nav -->
+        
 
             <li class="nav-item">
-                <a class="nav-link collapsed" id="employerslist" data-bs-target="#charts-nav" data-bs-toggle="collapse"
-                    href="#">
+                <a class="nav-link collapsed" id="employerslist" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-bar-chart"></i><span>Employers</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -376,8 +329,7 @@
             </li><!-- End Charts Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" id="candidatelist" data-bs-target="#icons-nav" data-bs-toggle="collapse"
-                    href="#">
+                <a class="nav-link collapsed" id="candidatelist" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-gem"></i><span>Candidates</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -409,6 +361,11 @@
             <li>
                 <a id="candidatedeletedlist" href="<?php echo baseUrl . "admin/deleteCandidateList" ?>">
                     <i class="bi bi-circle"></i><span>Deleted List</span>
+                </a>
+            </li>
+            <li>
+                <a id="candidaterejectedlist" href="<?php echo baseUrl . "admin/rejectedCandidate" ?>">
+                    <i class="bi bi-circle"></i><span>Rejected List</span>
                 </a>
             </li>
             <li>
@@ -467,89 +424,17 @@
                             </a>
                         </li>
                     </ul>
-                </li>End Icons Nav -->
+                </li>End Icons Nav 
 
-        <?php } ?>
-
-        <!-- <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#delete_nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-dash-circle"></i><span>Recently Deleted</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="delete_nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="">
-                            <i class="bi bi-circle"></i><span>Employer</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="bi bi-circle"></i><span>Employee</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>End Charts Nav -->
-
-        <!-- <li class="nav-heading">Pages</li> -->
-
-        <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Profile</span>
-                </a>
-            </li>End Profile Page Nav -->
-
-        <!-- <li class="nav-item">
-                <a class="nav-link collapsed disabled" href="pages-faq.html">
-                    <i class="bi bi-question-circle"></i>
-                    <span>Employee Request</span>
-                </a>
-            </li> -->
-        <!-- End F.A.Q Page Nav -->
-
-        <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-contact.html">
-                    <i class="bi bi-envelope"></i>
-                    <span>Contact</span>
-                </a>
-            </li>End Contact Page Nav -->
-
-        <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-register.html">
-                    <i class="bi bi-card-list"></i>
-                    <span>Register</span>
-                </a>
-            </li>End Register Page Nav -->
-
-        <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-login.html">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Login</span>
-                </a>
-            </li>End Login Page Nav -->
-
-        <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-error-404.html">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Error 404</span>
-                </a>
-            </li>End Error 404 Page Nav -->
-
-        <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Blank</span>
-                </a>
-            </li>End Blank Page Nav -->
-
+        <?php } ?>-->
+    
     </aside><!-- End Sidebar-->
 
     <!-- <?php
     function isPageActive($page)
     {
-        // Get the current page URL
         $currentUrl = $_SERVER['REQUEST_URI'];
 
-        // Check if the current page URL contains the specified page
         return strpos($currentUrl, $page) !== false || ($page === 'Employee/dash' && $currentUrl === '/');
     }
     ?> -->
@@ -610,8 +495,8 @@
                                                 <h6>
                                                     <?php echo $this->data['admin']['totalRows']; ?>
                                                 </h6>
-                                                <span class="text-success small pt-1 fw-bold">12%</span> <span
-                                                    class="text-muted small pt-2 ps-1">increase</span>
+                                                <span class="text-success small pt-1 fw-bold">12%</span> 
+                                                <span class="text-muted small pt-2 ps-1">increase</span>
 
                                             </div>
                                         </div>
@@ -841,71 +726,57 @@
                         <form class="row g-3 needs-validation" novalidate
                             action="<?php echo baseUrl . "admin/insertAdminUser" ?>" method="post">
                             <div class="col-md-6">
-                                <label for="inputName5" class="form-label">Name: <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="inputName5" name="name" placeholder="Enter name"
-                                    required>
+                                <label for="inputName5" class="form-label">Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="inputName5" name="name" required>
                                 <div class="invalid-feedback">Please, enter your name!</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputUserrole" class="form-label">User Role: <span
-                                        class="text-danger">*</span></label>
+                                <label for="inputUserrole" class="form-label">User Role <span class="text-danger">*</span></label>
                                 <select id="inputUserrole" class="form-select" name="userRole" required>
                                     <option selected value="adm">Admin</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputEmail5" class="form-label">Email: <span
-                                        class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="inputEmail5" name="email"
-                                    placeholder="Enter email" required>
+                                <label for="inputEmail5" class="form-label">Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="inputEmail5" name="email" required>
                                 <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputPassword5" class="form-label">Mobile Number: <span
-                                        class="text-danger">*</span></label>
-                                <input type="number" class="form-control" id="inputMobileNumber5" name="mobileNumber"
-                                    placeholder="Enter number" required>
+                                <label for="inputPassword5" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="inputMobileNumber5" name="mobileNumber" required>
                                 <div class="invalid-feedback">Please enter a Mobile Number!</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputEmail5" class="form-label">UserName: <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="inputUserName5" name="userName"
-                                    placeholder="Enter username" required>
-                                <div class="invalid-feedback">Please choose a username.</div>
+                                <label for="inputEmail5" class="form-label">UserName <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="inputUserName5" name="userName" required>
+                                <div class="invalid-feedback">Please choose a username!</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputPassword5" class="form-label">Password: <span
-                                        class="text-danger">*</span></label>
-                                <input type="password" class="form-control" id="inputPassword5" name="password"
-                                    placeholder="Enter password" required>
+                                <label for="inputPassword5" class="form-label">Password <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="inputPassword5" name="password" required>
                                 <div class="invalid-feedback">Please enter your password!</div>
                             </div>
                             <div class="col-12">
-                                <label for="inputAddress5" class="form-label">Address:</label>
-                                <input type="text" class="form-control" id="inputAddres5s" name="address"
-                                    placeholder="Enter address">
+                                <label for="inputAddress5" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="inputAddres5s" name="address">
                             </div>
                             <div class="col-12">
                                 <label for="inputAddress2" class="form-label">Address 2:</label>
-                                <input type="text" class="form-control" id="inputAddress2" name="address2"
-                                    placeholder="Enter address 2">
+                                <input type="text" class="form-control" id="inputAddress2" name="address2">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputCity" class="form-label">City:</label>
-                                <input type="text" class="form-control" id="inputCity" name="city" placeholder="Enter city">
+                                <input type="text" class="form-control" id="inputCity" name="city">
                             </div>
                             <div class="col-md-4">
                                 <label for="inputState" class="form-label">State:</label>
                                 <select id="inputState" name="state" class="form-select" disabled>
                                     <option selected>Tamil Nadu</option>
-                                    <!-- <option>...</option> -->
                                 </select>
                             </div>
                             <div class="col-md-2">
                                 <label for="inputZip" class="form-label">Pincode:</label>
-                                <input type="text" class="form-control" id="inputZip" name="pincode"
-                                    placeholder="Enter pincode">
+                                <input type="text" class="form-control" id="inputZip" name="pincode">
                             </div>
                             <!-- <div class="col-12">
                                 <div class="form-check">
@@ -1057,63 +928,48 @@
                         <form class="row g-3 needs-validation" novalidate
                             action="<?php echo baseUrl . "admin/insertEmployer" ?>" method="post">
                             <div class="col-md-12">
-                                <label for="inputName5" class="form-label">Company Name: <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="inputName5" name="name"
-                                    placeholder="Enter company name" required>
+                                <label for="inputName5" class="form-label">Company Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="inputName5" name="name" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputNumber5" class="form-label">Company Number: <span
-                                        class="text-danger">*</span></label>
-                                <input type="number" class="form-control" id="inputNumber5" name="mobile"
-                                    placeholder="Enter company number" required>
+                                <label for="inputNumber5" class="form-label">Company Number <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="inputNumber5" name="mobile" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputEmail5" class="form-label">Company Email: <span
-                                        class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="inputEmail5" name="email"
-                                    placeholder="Enter company email" required>
+                                <label for="inputEmail5" class="form-label">Company Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="inputEmail5" name="email" required>
                             </div>
                             <!-- <div class="col-md-6">
                                 <label for="inputPassword5" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="inputPassword5">
                             </div> -->
                             <div class="col-md-6">
-                                <label for="crpassword" class="form-label">Create Password: <span
-                                        class="text-danger">*</span></label>
-                                <input type="password" class="form-control" id="crpassword" name="crpassword"
-                                    placeholder="Abc@1234" required>
+                                <label for="crpassword" class="form-label">Create Password <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="crpassword" name="crpassword" required>
                                 <p id="crpassworderr" style="color: red;"></p>
                                 <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">
                                     Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number
                                     and a minimum of 8 characters.</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="cmpassword" class="form-label">Confirm Password: <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="cmpassword" name="cmpassword"
-                                    placeholder="Abc@1234" required>
+                                <label for="cmpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="cmpassword" name="cmpassword" required>
                                 <p id="cmpassworderr" style="color: red;"></p>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputAddress5" class="form-label">Street Address: <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="inputAddres5s" name="address"
-                                    placeholder="Enter street address" required>
+                                <label for="inputAddress5" class="form-label">Street Address <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="inputAddres5s" name="address" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputAddress2" class="form-label">Landmark: <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="inputAddress2" name="landmark"
-                                    placeholder="Enter landmark" required>
+                                <label for="inputAddress2" class="form-label">Landmark <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="inputAddress2" name="landmark" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputCity" class="form-label">City: <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="inputCity" name="city" placeholder="Enter city"
-                                    required>
+                                <label for="inputCity" class="form-label">City <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="inputCity" name="city" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputCity" class="form-label">District: <span
+                                <label for="inputCity" class="form-label">District <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control" id="inputDistrict" name="district" required>
                                     <option value="">Select district</option>
@@ -1124,21 +980,19 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputState" class="form-label">State: <span class="text-danger">*</span></label>
+                                <label for="inputState" class="form-label">State <span class="text-danger">*</span></label>
                                 <select id="inputState" class="form-select" name="state">
                                     <option selected value="tamil nadu">Tamil Nadu</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputZip" class="form-label">Pincode: <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="inputPincode" name="pincode"
-                                    placeholder="Enter pincode" required>
+                                <label for="inputZip" class="form-label">Pincode <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="inputPincode" name="pincode" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="locationUrl" class="form-label">Location URL: <span
+                                <label for="locationUrl" class="form-label">Location URL <span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="locationUrl" name="locationUrl"
-                                    placeholder="Enter company location link" required>
+                                <input type="text" class="form-control" id="locationUrl" name="locationUrl" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="inputFile" class="form-label">Logo</label>
@@ -1146,43 +1000,34 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="inputFile" class="form-label">Website</label>
-                                <input type="text" class="form-control" id="cwebsite" name="cwebsite"
-                                    placeholder="Enter company website">
+                                <input type="text" class="form-control" id="cwebsite" name="cwebsite">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputFile" class="form-label">PAN Number</label>
-                                <input type="text" class="form-control" id="cpan" name="cpan"
-                                    placeholder="Enter company PAN number">
+                                <input type="text" class="form-control" id="cpan" name="cpan">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputFile" class="form-label">GST Number</label>
-                                <input type="text" class="form-control" id="cgst" name="cgst"
-                                    placeholder="Enter company GST number">
+                                <input type="text" class="form-control" id="cgst" name="cgst">
                             </div>
 
                             <h5 class="card-title">Contact Person Details</h5>
 
                             <div class="col-md-6">
-                                <label for="inputEmail5" class="form-label">Name: <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="inputEmail5" name="name1"
-                                    placeholder="Enter cp name" required>
+                                <label for="inputEmail5" class="form-label">Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="inputEmail5" name="name1" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputEmail5" class="form-label">Role: <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="inputEmail5" name="role"
-                                    placeholder="Enter cp role" required>
+                                <label for="inputEmail5" class="form-label">Role <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="inputEmail5" name="role" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputNumber5" class="form-label">Mobile Number: <span
-                                        class="text-danger">*</span></label>
-                                <input type="number" class="form-control" id="inputNumber5" name="mobile1"
-                                    placeholder="Enter cp number" required>
+                                <label for="inputNumber5" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="inputNumber5" name="mobile1" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputEmail5" class="form-label">Email-ID: <span
-                                        class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="inputEmail5" name="email1"
-                                    placeholder="Enter cp email" required>
+                                <label for="inputEmail5" class="form-label">Email-ID <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="inputEmail5" name="email1" required>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Create Account</button>
@@ -1893,9 +1738,7 @@
                                                 </td>
                                                 <td>
                                                     <p class="d-flex">
-                                                        <?php echo $value['company_name']; ?><a
-                                                            href="<?php echo $value['companyLocationUrl']; ?>"
-                                                            class="px-2 text-danger"><i class='bx bx-map'></i></a>
+                                                        <?php echo $value['company_name']; ?><a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger"><i class='bx bx-map'></i></a>
                                                     </p>
                                                 </td>
                                                 <td><a href="#" class="text-primary">
@@ -1921,9 +1764,8 @@
                                                     <?php
                                                 }
                                                 ?>
-                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['id'] ?>"><button
-                                                            type="button" class="btn btn-success d-flex"><i
-                                                                class="bi bi-eye pe-1"></i>View</button></a>
+                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['id'] ?>">
+                                                <button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
                                             </tr>
                                             <?php
                                             $loopcount++;
@@ -2054,7 +1896,7 @@
                         </ol>
                     </nav>
                 </div><!-- End Page Title -->
-                <div class="card">
+                <div class="card" id="printEmployer">
                     <div class="card-body">
                         <h5 class="card-title">Unverified Employer Details</h5>
 
@@ -2075,13 +1917,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputNumber5" class="form-label">Company Number</label>
-                                    <input type="number" class="form-control" id="inputNumber5" name="mobile"
-                                        value="<?php echo $value['company_mobile_number'] ?>" readonly required>
+                                    <input type="number" class="form-control" id="inputNumber5" name="mobile" value="<?php echo $value['company_mobile_number'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Company Email</label>
-                                    <input type="email" class="form-control" id="inputEmail5" name="email"
-                                        value="<?php echo $value['company_email'] ?>" readonly required>
+                                    <input type="email" class="form-control" id="inputEmail5" name="email" value="<?php echo $value['company_email'] ?>" readonly required>
                                 </div>
                                 <!-- <div class="col-md-6">
                                 <label for="inputPassword5" class="form-label">Password</label>
@@ -2089,30 +1929,24 @@
                             </div> -->
                                 <div class="col-md-6">
                                     <label for="inputAddress5" class="form-label">Street Address</label>
-                                    <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St"
-                                        name="address" value="<?php echo $value['street_address'] ?>" readonly required>
+                                    <input type="text" class="form-control" id="inputAddres5s" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputAddress2" class="form-label">Landmark</label>
-                                    <input type="text" class="form-control" id="inputAddress2"
-                                        placeholder="Apartment, studio, or floor" name="landmark"
-                                        value="<?php echo $value['Landmark'] ?>" readonly required>
+                                    <input type="text" class="form-control" id="inputAddress2" name="landmark" value="<?php echo $value['Landmark'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputCity" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="inputCity" name="city"
-                                        value="<?php echo $value['City'] ?>" readonly required>
+                                    <input type="text" class="form-control" id="inputCity" name="city" value="<?php echo $value['City'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputCity" class="form-label">District</label>
-                                    <input type="text" class="form-control" id="inputDistrict" name="district"
-                                        value="<?php echo $value['district'] ?>" readonly required>
+                                    <input type="text" class="form-control" id="inputDistrict" name="district" value="<?php echo $value['district'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputState" class="form-label">State</label>
                                     <select id="inputState" class="form-select" name="state">
                                         <option selected value="tamil nadu">Tamil Nadu</option>
-                                        <!-- <option>...</option> -->
                                     </select>
                                 </div>
                                 <div class="col-md-6">
@@ -2122,12 +1956,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputLogo" class="form-label">Logo</label>
-                                    <!-- <input type="text" class="form-control" id="inputLogo" value="<?php echo $value['company_logo'] ?>" readonly name="pincode"> -->
+                                    
                                     <?php if ($value['company_logo'] == "None") { ?>
                                         <p class="form-control">Not Entered</p>
                                     <?php } else { ?>
-                                        <a href="<?php echo $value['company_logourl']; ?>" class="form-control text-primary"
-                                            target="blank">
+                                        <a href="<?php echo $value['company_logourl']; ?>" class="form-control text-primary" target="blank">
                                             <?php echo $value['company_logo']; ?>
                                         </a>
                                     <?php } ?>
@@ -2136,8 +1969,7 @@
                                     <label for="inputWebsite" class="form-label">Website</label>
                                     <!-- <input type="text" class="form-control" id="inputWebsite" value="<?php echo $value['companywebsite'] ?>" readonly name="cwebsite1"> -->
                                     <?php if ($value['companywebsite'] != null) { ?>
-                                        <a href="<?php echo $value['companywebsite']; ?>" class=" text-primary form-control"
-                                            target="blank">
+                                        <a href="<?php echo $value['companywebsite']; ?>" class=" text-primary form-control" target="blank">
                                             <?php echo $value['companywebsite']; ?>
                                         </a>
                                     <?php } else { ?>
@@ -2146,35 +1978,29 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPan" class="form-label">PAN Number</label>
-                                    <input type="text" class="form-control" id="inputPan"
-                                        value="<?php echo $value['companypan'] ?>" readonly name="cpan1">
+                                    <input type="text" class="form-control" id="inputPan" value="<?php echo $value['companypan'] ?>" readonly name="cpan1">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputGst" class="form-label">GST Number</label>
-                                    <input type="text" class="form-control" id="inputGst"
-                                        value="<?php echo $value['companygst'] ?>" readonly name="cgst1">
+                                    <input type="text" class="form-control" id="inputGst" value="<?php echo $value['companygst'] ?>" readonly name="cgst1">
                                 </div>
 
                                 <h5 class="card-title">Contact Person Details</h5>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="inputEmail5"
-                                        value="<?php echo $value['name'] ?>" readonly name="name1" required>
+                                    <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['name'] ?>" readonly name="name1" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Role</label>
-                                    <input type="text" class="form-control" id="inputEmail5"
-                                        value="<?php echo $value['role'] ?>" readonlyname="role" required>
+                                    <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['role'] ?>" readonlyname="role" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputNumber5" class="form-label">Mobile Number</label>
-                                    <input type="number" class="form-control" id="inputNumber5"
-                                        value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required>
+                                    <input type="number" class="form-control" id="inputNumber5" value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Email-ID</label>
-                                    <input type="email" class="form-control" id="inputEmail5"
-                                        value="<?php echo $value['email'] ?>" readonly name="email1" required>
+                                    <input type="email" class="form-control" id="inputEmail5" value="<?php echo $value['email'] ?>" readonly name="email1" required>
                                 </div>
                                 <h5 class="card-title">Employer Verification Status</h5>
                                 <?php
@@ -2196,13 +2022,13 @@
                                                         id="ercheckbox2" onclick="verifyCheckboxes()" value="1" <?php if ($this->data['manageEmployer'][0]['verifyTwo'] == '1') {
                                                             echo 'checked';
                                                         } ?>>
-                                                    <label class="form-check-label" for="gridRadios2"> 2.ADDRESS</label>
-                                                </div>
+                                                    <label class="form-check-label" for="gridRadios2"> 2.ADDRESS </label>
+                                                    </div>
                                             </div>
                                     </fieldset>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                                            <textarea class="form-control" id="floatingTextarea"
                                                 name="verificationRemarks" style="height: 100px;"
                                                 required><?php echo $this->data['manageEmployer'][0]['verificationRemarks'] ?></textarea>
                                             <label for="floatingTextarea">Remarks</label>
@@ -2216,22 +2042,19 @@
                                         <legend class="col-form-label col-sm-2 pt-0">Verification Status</legend>
                                         <div class="col-sm-10">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus"
-                                                    id="gridRadios1" value="0">
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios1" value="0">
                                                 <label class="form-check-label" for="gridRadios1">
                                                     Verification Pending
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus"
-                                                    id="gridRadios2" value="1">
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios2" value="1">
                                                 <label class="form-check-label" for="gridRadios2">
                                                     Verification success
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="verificationStatus"
-                                                    id="gridRadios" value="2">
+                                                <input class="form-check-input" type="radio" name="verificationStatus" id="gridRadios" value="2">
                                                 <label class="form-check-label" for="gridRadios3">
                                                     Rejected
                                                 </label>
@@ -2240,8 +2063,7 @@
                                     </fieldset>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
-                                                name="verificationRemarks" style="height: 100px;"></textarea>
+                                            <textarea class="form-control" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"></textarea>
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
@@ -2264,7 +2086,7 @@
                                     </fieldset>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                                            <textarea class="form-control" id="floatingTextarea"
                                                 name="deleteRequestRemarks" style="height: 100px;"></textarea>
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
@@ -2272,15 +2094,14 @@
                                 <?php }
                                 ?>
 
-                                <input class="form-check-input" type="text" name="id" id=""
-                                    value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
+                                <input class="form-check-input" type="text" name="id" id="" value="<?php echo $this->data['manageEmployer'][0]['id'] ?>" hidden>
                                 <input class="form-check-input" type="text" name="newList" id="" value="1" hidden>
-                                <input class="form-check-input" type="text" name="verifiedName" id=""
-                                    value="<?php echo $_SESSION['adminName'] . ' / ' . $_SESSION['adminid'] ?>" hidden>
+                                <input class="form-check-input" type="text" name="verifiedName" id="" value="<?php echo $_SESSION['adminName'] . ' / ' . $_SESSION['adminid'] ?>" hidden>
 
                                 <div class="d-flex justify-content-around">
-                                    <button type="submit" class="btn btn-success" id="verifyButton" disabled>Verified</button>
+                                    <button type="submit" class="btn btn-success" id="verifyButton">Verified</button>
                                     <button type="submit" class="btn btn-danger" id="pendingButton">Pending</button>
+                                    <button onClick="window.print()" type="button" class="btn btn-dark printhide">Print</button>
                                 </div>
                                 <?php
                             }
@@ -2291,7 +2112,7 @@
                 </div>
             </section>
 
-            <script>
+            <!-- <script>
                 function verifyCheckboxes() {
                     var checkbox1 = document.getElementById('ercheckbox1').checked;
                     var checkbox2 = document.getElementById('ercheckbox2').checked;
@@ -2308,7 +2129,7 @@
                         pendingButton.disabled = false;
                     }
                 }
-            </script>
+            </script> -->
 
             <?php
         } elseif ($method == 'viewEmployer') {
@@ -2575,42 +2396,31 @@
                         <form class="row g-3 needs-validation" novalidate
                             action="<?php echo baseUrl . "admin/employeeRegistration" ?>" method="post">
                             <div class="col-12">
-                                <label for="yourName" class="form-label">Candidate Name: <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control" id="yourName" placeholder="Enter name"
-                                    required>
+                                <label for="yourName" class="form-label">Candidate Name <span class="text-danger">*</span></label>
+                                <input type="text" name="name" class="form-control" id="yourName" required>
                                 <div class="invalid-feedback">Please, enter your name!</div>
                             </div>
 
                             <div class="col-12">
-                                <label for="yourEmail" class="form-label">Candidate Email: <span
-                                        class="text-danger">*</span></label>
-                                <input type="email" name="email" class="form-control" id="yourEmail"
-                                    placeholder="Enter email" required>
+                                <label for="yourEmail" class="form-label">Candidate Email </label>
+                                <input type="email" name="email" class="form-control" id="yourEmail">
                                 <div class="invalid-feedback">Please, enter a valid Email adddress!</div>
                             </div>
 
                             <div class="col-12">
-                                <label for="yourEmail" class="form-label">Candidate Mobile Number: <span
-                                        class="text-danger">*</span></label>
-                                <input type="number" name="phonenumber" class="form-control" id="yourEmail"
-                                    placeholder="Enter number" required>
+                                <label for="yourEmail" class="form-label">Candidate Mobile Number <span class="text-danger">*</span></label>
+                                <input type="number" name="phonenumber" class="form-control" id="yourEmail" required>
                                 <div class="invalid-feedback">Please, enter mobile number!</div>
                             </div>
                             <div class="col-12">
-                                <label for="createpassword" class="form-label">Create Password: <span
-                                        class="text-danger">*</span></label>
-                                <input type="password" name="createpassword" class="form-control" id="createpassword"
-                                    placeholder="Enter new password" required>
+                                <label for="createpassword" class="form-label">Create Password <span class="text-danger">*</span></label>
+                                <input type="password" name="createpassword" class="form-control" id="createpassword" required>
                                 <div class="invalid-feedback">Please, enter new password!</div>
-                                <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Enter
-                                    the date of birth in DDMMYYYY (01051996).</div>
+                                <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
                             </div>
                             <div class="col-12">
-                                <label for="confirmpassword" class="form-label">Confirm Password: <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" name="cmpassword" class="form-control" id="confirmpassword"
-                                    placeholder="Enter retype password" required>
+                                <label for="confirmpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                <input type="text" name="cmpassword" class="form-control" id="confirmpassword" required>
                                 <div class="invalid-feedback">Please, retype the password!</div>
                             </div>
                             <!-- <div class="col-12">
@@ -2631,96 +2441,6 @@
             </section>
             <?php
 
-
-        } elseif ($method == "createEmployeesAdmin") {
-            ?>
-            <!-- Sidebar Active  -->
-            <script>
-                document.getElementById('candidatelist').classList.add('active');
-                document.getElementById('candidatedetail').classList.add('active');
-            </script>
-            <section class="Multi Columns Form">
-                <div class="pagetitle">
-                    <h1>Create Candidates</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Create Candidate</li>
-                        </ol>
-                    </nav>
-                </div><!-- End Page Title -->
-                <div class="card mb-3">
-
-                    <div class="card-body">
-
-                        <div class="pt-4 pb-2">
-                            <h5 class="card-title text-center pb-0 fs-4">Create New Candidate details</h5>
-                        </div>
-
-                        <form class="row g-3 needs-validation" novalidate
-                            action="<?php echo baseUrl . "admin/employeeRegistrationAdmin" ?>" method="post">
-                            <div class="col-12">
-                                <label for="yourName" class="form-label">Candidate Name: <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control" id="yourName" placeholder="Enter name"
-                                    required>
-                                <div class="invalid-feedback">Please, enter your name!</div>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="yourEmail" class="form-label">Candidate Email: <span
-                                        class="text-danger">*</span></label>
-                                <input type="email" name="email" class="form-control" id="yourEmail"
-                                    placeholder="Enter email" required>
-                                <div class="invalid-feedback">Please, enter a valid Email adddress!</div>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="yourEmail" class="form-label">Candidate Mobile Number: <span
-                                        class="text-danger">*</span></label>
-                                <input type="number" name="phonenumber" class="form-control" id="yourEmail"
-                                    placeholder="Enter number" required>
-                                <div class="invalid-feedback">Please, enter mobile number!</div>
-                            </div>
-                            <div class="col-12">
-                                <label for="createpassword" class="form-label">Create Password: <span
-                                        class="text-danger">*</span></label>
-                                <input type="password" name="createpassword" class="form-control" id="createpassword"
-                                    placeholder="Enter new password" required>
-                                <div class="invalid-feedback">Please, enter new password!</div>
-                                <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Enter
-                                    the date of birth in DDMMYYYY (01051996).</div>
-                            </div>
-                            <div class="col-12">
-                                <label for="confirmpassword" class="form-label">Confirm Password: <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" name="cmpassword" class="form-control" id="confirmpassword"
-                                    placeholder="Enter retype password" required>
-                                <div class="invalid-feedback">Please, retype the password!</div>
-                            </div>
-                            <!-- <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                                <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                                <div class="invalid-feedback">You must agree before submitting.</div>
-                            </div>
-                        </div>-->
-                            <div class="text-center">
-                                <a class="" href="<?php echo baseUrl . "Admin/basicdetails" ?>"> <button type="submit"
-                                        class="btn btn-primary"><i class="bi bi-arrow-right">Create Account</i></button></a>
-                                <!-- <button type="submit" class="btn btn-primary">Create Account</button> -->
-                                <button type="reset" class="btn btn-secondary">Reset</button>
-                            </div>
-                            <div>
-                                <a class="" href="<?php echo baseUrl . "Admin/basicdetails" ?>"> <button type="button"
-                                        class="btn btn-info mb-4 "><i class="bi bi-arrow-right">Form</i></button></a>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </section>
-            <?php
         } elseif ($method == "basicdetails") {
             ?>
 
@@ -2760,40 +2480,36 @@
                             foreach ($basicDetails as $key => $value) {
                                 ?>
 
-                                <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id"
-                                    placeholder="Enter your name">
+                                <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id">
 
                                 <div class="col-12">
                                     <label for="Name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" value="<?php echo $value['name']; ?>"
-                                        name="name" placeholder="Michael" oninput="validateName(this)">
+                                    <input type="text" class="form-control" id="name" value="<?php echo $value['name']; ?>" name="name" oninput="validateName(this)">
                                     <div id="Name_error" style="color: red;"></div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="emailid" class="form-label">Email</label><br>
-                                    <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>"
-                                        name="email" placeholder="example@gmail.com">
+                                    <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" name="email">
                                     <div id="emailid_error" style="color: red;"></div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="phonenumber" class="form-label">Mobile Number</label>
                                     <input type="number" class="form-control" id="phonenumber"
-                                        value="<?php echo $value['phonenumber']; ?>" name="phonenumber" placeholder="9879879879"
-                                        pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber1(this)">
+                                        value="<?php echo $value['phonenumber']; ?>" name="phonenumber" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber1(this)">
                                     <div id="phonenumber_error" style="color: red;"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="dob" class="form-label">Date of Birth</label>
-                                    <input type="date" class="form-control" id="dateofbirth"
-                                        value="<?php echo $value['dateofbirth']; ?>" name="dateofbirth">
+                                    <?php
+                                        $formattedDate = date('dmy', strtotime($value['dateofbirth']));
+                                    ?>
+                                    <input type="date" class="form-control" id="dateofbirth" value="<?php echo $value['dateofbirth']; ?>" name="dateofbirth">
                                     <div id="dob_error" style="color: red;"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="age" class="form-label">Age </label>
-                                    <input type="number" class="form-control" id="age"
-                                        value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age"
-                                        placeholder="Your age" readonly>
+                                    <input type="number" class="form-control" id="age" value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly>
                                     <div id="age_error" style="color: red;"></div>
                                 </div>
                                 <div class="col-md-6">
@@ -2815,29 +2531,25 @@
                                 <div class="col-md-6">
                                     <label for="Door no" class="form-label">Door no / Building Name </label>
                                     <input type="text" class="form-control" id="doorno"
-                                        value="<?php echo isset($value['buildingName']) ? $value['buildingName'] : ''; ?>"
-                                        name="doorno" placeholder="15 / Appartment 4">
+                                        value="<?php echo isset($value['buildingName']) ? $value['buildingName'] : ''; ?>" name="doorno">
                                     <div id="doorno_error" style="color: red;"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="street address" class="form-label">Street Address </label>
                                     <input type="text" class="form-control" id="streetaddress"
-                                        value="<?php echo isset($value['address']) ? $value['address'] : ''; ?>"
-                                        name="streetaddress" placeholder="Gandhi nagar">
+                                        value="<?php echo isset($value['address']) ? $value['address'] : ''; ?>" name="streetaddress">
                                     <div id="streetaddress_error" style="color: red;"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="landmark" class="form-label">Landmark</label>
-                                    <input type="text" class="form-control" id="landmark"
-                                        value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>"
-                                        name="landmark" placeholder="Near temple">
+                                    <input type="text" class="form-control" id="landmark" 
+                                        value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" name="landmark">
                                     <div id="landmark_error" style="color: red;"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="pincode" class="form-label">Pincode </label>
-                                    <input type="text" class="form-control" id="pincode"
-                                        value="<?php echo ($value['pincode']) ? $value['pincode'] : ''; ?>" name="pincode"
-                                        placeholder="638100" maxlength="6" oninput="validatePincode(this)">
+                                    <input type="text" class="form-control" id="pincode" 
+                                    value="<?php echo ($value['pincode']) ? $value['pincode'] : ''; ?>" name="pincode" maxlength="6" oninput="validatePincode(this)">
                                     <div id="pincode_error" style="color: red;"></div>
                                 </div>
                                 <div class="col-md-6">
@@ -2882,16 +2594,12 @@
 
                                 <div class="col-md-6">
                                     <label for="aadharfrontphoto" class="form-label">Aadhaar Front Photo </label>
-                                    <input type="text" class="form-control" name="oldaadharfront"
-                                        value="<?php echo $value['aadharfront_filename']; ?>" hidden>
+                                    <input type="text" class="form-control" name="oldaadharfront" value="<?php echo $value['aadharfront_filename']; ?>" hidden>
                                     <input type="file" class="form-control" id="aadharfrontphoto" name="aadharfrontphoto"
                                         accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
                                     <div class="uploadedfile" style="display:flex;">
-                                        <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control"
-                                            style="cursor:pointer">Choose
-                                            File</label>
-                                        <a href="<?php echo $value['aadhar_front']; ?>" class="filelink ps-2 pt-1"
-                                            target="blank" id="existfileaf">
+                                        <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control" style="cursor:pointer">Choose File</label>
+                                        <a href="<?php echo $value['aadhar_front']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileaf">
                                             <?php echo $value['aadharfront_filename']; ?>
                                         </a>
                                     </div>
@@ -2905,11 +2613,8 @@
                                     <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto"
                                         accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
                                     <div class="uploadedfile" style="display:flex;">
-                                        <label id="file-input-labelab" for="aadharbackphoto" class="form-control"
-                                            style="cursor:pointer">Choose
-                                            File</label>
-                                        <a href="<?php echo $value['aadhar_back']; ?>" class="filelink ps-2 pt-1" target="blank"
-                                            id="existfileab">
+                                        <label id="file-input-labelab" for="aadharbackphoto" class="form-control" style="cursor:pointer">Choose File</label>
+                                        <a href="<?php echo $value['aadhar_back']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileab">
                                             <?php echo $value['aadharback_filename']; ?>
                                         </a>
                                     </div>
@@ -2918,25 +2623,18 @@
 
                                 <div class="col-md-6">
                                     <label for="aadharnumber" class="form-label">Aadhaar number </label>
-                                    <input type="text" class="form-control" id="aadharnumber"
-                                        value="<?php echo ($value['aadharnumber']) ? $value['aadharnumber'] : ''; ?>"
-                                        name="aadharnumber" placeholder="1234 5678 9012" maxlength="14"
-                                        pattern="\d{4} \d{4} \d{4}" oninput="validateAadharNumber(this)">
+                                    <input type="text" class="form-control" id="aadharnumber" value="<?php echo ($value['aadharnumber']) ? $value['aadharnumber'] : ''; ?>" 
+                                        name="aadharnumber" maxlength="14" pattern="\d{4} \d{4} \d{4}" oninput="validateAadharNumber(this)">
                                     <div id="aadharnumber_error" style="color: red;"></div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="photo" class="form-label">Photo </label>
-                                    <input type="text" class="form-control" name="oldprofilephoto"
-                                        value="<?php echo $value['photo_filename']; ?>" hidden>
-                                    <input type="file" class="form-control" id="photo" name="photo"
-                                        accept="image/png ,image/jpg, image/jpeg" hidden>
+                                    <input type="text" class="form-control" name="oldprofilephoto" value="<?php echo $value['photo_filename']; ?>" hidden>
+                                    <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden>
                                     <div class="uploadedfile" style="display:flex;">
-                                        <label id="file-input-labelpp" for="photo" class="form-control"
-                                            style="cursor:pointer">Choose
-                                            File</label>
-                                        <a href="<?php echo $value['photo']; ?>" class="filelink ps-2 pt-1" target="blank"
-                                            id="existfilepp">
+                                        <label id="file-input-labelpp" for="photo" class="form-control" style="cursor:pointer">Choose File</label>
+                                        <a href="<?php echo $value['photo']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfilepp">
                                             <?php echo $value['photo_filename']; ?>
                                         </a>
                                     </div>
@@ -2945,9 +2643,7 @@
 
                                     <input type="number" class="form-control" value="1" name="bdsubmit" hidden>
 
-                                    <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF
-                                        Maximum size:
-                                        1024KB</p>
+                                    <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF Maximum size: 1024KB</p>
                                 </div>
                                 <div class="text-center">
 
@@ -2986,7 +2682,7 @@
             <!-- NAME CHARACTERS VALIDATION -->
             <script>
                 function validateName(input) {
-                    input.value = input.value.replace(/[^A-Za-z]/g, '');
+                    input.value = input.value.replace(/[0-9]/g, '');
                 }
             </script>
             <!-- PHONE NUMBER SCRIPTING -->
@@ -3104,6 +2800,7 @@
                     return age;
                 }
             </script>
+          
             <!-- AADHAR PHOTO UPLOAD -->
             <script>
                 document.getElementById("file-input-labelaf").addEventListener("click", function () {
@@ -3203,23 +2900,19 @@
 
                         <!-- Multi Columns Form -->
                         <form class="row g-3" autocomplete="off" novalidate name="educationform" method="post"
-                            enctype="multipart/form-data" onsubmit="return validateForm()"
-                            action="<?php echo baseUrl . "Admin/insertEducationForm" ?>">
+                            enctype="multipart/form-data" onsubmit="return validateForm()" action="<?php echo baseUrl . "Admin/insertEducationForm" ?>">
 
-                            <input type="hidden" class="form-control" id="seekerId" value="<?php echo $candidateId; ?>"
-                                name="seekerId">
+                            <input type="hidden" class="form-control" id="seekerId" value="<?php echo $candidateId; ?>" name="seekerId">
 
                             <div class="col-12 autocomplete">
                                 <label for="qualification" class="form-label">Educational Qualification</label>
-                                <input id="qualification" class="form-control" type="text" name="qualification"
-                                    onchange="toggleFields()" placeholder="Enter qualification">
+                                <input id="qualification" class="form-control" type="text" name="qualification" onchange="toggleFields()">
                                 <div id="qualification_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="department-group" style="display: none;">
                                 <label for="department" class="form-label">Specialization</label>
-                                <input type="text" class="form-control" id="department" name="department"
-                                    placeholder="Enter specialization">
+                                <input type="text" class="form-control" id="department" name="department">
                                 <div id="department_error" class="text-danger"></div>
                             </div>
 
@@ -3235,29 +2928,25 @@
 
                             <div class="col-md-6" id="school-group" style="display: none;">
                                 <label for="school" class="form-label">Institute</label>
-                                <input type="text" class="form-control" id="school" name="school"
-                                    placeholder="Enter institute name">
+                                <input type="text" class="form-control" id="school" name="school">
                                 <div id="school_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="percentage-group" style="display: none;">
                                 <label for="percentage" class="form-label">Percentage</label>
-                                <input type="number" class="form-control" id="percentage" id="school" name="percentage"
-                                    placeholder="Enter percentage">
+                                <input type="number" class="form-control" id="percentage" id="school" name="percentage">
                                 <div id="percentage_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="year-group" style="display: none;">
                                 <label for="year_passed" class="form-label">Year of Passed Out</label>
-                                <input type="number" class="form-control" id="year_passed" name="year_passed" maxlength="4"
-                                    pattern="\d{4}" placeholder="Enter year of passed out">
+                                <input type="number" class="form-control" id="year_passed" name="year_passed" maxlength="4" pattern="\d{4}">
                                 <div id="year_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_10th-group" style="display: none;">
                                 <label for="certificate_10th" class="form-label">10th Certificate Upload</label>
-                                <input type="file" class="form-control" id="certificate_10th" name="certificate_10th"
-                                    accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <input type="file" class="form-control" id="certificate_10th" name="certificate_10th" accept="image/png ,image/jpg, image/jpeg, application/pdf">
                                 <div id="certificate_10th_error" class="text-danger"></div>
                             </div>
 
@@ -3269,34 +2958,27 @@
                             </div>
 
                             <div class="col-md-6" id="certificate_dip-group" style="display: none;">
-                                <label id="additionalFieldLabeldip" for="certificate_dip" class="form-label">Diploma
-                                    Certificate
-                                    Upload</label>
+                                <label id="additionalFieldLabeldip" for="certificate_dip" class="form-label">Diploma Certificate Upload</label>
                                 <input type="file" class="form-control" id="certificate_dip" name="certificate_dip">
                                 <div id="certificate_dip_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_ug-group" style="display: none;">
-                                <label id="additionalFieldLabelug" for="certificate_ug" class="form-label">UG Degree
-                                    Certificate
-                                    Upload</label>
+                                <label id="additionalFieldLabelug" for="certificate_ug" class="form-label">UG Degree Certificate Upload</label>
                                 <input type="file" class="form-control" id="certificate_ug" name="certificate_ug"
                                     accept="image/png ,image/jpg, image/jpeg, application/pdf">
                                 <div id="certificate_ug_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_pg-group" style="display: none;">
-                                <label id="additionalFieldLabelpg" for="certificate_pg" class="form-label">PG Certificate
-                                    Upload</label>
+                                <label id="additionalFieldLabelpg" for="certificate_pg" class="form-label">PG Certificate Upload</label>
                                 <input type="file" class="form-control" id="certificate_pg" name="certificate_pg"
                                     accept="image/png ,image/jpg, image/jpeg, application/pdf">
                                 <div id="certificate_pg_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_doctorate-group" style="display: none;">
-                                <label id="additionalFieldLabeldoc" for="certificate_doctorate" class="form-label">Doctorate
-                                    Certificate
-                                    Upload</label>
+                                <label id="additionalFieldLabeldoc" for="certificate_doctorate" class="form-label">Doctorate Certificate Upload</label>
                                 <input type="file" class="form-control" id="certificate_doctorate"
                                     name="certificate_doctorate" accept="image/png ,image/jpg, image/jpeg, application/pdf">
                                 <div id="certificate_doctorate_error" class="text-danger"></div>
@@ -3467,146 +3149,6 @@
 
                 autocomplete(document.getElementById("qualification"), countries);
 
-
-
-                function validateForm() {
-                    var q = document.educationform.qualification.value;
-                    var dep = document.educationform.department.value;
-                    var edu = document.educationform.educationmode.value;
-                    var scl = document.educationform.school.value;
-                    var per = document.educationform.percentage.value;
-                    var yop = document.educationform.year_passed.value;
-                    var tenth = document.educationform.certificate_10th.value;
-                    var tweleth = document.educationform.certificate_12th.value;
-                    var diploma = document.educationform.certificate_dip.value;
-                    var ug = document.educationform.certificate_ug.value;
-                    var pg = document.educationform.certificate_pg.value;
-                    var dc = document.educationform.certificate_doctorate.value;
-
-                    if (q == "") {
-                        var namesms2 = "Qualification must be filled out";
-                        document.getElementById("qualification_error").innerHTML = namesms2;
-                        document.educationform.qualification.focus();
-                        return false;
-                    } else {
-                        document.getElementById("qualification_error").innerHTML = "";
-                    }
-
-
-                    if (dep == "" && document.getElementById('department-group').style.display !== "none") {
-                        var namesms2 = "Department must be filled out";
-                        document.getElementById("department_error").innerHTML = namesms2;
-                        document.educationform.department.focus();
-                        return false;
-                    } else {
-                        document.getElementById("department_error").innerHTML = "";
-                    }
-
-                    if (edu == "" && document.getElementById('course-group').style.display != "none") {
-                        var namesms2 = "Mode of Education must be filled out";
-                        document.getElementById("course_error").innerHTML = namesms2;
-                        document.educationform.educationmode.focus();
-                        return false;
-                    } else {
-                        document.getElementById("course_error").innerHTML = "";
-                    }
-
-
-                    if (scl == "" && document.getElementById('school-group').style.display != "none") {
-                        var namesms2 = "School or college must be filled out";
-                        document.getElementById("school_error").innerHTML = namesms2;
-                        document.educationform.school.focus();
-                        return false;
-                    } else {
-                        document.getElementById("school_error").innerHTML = "";
-                    }
-
-
-                    if (per == "" && document.getElementById('percentage-group').style.display !== "none") {
-                        var namesms2 = "Percentage must be filled out";
-                        document.getElementById("percentage_error").innerHTML = namesms2;
-                        document.educationform.percentage.focus();
-                        return false;
-                    } else if (per > 100) {
-                        var pervalidate = "Please enter valid percentage";
-                        document.getElementById("percentage_error").innerHTML = pervalidate;
-                        document.educationform.percentage.focus();
-                        return false;
-                    } else {
-                        document.getElementById("percentage_error").innerHTML = "";
-                    }
-
-
-                    if (yop == "" && document.getElementById('year-group').style.display !== "none") {
-                        var namesms2 = "Year of passed out must be filled out";
-                        document.getElementById("year_error").innerHTML = namesms2;
-                        document.educationform.year_passed.focus();
-                        return false;
-                    } else if (!/^\d{4}$/.test(yop)) {
-                        document.getElementById("year_error").innerHTML = "Please enter a valid year in YYYY format.";
-                        return false;
-                    } else {
-                        document.getElementById("year_error").innerHTML = "";
-                    }
-
-                    if (tenth == "" && document.getElementById('certificate_10th-group').style.display !== "none") {
-                        var namesms2 = "10 th certificate must be uploaded";
-                        document.getElementById("certificate_10th_error").innerHTML = namesms2;
-                        document.educationform.certificate_10th.focus();
-                        return false;
-                    } else {
-                        document.getElementById("certificate_10th_error").innerHTML = "";
-                    }
-
-                    if (tweleth == "" && document.getElementById('certificate_12th-group').style.display !== "none") {
-                        var namesms2 = "12 th certificate must be uploaded";
-                        document.getElementById("certificate_12th_error").innerHTML = namesms2;
-                        document.educationform.certificate_12th.focus();
-                        return false;
-                    } else {
-                        document.getElementById("certificate_12th_error").innerHTML = "";
-                    }
-
-                    if (diploma == "" && document.getElementById('certificate_dip-group').style.display !== "none") {
-                        var namesms2 = "Diploma certificate must be uploaded";
-                        document.getElementById("certificate_dip_error").innerHTML = namesms2;
-                        document.educationform.certificate_dip.focus();
-                        return false;
-                    } else {
-                        document.getElementById("certificate_dip_error").innerHTML = "";
-                    }
-
-                    if (ug == "" && document.getElementById('certificate_ug-group').style.display !== "none") {
-                        var namesms2 = "UG certificate must be uploaded";
-                        document.getElementById("certificate_ug_error").innerHTML = namesms2;
-                        document.educationform.certificate_ug.focus();
-                        return false;
-                    } else {
-                        document.getElementById("certificate_ug_error").innerHTML = "";
-                    }
-
-
-                    if (pg == "" && document.getElementById('certificate_pg-group').style.display !== "none") {
-                        var namesms2 = "PG certificate must be uploaded";
-                        document.getElementById("certificate_pg_error").innerHTML = namesms2;
-                        document.educationform.certificate_pg.focus();
-                        return false;
-                    } else {
-                        document.getElementById("certificate_pg_error").innerHTML = "";
-                    }
-
-
-                    if (dc == "" && document.getElementById('certificate_doctorate-group').style.display !== "none") {
-                        var namesms2 = "Certificate must be uploaded";
-                        document.getElementById("certificate_doctorate_error").innerHTML = namesms2;
-                        document.educationform.certificate_doctorate.focus();
-                        return false;
-                    } else {
-                        document.getElementById("certificate_doctorate_error").innerHTML = "";
-                    }
-
-                    return true;
-                }
             </script>
 
             <script>
@@ -3616,605 +3158,7 @@
             </script>
 
             <?php
-        } elseif ($method == "updateEducation") {
-            ?>
-            <!-- Sidebar Active  -->
-            <script>
-                document.getElementById('educations').classList.add('active');
-            </script>
-            <section class="Multi Columns Form">
-                <div class="pagetitle">
-                    <h1>Education Details</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Edit Education</li>
-                        </ol>
-                    </nav>
-                </div><!-- End Page Title -->
-                <div class="col-12">
-                    <div class="card recent-sales overflow-auto">
-
-                        <div class="card-body pt-4">
-
-                            <div class="d-flex justify-content-between">
-                                <!-- <a href="<?php echo baseUrl . "Admin/addEducationForm" ?>">
-                  <button type="button" class="btn btn-success mb-4">+ Add Education</button></a> -->
-
-                                <a href="#addeduform"><button onclick="addeduformfunction()" type="button"
-                                        class="btn btn-success mb-4" disabled>+ Add Education</button></a>
-                                <div>
-                                    <a href="<?php echo baseUrl . "Admin/basicdetails" ?>"> <button type="button"
-                                            class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
-                                    <a href="<?php echo baseUrl . "Admin/experiencetable" ?>"> <button type="button"
-                                            class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
-                                </div>
-                            </div>
-                            <?php
-                            if (isset($educationTable[0]['id'])) {
-                                ?>
-                                <table class="table overflow-auto " id="myTable">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">S.No</th>
-                                            <th scope="col">Educational Qualification</th>
-                                            <th scope="col">Specialiization</th>
-                                            <th scope="col">Mode of Education</th>
-                                            <th scope="col">Institute</th>
-                                            <th scope="col">Year of Passing</th>
-                                            <th scope="col">Percentage</th>
-                                            <th scope="col">Certificate</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        if (isset($educationTable[0]['id'])) {
-                                            $count = 1;
-                                            foreach ($educationTable as $key => $value) {
-                                                $seekerId = $_SESSION['seekerId'];
-                                                ?>
-                                                <tr>
-                                                    <td>
-                                                        <form method="post" action="<?php echo baseUrl . 'Admin/delete_selected'; ?>"
-                                                            id="form_<?= $value['id']; ?>">
-                                                            <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
-                                                                onchange="updateDeleteButton2(this)">
-                                                    <td><a>
-                                                            <?php echo $count++; ?>.
-                                                        </a></td>
-                                                    <td>
-                                                        <?php echo $value['educational_qualification'] ?>
-                                                    </td>
-                                                    <!-- <td><?php echo $value['department'] ?></td> -->
-                                                    <!-- Department -->
-                                                    <?php
-                                                    if (
-                                                        $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                                                        $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                                                        $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
-                                                        $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC/BS" || $value['educational_qualification'] === "BSW" ||
-                                                        $value['educational_qualification'] === "B.Pharm" ||
-                                                        $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
-                                                        $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                                                        $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                                                        $value['educational_qualification'] === "M.SC/MS" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
-                                                        $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
-                                                        $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
-                                                        $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
-                                                        $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
-                                                    ) {
-                                                        ?>
-                                                        <td>
-                                                            <?php echo $value['department'] ?>
-                                                        </td>
-                                                        <?php
-                                                    } else {
-                                                        ?>
-                                                        <td>NA</a></td>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                    <?php
-                                                    if (
-                                                        $value['educationmode'] == "Corres"
-                                                    ) {
-                                                        ?>
-                                                        <td>Correspondence</td>
-                                                        <?php
-                                                    } else {
-                                                        ?>
-                                                        <td>Regular</td>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                    <td>
-                                                        <?php echo $value['school_college_name'] ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $value['yearOfPassing'] ?>
-                                                    </td>
-                                                    <!-- <td><?php echo $value['percentage'] ?></td> -->
-                                                    <!-- Percentage -->
-                                                    <?php
-                                                    if (
-                                                        $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                                                        $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                                                        $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
-                                                        $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC/BS" || $value['educational_qualification'] === "BSW" ||
-                                                        $value['educational_qualification'] === "B.Pharm" ||
-                                                        $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
-                                                        $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                                                        $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                                                        $value['educational_qualification'] === "M.SC/MS" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
-                                                        $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
-                                                        $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
-                                                        $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
-                                                        $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM" ||
-                                                        $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
-                                                    ) {
-                                                        ?>
-                                                        <td>
-                                                            <?php echo $value['percentage'] ?>
-                                                        </td>
-                                                        <?php
-                                                    } else {
-                                                        ?>
-                                                        <td>NA</a></td>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                    <?php
-                                                    if ($value['educational_qualification'] == '10th/SSLC') {
-                                                        ?>
-                                                        <td><a href="<?php echo $value['tencer_url'] ?>" target="blank">
-                                                                <?php echo $value['ten_cer'] ?>
-                                                            </a></td>
-                                                        <?php
-                                                    } else if ($value['educational_qualification'] == '12th/HSC') {
-                                                        ?>
-                                                            <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank">
-                                                                <?php echo $value['twelve_cer'] ?>
-                                                                </a></td>
-                                                        <?php
-                                                    } else if (
-                                                        $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm"
-                                                    ) {
-                                                        ?>
-                                                                <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank">
-                                                                <?php echo $value['diploma_cer'] ?>
-                                                                    </a></td>
-                                                        <?php
-                                                    } else if (
-                                                        $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                                                        $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                                                        $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
-                                                        $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC/BS" || $value['educational_qualification'] === "BSW" ||
-                                                        $value['educational_qualification'] === "B.Pharm"
-                                                    ) {
-                                                        ?>
-                                                                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
-                                                                <?php echo $value['ug_cer'] ?>
-                                                                        </a></td>
-                                                        <?php
-                                                    } else if (
-                                                        $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                                                        $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                                                        $value['educational_qualification'] === "M.SC/MS" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
-                                                        $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
-                                                        $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm"
-                                                    ) {
-                                                        ?>
-                                                                        <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank">
-                                                                <?php echo $value['pg_cer'] ?>
-                                                                            </a></td>
-                                                        <?php
-                                                    } else if (
-                                                        $value['educational_qualification'] == "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
-                                                        $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
-                                                    ) {
-                                                        ?>
-                                                                            <td><a href="<?php echo $value['doccer_url'] ?>" target="blank">
-                                                                <?php echo $value['doc_cer'] ?>
-                                                                                </a></td>
-                                                        <?php
-                                                    } else {
-                                                        ?>
-                                                                            <td>NA</a></td>
-                                                        <?php
-                                                    }
-
-                                                    ?>
-                                                    <td class="d-flex">
-                                                        <a class=""
-                                                            href="<?php echo baseUrl . "Admin/updateEducation" ?>/<?php echo $value['id'] ?>#editeduform"><button
-                                                                type="button" class="btn btn-secondary mx-1">Edit</button></a>
-                                                        <!-- <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Admin/deleteEducation" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a> -->
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
-                                <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled"
-                                    onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                                </form>
-                                <?php
-                            } else {
-                                ?>
-                                <h5 class="card-title">No Records Found<span></span></h5>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <!-- <a onclick="return confirm('Are you sure you want to delete?')" ><button type="button" class=" ms-4 mb-4 btn btn-danger" onclick="deleteRows()">Delete</button></a> -->
-
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body" id="editeduform">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Update Education Details</h5>
-                            <a class="" href="<?php echo baseUrl . "Admin/educationTable" ?>">
-                                <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
-                        </div>
-
-                        <!-- Multi Columns Form -->
-                        <form class="row g-3" novalidate name="educationform" method="post" enctype="multipart/form-data"
-                            onsubmit="return validateForm()" action="<?php echo baseUrl . "Admin/updateInsertEducation" ?>">
-
-                            <?php
-                            foreach ($updateEducation as $key => $value) {
-                                $seekerId = $_SESSION['seekerId'];
-                                ?>
-                                <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
-                                <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id">
-                                <div class="col-12">
-                                    <label class="form-label" for="qualification">Educational Qualification</label>
-                                    <select class="form-control" id="qualification"
-                                        value="<?php echo $value['educational_qualification']; ?>" name="qualification"
-                                        onchange="toggleFields()" readonly>
-                                        <option value="<?php echo $value['educational_qualification']; ?>">
-                                            <?php echo $value['educational_qualification']; ?>
-                                        </option>
-                                    </select>
-                                    <div id="qualification_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="department-group" style="display: none;">
-                                    <label class="form-label" for="department">Department</label>
-                                    <input type="text" class="form-control" id="department" name="department"
-                                        value="<?php echo $value['department']; ?>">
-                                    <div id="department_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="course-group" style="display: none;">
-                                    <label for="educationmode" class="form-label">Mode of Education</label>
-                                    <select class="form-control" id="educationmode" name="educationmode">
-                                        <option value="">Select your mode of education </option>
-                                        <option value="Regular" <?php if (isset($value['educationmode']) && $value['educationmode'] === 'Regular')
-                                            echo 'selected'; ?>>Regular course</option>
-                                        <option value="Corres" <?php if (isset($value['educationmode']) && $value['educationmode'] === 'Corres')
-                                            echo 'selected'; ?>>Correspondence course
-                                        </option>
-                                    </select>
-                                    <div id="course_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="school-group">
-                                    <label class="form-label" for="school">Institution Name</label>
-                                    <input type="text" class="form-control" id="school"
-                                        value="<?php echo $value['school_college_name']; ?>" name="school">
-                                    <div id="school_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="percentage-group">
-                                    <label class="form-label" for="percentage">Percentage</label>
-                                    <input type="number" class="form-control" id="percentage" id="school"
-                                        value="<?php echo $value['percentage']; ?>" name="percentage">
-                                    <div id="percentage_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="year-group">
-                                    <label class="form-label" for="year_passed">Year of Passed Out</label>
-                                    <input type="number" class="form-control" id="year_passed"
-                                        value="<?php echo $value['yearOfPassing']; ?>" name="year_passed">
-                                    <div id="year_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="certificate_10th-group" style="display: none;">
-                                    <label class="form-label" for="certificate_10th">10th Certificate Upload</label>
-                                    <input type="text" class="form-control" name="old10cer"
-                                        value="<?php echo $value['ten_cer']; ?>" hidden>
-                                    <div class="uploadedfile" style="display:flex;">
-                                        <input type="file" class="form-control cer10upload" id="certificate_10th"
-                                            name="certificate_10th" accept="image/png ,image/jpg, image/jpeg, application/pdf"
-                                            hidden />
-                                        <label class="form-control" id="file-input-label" for="certificate_10th">Change
-                                            File</label>
-                                        <a href="<?php echo $value['tencer_url']; ?>" class="filelink p-2" target="blank"
-                                            id="existfile">
-                                            <?php echo $value['ten_cer']; ?>
-                                        </a>
-                                    </div>
-                                    <div id="certificate_10th_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="certificate_12th-group" style="display: none;">
-                                    <label class="form-label" for="certificate_12th">12th Certificate Upload</label>
-                                    <input type="text" class="form-control" name="old12cer"
-                                        value="<?php echo $value['twelve_cer']; ?>" hidden>
-                                    <div class="uploadedfile" style="display:flex;">
-                                        <input type="file" class="form-control cer12upload" id="certificate_12th"
-                                            name="certificate_12th" accept="image/png ,image/jpg, image/jpeg, application/pdf"
-                                            hidden />
-                                        <label class="form-control" id="file-input-label12" for="certificate_12th">Change
-                                            File</label>
-                                        <a href="<?php echo $value['twelvecer_url']; ?>" class="filelink p-2" target="blank"
-                                            id="existfile12">
-                                            <?php echo $value['twelve_cer']; ?>
-                                        </a>
-                                    </div>
-                                    <div id="certificate_12th_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="certificate_dip-group" style="display: none;">
-                                    <label id="additionalFieldLabeldip" class="form-label" for="certificate_dip">Diploma
-                                        Certificate
-                                        Upload</label>
-                                    <input type="text" class="form-control" name="olddipcer"
-                                        value="<?php echo $value['diploma_cer']; ?>" hidden>
-                                    <div class="uploadedfile" style="display:flex;">
-                                        <input type="file" class="form-control cerdipupload" id="certificate_dip"
-                                            name="certificate_dip" accept="image/png ,image/jpg, image/jpeg, application/pdf"
-                                            hidden />
-                                        <label class="form-control" id="file-input-labeldip" for="certificate_dip">Change
-                                            File</label>
-                                        <a href="<?php echo $value['diplomacer_url']; ?>" class="filelink p-2" target="blank"
-                                            id="existfiledip">
-                                            <?php echo $value['diploma_cer']; ?>
-                                        </a>
-                                    </div>
-                                    <div id="certificate_dip_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="certificate_ug-group" style="display: none;">
-                                    <label id="additionalFieldLabelug" class="form-label" for="certificate_ug">UG Degree
-                                        Certificate
-                                        Upload</label>
-                                    <input type="text" class="form-control" name="oldugcer"
-                                        value="<?php echo $value['ug_cer']; ?>" hidden>
-                                    <div class="uploadedfile" style="display:flex;">
-                                        <input type="file" class="form-control cerugupload" id="certificate_ug"
-                                            name="certificate_ug" accept="image/png ,image/jpg, image/jpeg, application/pdf"
-                                            hidden />
-                                        <label class="form-control" id="file-input-labelug" for="certificate_ug">Change
-                                            File</label>
-                                        <a href="<?php echo $value['ugcer_url']; ?>" class="filelink p-2" target="blank"
-                                            id="existfileug">
-                                            <?php echo $value['ug_cer']; ?>
-                                        </a>
-                                    </div>
-                                    <div id="certificate_ug_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="certificate_pg-group" style="display: none;">
-                                    <label id="additionalFieldLabelpg" class="form-label" for="certificate_pg">PG Certificate
-                                        Upload</label>
-                                    <input type="text" class="form-control" name="oldpgcer"
-                                        value="<?php echo $value['pg_cer']; ?>" hidden>
-                                    <div class="uploadedfile" style="display:flex;">
-                                        <input type="file" class="form-control cerpgupload" id="certificate_pg"
-                                            name="certificate_pg" accept="image/png ,image/jpg, image/jpeg, application/pdf"
-                                            hidden />
-                                        <label class="form-control" id="file-input-labelpg" for="certificate_pg">Change
-                                            File</label>
-                                        <a href="<?php echo $value['pgcer_url']; ?>" class="filelink p-2" target="blank"
-                                            id="existfilepg">
-                                            <?php echo $value['pg_cer']; ?>
-                                        </a>
-                                    </div>
-                                    <div id="certificate_pg_error" class="text-danger"></div>
-                                </div>
-
-                                <div class="col-md-6" id="certificate_doctorate-group" style="display: none;">
-                                    <label id="additionalFieldLabeldoc" class="form-label" for="certificate_doctorate">Doctorate
-                                        Certificate
-                                        Upload</label>
-                                    <input type="text" class="form-control" name="olddoccer"
-                                        value="<?php echo $value['doc_cer']; ?>" hidden>
-                                    <div class="uploadedfile" style="display:flex;">
-                                        <input type="file" class="form-control cerdocupload" id="certificate_doctorate"
-                                            name="certificate_doctorate"
-                                            accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden />
-                                        <label class="form-control" id="file-input-labeldoc" for="certificate_doctorate">Change
-                                            File</label>
-                                        <a href="<?php echo $value['doccer_url']; ?>" class="filelink p-2" target="blank"
-                                            id="existfiledoc">
-                                            <?php echo $value['doc_cer']; ?>
-                                        </a>
-                                    </div>
-                                    <div id="certificate_doctorate_error" class="text-danger"></div>
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                    <button type="reset" class="btn btn-secondary">Reset</button>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                        </form><!-- End Multi Columns Form -->
-
-                    </div>
-                </div>
-            </section>
-            <script>
-                function updateDeleteButton2(checkbox) {
-                    var deleteButton2 = document.getElementById('deleteList2');
-
-                    if (checkbox.checked) {
-                        deleteButton2.classList.remove('disabled');
-                    } else {
-                        deleteButton2.classList.add('disabled');
-                    }
-                }
-            </script>
-            <script>
-                document.getElementById("file-input-label").addEventListener("click", function () {
-                    document.getElementById("existfile").style.display = "none";
-                });
-
-                const fileInput = document.getElementById("certificate_10th");
-                const fileInputLabel = document.getElementById("file-input-label");
-
-                fileInput.addEventListener("change", function () {
-                    if (fileInput.files.length > 0) {
-                        fileInputLabel.textContent = fileInput.files[0].name;
-                    } else {
-
-                        fileInputLabel.textContent = "Select a File";
-                    }
-                });
-
-                // 12 certificate
-                document.getElementById("file-input-label12").addEventListener("click", function () {
-                    document.getElementById("existfile12").style.display = "none";
-                });
-
-                const fileInput12 = document.getElementById("certificate_12th");
-                const fileInputLabel12 = document.getElementById("file-input-label12");
-
-                fileInput12.addEventListener("change", function () {
-                    if (fileInput12.files.length > 0) {
-                        fileInputLabel12.textContent = fileInput12.files[0].name;
-                    } else {
-                        fileInputLabel12.textContent = "Select a File";
-                    }
-                });
-
-                // Diploma certificate
-                document.getElementById("file-input-labeldip").addEventListener("click", function () {
-                    document.getElementById("existfiledip").style.display = "none";
-                });
-
-                const fileInputdip = document.getElementById("certificate_dip");
-                const fileInputLabeldip = document.getElementById("file-input-labeldip");
-
-                fileInputdip.addEventListener("change", function () {
-                    if (fileInputdip.files.length > 0) {
-                        fileInputLabeldip.textContent = fileInputdip.files[0].name;
-                    } else {
-                        fileInputLabeldip.textContent = "Select a File";
-                    }
-                });
-
-                // ug certificate
-                document.getElementById("file-input-labelug").addEventListener("click", function () {
-                    document.getElementById("existfileug").style.display = "none";
-                });
-
-                const fileInputug = document.getElementById("certificate_ug");
-                const fileInputLabelug = document.getElementById("file-input-labelug");
-
-                fileInputug.addEventListener("change", function () {
-                    if (fileInputug.files.length > 0) {
-                        fileInputLabelug.textContent = fileInputug.files[0].name;
-                    } else {
-                        fileInputLabelug.textContent = "Select a File";
-                    }
-                });
-
-                // pg certificate
-                document.getElementById("file-input-labelpg").addEventListener("click", function () {
-                    document.getElementById("existfilepg").style.display = "none";
-                });
-
-                const fileInputpg = document.getElementById("certificate_pg");
-                const fileInputLabelpg = document.getElementById("file-input-labelpg");
-
-                fileInputpg.addEventListener("change", function () {
-                    if (fileInputpg.files.length > 0) {
-                        fileInputLabelpg.textContent = fileInputpg.files[0].name;
-                    } else {
-                        fileInputLabelpg.textContent = "Select a File";
-                    }
-                });
-
-                // doc certificate
-                document.getElementById("file-input-labeldoc").addEventListener("click", function () {
-                    document.getElementById("existfiledoc").style.display = "none";
-                });
-
-                const fileInputdoc = document.getElementById("certificate_doctorate");
-                const fileInputLabeldoc = document.getElementById("file-input-labeldoc");
-
-                fileInputdoc.addEventListener("change", function () {
-                    if (fileInputdoc.files.length > 0) {
-                        fileInputLabeldoc.textContent = fileInputdoc.files[0].name;
-                    } else {
-                        fileInputLabeldoc.textContent = "Select a File";
-                    }
-                });
-            </script>
-
-            <script>
-
-                var qualify = document.getElementById('qualification').value;
-
-                if (qualify == 'Below_9th' || qualify == '9th' || qualify == '11th') {
-                    document.getElementById('percentage-group').style.display = 'none';
-                }
-
-                if (qualify === '10th/SSLC') {
-                    document.getElementById('certificate_10th-group').style.display = 'block';
-                }
-
-                if (document.getElementById('qualification').value === '12th/HSC') {
-                    document.getElementById('certificate_12th-group').style.display = 'block';
-                }
-
-                if (qualify === "DIPLOMA" || qualify === "D.Pharm") {
-                    document.getElementById('department-group').style.display = 'block';
-                    document.getElementById('course-group').style.display = 'block';
-                    document.getElementById('certificate_dip-group').style.display = 'block';
-                    document.getElementById("additionalFieldLabeldip").innerText = "Uploaded " + qualify + " Certificate";
-                }
-
-                if (qualify === "B.E" || qualify === "B.A" || qualify === "B.COM" ||
-                    qualify === "B.ED" || qualify === "B.LIT" || qualify === "B.TECH" ||
-                    qualify === "BCA" || qualify === "BBA" || qualify === "B.SC" ||
-                    qualify === "BSW" || qualify === "BFA" || qualify === "B.Arch" ||
-                    qualify === "B.N" || qualify === "BCS" || qualify === "LLB" ||
-                    qualify === "BDS" || qualify === "B.Pharm") {
-                    document.getElementById('department-group').style.display = 'block';
-                    document.getElementById('course-group').style.display = 'block';
-                    document.getElementById('certificate_ug-group').style.display = 'block';
-                    document.getElementById("additionalFieldLabelug").innerText = "Uploaded " + qualify + " Certificate";
-                }
-
-                if (qualify === "M.E" || qualify === "M.A" || qualify === "M.COM" || qualify === "M.ED"
-                    || qualify === "M.LIT" || qualify === "M.TECH" || qualify === "MCA" || qualify === "MBA"
-                    || qualify === "M.SC" || qualify === "MSW" || qualify === "MFA" || qualify === "M.Arch" ||
-                    qualify === "M.N" || qualify === "MCS" || qualify === "LLM" ||
-                    qualify === "MDS" || qualify === "M.Pharm" || qualify === "MPhil") {
-                    document.getElementById('department-group').style.display = 'block';
-                    document.getElementById('course-group').style.display = 'block';
-                    document.getElementById('certificate_pg-group').style.display = 'block';
-                    document.getElementById("additionalFieldLabelpg").innerText = "Uploaded " + qualify + " Certificate";
-                }
-
-                if (qualify === "Ph.D" || qualify === "DBA" || qualify === "Ed.D" || qualify === "MD" || qualify === "DMD" || qualify === "DVM") {
-                    document.getElementById('department-group').style.display = 'block';
-                    document.getElementById('course-group').style.display = 'block';
-                    document.getElementById('certificate_doctorate-group').style.display = 'block';
-                    document.getElementById("additionalFieldLabeldoc").innerText = "Uploaded " + qualify + " Certificate";
-                }
-            </script>
-
-            <?php
+           
 
         } elseif ($method == "experienceTable") {
             ?>
@@ -4264,32 +3208,27 @@
                                     </div>
 
                                     <div class="col-6" id="newcategory_group" style="display: none;">
-                                        <label for="newcategory" class="form-label">Reason for choosing category as
-                                            others
-                                            <input class="form-control" id="newcategory" name="newcategory"
-                                                placeholder="Enter new category">
+                                        <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+                                            <input class="form-control" id="newcategory" name="newcategory">
                                             <div id="newcategory_error" class="text-danger error"></div>
                                             <input id="categoryothers" name="categoryothers" value="1" hidden>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="subcategory" class="form-label">Subcategory </label>
-                                        <input class="form-control" id="subcategory" name="subcategory"
-                                            placeholder="Enter subcategory">
+                                        <input class="form-control" id="subcategory" name="subcategory">
                                         <div id="subcategory_error" class="text-danger error"></div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="company name" class="form-label">Company Name </label>
-                                        <input type="text" class="form-control" id="companyname" name="companyname"
-                                            placeholder="Enter company name">
+                                        <input type="text" class="form-control" id="companyname" name="companyname">
                                         <div id="companyname_error" class="text-danger error"></div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="company location" class="form-label">Company Location</label> 
-                                        <input type="text" class="form-control" id="companylocation" name="companylocation"
-                                                placeholder="Enter company location">
+                                        <input type="text" class="form-control" id="companylocation" name="companylocation">
                                                 <div id="companylocation_error" class="text-danger error"></div>
                                     </div>
                                     <div class="col-md-6">
@@ -4323,15 +3262,13 @@
 
                                     <div class="col-md-6">
                                         <label for="role" class="form-label">Role in the Company </label>
-                                        <input type="text" class="form-control" id="role" name="role"
-                                            placeholder="Enter role">
+                                        <input type="text" class="form-control" id="role" name="role">
                                         <div id="role_error" class="text-danger error"></div>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="mobilenumber" class="form-label">Company Mobile Number </label>
-                                        <input type="number" class="form-control" id="company_mobilenum"
-                                                name="company_mobilenum" placeholder="9879879879" pattern="[0-9]{1,15}"
-                                                maxlength="15" oninput="validatePhoneNumber(this)">
+                                        <input type="number" class="form-control" id="company_mobilenum" name="company_mobilenum" pattern="[0-9]{1,15}"
+                                                maxlength="10" oninput="validatePhoneNumber(this)">
                                                 <div id="compmobile_error" class="text-danger error"></div>
                                     </div>
 
@@ -4339,24 +3276,20 @@
 
                                     <div class="col-md-6">
                                         <label for="Name" class="form-label">Name </label>
-                                        <input type="text" class="form-control" id="nameofemployer" name="nameofemployer"
-                                            placeholder="Krishna" oninput="validateName1(this)">
+                                        <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" oninput="validateName1(this)">
                                         <div id="name_error" class="text-danger error"></div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="number" class="form-label">Mobile Number <span
-                                                class="text-danger"></span></label>
-                                        <input type="number" class="form-control" id="number" name="number"
-                                            placeholder="9999999999" pattern="[0-9]{1,15}" maxlength="15"
+                                        <label for="number" class="form-label">Mobile Number <span class="text-danger"></span></label>
+                                        <input type="number" class="form-control" id="number" name="number" pattern="[0-9]{1,10}" maxlength="10"
                                             oninput="validatePhoneNumber(this)">
                                         <div id="mobilenum_error" class="text-danger error"></div>
                                     </div>
 
                                     <div class="col-md-6" class="form-label">
                                         <label for="email">Email-Id </label>
-                                        <input type="text" class="form-control" id="emailid" name="emailid"
-                                            placeholder="manager@gmail.com">
+                                        <input type="text" class="form-control" id="emailid" name="emailid">
                                         <div id="emailid_error" class="text-danger error"></div>
                                     </div>
 
@@ -4379,7 +3312,7 @@
 
             <script>
                 function validateName1(input) {
-                    input.value = input.value.replace(/[^A-Za-z]/g, '');
+                    input.value = input.value.replace(/[0-9]/g, '');
                 }
             </script>
             <script>
@@ -4461,405 +3394,7 @@
             </script>
 
             <?php
-        } elseif ($method == "updateExperience") {
-            ?>
-            <!-- Sidebar Active  -->
-            <script>
-                document.getElementById('experiences').classList.add('active');
-            </script>
-
-            <section class="Multi Columns Form">
-                <div class="pagetitle">
-                    <h1>Experience Details</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Edit Experience</li>
-                        </ol>
-                    </nav>
-                </div><!-- End Page Title -->
-
-                <div class="card recent-sales overflow-auto">
-
-                    <div class="card-body">
-
-                        <h5 class="card-title">Experience Table<span></span></h5>
-                        <a class="" href="#addexpform"><button type="button" class="btn btn-success m-2" disabled>+ Add
-                                Experience</button></a>
-                        <div style="float:right;">
-                            <a class="" href="<?php echo baseUrl . "Admin/educationTable" ?>"> <button type="button"
-                                    class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
-                            <a class="" href="<?php echo baseUrl . "Admin/areaOfIntrestTable" ?>"> <button type="button"
-                                    class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
-                        </div>
-                        <?php
-                        if (isset($experienceTable[0]['id'])) {
-                            $count = 1;
-                            ?>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">S.No</th>
-                                        <th scope="col">Job Category</th>
-                                        <th scope="col">Job Subcategory</th>
-                                        <th scope="col">Experience</th>
-                                        <th scope="col">Company Name</th>
-                                        <th scope="col">Company Location</th>
-                                        <th scope="col">Role</th>
-                                        <th scope="col">Company Mobile Number</th>
-                                        <th scope="col">Name of Employer</th>
-                                        <th scope="col">Mobile Number of Employer</th>
-                                        <th scope="col">Email Id</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    if (isset($experienceTable[0]['id'])) {
-                                        $count = 1;
-                                        foreach ($experienceTable as $key => $value) {
-                                            $seekerId = $_SESSION['seekerId'];
-                                            ?>
-                                            <tr>
-                                                <td>
-                                                    <form method="post" action="<?php echo baseUrl . 'Admin/deleteExperience'; ?>"
-                                                        id="form_<?= $value['id']; ?>">
-                                                        <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
-                                                            onchange="updateDeleteButton5(this)">
-                                                <td>
-                                                    <?php echo $count++ ?>.
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['other_category'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['other_sub_category'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['expYear'] ?> to
-                                                    <?php echo $value['expMonth'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['company_name'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['company_location'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['job_role'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['company_mobilenum'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['previous_employer_name'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['previous_employer_mobile'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['previous_employer_email'] ?>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a
-                                                            href="<?php echo baseUrl . "Admin/updateExperience" ?>/<?php echo $value['id'] ?>"><button
-                                                                type="button" class="btn btn-secondary mx-1 ">Edit</button></a>
-                                                        <!-- <a class="" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Admin/deleteExperience" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a> -->
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                            <button type="submit" name="submit" id="deleteList5" class="btn btn-danger disabled"
-                                onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                            </form>
-                            <?php
-                        } else {
-                            ?>
-                            <h5 class="card-title">No Records Found<span></span></h5>
-                            <?php
-                        }
-                        ?>
-                    </div>
-
-                </div>
-
-                <div class="card" id="editexpform">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Update Experience Details</h5>
-                            <a class="" href="<?php echo baseUrl . "Admin/experiencetable" ?>">
-                                <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
-                        </div>
-
-                        <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
-                            onsubmit="return validateexpForm()"
-                            action=" <?php echo baseUrl . "Admin/updateInsertExperience" ?>">
-
-                            <?php
-                            foreach ($updateExperience as $key => $value) {
-                                $seekerId = $_SESSION['seekerId'];
-                                ?>
-                                <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
-                                <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id">
-
-                                <div class="col-6">
-                                    <label class="form-label" for="category">Category</label>
-                                    <select class="form-control" id="category" name="category">
-                                        <?php
-                                        $defaultSelectedValue = $value['other_category'];
-                                        foreach ($categoryList as $key => $cvalue) {
-                                            $selected = ($cvalue->categoryName == $defaultSelectedValue) ? 'selected' : ''; ?>
-                                            <option value="<?php echo $cvalue->categoryName ?>" <?php echo $selected ?>>
-                                                <?php echo $cvalue->categoryName ?>
-                                            </option>
-                                        <?php } ?>
-                                    </select>
-                                    <div id="category_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="subcategory">Subcategory</label>
-                                    <input class="form-control" id="subcategory" name="subcategory"
-                                        value="<?php echo $value['other_sub_category']; ?>" placeholder="Enter subcategory">
-                                    <div id="subcategory_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="company name">Company Name</label>
-                                    <input type="text" class="form-control" value="<?php echo $value['company_name']; ?>"
-                                        id="companyname" name="companyname">
-                                    <div id="companyname_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="company location">Company Location</label>
-                                    <input type="text" class="form-control" value="<?php echo $value['company_location']; ?>"
-                                        id="companylocation" name="companylocation">
-                                    <div id="companylocation_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="experience-container">
-                                        <label for="expYear" class="form-label">Experience</label>
-
-                                        <div class="d-md-flex">
-
-                                            <label for="fromDate" class="pt-1 pe-2">From</label>
-
-                                            <div class="col-md-3  me-2">
-                                                <input type="date" class="form-control" id="fromDate" name="fromDate"
-                                                    value="<?php echo $value['expYear']; ?>">
-                                                <div id="experienceexp_error" class="text-danger error"></div>
-                                            </div>
-
-                                            <label for="toDate" class="pt-1 px-2">To</label>
-
-                                            <div class="col-md-3">
-                                                <input type="date" class="form-control" id="toDate" name="toDate"
-                                                    value="<?php echo $value['expMonth']; ?>">
-                                                <div id="experienceexpmonth_error" class="text-danger error"></div>
-                                            </div>
-
-                                            <input type="checkbox" id="till_now" name="till_now" class="ms-3">
-                                            <label for="toDate" class="pt-1 px-2">Till now</label>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label">Total duration</label>
-                                    <p class="form-control" id="result"><span id="years"></span> Years & <span id="months">
-                                        </span> Months</p>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="role">Role in the Company</label>
-                                    <input type="text" class="form-control" value="<?php echo $value['job_role']; ?>" id="role"
-                                        name="role">
-                                    <div id="role_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="mobilenumber" class="form-label">Company Mobile Number <span
-                                            class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" id="company_mobilenum"
-                                        value="<?php echo $value['company_mobilenum']; ?>" name="company_mobilenum"
-                                        placeholder="9879879879" pattern="[0-9]{1,15}" maxlength="15"
-                                        oninput="validatePhoneNumber(this)">
-                                    <div id="compmobile_error" class="text-danger error"></div>
-                                </div>
-
-                                <h5 class="card-title">Previous Job's Reference Details</h5>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="Name">Name</label>
-                                    <input type="text" class="form-control"
-                                        value="<?php echo $value['previous_employer_name']; ?>" id="nameofemployer"
-                                        name="nameofemployer" oninput="validateName1(this)">
-                                    <div id="name_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="phone number">Mobile Number</label>
-                                    <input type="number" class="form-control"
-                                        value="<?php echo $value['previous_employer_mobile']; ?>" id="number" name="number"
-                                        placeholder="9879879879" pattern="[0-9]{1,15}" maxlength="15"
-                                        oninput="validatePhoneNumber(this)">
-                                    <div id="mobilenum_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="email">Email</label>
-                                    <input type="text" class="form-control"
-                                        value="<?php echo $value['previous_employer_email']; ?>" id="emailid" name="emailid">
-                                    <div id="emailid_error" class="error"></div>
-                                </div>
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                    <button type="reset" class="btn btn-secondary">Reset</button>
-                                </div>
-
-                            </form><!-- End Multi Columns Form -->
-
-                            <?php
-                            }
-                            ?>
-                    </div>
-                </div>
-            </section>
-            <!-- NAME CHARACTERS VALIDATION -->
-            <script>
-                function validateName1(input) {
-                    input.value = input.value.replace(/[^A-Za-z]/g, '');
-                }
-            </script>
-            <script>
-                function updateDeleteButton5(checkbox) {
-                    var deleteButton5 = document.getElementById('deleteList5');
-
-                    if (checkbox.checked) {
-                        deleteButton5.classList.remove('disabled');
-                    } else {
-                        deleteButton5.classList.add('disabled');
-                    }
-                }
-
-                function confirmDelete5() {
-                    return confirm('Are you sure you want to delete?');
-                }
-            </script>
-
-            <script>
-                function validateexpForm() {
-                    clearErrorMessages();
-
-                    var category = document.getElementById("category");
-                    var subcategory = document.getElementById("subcategory");
-                    var expYear = document.getElementById("fromDate");
-                    var expMonth = document.getElementById("toDate");
-                    var companyname = document.getElementById("companyname");
-                    var companylocation = document.getElementById("companylocation");
-                    var role = document.getElementById("role");
-                    var compMobile = document.getElementById("company_mobilenum");
-                    var profile = document.getElementById("profile");
-                    var ename = document.getElementById("nameofemployer");
-                    var phonenumberu = document.getElementById("number");
-                    var emailu = document.getElementById("emailid");
-
-                    return true;
-                }
-
-                function displayError(message, elementId) {
-                    var errorElement = document.getElementById(elementId);
-                    errorElement.innerHTML = message;
-                    errorElement.style.color = 'red';
-                }
-
-                function clearErrorMessages() {
-                    var errorElements = document.getElementsByClassName('error');
-                    Array.from(errorElements).forEach(function (errorElement) {
-                        errorElement.textContent = '';
-                    });
-                }
-            </script>
-
-            <script>
-                document.getElementById('fromDate').addEventListener('input', updateDateDifference);
-                document.getElementById('toDate').addEventListener('input', updateDateDifference);
-                document.getElementById('till_now').addEventListener('change', updateToDate);
-
-                function updateDateDifference() {
-                    var fromDate = new Date(document.getElementById('fromDate').value);
-                    var toDate = new Date(document.getElementById('toDate').value);
-
-                    var tillNowChecked = document.getElementById('till_now').checked;
-
-                    document.getElementById('toDate').disabled = tillNowChecked;
-
-                    if (tillNowChecked) {
-                        var today = new Date();
-                        var formattedDate = today.toISOString().split('T')[0];
-                        document.getElementById('toDate').value = formattedDate;
-                    }
-
-                    if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
-                        var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
-
-                        var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
-                        var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
-                        var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
-
-                        if (daysDiff < 0) {
-                            monthsDiff--;
-                            daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
-                        }
-
-                        if (monthsDiff < 0) {
-                            yearsDiff--;
-                            monthsDiff += 12;
-                        }
-
-                        document.getElementById('years').textContent = yearsDiff;
-                        document.getElementById('months').textContent = monthsDiff;
-                    }
-                }
-
-                function updateToDate() {
-                    var today = new Date();
-
-                    today.setHours(0, 0, 0, 0);
-
-                    var to_date_input = document.getElementById('toDate');
-                    var till_now_checkbox = document.getElementById('till_now');
-
-                    if (till_now_checkbox.checked) {
-                        var yesterday = new Date(today);
-                        yesterday.setDate(today.getDate() - 1);
-
-                        to_date_input.valueAsDate = yesterday;
-                    } else {
-                        to_date_input.disabled = false;
-                    }
-
-                    updateDateDifference();
-                }
-
-                window.onload = function () {
-                    updateDateDifference();
-                };
-            </script>
-
-            <?php
-
+           
         } elseif ($method == "areaOfIntrestTable") {
             ?>
             <!-- Sidebar Active  -->
@@ -4884,7 +3419,7 @@
                             <h5 class="card-title">Add Job Interest</h5>
                         </div>
                         <!-- Multi Columns Form -->
-                        <form class="row g-3 needs-validation" novalidate method="post" onsubmit="return validateAreaForm()"
+                        <form class="row g-3" novalidate method="post" onsubmit="return validateAreaForm()"
                             enctype="multipart/form-data" action="<?php echo baseUrl . "Admin/insertAreaOfIntrest" ?>">
 
                             <input type="hidden" class="form-control" id="seekerId" value="<?php echo $candidateId; ?>"
@@ -4908,26 +3443,22 @@
                             <div class="col-12" id="newcategory_group" style="display: none;">
                                 <label for="newcategory" class="form-label">Reason for choosing category as
                                     others</label>
-                                <input class="form-control" id="newcategory" name="newcategory"
-                                    placeholder="Enter new category">
+                                <input class="form-control" id="newcategory" name="newcategory">
                                 <div id="newcategory_error" class="text-danger error"></div>
                                 <input id="categoryothers" name="categoryothers" value="1" hidden>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="form-label" for=" subcategory">Subcategory</label>
-                                <input type="text" class="form-control" id="subcategory" name="subcategory"
-                                    placeholder="Enter subcategory">
+                                <input type="text" class="form-control" id="subcategory" name="subcategory">
                                 <div id="areasubcat_error" class="error"></div>
                             </div>
 
                             <div class="col-md-6" id="otherCategoryFields" style="display: none;">
                                 <label for="customCategoryInput">Custom Category</label>
-                                <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput"
-                                    placeholder="Enter custom category">
+                                <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
                                 <label for="customSubcategoryInput">Custom Subcategory</label>
-                                <input type="text" class="form-control" id="customSubcategoryInput"
-                                    name="customSubcategoryInput" placeholder="Enter custom subcategory">
+                                <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
                             </div>
                             <div class="col-md-6" id="customCategory" style="display: none;">
                                 <label for="customCategoryInput">Category Name</label>
@@ -4936,8 +3467,7 @@
 
                             <div class="col-md-6" id="customSubcategory" style="display: none;">
                                 <label for="customSubcategoryInput"> Subcategory Name</label>
-                                <input type="text" class="form-control" id="customSubcategoryInput"
-                                    name="customSubcategoryInput">
+                                <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
                             </div>
 
                             <div class="col-md-6">
@@ -4954,8 +3484,7 @@
 
                             <div class="col-md-6">
                                 <label class="form-label" for="description">Description</label>
-                                <input class="form-control" id="description" name="description" rows="3"
-                                    placeholder="Enter description">
+                                <input class="form-control" id="description" name="description" rows="3">
                                 <div id="areades_error" class="error"></div>
                             </div>
 
@@ -4971,8 +3500,7 @@
 
                             <div class="col-md-6">
                                 <label class="form-label" for="expected-salary">Expected Salary</label>
-                                <input type="text" class="form-control" id="expected-salary" name="expected-salary"
-                                    placeholder="Enter salary expectation">
+                                <input type="text" class="form-control" id="expected-salary" name="expected-salary">
                                 <div id="areasalary_error" class="error"></div>
                             </div>
 
@@ -4981,8 +3509,7 @@
 
                             <div class="col-12">
                                 <label class="form-label" for="file">Upload Resume</label>
-                                <input type="file" class="form-control" name="resumeFile" id="idresume" accept=".pdf,.doc"
-                                    required>
+                                <input type="file" class="form-control" name="resumeFile" id="idresume" accept=".pdf,.doc">
                                 <div id="resume_error" class="text-danger"></div>
                             </div>
 
@@ -5045,13 +3572,11 @@
                         <form class="row g-3 needs-validation" novalidate method="post"
                             onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Admin/insertSkillForm" ?>">
 
-                            <input type="hidden" class="form-control" id="seekerId" value="<?php echo $candidateId; ?>"
-                                name="seekerId">
+                            <input type="hidden" class="form-control" id="seekerId" value="<?php echo $candidateId; ?>" name="seekerId">
 
                             <div class="col-12">
                                 <label class="form-label" for="skillname">Skill Name</label>
-                                <input type="text" class="form-control" id="skillname" name="skillname"
-                                    placeholder="Enter skill name">
+                                <input type="text" class="form-control" id="skillname" name="skillname">
                                 <div id="sname_error" class="error"></div>
                             </div>
 
@@ -5102,616 +3627,6 @@
 
             <?php
 
-        } elseif ($method == 'updateAreaOfIntrest') {
-            ?>
-            <!-- Sidebar Active  -->
-            <script>
-                document.getElementById('areaofinterest').classList.add('active');
-            </script>
-
-            <section class="Multi Columns Form">
-                <div class="pagetitle">
-                    <h1>Area of Job Interest Details</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Edit Job Interest</li>
-                        </ol>
-                    </nav>
-                </div><!-- End Page Title -->
-
-                <div class="card recent-sales overflow-auto">
-
-                    <div class="card-body">
-
-                        <h5 class="card-title">Area of Job Interest Table<span></span></h5>
-                        <div class="d-flex justify-content-between">
-                            <a class="" href="#addinterestform">
-                                <button type="button" class="btn btn-success mb-4" disabled>+ Add Area of Job
-                                    Interest</button></a>
-                            <div>
-                                <a href="<?php echo baseUrl . "Admin/experienceTable" ?>"> <button type="button"
-                                        class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
-                                <a href="<?php echo baseUrl . "Admin/resume" ?>"> <button type="button"
-                                        class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
-                            </div>
-                        </div>
-                        <?php
-                        if (isset($areaOfIntrestTable[0]['id'])) {
-                            $count = 1;
-                            ?>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">S.No</th>
-                                        <th scope="col">Job Category</th>
-                                        <th scope="col">Job Subcategory</th>
-                                        <th scope="col">Preferred Location</th>
-                                        <!-- <th scope="col">Experience</th> -->
-                                        <th scope="col">Job Type</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Expected Salary</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    if (1) {
-                                        $count = 1;
-                                        foreach ($areaOfIntrestTable as $key => $value) {
-                                            $seekerId = $_SESSION['seekerId'];
-                                            ?>
-                                            <tr>
-                                                <td>
-                                                    <form method="post" action="<?php echo baseUrl . 'Admin/deleteAreaInterest'; ?>"
-                                                        id="form_<?= $value['id']; ?>">
-                                                        <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
-                                                            onchange="updateDeleteButton2(this)">
-                                                <td>
-                                                    <?php echo $count++ ?>.
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['other_interst_category'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['other_sub_interst_category'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['prefered_location'] ?>
-                                                </td>
-                                                <!-- <td><?php echo $value['expYear'] ?> Years & <?php echo $value['expMonth'] ?> Months</td> -->
-                                                <td>
-                                                    <?php echo $value['job_type'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['description'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['expected_salary'] ?>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a
-                                                            href="<?php echo baseUrl . "Admin/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>#editinterestform"><button
-                                                                type="button" class="btn btn-secondary mx-1">Edit</button></a>
-                                                        <!-- <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Admin/deleteAreaOfIntrest" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a> -->
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                            <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled"
-                                onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                            </form>
-                            <?php
-                        } else {
-                            ?>
-                            <h5 class="card-title">No Records Found<span></span></h5>
-                            <?php
-                        }
-                        ?>
-                    </div>
-                </div>
-
-                <div class="card" id="editinterestform">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Update Job Interest</h5>
-                            <a class="" href="<?php echo baseUrl . "Admin/areaOfIntrestTable" ?>">
-                                <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
-                        </div>
-                        <!-- Multi Columns Form -->
-                        <form class="row g-3 needs-validation" novalidate method="post" onsubmit="return validateAreaForm()"
-                            action="<?php echo baseUrl . "Admin/updateInsertAreaOfIntrest" ?>">
-
-                            <?php
-                            foreach ($updateAreaOfIntrest as $key => $value) {
-                                $seekerId = $_SESSION['seekerId'];
-                                ?>
-                                <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
-                                <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id">
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="category">Category</label>
-                                    <select class="form-control" id="category" name="category"
-                                        value="<?php echo $value['other_interst_category']; ?>">
-                                        <?php
-                                        $defaultSelectedValue = $value['other_interst_category'];
-                                        foreach ($categoryList as $key => $cvalue) {
-                                            $selected = ($cvalue->categoryName == $defaultSelectedValue) ? 'selected' : ''; ?>
-                                            <option value="<?php echo $cvalue->categoryName ?>" <?php echo $selected ?>>
-                                                <?php echo $cvalue->categoryName ?>
-                                            </option>
-                                        <?php } ?>
-                                    </select>
-                                    <div id="areacat_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="subcategory">Subcategory</label>
-                                    <input type="text" class="form-control" id="subcategory" name="subcategory"
-                                        value="<?php echo $value['other_sub_interst_category'] ?>"
-                                        placeholder="Enter subcategory">
-                                    <div id="areasubcat_error" class="error"></div>
-                                </div>
-
-
-                                <div class="" id="otherCategoryFields" style="display: none;">
-                                    <label for="customCategoryInput">Custom Category</label>
-                                    <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput"
-                                        placeholder="Enter custom category">
-                                    <label for="customSubcategoryInput">Custom Subcategory</label>
-                                    <input type="text" class="form-control" id="customSubcategoryInput"
-                                        name="customSubcategoryInput" placeholder="Enter custom subcategory">
-                                </div>
-                                <div class="" id="customCategory" style="display: none;">
-                                    <label for="customCategoryInput">Category Name</label>
-                                    <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
-                                </div>
-                                <div class="" id="customSubcategory" style="display: none;">
-                                    <label for="customSubcategoryInput"> Subcategory Name</label>
-                                    <input type="text" class="form-control" id="customSubcategoryInput"
-                                        name="customSubcategoryInput">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="preferred-location">Preferred Location to work</label>
-                                    <select class="form-control" id="preferred-location" name="preferred-location"
-                                        value="<?php echo $value['prefered_location']; ?>">
-                                        <option value="Erode" <?php if ($value['prefered_location'] === 'Erode')
-                                            echo ' selected'; ?>>Erode
-                                        </option>
-                                        <option value="Karur" <?php if ($value['prefered_location'] === 'Karur')
-                                            echo ' selected'; ?>>Karur
-                                        </option>
-                                        <option value="Namakkal" <?php if ($value['prefered_location'] === 'Namakkal')
-                                            echo ' selected'; ?>>
-                                            Namakkal</option>
-                                        <option value="Tirupur" <?php if ($value['prefered_location'] === 'Tirupur')
-                                            echo ' selected'; ?>>Tirupur
-                                        </option>
-                                    </select>
-                                    <div id="arealocation_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="description">Description</label>
-                                    <input class="form-control" id="description" name="description"
-                                        value="<?php echo $value['description']; ?>" rows="3">
-                                    <div id="areades_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="jobtype">Job Type</label>
-                                    <select class="form-control" id="jobtype" name="jobtype"
-                                        value="<?php echo $value['job_type']; ?>">
-                                        <option value="parttime" <?php if ($value['job_type'] === 'parttime')
-                                            echo ' selected'; ?>>Part Time
-                                        </option>
-                                        <option value="fulltime" <?php if ($value['job_type'] === 'fulltime')
-                                            echo ' selected'; ?>>Full Time
-                                        </option>
-                                    </select>
-                                    <div id="areajob_error" class="error"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="expected-salary">Expected Salary</label>
-                                    <input type="text" class="form-control" id="expected-salary" name="expected-salary"
-                                        value="<?php echo $value['expected_salary']; ?>">
-                                    <div id="areasalary_error" class="error"></div>
-                                </div>
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="reset" class="btn btn-secondary">Reset</button>
-                                </div>
-
-                                <?php
-                            }
-                            ?>
-                        </form>
-                    </div>
-                </div>
-            </section>
-            <script>
-                function updateDeleteButton2(checkbox) {
-                    var deleteButton2 = document.getElementById('deleteList2');
-
-                    if (checkbox.checked) {
-                        deleteButton2.classList.remove('disabled');
-                    } else {
-                        deleteButton2.classList.add('disabled');
-                    }
-                }
-
-                function confirmDelete2() {
-                    return confirm('Are you sure you want to delete?');
-                }
-            </script>
-            <script>
-
-                function validateAreaForm() {
-                    var category = document.getElementById("category").value;
-                    var subcategory = document.getElementById("subcategory").value;
-                    var preferredLocation = document.getElementById("preferred-location").value;
-                    var jobtype = document.getElementById("jobtype").value;
-                    // var experience = document.getElementById("experience").value;
-                    var description = document.getElementById("description").value;
-                    var expectedSalary = document.getElementById("expected-salary").value;
-
-                    clearErrorMessages();
-
-                    if (category === "") {
-                        displayError('Please select a category', 'areacat_error');
-                        return false;
-                    }
-
-                    if (subcategory === "" && category !== "") {
-                        displayError('Please select a subcategory', 'areasubcat_error');
-                        return false;
-                    }
-
-                    if (preferredLocation.trim() === "") {
-                        displayError('Preferred location must be filled out', 'arealocation_error');
-                        return false;
-                    }
-
-                    if (description.trim() === "") {
-                        displayError('Description must be filled out', 'areades_error');
-                        return false;
-                    }
-
-                    if (jobtype.trim() === "") {
-                        displayError('Job type must be filled out', 'areajob_error');
-                        return false;
-                    }
-
-                    if (expectedSalary.trim() === "") {
-                        displayError('Expected salary must be filled out', 'areasalary_error');
-                        return false;
-                    }
-
-                    return true;
-                }
-
-                function clearErrorMessages() {
-                    var errorElements = document.querySelectorAll('.error');
-                    errorElements.forEach(function (errorElement) {
-                        errorElement.textContent = '';
-                    });
-                }
-
-                function displayError(message, elementId) {
-                    var errorElement = document.getElementById(elementId);
-                    errorElement.innerHTML = message;
-                    errorElement.style.color = 'red';
-                }
-
-                function addSubcategoryOption(value, selectElement) {
-                    var option = document.createElement("option");
-                    option.value = value.toLowerCase();
-                    option.text = value;
-                    selectElement.appendChild(option);
-                }
-            </script>
-
-            <?php
-        } elseif ($method == "updateSkill") {
-            ?>
-            <!-- Sidebar Active  -->
-            <script>
-                document.getElementById('areaofinterest').classList.add('active');
-            </script>
-            <section class="Multi Columns Form">
-                <div class="pagetitle">
-                    <h1>Skill Details</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Edit Skill</li>
-                        </ol>
-                    </nav>
-                </div><!-- End Page Title -->
-
-                <div class="card recent-sales overflow-auto">
-                    <div class="card-body">
-                        <h5 class="card-title">Skill Table<span></span></h5>
-                        <div>
-                            <a class="" href="#addskillform">
-                                <button type="button" class="btn btn-success mb-4" onclick="addskillform()" disabled>+ Add
-                                    Skill</button></a>
-                            <div>
-
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">S.No</th>
-                                            <th scope="col">Skill Name</th>
-                                            <th scope="col">Skill Experience</th>
-                                            <th scope="col">Skill Level</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        if (isset($skillTable[0]['id'])) {
-                                            $count = 1;
-                                            foreach ($skillTable as $key => $value) {
-                                                $seekerId = $_SESSION['seekerId'];
-                                                ?>
-                                                <tr>
-                                                    <td>
-                                                        <form method="post" action="<?php echo baseUrl . 'Admin/deleteSkill'; ?>"
-                                                            id="form_<?= $value['id']; ?>">
-                                                            <input type="checkbox" name="selected_items[]"
-                                                                value="<?= $value['id']; ?>" onchange="updateDeleteButton1(this)">
-                                                    <td>
-                                                        <?php echo $count++ ?>.
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $value['skill'] ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $value['experience'] ?> Years
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $value['skill_level'] ?>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <a class=""
-                                                                href="<?php echo baseUrl . "Admin/updateSkill" ?>/<?php echo $value['id'] ?>#editskillform"><button
-                                                                    type="button" class="btn btn-secondary mx-1">Edit</button></a>
-                                                            <!-- <a class="" onclick="return confirm('Are you sure you want to delete?')" href="<?php echo baseUrl . "Admin/deleteSkill" ?>/<?php echo $value['id'] ?>"><button type="button" class="btn btn-danger">Delete</button></a> -->
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                    <button type="submit" name="submit" id="deleteList1" class="btn btn-danger disabled"
-                                        onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                                    </form>
-                                    <?php
-                                        } else {
-                                            ?>
-                                    <h5 class="card-title">No Records Found<span></span></h5>
-                                    <?php
-                                        }
-                                        ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" id="editskillforrm">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Update Skill</h5>
-                            <a class="" href="<?php echo baseUrl . "Admin/areaOfIntrestTable" ?>">
-                                <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
-                        </div>
-                        <!-- Multi Columns Form -->
-                        <form class="row g-3 needs-validation" novalidate method="post"
-                            onsubmit="return validateSkillForm()"
-                            action="<?php echo baseUrl . "Admin/updateInsertSkill" ?>">
-
-                            <?php
-                            if (isset($updateSkill[0]['id'])) {
-                                foreach ($updateSkill as $key => $value) {
-                                    $seekerId = $_SESSION['seekerId'];
-                                    ?>
-                                    <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
-                                    <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id"
-                                        placeholder="Enter your name">
-
-                                    <div class="col-12">
-                                        <label class="form-label" for="skillname">Skill Name</label>
-                                        <input type="text" class="form-control" id="skillname" name="skillname"
-                                            placeholder="Enter skill name" value="<?php echo $value['skill']; ?>">
-                                        <div id="sname_error" class="error"></div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="experience-container">
-                                            <label for="experience" class="form-label">Experience</label>
-                                            <div class="d-flex">
-                                                <select class="form-control col-3 me-2" id="experience" name="experience">
-                                                    <?php $selectedValue = $value['experience'];
-                                                    for ($i = 0; $i <= 20; $i++): ?>
-                                                        <option value="<?php echo $i; ?>" <?php echo ($i == $selectedValue) ? 'selected' : ''; ?>>
-                                                            <?php echo $i; ?> Year
-                                                            <?php echo ($i !== 1) ? 's' : ''; ?>
-                                                        </option>
-                                                    <?php endfor; ?>
-                                                    <option value="20+" <?php if ($value['experience'] === '20+')
-                                                        echo ' selected'; ?>>20+ Years</option>
-                                                </select>
-                                            </div>
-                                            <div id="sexp_error" class="error"></div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <label class="form-label" for="skillLevel">Skill Level</label>
-                                        <select class="form-control" name="skilllevel" id="skilllevel">
-                                            <option value="beginner" <?php if ($value['skill_level'] === 'beginner')
-                                                echo ' selected'; ?>>Beginner
-                                            </option>
-                                            <option value="intermediate" <?php if ($value['skill_level'] === 'intermediate')
-                                                echo ' selected'; ?>>
-                                                Intermediate</option>
-                                            <option value="advanced" <?php if ($value['skill_level'] === 'advanced')
-                                                echo ' selected'; ?>>Advanced
-                                            </option>
-                                        </select>
-                                        <div id="slevel_error" class="error"></div>
-                                    </div>
-
-                                    <input type="number" class="form-control" value="1" name="areasubmit" hidden>
-
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                        <button type="reset" class="btn btn-secondary">Reset</button>
-                                    </div>
-
-                                </form><!-- End Multi Columns Form -->
-
-                            </div>
-                        </div>
-                    </section>
-
-                    <script>
-                        function updateDeleteButton1(checkbox) {
-                            var deleteButton1 = document.getElementById('deleteList1');
-
-                            if (checkbox.checked) {
-                                deleteButton1.classList.remove('disabled');
-                            } else {
-                                deleteButton1.classList.add('disabled');
-                            }
-                        }
-
-                        function confirmDelete1() {
-                            return confirm('Are you sure you want to delete?');
-                        }
-                    </script>
-
-                    <?php
-                                }
-                            }
-
-        } elseif ($method == "resume") {
-            ?>
-            <!-- Sidebar Active  -->
-            <script>
-                document.getElementById('resumes').classList.add('active');
-            </script>
-            <section class="Multi Columns Form" style="padding-bottom: 290px;">
-                <div class="pagetitle">
-                    <h1>Resume</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Resume</li>
-                        </ol>
-                    </nav>
-                </div><!-- End Page Title -->
-                <div class="card">
-                    <div class="card-body pt-4">
-                        <a class="" href="<?php echo baseUrl . "Admin/areaOfIntrestTable" ?>"> <button type="button"
-                                class="btn btn-info"><i class="bi bi-arrow-left"></i></button></a>
-
-                        <h5 class="card-title">Upload Resume</h5>
-
-                        <!-- Multi Columns Form -->
-                        <form class="row g-3 needs-validation" novalidate name="resumeform" id="resumeForm" method="post"
-                            enctype="multipart/form-data" onsubmit="return validateForm()"
-                            action="<?php echo baseUrl . "Admin/registered" ?>">
-
-
-                            <?php if (!empty($arearesume[0]['resume_filename'])) { ?>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="file">Uploaded Resume</label>
-                                    <input type="file" name="oldresume" id="oldresume"
-                                        value="<?php echo $arearesume[0]['resume_filename'] ?>" hidden>
-                                    <div class="uploadedfile d-md-flex">
-                                        <input type="file" class="form-control " id="idresume" name="file" accept=".pdf,.doc"
-                                            hidden>
-                                        <label id="file-input-labelresume" for="idresume" class="form-control">Change
-                                            file</label>
-                                        <a href="<?php echo $arearesume[0]['resume_filename_url'] ?>" id="existfileresume"
-                                            class="ms-2" style="margin-top:10px">
-                                            <?php echo $arearesume[0]['resume_filename'] ?>
-                                        </a>
-                                    </div>
-                                </div>
-                            <?php } else {
-                                ?>
-                                <div class="col-12">
-                                    <label class="form-label" for="file">Upload Resume</label>
-                                    <input type="file" class="form-control" name="file" id="idresume" accept=".pdf,.doc">
-                                    <div id="resume_error" class="text-danger"></div>
-                                </div>
-                            <?php } ?>
-
-                            <input type="number" class="form-control" value="1" name="resumesubmit" hidden>
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Upload</button>
-                                <button type="reset" class="btn btn-secondary">Reset</button>
-                            </div>
-
-
-
-                        </form><!-- End Multi Columns Form -->
-
-                    </div>
-                </div>
-            </section>
-
-            <script>
-                // uploaded resume
-                document.getElementById("file-input-labelresume").addEventListener("click", function () {
-                    document.getElementById("existfileresume").style.display = "none";
-                });
-
-                const fileInputresume = document.getElementById("idresume");
-                const fileInputLabelresume = document.getElementById("file-input-labelresume");
-
-                fileInputresume.addEventListener("change", function () {
-                    if (fileInputresume.files.length > 0) {
-                        fileInputLabelresume.textContent = fileInputresume.files[0].name;
-                    } else {
-                        fileInputLabelresume.textContent = "Select a File";
-                    }
-                });
-
-                function validateForm() {
-                    var ur = document.resumeform.file.value;
-
-                    if (ur == "") {
-                        var msg = "Resume must be uploaded";
-                        document.getElementById("resume_error").innerHTML = msg;
-                        return false;
-                    } else {
-                        document.getElementById("resume_error").innerHTML = "";
-                    }
-
-                }
-            </script>
-
-            <?php
         } elseif ($method == "unVerifiedEmployees") {
             ?>
             <!-- Sidebar Active  -->
@@ -6583,7 +4498,7 @@
             </script>
             <section>
                 <!-- Default Card -->
-                <div class="card">
+                <div class="card" id="printCandidate">
                     <div class="card-body">
                         <div class="container">
                             <div class="row">
@@ -7057,8 +4972,7 @@
                                                         id="checkbox3" onclick="verifyCheckboxes()" value="1" <?php if ($this->data['basicDetails'][0]['employmentverify'] == '1') {
                                                             echo 'checked';
                                                         } ?>>
-                                                    <label class="form-check-label" for="gridRadios2"> 3.EMPLOYMENT – Employer
-                                                        details </label>
+                                                    <label class="form-check-label" for="gridRadios2"> 3.EMPLOYMENT – Employer details </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" name="educationVerify"
@@ -7073,8 +4987,7 @@
                                                 <input class="form-check-input" type="text" name="newList" id="" value="1"
                                                     hidden>
                                                 <input class="form-check-input" type="text" name="verifiedName" id=""
-                                                    value="<?php echo $_SESSION['adminName'] . ' / ' . $_SESSION['adminid'] ?>"
-                                                    hidden>
+                                                    value="<?php echo $_SESSION['adminName'] . ' / ' . $_SESSION['adminid'] ?>" hidden>
 
 
 
@@ -7096,8 +5009,7 @@
                                         </fieldset>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <textarea class="form-control" placeholder="Leave a comment here"
-                                                    id="floatingTextarea" name="verificationRemarks"
+                                                <textarea class="form-control" id="floatingTextarea" name="verificationRemarks"
                                                     style="height: 100px;"><?php echo $this->data['basicDetails'][0]['verificationRemarks'] ?> </textarea>
                                                 <label for="floatingTextarea">Remarks</label>
                                                 <div class="invalid-feedback">
@@ -7112,9 +5024,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="verificationStatus"
                                                     id="gridRadios1" value="0">
-                                                <label class="form-check-label" for="gridRadios1">
-                                                    Verification Pending
-                                                </label>
+                                                <label class="form-check-label" for="gridRadios1"> Verification Pending </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="verificationStatus"
@@ -7144,16 +5054,16 @@
                                 </div> -->
 
                                     <div class="d-flex justify-content-around">
-                                        <button type="submit" class="btn btn-success" id="verifyButton"
-                                            disabled>Verified</button>
+                                        <button type="submit" class="btn btn-success" id="verifyButton">Verified</button>
                                         <button type="submit" class="btn btn-danger" id="pendingButton">Pending</button>
+                                        <button onClick="window.print()" type="button" class="btn btn-primary printhide">Print</button>
                                     </div>
                                 </form>
                             </div>
                         </div><!-- End Default Card -->
             </section>
 
-            <script>
+            <!-- <script>
                 function verifyCheckboxes() {
                     var checkbox1 = document.getElementById('checkbox1').checked;
                     var checkbox2 = document.getElementById('checkbox2').checked;
@@ -7171,7 +5081,7 @@
                         pendingButton.disabled = false;
                     }
                 }
-            </script>
+            </script> -->
 
             <?php
         } elseif ($method == "viewEmployee") {
@@ -7613,8 +5523,7 @@
                                 </div>
 
                                 <div style="float:right;">
-                                    <button onClick="window.print()" type="button"
-                                        class="btn btn-dark printhide">Print</button>
+                                    <button onClick="window.print()" type="button" class="btn btn-dark printhide">Print</button>
                                 </div>
 
                             </div>
@@ -8098,6 +6007,91 @@
                 </div><!-- End Recent Sales -->
             </section>
             <?php
+
+        } elseif ($method == "rejectedCandidate") {
+    ?>
+    <!-- Sidebar Active  -->
+    <script>
+        document.getElementById('candidatechart').classList.add('active');
+    </script>
+    <section class="usertable">
+        <div class="pagetitle">
+            <h1>Placed Candidates</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                    <li class="breadcrumb-item active">Candidate</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <?php
+                    if (isset($this->data['candidateChartList'][0]['name'])) {
+                        ?>
+                        <h5 class="card-title">Placed Candidate List<span></span></h5>
+
+                        <!-- <table class="table table-borderless datatable"> -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">S.No</th>
+                                    <th scope="col">Candidate ID</th>
+                                    <th scope="col">Placed At</th>
+                                    <th scope="col">Candidate Name</th>
+                                    <th scope="col">Candidate Mobile Number</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $loopcount = 1;
+                                foreach ($this->data['candidateChartList'] as $key => $value) {
+                                    ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $loopcount; ?>.
+                                        </td>
+
+                                        <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
+                                                <?php echo $value['cdid']; ?>
+                                            </a></td>
+                                        <td>
+                                            <?php echo $value['compName']; ?> / <a
+                                                href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
+                                                <?php echo $value['emprid']; ?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <?php echo $value['name']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $value['mobilenum']; ?>
+                                        </td>
+                                        <td><span class="badge bg-success">Placed</span></td>
+                                    </tr>
+                                    <?php
+                                    $loopcount++;
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                        <?php
+                    } else {
+                        ?>
+                        <h5 class="card-title">No Records Found<span></span></h5>
+                        <?php
+                    }
+                    ?>
+                </div>
+
+            </div>
+        </div><!-- End Recent Sales -->
+    </section>
+    <?php
+
+
         } elseif ($method == 'addNewAdminApprovel') {
             ?>
             <!-- ******************************** Not in use ********************************* -->
@@ -8377,24 +6371,19 @@
                             </div> -->
                                 <div class="col-md-6">
                                     <label for="inputAddress5" class="form-label">Street Address</label>
-                                    <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St"
-                                        name="address" value="<?php echo $value['street_address'] ?>" readonly required>
+                                    <input type="text" class="form-control" id="inputAddres5s" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputAddress2" class="form-label">Landmark</label>
-                                    <input type="text" class="form-control" id="inputAddress2"
-                                        placeholder="Apartment, studio, or floor" name="landmark"
-                                        value="<?php echo $value['Landmark'] ?>" readonly required>
+                                    <input type="text" class="form-control" id="inputAddress2" name="landmark" value="<?php echo $value['Landmark'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputCity" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="inputCity" name="city"
-                                        value="<?php echo $value['City'] ?>" readonly required>
+                                    <input type="text" class="form-control" id="inputCity" name="city" value="<?php echo $value['City'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputCity" class="form-label">District</label>
-                                    <input type="text" class="form-control" id="inputDistrict" name="district"
-                                        value="<?php echo $value['district'] ?>" readonly required>
+                                    <input type="text" class="form-control" id="inputDistrict" name="district" value="<?php echo $value['district'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputState" class="form-label">State</label>
@@ -8404,53 +6393,44 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputZip" class="form-label">Pincode</label>
-                                    <input type="text" class="form-control" id="inputPincode"
-                                        value="<?php echo $value['pincode'] ?>" readonly name="pincode">
+                                    <input type="text" class="form-control" id="inputPincode" value="<?php echo $value['pincode'] ?>" readonly name="pincode">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputLogo" class="form-label">Logo</label>
                                     <!-- <input type="text" class="form-control" id="inputLogo" value="<?php echo $value['company_logo'] ?>" readonly name="pincode"> -->
-                                    <a href="<?php echo $value['company_logourl']; ?>" class="form-control text-primary"
-                                        target="blank">
+                                    <a href="<?php echo $value['company_logourl']; ?>" class="form-control text-primary" target="blank">
                                         <?php echo $value['company_logo']; ?>
                                     </a>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputWebsite" class="form-label">Website</label>
-                                    <input type="text" class="form-control" id="inputWebsite"
-                                        value="<?php echo $value['companywebsite'] ?>" readonly name="cwebsite1">
+                                    <input type="text" class="form-control" id="inputWebsite" value="<?php echo $value['companywebsite'] ?>" readonly name="cwebsite1">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPan" class="form-label">PAN Number</label>
-                                    <input type="text" class="form-control" id="inputPan"
-                                        value="<?php echo $value['companypan'] ?>" readonly name="cpan1">
+                                    <input type="text" class="form-control" id="inputPan" value="<?php echo $value['companypan'] ?>" readonly name="cpan1">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputGst" class="form-label">GST Number</label>
-                                    <input type="text" class="form-control" id="inputGst"
-                                        value="<?php echo $value['companygst'] ?>" readonly name="cgst1">
+                                    <input type="text" class="form-control" id="inputGst" value="<?php echo $value['companygst'] ?>" readonly name="cgst1">
                                 </div>
 
                                 <h5 class="card-title">Contact Person Details</h5>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="inputEmail5"
-                                        value="<?php echo $value['name'] ?>" readonly name="name1" required>
+                                    <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['name'] ?>" readonly name="name1" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Role</label>
-                                    <input type="text" class="form-control" id="inputEmail5"
-                                        value="<?php echo $value['role'] ?>" readonly name="role" required>
+                                    <input type="text" class="form-control" id="inputEmail5" value="<?php echo $value['role'] ?>" readonly name="role" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputNumber5" class="form-label">Mobile Number</label>
-                                    <input type="number" class="form-control" id="inputNumber5"
-                                        value="<?php echo $value['mobile_number'] ?>" readonly name="mobile1" required>
+                                    <input type="number" class="form-control" id="inputNumber5" value="<?php echo $value['mobile_number'] ?>" readonly name="mobile1" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Email-ID</label>
-                                    <input type="email" class="form-control" id="inputEmail5"
-                                        value="<?php echo $value['email'] ?>" readonly name="email1" required>
+                                    <input type="email" class="form-control" id="inputEmail5" value="<?php echo $value['email'] ?>" readonly name="email1" required>
                                 </div>
 
                                 <h5 class="card-title">Employer Approval</h5>
@@ -8463,21 +6443,18 @@
                                             <legend class="col-form-label col-sm-4 pt-0">Employer Add Approval Request</legend>
                                             <div class="col-sm-8">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios1"
-                                                        value="1" checked>
+                                                    <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios1" value="1" checked>
                                                     <label class="form-check-label" for="gridRadios1">Add</label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios2"
-                                                        value="2">
+                                                    <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios2" value="2">
                                                     <label class="form-check-label" for="gridRadios2">Delete</label>
                                                 </div>
 
                                         </fieldset>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
-                                                    name="addNewApprovelRemarks" style="height: 100px;" required></textarea>
+                                                <textarea class="form-control" id="floatingTextarea" name="addNewApprovelRemarks" style="height: 100px;" required></textarea>
                                                 <label for="floatingTextarea">Remarks</label>
                                             </div>
                                         </div>
@@ -8512,8 +6489,7 @@
                                             </fieldset>
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3">
-                                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
-                                                        name="deleteApprovelRemarks" style="height: 100px;" required></textarea>
+                                                    <textarea class="form-control" id="floatingTextarea" name="deleteApprovelRemarks" style="height: 100px;" required></textarea>
                                                     <label for="floatingTextarea">Remarks</label>
                                                 </div>
                                             </div>
@@ -8540,15 +6516,13 @@
                                         <legend class="col-form-label col-sm-4 pt-0">Add Employer Approval</legend>
                                         <div class="col-sm-8">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios1"
-                                                    value="0">
+                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios1" value="0">
                                                 <label class="form-check-label" for="gridRadios1">
                                                     Approval Pending
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios2"
-                                                    value="1">
+                                                <input class="form-check-input" type="radio" name="addNewApprovel" id="gridRadios2" value="1">
                                                 <label class="form-check-label" for="gridRadios2">
                                                     Approval Success
                                                 </label>
@@ -8557,8 +6531,7 @@
                                     </fieldset>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
-                                                name="addNewApprovelRemarks" style="height: 100px;"></textarea>
+                                            <textarea class="form-control" id="floatingTextarea" name="addNewApprovelRemarks" style="height: 100px;"></textarea>
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
@@ -8566,25 +6539,18 @@
                                         <legend class="col-form-label col-sm-4 pt-0">Delete Employer Approvel</legend>
                                         <div class="col-sm-8">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios1"
-                                                    value="0">
-                                                <label class="form-check-label" for="gridRadios1">
-                                                    Approval Pending
-                                                </label>
+                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios1" value="0">
+                                                <label class="form-check-label" for="gridRadios1"> Approval Pending </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios2"
-                                                    value="1">
-                                                <label class="form-check-label" for="gridRadios2">
-                                                    Approval success
-                                                </label>
+                                                <input class="form-check-input" type="radio" name="deleteApprovel" id="gridRadios2" value="1">
+                                                <label class="form-check-label" for="gridRadios2">  Approval success </label>
                                             </div>
                                         </div>
                                     </fieldset>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
-                                                name="deleteApprovelRemarks" style="height: 100px;"></textarea>
+                                            <textarea class="form-control" id="floatingTextarea" name="deleteApprovelRemarks" style="height: 100px;"></textarea>
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
@@ -8628,16 +6594,12 @@
                         <!-- <p id="demo" >Employee ID :  </p> -->
                         <form class="needs-validation" novalidate
                             action="<?php echo baseUrl . "admin/deleteEmployeeform" ?>" method="post">
-                            <input class="form-check-input" type="text" name="EmployeeId" id="EmployeeId" value=""
-                                hidden>
-                            <input class="form-check-input" type="text" name="deleteEmployeeStatus" id="" value="1"
-                                hidden>
+                            <input class="form-check-input" type="text" name="EmployeeId" id="EmployeeId" value="" hidden>
+                            <input class="form-check-input" type="text" name="deleteEmployeeStatus" id="" value="1" hidden>
 
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" placeholder="Leave a comment here"
-                                        id="floatingTextarea" name="deleteEmployeeRemarks" cols="30" rows="20"
-                                        required></textarea>
+                                    <textarea class="form-control"  id="floatingTextarea" name="deleteEmployeeRemarks" cols="30" rows="20" required></textarea>
                                     <label for="floatingTextarea">Remarks</label>
                                 </div>
                             </div>
@@ -8651,8 +6613,7 @@
         </div>
 
         <!-- Popup Remark Employer -->
-        <div class="modal fade" id="deleteemployer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="deleteemployer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -8669,9 +6630,7 @@
 
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" placeholder="Leave a comment here"
-                                        id="floatingTextarea" name="deleteRemarks" style="height: 100px;"
-                                        required></textarea>
+                                    <textarea class="form-control" id="floatingTextarea" name="deleteRemarks" style="height: 100px;" required></textarea>
                                     <label for="floatingTextarea">Remarks</label>
                                 </div>
                             </div>
@@ -8684,9 +6643,8 @@
             </div>
         </div>
 
-        <!-- Popup add new category in candidate experience -->
-        <div class="modal fade" id="newcategoryexp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <!-- Popup add new category in candidate experience --> 
+        <div class="modal fade" id="newcategoryexp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -8704,8 +6662,7 @@
                                 <input type="text" id="expnewcategory" value="" name="new_category">
                             </div>
                             <input class="form-check-input" type="text" name="categoryexp" id="" value="0" hidden>
-                            <input class="form-check-input" type="text" name="expTableId" id="expTableId" value=""
-                                hidden>
+                            <input class="form-check-input" type="text" name="expTableId" id="expTableId" value="" hidden>
 
                             <button type="submit" class="btn btn-success mt-4">Add</button>
                         </form>
@@ -8715,8 +6672,7 @@
         </div>
 
         <!-- Popup add new category in candidate area -->
-        <div class="modal fade" id="newcategoryarea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="newcategoryarea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -8730,12 +6686,11 @@
                             action="<?php echo baseUrl . "admin/addNewCategoryArea" ?>" method="post">
 
                             <div class="col-12">
-                                <label for="expnewcategory">New Category :</label>
+                                <label for="expnewcategory">New Category </label>
                                 <input type="text" id="areanewcategory" value="" name="new_category">
                             </div>
                             <input class="form-check-input" type="text" name="categoryarea" id="" value="0" hidden>
-                            <input class="form-check-input" type="text" value="" id="areaTableId" name="areaTableId"
-                                hidden>
+                            <input class="form-check-input" type="text" value="" id="areaTableId" name="areaTableId" hidden>
 
                             <button type="submit" class="btn btn-success mt-4">Add</button>
                         </form>
@@ -8745,8 +6700,7 @@
         </div>
 
         <!-- Popup add new category in employer job -->
-        <div class="modal fade" id="employerjobcategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="employerjobcategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -8760,12 +6714,11 @@
                             action="<?php echo baseUrl . "admin/employerNewCategory" ?>" method="post">
 
                             <div class="col-12">
-                                <label for="expnewcategory">New Category :</label>
+                                <label for="expnewcategory">New Category </label>
                                 <input type="text" id="jobnewcategory" value="" name="new_category">
                             </div>
                             <input class="form-check-input" type="text" name="categoryjob" id="" value="0" hidden>
-                            <input class="form-check-input" type="text" name="jobTableId" id="jobTableId" value=""
-                                hidden>
+                            <input class="form-check-input" type="text" name="jobTableId" id="jobTableId" value="" hidden>
 
                             <button type="submit" class="btn btn-success mt-4">Add</button>
                         </form>

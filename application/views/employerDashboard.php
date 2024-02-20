@@ -953,7 +953,7 @@
                         <div class="col-md-6">
                             <label class="form-label" for="jobtype">Job Timing: <span class="text-danger">*</span></label>
                             <select class="form-control" id="jobtype" name="jobtype" required>
-                                <option value="">Select jobtiming</option>
+                                <option value="">Select job timing</option>
                                 <option value="Fulltime">Full Time</option>
                                 <option value="Parttime">Part Time</option>
                             </select>
