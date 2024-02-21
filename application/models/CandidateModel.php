@@ -69,7 +69,7 @@ class CandidateModel extends CI_Model
         $latest_customer_id = $this->get_latest_customer_id();
         $incremented_id = str_pad((int) substr($latest_customer_id, -4) + 1, 4, '0', STR_PAD_LEFT);
 
-        $customer_id = "AJEE" . $current_year . $incremented_id;
+        $customer_id = "AJC" . $current_year . $incremented_id;
 
         $insert = array(
             'eeid' => $customer_id
@@ -94,7 +94,7 @@ class CandidateModel extends CI_Model
             $row = $query->row();
             return $row->eeid;
         } else {
-            return 'AJEE' . date('Y') . '0000';
+            return 'AJC' . date('Y') . '0000';
         }
     }
 

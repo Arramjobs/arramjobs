@@ -15,7 +15,7 @@ class EmployerModel extends CI_Model
 
     $config['upload_path'] = "./uploads/";
     // $basepath = 'http://localhost/arramjobs/uploads/';
-    $basepath =  base_url().'uploads/';
+    $basepath = base_url() . 'uploads/';
     $config['allowed_types'] = "jpg|png|pdf|jpeg";
     $config['max_size'] = 1024;
 
@@ -58,52 +58,54 @@ class EmployerModel extends CI_Model
   }
 
 
-  public function generate_customer_id() {
+  public function generate_customer_id()
+  {
     $current_year = date('Y');
 
     $latest_customer_id = $this->get_latest_customer_id();
-    $incremented_id = str_pad((int)substr($latest_customer_id, -4) + 1, 4, '0', STR_PAD_LEFT);
-    
+    $incremented_id = str_pad((int) substr($latest_customer_id, -4) + 1, 4, '0', STR_PAD_LEFT);
+
     $customer_id = "AJER" . $current_year . $incremented_id;
 
     $insert = array(
-        'erid' => $customer_id
+      'erid' => $customer_id
     );
 
     $mobilenumber = $this->input->post('mobile');
 
-    $this->db->where('company_mobile_number',$mobilenumber);
+    $this->db->where('company_mobile_number', $mobilenumber);
     $this->db->update('provider_registration_form', $insert);
     return $customer_id;
-}
+  }
 
-public function get_latest_customer_id() {
+  public function get_latest_customer_id()
+  {
     $this->db->select('erid');
-    $this->db->from('provider_registration_form'); 
+    $this->db->from('provider_registration_form');
     $this->db->order_by('erid', 'DESC');
     $this->db->limit(1);
 
     $query = $this->db->get();
     if ($query->num_rows() > 0) {
-        $row = $query->row();
-        return $row->erid;
+      $row = $query->row();
+      return $row->erid;
     } else {
-        return 'AJER' . date('Y') . '0000';
+      return 'AJER' . date('Y') . '0000';
     }
-}
+  }
 
-public function checkUserExistence($phone_number)
-    {
-        $this->db->where('company_mobile_number', $phone_number);
-        $query = $this->db->get('provider_registration_form');
-        return $query->num_rows() > 0;
-    }
-    // public function checkUserExistence($phone_number)
-    // {
-    //     $this->db->where('company_mobile_number', $phone_number);
-    //     $query = $this->db->get('provider_registration_form');
-    //     return $query->num_rows() > 0;
-    // }
+  public function checkUserExistence($phone_number)
+  {
+    $this->db->where('company_mobile_number', $phone_number);
+    $query = $this->db->get('provider_registration_form');
+    return $query->num_rows() > 0;
+  }
+  // public function checkUserExistence($phone_number)
+  // {
+  //     $this->db->where('company_mobile_number', $phone_number);
+  //     $query = $this->db->get('provider_registration_form');
+  //     return $query->num_rows() > 0;
+  // }
 
 
   // public function database_login()
@@ -159,14 +161,14 @@ public function checkUserExistence($phone_number)
     $id = $postData['id'];
 
     $config['upload_path'] = "./uploads/";
-    $basepath =  base_url().'uploads/';
+    $basepath = base_url() . 'uploads/';
     $config['allowed_types'] = "jpg|png|pdf|jpeg";
     $config['max_size'] = 1024;
 
     $this->load->library('upload', $config);
 
     $cmp_logou = $postData['oldimgname'];
-    
+
     if ($this->upload->do_upload('logo1')) {
       $data = $this->upload->data();
       $cmp_logou = $data['file_name'];
@@ -224,7 +226,7 @@ public function checkUserExistence($phone_number)
       'experience' => $post['experience'],
       'number_of_openings' => $post['no_of_openings'],
       'description' => $post['description'],
-      'categoryOthers' =>isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
+      'categoryOthers' => isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
       'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0"
 
     );
@@ -285,14 +287,15 @@ public function checkUserExistence($phone_number)
     // $this->db->where('id', $deleteId);
   }
 
-  public function getCategoryList(){
+  public function getCategoryList()
+  {
     // $category = "SELECT * FROM `category_master` ORDER BY `categoryName` ASC ";
     $category = " SELECT * FROM category_master WHERE (categoryName, id) IN (
       SELECT DISTINCT categoryName, MIN(id) AS id FROM category_master GROUP BY categoryName )
       ORDER BY categoryName ASC";
     $select = $this->db->query($category);
-    return $select->result(); 
-}
+    return $select->result();
+  }
 
 
   //   public function joinTables($jobCategory)
@@ -311,20 +314,20 @@ public function checkUserExistence($phone_number)
     // INNER JOIN  seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
     // INNER JOIN  seeker_skill ssk ON ssk.seekerId = spf.id
     // WHERE  saoi.other_interst_category = '" . $jobCategory . "' AND spf.identityVerify ='1' AND spf.addressVerify ='1' AND spf.employmentVerify ='1' AND spf.educationVerify ='1' AND spf.deleteStatus ='0' ;" ;
-   
-  //  $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.requestCandidate AS rqstCd, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(ssk.skill) AS skills
-  //     FROM seeker_profile_form spf 
-  //     INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
-  //     INNER JOIN seeker_skill ssk ON ssk.seekerId = spf.id 
-  //     WHERE saoi.other_interst_category = '" . $jobCategory . "' 
-  //     AND spf.identityVerify = '1'
-  //      AND spf.addressVerify = '1'
-  //       AND spf.employmentVerify = '1'
-  //        AND spf.identityVerify = '1'
-  //         AND spf.deleteStatus = '0'
-  //          GROUP BY spf.id, spf.name;";
-  //   $result = $this->db->query($query);
-  //   return $result->result_array();
+
+    //  $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.requestCandidate AS rqstCd, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(ssk.skill) AS skills
+    //     FROM seeker_profile_form spf 
+    //     INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
+    //     INNER JOIN seeker_skill ssk ON ssk.seekerId = spf.id 
+    //     WHERE saoi.other_interst_category = '" . $jobCategory . "' 
+    //     AND spf.identityVerify = '1'
+    //      AND spf.addressVerify = '1'
+    //       AND spf.employmentVerify = '1'
+    //        AND spf.identityVerify = '1'
+    //         AND spf.deleteStatus = '0'
+    //          GROUP BY spf.id, spf.name;";
+    //   $result = $this->db->query($query);
+    //   return $result->result_array();
 
     $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(ssk.skill) AS skills,
      cr.employer_id AS eprid, cr.candidate_id AS cndid, cr.request_status AS rqsts
@@ -338,10 +341,11 @@ public function checkUserExistence($phone_number)
         AND spf.employmentVerify = '1'
          AND spf.identityVerify = '1'
           AND spf.deleteStatus = '0'
+          AND spf.currentStatus = '0'
            GROUP BY spf.id, spf.name;";
     $result = $this->db->query($query);
     return $result->result_array();
-  
+
   }
 
 

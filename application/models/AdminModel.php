@@ -298,7 +298,7 @@ class AdminModel extends CI_Model
     public function candidateRequestDetails()
     {
         $candidateRequestList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
-            prf.id AS providerId, prf.erid AS emprid
+            prf.id AS providerId, prf.erid AS emprid, prf.company_name AS cname
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
              INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
@@ -449,6 +449,18 @@ class AdminModel extends CI_Model
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
     }
 
+    public function rejectedCandidatesList()
+    {
+        $candidatechartList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
+            prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, prf.company_name AS compName
+             FROM  candidate_requests cr
+             INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
+             INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+             WHERE (cr.request_status = '5');";
+        $response = $this->db->query($candidatechartList);
+        return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
+    }
+
     public function candidateChartDetails()
     {
         $candidatechartList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
@@ -483,6 +495,13 @@ class AdminModel extends CI_Model
 
             $currentStatus = array(
                 'currentStatus' => '1'
+            );
+            $this->db->where('id', $postData['seekerId']);
+            $this->db->update('seeker_profile_form', $currentStatus);
+        } else if ($postData['currentStatus'] == '5') {
+
+            $currentStatus = array(
+                'currentStatus' => '2'
             );
             $this->db->where('id', $postData['seekerId']);
             $this->db->update('seeker_profile_form', $currentStatus);

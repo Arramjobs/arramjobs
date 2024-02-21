@@ -447,7 +447,16 @@ class Admin extends CI_Controller
     {
         $this->data['method'] = "placedCandidates";
         $candidateplaced = $this->AdminModel->placedCandidatesList();
-        $this->data['candidateChartList'] = $candidateplaced["response"];
+        $this->data['placedCandidates'] = $candidateplaced["response"];
+        $this->setVariable();
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
+    public function rejectedCandidate()
+    {
+        $this->data['method'] = "rejectedCandidate";
+        $candidateRejected = $this->AdminModel->rejectedCandidatesList();
+        $this->data['rejectedCandidates'] = $candidateRejected["response"];
         $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
