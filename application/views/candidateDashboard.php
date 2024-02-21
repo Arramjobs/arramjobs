@@ -5283,7 +5283,7 @@
                   <?php
                 } else {
                   // Display "No skills" message
-                  echo '<p>No skills</p>';
+                  echo '<p>Skills are yet to be mentioned.</p>';
                 }
                 ?>
 
@@ -5293,7 +5293,12 @@
             <div class="card recent-sales overflow-auto">
               <div class="card-body">
                 <h5 class="card-title">Area of Interest</h5>
-                <table class="table table-striped">
+
+                <?php
+                    if (isset($areaOfIntrestTable[0]['id'])) {
+                      ?>   
+                      
+                <table class="table table-striped">             
                   <thead>
                     <tr>
                       <th scope="col">S.No</th>
@@ -5308,7 +5313,6 @@
                   </thead>
                   <tbody>
                     <?php
-                    if (isset($areaOfIntrestTable[0]['id'])) {
                       $loopcount = 1;
                       foreach ($areaOfIntrestTable as $key => $avalue) {
                         ?>
@@ -5339,10 +5343,16 @@
                         <?php
                         $loopcount++;
                       }
-                    }
+                      
+                    
                     ?>
                   </tbody>
                 </table>
+                <?php
+                } else {
+                  echo '<p> Areas of interest are yet to be mentioned. </p>';
+                }
+                ?>
               </div>
             </div>
 

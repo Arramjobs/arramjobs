@@ -5911,7 +5911,7 @@
                                                         <input class="form-check-input" type="text" name="seekerId" id=""
                                                             value="<?php echo $value['seekerId'] ?>" hidden>
                                                         <input class="form-check-input" type="text" name="approveCandidateRequest"
-                                                            id="" value="2" hidden>
+                                                            id="" value="3" hidden>
                                                         <button type="submit" class="btn btn-success d-flex"
                                                             onclick="return confirm('Are you sure you want to approve?')"><i
                                                                 class="bi bi-check2 pe-1"></i>Approve to View</button>
@@ -5923,7 +5923,7 @@
                                                         <input class="form-check-input" type="text" name="seekerId" id=""
                                                             value="<?php echo $value['seekerId'] ?>" hidden> <input
                                                             class="form-check-input" type="text" name="cancelCandidateRequest" id=""
-                                                            value="0" hidden>
+                                                            value="2" hidden>
                                                         <button type="submit" class="btn btn-danger d-flex ms-1"
                                                             onclick="return confirm('Are you sure to cancel the request?')"><i
                                                                 class="bi bi-x pe-1"></i>Cancel</button>
