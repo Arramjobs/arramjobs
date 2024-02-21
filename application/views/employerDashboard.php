@@ -1808,7 +1808,7 @@
                                                                         <?php } ?>
                                                                         <td><?php if($value['rqsts']== 1 && $value['eprid'] == $_SESSION['employerid']){ ?>
                                                                         <span class="badge bg-secondary">Requested</span></td>
-                                                                           <?php  } else if($value['rqsts']== 2 && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                           <?php  } else if($value['rqsts']== 3 && $value['eprid']== $_SESSION['employerid']){ ?> 
                                                                      <span class="badge bg-success">Approved</span></td>
                                                                      <?php } else {?>
                                                                      <span class="badge bg-primary">Add request</span></td>
@@ -1864,12 +1864,12 @@
                                                 <h2 class="h2 text-secondary p-2 text-uppercase text-center pb-3"><?php echo $nvalue['name']; ?></h2>
                                                  <?php
                                             foreach($this->data['canReqStatus'] as $key => $value) {
-                                                if (isset($value['request_status']) && $value['request_status'] == '2') {?>
+                                                if (isset($value['request_status']) && $value['request_status'] == '3') {?>
                                                 <div class="d-sm-flex justify-content-between py-4 resumephoto">
                                                 <img  src="<?php echo baseUrl."uploads/".$nvalue['photo_filename'] ?>" class="" width="160" height="160"  alt="profile photo">
                                                  <?php
                                                 }
-                                            if (isset($value['request_status']) && $value['request_status'] == '2') { ?>
+                                            if (isset($value['request_status']) && $value['request_status'] == '3') { ?>
                                             <div class="text-sm-end mt-4" >
                                                <p><?php echo $nvalue['phonenumber'] ?></p>
                                                 <p><?php echo $nvalue['email'] ?></p>
@@ -1879,7 +1879,7 @@
                                             </div>
                                           <?php
                                         }            
-                                            if (isset($value['request_status']) && $value['request_status'] == '2') {
+                                            if (isset($value['request_status']) && $value['request_status'] == '3') {
                                                 ?>
                                     <div class="d-sm-flex justify-content-between" >
                                         <div>
@@ -2149,7 +2149,7 @@
                                             </form>
                                             <button id="candidaterequested" class="btn btn-success printhide" style="display:none" disabled >Requested to view details</button>
                                     <!-- <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button> -->
-                                    <!-- <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton">Print</button> -->
+                                    <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton" style="display:none">Print</button>
                                     </div>
 
                                 </div>
@@ -2166,7 +2166,7 @@
                     }
                     ?>
                         <?php
-                        if (isset($canReqStatus[0]['request_status']) && $canReqStatus[0]['request_status'] == '2') {
+                        if (isset($canReqStatus[0]['request_status']) && $canReqStatus[0]['request_status'] == '3') {
                             ?>
                             <script>
                                 document.getElementById("candidaterequest").style.display = "none";

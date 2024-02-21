@@ -9,14 +9,14 @@ class Employer extends CI_Controller
     }
 
     public function login()
-	{
-		$this->load->view('employerLogin.php');
-	}
+    {
+        $this->load->view('employerLogin.php');
+    }
 
     public function registration()
-	{
-		$this->load->view('employerRegistration.php');
-	}
+    {
+        $this->load->view('employerRegistration.php');
+    }
 
     public function index()
     {
@@ -24,7 +24,8 @@ class Employer extends CI_Controller
         $this->load->view('employerLogin.php');
     }
 
-    public function employerRegistration() {
+    public function employerRegistration()
+    {
         $phone_number = $this->input->post('mobile');
 
         if ($this->EmployerModel->checkUserExistence($phone_number)) {
@@ -83,7 +84,7 @@ class Employer extends CI_Controller
     {
         $postData = $this->input->post(null, true);
         $response = $this->EmployerModel->providerLogin();
-        $verifyOne = (isset($response[0]['verifyOne']))? ($response[0]['verifyOne']) : null;
+        $verifyOne = (isset($response[0]['verifyOne'])) ? ($response[0]['verifyOne']) : null;
         $verifyTwo = (isset($response[0]['verifyTwo'])) ? ($response[0]['verifyTwo']) : null;
         $deleteStatus = (isset($response[0]['deleteStatus'])) ? ($response[0]['deleteStatus']) : null;
         if ($verifyOne == '1' && $verifyTwo == '1' && $deleteStatus == '0') {
@@ -105,12 +106,12 @@ class Employer extends CI_Controller
             echo '<script>alert("Please enter registered company details.");</script>';
         }
     }
-    
+
     // public function checkMobileNumber() {
     //     $mobileNumber = $this->input->post('mobilenumber');
-    
+
     //     $existsInDatabase = $this->EmployerModel->checkMobileNumberExists($mobileNumber);
-    
+
     //     header('Content-Type: application/json');
     //     echo json_encode(['exists' => $existsInDatabase]);
     // }
@@ -239,7 +240,7 @@ class Employer extends CI_Controller
 
         $categoryList = $this->EmployerModel->getCategoryList();
         $this->data['categoryList'] = $categoryList;
-        
+
         //$this->load->view('update_addnew_jobs.php',$this->data);
         $this->load->view('employerDashboard.php', $this->data);
     }
