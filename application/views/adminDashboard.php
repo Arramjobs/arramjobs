@@ -795,6 +795,24 @@
                     </div>
                 </div>
             </section>
+
+            <script>
+    function togglePasswordVisibility(inputId, iconId) {
+        var passwordInput = document.getElementById(inputId);
+        var visibilityIcon = document.getElementById(iconId);
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            visibilityIcon.classList.remove("bi-eye-slash");
+            visibilityIcon.classList.add("bi-eye");
+        } else {
+            passwordInput.type = "password";
+            visibilityIcon.classList.remove("bi-eye");
+            visibilityIcon.classList.add("bi-eye-slash");
+        }
+    }
+</script>
+
             <?php
         } elseif ($method == "adminUsers") {
             ?>
@@ -1116,7 +1134,7 @@
                                                     <p class="d-flex">
                                                         <?php echo $value['company_name']; ?><a
                                                             href="<?php echo $value['companyLocationUrl']; ?>"
-                                                            class="px-2 text-danger"><i class='bx bx-map'></i></a>
+                                                            class="px-2 text-danger" target="blank"><i class='bx bx-map'></i></a>
                                                     </p>
                                                 </td>
                                                 <td><a href="#" class="text-primary">
@@ -1923,10 +1941,15 @@
                                     <label for="inputEmail5" class="form-label">Company Email</label>
                                     <input type="email" class="form-control" id="inputEmail5" name="email" value="<?php echo $value['company_email'] ?>" readonly required>
                                 </div>
-                                <!-- <div class="col-md-6">
-                                <label for="inputPassword5" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="inputPassword5">
-                            </div> -->
+                                <div class="col-md-6">
+                                            <label for="password" class="form-label">Password</label>
+                                            <div class="input-group">
+                                            <input type="password" class="form-control" id="password" name="password" value='<?php echo $value['password']; ?>' readonly>
+                                            <button type="button" class="btn btn-outline-secondary"  onclick="togglePasswordVisibility('password', 'visibilityIcon')">
+                                                <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                            </button>
+                                            </div>
+                                </div>
                                 <div class="col-md-6">
                                     <label for="inputAddress5" class="form-label">Street Address</label>
                                     <input type="text" class="form-control" id="inputAddres5s" name="address" value="<?php echo $value['street_address'] ?>" readonly required>
@@ -1958,7 +1981,7 @@
                                     <label for="inputLogo" class="form-label">Logo</label>
                                     
                                     <?php if ($value['company_logo'] == "None") { ?>
-                                        <p class="form-control">Not Entered</p>
+                                        <p class="form-control">-</p>
                                     <?php } else { ?>
                                         <a href="<?php echo $value['company_logourl']; ?>" class="form-control text-primary" target="blank">
                                             <?php echo $value['company_logo']; ?>
@@ -1973,8 +1996,17 @@
                                             <?php echo $value['companywebsite']; ?>
                                         </a>
                                     <?php } else { ?>
-                                        <p class="form-control">Not Entered</p>
+                                        <p class="form-control">-</p>
                                     <?php } ?>
+                                </div>
+
+                                <div class="col-md-6">                                    
+                                    <?php if ($value['companyLocationUrl'] != null) { ?>
+                                        <label for="locationUrl" class="form-label">Location URL</label>
+                                           <a href="<?php echo $value['companyLocationUrl']; ?>" class=" text-primary form-control" target="blank">Location Map <i class='bx bx-map'></i></a>
+                                        <?php } else { ?>
+                                            <p class="form-control">-</p>
+                                        <?php } ?>                                                
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPan" class="form-label">PAN Number</label>
@@ -2023,6 +2055,7 @@
                                                             echo 'checked';
                                                         } ?>>
                                                     <label class="form-check-label" for="gridRadios2"> 2.ADDRESS </label>
+                                                    <a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" target="blank"><i class='bx bx-map'></i></a>
                                                     </div>
                                             </div>
                                     </fieldset>
@@ -2130,6 +2163,22 @@
                     }
                 }
             </script> -->
+            <script>
+    function togglePasswordVisibility(inputId, iconId) {
+        var passwordInput = document.getElementById(inputId);
+        var visibilityIcon = document.getElementById(iconId);
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            visibilityIcon.classList.remove("bi-eye-slash");
+            visibilityIcon.classList.add("bi-eye");
+        } else {
+            passwordInput.type = "password";
+            visibilityIcon.classList.remove("bi-eye");
+            visibilityIcon.classList.add("bi-eye-slash");
+        }
+    }
+</script>
 
             <?php
         } elseif ($method == 'viewEmployer') {
@@ -2168,6 +2217,7 @@
                                 <tr>
                                     <th class="col-3" scope="col">Mobile Number</th>
                                     <th class="col-3" scope="col">Mail ID</th>
+                                    <th class="col-3" scope="col">Password</th>
                                     <th class="col-4" scope="col">Address</th>
                                     <th class="col-2" scope="col">Landmark</th>
                                 </tr>
@@ -2182,6 +2232,14 @@
                                         </td>
                                         <td>
                                             <?php echo $value['company_email'] ?>
+                                        </td>
+                                        <td>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="password" name="password" value='<?php echo $value['password']; ?>' readonly>
+                                            <button type="button" class="btn btn-outline-secondary"  onclick="togglePasswordVisibility('password', 'visibilityIcon')">
+                                                <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                            </button>
+                                        </div>
                                         </td>
                                         <td>
                                             <?php echo $value['street_address'] ?>
@@ -2243,31 +2301,41 @@
 
                                         <?php if ($value['companyLocationUrl'] != null) { ?>
                                             <td> <a href="<?php echo $value['companyLocationUrl']; ?>" class=" text-primary"
-                                                    target="blank">Location</a></td>
+                                                    target="blank">Location <i class='bx bx-map'></i></a></td>
                                         <?php } else { ?>
-                                            <td> Not Entered</td>
+                                            <td> -</td>
                                         <?php } ?>
 
                                         <?php if ($value['company_logo'] == "None") { ?>
-                                            <td> Not Entered</td>
+                                            <td> -</td>
                                         <?php } else { ?>
                                             <td> <a href="<?php echo $value['company_logourl']; ?>" class=" text-primary"
-                                                    target="blank">Logo</a></td>
+                                                    target="blank"><?php echo $value['company_logo'] ?></a></td>
                                         <?php } ?>
 
                                         <?php if ($value['companywebsite'] != null) { ?>
                                             <td> <a href="<?php echo $value['companywebsite']; ?>" class=" text-primary"
-                                                    target="blank">Website</a></td>
+                                                    target="blank"><?php echo $value['companywebsite'] ?></a></td>
                                         <?php } else { ?>
-                                            <td> Not Entered</td>
+                                            <td> -</td>
                                         <?php } ?>
 
-                                        <td>
+                                        <?php if ($value['companypan'] != null) { ?>
+                                            <td>
                                             <?php echo $value['companypan'] ?>
                                         </td>
-                                        <td>
+                                        <?php } else { ?>
+                                            <td> -</td>
+                                        <?php } ?>
+
+                                        <?php if ($value['companygst'] != null) { ?>
+                                            <td>
                                             <?php echo $value['companygst'] ?>
                                         </td>
+                                        <?php } else { ?>
+                                            <td> -</td>
+                                        <?php } ?>
+                                        
                                     </tr>
                                     <?php
                                 }
@@ -2305,7 +2373,7 @@
                                             <?php echo $value['jobSubCategory'] ?>
                                         </td>
                                         <td><a href="<?php echo $value['locationUrl'] ?>" class=" text-primary" target="blank">
-                                                <?php echo $value['location'] ?>
+                                                <?php echo $value['location'] ?> <i class='bx bx-map'></i>
                                             </a> </td>
                                         <td>
                                             <?php echo $value['job_type'] ?>
@@ -2366,7 +2434,22 @@
                     </div>
                 </div>
             </section>
+            <script>
+    function togglePasswordVisibility(inputId, iconId) {
+        var passwordInput = document.getElementById(inputId);
+        var visibilityIcon = document.getElementById(iconId);
 
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            visibilityIcon.classList.remove("bi-eye-slash");
+            visibilityIcon.classList.add("bi-eye");
+        } else {
+            passwordInput.type = "password";
+            visibilityIcon.classList.remove("bi-eye");
+            visibilityIcon.classList.add("bi-eye-slash");
+        }
+    }
+</script>
             <?php
         } elseif ($method == "createEmployees") {
             ?>
@@ -4334,6 +4417,7 @@
                                             <th scope="col">Email</th>
                                             <th scope="col">Verification Status</th>
                                             <th scope="col">Action</th>
+                                            <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -4344,9 +4428,9 @@
                                             $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                             ?>
                                             <tr>
-                                                <td><a href="#">
-                                                        <?php echo $loopcount; ?>.
-                                                    </a></td>
+                                                <td>
+                                                    <a href="#"> <?php echo $loopcount; ?>. </a>
+                                                </td>
                                                 <td>
                                                     <?php echo $twelveHourTime; ?>
                                                 </td>
@@ -4359,9 +4443,10 @@
                                                 <td>
                                                     <?php echo $value['phonenumber']; ?>
                                                 </td>
-                                                <td><a href="#" class="text-primary">
-                                                        <?php echo $value['email']; ?>
-                                                    </a></td>
+                                                <td>
+                                                    <a href="#" class="text-primary"><?php echo $value['email']; ?></a>
+                                                </td>
+
                                                 <?php
                                                 if ($value['identityverify'] == 1 && $value['addressverify'] == 1 && $value['employmentverify'] == 1 && $value['educationverify'] == 1) {
                                                     ?>
@@ -4371,9 +4456,12 @@
                                                 <?php } else { ?>
                                                     <td><span class="badge bg-danger">Pending</span></td>
                                                 <?php } ?>
-                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['id'] ?>"><button
-                                                            type="button" class="btn btn-success d-flex"><i
-                                                                class="bi bi-eye pe-1"></i>View</button></a>
+
+                                                <td>
+                                                    <a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['id'] ?>">
+                                                    <button type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
+                                                </td>
+                                                
                                             </tr>
                                             <?php
                                             $loopcount++;
@@ -4511,8 +4599,7 @@
                                             ?>
                                             <div class="d-md-flex justify-content-between pt-4">
                                                 <div class="col d-none d-md-block">
-                                                    <img class="h-100" src="<?php echo baseUrl . "assets/profilephoto.png" ?>"
-                                                        class="card-img-top" alt="...">
+                                                <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>" alt="profilep" width="150" height="150">
                                                 </div>
 
                                                 <div class="col">
@@ -4571,6 +4658,7 @@
                                             <table class="table table-striped mt-2">
                                                 <thead>
                                                     <tr>
+                                                        <th class="col-3" scope="col">Password</th>
                                                         <th class="col-3" scope="col">Profile Photo</th>
                                                         <th class="col-3" scope="col">Aadhaar Front</th>
                                                         <th class="col-3" scope="col">Aadhaar Back</th>
@@ -4579,6 +4667,14 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
+                                                        <td> 
+                                                            <div class="input-group">
+                                            <input type="password" class="form-control" id="password" name="password" value='<?php echo $value['password']; ?>' readonly>
+                                            <button type="button" class="btn btn-outline-secondary"  onclick="togglePasswordVisibility('password', 'visibilityIcon')">
+                                                <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                            </button>
+                                        </div>
+                                                        </td>
                                                         <td><a href="<?php echo $value['photo'] ?>" target="_blank">
                                                                 <?php echo $value['photo_filename'] ?>
                                                             </a></td>
@@ -4993,7 +5089,7 @@
 
                                                 <!-- <div class="col-md-6">
                                                     <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"><?php echo $this->data['basicDetails'][0]['verificationRemarks'] ?></textarea>
+                                                        <textarea class="form-control" id="floatingTextarea" name="verificationRemarks" style="height: 100px;"><?php echo $this->data['basicDetails'][0]['verificationRemarks'] ?></textarea>
                                                             <label for="floatingTextarea">Remarkser</label>
                                                         </div>
                                                     </div> -->
@@ -5047,7 +5143,7 @@
 
                                     <!-- <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="verificationRemarks" style="height: 100px;" >
+                                        <textarea class="form-control" id="floatingTextarea" name="verificationRemarks" style="height: 100px;" >
                                         <?php echo $this->data['basicDetails'][0]['verificationRemarks'] ?></textarea>
                                         <label for="floatingTextarea">Remarks</label>
                                     </div>
@@ -5082,6 +5178,22 @@
                     }
                 }
             </script> -->
+            <script>
+    function togglePasswordVisibility(inputId, iconId) {
+        var passwordInput = document.getElementById(inputId);
+        var visibilityIcon = document.getElementById(iconId);
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            visibilityIcon.classList.remove("bi-eye-slash");
+            visibilityIcon.classList.add("bi-eye");
+        } else {
+            passwordInput.type = "password";
+            visibilityIcon.classList.remove("bi-eye");
+            visibilityIcon.classList.add("bi-eye-slash");
+        }
+    }
+</script>
 
             <?php
         } elseif ($method == "viewEmployee") {
@@ -5164,6 +5276,7 @@
                                             <table class="table table-striped mt-2">
                                                 <thead>
                                                     <tr>
+                                                        <th class="col-3" scope="col">Password</th>
                                                         <th class="col-3" scope="col">Profile Photo</th>
                                                         <th class="col-3" scope="col">Aadhaar Front</th>
                                                         <th class="col-3" scope="col">Aadhaar Back</th>
@@ -5172,6 +5285,14 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
+                                                        <td> 
+                                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="password" name="password" value='<?php echo $value['password']; ?>' readonly>
+                                            <button type="button" class="btn btn-outline-secondary"  onclick="togglePasswordVisibility('password', 'visibilityIcon')">
+                                                <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                            </button>
+                                        </div>
+                                        </td>
                                                         <td><a href="<?php echo $value['photo'] ?>" target="_blank">
                                                                 <?php echo $value['photo_filename'] ?>
                                                             </a></td>
@@ -5529,7 +5650,22 @@
                             </div>
                         </div><!-- End Default Card -->
             </section>
+            <script>
+    function togglePasswordVisibility(inputId, iconId) {
+        var passwordInput = document.getElementById(inputId);
+        var visibilityIcon = document.getElementById(iconId);
 
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            visibilityIcon.classList.remove("bi-eye-slash");
+            visibilityIcon.classList.add("bi-eye");
+        } else {
+            passwordInput.type = "password";
+            visibilityIcon.classList.remove("bi-eye");
+            visibilityIcon.classList.add("bi-eye-slash");
+        }
+    }
+</script>
 
             <?php
         } elseif ($method == "categoryRequest") {
@@ -5753,7 +5889,9 @@
                                                 </td>
                                                 <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
                                                         <?php echo $value['emprid']; ?>
-                                                    </a></td>
+                                                    </a> / <br>
+                                                    <?php echo $value['cname'] ?>
+                                                </td>
                                                 <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
                                                         <?php echo $value['cdid']; ?>
                                                     </a></td>
@@ -6559,7 +6697,7 @@
                                 <!-- <div class="col-md-6">
                                 <label>Admin Verification Remarks</label>
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="addNewApprovelRemarks" style="height: 100px;"></textarea>
+                                    <textarea class="form-control" id="floatingTextarea" name="addNewApprovelRemarks" style="height: 100px;"></textarea>
                                 </div>
                             </div> -->
 
@@ -6732,6 +6870,9 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
+    <!-- <div class="contact">
+      <p style="padding-left:38%; color:#blue;">Need help? Contact us anytime: <a href="tel:7418334443"><strong>+91 7418334443</strong></a></p>
+    </div> -->
         <div class="copyright">
             &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
         </div>

@@ -298,7 +298,7 @@ class AdminModel extends CI_Model
     public function candidateRequestDetails()
     {
         $candidateRequestList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
-            prf.id AS providerId, prf.erid AS emprid
+            prf.id AS providerId, prf.erid AS emprid, prf.company_name AS cname
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
              INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 

@@ -97,8 +97,9 @@ class Employer extends CI_Controller
             $this->data['method'] = "dashboard";
             $this->load->view('employerDashboard.php', $this->data);
         } else if ($verifyOne == '0' || $verifyTwo == '0' || $deleteStatus == '1') {
-            $this->load->view('employerLogin.php');
-            echo '<script>alert("Please wait. Your company details are under registration process.");</script>';
+            // $this->load->view('employerLogin.php');
+            $this->load->view('employerLoginMessage.php');
+            // echo '<script>alert("Please wait. Your company details are under registration process.");</script>';
         } else {
             $this->load->view('employerLogin.php');
             echo '<script>alert("Please enter registered company details.");</script>';

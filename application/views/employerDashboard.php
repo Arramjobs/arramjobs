@@ -320,55 +320,49 @@
                                     <form name="forms" class="row g-3 needs-validation" novalidate action="<?php echo baseUrl."Employer/update_record" ?>" method="post" enctype="multipart/form-data" onsubmit="return validateprofile()">
                                     <input type="hidden" class="form-control" value=<?php echo $value['id']; ?> id="id" name="id"  onkeypress="return allowOnlyLetters(event, this)">
                                         <div class="col-md-12">
-                                            <label for="inputName5" class="form-label">Company Name: <span class="text-danger">*</span></label>
+                                            <label for="inputName5" class="form-label">Company Name <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="inputName5" name="name" value="<?php echo $value['company_name']; ?>"
-                                            onkeypress="return allowOnlyLetters(event, this)" placeholder="Enter name" required>
+                                            onkeypress="return allowOnlyLetters(event, this)" required>
                                             <p id="nameerr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="inputNumber5" class="form-label">Company Mobile Number: <span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" id="inputNumber5" value='<?php echo $value['company_mobile_number']; ?>' name="phno" placeholder="Enter mobile number" required>
+                                            <label for="inputNumber5" class="form-label">Company Mobile Number <span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="inputNumber5" value='<?php echo $value['company_mobile_number']; ?>' name="phno" required>
                                             <p id="pherr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="inputEmail5" class="form-label">Email-Id: <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" id="inputEmail5" name="email" 
-                                            value='<?php echo $value['company_email']; ?>' placeholder="Enter email" required >
+                                            <label for="inputEmail5" class="form-label">Email-Id <span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" id="inputEmail5" name="email" value='<?php echo $value['company_email']; ?>' required >
                                             <p id="mailerr" style="color: red;"></p>
                                         </div>
-                                        <!-- <div class="col-md-6">
-                                            <label for="password" class="form-label">Password:</label>
+                                        <div class="col-md-6">
+                                            <label for="password" class="form-label">Password </label>
                                             <div class="input-group">
-                                            <input type="password" class="form-control" id="password" name="password" 
-                                                value='<?php echo $value['password']; ?>' placeholder="Enter password" required>
-                                            <button type="button" class="btn btn-outline-secondary"
-                                                onclick="togglePasswordVisibility('password', 'visibilityIcon')">
+                                            <input type="password" class="form-control" id="password" name="password" value='<?php echo $value['password']; ?>' required>
+                                            <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('password', 'visibilityIcon')">
                                                 <i id="visibilityIcon" class="bi bi-eye-slash"></i>
                                             </button>
                                             </div>
                                             <p id="passworderr" style="color: red;"></p>
-                                        </div> -->
+                                        </div>
                                         <div class="col-md-6">
-                                        <label for="inputAddres5s" class="form-label">Street Address: <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="inputAddres5s" value='<?php echo $value['street_address']; ?>' 
-                                        name="addr" placeholder="Enter address" required>
+                                        <label for="inputAddres5s" class="form-label">Street Address <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="inputAddres5s" value='<?php echo $value['street_address']; ?>' name="addr" required>
                                             <p id="adderr" style="color: red;"></p>
                                         </div>
                                         <div class="text-secondary" style="font-size:12px;display:none;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
                                         <div class="col-md-6">
-                                            <label for="inputAddress2" class="form-label">Landmark: <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="inputAddress2"  value='<?php echo $value['Landmark']; ?>' 
-                                            name="landmark1" placeholder="Enter landmark" required>
+                                            <label for="inputAddress2" class="form-label">Landmark <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="inputAddress2"  value='<?php echo $value['Landmark']; ?>' name="landmark1" required>
                                         <p id="landerr1" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="inputCity" class="form-label">City: <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="inputCity"  value='<?php echo $value['City']; ?>'
-                                            name="city1" placeholder="Enter city" required>
+                                            <label for="inputCity" class="form-label">City <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="inputCity"  value='<?php echo $value['City']; ?>' name="city1" required>
                                         <p id="cityerr1" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="inputDistrict" class="form-label">District: <span class="text-danger">*</span></label>
+                                            <label for="inputDistrict" class="form-label">District <span class="text-danger">*</span></label>
                                             <select class="form-control" id="inputDistrict" name="district1" required>
                                                 <option value="Erode" <?php if ($value['district'] === 'Erode')
                                                             echo ' selected'; ?>>Erode</option>
@@ -382,26 +376,24 @@
                                         <p id="diserr1" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="inputState" class="form-label">State: <span class="text-danger">*</span></label>
+                                            <label for="inputState" class="form-label">State <span class="text-danger">*</span></label>
                                             <select class="form-control" id="inputState" name="state1" required>
                                                 <option value="<?php echo $value['state']; ?>" selected>Tamil Nadu</option>
                                                     </select>
                                                 <p id="stateerr1" style="color: red;"></p>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="inputPincode" class="form-label">Pincode: <span class="text-danger">*</span></label>
-                                                    <input type="number" class="form-control" id="inputPincode" value='<?php echo $value['pincode']; ?>' 
-                                            name="pincode1" placeholder="Enter pincode" required>
+                                                    <label for="inputPincode" class="form-label">Pincode <span class="text-danger">*</span></label>
+                                                    <input type="number" class="form-control" id="inputPincode" value='<?php echo $value['pincode']; ?>' name="pincode1" required>
                                         <p id="pinerr1" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="locationUrl" class="form-label">Location URL: <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="locationUrl" name="locationUrl" value='<?php echo $value['companyLocationUrl']; ?>'
-                                            placeholder="Enter company location link" required>
+                                            <label for="locationUrl" class="form-label">Location URL <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="locationUrl" name="locationUrl" value='<?php echo $value['companyLocationUrl']; ?>' required>
                                             <p id="lUrlerr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="logo1" class="form-label">Logo:</label>
+                                            <label for="logo1" class="form-label">Logo</label>
                                             <div class="uploadedfile" style="display:flex;">
                                             <input type="file" class="form-control" id="logo1" name="logo1" value="<?php echo $value['company_logo']; ?>" hidden/>
                                             <label id="file-input-label" class="form-control" for="logo1">Change File</label>  
@@ -411,46 +403,39 @@
                                             <p id="logerr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="cwebsite1" class="form-label">Website:</label>
-                                            <input type="text" class="form-control" value='<?php echo $value['companywebsite']; ?>'
-                                             id="cwebsite1" name="cwebsite1" placeholder="Enter company website">
+                                            <label for="cwebsite1" class="form-label">Website</label>
+                                            <input type="text" class="form-control" value='<?php echo $value['companywebsite']; ?>' id="cwebsite1" name="cwebsite1">
                                             <p id="weberr" style="color: red;"></p>
                                         </div> <div class="col-md-6">
-                                            <label for="cpan1" class="form-label">PAN Number:</label>
-                                            <input type="text" class="form-control"   value='<?php echo $value['companypan']; ?>'
-                                             id="cpan1" name="cpan1" placeholder="Enter company pan number">
+                                            <label for="cpan1" class="form-label">PAN Number</label>
+                                            <input type="text" class="form-control"   value='<?php echo $value['companypan']; ?>' id="cpan1" name="cpan1">
                                             <p id="weberr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="cgst1" class="form-label">GST Number:</label>
-                                            <input type="text" class="form-control" value='<?php echo $value['companygst']; ?>' 
-                                            id="cgst1" name="cgst1" placeholder="Enter company gst number">
+                                            <label for="cgst1" class="form-label">GST Number</label>
+                                            <input type="text" class="form-control" value='<?php echo $value['companygst']; ?>' id="cgst1" name="cgst1">
                                         <p id="weberr" style="color: red;"></p>
                                         </div>
 
                                         <h5 class="card-title">Contact Person Details</h5>
                                         <div class="col-md-6">
-                                            <label for="cpname" class="form-label">Name: <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="cpname" value='<?php echo $value['name']; ?>'
-                                            name="name1" placeholder="Enter name" onkeypress="return allowOnlyLetters1(event, this)" required>
+                                            <label for="cpname" class="form-label">Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="cpname" value='<?php echo $value['name']; ?>' name="name1" onkeypress="return allowOnlyLetters1(event, this)" required>
                                             <p id="nameerr1" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="cprole" class="form-label">Role: <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="cprole" value='<?php echo $value['role']; ?>' 
-                                             name="role" placeholder="Enter role" required>
+                                            <label for="cprole" class="form-label">Role <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="cprole" value='<?php echo $value['role']; ?>' name="role" required>
                                         <p id="rolerr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="cpmobilno" class="form-label">Mobile Number: <span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" id="cpmobilno" value='<?php echo $value['mobile_number']; ?>'
-                                             name="phno1" placeholder="Enter mobile number" required>
+                                            <label for="cpmobilno" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="cpmobilno" value='<?php echo $value['mobile_number']; ?>' name="phno1" required>
                                         <p id="pherr1" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="cpemail" class="form-label">Email-ID: <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" id="cpemail" value='<?php echo $value['email']; ?>'
-                                            name="mail1" placeholder="Enter email" required>
+                                            <label for="cpemail" class="form-label">Email-ID <span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" id="cpemail" value='<?php echo $value['email']; ?>' name="mail1" required>
                                         <p id="mailerr1" style="color: red;"></p>
                                         </div>
                                         <div class="text-center">
@@ -888,13 +873,13 @@
                      <form class="row g-3 needs-validation" novalidate name="experienceform" method="post" onsubmit="return validateForm()" action="<?php echo baseUrl."Employer/insertJob" ?>">
 
                         <div class="col-12">
-                            <label class="form-label" for="company_name">Company Name:</label>
+                            <label class="form-label" for="company_name">Company Name</label>
                             <input type="text" class="form-control" id="company_name" name="company_name" value="<?php echo $_SESSION['jobProviderUsername'] ?>" readonly>
                             <div id="company_name_error" class="error"></div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="category">Category: <span class="text-danger">*</span></label>
+                            <label class="form-label" for="category">Category <span class="text-danger">*</span></label>
                             <select class="form-control" id="category" name="category" onchange="showHideOtherField()" required >
                                  <option value="">Select a Category</option>
                                     <?php
@@ -908,20 +893,20 @@
                         </div>
 
                         <div class="col-12" id="newcategory_group" style="display: none;">
-                            <label for="newcategory" class="form-label">Reason for choosing category as others: <span class="text-danger">*</span></label>
-                            <input class="form-control" id="newcategory" name="newcategory"  placeholder="Enter new category">
+                            <label for="newcategory" class="form-label">Reason for choosing category as others <span class="text-danger">*</span></label>
+                            <input class="form-control" id="newcategory" name="newcategory">
                             <div id="newcategory_error" class="text-danger error"></div>
                             <!-- <input id="categoryothers" name="categoryothers" value="1" hidden > -->
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="subcategory">Subcategory:</label>
-                            <input class="form-control" id="subcategory" name="subcategory"  placeholder="Enter subcategory" >
+                            <label class="form-label" for="subcategory">Subcategory</label>
+                            <input class="form-control" id="subcategory" name="subcategory">
                             <div id="subcategory_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="experience">Experience: <span class="text-danger">*</span></label>
-                            <!-- <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required> -->
+                            <label class="form-label" for="experience">Experience <span class="text-danger">*</span></label>
+                            <!-- <input type="text" class="form-control" id="experience" name="experience" required> -->
                             <select class="form-control" id="experience" name="experience" required>
                                 <option value="">Select experience</option>
                                 <option value="fresher">Fresher</option>
@@ -935,7 +920,7 @@
                             <div id="experience_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="preferred_location">Job Location: <span class="text-danger">*</span></label>
+                            <label class="form-label" for="preferred_location">Job Location <span class="text-danger">*</span></label>
                             <select class="form-control" id="preferred_location" name="preferred_location" required>
                                 <option value="">Select job location</option>
                                 <option value="Erode">Erode</option>
@@ -946,12 +931,12 @@
                             <div id="preferred_location_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="preferred_location_url">Job Location URL: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="preferred_location_url" name="preferred_location_url" placeholder="Enter location link" required>
+                            <label class="form-label" for="preferred_location_url">Job Location URL </label>
+                            <input type="text" class="form-control" id="preferred_location_url" name="preferred_location_url">
                             <div id="preferred_location_url_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="jobtype">Job Timing: <span class="text-danger">*</span></label>
+                            <label class="form-label" for="jobtype">Job Timing <span class="text-danger">*</span></label>
                             <select class="form-control" id="jobtype" name="jobtype" required>
                                 <option value="">Select job timing</option>
                                 <option value="Fulltime">Full Time</option>
@@ -961,19 +946,19 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="expected_salary">Salary: <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="expected_salary" name="expected_salary" placeholder="Enter salary" required>
+                            <label class="form-label" for="expected_salary">Salary <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="expected_salary" name="expected_salary" required>
                             <div id="expected_salary_error" class="error"></div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="no_of_openings">No of Openings: <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" placeholder="Enter no of openings" required >
+                            <label class="form-label" for="no_of_openings">No of Openings <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" required >
                             <div id="no_of_openings_error" class="error"></div>
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label" for="jobdescription">Job Description: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="jobdescription" name="description" placeholder="Enter description" data-toggle="popover" data-trigger="hover focus" required>
+                            <label class="form-label" for="jobdescription">Job Description <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="jobdescription" name="description" data-toggle="popover" data-trigger="hover focus" required>
                             <div id="description_error" class="error"></div>
                         </div>
                         <div class="text-center">
@@ -1111,14 +1096,12 @@
                                 preferred_locationError.innerHTML = '';
                             }
 
-                            if (preferred_location_url.value.trim() === "") {
-                                // alert("Please enter a preferred location")
-                                displayError('Location URL must be filled out', 'preferred_location_url_error');
-                                // document.experienceform.preferred_location.focus();
-                                return false;
-                            } else if (preferred_location_url.value !== '') {
-                                preferred_locationurlError.innerHTML = '';
-                            }
+                            // if (preferred_location_url.value.trim() === "") {
+                            //     displayError('Location URL must be filled out', 'preferred_location_url_error');
+                            //     return false;
+                            // } else if (preferred_location_url.value !== '') {
+                            //     preferred_locationurlError.innerHTML = '';
+                            // }
 
                             if (jobtype.value.trim() === "") {
                                 // alert("Please enter a job type")
@@ -1194,13 +1177,13 @@
                      <form class="row g-3 needs-validation" novalidate name="experienceform" method="post" onsubmit="return validateForm()" action="<?php echo baseUrl."Employer/insertJob" ?>">
 
                         <div class="col-12">
-                            <label class="form-label" for="company_name">Company Name:</label>
+                            <label class="form-label" for="company_name">Company Name</label>
                             <input type="text" class="form-control" id="company_name" name="company_name" value="<?php echo $_SESSION['jobProviderUsername'] ?>" readonly>
                             <div id="company_name_error" class="error"></div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="category">Category:</label>
+                            <label class="form-label" for="category">Category</label>
                             <select class="form-control" id="category" name="category" onchange="showHideOtherField()" required >
                                  <option value="">Select a Category</option>
                                     <?php
@@ -1214,20 +1197,20 @@
                         </div>
 
                         <div class="col-12" id="newcategory_group" style="display: none;">
-                            <label for="newcategory" class="form-label">Reason for choosing category as others:</label>
-                            <input class="form-control" id="newcategory" name="newcategory"  placeholder="Enter new category">
+                            <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+                            <input class="form-control" id="newcategory" name="newcategory">
                             <div id="newcategory_error" class="text-danger error"></div>
                             <!-- <input id="categoryothers" name="categoryothers" value="1" hidden > -->
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="subcategory">Subcategory:</label>
-                            <input class="form-control" id="subcategory" name="subcategory"  placeholder="Enter subcategory" required>
+                            <label class="form-label" for="subcategory">Subcategory</label>
+                            <input class="form-control" id="subcategory" name="subcategory" required>
                             <div id="subcategory_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="experience">Experience:</label>
-                            <!-- <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required> -->
+                            <label class="form-label" for="experience">Experience</label>
+                            <!-- <input type="text" class="form-control" id="experience" name="experience" required> -->
                             <select class="form-control" id="experience" name="experience" required>
                                 <option value="">Select experience</option>
                                 <option value="fresher">Fresher</option>
@@ -1241,12 +1224,12 @@
                             <div id="experience_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="preferred_location">Location:</label>
-                            <input type="text" class="form-control" id="preferred_location" name="preferred_location" placeholder="Enter location" required>
+                            <label class="form-label" for="preferred_location">Location</label>
+                            <input type="text" class="form-control" id="preferred_location" name="preferred_location" required>
                             <div id="preferred_location_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="jobtype">Job Timing :</label>
+                            <label class="form-label" for="jobtype">Job Timing </label>
                             <select class="form-control" id="jobtype" name="jobtype" required>
                                 <option value="">Select jobtype</option>
                                 <option value="Fulltime">Full Time</option>
@@ -1256,19 +1239,19 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="expected_salary">Salary:</label>
-                            <input type="number" class="form-control" id="expected_salary" name="expected_salary" placeholder="Enter salary" required>
+                            <label class="form-label" for="expected_salary">Salary</label>
+                            <input type="number" class="form-control" id="expected_salary" name="expected_salary" required>
                             <div id="expected_salary_error" class="error"></div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="no_of_openings">No of Openings :</label>
-                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" placeholder="Enter no of openings" required >
+                            <label class="form-label" for="no_of_openings">No of Openings </label>
+                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" required >
                             <div id="no_of_openings_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="description">Job Description:</label>
-                            <input type="text" class="form-control" id="description" name="description" placeholder="Enter description" required>
+                            <label class="form-label" for="description">Job Description</label>
+                            <input type="text" class="form-control" id="description" name="description" required>
                             <div id="description_error" class="error"></div>
                         </div>
                         <div class="text-center">
@@ -1490,7 +1473,7 @@
                                             <td><a ><?php echo $countjobs++; ?>.</a></td>
                                             <td><?php echo $twelveHourTime ?></td>
                                             <td><?php echo $value['company_name'] ?></td>
-                                            <td><?php echo $value['jobSubCategory'] ?>             <?php echo $value['jobCategory'] ?></td>
+                                            <td><?php echo $value['jobCategory'] ?> <?php echo $value['jobSubCategory'] ?></td>
                                             <td><?php echo $value['location'] ?></td>
                                             <td><?php echo $value['job_type'] ?></td>
                                             <td><?php echo $value['salary'] ?></td>
@@ -1527,7 +1510,7 @@
                         foreach($this->data['updateAddNew'] as $key => $value) {
                             ?>
 
-                                <input type="hidden" class="form-control" value=<?php echo $value['id']; ?> id="id" name="id" placeholder="enter name" onkeypress="return allowOnlyLetters(event, this)">
+                                <input type="hidden" class="form-control" value=<?php echo $value['id']; ?> id="id" name="id" onkeypress="return allowOnlyLetters(event, this)">
                                 <div class="col-12">
                                     <label class="form-label"  for="company_name">Company Name:</label>
                                     <input type="text" class="form-control" id="company_name" value="<?php echo $value['company_name']; ?>" name="company_name" readonly>
@@ -1552,12 +1535,12 @@
                                 </div>
                                 <div class="col-md-6">
                                       <label class="form-label"  for="subcategory">Subcategory:</label>
-                                      <input class="form-control" id="subcategory" name="subcategory" value="<?php echo $value['jobSubCategory']; ?>" placeholder="Enter subcategory" required>
+                                      <input class="form-control" id="subcategory" name="subcategory" value="<?php echo $value['jobSubCategory']; ?>" required>
                                       <div id="subcategory_error" class="error"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label"  for="experience">Experience: <span class="text-danger">*</span></label>
-                                    <!-- <input type="text" class="form-control" id="experience" value="<?php echo $value['experience']; ?>" name="experience" placeholder="Enter experience" required> -->
+                                    <!-- <input type="text" class="form-control" id="experience" value="<?php echo $value['experience']; ?>" name="experience" required> -->
                                     <select class="form-control" id="experience" value="<?php echo $value['experience']; ?>" name="experience" required>
                                         <option value="fresher" <?php if($value['experience'] === 'fresher')
                                             echo ' selected'; ?>>Fresher</option>
@@ -1583,7 +1566,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="preferred_location_url">Location URL: <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="preferred_location_url" value="<?php echo $value['locationUrl']; ?>" name="preferred_location_url" placeholder="Enter location link" required>
+                                    <input type="text" class="form-control" id="preferred_location_url" value="<?php echo $value['locationUrl']; ?>" name="preferred_location_url" required>
                                     <div id="preferred_location_url_error" class="error"></div>
                                 </div>
                                 <div class="col-md-6">
@@ -2166,7 +2149,7 @@
                                             </form>
                                             <button id="candidaterequested" class="btn btn-success printhide" style="display:none" disabled >Requested to view details</button>
                                     <!-- <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button> -->
-                                    <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton">Print</button>
+                                    <!-- <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton">Print</button> -->
                                     </div>
 
                                 </div>
@@ -2228,6 +2211,9 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
+    <div class="contact">
+      <p style="padding-left:38%; color:#blue;">Need help? Contact us anytime: <a href="tel:7418334443"><strong>+91 7418334443</strong></a></p>
+    </div>
         <div class="copyright">
             &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
         </div>

@@ -445,8 +445,7 @@
               foreach ($basicDetails as $key => $value) {
                 ?>
 
-                <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id"
-                  placeholder="Enter your name">
+                <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id">
 
                 <div class="col-12">
                   <label for="Name" class="form-label">Name <span class="text-danger">*</span></label>
@@ -482,9 +481,7 @@
                 </div>
                 <div class="col-md-6">
                   <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
-                  <input type="number" class="form-control" id="age"
-                    value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" placeholder="Your age" readonly
-                    required>
+                  <input type="number" class="form-control" id="age" value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly required>
                   <div id="age_error" style="color: red;"></div>
                 </div>
                 <div class="col-md-6">
@@ -569,15 +566,11 @@
                 <div class="col-md-6">
                   <label for="aadharfrontphoto" class="form-label">Aadhaar Front Photo <span
                       class="text-danger">*</span></label>
-                  <input type="text" class="form-control" name="oldaadharfront"
-                    value="<?php echo $value['aadharfront_filename']; ?>" hidden>
-                  <input type="file" class="form-control" id="aadharfrontphoto" name="aadharfrontphoto"
-                    accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
+                  <input type="text" class="form-control" name="oldaadharfront" value="<?php echo $value['aadharfront_filename']; ?>" hidden>
+                  <input type="file" class="form-control" id="aadharfrontphoto" name="aadharfrontphoto" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
                   <div class="uploadedfile" style="display:flex;">
-                    <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control" style="cursor:pointer">Choose
-                      File</label>
-                    <a href="<?php echo $value['aadhar_front']; ?>" class="filelink ps-2 pt-1" target="blank"
-                      id="existfileaf">
+                    <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control" style="cursor:pointer">Choose File</label>
+                    <a href="<?php echo $value['aadhar_front']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileaf">
                       <?php echo $value['aadharfront_filename']; ?>
                     </a>
                   </div>
@@ -587,15 +580,11 @@
                 <div class="col-md-6">
                   <label for="aadharbackphoto" class="form-label">Aadhaar Back Photo <span
                       class="text-danger">*</span></label>
-                  <input type="text" class="form-control" name="oldaadharback"
-                    value="<?php echo $value['aadharback_filename']; ?>" hidden>
-                  <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto"
-                    accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
+                  <input type="text" class="form-control" name="oldaadharback" value="<?php echo $value['aadharback_filename']; ?>" hidden>
+                  <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto" accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
                   <div class="uploadedfile" style="display:flex;">
-                    <label id="file-input-labelab" for="aadharbackphoto" class="form-control" style="cursor:pointer">Choose
-                      File</label>
-                    <a href="<?php echo $value['aadhar_back']; ?>" class="filelink ps-2 pt-1" target="blank"
-                      id="existfileab">
+                    <label id="file-input-labelab" for="aadharbackphoto" class="form-control" style="cursor:pointer">Choose File</label>
+                    <a href="<?php echo $value['aadhar_back']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfileab">
                       <?php echo $value['aadharback_filename']; ?>
                     </a>
                   </div>
@@ -604,21 +593,17 @@
 
                 <div class="col-md-6">
                   <label for="aadharnumber" class="form-label">Aadhaar number <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="aadharnumber"
-                    value="<?php echo ($value['aadharnumber']) ? $value['aadharnumber'] : ''; ?>" name="aadharnumber" maxlength="14" 
-                    pattern="\d{4} \d{4} \d{4}" oninput="validateAadharNumber(this)" required>
+                  <input type="text" class="form-control" id="aadharnumber" value="<?php echo ($value['aadharnumber']) ? $value['aadharnumber'] : ''; ?>" 
+                    name="aadharnumber" maxlength="14"  pattern="\d{4} \d{4} \d{4}" oninput="validateAadharNumber(this)" required>
                   <div id="aadharnumber_error" style="color: red;"></div>
                 </div>
 
                 <div class="col-md-6">
                   <label for="photo" class="form-label">Photo <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" name="oldprofilephoto"
-                    value="<?php echo $value['photo_filename']; ?>" hidden>
-                  <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg"
-                    hidden>
+                  <input type="text" class="form-control" name="oldprofilephoto" value="<?php echo $value['photo_filename']; ?>" hidden>
+                  <input type="file" class="form-control" id="photo" name="photo" accept="image/png ,image/jpg, image/jpeg" hidden>
                   <div class="uploadedfile" style="display:flex;">
-                    <label id="file-input-labelpp" for="photo" class="form-control" style="cursor:pointer">Choose
-                      File</label>
+                    <label id="file-input-labelpp" for="photo" class="form-control" style="cursor:pointer">Choose File</label>
                     <a href="<?php echo $value['photo']; ?>" class="filelink ps-2 pt-1" target="blank" id="existfilepp">
                       <?php echo $value['photo_filename']; ?>
                     </a>
@@ -1342,6 +1327,7 @@
               <label for="percentage" class="form-label">Percentage <span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="percentage" id="school" name="percentage">
               <div id="percentage_error" class="text-danger"></div>
+              <div class="text-secondary" style="font-size:15px; display:none; margin:0px" id="percentmesssage">Note: Please provide your previous semester percentage if currently pursuing your degree.</div>
             </div>
 
             <div class="col-md-6" id="year-group" style="display: none;">
@@ -1415,6 +1401,15 @@
       </script>
 
       <script>
+
+            document.getElementById("percentage").onfocus = function() {
+            document.getElementById("percentmesssage").style.display = "block";
+            }
+            document.getElementById("percentage").onblur = function() {
+            document.getElementById("percentmesssage").style.display = "none";
+            }
+
+
         function autocomplete(inp, arr) {
           var currentFocus;
 
@@ -2799,7 +2794,7 @@
             <!-- JOB PROFILE -->
             <!-- <div class="col-md-6">
                               <label for="profile" class="form-label">Job Profile</label>
-                              <input type="text" class="form-control" id="profile" name="profile" placeholder="Enter Job profile" required>
+                              <input type="text" class="form-control" id="profile" name="profile" required>
                               <div id="profile_error" class="text-danger error"></div>
                             </div> -->
 
@@ -3665,11 +3660,9 @@
 
                 <div class="col-md-6" id="otherCategoryFields" style="display: none;">
                   <label for="customCategoryInput">Custom Category</label>
-                  <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput"
-                    placeholder="Enter custom category">
+                  <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
                   <label for="customSubcategoryInput">Custom Subcategory</label>
-                  <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput"
-                    placeholder="Enter custom subcategory">
+                  <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
                 </div>
                 <div class="col-md-6" id="customCategory" style="display: none;">
                   <label for="customCategoryInput">Category Name</label>
@@ -3926,15 +3919,13 @@
 
 
           <!-- Multi Columns Form -->
-          <form class="row g-3 needs-validation" novalidate method="post" onsubmit="return validateSkillForm()"
-            action="<?php echo baseUrl . "Candidate/insertSkillForm" ?>">
+          <form class="row g-3 needs-validation" novalidate method="post" onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Candidate/insertSkillForm" ?>">
 
             <input type="hidden" class="form-control" id="id" value="" name="seekerId">
 
             <div class="col-12">
               <label class="form-label" for="skillname">Skill Name <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name"
-                required>
+              <input type="text" class="form-control" id="skillname" name="skillname" required>
               <div id="sname_error" class="error"></div>
             </div>
 
@@ -4720,13 +4711,11 @@
                   $seekerId = $_SESSION['seekerId'];
                   ?>
                   <input type="hidden" name="seekerId" value="<?php echo $seekerId; ?>">
-                  <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id"
-                    placeholder="Enter your name">
+                  <input type="hidden" class="form-control" id="id" value="<?php echo $value['id']; ?>" name="id">
 
                   <div class="col-12">
                     <label class="form-label" for="skillname">Skill Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="skillname" name="skillname" placeholder="Enter skill name"
-                      value="<?php echo $value['skill']; ?>" required>
+                    <input type="text" class="form-control" id="skillname" name="skillname" value="<?php echo $value['skill']; ?>" required>
                     <div id="sname_error" class="error"></div>
                   </div>
 
@@ -5402,6 +5391,9 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer mt-auto py-3">
+  <div class="contact">
+      <p style="padding-left:38%; color:#blue;">Need help? Contact us anytime: <a href="tel:7418334443"><strong>+91 7418334443</strong></a></p>
+    </div>
     <div class="copyright">
       &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
     </div>
