@@ -63,40 +63,45 @@ class CandidateModel extends CI_Model
     }
 
     public function generate_customer_id()
-    {
-        $current_year = date('Y');
+{
+    $current_year = date('Y');
 
-        $latest_customer_id = $this->get_latest_customer_id();
-        $incremented_id = str_pad((int) substr($latest_customer_id, -4) + 1, 4, '0', STR_PAD_LEFT);
+    $latest_customer_id = $this->get_latest_customer_id();
 
-        $customer_id = "AJC" . $current_year . $incremented_id;
+    $last_four_digits = substr($latest_customer_id, -4);
 
-        $insert = array(
-            'eeid' => $customer_id
-        );
+    $incremented_id = str_pad((int)$last_four_digits + 1, 4, '0', STR_PAD_LEFT);
 
-        $phonenumber = $this->input->post('phonenumber');
+    $customer_id = "AJC{$current_year}{$incremented_id}";
 
-        $this->db->where('phonenumber', $phonenumber);
-        $this->db->update('seeker_profile_form', $insert);
-        return $customer_id;
+    $insert = array(
+        'eeid' => $customer_id
+    );
+
+    $phonenumber = $this->input->post('phonenumber');
+
+    $this->db->where('phonenumber', $phonenumber);
+    $this->db->update('seeker_profile_form', $insert);
+    
+    return $customer_id;
+}
+
+public function get_latest_customer_id()
+{
+    $this->db->select('eeid');
+    $this->db->from('seeker_profile_form');
+    $this->db->like('eeid', 'AJC' . date('Y'), 'after');
+    $this->db->order_by('eeid', 'DESC');
+    $this->db->limit(1);
+
+    $query = $this->db->get();
+    if ($query->num_rows() > 0) {
+        $row = $query->row();
+        return $row->eeid;
+    } else {
+        return 'AJC' . date('Y') . '0000';
     }
-
-    public function get_latest_customer_id()
-    {
-        $this->db->select('eeid');
-        $this->db->from('seeker_profile_form');
-        $this->db->order_by('eeid', 'DESC');
-        $this->db->limit(1);
-
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            $row = $query->row();
-            return $row->eeid;
-        } else {
-            return 'AJC' . date('Y') . '0000';
-        }
-    }
+}
 
     public function getUserData($phonenumber)
     {

@@ -79,47 +79,43 @@
                     
                     <div class="">
                     <label for="name" class="form-label">Company Name: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Arram Jobs"
-                        onkeypress="return allowOnlyLetters(event, this)" required>
+                    <input type="text" class="form-control" id="name" name="name" onkeypress="return allowOnlyLetters(event, this)" required>
                     <p id="nameerr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="phno" class="form-label">Company Number: <span class="text-danger">*</span></label>
-                    <input type="number" class="form-control" id="phno" name="mobile"
-                        placeholder="9638527419" required>
+                    <input type="number" class="form-control" id="phno" name="mobile" required>
                     <p id="pherr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="email" class="form-label">Email-ID: <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="companymail@gmail.com" required>
+                    <input type="email" class="form-control" id="email" name="email" required>
                     <p id="mailerr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="crpassword" class="form-label">Create Password: <span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" id="crpassword" name="crpassword" placeholder="Abc@1234"  required>
+                    <input type="password" class="form-control" id="crpassword" name="crpassword" required>
                     <p id="crpassworderr" style="color: red;"></p>
                 </div>
                     <div class="text-secondary" style="font-size:12px;display:none;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
                 <div class="">
                     <label for="cmpassword" class="form-label">Confirm Password: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="cmpassword" name="cmpassword" placeholder="Abc@1234" required>
+                    <input type="text" class="form-control" id="cmpassword" name="cmpassword" required>
                     <p id="cmpassworderr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="addr" class="form-label">Street Address: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="addr" name="address"
-                        placeholder="123 Main Street, Apt 4" required>
+                    <input type="text" class="form-control" id="addr" name="address" required>
                     <p id="adderr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="addr" class="form-label">Landmark: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="landmark" name="landmark"
-                        placeholder="Near DMart" required>
+                    <input type="text" class="form-control" id="landmark" name="landmark" required>
                     <p id="landerr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="addr" class="form-label">City: <span class="text-danger">*</span> </label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="Erode" required>
+                    <input type="text" class="form-control" id="city" name="city" required>
                     <p id="cityerr" style="color: red;"></p>
                 </div>
                 <div class="">
@@ -144,15 +140,13 @@
 
                 <div class="">
                     <label for="addr" class="form-label">Pincode: <span class="text-danger">*</span></label>
-                    <input type="number" class="form-control" id="pincode" name="pincode"
-                        placeholder="638001" required>
+                    <input type="number" class="form-control" id="pincode" name="pincode" required>
                     <p id="pinerr" style="color: red;"></p>
                 </div>
 
                 <div class="">
                     <label for="locationUrl" class="form-label">Location URL: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="locationUrl" name="locationUrl"
-                     placeholder="https://www.example.com/company-location" required>
+                    <input type="text" class="form-control" id="locationUrl" name="locationUrl" required>
                     <p id="lUrlerr" style="color: red;"></p>
                 </div>
 
@@ -164,17 +158,17 @@
                 </div>
                 <div class="">
                     <label for="cwebsite" class="form-label">Website:</label>
-                    <input type="text" class="form-control" id="cwebsite" name="cwebsite" placeholder="https://www.example.com">
+                    <input type="text" class="form-control" id="cwebsite" name="cwebsite">
                     <p id="weberr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="cpan" class="form-label">Pan Number:</label>
-                    <input type="text" class="form-control" id="cpan" name="cpan" placeholder="ABCDE1234F" >
+                    <input type="text" class="form-control" id="cpan" name="cpan">
                     <p id="panerr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="cgst" class="form-label">GST Number:</label>
-                    <input type="text" class="form-control" id="cgst" name="cgst" placeholder="29ABCDE1234F1ZH" >
+                    <input type="text" class="form-control" id="cgst" name="cgst">
                     <p id="gsterr" style="color: red;"></p>
                 </div>
                 <br>
@@ -184,26 +178,23 @@
 
                 <div class="">
                     <label for="name1" class="form-label">Name: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="name1" name="name1"
-                        placeholder="John Felix" onkeypress="return allowOnlyLetters1(event, this)" required>
+                    <input type="text" class="form-control" id="name1" name="name1" 
+                        onkeypress="return allowOnlyLetters1(event, this)" required>
                     <p id="nameerr1" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="role" class="form-label">Role: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="role" name="role"
-                        placeholder="HR / Manager" required>
+                    <input type="text" class="form-control" id="role" name="role" required>
                     <p id="rolerr" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="phno1" class="form-label">Mobile Number: <span class="text-danger">*</span></label>
-                    <input type="number" class="form-control" id="phno1" name="mobile1"
-                        placeholder="9876543219" required>
+                    <input type="number" class="form-control" id="phno1" name="mobile1" required>
                     <p id="pherr1" style="color: red;"></p>
                 </div>
                 <div class="">
                     <label for="mail1" class="form-label">Email-ID: <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="mail1" name="email1"
-                        placeholder="example@gmail.com" required>
+                    <input type="email" class="form-control" id="mail1" name="email1" required>
                     <p id="mailerr1" style="color: red;"></p>
                 </div>
 

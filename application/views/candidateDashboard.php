@@ -497,6 +497,21 @@
                   </select>
                   <div id="gender_error" style="color: red;"></div>
                 </div>
+                <div class="col-md-6">
+                  <label for="maritalstatus" class="form-label">Marital Status <span class="text-danger">*</span></label>
+                  <select class="form-control" id="maritalstatus"
+                    value="<?php echo isset($value['maritalStatus']) ? $value['maritalStatus'] : ''; ?>" name="maritalstatus" required>
+                    <option value="">Select your Marital Status</option>
+
+                    <option value="single" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'single')
+                      echo 'selected'; ?>>Single</option>
+                    <option value="married" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'married')
+                      echo 'selected'; ?>>Married</option>
+                    <option value="widow" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'widow')
+                      echo 'selected'; ?>>Widow</option>
+                  </select>
+                  <div id="maritalstatus_error" style="color: red;"></div>
+                </div>
 
                 <h5 class="card-title">Address</h5>
 
@@ -515,7 +530,7 @@
                 <div class="col-md-6">
                   <label for="landmark" class="form-label">Landmark <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="landmark"
-                    value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" name="landmark" required>
+                    value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" name="landmark">
                   <div id="landmark_error" style="color: red;"></div>
                 </div>
                 <div class="col-md-6">
@@ -543,23 +558,7 @@
                   <div id="district_error" style="color: red;"></div>
                 </div>
 
-                <div class="col-md-6">
-                  <label for="maritalstatus" class="form-label">Marital Status <span class="text-danger">*</span></label>
-
-                  <select class="form-control" id="maritalstatus"
-                    value="<?php echo isset($value['maritalStatus']) ? $value['maritalStatus'] : ''; ?>"
-                    name="maritalstatus" required>
-                    <option value="">Select your Marital Status</option>
-
-                    <option value="single" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'single')
-                      echo 'selected'; ?>>Single</option>
-                    <option value="married" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'married')
-                      echo 'selected'; ?>>Married</option>
-                    <option value="widow" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'widow')
-                      echo 'selected'; ?>>Widow</option>
-                  </select>
-                  <div id="maritalstatus_error" style="color: red;"></div>
-                </div>
+               
 
                 <h5 class="card-title">Identification Details</h5>
 

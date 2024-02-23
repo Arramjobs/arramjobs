@@ -1977,7 +1977,7 @@
                                 <div class="col-md-6">
                                     <label for="inputAddress2" class="form-label">Landmark</label>
                                     <input type="text" class="form-control" id="inputAddress2" name="landmark"
-                                        value="<?php echo $value['Landmark'] ?>" readonly required>
+                                        value="<?php echo $value['Landmark'] ?>" readonly>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputCity" class="form-label">City</label>
@@ -2636,6 +2636,18 @@
                                         maxlength="15" oninput="validatePhoneNumber1(this)">
                                     <div id="phonenumber_error" style="color: red;"></div>
                                 </div>
+
+                                <div class="col-md-6">
+                  <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                    <input type="password" class="form-control" id="password" value="<?php echo $value['password']; ?>" name="password" required>
+                      <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('password', 'visibilityIcon')">
+                        <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                      </button>
+                    </div>
+                    <div id="password_error" style="color: red;"></div>
+                </div>
+
                                 <div class="col-md-6">
                                     <label for="dob" class="form-label">Date of Birth</label>
                                     <?php
@@ -2665,6 +2677,24 @@
                                     <div id="gender_error" style="color: red;"></div>
                                 </div>
 
+                                <div class="col-md-6">
+                                    <label for="maritalstatus" class="form-label">Marital Status </label>
+
+                                    <select class="form-control" id="maritalstatus"
+                                        value="<?php echo isset($value['maritalStatus']) ? $value['maritalStatus'] : ''; ?>"
+                                        name="maritalstatus">
+                                        <option value="">Select your Marital Status</option>
+
+                                        <option value="single" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'single')
+                                            echo 'selected'; ?>>Single</option>
+                                        <option value="married" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'married')
+                                            echo 'selected'; ?>>Married</option>
+                                        <option value="widow" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'widow')
+                                            echo 'selected'; ?>>Widow</option>
+                                    </select>
+                                    <div id="maritalstatus_error" style="color: red;"></div>
+                                </div>
+
                                 <h5 class="card-title">Address</h5>
 
                                 <div class="col-md-6">
@@ -2684,7 +2714,7 @@
                                 <div class="col-md-6">
                                     <label for="landmark" class="form-label">Landmark</label>
                                     <input type="text" class="form-control" id="landmark"
-                                        value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>"
+                                        value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" 
                                         name="landmark">
                                     <div id="landmark_error" style="color: red;"></div>
                                 </div>
@@ -2715,24 +2745,7 @@
                                     <div id="district_error" style="color: red;"></div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <label for="maritalstatus" class="form-label">Marital Status </label>
-
-                                    <select class="form-control" id="maritalstatus"
-                                        value="<?php echo isset($value['maritalStatus']) ? $value['maritalStatus'] : ''; ?>"
-                                        name="maritalstatus">
-                                        <option value="">Select your Marital Status</option>
-
-                                        <option value="single" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'single')
-                                            echo 'selected'; ?>>Single</option>
-                                        <option value="married" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'married')
-                                            echo 'selected'; ?>>Married</option>
-                                        <option value="widow" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'widow')
-                                            echo 'selected'; ?>>Widow</option>
-                                    </select>
-                                    <div id="maritalstatus_error" style="color: red;"></div>
-                                </div>
-
+                                
                                 <h5 class="card-title">Identification Details</h5>
 
                                 <div class="col-md-6">
@@ -4859,7 +4872,7 @@
                                             <div class="d-md-flex justify-content-between pt-4">
                                                 <div class="col d-none d-md-block">
                                                     <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>"
-                                                        alt="profilep" width="150" height="150">
+                                                        alt="Upload your Profile photo" width="150" height="150">
                                                 </div>
 
                                                 <div class="col">
@@ -5484,8 +5497,8 @@
                                             ?>
                                             <div class="d-md-flex justify-content-between pt-4">
                                                 <div class="col d-none d-md-block">
-                                                    <img class="h-100" src="<?php echo baseUrl . "assets/profilephoto.png" ?>"
-                                                        class="card-img-top" alt="...">
+                                                <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>"
+                                                        alt="Please add your image" width="150" height="150">
                                                 </div>
 
                                                 <div class="col">
@@ -6624,7 +6637,7 @@
                                 <div class="col-md-6">
                                     <label for="inputAddress2" class="form-label">Landmark</label>
                                     <input type="text" class="form-control" id="inputAddress2" name="landmark"
-                                        value="<?php echo $value['Landmark'] ?>" readonly required>
+                                        value="<?php echo $value['Landmark'] ?>" readonly>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputCity" class="form-label">City</label>
