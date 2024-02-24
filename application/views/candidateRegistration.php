@@ -99,15 +99,18 @@
 
                                             <label for="phonenumber" class="form-label">Mobile number<span class="text-danger">*</span></label>
                                             <input type="number" class="form-control" id="phonenumber" name="phonenumber" pattern="[0-9]{1,15}" 
-                                                maxlength="15" oninput="validatePhoneNumber(this)"required>
+                                                maxlength="15" oninput="validatePhoneNumber(this)"required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                             <div id="phone_error"  style="color: red;" class="error" ></div>
                                         </div>
                                         <div class="">
-
-
                                             <label for="crpassword" class="form-label">Create Password<span class="text-danger">*</span></label>
+                                            <div class="input-group has-validation">
                                             <input type="password" class="form-control" id="crpassword" name="crpassword" required>
+                                            <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('crpassword', 'visibilityIcon')">
+                                    <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                </button>
                                             <div id="crpassworderr" style="color: red;" class="error" ></div>
+                                        </div>
                                         </div>
                                         <div class="text-secondary" style="font-size:15px;display:none;margin:0px" id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
 
@@ -143,7 +146,7 @@
                 </div>
 
             </section>
-
+           
         </div>
     </main><!-- End #main -->
 
@@ -153,6 +156,20 @@
 <script>
         function validateName(input) {
           input.value = input.value.replace(/[0-9]/g, '');
+        }
+        function togglePasswordVisibility(inputId, iconId) {
+            var passwordInput = document.getElementById(inputId);
+            var visibilityIcon = document.getElementById(iconId);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                visibilityIcon.classList.remove("bi-eye-slash");
+                visibilityIcon.classList.add("bi-eye");
+            } else {
+                passwordInput.type = "password";
+                visibilityIcon.classList.remove("bi-eye");
+                visibilityIcon.classList.add("bi-eye-slash");
+            }
         }
 </script>
 

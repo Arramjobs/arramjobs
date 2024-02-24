@@ -88,7 +88,7 @@
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
                                                 <input type="number" name="phonenumber" class="form-control" id="phonenumber"
-                                                    oninput="validatePhoneNumber(this)" required>
+                                                    oninput="validatePhoneNumber(this)" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                                 <div class="invalid-feedback">Please enter your mobile number.</div>
                                             </div>
                                             <div id="phoneError" class="text-danger"> </div>

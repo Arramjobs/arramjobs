@@ -84,7 +84,7 @@
                 </div>
                 <div class="">
                     <label for="phno" class="form-label">Company Number: <span class="text-danger">*</span></label>
-                    <input type="number" class="form-control" id="phno" name="mobile" required>
+                    <input type="number" class="form-control" id="phno" name="mobile" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                     <p id="pherr" style="color: red;"></p>
                 </div>
                 <div class="">
@@ -94,8 +94,13 @@
                 </div>
                 <div class="">
                     <label for="crpassword" class="form-label">Create Password: <span class="text-danger">*</span></label>
+                    <div class="input-group has-validation">
                     <input type="password" class="form-control" id="crpassword" name="crpassword" required>
+                    <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('crpassword', 'visibilityIcon')">
+                        <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                    </button>
                     <p id="crpassworderr" style="color: red;"></p>
+                </div>
                 </div>
                     <div class="text-secondary" style="font-size:12px;display:none;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
                 <div class="">
@@ -146,7 +151,7 @@
 
                 <div class="">
                     <label for="locationUrl" class="form-label">Location URL: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="locationUrl" name="locationUrl" required>
+                    <input type="text" class="form-control" id="locationUrl" name="locationUrl" pattern="https?://.+" required>
                     <p id="lUrlerr" style="color: red;"></p>
                 </div>
 
@@ -189,7 +194,7 @@
                 </div>
                 <div class="">
                     <label for="phno1" class="form-label">Mobile Number: <span class="text-danger">*</span></label>
-                    <input type="number" class="form-control" id="phno1" name="mobile1" required>
+                    <input type="number" class="form-control" id="phno1" name="mobile1" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                     <p id="pherr1" style="color: red;"></p>
                 </div>
                 <div class="">
@@ -593,8 +598,31 @@
                 }
             }
         }
-    </script>
 
+        // View Password
+        function togglePasswordVisibility(inputId, iconId) {
+            var passwordInput = document.getElementById(inputId);
+            var visibilityIcon = document.getElementById(iconId);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                visibilityIcon.classList.remove("bi-eye-slash");
+                visibilityIcon.classList.add("bi-eye");
+            } else {
+                passwordInput.type = "password";
+                visibilityIcon.classList.remove("bi-eye");
+                visibilityIcon.classList.add("bi-eye-slash");
+            }
+        }
+    </script>
+<footer id="footer" class="footer mt-auto py-3">
+  <div class="contact">
+      <p style="padding-left:24%; color:#blue;">Need help? Contact us anytime: <a href="tel:7418334443"><strong>+91 7418334443</strong></a></p>
+    </div>
+    <div class="copyright" style="padding-right:25%;">
+      &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
+    </div>
+  </footer>
 
   <!-- Vendor JS Files -->
   <script src="<?php echo baseUrl; ?>/assets/vendor/apexcharts/apexcharts.min.js"></script>

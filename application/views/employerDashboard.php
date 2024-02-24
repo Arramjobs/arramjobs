@@ -327,7 +327,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="inputNumber5" class="form-label">Company Mobile Number <span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" id="inputNumber5" value='<?php echo $value['company_mobile_number']; ?>' name="phno" required>
+                                            <input type="number" class="form-control" id="inputNumber5" value='<?php echo $value['company_mobile_number']; ?>' name="phno" required 
+                                            onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                             <p id="pherr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
@@ -389,7 +390,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="locationUrl" class="form-label">Location URL <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="locationUrl" name="locationUrl" value='<?php echo $value['companyLocationUrl']; ?>' required>
+                                            <input type="text" class="form-control" id="locationUrl" name="locationUrl" value='<?php echo $value['companyLocationUrl']; ?>'  pattern="https?://.+" required>
                                             <p id="lUrlerr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
@@ -430,7 +431,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="cpmobilno" class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" id="cpmobilno" value='<?php echo $value['mobile_number']; ?>' name="phno1" required>
+                                            <input type="number" class="form-control" id="cpmobilno" value='<?php echo $value['mobile_number']; ?>' name="phno1" required  onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                         <p id="pherr1" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
@@ -932,7 +933,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="preferred_location_url">Job Location URL </label>
-                            <input type="text" class="form-control" id="preferred_location_url" name="preferred_location_url">
+                            <input type="text" class="form-control" id="preferred_location_url" name="preferred_location_url" pattern="https?://.+">
                             <div id="preferred_location_url_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
@@ -953,7 +954,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="no_of_openings">No of Openings <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" required >
+                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" min="0" required >
                             <div id="no_of_openings_error" class="error"></div>
                         </div>
                         <div class="col-md-12">
@@ -1205,7 +1206,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="subcategory">Subcategory</label>
-                            <input class="form-control" id="subcategory" name="subcategory" required>
+                            <input class="form-control" id="subcategory" name="subcategory">
                             <div id="subcategory_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
@@ -1246,7 +1247,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="no_of_openings">No of Openings </label>
-                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" required >
+                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" min="0" required>
                             <div id="no_of_openings_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
@@ -1337,14 +1338,12 @@
                                 newothercategory_error.innerHTML = '';
                             }
 
-                            if (subcategory.value === "") {
-                                // alert("Please Select a subcategory");
-                                displayError('Subcategory must be filled out', 'subcategory_error');
-                                // document.experienceform.subcategorycategory.focus();
-                                return false;
-                            } else if (subcategory.value !== '') {
-                                subcategoryError.innerHTML = '';
-                            }
+                            // if (subcategory.value === "") {
+                            //     displayError('Subcategory must be filled out', 'subcategory_error');
+                            //     return false;
+                            // } else if (subcategory.value !== '') {
+                            //     subcategoryError.innerHTML = '';
+                            // }
 
                             if (experience.value.trim() === "") {
                                 // alert("Please enter a experience")
@@ -1535,7 +1534,7 @@
                                 </div>
                                 <div class="col-md-6">
                                       <label class="form-label"  for="subcategory">Subcategory:</label>
-                                      <input class="form-control" id="subcategory" name="subcategory" value="<?php echo $value['jobSubCategory']; ?>" required>
+                                      <input class="form-control" id="subcategory" name="subcategory" value="<?php echo $value['jobSubCategory']; ?>">
                                       <div id="subcategory_error" class="error"></div>
                                 </div>
                                 <div class="col-md-6">
@@ -1566,7 +1565,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="preferred_location_url">Location URL: <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="preferred_location_url" value="<?php echo $value['locationUrl']; ?>" name="preferred_location_url" required>
+                                    <input type="text" class="form-control" id="preferred_location_url" value="<?php echo $value['locationUrl']; ?>" name="preferred_location_url" pattern="https?://.+" required>
                                     <div id="preferred_location_url_error" class="error"></div>
                                 </div>
                                 <div class="col-md-6">
@@ -1589,7 +1588,7 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label"  for="no_of_openings">No of Openings: <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" id="no_of_openings" value="<?php echo $value['number_of_openings']; ?>" name="no_of_openings" required>
+                                    <input type="number" class="form-control" id="no_of_openings" value="<?php echo $value['number_of_openings']; ?>" name="no_of_openings" min="0" required>
                                     <div id="no_of_openings_error" class="error"></div>
                                 </div>
                                 <div class="col-md-12">
@@ -1664,13 +1663,12 @@
                            }
 
 
-                           if (subcategory.value === "") {
-                               // alert("Please select a subcategory")
-                               displayError('Subcategory must be filled out', 'subcategory_error');
-                               return false;
-                           } else if (subcategory.value !== '') {
-                               subcategoryError.innerHTML = '';
-                           }
+                        //    if (subcategory.value === "") {
+                        //        displayError('Subcategory must be filled out', 'subcategory_error');
+                        //        return false;
+                        //    } else if (subcategory.value !== '') {
+                        //        subcategoryError.innerHTML = '';
+                        //    }
 
 
                            if (experience.value.trim() === "") {
@@ -1721,7 +1719,6 @@
                            }
 
                            if (no_of_openings.value.trim() === "") {
-                               // alert("Please enter a No Of Openings");
                                displayError('No of openings must be filled out', 'no_of_openings_error');
                                return false;
                            } else if (no_of_openings.value !== '') {

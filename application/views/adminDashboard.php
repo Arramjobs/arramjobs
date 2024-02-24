@@ -807,23 +807,6 @@
                 </div>
             </section>
 
-            <script>
-                function togglePasswordVisibility(inputId, iconId) {
-                    var passwordInput = document.getElementById(inputId);
-                    var visibilityIcon = document.getElementById(iconId);
-
-                    if (passwordInput.type === "password") {
-                        passwordInput.type = "text";
-                        visibilityIcon.classList.remove("bi-eye-slash");
-                        visibilityIcon.classList.add("bi-eye");
-                    } else {
-                        passwordInput.type = "password";
-                        visibilityIcon.classList.remove("bi-eye");
-                        visibilityIcon.classList.add("bi-eye-slash");
-                    }
-                }
-            </script>
-
             <?php
         } elseif ($method == "adminUsers") {
             ?>
@@ -974,13 +957,17 @@
                                 <input type="password" class="form-control" id="inputPassword5">
                             </div> -->
                             <div class="col-md-6">
-                                <label for="crpassword" class="form-label">Create Password <span
-                                        class="text-danger">*</span></label>
+                                <label for="crpassword" class="form-label">Create Password <span class="text-danger">*</span></label>
+                                <div class="input-group has-validation">
                                 <input type="password" class="form-control" id="crpassword" name="crpassword" required>
+                                <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('crpassword', 'visibilityIcon')">
+                                    <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                </button>
                                 <p id="crpassworderr" style="color: red;"></p>
                                 <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">
                                     Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number
                                     and a minimum of 8 characters.</div>
+                            </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="cmpassword" class="form-label">Confirm Password <span
@@ -1022,7 +1009,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="locationUrl" class="form-label">Location URL</label>
-                                <input type="text" class="form-control" id="locationUrl" name="locationUrl">
+                                <input type="text" class="form-control" id="locationUrl" name="locationUrl" pattern="https?://.+">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputFile" class="form-label">Logo</label>
@@ -1068,6 +1055,22 @@
                     </div>
                 </div>
             </section>
+            <script>
+                function togglePasswordVisibility(inputId, iconId) {
+            var passwordInput = document.getElementById(inputId);
+            var visibilityIcon = document.getElementById(iconId);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                visibilityIcon.classList.remove("bi-eye-slash");
+                visibilityIcon.classList.add("bi-eye");
+            } else {
+                passwordInput.type = "password";
+                visibilityIcon.classList.remove("bi-eye");
+                visibilityIcon.classList.add("bi-eye-slash");
+            }
+        }
+            </script>
             <?php
         } elseif ($method == "unVerifiedEmployers") {
             ?>
@@ -1956,7 +1959,7 @@
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Company Email</label>
                                     <input type="email" class="form-control" id="inputEmail5" name="email"
-                                        value="<?php echo $value['company_email'] ?>" readonly required>
+                                        value="<?php echo $value['company_email'] ?>" readonly>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="password" class="form-label">Password</label>
@@ -2016,8 +2019,7 @@
                                     <label for="inputWebsite" class="form-label">Website</label>
                                     <!-- <input type="text" class="form-control" id="inputWebsite" value="<?php echo $value['companywebsite'] ?>" readonly name="cwebsite1"> -->
                                     <?php if ($value['companywebsite'] != null) { ?>
-                                        <a href="<?php echo $value['companywebsite']; ?>" class=" text-primary form-control"
-                                            target="blank">
+                                        <a href="<?php echo $value['companywebsite']; ?>" class=" text-primary form-control" target="blank">
                                             <?php echo $value['companywebsite']; ?>
                                         </a>
                                     <?php } else { ?>
@@ -2543,13 +2545,17 @@
                                 <div class="invalid-feedback">Please, enter mobile number!</div>
                             </div>
                             <div class="col-12">
-                                <label for="createpassword" class="form-label">Create Password <span
-                                        class="text-danger">*</span></label>
-                                <input type="password" name="createpassword" class="form-control" id="createpassword"
-                                    required>
-                                <div class="invalid-feedback">Please, enter new password!</div>
-                                <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Enter
-                                    the date of birth in DDMMYYYY (01051996).</div>
+                                <label for="createpassword" class="form-label">Create Password <span class="text-danger">*</span></label>
+                                <div class="input-group has-validation">
+                                <input type="password" name="createpassword" class="form-control" id="createpassword" required>
+                                <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('createpassword', 'visibilityIcon')">
+                                    <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                </button>
+                                <div class="invalid-feedback">Please, enter new password!</div>                               
+                            </div>
+                            <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">
+                                    Enter the date of birth in DDMMYYYY (01051996).
+                            </div>
                             </div>
                             <div class="col-12">
                                 <label for="confirmpassword" class="form-label">Confirm Password <span
@@ -2573,6 +2579,22 @@
                     </div>
                 </div>
             </section>
+            <script>
+                function togglePasswordVisibility(inputId, iconId) {
+            var passwordInput = document.getElementById(inputId);
+            var visibilityIcon = document.getElementById(iconId);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                visibilityIcon.classList.remove("bi-eye-slash");
+                visibilityIcon.classList.add("bi-eye");
+            } else {
+                passwordInput.type = "password";
+                visibilityIcon.classList.remove("bi-eye");
+                visibilityIcon.classList.add("bi-eye-slash");
+            }
+        }
+            </script>
             <?php
 
         } elseif ($method == "basicdetails") {
@@ -2598,11 +2620,9 @@
 
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title">Basic Details</h5>
-                            <!-- <a class="" href="<?php echo baseUrl . "Admin/educationTable" ?>"> <button type="button"
-                                class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a> -->
 
-                            <a class="" href="<?php echo baseUrl . "admin/educationTable/" ?>">
-                                <button type="button" class="btn btn-info mt-4 "><i class="bi bi-arrow-right"></i></button>
+                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
+                                <button type="button" class="btn btn-info mt-4 ">HOME</button>
                             </a>
                         </div>
                         <!-- Multi Columns Form -->
@@ -2753,7 +2773,8 @@
                                     <input type="text" class="form-control" name="oldaadharfront"
                                         value="<?php echo $value['aadharfront_filename']; ?>" hidden>
                                     <input type="file" class="form-control" id="aadharfrontphoto" name="aadharfrontphoto"
-                                        accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
+                                        accept="image/png ,image/jpg, image/jpeg, application/pdf, 
+                                        application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
                                     <div class="uploadedfile" style="display:flex;">
                                         <label id="file-input-labelaf" for="aadharfrontphoto" class="form-control"
                                             style="cursor:pointer">Choose File</label>
@@ -2770,7 +2791,8 @@
                                     <input type="text" class="form-control" name="oldaadharback"
                                         value="<?php echo $value['aadharback_filename']; ?>" hidden>
                                     <input type="file" class="form-control" id="aadharbackphoto" name="aadharbackphoto"
-                                        accept="image/png ,image/jpg, image/jpeg, application/pdf" hidden>
+                                        accept="image/png ,image/jpg, image/jpeg, application/pdf, 
+                                        application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
                                     <div class="uploadedfile" style="display:flex;">
                                         <label id="file-input-labelab" for="aadharbackphoto" class="form-control"
                                             style="cursor:pointer">Choose File</label>
@@ -3064,6 +3086,9 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title">Add Education Details</h5>
+                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
+                                <button type="button" class="btn btn-info mt-4 ">HOME</button>
+                            </a>
                         </div>
 
                         <!-- Multi Columns Form -->
@@ -3119,21 +3144,25 @@
                             <div class="col-md-6" id="certificate_10th-group" style="display: none;">
                                 <label for="certificate_10th" class="form-label">10th Certificate Upload</label>
                                 <input type="file" class="form-control" id="certificate_10th" name="certificate_10th"
-                                    accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                    accept="image/png ,image/jpg, image/jpeg, application/pdf, 
+                                    application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                                 <div id="certificate_10th_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_12th-group" style="display: none;">
                                 <label for="certificate_12th" class="form-label">12th Certificate Upload</label>
                                 <input type="file" class="form-control" id="certificate_12th" name="certificate_12th"
-                                    accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                    accept="image/png ,image/jpg, image/jpeg, application/pdf, 
+                                    application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                                 <div id="certificate_12th_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_dip-group" style="display: none;">
                                 <label id="additionalFieldLabeldip" for="certificate_dip" class="form-label">Diploma
                                     Certificate Upload</label>
-                                <input type="file" class="form-control" id="certificate_dip" name="certificate_dip">
+                                <input type="file" class="form-control" id="certificate_dip" name="certificate_dip"
+                                accept="image/png ,image/jpg, image/jpeg, application/pdf, 
+                                    application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                                 <div id="certificate_dip_error" class="text-danger"></div>
                             </div>
 
@@ -3141,7 +3170,8 @@
                                 <label id="additionalFieldLabelug" for="certificate_ug" class="form-label">UG Degree
                                     Certificate Upload</label>
                                 <input type="file" class="form-control" id="certificate_ug" name="certificate_ug"
-                                    accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                    accept="image/png ,image/jpg, image/jpeg, application/pdf, 
+                                    application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                                 <div id="certificate_ug_error" class="text-danger"></div>
                             </div>
 
@@ -3149,15 +3179,17 @@
                                 <label id="additionalFieldLabelpg" for="certificate_pg" class="form-label">PG Certificate
                                     Upload</label>
                                 <input type="file" class="form-control" id="certificate_pg" name="certificate_pg"
-                                    accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                    accept="image/png ,image/jpg, image/jpeg, application/pdf, 
+                                    application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                                 <div id="certificate_pg_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="certificate_doctorate-group" style="display: none;">
                                 <label id="additionalFieldLabeldoc" for="certificate_doctorate" class="form-label">Doctorate
                                     Certificate Upload</label>
-                                <input type="file" class="form-control" id="certificate_doctorate"
-                                    name="certificate_doctorate" accept="image/png ,image/jpg, image/jpeg, application/pdf">
+                                <input type="file" class="form-control" id="certificate_doctorate" name="certificate_doctorate" 
+                                accept="image/png ,image/jpg, image/jpeg, application/pdf, 
+                                    application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                                 <div id="certificate_doctorate_error" class="text-danger"></div>
                             </div>
 
@@ -3287,7 +3319,7 @@
                         document.getElementById("certificate_dip-group").style.display = 'block';
                         document.getElementById("additionalFieldLabeldip").innerText = "Upload " + selectedValue + " Certificate";
                     }
-                    else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC/BS" || selectedValue === "BSW" || selectedValue === "BFA" || selectedValue === "B.Arch" || selectedValue === "B.N" || selectedValue === "BCS" || selectedValue === "LLB" || selectedValue === "BDS" || selectedValue === "B.Pharm") {
+                    else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW" || selectedValue === "BFA" || selectedValue === "B.Arch" || selectedValue === "B.N" || selectedValue === "BCS" || selectedValue === "LLB" || selectedValue === "BDS" || selectedValue === "B.Pharm") {
                         document.getElementById("department-group").style.display = "block";
                         document.getElementById("course-group").style.display = "block";
                         document.getElementById("school-group").style.display = "block";
@@ -3296,7 +3328,7 @@
                         document.getElementById("certificate_ug-group").style.display = 'block';
                         document.getElementById("additionalFieldLabelug").innerText = "Upload " + selectedValue + " Certificate";
                     }
-                    else if (selectedValue === "M.E" || selectedValue === "M.A" || selectedValue === "M.COM" || selectedValue === "M.ED" || selectedValue === "M.LIT" || selectedValue === "M.TECH" || selectedValue === "MCA" || selectedValue === "MBA" || selectedValue === "M.SC/MS" || selectedValue === "MSW" || selectedValue === "MFA" || selectedValue === "M.Arch" || selectedValue === "M.N" || selectedValue === "MCS" || selectedValue === "LLM" || selectedValue === "MBBS" || selectedValue === "M.Pharm" || selectedValue === "MPhil") {
+                    else if (selectedValue === "M.E" || selectedValue === "M.A" || selectedValue === "M.COM" || selectedValue === "M.ED" || selectedValue === "M.LIT" || selectedValue === "M.TECH" || selectedValue === "MCA" || selectedValue === "MBA" || selectedValue === "M.SC" || selectedValue === "MSW" || selectedValue === "MFA" || selectedValue === "M.Arch" || selectedValue === "M.N" || selectedValue === "MCS" || selectedValue === "LLM" || selectedValue === "MBBS" || selectedValue === "M.Pharm" || selectedValue === "MPhil") {
                         document.getElementById("department-group").style.display = "block";
                         document.getElementById("course-group").style.display = "block";
                         document.getElementById("school-group").style.display = "block";
@@ -3320,8 +3352,8 @@
 
                 var countries = [
                     "Below_9th", "9th", "10th/SSLC", "11th", "12th/HSC", "DIPLOMA", "D.Pharm",
-                    "B.A", "B.COM", "B.ED", "B.E", "B.LIT", "B.SC/BS", "BBA", "BCA", "B.TECH", "BSW", "BFA", "B.Arch", "B.N", "BCS", "LLB", "BDS", "B.Pharm",
-                    "M.A", "M.COM", "M.ED", "M.E", "M.LIT", "M.Sc/MS", "MBA", "MCA", "M.TECH", "MSW", "MFA", "M.Arch", "M.N", "MCS", "LLM", "MBBS", "M.Pharm",
+                    "B.A", "B.COM", "B.ED", "B.E", "B.LIT", "B.SC", "BBA", "BCA", "B.TECH", "BSW", "BFA", "B.Arch", "B.N", "BCS", "LLB", "BDS", "B.Pharm",
+                    "M.A", "M.COM", "M.ED", "M.E", "M.LIT", "M.Sc", "MBA", "MCA", "M.TECH", "MSW", "MFA", "M.Arch", "M.N", "MCS", "LLM", "MBBS", "M.Pharm",
                     "MPhil", "Ph.D", "DBA", "Ed.D", "MD", "DMD", "DVM"];
 
                 autocomplete(document.getElementById("qualification"), countries);
@@ -3357,8 +3389,12 @@
                     <div class="card recent-sales overflow-auto">
 
                         <div class="card-body">
-                            <div class="">
-                                <h5 class="card-title">Experience Table<span></span></h5>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title">Add Education Details</h5>
+                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
+                                <button type="button" class="btn btn-info mt-4 ">HOME</button>
+                            </a>
+                        </div>
 
                                 <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
                                     onsubmit="return validateexpForm()"
@@ -3481,7 +3517,6 @@
                                         <button type="reset" class="btn btn-secondary">Reset</button>
                                     </div>
                                 </form>
-                            </div>
                         </div>
 
 
@@ -3598,6 +3633,9 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title">Add Job Interest</h5>
+                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
+                                <button type="button" class="btn btn-info mt-4 ">HOME</button>
+                            </a>
                         </div>
                         <!-- Multi Columns Form -->
                         <form class="row g-3" novalidate method="post" onsubmit="return validateAreaForm()"
@@ -3749,7 +3787,12 @@
                 </div><!-- End Page Title -->
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Add New Skill</h5>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title">Add New Skill</h5>
+                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
+                                <button type="button" class="btn btn-info mt-4 ">HOME</button>
+                            </a>
+                        </div>
 
                         <!-- Multi Columns Form -->
                         <form class="row g-3 needs-validation" novalidate method="post"
@@ -4860,9 +4903,16 @@
                 <!-- Default Card -->
                 <div class="card" id="printCandidate">
                     <div class="card-body">
+                    <div class="d-flex justify-content-between" style="padding-top:15px;">
+                            <h5 class="card-title"></h5>
+                            <h2 class="text-center pt-2">Candidate Resume</h2>
+                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
+                <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" width="70" height="60">
+                            </a>
+                        </div>
+                   
                         <div class="container">
                             <div class="row">
-                                <h2 class="text-center pt-2">Candidate Resume</h2>
 
                                 <div class="card recent-sales overflow-auto mt-4">
                                     <div class="card-body">
@@ -4943,8 +4993,7 @@
                                                         <td>
                                                             <div class="input-group">
                                                                 <input type="password" class="form-control" id="password"
-                                                                    name="password" value='<?php echo $value['password']; ?>'
-                                                                    readonly>
+                                                                    name="password" value='<?php echo $value['password']; ?>' readonly>
                                                                 <button type="button" class="btn btn-outline-secondary"
                                                                     onclick="togglePasswordVisibility('password', 'visibilityIcon')">
                                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
@@ -5486,6 +5535,13 @@
                 <!-- Default Card -->
                 <div class="card" id="resumeprint">
                     <div class="card-body">
+                    <div class="d-flex justify-content-between" style="padding-top:15px;">
+                            <h5 class="card-title"></h5>
+
+                            <a class="" href="<?php echo baseUrl . "admin/overallCandidates" ?>">
+                <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" width="70" height="60">
+                            </a>
+                        </div>
                         <div class="container">
                             <div class="row">
                                 <h2 class="text-center pt-2">Candidate Resume</h2>
@@ -5567,8 +5623,7 @@
                                                         <td>
                                                             <div class="input-group">
                                                                 <input type="password" class="form-control" id="password"
-                                                                    name="password" value='<?php echo $value['password']; ?>'
-                                                                    readonly>
+                                                                    name="password" value='<?php echo $value['password']; ?>' readonly>
                                                                 <button type="button" class="btn btn-outline-secondary"
                                                                     onclick="togglePasswordVisibility('password', 'visibilityIcon')">
                                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
