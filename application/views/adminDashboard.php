@@ -53,7 +53,7 @@
             margin: 0;
         }
 
-        /* To print candidate deatils */
+        /* To print candidate details */
         @media print {
             body {
                 visibility: hidden;
@@ -111,13 +111,11 @@
             border-radius: 50%;
         }
 
-
         .sidebar-nav .nav-link.collapsed.active i,
         .sidebar-nav .nav-link.collapsed:hover i {
             color: #fff;
             padding-top: 0.1rem;
             padding-bottom: 0.1rem;
-
         }
 
         .sidebar-nav .nav-link.collapsed.active,
@@ -749,10 +747,9 @@
                                 <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputPassword5" class="form-label">Mobile Number <span
-                                        class="text-danger">*</span></label>
-                                <input type="number" class="form-control" id="inputMobileNumber5" name="mobileNumber"
-                                    required>
+                                <label for="inputPassword5" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="inputMobileNumber5" name="mobileNumber" min="0" required
+                                onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 <div class="invalid-feedback">Please enter a Mobile Number!</div>
                             </div>
                             <div class="col-md-6">
@@ -946,7 +943,8 @@
                             <div class="col-md-6">
                                 <label for="inputNumber5" class="form-label">Company Number <span
                                         class="text-danger">*</span></label>
-                                <input type="number" class="form-control" id="inputNumber5" name="mobile" required>
+                                <input type="number" class="form-control" id="inputNumber5" name="mobile" required
+                                onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputEmail5" class="form-label">Company Email </label>
@@ -1040,7 +1038,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="inputNumber5" class="form-label">Mobile Number </label>
-                                <input type="number" class="form-control" id="inputNumber5" name="mobile1">
+                                <input type="number" class="form-control" id="inputNumber5" name="mobile1"
+                                onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputEmail5" class="form-label">Email-ID </label>
@@ -1954,7 +1953,8 @@
                                 <div class="col-md-6">
                                     <label for="inputNumber5" class="form-label">Company Number</label>
                                     <input type="number" class="form-control" id="inputNumber5" name="mobile"
-                                        value="<?php echo $value['company_mobile_number'] ?>" readonly required>
+                                        value="<?php echo $value['company_mobile_number'] ?>" readonly required
+                                        onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Company Email</label>
@@ -2061,7 +2061,8 @@
                                 <div class="col-md-6">
                                     <label for="inputNumber5" class="form-label">Mobile Number</label>
                                     <input type="number" class="form-control" id="inputNumber5"
-                                        value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required>
+                                        value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required
+                                        onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Email-ID</label>
@@ -2541,7 +2542,8 @@
                             <div class="col-12">
                                 <label for="yourEmail" class="form-label">Candidate Mobile Number <span
                                         class="text-danger">*</span></label>
-                                <input type="number" name="phonenumber" class="form-control" id="yourEmail" required>
+                                <input type="number" name="phonenumber" class="form-control" id="yourEmail" required
+                                onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 <div class="invalid-feedback">Please, enter mobile number!</div>
                             </div>
                             <div class="col-12">
@@ -2651,9 +2653,9 @@
 
                                 <div class="col-md-6">
                                     <label for="phonenumber" class="form-label">Mobile Number</label>
-                                    <input type="number" class="form-control" id="phonenumber"
-                                        value="<?php echo $value['phonenumber']; ?>" name="phonenumber" pattern="[0-9]{1,15}"
-                                        maxlength="15" oninput="validatePhoneNumber1(this)">
+                                    <input type="number" class="form-control" id="phonenumber" value="<?php echo $value['phonenumber']; ?>" 
+                                    name="phonenumber" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber1(this)" 
+                                    onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                     <div id="phonenumber_error" style="color: red;"></div>
                                 </div>
 
@@ -2680,7 +2682,8 @@
                                 <div class="col-md-6">
                                     <label for="age" class="form-label">Age </label>
                                     <input type="number" class="form-control" id="age"
-                                        value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly>
+                                        value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly
+                                        onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                     <div id="age_error" style="color: red;"></div>
                                 </div>
                                 <div class="col-md-6">
@@ -3130,14 +3133,15 @@
 
                             <div class="col-md-6" id="percentage-group" style="display: none;">
                                 <label for="percentage" class="form-label">Percentage</label>
-                                <input type="number" class="form-control" id="percentage" id="school" name="percentage">
+                                <input type="number" class="form-control" id="percentage" id="school" name="percentage"
+                                onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 <div id="percentage_error" class="text-danger"></div>
                             </div>
 
                             <div class="col-md-6" id="year-group" style="display: none;">
                                 <label for="year_passed" class="form-label">Year of Passed Out</label>
                                 <input type="number" class="form-control" id="year_passed" name="year_passed" maxlength="4"
-                                    pattern="\d{4}">
+                                    pattern="\d{4}" onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 <div id="year_error" class="text-danger"></div>
                             </div>
 
@@ -3483,7 +3487,7 @@
                                         <label for="mobilenumber" class="form-label">Company Mobile Number </label>
                                         <input type="number" class="form-control" id="company_mobilenum"
                                             name="company_mobilenum" pattern="[0-9]{1,15}" maxlength="10"
-                                            oninput="validatePhoneNumber(this)">
+                                            oninput="validatePhoneNumber(this)" onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                         <div id="compmobile_error" class="text-danger error"></div>
                                     </div>
 
@@ -3500,7 +3504,8 @@
                                         <label for="number" class="form-label">Mobile Number <span
                                                 class="text-danger"></span></label>
                                         <input type="number" class="form-control" id="number" name="number"
-                                            pattern="[0-9]{1,10}" maxlength="10" oninput="validatePhoneNumber(this)">
+                                            pattern="[0-9]{1,10}" maxlength="10" oninput="validatePhoneNumber(this)"
+                                            onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                         <div id="mobilenum_error" class="text-danger error"></div>
                                     </div>
 
@@ -3518,8 +3523,6 @@
                                     </div>
                                 </form>
                         </div>
-
-
                     </div>
                 </div><!-- End Recent Sales -->
 
@@ -3608,6 +3611,21 @@
                     updateDateDifference();
                 };
             </script>
+            <script>
+                                    <?php
+                                    if ($experienceDetails[0]['workStatus'] == '0') {
+                                        ?>
+                                        document.getElementById("expTable").style.display = "block";
+                                        document.getElementById("noexperience").style.display = "none";
+
+                                        <?php
+                                    } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
+                                            document.getElementById("expTable").style.display = "none";
+                                            document.getElementById("noexperience").style.display = "block";
+
+                                        <?php
+                                    } ?>
+                                </script>
 
             <?php
 
@@ -4907,7 +4925,7 @@
                             <h5 class="card-title"></h5>
                             <h2 class="text-center pt-2">Candidate Resume</h2>
                             <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
-                <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" width="70" height="60">
+                                <!-- <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" width="70" height="60"> -->
                             </a>
                         </div>
                    
@@ -4934,17 +4952,17 @@
                                                     </h5>
                                                 </div>
                                                 <div class="text-end mt-2">
-                                                    <p>
-                                                        <?php echo $value['phonenumber'] ?>
+                                                    <p> 
+                                                        <?php echo $value['email'] ?> <i class="bi bi-envelope"> </i> 
                                                     </p>
                                                     <p>
-                                                        <?php echo $value['email'] ?>
-                                                    </p>
+                                                        <?php echo $value['phonenumber'] ?> <i class="bi bi-phone"></i>
+                                                    </p>                                                    
                                                     <p>
                                                         <?php echo $value['buildingName'] ?>,
-                                                        <?php echo $value['address'] ?>
+                                                        <?php echo $value['address'] ?> <i class="bi bi-geo-alt"></i>
                                                     </p>
-                                                    <p>
+                                                    <p style="padding-right:20px">
                                                         <?php echo $value['district'] ?>,
                                                         <?php echo $value['pincode'] ?>
                                                     </p>
@@ -4973,8 +4991,7 @@
 
                                         </div>
                                     </div>
-
-
+                                    
                                     <div class="card recent-sales overflow-auto mt-4">
                                         <div class="card-body">
 
@@ -5022,15 +5039,16 @@
                                         }
                                         ?>
 
-
-                                <?php
-                                if (isset($education[0]['id']) && !empty($education)) { ?>
+                               
                                     <div class="card recent-sales overflow-auto">
                                         <div class="card-body">
 
                                             <h5 class="card-title">Educational Qualification</h5>
-
+                                            <?php
+                                if (isset($education[0]['id']) && !empty($education)) { 
+                                    ?>
                                             <!-- Table with stripped rows -->
+                                            
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
@@ -5146,8 +5164,7 @@
                                                 </tbody>
                                             </table>
                                             <!-- End Table with stripped rows -->
-
-                                        </div>
+                                            </div>
                                     </div>
                                 <?php } ?>
 
@@ -5360,7 +5377,7 @@
                                             <?php echo isset($this->data['areaOfInterest'][0]['resume_filename']) ? $this->data['areaOfInterest'][0]['resume_filename'] : 'No file'; ?>
                                         </a>
 
-
+                                        
                                     </div>
                                 </div>
                                 <form class="row g-3 needs-validation" novalidate
@@ -5487,25 +5504,25 @@
                         </div><!-- End Default Card -->
             </section>
 
-            <!-- <script>
-                function verifyCheckboxes() {
-                    var checkbox1 = document.getElementById('checkbox1').checked;
-                    var checkbox2 = document.getElementById('checkbox2').checked;
-                    var checkbox3 = document.getElementById('checkbox3').checked;
-                    var checkbox4 = document.getElementById('checkbox4').checked;
+            <script>
+                // function verifyCheckboxes() {
+                //     var checkbox1 = document.getElementById('checkbox1').checked;
+                //     var checkbox2 = document.getElementById('checkbox2').checked;
+                //     var checkbox3 = document.getElementById('checkbox3').checked;
+                //     var checkbox4 = document.getElementById('checkbox4').checked;
 
-                    var verifyButton = document.getElementById('verifyButton');
-                    var pendingButton = document.getElementById('pendingButton');
+                //     var verifyButton = document.getElementById('verifyButton');
+                //     var pendingButton = document.getElementById('pendingButton');
 
-                    if (checkbox1 && checkbox2 && checkbox3 && checkbox4) {
-                        verifyButton.disabled = false;
-                        pendingButton.disabled = true;
-                    } else {
-                        verifyButton.disabled = true;
-                        pendingButton.disabled = false;
-                    }
-                }
-            </script> -->
+                //     if (checkbox1 && checkbox2 && checkbox3 && checkbox4) {
+                //         verifyButton.disabled = false;
+                //         pendingButton.disabled = true;
+                //     } else {
+                //         verifyButton.disabled = true;
+                //         pendingButton.disabled = false;
+                //     }
+                // }
+            </script>
             <script>
                 function togglePasswordVisibility(inputId, iconId) {
                     var passwordInput = document.getElementById(inputId);
@@ -5536,15 +5553,17 @@
                 <div class="card" id="resumeprint">
                     <div class="card-body">
                     <div class="d-flex justify-content-between" style="padding-top:15px;">
-                            <h5 class="card-title"></h5>
+                    <h5 class="card-title"></h5>
+                            <h2 class="text-center pt-2">Candidate Resume</h2>
 
-                            <a class="" href="<?php echo baseUrl . "admin/overallCandidates" ?>">
-                <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" width="70" height="60">
-                            </a>
+                            <div>
+                            <a class="" href="<?php echo baseUrl . "admin/overallCandidates" ?>"> <button type="button"
+                      class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> </button></a>
+                            </div>
+                            
                         </div>
                         <div class="container">
                             <div class="row">
-                                <h2 class="text-center pt-2">Candidate Resume</h2>
 
                                 <div class="card recent-sales overflow-auto mt-4">
                                     <div class="card-body">
@@ -5658,6 +5677,10 @@
                                         <h5 class="card-title">Educational Qualification</h5>
 
                                         <!-- Table with stripped rows -->
+                                        <?php
+                                        if (isset($education[0]['id']) && !empty($education)) {
+                                            ?>
+                                            
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
@@ -5773,8 +5796,7 @@
                                             </tbody>
                                         </table>
                                         <!-- End Table with stripped rows -->
-
-                                    </div>
+                                        </div>
                                 </div>
                                 <div class="card recent-sales overflow-auto">
                                     <div class="card-body">
@@ -5967,6 +5989,7 @@
                                         <?php
                                     } ?>
                                 </script>
+                                
 
                                 <div class="card recent-sales overflow-auto">
                                     <div class="card-body">
@@ -6673,7 +6696,8 @@
                                 <div class="col-md-6">
                                     <label for="inputNumber5" class="form-label">Company Number</label>
                                     <input type="number" class="form-control" id="inputNumber5" name="mobile"
-                                        value="<?php echo $value['company_mobile_number'] ?>" readonly required>
+                                        value="<?php echo $value['company_mobile_number'] ?>" readonly required
+                                        onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Company Email</label>
@@ -6753,7 +6777,8 @@
                                 <div class="col-md-6">
                                     <label for="inputNumber5" class="form-label">Mobile Number</label>
                                     <input type="number" class="form-control" id="inputNumber5"
-                                        value="<?php echo $value['mobile_number'] ?>" readonly name="mobile1" required>
+                                        value="<?php echo $value['mobile_number'] ?>" readonly name="mobile1" required
+                                        onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Email-ID</label>

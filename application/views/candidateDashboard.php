@@ -5013,6 +5013,9 @@
               <div class="card-body">
 
                 <h5 class="card-title">Educational Qualification</h5>
+                 <?php
+                                        if (isset($education[0]['id']) && !empty($education)) {
+                                            ?>
                 <table class="table table-striped">
                   <thead>
                     <tr>
@@ -5185,6 +5188,9 @@
                     ?>
                   </tbody>
                 </table>
+                <?php } else { ?>
+                                            <p>Kindly enter your education qualification </p>
+                                        <?php } ?>
               </div>
             </div>
 

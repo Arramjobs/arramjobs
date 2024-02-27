@@ -498,14 +498,7 @@ class AdminModel extends CI_Model
             );
             $this->db->where('id', $postData['seekerId']);
             $this->db->update('seeker_profile_form', $currentStatus);
-        } else if ($postData['currentStatus'] == '5') {
-
-            $currentStatus = array(
-                'currentStatus' => '2'
-            );
-            $this->db->where('id', $postData['seekerId']);
-            $this->db->update('seeker_profile_form', $currentStatus);
-        }
+        } 
     }
 
 
