@@ -2380,144 +2380,12 @@
               <div class="exptableheading" id="fresherExp">
                 <p style="font-size:18px; font-weight: bold; color: #007BFF;">Kindly mention your work experience and work status.</p>
                 <p><b style="color:blue;">Note:</b> Indicate <b>'No Experience'</b> if you are a <b>Fresher</b> or have had <b>no professional experience</b> since graduation.</p>
-                <input type="radio" name="fresherExperience" value="experience" id="exp" onclick="showContent('experience')" hidden>
+                <input type="radio" name="fresherExperience" value="experience" id="exp" onclick="showContent('addexpform')" hidden>
                 <label for="exp" class="btn btn-success">Experienced</label>
                 <input type="radio" name="fresherExperience" value="fresher" id="fre" onclick="showContent('fresher')" hidden>
                 <label for="fre" class="btn btn-danger"> Fresher / No Experience</label>
               </div>
-
-              <div id="experience" class="button-content" style="display: none;">
-                <div class="d-flex justify-content-between pt-4">
-                  <h5 class="card-title">Add Experience Details</h5>
-                  <a class="" href="<?php echo baseUrl . "Candidate/experiencetable" ?>">
-                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
-                </div>
-                <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
-                  onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Candidate/insertExperienceForm" ?>">
-
-                  <input type="hidden" class="form-control" id="id" value="" name="seekerId">
-
-                  <div class="col-6">
-                    <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
-                    <select class="form-control" id="category" name="category" autocomplete="off" onchange="showHideOtherField()" required>
-                      <option value="">Select a Category</option>
-                      <?php
-                      foreach ($categoryList as $key => $value) {
-                        ?>
-                        <option value="<?php echo $value->categoryName ?>">
-                          <?php echo $value->categoryName ?>
-                        </option>
-                      <?php } ?>
-                      <option value="others">Others</option>
-                    </select>
-                    <div id="category_error" class="text-danger error"></div>
-                  </div>
-
-                  <div class="col-6" id="newcategory_group" style="display: none;">
-                    <label for="newcategory" class="form-label">Reason for choosing category as others <span
-                        class="text-danger">*</span></label>
-                    <input class="form-control" id="newcategory" name="newcategory">
-                    <div id="newcategory_error" class="text-danger error"></div>
-                    <input id="categoryothers" name="categoryothers" value="1" hidden>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="subcategory" class="form-label">Subcategory <span class="text-danger">*</span></label>
-                    <input class="form-control" id="subcategory" name="subcategory" required>
-                    <div id="subcategory_error" class="text-danger error"></div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="company name" class="form-label">Company Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="companyname" name="companyname" required>
-                    <div id="companyname_error" class="text-danger error"></div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="company location" class="form-label">Company Location <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="companylocation" name="companylocation" required>
-                    <div id="companylocation_error" class="text-danger error"></div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <div class="experience-container">
-                      <label for="expYear" class="form-label">Experience <span class="text-danger">*</span></label>
-                      <div class="d-md-flex">
-                        <label for="fromDate" class="pt-1 pe-2">From <span class="text-danger">*</span></label>
-                        <div class="col-md-3  me-2">
-                          <input type="date" class="form-control" id="fromDate" name="fromDate" required>
-                          <div id="experienceexp_error" class="text-danger error"></div>
-                        </div>
-                        <label for="toDate" class="pt-1 px-2">To <span class="text-danger">*</span></label>
-                        <div class="col-md-3">
-                          <input type="date" class="form-control" id="toDate" name="toDate" required>
-                          <div id="experienceexpmonth_error" class="text-danger error"></div>
-                        </div>
-
-                        <input type="checkbox" id="till_now" name="till_now" class="ms-3">
-                        <label for="toDate" class="pt-1 px-2">Till now</label>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label class="form-label">Total duration <span class="text-danger">*</span></label>
-                    <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months
-                    </p>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="role" class="form-label">Role in the Company <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="role" name="role" required>
-                    <div id="role_error" class="text-danger error"></div>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="mobilenumber" class="form-label">Company Mobile Number <span
-                        class="text-danger">*</span></label>
-                    <input type="number" class="form-control" id="company_mobilenum" name="company_mobilenum" pattern="[0-9]{1,15}" maxlength="15" 
-                    oninput="validatePhoneNumber(this)" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
-                    <div id="compmobile_error" class="text-danger error"></div>
-                  </div>
-
-                  <h5 class="card-title">Previous Job's reference details</h5>
-
-                  <div class="col-md-6">
-                    <label for="Name" class="form-label">Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="nameofemployer" name="nameofemployer" oninput="validateName1(this)" required>
-                    <div id="name_error" class="text-danger error"></div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="number" class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                    <input type="number" class="form-control" id="number" name="number" pattern="[0-9]{1,15}" maxlength="15" 
-                    oninput="validatePhoneNumber(this)" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
-                    <div id="mobilenum_error" class="text-danger error"></div>
-                  </div>
-
-                  <div class="col-md-6" class="form-label">
-                    <label for="email">Email-Id <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="emailid" name="emailid" required>
-                    <div id="emailid_error" class="text-danger error"></div>
-                  </div>
-
-                  <input type="number" class="form-control" value="1" name="expsubmit" hidden>
-
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Reset</button>
-                  </div>
-                </form>
-              </div>
-
-              <div id="fresher" class="button-content mt-4" style="display: none;">
-                <p>Now you can proceed to the <b>'Area of Job Interest'</b> section to specify your career preferences.
-                </p>
-                <form method="post" action=" <?php echo baseUrl . "Candidate/insertFresherForm" ?>">
-                  <input name="fresher" value="1" hidden>
-                  <button type="submit" class="btn btn-danger">Next</button>
-                </form>
-              </div>
+             
 
               <div class="d-flex justify-content-between">
                 <a class="" href="#addexpform">
@@ -2661,6 +2529,8 @@
         function addexpform() {
           document.getElementById("addexpform").style.display = "block";
         }
+        </script>
+        <script>
 
         <?php
         if (isset($expTotalRows)) {
@@ -2699,6 +2569,7 @@
           }
         }
       </script>
+
       <div class="card" id="addexpform" style="display:none">
         <div class="card-body">
           <div class="d-flex justify-content-between">
@@ -2707,7 +2578,6 @@
               <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
           </div>
 
-          <!-- Multi Columns Form -->
           <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
             onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Candidate/insertExperienceForm" ?>">
 
@@ -2756,27 +2626,29 @@
             </div>
 
             <div class="col-md-6">
-              <div class="experience-container">
-                <label for="expYear" class="form-label">Experience<span class="text-danger">*</span></label>
+                    <div class="experience-container">
+                      <label for="expYear" class="form-label">Experience <span class="text-danger">*</span></label>
+                      <div class="d-md-flex">
+                        <label for="fromDate" class="pt-1 pe-2">From <span class="text-danger">*</span></label>
+                        <div class="col-md-3  me-2">
+                          <input type="date" class="form-control" id="fromDate" name="fromDate" required>
+                          <div id="experienceexp_error" class="text-danger error"></div>
+                        </div>
+                        <label for="toDate" class="pt-1 px-2">To <span class="text-danger">*</span></label>
+                        <div class="col-md-3">
+                          <input type="date" class="form-control" id="toDate" name="toDate" required>
+                          <div id="experienceexpmonth_error" class="text-danger error"></div>
+                        </div>
 
-                <div class="d-md-flex">
-                  <label for="fromDate" class="pt-1 pe-2">From <span class="text-danger">*</span></label>
-                  <div class="col-md-3  me-2">
-                    <input type="date" class="form-control" id="fromDate" name="fromDate" required>
-                    <div id="experienceexp_error" class="text-danger error"></div>
+                        <input type="checkbox" id="till_now" name="till_now" class="ms-3">
+                        <label for="toDate" class="pt-1 px-2">Till now</label>
+
+                      </div>
+                    </div>
                   </div>
-                  <label for="toDate" class="pt-1 px-2">To <span class="text-danger">*</span></label>
-                  <div class="col-md-3">
-                    <input type="date" class="form-control" id="toDate" name="toDate" required>
-                    <div id="experienceexpmonth_error" class="text-danger error"></div>
-                  </div>
-                  <input type="checkbox" id="till_now" name="till_now" class="ms-3">
-                  <label for="toDate" class="pt-1 px-2">Till now <span class="text-danger">*</span></label>
-                </div>
-              </div>
-            </div>
+                  
             <div class="col-md-6">
-              <label class="form-label">Total duration</label>
+              <label class="form-label">Total duration <span class="text-danger">*</span></label>
               <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months</p>
             </div>
 
@@ -2836,6 +2708,7 @@
           input.value = input.value.replace(/[0-9]/g, '');
         }
       </script>
+
       <script>
         document.getElementById('fromDate').addEventListener('input', updateDateDifference);
         document.getElementById('toDate').addEventListener('input', updateDateDifference);
@@ -2914,7 +2787,9 @@
             otherCategoryField.style.display = 'none';
           }
         }
+        </script>
 
+        <script>
         function validateexpForm() {
           clearErrorMessages();
 
@@ -3112,7 +2987,7 @@
                           <?php echo $value['other_sub_category'] ?>
                         </td>
                         <td>
-                          <?php echo $value['expYear'] ?> to
+                          <?php echo $value['expYear'] ?> -
                           <?php echo $value['expMonth'] ?>
                         </td>
                         <td>
@@ -5012,9 +4887,7 @@
               <div class="card-body">
 
                 <h5 class="card-title">Educational Qualification</h5>
-                 <?php
-                                        if (isset($education[0]['id']) && !empty($education)) {
-                                            ?>
+                 
                 <table class="table table-striped">
                   <thead>
                     <tr>
@@ -5187,9 +5060,7 @@
                     ?>
                   </tbody>
                 </table>
-                <?php } else { ?>
-                                            <p>Education qualification is not entered</p>
-                                        <?php } ?>
+                
               </div>
             </div>
 
@@ -5249,6 +5120,8 @@
                 </div>
               </div>
             </div>
+
+
             <div class="card recent-sales overflow-auto">
               <div class="card-body">
                 <h5 class="card-title">Skills</h5>
@@ -5386,6 +5259,7 @@
 
         </div>
       </section>
+      
       <script>
         function showContent(selection) {
           // Hide all content initially
