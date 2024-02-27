@@ -2631,9 +2631,11 @@
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title">Basic Details</h5>
 
-                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
-                                <button type="button" class="btn btn-info mt-4 ">HOME</button>
-                            </a>
+                            <div>
+                <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
+                    class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+              </div>
+                            
                         </div>
                         <!-- Multi Columns Form -->
                         <form class="row g-3 needs-validation" novalidate name="applicationform"
@@ -3097,9 +3099,12 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title">Add Education Details</h5>
-                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
-                                <button type="button" class="btn btn-info mt-4 ">HOME</button>
-                            </a>
+                            
+                                <div>
+                <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
+                    class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+              </div>
+                            
                         </div>
 
                         <!-- Multi Columns Form -->
@@ -3403,9 +3408,10 @@
                         <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title">Add Education Details</h5>
-                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
-                                <button type="button" class="btn btn-info mt-4 ">HOME</button>
-                            </a>
+                            <div>
+                <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
+                    class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+              </div>
                         </div>
 
                                 <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
@@ -3659,9 +3665,10 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title">Add Job Interest</h5>
-                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
-                                <button type="button" class="btn btn-info mt-4 ">HOME</button>
-                            </a>
+                            <div>
+                <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
+                    class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+              </div>
                         </div>
                         <!-- Multi Columns Form -->
                         <form class="row g-3" novalidate method="post" onsubmit="return validateAreaForm()"
@@ -3815,9 +3822,10 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title">Add New Skill</h5>
-                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
-                                <button type="button" class="btn btn-info mt-4 ">HOME</button>
-                            </a>
+                            <div>
+                <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
+                    class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+              </div>
                         </div>
 
                         <!-- Multi Columns Form -->
@@ -4797,8 +4805,43 @@
                                                     <td><span class="badge bg-danger">Pending</span></td>
                                                 <?php } ?>
 
-                                                <td>
-                                                    <a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['id'] ?>">
+                                                <td class="d-flex py-3">
+                                                <div class="dropdown">
+                                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Add Details
+                                                        </button>
+                                                        <ul class="dropdown-menu shadow-lg p-3 rounded"
+                                                            style="background-color:#b6bab8;" aria-labelledby="dropdownMenuButton1">
+                                                            <li><a class="my-1"
+                                                                    href="<?php echo baseUrl . "admin/basicdetails/" . $value['id'] ?>">
+                                                                    <button type="button" class="btn btn-success  my-1">
+                                                                        <i class="bi bi-plus"></i> Basic Details</button>
+                                                                </a></li>
+                                                            <li><a class="my-1"
+                                                                    href="<?php echo baseUrl . "admin/educationTable/" . $value['id'] ?>">
+                                                                    <button type="button" class="btn btn-success my-1">
+                                                                        <i class="bi bi-plus"></i>Education</button>
+                                                                </a></li>
+                                                            <li><a class="my-1"
+                                                                    href="<?php echo baseUrl . "admin/experienceTable/" . $value['id'] ?>">
+                                                                    <button type="button" class="btn btn-success my-1">
+                                                                        <i class="bi bi-plus"></i>Experience</button>
+                                                                </a></li>
+                                                            <li><a class="my-1"
+                                                                    href="<?php echo baseUrl . "admin/skillTable/" . $value['id'] ?>">
+                                                                    <button type="button" class="btn btn-success my-1">
+                                                                        <i class="bi bi-plus"></i>Skills</button>
+                                                                </a></li>
+                                                            <li><a class="my-1"
+                                                                    href="<?php echo baseUrl . "admin/areaOfIntrestTable/" . $value['id'] ?>">
+                                                                    <button type="button" class="btn btn-success my-1">
+                                                                        <i class="bi bi-plus"></i>Job Interest</button>
+                                                                </a></li>
+
+                                                        </ul>
+                                                    </div>
+                                                    <a class="mx-1" href="<?php echo baseUrl . "admin/viewCandidate/" . $value['id'] ?>">
                                                         <button type="button" class="btn btn-success d-flex"><i
                                                                 class="bi bi-eye pe-1"></i>View</button></a>
                                                 </td>
@@ -4932,9 +4975,10 @@
                     <div class="d-flex justify-content-between" style="padding-top:15px;">
                             <h5 class="card-title"></h5>
                             <h2 class="text-center pt-2">Candidate Resume</h2>
-                            <a class="" href="<?php echo baseUrl . "admin/newCandidateList" ?>">
-                                <!-- <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" width="70" height="60"> -->
-                            </a>
+                            <div>
+                <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
+                    class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+              </div>
                         </div>
                    
                         <div class="container">
