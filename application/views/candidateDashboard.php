@@ -1555,7 +1555,7 @@
         var countries = [
           "Below_9th", "9th", "10th/SSLC", "11th", "12th/HSC", "DIPLOMA", "D.Pharm",
           "B.A", "B.COM", "B.ED", "B.E", "B.LIT", "B.SC", "BBA", "BCA", "B.TECH", "BSW", "BFA", "B.Arch", "B.N", "BCS", "LLB", "BDS", "B.Pharm",
-          "M.A", "M.COM", "M.ED", "M.E", "M.LIT", "M.Sc", "MBA", "MCA", "M.TECH", "MSW", "MFA", "M.Arch", "M.N", "MCS", "LLM", "MBBS", "M.Pharm",
+          "M.A", "M.COM", "M.ED", "M.E", "M.LIT", "M.SC", "MBA", "MCA", "M.TECH", "MSW", "MFA", "M.Arch", "M.N", "MCS", "LLM", "MBBS", "M.Pharm",
           "MPhil", "Ph.D", "DBA", "Ed.D", "MD", "DMD", "DVM"];
 
         autocomplete(document.getElementById("qualification"), countries);
@@ -5065,61 +5065,59 @@
             </div>
 
             <div class="card recent-sales overflow-auto">
-              <div class="card-body">
-                <div id="experiencedContent">
-                  <h5 class="card-title">Experience Details</h5>
+    <div class="card-body">
+        <div id="experiencedContent">
+            <h5 class="card-title">Experience Details</h5>
 
-                  <?php
-                  if (isset($experienceTable[0]['id'])) {
-                    $loopcount = 1;
-                    foreach ($experienceTable as $key => $ivalue) {
-                      if ($ivalue['workStatus'] === '1') {
-                        echo '<div id="fresherContent">
-                    <p>I am a Fresher</p>
-                  </div>';
-                      } else {
-                        echo '<table class="table table-striped">
-                     <thead>
-                         <tr>
-                             <th scope="col">S.No</th>
-                             <th scope="col">Job Category</th>
-                             <th scope="col">Job Sub Category</th>
-                             <th scope="col">Experience</th>
-                             <th scope="col">Company Name</th>
-                             <th scope="col">Company Location</th>
-                             <th scope="col">Job Role</th>
-                             <th scope="col">Company Mobile Number</th>
-                             <th scope="col">Previous Job\'s Reference Name</th>
-                             <th scope="col">Previous Job\'s Reference Mobile number</th>
-                             <th scope="col">Previous Job\'s Reference Email</th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         <tr>
-                             <td>' . $loopcount . '.</td>
-                             <td>' . $ivalue['other_category'] . '</td>
-                             <td>' . $ivalue['other_sub_category'] . '</td>
-                             <td>' . $ivalue['expYear'] . ' - ' . $ivalue['expMonth'] . '</td>
-                             <td>' . $ivalue['company_name'] . '</td>
-                             <td>' . $ivalue['company_location'] . '</td>
-                             <td>' . $ivalue['job_role'] . '</td>
-                             <td>' . $ivalue['company_mobilenum'] . '</td>
-                             <td>' . $ivalue['previous_employer_name'] . '</td>
-                             <td>' . $ivalue['previous_employer_mobile'] . '</td>
-                             <td>' . $ivalue['previous_employer_email'] . '</td>
-                         </tr>
-                     </tbody>
-                 </table>';
-                      }
-                    }
-                  }
-                  ?>
+            <?php
+            if (isset($experienceTable[0]['id'])) {
+                echo '<table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">S.No</th>
+                                <th scope="col">Job Category</th>
+                                <th scope="col">Job Sub Category</th>
+                                <th scope="col">Experience</th>
+                                <th scope="col">Company Name</th>
+                                <th scope="col">Company Location</th>
+                                <th scope="col">Job Role</th>
+                                <th scope="col">Company Mobile Number</th>
+                                <th scope="col">Previous Job\'s Reference Name</th>
+                                <th scope="col">Previous Job\'s Reference Mobile number</th>
+                                <th scope="col">Previous Job\'s Reference Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
 
-                  </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+                $loopcount = 1;
+                foreach ($experienceTable as $key => $ivalue) {
+                    echo '<tr>';
+                    echo '<td>' . $loopcount . '.</td>';
+                    echo '<td>' . $ivalue['other_category'] . '</td>';
+                    echo '<td>' . $ivalue['other_sub_category'] . '</td>';
+                    echo '<td>' . $ivalue['expYear'] . ' - ' . $ivalue['expMonth'] . '</td>';
+                    echo '<td>' . $ivalue['company_name'] . '</td>';
+                    echo '<td>' . $ivalue['company_location'] . '</td>';
+                    echo '<td>' . $ivalue['job_role'] . '</td>';
+                    echo '<td>' . $ivalue['company_mobilenum'] . '</td>';
+                    echo '<td>' . $ivalue['previous_employer_name'] . '</td>';
+                    echo '<td>' . $ivalue['previous_employer_mobile'] . '</td>';
+                    echo '<td>' . $ivalue['previous_employer_email'] . '</td>';
+                    echo '</tr>';
+                    $loopcount++;
+                }
+
+                echo '</tbody>
+                    </table>';
+            } else {
+                echo '<div id="fresherContent">
+                        <p>I am a Fresher</p>
+                    </div>';
+            }
+            ?>
+        </div>
+    </div>
+</div>
 
 
             <div class="card recent-sales overflow-auto">
