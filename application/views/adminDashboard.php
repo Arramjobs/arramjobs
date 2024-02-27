@@ -48,7 +48,15 @@
         #inputNumber5::-webkit-outer-spin-button,
         #inputNumber5::-webkit-inner-spin-button,
         #yourEmail::-webkit-outer-spin-button,
-        #yourEmail::-webkit-inner-spin-button {
+        #yourEmail::-webkit-inner-spin-button,
+        #company_mobilenum::-webkit-outer-spin-button,
+        #company_mobilenum::-webkit-inner-spin-button,
+        #number::-webkit-outer-spin-button,
+        #number::-webkit-inner-spin-button,
+        #percentage::-webkit-outer-spin-button,
+        #percentage::-webkit-inner-spin-button,
+        #year_passed::-webkit-outer-spin-button,
+        #year_passed::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
@@ -3357,7 +3365,7 @@
                 var countries = [
                     "Below_9th", "9th", "10th/SSLC", "11th", "12th/HSC", "DIPLOMA", "D.Pharm",
                     "B.A", "B.COM", "B.ED", "B.E", "B.LIT", "B.SC", "BBA", "BCA", "B.TECH", "BSW", "BFA", "B.Arch", "B.N", "BCS", "LLB", "BDS", "B.Pharm",
-                    "M.A", "M.COM", "M.ED", "M.E", "M.LIT", "M.Sc", "MBA", "MCA", "M.TECH", "MSW", "MFA", "M.Arch", "M.N", "MCS", "LLM", "MBBS", "M.Pharm",
+                    "M.A", "M.COM", "M.ED", "M.E", "M.LIT", "M.SC", "MBA", "MCA", "M.TECH", "MSW", "MFA", "M.Arch", "M.N", "MCS", "LLM", "MBBS", "M.Pharm",
                     "MPhil", "Ph.D", "DBA", "Ed.D", "MD", "DMD", "DVM"];
 
                 autocomplete(document.getElementById("qualification"), countries);
