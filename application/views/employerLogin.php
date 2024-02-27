@@ -88,7 +88,7 @@
                                         <div class="col-12">
                                             <label for="erpassword" class="form-label">Password  </label>
                                             <div class="input-group has-validation">
-                                                <input type="password" name="erpassword" class="form-control" oninput="validatePassword(this)" required>
+                                                <input type="password" name="erpassword" class="form-control" id="erpassword" oninput="validatePassword(this)" required>
                                                 <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('erpassword', 'visibilityIcon')">
                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
                                                 </button>
@@ -164,9 +164,7 @@ function checkMobileNumber() {
                         visibilityIcon.classList.add("bi-eye-slash");
                     }
                 }
-            </script>
-
-            <script>
+           
                 function validateForm() {
                     var phno = document.getElementById("userID").value;
                     var password = document.getElementById("erpassword").value;

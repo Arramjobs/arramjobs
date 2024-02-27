@@ -95,7 +95,7 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="erpassword" class="form-label">Password <span
+                                            <label for="cdpassword" class="form-label">Password <span
                                                     class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
                                                 <input type="password" name="cdpassword" class="form-control" id="cdpassword" oninput="validatePassword(this)" required />

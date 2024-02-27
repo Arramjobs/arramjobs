@@ -655,7 +655,6 @@
         }
 </script>
 
-      </script>
       <!-- PHONE NUMBER SCRIPTING -->
       <script>
         function validatePhoneNumber1(input) {
@@ -5189,7 +5188,7 @@
                   </tbody>
                 </table>
                 <?php } else { ?>
-                                            <p>Kindly enter your education qualification </p>
+                                            <p>Education qualification is not entered</p>
                                         <?php } ?>
               </div>
             </div>

@@ -5172,10 +5172,12 @@
                                                 </tbody>
                                             </table>
                                             <!-- End Table with stripped rows -->
-                                            </div>
-                                    </div>
-                                <?php } ?>
-
+                                            <?php } else { ?>
+                                            <p>No education qualification </p>
+                                        <?php } ?>
+                                        <!-- End Table with stripped rows -->
+                                        </div>
+                                </div>
 
                                 <?php
                                 if (isset($skills[0]['id']) && !empty($skills)) { ?>
@@ -5803,6 +5805,9 @@
                                                 ?>
                                             </tbody>
                                         </table>
+                                        <?php } else { ?>
+                                            <p>No education qualification </p>
+                                        <?php } ?>
                                         <!-- End Table with stripped rows -->
                                         </div>
                                 </div>
