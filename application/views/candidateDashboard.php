@@ -2436,14 +2436,14 @@
                   status.</p>
                 <p><b style="color:blue;">Note:</b> Indicate <b>'No Experience'</b> if you are a <b>Fresher</b> or have
                   had <b>no professional experience</b> since graduation.</p>
-                <input type="radio" name="fresherExperience" value="experience" id="exp"
+                
+                  <input type="radio" name="fresherExperience" value="experience" id="exp"
                   onclick="showContent('addexpform')" hidden>
                 <label for="exp" class="btn btn-success">Experienced</label>
                 <input type="radio" name="fresherExperience" value="fresher" id="fre" onclick="showContent('fresher')"
                   hidden>
                 <label for="fre" class="btn btn-danger"> Fresher / No Experience</label>
               </div>
-
 
               <div class="d-flex justify-content-between">
                 <a class="" href="#addexpform">
@@ -2569,7 +2569,6 @@
           </div>
         </div><!-- End Recent Sales -->
 
-        </div><!-- End Recent Sales -->
       </section>
 
       <script>
@@ -5011,8 +5010,7 @@
                               $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
                               $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
                               $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                              $value['educational_qualification'] === "B.Pharm" ||
-                              $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
+                              $value['educational_qualification'] === "B.Pharm" ||  $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
                               $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
                               $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
                               $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
@@ -5020,7 +5018,6 @@
                               $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
                               $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
                               $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
-
                             ) {
                               ?>
                               <td>
@@ -5033,7 +5030,6 @@
                               <?php
                             }
                             ?>
-                            <!-- <td><?php echo $value['educationmode'] ?></td> -->
                             <?php
                             if (
                               $value['educationmode'] == "Corres"
@@ -5057,8 +5053,7 @@
                               $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
                               $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
                               $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                              $value['educational_qualification'] === "B.Pharm" ||
-                              $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
+                              $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
                               $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
                               $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
                               $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
@@ -5185,7 +5180,6 @@
                         $loopcount = 1;
                         foreach ($experienceTable as $key => $ivalue) {
                           ?>
-
                           <tr>
                             <td>
                               <?php echo $loopcount ?>
@@ -5229,8 +5223,6 @@
                     </table>
                     <p id="noexperience">This candidate is a fresher or did not have any work experience
                       after graduation.</p>
-
-
                   <?php } else { ?>
                     <div id="fresherContent">
                       <p>Experience is not entered.</p>
@@ -5243,13 +5235,13 @@
 
             <script>
               <?php
-              if ($experienceDetails[0]['workStatus'] == '0') {
+              if ($experienceTable[0]['workStatus'] == '0') {
                 ?>
                 document.getElementById("expTable").style.display = "block";
                 document.getElementById("noexperience").style.display = "none";
 
                 <?php
-              } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
+              } else if ($experienceTable[0]['workStatus'] == '1') { ?>
                   document.getElementById("expTable").style.display = "none";
                   document.getElementById("noexperience").style.display = "block";
 
@@ -5300,11 +5292,9 @@
                   </table>
                   <?php
                 } else {
-                  // Display "No skills" message
                   echo '<p>Skill is not entered.</p>';
                 }
                 ?>
-
               </div>
             </div>
 
@@ -5361,8 +5351,6 @@
                         <?php
                         $loopcount++;
                       }
-
-
                       ?>
                     </tbody>
                   </table>
@@ -5384,6 +5372,9 @@
                     <?php echo $areaOfIntrestTable[0]['resume_filename'] ? $areaOfIntrestTable[0]['resume_filename'] : 'No file'; ?>
                   </a>
                   <?php
+
+                } else {
+                  echo '<p>Resume not uploaded.</p>';
                 }
                 ?>
               </div>
@@ -5395,22 +5386,18 @@
         </div>
       </section>
 
-      <script>
+      <!-- <script>
         function showContent(selection) {
-          // Hide all content initially
           document.getElementById('experiencedContent').style.display = 'none';
           document.getElementById('fresherContent').style.display = 'none';
 
-          // Show content based on the selection
           if (selection === 'experience') {
             document.getElementById('experiencedContent').style.display = 'block';
-            // Your logic for Experienced goes here
           } else if (selection === 'fresher') {
             document.getElementById('fresherContent').style.display = 'block';
-            // Your logic for Fresher goes here
           }
         }
-      </script>
+      </script> -->
       <?php
     }
     ?>
