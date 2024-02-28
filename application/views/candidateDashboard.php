@@ -489,11 +489,11 @@
                   <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
                   <select class="form-control" id="gender" name="gender" required>
                     <option value="">Select your Gender</option>
-                    <option value="male" <?php if (isset($value['gender']) && $value['gender'] === 'male')
+                    <option value="Male" <?php if (isset($value['gender']) && $value['gender'] === 'Male')
                       echo 'selected'; ?>>Male</option>
-                    <option value="female" <?php if (isset($value['gender']) && $value['gender'] === 'female')
+                    <option value="Female" <?php if (isset($value['gender']) && $value['gender'] === 'Female')
                       echo 'selected'; ?>>Female</option>
-                    <option value="others" <?php if (isset($value['gender']) && $value['gender'] === 'others')
+                    <option value="Others" <?php if (isset($value['gender']) && $value['gender'] === 'Others')
                       echo 'selected'; ?>>Others</option>
                   </select>
                   <div id="gender_error" style="color: red;"></div>
@@ -504,11 +504,11 @@
                     value="<?php echo isset($value['maritalStatus']) ? $value['maritalStatus'] : ''; ?>" name="maritalstatus" required>
                     <option value="">Select your Marital Status</option>
 
-                    <option value="single" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'single')
+                    <option value="Single" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'Single')
                       echo 'selected'; ?>>Single</option>
-                    <option value="married" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'married')
+                    <option value="Married" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'Married')
                       echo 'selected'; ?>>Married</option>
-                    <option value="widow" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'widow')
+                    <option value="Widow" <?php if (isset($value['maritalStatus']) && $value['maritalStatus'] === 'Widow')
                       echo 'selected'; ?>>Widow</option>
                   </select>
                   <div id="maritalstatus_error" style="color: red;"></div>
@@ -547,13 +547,13 @@
                     value="<?php echo isset($value['district']) ? $value['district'] : ''; ?>" name="district" required>
                     <option value="">Select your District</option>
 
-                    <option value="erode" <?php if (isset($value['district']) && $value['district'] === 'erode')
+                    <option value="Erode" <?php if (isset($value['district']) && $value['district'] === 'Erode')
                       echo 'selected'; ?>>Erode</option>
-                    <option value="namakkal" <?php if (isset($value['district']) && $value['district'] === 'namakkal')
+                    <option value="Namakkal" <?php if (isset($value['district']) && $value['district'] === 'Namakkal')
                       echo 'selected'; ?>>Namakkal</option>
-                    <option value="tirupur" <?php if (isset($value['district']) && $value['district'] === 'tirupur')
+                    <option value="Tirupur" <?php if (isset($value['district']) && $value['district'] === 'Tirupur')
                       echo 'selected'; ?>>Tirupur</option>
-                    <option value="karur" <?php if (isset($value['district']) && $value['district'] === 'karur')
+                    <option value="Karur" <?php if (isset($value['district']) && $value['district'] === 'Karur')
                       echo 'selected'; ?>>Karur</option>
                   </select>
                   <div id="district_error" style="color: red;"></div>
