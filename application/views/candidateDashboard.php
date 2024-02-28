@@ -2445,11 +2445,19 @@
                 <label for="fre" class="btn btn-danger"> Fresher / No Experience</label>
               </div>
 
+              <div id="fresher" class="button-content mt-4" style="display: none;">
+                <p>Now you can proceed to the <b>'Area of Job Interest'</b> section to specify your career preferences.
+                </p>
+                <form method="post" action=" <?php echo baseUrl . "Candidate/insertFresherForm" ?>">
+                  <input name="fresher" value="1" hidden>
+                  <button type="submit" class="btn btn-danger">Next</button>
+                </form>
+              </div>
+
               <div class="d-flex justify-content-between">
                 <a class="" href="#addexpform">
                   <button id="expAddButton" style="display:none;" type="button" onclick="addexpform()"
                     class="btn btn-success mb-4">+ Add Experience</button></a>
-
               </div>
 
               <?php
@@ -2541,7 +2549,6 @@
 
                 <button type="submit" name="submit" id="deleteList5" class="btn btn-danger disabled"
                   onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-
                 </form>
 
                 <div id="fresherNoexp" style="display:none;">
