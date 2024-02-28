@@ -572,6 +572,8 @@ class AdminModel extends CI_Model
 
         $this->load->library('upload', $config);
 
+        $resumefilename = "No Resume";
+
         if ($this->upload->do_upload('resumeFile')) {
             $data = $this->upload->data();
             $resumefilename = $data['file_name'];

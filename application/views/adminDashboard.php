@@ -5246,6 +5246,9 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Experience Details</h5>
 
+                                        <?php
+                                        if (isset($experienceDetails[0]['id']) && !empty($experienceDetails)) {
+                                            ?>
                                         <!-- Table with stripped rows -->
                                         <table class="table table-striped" id="expTable">
                                             <thead>
@@ -5308,8 +5311,12 @@
                                         </table>
                                         <!-- End Table with stripped rows -->
 
-                                        <p id="noexperience">This candidate is a fresher or did not have any work experience
-                                            after graduation.</p>
+                                        <?php } else { ?>
+                                            <p>Fresher / No experience </p>
+                                        <?php } ?>
+
+                                        <!-- <p id="noexperience">This candidate is a fresher or did not have any work experience
+                                            after graduation.</p> -->
                                     </div>
                                 </div>
 
