@@ -70,15 +70,14 @@
                                         <p class="text-center small">Enter your mobile number to login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate
-                                        action="<?php echo baseUrl . "Candidate/candidateLogin" ?>" method="post"
-                                        onsubmit="return validateform()">
+                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Candidate/candidateLogin" ?>" 
+                                    method="post" onsubmit="return validateform()">
 
                                         <!-- <div class="col-12">
                                             <label for="username" class="form-label">Registerd ID</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="username" class="form-control" id="username" placeholder="Enter your registered id" required>
+                                                <input type="text" name="username" class="form-control" id="username" required>
                                                 <div class="invalid-feedback">Please enter your registered id.</div>
                                             </div>
                                         </div> -->
@@ -88,23 +87,19 @@
                                                     class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="number" name="phonenumber" class="form-control"
-                                                    id="phonenumber" placeholder="9876543210"
-                                                    oninput="validatePhoneNumber(this)" required>
+                                                <input type="number" name="phonenumber" class="form-control" id="phonenumber"
+                                                    oninput="validatePhoneNumber(this)" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                                 <div class="invalid-feedback">Please enter your mobile number.</div>
                                             </div>
                                             <div id="phoneError" class="text-danger"> </div>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="erpassword" class="form-label">Password <span
+                                            <label for="cdpassword" class="form-label">Password <span
                                                     class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
-                                                <input type="password" name="cdpassword" placeholder="01051996"
-                                                    class="form-control" id="cdpassword"
-                                                    oninput="validatePassword(this)" required />
-                                                <button type="button" class="btn btn-outline-secondary"
-                                                    onclick="togglePasswordVisibility('cdpassword', 'visibilityIcon')">
+                                                <input type="password" name="cdpassword" class="form-control" id="cdpassword" oninput="validatePassword(this)" required />
+                                                <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('cdpassword', 'visibilityIcon')">
                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
                                                 </button>
                                                 <div class="invalid-feedback">Please enter your password.</div>
@@ -125,8 +120,8 @@
                                     <div class="col-12">
                                         <br>
                                         <div class="form-check">
-                                            <p>Create an account ? <a
-                                                    href="<?php echo baseUrl . "Candidate/registration" ?>">Register</a>
+                                            <p>Create an account ? 
+                                                <a href="<?php echo baseUrl . "Candidate/registration" ?>">Register</a>
                                             </p>
                                         </div>
                                     </div>

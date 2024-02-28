@@ -498,13 +498,6 @@ class AdminModel extends CI_Model
             );
             $this->db->where('id', $postData['seekerId']);
             $this->db->update('seeker_profile_form', $currentStatus);
-        } else if ($postData['currentStatus'] == '5') {
-
-            $currentStatus = array(
-                'currentStatus' => '2'
-            );
-            $this->db->where('id', $postData['seekerId']);
-            $this->db->update('seeker_profile_form', $currentStatus);
         }
     }
 
@@ -573,23 +566,6 @@ class AdminModel extends CI_Model
     {
         $post = $this->input->post(null, true);
 
-        $config['upload_path'] = "./uploads/";
-        $config['allowed_types'] = "jpg|png|pdf|jpeg";
-        $config['max_size'] = 1024; // 1MB
-
-        $this->load->library('upload', $config);
-
-        if ($this->upload->do_upload('resumeFile')) {
-            $data = $this->upload->data();
-            $resumefilename = $data['file_name'];
-        } else {
-            $error = $this->upload->display_errors();
-        }
-
-        $basepath = base_url() . 'uploads/';
-
-        $urlresume = $basepath . $resumefilename;
-
         $interestResume = array(
             'seekerId' => $post['seekerId'],
             'other_interst_category' => $post['category'],
@@ -600,12 +576,31 @@ class AdminModel extends CI_Model
             'expected_salary' => $post['expected-salary'],
             'categoryOthers' => isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
             'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0",
+        );
+        $this->db->insert('seeker_area_of_interst', $interestResume);
+
+
+        $config['upload_path'] = "./uploads/";
+        $config['allowed_types'] = "jpg|png|pdf|jpeg";
+        $config['max_size'] = 1024; // 1MB
+        $this->load->library('upload', $config);
+        $resumefilename = "No Resume";
+        if ($this->upload->do_upload('resumeFile')) {
+            $data = $this->upload->data();
+            $resumefilename = $data['file_name'];
+        } else {
+            $error = $this->upload->display_errors();
+        }
+        $basepath = base_url() . 'uploads/';
+        $urlresume = $basepath . $resumefilename;
+
+        // Resume Upload
+        $updateResume = array(
             'resume_filename' => $resumefilename,
             'resume_filename_url' => $urlresume
         );
-
-
-        $this->db->insert('seeker_area_of_interst', $interestResume);
+        $this->db->where('seekerId', $post['seekerId']);
+        $this->db->update('seeker_area_of_interst', $updateResume);
     }
 
 

@@ -139,7 +139,6 @@ public function get_latest_customer_id()
     }
 }
 
-
     public function getUserData($phonenumber)
     {
         $this->db->where('phonenumber', $phonenumber);

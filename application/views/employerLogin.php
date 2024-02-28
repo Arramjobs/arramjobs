@@ -18,9 +18,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="<?php echo baseUrl; ?>/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,8 +46,7 @@
     <main>
         <div class="container">
 
-            <section
-                class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-6 d-flex flex-column align-items-center justify-content-center">
@@ -80,11 +77,10 @@
                                             <label for="userID" class="form-label">Mobile Number  </label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="number" name="mobilenumber" 
-                                                placeholder="9638527419" class="form-control" 
-                                                id="userID" oninput="validatePhoneNumber(this)" onkeyup="checkMobileNumber()" required>
-                                                <div class="invalid-feedback">Please enter your registered mobile
-                                                    number.</div>
+                                                <input type="number" name="mobilenumber" class="form-control" id="userID" 
+                                                    oninput="validatePhoneNumber(this)" onkeyup="checkMobileNumber()" required 
+                                                    onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                                                <div class="invalid-feedback">Please enter your registered mobile number.</div>
                                                     </div>
                                                 <div id="phoneError" class="text-danger"> </div>
                                         </div>
@@ -92,11 +88,8 @@
                                         <div class="col-12">
                                             <label for="erpassword" class="form-label">Password  </label>
                                             <div class="input-group has-validation">
-                                                <input type="password" name="erpassword" 
-                                                placeholder="Abc@1234" class="form-control" 
-                                                id="erpassword" oninput="validatePassword(this)" required>
-                                                <button type="button" class="btn btn-outline-secondary"
-                                                    onclick="togglePasswordVisibility('erpassword', 'visibilityIcon')">
+                                                <input type="password" name="erpassword" class="form-control" id="erpassword" oninput="validatePassword(this)" required>
+                                                <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('erpassword', 'visibilityIcon')">
                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
                                                 </button>
                                                 <div class="invalid-feedback">Please enter your password.</div> </div>
@@ -111,20 +104,18 @@
                                     <div class="col-12">
                                         <br>
                                         <div class="form-check">
-                                            <p>Create an account ? <a
-                                                    href="<?php echo baseUrl . "Employer/registration" ?>">Register</a>
+                                            <p>Create an account ? 
+                                                <a href="<?php echo baseUrl . "Employer/registration" ?>">Register</a>
                                             </p>
                                         </div>
-                                        <p style="color: black; font-size: small;">If you have any doubts, Please contact us : <span style="color: #0F52BA;"><a href="tel:7418334443" style="color:#0F52BA ; text-decoration: none; font-size: small;"
-                            onmouseover="this.style.color='#668722'" onmouseout="this.style.color='blue'"><b>+91 7418334443</b></a></span></p>
+                                        <p style="color: black; font-size: small;">If you have any doubts, Please contact us : <span style="color: #0F52BA;"><a href="tel:7418334443" 
+                                            style="color:#0F52BA ; text-decoration: none; font-size: small;"
+                                            onmouseover="this.style.color='#668722'" onmouseout="this.style.color='blue'"><b>+91 7418334443</b></a></span></p>
                                     </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
-
             </section>
  
 <script>
@@ -173,9 +164,7 @@ function checkMobileNumber() {
                         visibilityIcon.classList.add("bi-eye-slash");
                     }
                 }
-            </script>
-
-            <script>
+           
                 function validateForm() {
                     var phno = document.getElementById("userID").value;
                     var password = document.getElementById("erpassword").value;
@@ -194,7 +183,6 @@ function checkMobileNumber() {
                         }
                     }
                 }
-
 
                 function validatePhoneNumber(input) {
                     const phoneError = document.getElementById("phoneError");
