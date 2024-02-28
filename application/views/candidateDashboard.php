@@ -5173,7 +5173,7 @@
 
             <div class="card recent-sales overflow-auto">
               <div class="card-body">
-                <h5 class="card-title">Area of Interest</h5>
+                <h5 class="card-title">Area of Job Interest</h5>
 
                 <?php
                     if (isset($areaOfIntrestTable[0]['id'])) {
