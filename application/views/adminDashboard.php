@@ -3421,7 +3421,7 @@
 
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
-                                <h5 class="card-title">Add Education Details</h5>
+                                <h5 class="card-title">Add Experience Details</h5>
                                 <div>
                                     <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
                                             class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
