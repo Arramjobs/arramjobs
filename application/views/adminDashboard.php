@@ -4896,7 +4896,7 @@
                                             <th scope="col">Mobile Number</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Verification by</th>
-                                            <!-- <th scope="col">Verification status (Admin)</th> -->
+                                            <th scope="col">Verification status (Admin)</th>
                                             <th scope="col">Action</th>
                                             <th scope="col">Candidates Status (Employer)</th>
                                             <!-- <th scope="col">Status</th> -->
