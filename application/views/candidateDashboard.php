@@ -50,6 +50,10 @@
       margin: 0;
     }
 
+    th {
+    white-space: nowrap;
+}
+
     /* Education Autocomplete */
     .autocomplete-items div {
       padding: 10px;
@@ -5228,8 +5232,7 @@
                         } ?>
                       </tbody>
                     </table>
-                    <p id="noexperience">This candidate is a fresher or did not have any work experience
-                      after graduation.</p>
+                    <p id="noexperience">Fresher / No experience after graduation.</p>
                   <?php } else { ?>
                     <div id="fresherContent">
                       <p>Experience is not entered.</p>

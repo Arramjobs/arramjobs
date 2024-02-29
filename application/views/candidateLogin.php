@@ -57,7 +57,7 @@
                                 <a href="<?php echo baseUrl; ?>/#candidate"
                                     class="logo d-flex align-items-center w-auto">
                                     <!-- <img src="assets/img/logo.png" alt=""> -->
-                                    <span class="d-block">Arramjobs Candidate</span>
+                                    <span class="d-block">Candidate Login</span>
                                 </a>
                             </div><!-- End Logo -->
 

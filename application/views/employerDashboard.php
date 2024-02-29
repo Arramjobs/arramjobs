@@ -47,7 +47,9 @@
         #expected_salaryu::-webkit-outer-spin-button,
         #expected_salaryu::-webkit-inner-spin-button,
         #inputPincode::-webkit-outer-spin-button,
-        #inputPincode::-webkit-inner-spin-button{
+        #inputPincode::-webkit-inner-spin-button,
+        #no_of_openings::-webkit-outer-spin-button,
+        #no_of_openings::-webkit-inner-spin-button{
             -webkit-appearance: none;
             margin: 0;
             }
@@ -68,6 +70,10 @@
                 visibility: hidden;
             }
         }
+
+        th {
+    white-space: nowrap;
+}
 
         /* Sidebar changes */
 
@@ -954,7 +960,8 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="no_of_openings">No of Openings <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" min="0" required >
+                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" min="0" required 
+                            onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                             <div id="no_of_openings_error" class="error"></div>
                         </div>
                         <div class="col-md-12">
@@ -1247,7 +1254,8 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="no_of_openings">No of Openings </label>
-                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" min="0" required>
+                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" min="0" required
+                            onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                             <div id="no_of_openings_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
@@ -1588,7 +1596,8 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label"  for="no_of_openings">No of Openings: <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" id="no_of_openings" value="<?php echo $value['number_of_openings']; ?>" name="no_of_openings" min="0" required>
+                                    <input type="number" class="form-control" id="no_of_openings" value="<?php echo $value['number_of_openings']; ?>" name="no_of_openings" min="0" required
+                                    onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                     <div id="no_of_openings_error" class="error"></div>
                                 </div>
                                 <div class="col-md-12">
@@ -1783,8 +1792,8 @@
                                                             <th scope="col">Category</th>
                                                             <th scope="col">Subcategory</th>
                                                             <th scope="col">Skills</th>
-                                                            <th scope="col">Status</th>
                                                             <th scope="col">Action</th>
+                                                            <th scope="col">Status</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -1803,15 +1812,20 @@
                                                                         <?php } else {?>
                                                                         <td>No skills</td>
                                                                         <?php } ?>
-                                                                        <td><?php if($value['rqsts']== 1 && $value['eprid'] == $_SESSION['employerid']){ ?>
-                                                                        <span class="badge bg-secondary">Requested</span></td>
-                                                                           <?php  } else if($value['rqsts']== 3 && $value['eprid']== $_SESSION['employerid']){ ?> 
-                                                                     <span class="badge bg-success">Approved</span></td>
-                                                                     <?php } else {?>
-                                                                     <span class="badge bg-primary">Add request</span></td>
-                                                                    <?php } ?>
-                                                                        <td><a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
+
+                                                                        <td><a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">Candidate Resume</button></a>
                                                                     </td>
+
+                                                                        <td><?php if($value['rqsts']== 1 && $value['eprid'] == $_SESSION['employerid']){ ?>
+                                                                        <span class="badge bg-warning"><i class="bi bi-check"></i>Requested to view</span></td>
+
+                                                                           <?php  } else if($value['rqsts']== 3 && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                     <span class="badge bg-success"><i class="bi bi-check2"></i>Approved to view</span></td>
+                                                                     <?php } else {?>
+
+                                                                     <span class="badge bg-danger">Request to view</span></td>
+                                                                    <?php } ?>                                                                        
+
                                                                     </tr>
                                                                 <?php
                                                     }
@@ -1899,80 +1913,197 @@
 
                                 <div class="card recent-sales overflow-auto">
                                     <div class="card-body">
+
                                         <h5 class="card-title">Educational Qualification</h5>
+                                        <?php
+                                        if (isset($education[0]['id']) && !empty($education)) {
+                                            ?>
+                                            <!-- Table with stripped rows -->
+
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">S.No</th>
+                                                        <th scope="col">Educational Qualification</th>
+                                                        <th scope="col">Specialiization</th>
+                                                        <th scope="col">Mode of education</th>
+                                                        <th scope="col">Institution Name</th>
+                                                        <th scope="col">Percentage</th>
+                                                        <th scope="col">Year of Passed Out</th>
+                                                        <th scope="col">Certificates</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $loopcount = 1;
+                                                    foreach ($this->data['education'] as $key => $value) {
+                                                        ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $loopcount; ?>.
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $value['educational_qualification'] ?>
+                                                            </td>
+                                                            <?php if (
+                                                                $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                                $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
+                                                            ) { ?>
+                                                                <td>NA</td>
+                                                            <?php } else { ?>
+                                                                <td>
+                                                                    <?php echo $value['department'] ?>
+                                                                </td>
+                                                            <?php }
+                                                            if ($value['educationmode'] == 'Corres') { ?>
+                                                                <td>Correspondance</td>
+                                                            <?php } else { ?>
+                                                                <td>Regular</td>
+                                                            <?php } ?>
+                                                            <td>
+                                                                <?php echo $value['school_college_name'] ?>
+                                                            </td>
+                                                            <?php if (
+                                                                $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                                $value['educational_qualification'] === "11th"
+                                                            ) { ?>
+                                                                <td>NA</td>
+                                                            <?php } else { ?>
+                                                                <td>
+                                                                    <?php echo $value['percentage'] ?>
+                                                                </td>
+                                                            <?php } ?>
+                                                            <td>
+                                                                <?php echo $value['yearOfPassing'] ?>
+                                                            </td>
+                                                            <?php
+                                                            if ($value['educational_qualification'] == '10th/SSLC') {
+                                                                ?>
+                                                                <td><a href="<?php echo $value['tencer_url'] ?>" target="blank">
+                                                                        <?php echo $value['ten_cer'] ?>
+                                                                    </a></td>
+                                                                <?php
+                                                            } else if ($value['educational_qualification'] == '12th/HSC') {
+                                                                ?>
+                                                                    <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank">
+                                                                        <?php echo $value['twelve_cer'] ?>
+                                                                        </a></td>
+                                                                <?php
+                                                            } else if ($value['educational_qualification'] == 'DIPLOMA') {
+                                                                ?>
+                                                                        <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank">
+                                                                        <?php echo $value['diploma_cer'] ?>
+                                                                            </a></td>
+                                                                <?php
+                                                            } else if (
+                                                                $value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                                $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                                                                $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW"
+                                                            ) {
+                                                                ?>
+                                                                            <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
+                                                                        <?php echo $value['ug_cer'] ?>
+                                                                                </a></td>
+                                                                <?php
+                                                            } else if (
+                                                                $value['educational_qualification'] == "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                                $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                                $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW"
+                                                            ) {
+                                                                ?>
+                                                                                <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank">
+                                                                        <?php echo $value['pg_cer'] ?>
+                                                                                    </a></td>
+                                                                <?php
+                                                            } else if ($value['educational_qualification'] == 'Ph.D') {
+                                                                ?>
+                                                                                    <td><a href="<?php echo $value['doccer_url'] ?>" target="blank">
+                                                                        <?php echo $value['doc_cer'] ?>
+                                                                                        </a></td>
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                                    <td>NA</a></td>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </tr>
+                                                        <?php
+                                                        $loopcount++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                            <!-- End Table with stripped rows -->
+                                        <?php } else { ?>
+                                            <p>No education qualification </p>
+                                        <?php } ?>
+                                        <!-- End Table with stripped rows -->
+                                    </div>
+                                </div>
+
+                                <div class="card recent-sales overflow-auto">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Experience Details</h5>
 
                                         <!-- Table with stripped rows -->
-                                        <table class="table table-striped">
+                                        <table class="table table-striped" id="expTable">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S.No</th>
-                                                    <th scope="col">Educational Qualification</th>
-                                                    <th scope="col">Specialiization</th>
-                                                    <th scope="col">Mode of Education</th>
-                                                    <th scope="col">Institution Name</th>
-                                                    <th scope="col">Percentage</th>
-                                                    <th scope="col">Year of Passed Out</th>
-                                                    <th scope="col">Certificates</th>
+                                                    <th scope="col">Job Category</th>
+                                                    <th scope="col">Job Sub Category</th>
+                                                    <th scope="col">Experience</th>
+                                                    <th scope="col">Company Name</th>
+                                                    <th scope="col">Company Location</th>
+                                                    <th scope="col">Job Role</th>
+                                                    <th scope="col">Previous Employer Name</th>
+                                                    <th scope="col">Previous Employer Mobile</th>
+                                                    <th scope="col">Previous Employer Email</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             <?php
-                                            $countedu = 1;
-                                            foreach($this->data['education'] as $key => $value) {
+                                            $countexp = 1;
+                                            foreach($this->data['experienceDetails'] as $ikey => $ivalue) {
                                                 ?>
                                                             <tr>
-                                                                <th ><?php echo $countedu++; ?>.</th>
-                                                                <td><?php echo $value['educational_qualification'] ?></td>
-                                                                <td><?php echo $value['department'] ?></td>
-                                                                <td><?php echo $value['educationmode'] ?> </td>
-                                                                <td><?php echo $value['school_college_name'] ?></td>
-                                                                <td><?php echo $value['percentage'] ?></td>
-                                                                <td><?php echo $value['yearOfPassing'] ?></td>
-                                                                <?php
-                                                                if($value['educational_qualification'] == '10th/SSLC') {
-                                                                    ?>
-                                                                                <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
-                                                                <?php
-                                                                } else if($value['educational_qualification'] == '12th/HSC') {
-                                                                    ?>
-                                                                        <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
-                                                                    <?php
-                                                                } else if($value['educational_qualification'] == 'DIPLOMA') {
-                                                                    ?>
-                                                                                    <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
-                                                                    <?php
-                                                                } else if($value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                                                                    $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                                                                    $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW") {
-                                                                    ?>
-                                                                                <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
-                                                                    <?php
-                                                                } else if($value['educational_qualification'] == "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                                                                    $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                                                                    $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW") {
-                                                                    ?>
-                                                                                <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
-                                                                <?php
-                                                                } else if($value['educational_qualification'] == 'Ph.D') {
-                                                                    ?>
-                                                                                        <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
-                                                                    <?php
-                                                                } else {
-                                                                    ?>
-                                                                                        <td>NA</a></td>
-                                                                    <?php
-                                                                }
-                                                                ?>
+                                                                <th><?php echo $countexp++; ?>.</th>
+                                                                <td><?php echo $ivalue['other_category'] ?></td>
+                                                                <td><?php echo $ivalue['other_sub_category'] ?></td>
+                                                                <td><?php echo $ivalue['expYear'] ?> to <?php echo $ivalue['expMonth'] ?></td>
+                                                                <td><?php echo $ivalue['company_name'] ?></td>
+                                                                <td><?php echo $ivalue['company_location'] ?></td>
+                                                                <td><?php echo $ivalue['job_role'] ?></td>
+                                                                <td><?php echo $ivalue['previous_employer_name'] ?></td>
+                                                                <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
+                                                                <td><?php echo $ivalue['previous_employer_email'] ?></td>
                                                             </tr>
                                                         <?php
                                             }
                                             ?>
                                             </tbody>
                                         </table>
-                                        <!-- End Table with stripped rows -->
 
-                                    </div>
+                                        <p id="noexperience">Fresher / No experience after graduation.</p>
+                                        </div>
                                 </div>
+
+                  <script>
+                        <?php
+                    if ($experienceDetails[0]['workStatus'] == '0') {
+                        ?>
+                        document.getElementById("expTable").style.display = "block";
+                        document.getElementById("noexperience").style.display = "none";
+
+                    <?php
+                    } else if($experienceDetails[0]['workStatus'] == '1'){?>
+                        document.getElementById("expTable").style.display = "none";
+                        document.getElementById("noexperience").style.display = "block";
+
+                    <?php
+                    }  ?>
+                 </script>
 
                                 <div class="card recent-sales overflow-auto">
                                     <div class="card-body">
@@ -2005,7 +2136,7 @@
                                             </tbody>
                                         </table>
                                         <?php } else{ ?>
-                                            <p><b>No Skills</b></p>
+                                            <p>No Skills</p>
                                        <?php }?>
                                         <!-- End Table with stripped rows -->
                                     </div>
@@ -2053,71 +2184,10 @@
 
                                     </div>
                                 </div>
-                                <div class="card recent-sales overflow-auto">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Experience Details</h5>
-
-                                        <!-- Table with stripped rows -->
-                                        <table class="table table-striped" id="expTable">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">S.No</th>
-                                                    <th scope="col">Job Category</th>
-                                                    <th scope="col">Job Sub Category</th>
-                                                    <th scope="col">Experience</th>
-                                                    <th scope="col">Company Name</th>
-                                                    <th scope="col">Company Location</th>
-                                                    <th scope="col">Job Role</th>
-                                                    <th scope="col">Previous Employer Name</th>
-                                                    <th scope="col">Previous Employer Mobile</th>
-                                                    <th scope="col">Previous Employer Email</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php
-                                            $countexp = 1;
-                                            foreach($this->data['experienceDetails'] as $ikey => $ivalue) {
-                                                ?>
-                                                            <tr>
-                                                                <th><?php echo $countexp++; ?>.</th>
-                                                                <td><?php echo $ivalue['other_category'] ?></td>
-                                                                <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                                                <td><?php echo $ivalue['expYear'] ?> to <?php echo $ivalue['expMonth'] ?></td>
-                                                                <td><?php echo $ivalue['company_name'] ?></td>
-                                                                <td><?php echo $ivalue['company_location'] ?></td>
-                                                                <td><?php echo $ivalue['job_role'] ?></td>
-                                                                <td><?php echo $ivalue['previous_employer_name'] ?></td>
-                                                                <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
-                                                                <td><?php echo $ivalue['previous_employer_email'] ?></td>
-                                                            </tr>
-                                                        <?php
-                                            }
-                                            ?>
-                                            </tbody>
-                                        </table>
-
-                                        <p id="noexperience">This candidate is a fresher or did not have any work experience after graduation.</p>
-                                        </div>
-                                </div>
-
-                  <script>
-                        <?php
-                    if ($experienceDetails[0]['workStatus'] == '0') {
-                        ?>
-                        document.getElementById("expTable").style.display = "block";
-                        document.getElementById("noexperience").style.display = "none";
-
-                    <?php
-                    } else if($experienceDetails[0]['workStatus'] == '1'){?>
-                        document.getElementById("expTable").style.display = "none";
-                        document.getElementById("noexperience").style.display = "block";
-
-                    <?php
-                    }  ?>
-                 </script>
+                                
 
                                         <!-- End Table with stripped rows -->
-                                        <?php
+                                        <!-- <?php
                                               if (isset($canReqStatus[0]['request_status']) && $canReqStatus[0]['request_status'] == '2') {
                                                   ?>
                                         <div class="card recent-sales overflow-auto">
@@ -2130,10 +2200,8 @@
                                 </div>
                                                  <?php
                                               }
-                                              ?>
-                                    
+                                              ?> -->                                  
 
-                            
                             
                                 <div class="d-flex justify-content-between" id="printdiv">
 
