@@ -4647,7 +4647,7 @@
             </section>
             <?php
 
-} elseif ($method == "interviewedCandidates") {
+        } elseif ($method == "interviewedCandidates") {
     ?>
     <!-- Sidebar Active  -->
     <script>
@@ -6611,7 +6611,128 @@
             </section>
             <?php
 
+} elseif ($method == "employerChart") {
+    ?>
+    <!-- Sidebar Active  -->
+    <script>
+        document.getElementById('employerchart').classList.add('active');
+    </script>
+    <section class="usertable">
+        <div class="pagetitle">
+            <h1>Employer Status</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                    <li class="breadcrumb-item active">Employer</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <?php
+                    if (isset($this->data['employerChartList'][0]['name'])) {
+                        ?>
+                        <h5 class="card-title">Employer Tracking Chart<span></span></h5>
 
+                        <!-- <table class="table table-borderless datatable"> -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">S.No</th>
+                                    <th scope="col">Employer ID</th>
+                                    <th scope="col">Candidate ID</th>
+                                    <th scope="col">Candidate Name</th>
+                                    <th scope="col">Candidate Mobile Number</th>
+                                    <th scope="col">Current Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $loopcount = 1;
+                                foreach ($this->data['employerChartList'] as $key => $value) {
+                                    ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $loopcount; ?>.
+                                        </td>
+                                        <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
+                                                <?php echo $value['emprid']; ?>
+                                            </a></td>
+                                        <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
+                                                <?php echo $value['cdid']; ?>
+                                            </a></td>
+                                        <td>
+                                            <?php echo $value['name']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $value['mobilenum']; ?>
+                                        </td>
+
+                                        <?php
+                                                if ($value['curStatus'] == 3) {
+                                                    ?>
+                                                    <td><span class="badge bg-warning">Request Approved</span></td>
+                                                    <?php
+                                                } else if ($value['curStatus'] == 4) {
+                                                    ?>
+                                                        <td><span class="badge bg-success">Interviewed</span></td>
+                                                <?php } 
+                                                else {
+                                                    ?>
+                                                    <td> - </td>
+                                                    <?php 
+                                                }?>
+                                                <td>
+                                                    <form class="" action="<?php echo baseUrl . "admin/updateCurrentStatus" ?>"
+                                                        method="post">
+                                                        <input class="form-check-input" type="text" name="seekerId" id=""
+                                                            value="<?php echo $value['seekerId']; ?>" hidden>
+                                                        <input class="form-check-input" type="text" name="employerId" id=""
+                                                            value="<?php echo $value['emprid']; ?>" hidden>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="">
+                                                                <input type="radio" id="interviwed" name="currentStatus" value="4"
+                                                                    <?php if ($value['curStatus'] == '4') {
+                                                                        echo 'checked';
+                                                                    } ?>
+                                                                    required>
+                                                                <label for="interviwed" class="mb-2">Interviewed</label><br>
+                                                                <input type="radio" id="rejected" name="currentStatus" value="5"
+                                                                    required>
+                                                                <label for="rejected" class="mb-2">Rejected</label><br>
+                                                                <input type="radio" id="placed" name="currentStatus" value="6"
+                                                                    required>
+                                                                <label for="placed" class="mb-2">Placed</label>
+                                                            </div>
+
+                                                            <div class="col ms-5">
+                                                                <button type="submit" class="btn btn-success">Save</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $loopcount++;
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                        <?php
+                    } else {
+                        ?>
+                        <h5 class="card-title">No Records Found<span></span></h5>
+                        <?php
+                    }
+                    ?>
+                </div>
+
+            </div>
+        </div><!-- End Recent Sales -->
+    </section>
+    <?php
 
         } elseif ($method == 'addNewAdminApprovel') {
             ?>

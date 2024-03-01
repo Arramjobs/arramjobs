@@ -830,7 +830,7 @@
                                                                     <tr>
                                                                         <td><a ><?php echo $countjobs++; ?>.</a></td>
                                                                         <td><?php echo $twelveHourTime ?></td>
-                                                                        <td><?php echo $value['jobSubCategory'] ?>             <?php echo $value['jobCategory'] ?></td>
+                                                                        <td><?php echo $value['jobCategory'] ?>             <?php echo $value['jobSubCategory'] ?></td>
                                                                         <td><?php echo $value['location'] ?></td>
                                                                         <td><?php echo $value['job_type'] ?></td>
                                                                         <td><?php echo $value['salary'] ?></td>
@@ -1888,10 +1888,7 @@
                                                 <p><?php echo $nvalue['district'] ?>, <?php echo $nvalue['pincode'] ?></p>
                                                 </div>
                                             </div>
-                                          <?php
-                                        }            
-                                            if (isset($value['request_status']) && $value['request_status'] == '3') {
-                                                ?>
+                                          
                                     <div class="d-sm-flex justify-content-between" >
                                         <div>
                                             <p><b>D.O.B :</b> <?php echo $nvalue['dateofbirth'] ?></p>
@@ -1904,9 +1901,14 @@
                                     </div>
 
                                     <?php
-                                            }
+                                            break;
                                         }
                                         }
+                                        ?>
+                                         <?php
+                                            break;
+                                        }
+                                        
                                         ?>
                                     </div>
                                 </div>

@@ -435,6 +435,15 @@ class Admin extends CI_Controller
         $this->load->view('adminDashboard.php', $this->data);
     }
 
+    public function employerChart()
+    {
+        $this->data['method'] = "employerChart";
+        $employerChartList = $this->AdminModel->employerChartDetails();
+        $this->data['employerChartList'] = $employerChartList["response"];
+        $this->setVariable();
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
     public function updateCurrentStatus()
     {
         $postData = $this->input->post(null, true);

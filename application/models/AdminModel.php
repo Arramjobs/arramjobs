@@ -485,6 +485,18 @@ class AdminModel extends CI_Model
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
     }
 
+    public function employerChartDetails()
+    {
+        $employerchartList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
+            prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus
+             FROM  candidate_requests cr
+             INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
+             INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+             WHERE (cr.request_status = '3' OR cr.request_status = '4' OR cr.request_status = '5' OR cr.request_status = '6');";
+        $response = $this->db->query($employerchartList);
+        return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
+    }
+
     // Candidate Request Table
     public function candidateStatus()
     {
