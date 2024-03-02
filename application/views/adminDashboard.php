@@ -4896,9 +4896,9 @@
                                             <th scope="col">Mobile Number</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Verification by</th>
-                                            <th scope="col">Verification status (Admin)</th>
+                                            <!-- <th scope="col">Verification status (Admin)</th> -->
                                             <th scope="col">Action</th>
-                                            <th scope="col">Candidates Status (Employer)</th>
+                                            <th scope="col">Candidates Status</th>
                                             <!-- <th scope="col">Status</th> -->
                                         </tr>
                                     </thead>
@@ -4943,6 +4943,8 @@
                                                     <td><span class="badge bg-danger">Pending</span></td>
                                                 <?php } ?>
 
+                                                <!-- <td> Verification status </td> -->
+
                                                 <td class="d-flex py-3">
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button"
@@ -4985,6 +4987,25 @@
                                                         <button type="button" class="btn btn-success d-flex"><i
                                                                 class="bi bi-eye pe-1"></i>View</button></a>
                                                 </td>
+
+                                                <?php
+                                                if ($value['currentStatus'] == 4) {
+                                                    ?>
+                                                    <td>Interviewed</td>
+                                                    <?php
+                                                } else if ($value['currentStatus'] == 5) {
+                                                    ?>
+                                                        <td>Rejected</td>
+                                                <?php 
+                                                } else if ($value['currentStatus'] == 6) {
+                                                    ?>
+                                                        <td>Placed</td>
+                                                <?php 
+                                                } else {
+                                                    ?>
+                                                    <td> - </td>
+                                                    <?php 
+                                                }?>
 
                                             </tr>
                                             <?php
@@ -5164,7 +5185,8 @@
                                             <div class="d-sm-flex justify-content-between pt-4">
                                                 <div>
                                                     <p><b>D.O.B :</b>
-                                                        <?php echo $value['dateofbirth'] ?>
+                                                    <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth'])); ?>
+                                                    <?php echo $formattedDateOfBirth; ?>
                                                     </p>
                                                     <p><b>Age :</b>
                                                         <?php echo $value['age'] ?>
@@ -5403,8 +5425,11 @@
                                                             <?php echo $ivalue['other_sub_category'] ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $ivalue['expYear'] ?> to
-                                                            <?php echo $ivalue['expMonth'] ?>
+                                                        <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
+                                                        <?php echo $formattedexpYear; ?>  <br> to <br>
+
+                                                        <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
+                                                        <?php echo $formattedexpMonth; ?>
                                                         </td>
                                                         <td>
                                                             <?php echo $ivalue['company_name'] ?>
@@ -5459,12 +5484,12 @@
                                     } ?>
                                 </script>
 
-                                <?php
-                                if (isset($skills[0]['id']) && !empty($skills)) { ?>
+                               
                                     <div class="card recent-sales overflow-auto">
                                         <div class="card-body">
                                             <h5 class="card-title">Skills</h5>
-
+                                            <?php
+                                if (isset($skills[0]['id']) && !empty($skills)) { ?>
                                             <!-- Table with stripped rows -->
 
 
@@ -5503,7 +5528,10 @@
                                                 </tbody>
                                             </table>
                                             <!-- End Table with stripped rows -->
-                                        <?php } ?>
+                                        <?php 
+                                    } else { ?>
+                                        <td>No skills</td>
+                                   <?php } ?>
 
                                     </div>
                                 </div>
@@ -5814,7 +5842,8 @@
                                             <div class="d-sm-flex justify-content-between pt-4">
                                                 <div>
                                                     <p><b>D.O.B : </b>
-                                                        <?php echo $value['dateofbirth'] ?>
+                                                    <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth']));?>
+                                                    <?php echo $formattedDateOfBirth; ?>
                                                     </p>
                                                     <p><b>Age :</b>
                                                         <?php echo $value['age'] ?>
@@ -6051,8 +6080,11 @@
                                                             <?php echo $ivalue['other_sub_category'] ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $ivalue['expYear'] ?> to
-                                                            <?php echo $ivalue['expMonth'] ?>
+                                                            <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
+                                                            <?php echo $formattedexpYear; ?>  <br> to <br>
+
+                                                            <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
+                                                            <?php echo $formattedexpMonth; ?>
                                                         </td>
                                                         <td>
                                                             <?php echo $ivalue['company_name'] ?>
@@ -6091,7 +6123,7 @@
                 </div>
               </div>
 
-                                <script>
+              <script>
                                     <?php
                                     if ($experienceDetails[0]['workStatus'] == '0') {
                                         ?>
@@ -6107,6 +6139,59 @@
                                     } ?>
                                 </script>
 
+
+              <div class="card recent-sales overflow-auto">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Skills</h5>
+                                            <?php
+                                if (isset($skills[0]['id']) && !empty($skills)) { ?>
+                                            <!-- Table with stripped rows -->
+
+
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="col-2" scope="col">S.No</th>
+                                                        <th class="col-4" scope="col">Skill</th>
+                                                        <th class="col-3" scope="col">Experience</th>
+                                                        <th class="col-3" scope="col">Skill Level</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $loopcount = 1;
+                                                    foreach ($this->data['skills'] as $skey => $svalue) {
+                                                        ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $loopcount; ?>.
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $svalue['skill'] ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $svalue['experience'] ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $svalue['skill_level'] ?>
+                                                            </td>
+                                                        </tr>
+                                                        <?php
+                                                        $loopcount++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                            <!-- End Table with stripped rows -->
+                                        <?php 
+                                    } else { ?>
+                                        <td>No skills</td>
+                                   <?php } ?>
+
+                                    </div>
+                                </div>
+
+                                
 
                                 <div class="card recent-sales overflow-auto">
                                         <div class="card-body">
@@ -6540,10 +6625,10 @@
                                                 <td>
                                                     <?php echo $loopcount; ?>.
                                                 </td>
-                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
+                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>" target="blank">
                                                         <?php echo $value['emprid']; ?>
                                                     </a></td>
-                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
+                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>" target="blank">
                                                         <?php echo $value['cdid']; ?>
                                                     </a></td>
                                                 <td>
@@ -6640,10 +6725,9 @@
                             <thead>
                                 <tr>
                                     <th scope="col">S.No</th>
-                                    <th scope="col">Employer ID</th>
-                                    <th scope="col">Candidate ID</th>
-                                    <th scope="col">Candidate Name</th>
-                                    <th scope="col">Candidate Mobile Number</th>
+                                    <th scope="col">Employer Name / ID</th>
+                                    <!-- <th scope="col">Candidate Name / ID</th> -->
+                                    <th scope="col">Job category</th>
                                     <th scope="col">Current Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -6657,19 +6741,16 @@
                                         <td>
                                             <?php echo $loopcount; ?>.
                                         </td>
-                                        <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
+                                        <td><?php echo $value['compName']; ?> /<a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>" target="blank">
                                                 <?php echo $value['emprid']; ?>
                                             </a></td>
-                                        <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
+                                        <!-- <td><?php echo $value['name']; ?> / <a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>" target="blank">
                                                 <?php echo $value['cdid']; ?>
-                                            </a></td>
-                                        <td>
-                                            <?php echo $value['name']; ?>
+                                            </a></td> -->
+                                            <td>
+                                            <?php echo $value['jobsCategory'] ?>
                                         </td>
-                                        <td>
-                                            <?php echo $value['mobilenum']; ?>
-                                        </td>
-
+                                        
                                         <?php
                                                 if ($value['curStatus'] == 3) {
                                                     ?>
@@ -6685,7 +6766,7 @@
                                                     <?php 
                                                 }?>
                                                 <td>
-                                                    <form class="" action="<?php echo baseUrl . "admin/updateCurrentStatus" ?>"
+                                                    <form class="" action="<?php echo baseUrl . "admin/updateCurrentStatusEmp" ?>"
                                                         method="post">
                                                         <input class="form-check-input" type="text" name="seekerId" id=""
                                                             value="<?php echo $value['seekerId']; ?>" hidden>

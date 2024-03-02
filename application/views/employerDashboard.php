@@ -1791,6 +1791,7 @@
                                                             <th scope="col">Name</th>
                                                             <th scope="col">Category</th>
                                                             <th scope="col">Subcategory</th>
+                                                            <th scope="col">Experience</th>
                                                             <th scope="col">Skills</th>
                                                             <th scope="col">Action</th>
                                                             <th scope="col">Status</th>
@@ -1807,6 +1808,16 @@
                                                                         <td><?php echo $value['name'] ?> </td>
                                                                         <td><?php echo $value['oic'] ?></td>
                                                                         <td><?php echo $value['oisc'] ?></td>
+                                                                        
+                                                                        <?php if($value['experienceTable']== "1" ){ ?>
+                                                                        <td>Fresher</td>
+                                                                        <?php  } 
+                                                                        else if($value['experienceTable']== "0" ){ ?> 
+                                                                        <td>Experienced</td>
+                                                                        <?php } else { ?>
+                                                                        <td>Not mentioned</td> 
+                                                                        <?php }?>                                                                        
+                                                                        
                                                                         <?php if(isset($value['skills'])){ ?>
                                                                         <td><?php echo $value['skills'] ?></td>
                                                                         <?php } else {?>
@@ -1819,9 +1830,9 @@
                                                                         <td><?php if($value['rqsts']== 1 && $value['eprid'] == $_SESSION['employerid']){ ?>
                                                                         <span class="badge bg-warning"><i class="bi bi-check"></i>Requested to view</span></td>
 
-                                                                           <?php  } else if($value['rqsts']== 3 && $value['eprid']== $_SESSION['employerid']){ ?> 
-                                                                     <span class="badge bg-success"><i class="bi bi-check2"></i>Approved to view</span></td>
-                                                                     <?php } else {?>
+                                                                        <td> <?php  } else if($value['rqsts']== 3 && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                        <span class="badge bg-success"><i class="bi bi-check2"></i>Approved to view</span></td>
+                                                                        <?php } else {?>
 
                                                                      <span class="badge bg-danger">Request to view</span></td>
                                                                     <?php } ?>                                                                        
@@ -1849,6 +1860,22 @@
                             </div>
                         </div><!-- End Recent Sales -->
                     </section>
+
+                    <script>
+                        <?php
+                    if ($experienceTable[0]['workStatus'] == '0') {
+                        ?>
+                        document.getElementById("expTable").style.display = "block";
+                        document.getElementById("noexperience").style.display = "none";
+
+                    <?php
+                    } else if($experienceTable[0]['workStatus'] == '1'){?>
+                        document.getElementById("expTable").style.display = "none";
+                        document.getElementById("noexperience").style.display = "block";
+
+                    <?php
+                    }  ?>
+                 </script>
 
                     <?php
         } elseif($method == "resume") {
@@ -1891,7 +1918,9 @@
                                           
                                     <div class="d-sm-flex justify-content-between" >
                                         <div>
-                                            <p><b>D.O.B :</b> <?php echo $nvalue['dateofbirth'] ?></p>
+                                            <p><b>D.O.B :</b> 
+                                            <?php $formattedDateOfBirth = date('d-m-Y', strtotime($nvalue['dateofbirth'])); ?>
+                                            <?php echo $formattedDateOfBirth; ?></p>
                                             <p><b>Age : </b><?php echo $nvalue['age'] ?></p>
                                         </div>
                                         <div>
@@ -2048,6 +2077,9 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Experience Details</h5>
 
+                                        <?php
+                                        if (isset($experienceDetails[0]['id']) && !empty($experienceDetails)) {
+                                            ?>
                                         <!-- Table with stripped rows -->
                                         <table class="table table-striped" id="expTable">
                                             <thead>
@@ -2065,47 +2097,79 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php
-                                            $countexp = 1;
-                                            foreach($this->data['experienceDetails'] as $ikey => $ivalue) {
+                                                <?php
+                                                $loopcount = 1;
+                                                foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
+                                                    ?>
+                                                    <tr>
+                                                        <td scope="row">
+                                                            <?php echo $loopcount; ?>.
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['other_category'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['other_sub_category'] ?>
+                                                        </td>
+                                                        <td>
+                                                        <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
+                                                        <?php echo $formattedexpYear; ?>  <br> to <br>
+
+                                                        <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
+                                                        <?php echo $formattedexpMonth; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['company_name'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['company_location'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['job_role'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['previous_employer_name'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['previous_employer_mobile'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['previous_employer_email'] ?>
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                    $loopcount++;
+                                                }
                                                 ?>
-                                                            <tr>
-                                                                <th><?php echo $countexp++; ?>.</th>
-                                                                <td><?php echo $ivalue['other_category'] ?></td>
-                                                                <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                                                <td><?php echo $ivalue['expYear'] ?> to <?php echo $ivalue['expMonth'] ?></td>
-                                                                <td><?php echo $ivalue['company_name'] ?></td>
-                                                                <td><?php echo $ivalue['company_location'] ?></td>
-                                                                <td><?php echo $ivalue['job_role'] ?></td>
-                                                                <td><?php echo $ivalue['previous_employer_name'] ?></td>
-                                                                <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
-                                                                <td><?php echo $ivalue['previous_employer_email'] ?></td>
-                                                            </tr>
-                                                        <?php
-                                            }
-                                            ?>
                                             </tbody>
                                         </table>
+                                        <!-- End Table with stripped rows -->
 
                                         <p id="noexperience">Fresher / No experience after graduation.</p>
-                                        </div>
-                                </div>
+                  <?php } else { ?>
+                    <div id="fresherContent">
+                      <p>Experience is not entered.</p>
+                    </div>
+                  <?php }
+                  ?>
+                </div>
+              </div>
 
-                  <script>
-                        <?php
-                    if ($experienceDetails[0]['workStatus'] == '0') {
-                        ?>
-                        document.getElementById("expTable").style.display = "block";
-                        document.getElementById("noexperience").style.display = "none";
+           <script>
+                                    <?php
+                                    if ($experienceDetails[0]['workStatus'] == '0') {
+                                        ?>
+                                        document.getElementById("expTable").style.display = "block";
+                                        document.getElementById("noexperience").style.display = "none";
 
-                    <?php
-                    } else if($experienceDetails[0]['workStatus'] == '1'){?>
-                        document.getElementById("expTable").style.display = "none";
-                        document.getElementById("noexperience").style.display = "block";
+                                        <?php
+                                    } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
+                                            document.getElementById("expTable").style.display = "none";
+                                            document.getElementById("noexperience").style.display = "block";
 
-                    <?php
-                    }  ?>
-                 </script>
+                                        <?php
+                                    } ?>
+                                </script>
 
                                 <div class="card recent-sales overflow-auto">
                                     <div class="card-body">

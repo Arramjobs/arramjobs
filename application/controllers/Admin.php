@@ -452,6 +452,14 @@ class Admin extends CI_Controller
         $this->candidateChart();
     }
 
+    public function updateCurrentStatusEmp()
+    {
+        $postData = $this->input->post(null, true);
+        $updateStatus = $this->AdminModel->candidateStatus();
+        $currentStatus = $this->AdminModel->currentStatusSpf();
+        $this->employerChart();
+    }
+
     public function placedCandidate()
     {
         $this->data['method'] = "placedCandidates";

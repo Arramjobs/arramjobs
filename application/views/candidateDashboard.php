@@ -2511,8 +2511,11 @@
                             <?php echo $value['other_sub_category'] ?>
                           </td>
                           <td>
-                            <?php echo $value['expYear'] ?> -
-                            <?php echo $value['expMonth'] ?>
+                            <?php $formattedexpYear = date('d-m-Y', strtotime($value['expYear'])); ?>
+                            <?php echo $formattedexpYear; ?>  <br> to <br>
+
+                            <?php $formattedexpMonth = date('d-m-Y', strtotime($value['expMonth'])); ?>
+                            <?php echo $formattedexpMonth; ?>
                           </td>
                           <td>
                             <?php echo $value['company_name'] ?>
@@ -4926,7 +4929,8 @@
                       <div class="d-sm-flex justify-content-between pt-4">
                         <div>
                           <p>D.O.B :
-                            <?php echo $value['dateofbirth'] ?>
+                          <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth'])); ?>
+                          <?php echo $formattedDateOfBirth; ?>
                           </p>
                           <p>Age :
                             <?php echo $value['age'] ?>
@@ -5181,9 +5185,9 @@
                           <th scope="col">Company Location</th>
                           <th scope="col">Job Role</th>
                           <th scope="col">Company Mobile Number</th>
-                          <th scope="col">Previous Job\'s Reference Name</th>
-                          <th scope="col">Previous Job\'s Reference Mobile number</th>
-                          <th scope="col">Previous Job\'s Reference Email</th>
+                          <th scope="col">Previous Job's Reference Name</th>
+                          <th scope="col">Previous Job's Reference Mobile number</th>
+                          <th scope="col">Previous Job's Reference Email</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -5201,9 +5205,14 @@
                             <td>
                               <?php echo $ivalue['other_sub_category'] ?>
                             </td>
-                            <td>
-                              <?php echo $ivalue['expYear'] ?> -
-                              <?php echo $ivalue['expMonth'] ?>
+                            <td>                            
+
+                              <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
+                              <?php echo $formattedexpYear; ?>  <br> to <br>
+
+                              <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
+                              <?php echo $formattedexpMonth; ?>
+
                             </td>
                             <td>
                               <?php echo $ivalue['company_name'] ?>
