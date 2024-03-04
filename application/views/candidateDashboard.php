@@ -4989,180 +4989,184 @@
               <div class="card-body">
 
                 <h5 class="card-title">Educational Qualification</h5>
-                <?php
-                if (isset($education[0]['id']) && !empty($education)) {
-                  ?>
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">S.No</th>
-                        <th scope="col">Educational Qualification</th>
-                        <th scope="col">Specialiization</th>
-                        <th scope="col">Mode of Education</th>
-                        <th scope="col">Institution Name</th>
-                        <th scope="col">Percentage</th>
-                        <th scope="col">Year of Passed Out</th>
-                        <th scope="col">Certificates</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      if (isset($educationTable[0]['id'])) {
-                        $count = 1;
-                        foreach ($educationTable as $key => $value) {
-                          ?>
-                          <tr>
-                            <td>
-                              <?php echo $count; ?>.
-                            </td>
-                            <td>
-                              <?php echo $value['educational_qualification'] ?>
-                            </td>
-                            <!-- <td><?php echo $value['department'] ?></td> -->
-                            <?php
-                            if (
-                              $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                              $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                              $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
-                              $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                              $value['educational_qualification'] === "B.Pharm" ||  $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
-                              $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                              $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                              $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
-                              $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
-                              $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
-                              $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
-                              $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
-                            ) {
-                              ?>
-                              <td>
-                                <?php echo $value['department'] ?>
-                              </td>
-                              <?php
-                            } else {
-                              ?>
-                              <td>NA</a></td>
-                              <?php
-                            }
-                            ?>
-                            <?php
-                            if (
-                              $value['educationmode'] == "Corres"
-                            ) {
-                              ?>
-                              <td>Correspondence</td>
-                              <?php
-                            } else {
-                              ?>
-                              <td>Regular</td>
-                              <?php
-                            }
-                            ?>
-                            <td>
-                              <?php echo $value['school_college_name'] ?>
-                            </td>
-                            <!-- <td><?php echo $value['percentage'] ?></td> -->
-                            <?php
-                            if (
-                              $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                              $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                              $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
-                              $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                              $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
-                              $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                              $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                              $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
-                              $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
-                              $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
-                              $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
-                              $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM" ||
-                              $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "12th/HSC"
-                            ) {
-                              ?>
-                              <td>
-                                <?php echo $value['percentage'] ?>
-                              </td>
-                              <?php
-                            } else {
-                              ?>
-                              <td>NA</a></td>
-                              <?php
-                            }
-                            ?>
-                            <td>
-                              <?php echo $value['yearOfPassing'] ?>
-                            </td>
-                            <?php
-                            if ($value['educational_qualification'] == '10th/SSLC') {
-                              ?>
-                              <td><a href="<?php echo $value['tencer_url'] ?>" target="blank">
-                                  <?php echo $value['ten_cer'] ?>
-                                </a></td>
-                              <?php
-                            } else if ($value['educational_qualification'] == '12th/HSC') {
-                              ?>
-                                <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank">
-                                  <?php echo $value['twelve_cer'] ?>
-                                  </a></td>
-                              <?php
-                            } else if (
-                              $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm"
-                            ) {
-                              ?>
-                                  <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank">
-                                  <?php echo $value['diploma_cer'] ?>
-                                    </a></td>
-                              <?php
-                            } else if (
-                              $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                              $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                              $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
-                              $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                              $value['educational_qualification'] === "B.Pharm"
-                            ) {
-                              ?>
-                                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
-                                  <?php echo $value['ug_cer'] ?>
-                                      </a></td>
-                              <?php
-                            } else if (
-                              $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                              $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                              $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
-                              $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
-                              $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm"
-                            ) {
-                              ?>
-                                      <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank">
-                                  <?php echo $value['pg_cer'] ?>
-                                        </a></td>
-                              <?php
-                            } else if (
-                              $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
-                              $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
-                            ) {
-                              ?>
-                                        <td><a href="<?php echo $value['doccer_url'] ?>" target="blank">
-                                  <?php echo $value['doc_cer'] ?>
-                                          </a></td>
-                              <?php
-                            } else {
-                              ?>
-                                        <td>NA</a></td>
-                              <?php
-                            }
-                            ?>
-                          </tr>
+                 <?php
+                                        if (isset($educationTable[0]['id']) && !empty($educationTable)) {
+                                            ?>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">S.No</th>
+                      <th scope="col">Educational Qualification</th>
+                      <th scope="col">Specialiization</th>
+                      <th scope="col">Mode of Education</th>
+                      <th scope="col">Institution Name</th>
+                      <th scope="col">Percentage</th>
+                      <th scope="col">Year of Passed Out</th>
+                      <th scope="col">Certificates</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    if (isset($educationTable[0]['id'])) {
+                      $count = 1;
+                      foreach ($educationTable as $key => $value) {
+                        ?>
+                        <tr>
+                          <td>
+                            <?php echo $count; ?>.
+                          </td>
+                          <td>
+                            <?php echo $value['educational_qualification'] ?>
+                          </td>
+                          <!-- <td><?php echo $value['department'] ?></td> -->
                           <?php
-                          $count++;
-                        }
+                          if (
+                            $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                            $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                            $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
+                            $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
+                            $value['educational_qualification'] === "B.Pharm" ||
+                            $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
+                            $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                            $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                            $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
+                            $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
+                            $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
+                            $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
+                            $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
+
+                          ) {
+                            ?>
+                            <td>
+                              <?php echo $value['department'] ?>
+                            </td>
+                            <?php
+                          } else {
+                            ?>
+                            <td>NA</a></td>
+                            <?php
+                          }
+                          ?>
+                          <!-- <td><?php echo $value['educationmode'] ?></td> -->
+                          <?php
+                          if (
+                            $value['educationmode'] == "Corres"
+                          ) {
+                            ?>
+                            <td>Correspondence</td>
+                            <?php
+                          } else {
+                            ?>
+                            <td>Regular</td>
+                            <?php
+                          }
+                          ?>
+                          <td>
+                            <?php echo $value['school_college_name'] ?>
+                          </td>
+                          <!-- <td><?php echo $value['percentage'] ?></td> -->
+                          <?php
+                          if (
+                            $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                            $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                            $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
+                            $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
+                            $value['educational_qualification'] === "B.Pharm" ||
+                            $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
+                            $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                            $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                            $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
+                            $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
+                            $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
+                            $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
+                            $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM" ||
+                            $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "12th/HSC"
+                          ) {
+                            ?>
+                            <td>
+                              <?php echo $value['percentage'] ?>
+                            </td>
+                            <?php
+                          } else {
+                            ?>
+                            <td>NA</a></td>
+                            <?php
+                          }
+                          ?>
+                          <td>
+                            <?php echo $value['yearOfPassing'] ?>
+                          </td>
+                          <?php
+                          if ($value['educational_qualification'] == '10th/SSLC') {
+                            ?>
+                            <td><a href="<?php echo $value['tencer_url'] ?>" target="blank">
+                                <?php echo $value['ten_cer'] ?>
+                              </a></td>
+                            <?php
+                          } else if ($value['educational_qualification'] == '12th/HSC') {
+                            ?>
+                              <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank">
+                                <?php echo $value['twelve_cer'] ?>
+                                </a></td>
+                            <?php
+                          } else if (
+                            $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm"
+                          ) {
+                            ?>
+                                <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank">
+                                <?php echo $value['diploma_cer'] ?>
+                                  </a></td>
+                            <?php
+                          } else if (
+                            $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                            $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                            $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
+                            $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
+                            $value['educational_qualification'] === "B.Pharm"
+                          ) {
+                            ?>
+                                  <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
+                                <?php echo $value['ug_cer'] ?>
+                                    </a></td>
+                            <?php
+                          } else if (
+                            $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                            $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                            $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
+                            $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
+                            $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm"
+                          ) {
+                            ?>
+                                    <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank">
+                                <?php echo $value['pg_cer'] ?>
+                                      </a></td>
+                            <?php
+                          } else if (
+                            $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
+                            $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
+                          ) {
+                            ?>
+                                      <td><a href="<?php echo $value['doccer_url'] ?>" target="blank">
+                                <?php echo $value['doc_cer'] ?>
+                                        </a></td>
+                            <?php
+                          } else {
+                            ?>
+                                      <td>NA</a></td>
+                            <?php
+                          }
+                          ?>
+                        </tr>
+                        <?php
+                        $count++;
                       }
-                      ?>
-                    </tbody>
-                  </table>
+                    }
+                    ?>
+                  </tbody>
+                </table>
                 <?php } else { ?>
-                  <p>Education qualification is not entered</p>
-                <?php } ?>
+                                            <p>Education qualification is not entered</p>
+                                        <?php } ?>
               </div>
             </div>
 

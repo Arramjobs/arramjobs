@@ -797,7 +797,7 @@
                                 <div class="d-flex justify-content-between mt-4">
                                      
                                 <a  href="#addjobs"><button type="button" class="btn btn-success mb-4" onclick="addjob()">+ Add Job Requirements</button></a>
-                                         <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left pe-2"></i>Previous</button></a>
+                                         <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left pe-2"></i> Previous</button></a>
                                         </div>
                                     <?php
                                     if(isset($this->data['providerJobs'][0]['company_name'])) {
@@ -1445,7 +1445,7 @@
     <div class="d-flex justify-content-between">
          
     <a href="<?php echo baseUrl."Employer/jobViewTable" ?>"><button type="button" class="btn btn-success mb-4" >+ Add Job Requirements</button></a>
-             <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
+             <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left pe-2"></i> Previous</button></a>
             </div>
         <?php
         if(isset($this->data['providerJobs'][0]['company_name'])) {
@@ -1572,8 +1572,8 @@
                                     <div id="preferred_location_error" class="error"></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label" for="preferred_location_url">Location URL: <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="preferred_location_url" value="<?php echo $value['locationUrl']; ?>" name="preferred_location_url" pattern="https?://.+" required>
+                                    <label class="form-label" for="preferred_location_url">Job Location URL:</label>
+                                    <input type="text" class="form-control" id="preferred_location_url" value="<?php echo $value['locationUrl']; ?>" name="preferred_location_url" pattern="https?://.+">
                                     <div id="preferred_location_url_error" class="error"></div>
                                 </div>
                                 <div class="col-md-6">
@@ -1641,8 +1641,8 @@
                        var preferred_location = document.getElementById("preferred_location");
                        var preferred_locationError = document.getElementById("preferred_location_error");
 
-                       var preferred_location_url = document.getElementById("preferred_location_url");
-                       var preferred_locationurlError = document.getElementById("preferred_location_url_error");
+                    //    var preferred_location_url = document.getElementById("preferred_location_url");
+                    //    var preferred_locationurlError = document.getElementById("preferred_location_url_error");
 
                        var expected_salary = document.getElementById("expected_salary");
                        var expected_salaryError = document.getElementById('expected_salary_error');
@@ -1699,14 +1699,14 @@
                            }
 
 
-                           if (preferred_location_url.value.trim() === "") {
-                                // alert("Please enter a preferred location")
-                                displayError('Location URL must be filled out', 'preferred_location_url_error');
-                                // document.experienceform.preferred_location.focus();
-                                return false;
-                            } else if (preferred_location_url.value !== '') {
-                                preferred_locationurlError.innerHTML = '';
-                            }
+                        //    if (preferred_location_url.value.trim() === "") {
+                        //         alert("Please enter a preferred location")
+                        //         displayError('Location URL must be filled out', 'preferred_location_url_error');
+                        //         document.experienceform.preferred_location.focus();
+                        //         return false;
+                        //     } else if (preferred_location_url.value !== '') {
+                        //         preferred_locationurlError.innerHTML = '';
+                        //     }
 
 
                            if (jobtype.value.trim() === "") {
@@ -1773,15 +1773,17 @@
                                 </ol>
                             </nav>
                         </div><!-- End Page Title -->
-                        <div class="col-12">
-                            <div class="card recent-sales overflow-auto">
 
-                            <div> <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info m-4 "><i class="bi bi-arrow-left pe-2"></i>Back</button></a> </div>
+                        <div class="col-12">
+                            <div class="card recent-sales overflow-auto">            
                                 <div class="card-body">
                                     <?php
                                     if(isset($this->data['response'][0]['name'])) {
                                         ?>
-                                                <h5 class="card-title">Matched Candidates<span></span></h5>
+                                        <div class="d-flex justify-content-between mt-4"> 
+                                                <h5 class="card-title">Matched Candidates</h5>
+                                                <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info m-4 "><i class="bi bi-arrow-left pe-2"></i>Back</button></a>
+                                        </div>
 
                                                 <table class="table mt-4">
                                                     <thead>
@@ -1828,14 +1830,24 @@
                                                                     </td>
 
                                                                         <td><?php if($value['rqsts']== 1 && $value['eprid'] == $_SESSION['employerid']){ ?>
-                                                                        <span class="badge bg-warning"><i class="bi bi-check"></i>Requested to view</span></td>
+                                                                        <span class="badge bg-warning"><i class="bi bi-check"></i> Requested to view</span></td>
 
                                                                         <td> <?php  } else if($value['rqsts']== 3 && $value['eprid']== $_SESSION['employerid']){ ?> 
-                                                                        <span class="badge bg-success"><i class="bi bi-check2"></i>Approved to view</span></td>
+                                                                        <span class="badge bg-primary"><i class="bi bi-check2"></i> Approved to view</span></td>
+
+                                                                        <td> <?php  } else if($value['rqsts']== 2 && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                        <span class="badge bg-dark"><i class="bi bi-x"></i> Request cancelled</span></td>
+
+                                                                        <td> <?php  } else if($value['rqsts']== 4  && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                        <span class="badge bg-success"><i class="bi bi-check2-all"></i> Interviewed</span></td>
+
+                                                                        <td> <?php  } else if($value['rqsts']== 5 && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                        <span class="badge bg-danger"><i class="bi bi-x-lg"></i> Rejected</span></td>
+
                                                                         <?php } else {?>
 
-                                                                     <span class="badge bg-danger">Request to view</span></td>
-                                                                    <?php } ?>                                                                        
+                                                                        <span class="badge bg-info">Request to view</span></td>
+                                                                        <?php } ?>                                                                        
 
                                                                     </tr>
                                                                 <?php
@@ -1843,9 +1855,9 @@
                                                     ?>
                                                     </tbody>
                                                     <div class="d-flex justify-content-between">
-                                            <p>Registered id : <?php echo $employerid = $_SESSION['employerid']; ?></p>
-                                            <p>Category : <?php echo $this->data['category'] ?></p>
-                                            <p>Count : <?php echo $count - 1; ?></p>
+                                            <b><p style="color:#4BBCF0">Registered id : <?php echo $employerid = $_SESSION['employerid']; ?></p></b>
+                                            <b><p style="color:#4BBCF0">Category : <?php echo $this->data['category'] ?></p></b>
+                                            <b><p style="color:#E72868">Count : <?php echo $count - 1; ?></p></b>
                                             </div>
                                                 </table>
                                             <?php
@@ -2091,9 +2103,9 @@
                                                     <th scope="col">Company Name</th>
                                                     <th scope="col">Company Location</th>
                                                     <th scope="col">Job Role</th>
-                                                    <th scope="col">Previous Employer Name</th>
-                                                    <th scope="col">Previous Employer Mobile</th>
-                                                    <th scope="col">Previous Employer Email</th>
+                                                    <th scope="col">Previous Employer's Name</th>
+                                                    <th scope="col">Previous Employer's Mobile number</th>
+                                                    <th scope="col">Previous Employer's Email</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

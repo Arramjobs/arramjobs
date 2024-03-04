@@ -81,7 +81,7 @@
             }
         }
 
-        th {
+        th, td {
             white-space: nowrap;
         }
 
@@ -2677,7 +2677,7 @@
 
                             <div>
                                 <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
-                                        class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                                        class="btn btn-info mt-3"><i class="bi bi-arrow-left"></i></button></a>
                             </div>
 
                         </div>
@@ -3150,7 +3150,7 @@
 
                             <div>
                                 <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
-                                        class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                                        class="btn btn-info mt-3 "><i class="bi bi-arrow-left"></i></button></a>
                             </div>
 
                         </div>
@@ -3459,7 +3459,7 @@
                                 <h5 class="card-title">Add Experience Details</h5>
                                 <div>
                                     <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
-                                            class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                                            class="btn btn-info mt-3 "><i class="bi bi-arrow-left"></i></button></a>
                                 </div>
                             </div>
 
@@ -3718,7 +3718,7 @@
                             <h5 class="card-title">Add Job Interest</h5>
                             <div>
                                 <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
-                                        class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                                        class="btn btn-info mt-3 "><i class="bi bi-arrow-left"></i></button></a>
                             </div>
                         </div>
                         <!-- Multi Columns Form -->
@@ -3875,7 +3875,7 @@
                             <h5 class="card-title">Add New Skill</h5>
                             <div>
                                 <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
-                                        class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                                        class="btn btn-info mt-3"><i class="bi bi-arrow-left"></i></button></a>
                             </div>
                         </div>
 
@@ -4017,10 +4017,12 @@
                                                     <?php echo $value['phonenumber']; ?>
                                                 </td>
                                                 <td><a href="#" class="text-primary">
-                                                        <?php echo $value['email']; ?>
-                                                    </a></td>
+                                                    <?php echo $value['email']; ?>
+                                                    </a>
+                                                </td>
                                                 <td>
-                                                    <?php echo $value['dateofbirth']; ?>
+                                                    <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth'])); ?>
+                                                    <?php echo $formattedDateOfBirth; ?>
                                                 </td>
                                                 <td><span class="badge bg-danger">Pending</span></td>
                                                 <td class="d-flex py-3">
@@ -4204,7 +4206,8 @@
                                                         <?php echo $value['email']; ?>
                                                     </a></td>
                                                 <td>
-                                                    <?php echo $value['dateofbirth']; ?>
+                                                    <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth'])); ?>
+                                                    <?php echo $formattedDateOfBirth; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $value['verifiedBy']; ?>
@@ -4354,7 +4357,8 @@
                                                         <?php echo $value['email']; ?>
                                                     </a></td>
                                                 <td>
-                                                    <?php echo $value['dateofbirth']; ?>
+                                                    <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth'])); ?>
+                                                    <?php echo $formattedDateOfBirth; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $value['verificationRemarks']; ?>
@@ -4502,7 +4506,8 @@
                                                         <?php echo $value['email']; ?>
                                                     </a></td>
                                                 <td>
-                                                    <?php echo $value['dateofbirth']; ?>
+                                                    <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth'])); ?>
+                                                    <?php echo $formattedDateOfBirth; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $value['deleteRemarks']; ?>
@@ -4898,7 +4903,7 @@
                                             <th scope="col">Verification by</th>
                                             <!-- <th scope="col">Verification status (Admin)</th> -->
                                             <th scope="col">Action</th>
-                                            <th scope="col">Candidates Status</th>
+                                            <!-- <th scope="col">Candidates Status</th> -->
                                             <!-- <th scope="col">Status</th> -->
                                         </tr>
                                     </thead>
@@ -4987,25 +4992,6 @@
                                                         <button type="button" class="btn btn-success d-flex"><i
                                                                 class="bi bi-eye pe-1"></i>View</button></a>
                                                 </td>
-
-                                                <?php
-                                                if ($value['currentStatus'] == 4) {
-                                                    ?>
-                                                    <td>Interviewed</td>
-                                                    <?php
-                                                } else if ($value['currentStatus'] == 5) {
-                                                    ?>
-                                                        <td>Rejected</td>
-                                                <?php 
-                                                } else if ($value['currentStatus'] == 6) {
-                                                    ?>
-                                                        <td>Placed</td>
-                                                <?php 
-                                                } else {
-                                                    ?>
-                                                    <td> - </td>
-                                                    <?php 
-                                                }?>
 
                                             </tr>
                                             <?php
@@ -5138,7 +5124,7 @@
                             <h2 class="text-center pt-2">Candidate Resume</h2>
                             <div>
                                 <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
-                                        class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                                        class="btn btn-info mt-3 "><i class="bi bi-arrow-left"></i></button></a>
                             </div>
                         </div>
 
@@ -5380,7 +5366,7 @@
                                             </table>
                                             <!-- End Table with stripped rows -->
                                         <?php } else { ?>
-                                            <p>No education qualification </p>
+                                            <p>Education qualification is not entered</p>
                                         <?php } ?>
                                         <!-- End Table with stripped rows -->
                                     </div>
@@ -5795,7 +5781,7 @@
 
                             <div>
                                 <a class="" href="<?php echo baseUrl . "admin/overallCandidates" ?>"> <button type="button"
-                                        class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> </button></a>
+                                        class="btn btn-info mt-3 "><i class="bi bi-arrow-left"></i> </button></a>
                             </div>
 
                         </div>
@@ -6035,7 +6021,7 @@
                                                 </tbody>
                                             </table>
                                         <?php } else { ?>
-                                            <p>No education qualification </p>
+                                            <p>Education qualification is not entered</p>
                                         <?php } ?>
                                         <!-- End Table with stripped rows -->
                                     </div>
@@ -6531,7 +6517,8 @@
                                                     <?php echo $value['mobilenum']; ?>
                                                 </td>
                                                 <!-- <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td> -->
-                                                <!-- <td><?php echo $value['dateofbirth']; ?></td> -->
+                                                <!-- <td><?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth'])); ?>
+                                                    <?php echo $formattedDateOfBirth; ?></td> -->
                                                 <td class="d-flex">
                                                     <form action="<?php echo baseUrl . "admin/approveCandidateRequest" ?>"
                                                         method="post">
@@ -6645,6 +6632,14 @@
                                                 } else if ($value['curStatus'] == 4) {
                                                     ?>
                                                         <td><span class="badge bg-success">Interviewed</span></td>
+                                                <?php
+                                            } else if ($value['curStatus'] == 5) {
+                                                ?>
+                                                    <td><span class="badge bg-success">Rejected</span></td>
+                                            <?php
+                                            } else if ($value['curStatus'] == 6) {
+                                                    ?>
+                                                        <td><span class="badge bg-success">Placed</span></td>
                                                 <?php } ?>
                                                 <td>
                                                     <form class="" action="<?php echo baseUrl . "admin/updateCurrentStatus" ?>"
