@@ -6479,6 +6479,10 @@
                                                             value="<?php echo $value['seekerId']; ?>" hidden>
                                                         <input class="form-check-input" type="text" name="employerId" id=""
                                                             value="<?php echo $value['emprid']; ?>" hidden>
+                                                            <input class="form-check-input" type="text" name="providerId" id=""
+                                                            value="<?php echo $value['providerId']; ?>" hidden>
+                                                            <input class="form-check-input" type="text" name="jobCategory" id=""
+                                                            value="<?php echo $value['jobCategory']; ?>" hidden>
                                                         <div class="d-flex align-items-center">
                                                             <div class="">
                                                                 <input type="radio" id="interviwed" name="currentStatus" value="4"

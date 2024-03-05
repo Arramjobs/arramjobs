@@ -270,7 +270,8 @@ class Employer extends CI_Controller
 
     public function resumeCard()
     {
-        $id = $this->uri->segment(3);
+        $id = $this->uri->segment(4);
+        $category = $this->uri->segment(3);
         $this->data['method'] = "resume";
 
 
@@ -283,7 +284,7 @@ class Employer extends CI_Controller
         $projectDetails = $this->EmployerModel->projectDetails($id);
         $this->data['projectDetails'] = $projectDetails;
 
-        $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
+        $areaOfInterest = $this->EmployerModel->areaOfInterest($id,$category);
         $this->data['areaOfInterest'] = $areaOfInterest;
 
         $experienceDetails = $this->EmployerModel->experienceDetails($id);

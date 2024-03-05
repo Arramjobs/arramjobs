@@ -1810,7 +1810,7 @@
                                                                      <?php } else {?>
                                                                      <span class="badge bg-primary">Add request</span></td>
                                                                     <?php } ?>
-                                                                        <td><a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
+                                                                        <td><a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $this->data['category']  ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
                                                                     </td>
                                                                     </tr>
                                                                 <?php
@@ -2139,7 +2139,10 @@
 
                                         <form action="<?php echo baseUrl."employer/requestCandidate" ?>" method="post" >
                                                 <input class="form-check-input" type="text" name="employer_id" id="" value="<?php echo $_SESSION['employerid'] ?>" hidden>
-                                                <input class="form-check-input" type="text" name="candidateid" id="" value="<?php echo $this->data['basicDetails'][0]['id']; ?>" hidden>
+                                                <input class="form-check-input" type="text" name="provider_id" id="" value="<?php echo $_SESSION['jobProviderId'] ?>" hidden>
+                                                <input class="form-check-input" type="text" name="seeker_id" id="" value="<?php echo $this->data['basicDetails'][0]['id']; ?>" hidden>
+                                                <input class="form-check-input" type="text" name="candidate_id" id="" value="<?php echo $this->data['basicDetails'][0]['eeid']; ?>" hidden>
+                                                <input class="form-check-input" type="text" name="category" id="" value="<?php echo $this->data['areaOfInterest'][0]['other_interst_category']; ?>" hidden>
                                                     <input class="form-check-input" type="text" name="requestadmin" id="" value="1" hidden>
 
                                                 <button type="submit" id="candidaterequest" class="btn btn-success printhide" onclick="return confirm('Are you sure you want to send request?')">Request to view details</button>

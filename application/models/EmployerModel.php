@@ -330,11 +330,11 @@ class EmployerModel extends CI_Model
     //   return $result->result_array();
 
     $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(ssk.skill) AS skills,
-     cr.employer_id AS eprid, cr.candidate_id AS cndid, cr.request_status AS rqsts
+     cr.employer_id AS eprid, cr.seeker_id AS cndid, cr.request_status AS rqsts
       FROM seeker_profile_form spf 
       INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
       LEFT JOIN seeker_skill ssk ON ssk.seekerId = spf.id 
-      LEFT JOIN candidate_requests cr ON cr.employer_id = '" . $_SESSION['employerid'] . "' AND cr.candidate_id = spf.id 
+      LEFT JOIN candidate_requests cr ON cr.employer_id = '" . $_SESSION['employerid'] . "' AND cr.seeker_id = spf.id 
       WHERE saoi.other_interst_category = '" . $jobCategory . "' 
       AND spf.identityVerify = '1'
        AND spf.addressVerify = '1'
@@ -365,7 +365,10 @@ class EmployerModel extends CI_Model
     $postData = $this->input->post(null, true);
     $updateRequestStatus = array(
       'employer_id' => $postData['employer_id'],
-      'candidate_id' => $postData['candidateid'],
+      'provider_id' => $postData['provider_id'],
+      'candidate_id' => $postData['candidate_id'],
+      'seeker_id' => $postData['seeker_id'],
+      'job_category' => $postData['category'],
       'request_status' => $postData['requestadmin'],
     );
     $this->db->insert('candidate_requests', $updateRequestStatus);
@@ -436,9 +439,9 @@ class EmployerModel extends CI_Model
     return $project->result_array();
   }
 
-  public function areaOfInterest($id)
+  public function areaOfInterest($id, $category)
   {
-    $areaOfInterest = "SELECT * FROM seeker_area_of_interst WHERE  `seekerId`=$id";
+    $areaOfInterest = "SELECT * FROM seeker_area_of_interst WHERE  `seekerId`=$id AND `other_interst_category`='$category'";
     $areaOfInterest = $this->db->query($areaOfInterest);
     return $areaOfInterest->result_array();
   }

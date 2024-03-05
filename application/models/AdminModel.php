@@ -301,7 +301,7 @@ class AdminModel extends CI_Model
             prf.id AS providerId, prf.erid AS emprid, prf.company_name AS cname
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
-             INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+             INNER JOIN seeker_profile_form spf ON spf.id = cr.seeker_id 
              WHERE cr.request_status = '1' ;";
 
         $response = $this->db->query($candidateRequestList);
@@ -315,7 +315,7 @@ class AdminModel extends CI_Model
             'request_status' => $postData['approveCandidateRequest']
         );
 
-        $this->db->where(array('employer_id' => $postData['employerId'], 'candidate_id' => $postData['seekerId']));
+        $this->db->where(array('employer_id' => $postData['employerId'], 'seeker_id' => $postData['seekerId']));
         $this->db->update('candidate_requests', $updateRequestApprovel);
     }
 
@@ -326,7 +326,7 @@ class AdminModel extends CI_Model
             'request_status' => $postData['cancelCandidateRequest']
         );
 
-        $this->db->where(array('employer_id' => $postData['employerId'], 'candidate_id' => $postData['seekerId']));
+        $this->db->where(array('employer_id' => $postData['employerId'], 'seeker_id' => $postData['seekerId']));
         $this->db->update('candidate_requests', $updateRequestApprovel);
     }
 
@@ -443,7 +443,7 @@ class AdminModel extends CI_Model
             prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, prf.company_name AS compName
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
-             INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+             INNER JOIN seeker_profile_form spf ON spf.id = cr.seeker_id 
              WHERE (cr.request_status = '6');";
         $response = $this->db->query($candidatechartList);
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
@@ -455,7 +455,7 @@ class AdminModel extends CI_Model
             prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, prf.company_name AS compName
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
-             INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+             INNER JOIN seeker_profile_form spf ON spf.id = cr.seeker_id 
              WHERE (cr.request_status = '5');";
         $response = $this->db->query($candidatechartList);
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
@@ -464,10 +464,10 @@ class AdminModel extends CI_Model
     public function candidateChartDetails()
     {
         $candidatechartList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
-            prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus
+            prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus , cr.job_category AS jobCategory
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
-             INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+             INNER JOIN seeker_profile_form spf ON spf.id = cr.seeker_id 
              WHERE (cr.request_status = '3' OR cr.request_status = '4');";
         $response = $this->db->query($candidatechartList);
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
@@ -481,7 +481,7 @@ class AdminModel extends CI_Model
             'request_status' => $postData['currentStatus']
         );
 
-        $this->db->where('candidate_id', $postData['seekerId']);
+        $this->db->where('seeker_id', $postData['seekerId']);
         $this->db->where('employer_id', $postData['employerId']);
         $this->db->update('candidate_requests', $currentStatus);
     }
@@ -498,6 +498,16 @@ class AdminModel extends CI_Model
             );
             $this->db->where('id', $postData['seekerId']);
             $this->db->update('seeker_profile_form', $currentStatus);
+        }
+
+        if ($postData['currentStatus'] == '6') {
+
+            $this->db->set('number_of_openings', 'number_of_openings - 1', FALSE);
+            $this->db->where('jobProviderId', $postData['providerId']);
+            $this->db->where('jobCategory', $postData['jobCategory']);
+            $this->db->update('provider_job');
+            
+
         }
     }
 
