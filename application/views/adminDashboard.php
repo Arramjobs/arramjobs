@@ -4856,15 +4856,8 @@
                     </nav>
                 </div><!-- End Page Title -->
                 <!-- Recent Sales -->
-                <div class="col-12">
-                    <!-- <div class="card recent-sales overflow-auto"> -->
-                    <div>
-                        <div class="card-body">
-
-                            <?php
-                            if (isset($this->data['overallEmployees'][0]['name'])) {
-                                ?>
-                                <div class="d-sm-flex ">
+                <div class="col-12">      
+                         <div class="d-sm-flex">
                                     <h5 class="card-title me-5">Overall List<span></span></h5>
                                     <div class="filter pt-3 ms-5">
                                         <p class="icon" href="#" data-bs-toggle="dropdown" style="cursor:pointer;"> Filter <i
@@ -4909,6 +4902,13 @@
                                         </ul>
                                     </div>
                                 </div>
+                    <div class="card recent-sales overflow-auto">              
+                        <div class="card-body pt-4">
+
+                            <?php
+                            if (isset($this->data['overallEmployees'][0]['name'])) {
+                                ?>
+                               
                                 <!-- <table class="table table-borderless datatable"> -->
                                 <table class="table" id="myTableCd">
                                     <thead>
@@ -4922,7 +4922,7 @@
                                             <th scope="col">Verification by</th>
                                             <!-- <th scope="col">Verification status (Admin)</th> -->
                                             <th scope="col">Action</th>
-                                            <!-- <th scope="col">Candidates Status</th> -->
+                                            <th scope="col">Candidates Status</th>
                                             <!-- <th scope="col">Status</th> -->
                                         </tr>
                                     </thead>
@@ -5012,7 +5012,7 @@
                                                                 class="bi bi-eye pe-1"></i>View</button></a>
                                                 </td>
                                                                         
-                                                <!-- <?php
+                                                <?php
                                                 if ($value['curStatus'] == 6) {
                                                     ?>
                                                         <td><span class="badge bg-success"><i class="bi bi-check2-circle"></i> Placed </span> </td>
@@ -5022,7 +5022,7 @@
                                                     ?>
                                                     <td><span class="badge bg-primary"><i class="bi bi-check2"></i> Available </span> </td>
                                                     <?php 
-                                                }?> -->
+                                                }?>
 
                                             </tr>
                                             <?php
@@ -5030,7 +5030,7 @@
                                         }
                                         ?>
                                     </tbody>
-                                    <p class="text-end " style="margin-top:-40px">Count : <b>
+                                    <p class="text-end " style="margin-top:-54px">Count : <b>
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
