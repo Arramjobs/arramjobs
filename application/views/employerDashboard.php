@@ -313,13 +313,13 @@
                                 </ol>
                             </nav>
                         </div><!-- End Page Title -->
-                        <div class="card">
-                            <div class="card-body">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between mb-3">
                                 <h5 class="card-title">Company Details</h5>
-                                <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info mt-4 "> Next  <i class="bi bi-arrow-right pe-2"></i></button></a>
+                                <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info"> Next  <i class="bi bi-arrow-right pe-2"></i></button></a>
                                 </div>
 
+                        <div class="card">
+                            <div class="card-body mt-3">
 
                                 <?php
                                 foreach($this->data['providerDetail'] as $key => $value) {
@@ -792,16 +792,16 @@
                             </nav>
                         </div><!-- End Page Title -->
                         <div class="col-12">
-                            <div class="card recent-sales overflow-auto">
-
-                                <div class="card-body">
-                                <!-- <h5 class="card-title">Jobs</h5> -->
-
                                 <div class="d-flex justify-content-between mt-4">
                                      
                                 <a  href="#addjobs"><button type="button" class="btn btn-success mb-4" onclick="addjob()">+ Add Job Requirements</button></a>
                                          <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left pe-2"></i> Previous</button></a>
                                         </div>
+                            <div class="card recent-sales overflow-auto">
+
+                                <div class="card-body mt-4">
+                                <!-- <h5 class="card-title">Jobs</h5> -->
+
                                     <?php
                                     if(isset($this->data['providerJobs'][0]['company_name'])) {
                                         ?>
@@ -1440,16 +1440,16 @@
                             </nav>
                         </div><!-- End Page Title -->
 
+                        <div class="d-flex justify-content-between">
+                        <h5 class="card-title">Jobs</h5>
+        
+                  <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left pe-2"></i> Previous</button></a>
+                 </div>
                         <div class="card recent-sales overflow-auto">
 
-    <div class="card-body">
-    <h5 class="card-title">Jobs</h5>
-
-    <div class="d-flex justify-content-between">
-         
+    <div class="card-body mt-4">
+    
     <a href="<?php echo baseUrl."Employer/jobViewTable" ?>"><button type="button" class="btn btn-success mb-4" >+ Add Job Requirements</button></a>
-             <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left pe-2"></i> Previous</button></a>
-            </div>
         <?php
         if(isset($this->data['providerJobs'][0]['company_name'])) {
             ?>
@@ -1913,14 +1913,15 @@
                                         <div class="col">
                                         </div>
                                         <div class="pagetitle pt-3 d-flex justify-content-between">
-                                            <h2 class=" text-center py-8 d-flex">Candidate Resume</h2>
+                                            <h2 class=" text-center d-flex">Candidate Resume</h2>
                                             <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-secondary mb-4 "><i class="bi bi-arrow-left pe-2"></i> Back</button></a>
                                         </div>
                                         <?php
                                         foreach($this->data['basicDetails'] as $nkey => $nvalue) {
                                             ?>
-                                                <p class="d-flex flex-row-reverse">Candidate ID : <?php echo $nvalue['eeid'] ?></p>
+                                                
                                                 <h2 class="h2 text-secondary p-2 text-uppercase text-center pb-3"><?php echo $nvalue['name']; ?></h2>
+                                                <p class="text-center flex-row-reverse pb-3">Candidate ID : <?php echo $nvalue['eeid'] ?></p>
                                                  <?php
                                             foreach($this->data['canReqStatus'] as $key => $value) {
                                                 if (isset($value['request_status']) && $value['request_status'] == '3') {?>
@@ -1931,6 +1932,7 @@
                                             if (isset($value['request_status']) && $value['request_status'] == '3') { ?>
                                             <div class="text-sm-end mt-4" >
                                                <p><?php echo $nvalue['phonenumber'] ?></p>
+                                               <p><?php echo $nvalue['phonenumber1'] ?></p>
                                                 <p><?php echo $nvalue['email'] ?></p>
                                                 <p><?php echo $nvalue['buildingName'] ?>, <?php echo $nvalue['address'] ?></p>
                                                 <p><?php echo $nvalue['district'] ?>, <?php echo $nvalue['pincode'] ?></p>

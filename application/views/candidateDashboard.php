@@ -491,8 +491,8 @@
                 <div class="col-md-6">
                   <label for="phonenumber1" class="form-label">Emergency Mobile Number </label>
                   <input type="number" class="form-control" id="phonenumber1" value="<?php echo $value['phonenumber1']; ?>"
-                    name="phonenumber1" pattern="[0-9]{1,15}" maxlength="10" oninput="validatePhoneNumber1(this)" required
-                    onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                    name="phonenumber1" pattern="[0-9]{1,15}" maxlength="10" oninput="validatePhoneNumber1(this)" placeholder="-"
+                    required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                   <div id="phonenumber_error" style="color: red;"></div>
                 </div>
 
@@ -1095,6 +1095,17 @@
           </nav>
         </div><!-- End Page Title -->
         <div class="col-12">
+
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title">Education Table</h5>
+            <div>
+                  <a class="" href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button"
+                      class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> </button></a>
+                  <a class="" href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button"
+                      class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
+                </div>
+            </div>
+
           <div class="card recent-sales overflow-auto">
 
             <div class="card-body pt-4">
@@ -1107,12 +1118,7 @@
 
                 <a href="#addeduform"><button onclick="addeduformfunction()" type="button" class="btn btn-success mb-4">+
                     Add Education</button></a>
-                <div>
-                  <a class="" href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button"
-                      class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> </button></a>
-                  <a class="" href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button"
-                      class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
-                </div>
+                
               </div>
               <?php
               if (isset($educationTable[0]['id'])) {
@@ -1778,6 +1784,15 @@
           </nav>
         </div><!-- End Page Title -->
         <div class="col-12">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title">Education Table</h5>
+            <div>
+                  <a href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button"
+                      class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                  <a href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button"
+                      class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
+                </div>
+            </div>
           <div class="card recent-sales overflow-auto">
 
             <div class="card-body pt-4">
@@ -1790,12 +1805,7 @@
 
                 <a href="#addeduform"><button onclick="addeduformfunction()" type="button" class="btn btn-success mb-4"
                     disabled>+ Add Education</button></a>
-                <div>
-                  <a href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button"
-                      class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
-                  <a href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button"
-                      class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
-                </div>
+                
               </div>
               <?php
               if (isset($educationTable[0]['id'])) {
@@ -2435,18 +2445,18 @@
           </nav>
         </div>
         <div class="col-12">
-          <div class="card recent-sales overflow-auto">
-
-            <div class="card-body">
-              <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between">
                 <h5 class="card-title">Experience Table<span></span></h5>
-                <div class="pt-4">
+                <div class="pt-10">
                   <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>">
                     <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
                   <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
                     <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
                 </div>
               </div>
+          <div class="card recent-sales overflow-auto">
+
+            <div class="card-body">              
 
               <div class="exptableheading" id="fresherExp">
                 <p style="font-size:18px; font-weight: bold; color: #007BFF;">Kindly mention your work experience and work
@@ -2471,7 +2481,7 @@
                 </form>
               </div>
 
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between pt-4">
                 <a class="" href="#addexpform">
                   <button id="expAddButton" style="display:none;" type="button" onclick="addexpform()"
                     class="btn btn-success mb-4">+ Add Experience</button></a>
@@ -3017,20 +3027,24 @@
             </ol>
           </nav>
         </div><!-- End Page Title -->
-
+        <div class="d-flex justify-content-between">
+        <h5 class="card-title">Experience Table<span></span></h5>
+        <div style="float:right;">
+              <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button type="button"
+                  class="btn btn-info mb-8 "><i class="bi bi-arrow-left"></i></button></a>
+              <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button type="button"
+                  class="btn btn-info mb-8 "><i class="bi bi-arrow-right"></i></button></a>
+            </div>
+        </div>
         <div class="card recent-sales overflow-auto">
 
           <div class="card-body">
-
-            <h5 class="card-title">Experience Table<span></span></h5>
+            
+            <div class="mt-3">
             <a class="" href="#addexpform"><button type="button" class="btn btn-success m-2" disabled>+ Add
                 Experience</button></a>
-            <div style="float:right;">
-              <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button type="button"
-                  class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
-              <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button type="button"
-                  class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
             </div>
+            
             <?php
             if (isset($experienceTable[0]['id'])) {
               $count = 1;
@@ -3499,22 +3513,24 @@
           </nav>
         </div><!-- End Page Title -->
         <div class="col-12">
-          <div class="card recent-sales overflow-auto">
-
-            <div class="card-body">
-
-              <h5 class="card-title">Area of Job Interest Table<span></span></h5>
-
-              <div class="d-flex justify-content-between">
-                <a class="" href="#addinterestform">
-                  <button type="button" class="btn btn-success mb-4" onclick="addinterestform()">+ Add Area of Job
-                    interest</button></a>
-                <div>
+        <div class="d-flex justify-content-between">
+        <h5 class="card-title">Area of Job Interest Table<span></span></h5>
+                  <div>
                   <a class="" href="<?php echo baseUrl . "Candidate/experienceTable" ?>">
                     <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
                   <a class="" href="<?php echo baseUrl . "Candidate/resume" ?>">
                     <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
+                  </div>
+              
                 </div>
+
+          <div class="card recent-sales overflow-auto">
+
+            <div class="card-body">
+              <div class="mt-3">
+                <a class="" href="#addinterestform">
+                  <button type="button" class="btn btn-success mb-4" onclick="addinterestform()">+ Add Area of Job
+                    interest</button></a>                
               </div>
               <?php
               if (isset($areaOfIntrestTable[0]['id'])) {
@@ -4281,22 +4297,24 @@
             </ol>
           </nav>
         </div><!-- End Page Title -->
-
-        <div class="card recent-sales overflow-auto">
-
-          <div class="card-body">
-
+        <div class="d-flex justify-content-between">
             <h5 class="card-title">Area of Job Interest Table<span></span></h5>
-            <div class="d-flex justify-content-between">
-              <a class="" href="#addinterestform">
-                <button type="button" class="btn btn-success mb-4" disabled>+ Add Area of Job Interest</button></a>
-              <div>
+        <div>
                 <a href="<?php echo baseUrl . "Candidate/experienceTable" ?>"> <button type="button"
                     class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
                 <a href="<?php echo baseUrl . "Candidate/resume" ?>"> <button type="button" class="btn btn-info mb-4 "><i
                       class="bi bi-arrow-right"></i></button></a>
-              </div>
+              </div>              
             </div>
+
+        <div class="card recent-sales overflow-auto">
+
+          <div class="card-body">
+            <div class="mt-3">
+            <a class="" href="#addinterestform">
+                <button type="button" class="btn btn-success mb-4" disabled>+ Add Area of Job Interest</button></a>
+            </div>                     
+              
             <?php
             if (isset($areaOfIntrestTable[0]['id'])) {
               $count = 1;
@@ -4794,12 +4812,14 @@
             </ol>
           </nav>
         </div><!-- End Page Title -->
-        <div class="card">
-          <div class="card-body pt-4">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title">Upload Resume</h5>
             <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
               <button type="button" class="btn btn-info"><i class="bi bi-arrow-left"></i></button></a>
+            </div>
 
-            <h5 class="card-title">Upload Resume</h5>
+        <div class="card">
+          <div class="card-body pt-4">            
 
             <!-- Multi Columns Form -->
             <form class="row g-3 needs-validation" novalidate name="resumeform" id="resumeForm" method="post"

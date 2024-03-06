@@ -58,7 +58,9 @@
         #year_passed::-webkit-outer-spin-button,
         #year_passed::-webkit-inner-spin-button,
         #phonenumber::-webkit-outer-spin-button,
-        #phonenumber::-webkit-inner-spin-button {
+        #phonenumber::-webkit-inner-spin-button,
+        #phonenumber1::-webkit-outer-spin-button,
+        #phonenumber1::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
@@ -2105,12 +2107,12 @@
                                 <div class="col-md-6">
                                     <label for="inputEmail5" class="form-label">Role</label>
                                     <input type="text" class="form-control" id="inputEmail5"
-                                        value="<?php echo $value['role'] ?>" readonlyname="role" required>
+                                        value="<?php echo $value['role'] ?>" readonly name="role" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputNumber5" class="form-label">Mobile Number</label>
                                     <input type="number" class="form-control" id="inputNumber5"
-                                        value="<?php echo $value['mobile_number'] ?>" readonlyname="mobile1" required
+                                        value="<?php echo $value['mobile_number'] ?>" readonly name="mobile1" required
                                         onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 </div>
                                 <div class="col-md-6">
@@ -2589,9 +2591,15 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="yourEmail" class="form-label">Candidate Mobile Number <span
+                                <label for="phonenumber" class="form-label">Candidate Mobile Number <span
                                         class="text-danger">*</span></label>
-                                <input type="number" name="phonenumber" class="form-control" id="yourEmail" required
+                                <input type="number" name="phonenumber" class="form-control" id="phonenumber" required
+                                    onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                                <div class="invalid-feedback">Please, enter mobile number!</div>
+                            </div>
+                            <div class="col-12">
+                                <label for="phonenumber1" class="form-label">Candidate Mobile Number 2</label>
+                                <input type="number" name="phonenumber1" class="form-control" id="phonenumber1"
                                     onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 <div class="invalid-feedback">Please, enter mobile number!</div>
                             </div>
@@ -2712,6 +2720,14 @@
                                         maxlength="15" oninput="validatePhoneNumber1(this)"
                                         onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                     <div id="phonenumber_error" style="color: red;"></div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="phonenumber1" class="form-label">Emergency Mobile Number</label>
+                                    <input type="number" class="form-control" id="phonenumber1"
+                                        value="<?php echo $value['phonenumber1']; ?>" name="phonenumber1" pattern="[0-9]{1,15}"
+                                        maxlength="15" oninput="validatePhoneNumber1(this)"
+                                        onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 </div>
 
                                 <div class="col-md-6">
@@ -3103,6 +3119,7 @@
                     var x = document.applicationform.name.value;
                     var y = document.applicationform.email.value;
                     var p = document.applicationform.phonenumber.value;
+                    var p1 = document.applicationform.phonenumber1.value;
                     var d = document.applicationform.dateofbirth.value;
                     var ag = document.applicationform.age.value;
                     var g = document.applicationform.gender.value;
@@ -4840,8 +4857,8 @@
                 </div><!-- End Page Title -->
                 <!-- Recent Sales -->
                 <div class="col-12">
-                    <div class="card recent-sales overflow-auto">
-
+                    <!-- <div class="card recent-sales overflow-auto"> -->
+                    <div>
                         <div class="card-body">
 
                             <?php
@@ -4905,7 +4922,7 @@
                                             <th scope="col">Verification by</th>
                                             <!-- <th scope="col">Verification status (Admin)</th> -->
                                             <th scope="col">Action</th>
-                                            <th scope="col">Candidates Status</th>
+                                            <!-- <th scope="col">Candidates Status</th> -->
                                             <!-- <th scope="col">Status</th> -->
                                         </tr>
                                     </thead>
@@ -4995,7 +5012,7 @@
                                                                 class="bi bi-eye pe-1"></i>View</button></a>
                                                 </td>
                                                                         
-                                                <?php
+                                                <!-- <?php
                                                 if ($value['curStatus'] == 6) {
                                                     ?>
                                                         <td><span class="badge bg-success"><i class="bi bi-check2-circle"></i> Placed </span> </td>
@@ -5005,7 +5022,7 @@
                                                     ?>
                                                     <td><span class="badge bg-primary"><i class="bi bi-check2"></i> Available </span> </td>
                                                     <?php 
-                                                }?>
+                                                }?> -->
 
                                             </tr>
                                             <?php
@@ -5170,6 +5187,9 @@
                                                     </p>
                                                     <p>
                                                         <?php echo $value['phonenumber'] ?> <i class="bi bi-phone"></i>
+                                                    </p>
+                                                    <p>
+                                                        <?php echo $value['phonenumber1'] ?> <i class="bi bi-phone"></i>
                                                     </p>
                                                     <p>
                                                         <?php echo $value['buildingName'] ?>,
@@ -5824,6 +5844,9 @@
                                                 <div class="text-end mt-2">
                                                     <p>
                                                         <?php echo $value['phonenumber'] ?>
+                                                    </p>
+                                                    <p>
+                                                        <?php echo $value['phonenumber1'] ?>
                                                     </p>
                                                     <p>
                                                         <?php echo $value['email'] ?>
