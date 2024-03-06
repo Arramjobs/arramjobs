@@ -4858,7 +4858,7 @@
                 <!-- Recent Sales -->
                 <div class="col-12">      
                          <div class="d-sm-flex">
-                                    <h5 class="card-title me-5">Overall List<span></span></h5>
+                                    <h5 class="card-title me-5">Overall List<span></span></h5> 
                                     <div class="filter pt-3 ms-5">
                                         <p class="icon" href="#" data-bs-toggle="dropdown" style="cursor:pointer;"> Filter <i
                                                 class="bi bi-chevron-down"></i>
