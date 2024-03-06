@@ -240,6 +240,7 @@ class AdminModel extends CI_Model
     }
 
     public function overallEmployees()
+
     {
         // $overallEmployees = "SELECT spf.id AS seekerId, spf.name AS name, spf.eeid AS eeid, spf.phonenumber AS phonenumber, spf.phonenumber1 AS phonenumber1,
         //                     spf.email AS email, spf.dateTime as dateTime, spf.verifiedBy AS verifiedBy, spf.identityverify AS identityverify,
@@ -251,6 +252,7 @@ class AdminModel extends CI_Model
         // $response = $this->db->query($overallEmployees);
         // return $response->result_array();
         
+
         $overallEmployees = "SELECT * FROM `seeker_profile_form`";
         $response = $this->db->query($overallEmployees);
         return $response->result_array();
