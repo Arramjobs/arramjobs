@@ -5008,9 +5008,9 @@
                           <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank">
                               <?php echo $value['aadharback_filename'] ?>
                             </a></td>
-                          <td><a href="<?php echo $value['aadharnumber'] ?>">
+                          <td>
                               <?php echo $value['aadharnumber'] ?>
-                            </a></td>
+                          </td>
                         </tr>
                         <?php
                     }

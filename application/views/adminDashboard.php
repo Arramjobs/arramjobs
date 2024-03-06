@@ -5013,7 +5013,7 @@
                                                 </td>
                                                                         
                                                 <?php
-                                                if ($value['curStatus'] == 6) {
+                                                if ($value['currentStatus'] == 1) {
                                                     ?>
                                                         <td><span class="badge bg-success"><i class="bi bi-check2-circle"></i> Placed </span> </td>
                                                                                            
@@ -5550,7 +5550,7 @@
                                             <!-- End Table with stripped rows -->
                                         <?php 
                                     } else { ?>
-                                        <td>No skills</td>
+                                        <td>Skill is not entered</td>
                                    <?php } ?>
 
                                     </div>
@@ -5616,7 +5616,7 @@
 
                                     
                                 <?php } else { ?>
-                                            <p>No details entered</p>
+                                            <p>Area of job interest is not entered</p>
                                         
                                 <?php } ?>
                                 
@@ -6208,7 +6208,7 @@
                                             <!-- End Table with stripped rows -->
                                         <?php 
                                     } else { ?>
-                                        <td>No skills</td>
+                                        <td>Skill is not entered</td>
                                    <?php } ?>
 
                                     </div>
@@ -6274,7 +6274,7 @@
 
                                     
                                 <?php } else { ?>
-                                            <p>No details entered</p>
+                                            <p>Area of job interest is not entered</p>
                                         
                                 <?php } ?>
                                 
