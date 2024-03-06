@@ -5013,7 +5013,7 @@
                                                 </td>
                                                                         
                                                 <?php
-                                                if ($value['curStatus'] == 6) {
+                                                if ($value['currentStatus'] == 1) {
                                                     ?>
                                                         <td><span class="badge bg-success"><i class="bi bi-check2-circle"></i> Placed </span> </td>
                                                                                            
