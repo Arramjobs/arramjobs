@@ -241,9 +241,16 @@ class AdminModel extends CI_Model
 
     public function overallEmployees()
     {
-        $overallEmployees = "SELECT * FROM `seeker_profile_form`";
+        $overallEmployees = "SELECT spf.id AS seekerId, spf.name AS name, spf.eeid AS eeid, spf.phonenumber AS phonenumber,
+                            spf.email AS email,spf.dateTime as dateTime, spf.verifiedBy AS verifiedBy, spf.identityverify AS identityverify,
+                            spf.id AS id, spf.addressverify AS addressverify, spf.employmentverify AS employmentverify, spf.educationverify AS educationverify, cr.request_status AS curStatus 
+                            FROM  candidate_requests cr
+                            INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
+                            INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+                            WHERE (cr.request_status = '1' OR cr.request_status = '2' OR cr.request_status = '3' OR cr.request_status = '4' OR cr.request_status = '5' OR cr.request_status = '6');";
         $response = $this->db->query($overallEmployees);
         return $response->result_array();
+
     }
 
     public function verifyEmployeeDetails()
@@ -521,6 +528,33 @@ class AdminModel extends CI_Model
 
             $currentStatus = array(
                 'currentStatus' => '1'
+            );
+            $this->db->where('id', $postData['seekerId']);
+            $this->db->update('seeker_profile_form', $currentStatus);
+        }
+    }
+
+    public function employerStatus()
+    {
+        $postData = $this->input->post(null, true);
+        $currentStatus = array(
+            'request_status' => $postData['currentStatus']
+        );
+
+        $this->db->where('employer_id', $postData['seekerId']);
+        $this->db->where('employer_id', $postData['employerId']);
+        $this->db->update('employer_requests', $currentStatus);
+    }
+
+
+    // Seeker Profile Form
+    public function currentStatusSpfEmp()
+    {
+        $postData = $this->input->post(null, true);
+        if ($postData['currentStatus'] == '6') {
+
+            $currentStatus = array(
+                'currentStatus' => '0'
             );
             $this->db->where('id', $postData['seekerId']);
             $this->db->update('seeker_profile_form', $currentStatus);

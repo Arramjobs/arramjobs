@@ -182,6 +182,7 @@ class EmployerModel extends CI_Model
     $data = array(
       'company_name' => $postData['name'],
       'company_mobile_number' => $postData['phno'],
+      'password' => $postData['password'],
       'company_email' => $postData['email'],
       'street_address' => $postData['addr'],
       'Landmark' => $postData['landmark1'],

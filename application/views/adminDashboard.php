@@ -1717,10 +1717,10 @@
                         </ol>
                     </nav>
                 </div><!-- End Page Title -->
-                <div class="col-12">
+                <!--<div class="col-12">
                     <div class="card recent-sales overflow-auto">
 
-                        <!-- <div class="filter">
+                         <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
@@ -4603,6 +4603,7 @@
                                             <th scope="col">Candidate Name</th>
                                             <th scope="col">Candidate Mobile Number</th>
                                             <th scope="col">Status</th>
+                                            <!-- <th scope="col">Action</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -4631,6 +4632,7 @@
                                                     <?php echo $value['mobilenum']; ?>
                                                 </td>
                                                 <td><span class="badge bg-success">Placed</span></td>
+                                                                                                
                                             </tr>
                                             <?php
                                             $loopcount++;
@@ -4903,7 +4905,7 @@
                                             <th scope="col">Verification by</th>
                                             <!-- <th scope="col">Verification status (Admin)</th> -->
                                             <th scope="col">Action</th>
-                                            <!-- <th scope="col">Candidates Status</th> -->
+                                            <th scope="col">Candidates Status</th>
                                             <!-- <th scope="col">Status</th> -->
                                         </tr>
                                     </thead>
@@ -4992,6 +4994,18 @@
                                                         <button type="button" class="btn btn-success d-flex"><i
                                                                 class="bi bi-eye pe-1"></i>View</button></a>
                                                 </td>
+                                                                        
+                                                <?php
+                                                if ($value['curStatus'] == 6) {
+                                                    ?>
+                                                        <td><span class="badge bg-success"><i class="bi bi-check2-circle"></i> Placed </span> </td>
+                                                                                           
+                                                        <?php } 
+                                                else {
+                                                    ?>
+                                                    <td><span class="badge bg-primary"><i class="bi bi-check2"></i> Available </span> </td>
+                                                    <?php 
+                                                }?>
 
                                             </tr>
                                             <?php
@@ -6632,14 +6646,7 @@
                                                 } else if ($value['curStatus'] == 4) {
                                                     ?>
                                                         <td><span class="badge bg-success">Interviewed</span></td>
-                                                <?php
-                                            } else if ($value['curStatus'] == 5) {
-                                                ?>
-                                                    <td><span class="badge bg-success">Rejected</span></td>
-                                            <?php
-                                            } else if ($value['curStatus'] == 6) {
-                                                    ?>
-                                                        <td><span class="badge bg-success">Placed</span></td>
+                                                                                           
                                                 <?php } ?>
                                                 <td>
                                                     <form class="" action="<?php echo baseUrl . "admin/updateCurrentStatus" ?>"
@@ -6736,12 +6743,10 @@
                                         <td>
                                             <?php echo $loopcount; ?>.
                                         </td>
-                                        <td><?php echo $value['compName']; ?> /<a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>" target="blank">
+                                        <td><?php echo $value['compName']; ?> /<a href="<?php echo baseUrl . "admin/overallEmployers/" . $value['providerId'] ?>" target="blank">
                                                 <?php echo $value['emprid']; ?>
                                             </a></td>
-                                        <!-- <td><?php echo $value['name']; ?> / <a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>" target="blank">
-                                                <?php echo $value['cdid']; ?>
-                                            </a></td> -->
+                                        
                                             <td>
                                             <?php echo $value['jobsCategory'] ?>
                                         </td>
@@ -6753,7 +6758,7 @@
                                                     <?php
                                                 } else if ($value['curStatus'] == 4) {
                                                     ?>
-                                                        <td><span class="badge bg-success">Interviewed</span></td>
+                                                        <td><span class="badge bg-success">Interviewed</span></td>                                               
                                                 <?php } 
                                                 else {
                                                     ?>

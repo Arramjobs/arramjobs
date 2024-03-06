@@ -455,8 +455,8 @@ class Admin extends CI_Controller
     public function updateCurrentStatusEmp()
     {
         $postData = $this->input->post(null, true);
-        $updateStatus = $this->AdminModel->candidateStatus();
-        $currentStatus = $this->AdminModel->currentStatusSpf();
+        $updateStatus = $this->AdminModel->employerStatus();
+        $currentStatus = $this->AdminModel->currentStatusSpfEmp();
         $this->employerChart();
     }
 

@@ -165,7 +165,10 @@
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h6><?php echo $_SESSION['jobProviderUsername']; ?></h6>
-                            <span>Employer</span>
+                            <p class="pt-2">
+                                <?php echo $_SESSION['employerid']; ?>
+                            </p>
+                            <span>Employer</span>                          
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -1765,7 +1768,9 @@
             </script>
                     <section class="usertable">
                         <div class="pagetitle">
-                            <h1>Job Matched Candidates</h1>
+                            <div class="d-flex justify-content-between mt-4">
+                            <h1>Job Matched Candidates</h1>                            
+                            </div>
                             <nav>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
@@ -1827,7 +1832,7 @@
                                                                         <?php } ?>
 
                                                                         <td><a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">Candidate Resume</button></a>
-                                                                    </td>
+                                                                        </td>
 
                                                                         <td><?php if($value['rqsts']== 1 && $value['eprid'] == $_SESSION['employerid']){ ?>
                                                                         <span class="badge bg-warning"><i class="bi bi-check"></i> Requested to view</span></td>
@@ -1863,7 +1868,10 @@
                                             <?php
                                     } else {
                                         ?>
-                                                <h5 class="card-title">No Records Found<span></span></h5>
+                                                <div class="d-flex justify-content-between mt-4">
+                                                <h5 class="card-title">No Records Found</h5>
+                                                <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info "><i class="bi bi-arrow-left"></i> Back </button></a>
+                                                </div>
                                             <?php
                                     }
                                     ?>
@@ -1904,8 +1912,9 @@
                                     <div class="row">
                                         <div class="col">
                                         </div>
-                                        <div class="pagetitle">
-                                            <h2 class=" text-center py-3 ">Candidate Resume</h2>
+                                        <div class="pagetitle pt-3 d-flex justify-content-between">
+                                            <h2 class=" text-center py-8 d-flex">Candidate Resume</h2>
+                                            <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-secondary mb-4 "><i class="bi bi-arrow-left pe-2"></i> Back</button></a>
                                         </div>
                                         <?php
                                         foreach($this->data['basicDetails'] as $nkey => $nvalue) {
