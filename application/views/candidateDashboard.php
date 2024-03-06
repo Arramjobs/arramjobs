@@ -42,6 +42,8 @@
     #percentage::-webkit-inner-spin-button,
     #phonenumber::-webkit-outer-spin-button,
     #phonenumber::-webkit-inner-spin-button,
+    #phonenumber1::-webkit-outer-spin-button,
+    #phonenumber1::-webkit-inner-spin-button,
     #number::-webkit-outer-spin-button,
     #number::-webkit-inner-spin-button,
     #company_mobilenum::-webkit-outer-spin-button,
@@ -477,6 +479,7 @@
                 </div>
                 <div class="text-secondary" style="font-size:15px;display:none;margin:0px" id="passwordmessage">Enter the
                   date of birth in DDMMYYYY (01051996).</div>
+
                 <div class="col-md-6">
                   <label for="phonenumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
                   <input type="number" class="form-control" id="phonenumber" value="<?php echo $value['phonenumber']; ?>"
@@ -484,6 +487,15 @@
                     onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                   <div id="phonenumber_error" style="color: red;"></div>
                 </div>
+
+                <div class="col-md-6">
+                  <label for="phonenumber1" class="form-label">Emergency Mobile Number </label>
+                  <input type="number" class="form-control" id="phonenumber1" value="<?php echo $value['phonenumber1']; ?>"
+                    name="phonenumber1" pattern="[0-9]{1,15}" maxlength="10" oninput="validatePhoneNumber1(this)" required
+                    onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                  <div id="phonenumber_error" style="color: red;"></div>
+                </div>
+
                 <div class="col-md-6">
                   <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
                   <input type="date" class="form-control" id="dateofbirth" value="<?php echo $value['dateofbirth']; ?>"
@@ -849,6 +861,7 @@
           var x = document.applicationform.name.value;
           var y = document.applicationform.email.value;
           var p = document.applicationform.phonenumber.value;
+          var p1 = document.applicationform.phonenumber1.value;
           var d = document.applicationform.dateofbirth.value;
           var ag = document.applicationform.age.value;
           var g = document.applicationform.gender.value;
@@ -4908,6 +4921,9 @@
                         <div class="text-end mt-2">
                           <p>
                             <?php echo $value['phonenumber'] ?>
+                          </p>
+                          <p>
+                            <?php echo $value['phonenumber1'] ?>
                           </p>
                           <p>
                             <?php echo $value['email'] ?>

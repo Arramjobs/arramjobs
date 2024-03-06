@@ -203,6 +203,7 @@ public function get_latest_customer_id()
             'email' => $postData['email'],
             'password' => $postData['password'],
             'phonenumber' => $postData['phonenumber'],
+            'phonenumber1' => $postData['phonenumber1'],
             'dateofbirth' => $postData['dateofbirth'],
             'age' => $postData['age'],
             'gender' => $postData['gender'],
