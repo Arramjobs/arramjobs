@@ -435,6 +435,15 @@ class Admin extends CI_Controller
         $this->load->view('adminDashboard.php', $this->data);
     }
 
+    public function employerChart()
+    {
+        $this->data['method'] = "employerChart";
+        $employerChartList = $this->AdminModel->employerChartDetails();
+        $this->data['employerChartList'] = $employerChartList["response"];
+        $this->setVariable();
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
     public function updateCurrentStatus()
     {
         $postData = $this->input->post(null, true);
@@ -443,11 +452,28 @@ class Admin extends CI_Controller
         $this->candidateChart();
     }
 
+    public function updateCurrentStatusEmp()
+    {
+        $postData = $this->input->post(null, true);
+        $updateStatus = $this->AdminModel->employerStatus();
+        $currentStatus = $this->AdminModel->currentStatusSpfEmp();
+        $this->employerChart();
+    }
+
     public function placedCandidate()
     {
         $this->data['method'] = "placedCandidates";
         $candidateplaced = $this->AdminModel->placedCandidatesList();
         $this->data['placedCandidates'] = $candidateplaced["response"];
+        $this->setVariable();
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
+    public function interviewedCandidate()
+    {
+        $this->data['method'] = "interviewedCandidates";
+        $candidateinterviewed = $this->AdminModel->interviewedCandidatesList();
+        $this->data['interviewedCandidates'] = $candidateinterviewed["response"];
         $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }

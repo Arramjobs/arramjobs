@@ -42,6 +42,8 @@
     #percentage::-webkit-inner-spin-button,
     #phonenumber::-webkit-outer-spin-button,
     #phonenumber::-webkit-inner-spin-button,
+    #phonenumber1::-webkit-outer-spin-button,
+    #phonenumber1::-webkit-inner-spin-button,
     #number::-webkit-outer-spin-button,
     #number::-webkit-inner-spin-button,
     #company_mobilenum::-webkit-outer-spin-button,
@@ -49,6 +51,10 @@
       -webkit-appearance: none;
       margin: 0;
     }
+
+    th {
+    white-space: nowrap;
+}
 
     /* Education Autocomplete */
     .autocomplete-items div {
@@ -473,6 +479,7 @@
                 </div>
                 <div class="text-secondary" style="font-size:15px;display:none;margin:0px" id="passwordmessage">Enter the
                   date of birth in DDMMYYYY (01051996).</div>
+
                 <div class="col-md-6">
                   <label for="phonenumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
                   <input type="number" class="form-control" id="phonenumber" value="<?php echo $value['phonenumber']; ?>"
@@ -480,6 +487,15 @@
                     onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                   <div id="phonenumber_error" style="color: red;"></div>
                 </div>
+
+                <div class="col-md-6">
+                  <label for="phonenumber1" class="form-label">Emergency Mobile Number </label>
+                  <input type="number" class="form-control" id="phonenumber1" value="<?php echo $value['phonenumber1']; ?>"
+                    name="phonenumber1" pattern="[0-9]{1,15}" maxlength="10" oninput="validatePhoneNumber1(this)" placeholder="-"
+                    required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                  <div id="phonenumber_error" style="color: red;"></div>
+                </div>
+
                 <div class="col-md-6">
                   <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
                   <input type="date" class="form-control" id="dateofbirth" value="<?php echo $value['dateofbirth']; ?>"
@@ -845,6 +861,7 @@
           var x = document.applicationform.name.value;
           var y = document.applicationform.email.value;
           var p = document.applicationform.phonenumber.value;
+          var p1 = document.applicationform.phonenumber1.value;
           var d = document.applicationform.dateofbirth.value;
           var ag = document.applicationform.age.value;
           var g = document.applicationform.gender.value;
@@ -1078,6 +1095,17 @@
           </nav>
         </div><!-- End Page Title -->
         <div class="col-12">
+
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title">Education Table</h5>
+            <div>
+                  <a class="" href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button"
+                      class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> </button></a>
+                  <a class="" href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button"
+                      class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
+                </div>
+            </div>
+
           <div class="card recent-sales overflow-auto">
 
             <div class="card-body pt-4">
@@ -1090,12 +1118,7 @@
 
                 <a href="#addeduform"><button onclick="addeduformfunction()" type="button" class="btn btn-success mb-4">+
                     Add Education</button></a>
-                <div>
-                  <a class="" href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button"
-                      class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i> </button></a>
-                  <a class="" href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button"
-                      class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
-                </div>
+                
               </div>
               <?php
               if (isset($educationTable[0]['id'])) {
@@ -1761,6 +1784,15 @@
           </nav>
         </div><!-- End Page Title -->
         <div class="col-12">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title">Education Table</h5>
+            <div>
+                  <a href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button"
+                      class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                  <a href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button"
+                      class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
+                </div>
+            </div>
           <div class="card recent-sales overflow-auto">
 
             <div class="card-body pt-4">
@@ -1773,12 +1805,7 @@
 
                 <a href="#addeduform"><button onclick="addeduformfunction()" type="button" class="btn btn-success mb-4"
                     disabled>+ Add Education</button></a>
-                <div>
-                  <a href="<?php echo baseUrl . "Candidate/basicdetails" ?>"> <button type="button"
-                      class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
-                  <a href="<?php echo baseUrl . "Candidate/experiencetable" ?>"> <button type="button"
-                      class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
-                </div>
+                
               </div>
               <?php
               if (isset($educationTable[0]['id'])) {
@@ -2418,18 +2445,18 @@
           </nav>
         </div>
         <div class="col-12">
-          <div class="card recent-sales overflow-auto">
-
-            <div class="card-body">
-              <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between">
                 <h5 class="card-title">Experience Table<span></span></h5>
-                <div class="pt-4">
+                <div class="pt-10">
                   <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>">
                     <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
                   <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
                     <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
                 </div>
               </div>
+          <div class="card recent-sales overflow-auto">
+
+            <div class="card-body">              
 
               <div class="exptableheading" id="fresherExp">
                 <p style="font-size:18px; font-weight: bold; color: #007BFF;">Kindly mention your work experience and work
@@ -2454,7 +2481,7 @@
                 </form>
               </div>
 
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between pt-4">
                 <a class="" href="#addexpform">
                   <button id="expAddButton" style="display:none;" type="button" onclick="addexpform()"
                     class="btn btn-success mb-4">+ Add Experience</button></a>
@@ -2507,8 +2534,11 @@
                             <?php echo $value['other_sub_category'] ?>
                           </td>
                           <td>
-                            <?php echo $value['expYear'] ?> -
-                            <?php echo $value['expMonth'] ?>
+                            <?php $formattedexpYear = date('d-m-Y', strtotime($value['expYear'])); ?>
+                            <?php echo $formattedexpYear; ?>  <br> to <br>
+
+                            <?php $formattedexpMonth = date('d-m-Y', strtotime($value['expMonth'])); ?>
+                            <?php echo $formattedexpMonth; ?>
                           </td>
                           <td>
                             <?php echo $value['company_name'] ?>
@@ -2997,20 +3027,24 @@
             </ol>
           </nav>
         </div><!-- End Page Title -->
-
+        <div class="d-flex justify-content-between">
+        <h5 class="card-title">Experience Table<span></span></h5>
+        <div style="float:right;">
+              <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button type="button"
+                  class="btn btn-info mb-8 "><i class="bi bi-arrow-left"></i></button></a>
+              <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button type="button"
+                  class="btn btn-info mb-8 "><i class="bi bi-arrow-right"></i></button></a>
+            </div>
+        </div>
         <div class="card recent-sales overflow-auto">
 
           <div class="card-body">
-
-            <h5 class="card-title">Experience Table<span></span></h5>
+            
+            <div class="mt-3">
             <a class="" href="#addexpform"><button type="button" class="btn btn-success m-2" disabled>+ Add
                 Experience</button></a>
-            <div style="float:right;">
-              <a class="" href="<?php echo baseUrl . "Candidate/educationTable" ?>"> <button type="button"
-                  class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
-              <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>"> <button type="button"
-                  class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
             </div>
+            
             <?php
             if (isset($experienceTable[0]['id'])) {
               $count = 1;
@@ -3479,22 +3513,24 @@
           </nav>
         </div><!-- End Page Title -->
         <div class="col-12">
-          <div class="card recent-sales overflow-auto">
-
-            <div class="card-body">
-
-              <h5 class="card-title">Area of Job Interest Table<span></span></h5>
-
-              <div class="d-flex justify-content-between">
-                <a class="" href="#addinterestform">
-                  <button type="button" class="btn btn-success mb-4" onclick="addinterestform()">+ Add Area of Job
-                    interest</button></a>
-                <div>
+        <div class="d-flex justify-content-between">
+        <h5 class="card-title">Area of Job Interest Table<span></span></h5>
+                  <div>
                   <a class="" href="<?php echo baseUrl . "Candidate/experienceTable" ?>">
                     <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
                   <a class="" href="<?php echo baseUrl . "Candidate/resume" ?>">
                     <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
+                  </div>
+              
                 </div>
+
+          <div class="card recent-sales overflow-auto">
+
+            <div class="card-body">
+              <div class="mt-3">
+                <a class="" href="#addinterestform">
+                  <button type="button" class="btn btn-success mb-4" onclick="addinterestform()">+ Add Area of Job
+                    interest</button></a>                
               </div>
               <?php
               if (isset($areaOfIntrestTable[0]['id'])) {
@@ -4261,22 +4297,24 @@
             </ol>
           </nav>
         </div><!-- End Page Title -->
-
-        <div class="card recent-sales overflow-auto">
-
-          <div class="card-body">
-
+        <div class="d-flex justify-content-between">
             <h5 class="card-title">Area of Job Interest Table<span></span></h5>
-            <div class="d-flex justify-content-between">
-              <a class="" href="#addinterestform">
-                <button type="button" class="btn btn-success mb-4" disabled>+ Add Area of Job Interest</button></a>
-              <div>
+        <div>
                 <a href="<?php echo baseUrl . "Candidate/experienceTable" ?>"> <button type="button"
                     class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
                 <a href="<?php echo baseUrl . "Candidate/resume" ?>"> <button type="button" class="btn btn-info mb-4 "><i
                       class="bi bi-arrow-right"></i></button></a>
-              </div>
+              </div>              
             </div>
+
+        <div class="card recent-sales overflow-auto">
+
+          <div class="card-body">
+            <div class="mt-3">
+            <a class="" href="#addinterestform">
+                <button type="button" class="btn btn-success mb-4" disabled>+ Add Area of Job Interest</button></a>
+            </div>                     
+              
             <?php
             if (isset($areaOfIntrestTable[0]['id'])) {
               $count = 1;
@@ -4774,12 +4812,14 @@
             </ol>
           </nav>
         </div><!-- End Page Title -->
-        <div class="card">
-          <div class="card-body pt-4">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title">Upload Resume</h5>
             <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
               <button type="button" class="btn btn-info"><i class="bi bi-arrow-left"></i></button></a>
+            </div>
 
-            <h5 class="card-title">Upload Resume</h5>
+        <div class="card">
+          <div class="card-body pt-4">            
 
             <!-- Multi Columns Form -->
             <form class="row g-3 needs-validation" novalidate name="resumeform" id="resumeForm" method="post"
@@ -4903,6 +4943,9 @@
                             <?php echo $value['phonenumber'] ?>
                           </p>
                           <p>
+                            <?php echo $value['phonenumber1'] ?>
+                          </p>
+                          <p>
                             <?php echo $value['email'] ?>
                           </p>
                           <p>
@@ -4922,7 +4965,8 @@
                       <div class="d-sm-flex justify-content-between pt-4">
                         <div>
                           <p>D.O.B :
-                            <?php echo $value['dateofbirth'] ?>
+                          <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth'])); ?>
+                          <?php echo $formattedDateOfBirth; ?>
                           </p>
                           <p>Age :
                             <?php echo $value['age'] ?>
@@ -4981,180 +5025,184 @@
               <div class="card-body">
 
                 <h5 class="card-title">Educational Qualification</h5>
-                <?php
-                if (isset($education[0]['id']) && !empty($education)) {
-                  ?>
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">S.No</th>
-                        <th scope="col">Educational Qualification</th>
-                        <th scope="col">Specialiization</th>
-                        <th scope="col">Mode of Education</th>
-                        <th scope="col">Institution Name</th>
-                        <th scope="col">Percentage</th>
-                        <th scope="col">Year of Passed Out</th>
-                        <th scope="col">Certificates</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      if (isset($educationTable[0]['id'])) {
-                        $count = 1;
-                        foreach ($educationTable as $key => $value) {
-                          ?>
-                          <tr>
-                            <td>
-                              <?php echo $count; ?>.
-                            </td>
-                            <td>
-                              <?php echo $value['educational_qualification'] ?>
-                            </td>
-                            <!-- <td><?php echo $value['department'] ?></td> -->
-                            <?php
-                            if (
-                              $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                              $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                              $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
-                              $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                              $value['educational_qualification'] === "B.Pharm" ||  $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
-                              $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                              $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                              $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
-                              $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
-                              $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
-                              $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
-                              $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
-                            ) {
-                              ?>
-                              <td>
-                                <?php echo $value['department'] ?>
-                              </td>
-                              <?php
-                            } else {
-                              ?>
-                              <td>NA</a></td>
-                              <?php
-                            }
-                            ?>
-                            <?php
-                            if (
-                              $value['educationmode'] == "Corres"
-                            ) {
-                              ?>
-                              <td>Correspondence</td>
-                              <?php
-                            } else {
-                              ?>
-                              <td>Regular</td>
-                              <?php
-                            }
-                            ?>
-                            <td>
-                              <?php echo $value['school_college_name'] ?>
-                            </td>
-                            <!-- <td><?php echo $value['percentage'] ?></td> -->
-                            <?php
-                            if (
-                              $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                              $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                              $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
-                              $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                              $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
-                              $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                              $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                              $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
-                              $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
-                              $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
-                              $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
-                              $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM" ||
-                              $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "12th/HSC"
-                            ) {
-                              ?>
-                              <td>
-                                <?php echo $value['percentage'] ?>
-                              </td>
-                              <?php
-                            } else {
-                              ?>
-                              <td>NA</a></td>
-                              <?php
-                            }
-                            ?>
-                            <td>
-                              <?php echo $value['yearOfPassing'] ?>
-                            </td>
-                            <?php
-                            if ($value['educational_qualification'] == '10th/SSLC') {
-                              ?>
-                              <td><a href="<?php echo $value['tencer_url'] ?>" target="blank">
-                                  <?php echo $value['ten_cer'] ?>
-                                </a></td>
-                              <?php
-                            } else if ($value['educational_qualification'] == '12th/HSC') {
-                              ?>
-                                <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank">
-                                  <?php echo $value['twelve_cer'] ?>
-                                  </a></td>
-                              <?php
-                            } else if (
-                              $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm"
-                            ) {
-                              ?>
-                                  <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank">
-                                  <?php echo $value['diploma_cer'] ?>
-                                    </a></td>
-                              <?php
-                            } else if (
-                              $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                              $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                              $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
-                              $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                              $value['educational_qualification'] === "B.Pharm"
-                            ) {
-                              ?>
-                                    <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
-                                  <?php echo $value['ug_cer'] ?>
-                                      </a></td>
-                              <?php
-                            } else if (
-                              $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                              $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                              $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
-                              $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
-                              $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm"
-                            ) {
-                              ?>
-                                      <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank">
-                                  <?php echo $value['pg_cer'] ?>
-                                        </a></td>
-                              <?php
-                            } else if (
-                              $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
-                              $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
-                            ) {
-                              ?>
-                                        <td><a href="<?php echo $value['doccer_url'] ?>" target="blank">
-                                  <?php echo $value['doc_cer'] ?>
-                                          </a></td>
-                              <?php
-                            } else {
-                              ?>
-                                        <td>NA</a></td>
-                              <?php
-                            }
-                            ?>
-                          </tr>
+                 <?php
+                                        if (isset($educationTable[0]['id']) && !empty($educationTable)) {
+                                            ?>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">S.No</th>
+                      <th scope="col">Educational Qualification</th>
+                      <th scope="col">Specialiization</th>
+                      <th scope="col">Mode of Education</th>
+                      <th scope="col">Institution Name</th>
+                      <th scope="col">Percentage</th>
+                      <th scope="col">Year of Passed Out</th>
+                      <th scope="col">Certificates</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    if (isset($educationTable[0]['id'])) {
+                      $count = 1;
+                      foreach ($educationTable as $key => $value) {
+                        ?>
+                        <tr>
+                          <td>
+                            <?php echo $count; ?>.
+                          </td>
+                          <td>
+                            <?php echo $value['educational_qualification'] ?>
+                          </td>
+                          <!-- <td><?php echo $value['department'] ?></td> -->
                           <?php
-                          $count++;
-                        }
+                          if (
+                            $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                            $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                            $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
+                            $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
+                            $value['educational_qualification'] === "B.Pharm" ||
+                            $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
+                            $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                            $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                            $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
+                            $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
+                            $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
+                            $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
+                            $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
+
+                          ) {
+                            ?>
+                            <td>
+                              <?php echo $value['department'] ?>
+                            </td>
+                            <?php
+                          } else {
+                            ?>
+                            <td>NA</a></td>
+                            <?php
+                          }
+                          ?>
+                          <!-- <td><?php echo $value['educationmode'] ?></td> -->
+                          <?php
+                          if (
+                            $value['educationmode'] == "Corres"
+                          ) {
+                            ?>
+                            <td>Correspondence</td>
+                            <?php
+                          } else {
+                            ?>
+                            <td>Regular</td>
+                            <?php
+                          }
+                          ?>
+                          <td>
+                            <?php echo $value['school_college_name'] ?>
+                          </td>
+                          <!-- <td><?php echo $value['percentage'] ?></td> -->
+                          <?php
+                          if (
+                            $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                            $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                            $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
+                            $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
+                            $value['educational_qualification'] === "B.Pharm" ||
+                            $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
+                            $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                            $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                            $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
+                            $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
+                            $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
+                            $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
+                            $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM" ||
+                            $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "12th/HSC"
+                          ) {
+                            ?>
+                            <td>
+                              <?php echo $value['percentage'] ?>
+                            </td>
+                            <?php
+                          } else {
+                            ?>
+                            <td>NA</a></td>
+                            <?php
+                          }
+                          ?>
+                          <td>
+                            <?php echo $value['yearOfPassing'] ?>
+                          </td>
+                          <?php
+                          if ($value['educational_qualification'] == '10th/SSLC') {
+                            ?>
+                            <td><a href="<?php echo $value['tencer_url'] ?>" target="blank">
+                                <?php echo $value['ten_cer'] ?>
+                              </a></td>
+                            <?php
+                          } else if ($value['educational_qualification'] == '12th/HSC') {
+                            ?>
+                              <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank">
+                                <?php echo $value['twelve_cer'] ?>
+                                </a></td>
+                            <?php
+                          } else if (
+                            $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm"
+                          ) {
+                            ?>
+                                <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank">
+                                <?php echo $value['diploma_cer'] ?>
+                                  </a></td>
+                            <?php
+                          } else if (
+                            $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                            $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                            $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
+                            $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
+                            $value['educational_qualification'] === "B.Pharm"
+                          ) {
+                            ?>
+                                  <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
+                                <?php echo $value['ug_cer'] ?>
+                                    </a></td>
+                            <?php
+                          } else if (
+                            $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                            $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                            $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
+                            $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" || $value['educational_qualification'] === "LLM" ||
+                            $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm"
+                          ) {
+                            ?>
+                                    <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank">
+                                <?php echo $value['pg_cer'] ?>
+                                      </a></td>
+                            <?php
+                          } else if (
+                            $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
+                            $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
+                          ) {
+                            ?>
+                                      <td><a href="<?php echo $value['doccer_url'] ?>" target="blank">
+                                <?php echo $value['doc_cer'] ?>
+                                        </a></td>
+                            <?php
+                          } else {
+                            ?>
+                                      <td>NA</a></td>
+                            <?php
+                          }
+                          ?>
+                        </tr>
+                        <?php
+                        $count++;
                       }
-                      ?>
-                    </tbody>
-                  </table>
+                    }
+                    ?>
+                  </tbody>
+                </table>
                 <?php } else { ?>
-                  <p>Education qualification is not entered</p>
-                <?php } ?>
+                                            <p>Education qualification is not entered</p>
+                                        <?php } ?>
               </div>
             </div>
 
@@ -5177,9 +5225,9 @@
                           <th scope="col">Company Location</th>
                           <th scope="col">Job Role</th>
                           <th scope="col">Company Mobile Number</th>
-                          <th scope="col">Previous Job\'s Reference Name</th>
-                          <th scope="col">Previous Job\'s Reference Mobile number</th>
-                          <th scope="col">Previous Job\'s Reference Email</th>
+                          <th scope="col">Previous Job's Reference Name</th>
+                          <th scope="col">Previous Job's Reference Mobile number</th>
+                          <th scope="col">Previous Job's Reference Email</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -5197,9 +5245,14 @@
                             <td>
                               <?php echo $ivalue['other_sub_category'] ?>
                             </td>
-                            <td>
-                              <?php echo $ivalue['expYear'] ?> -
-                              <?php echo $ivalue['expMonth'] ?>
+                            <td>                            
+
+                              <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
+                              <?php echo $formattedexpYear; ?>  <br> to <br>
+
+                              <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
+                              <?php echo $formattedexpMonth; ?>
+
                             </td>
                             <td>
                               <?php echo $ivalue['company_name'] ?>
@@ -5228,8 +5281,7 @@
                         } ?>
                       </tbody>
                     </table>
-                    <p id="noexperience">This candidate is a fresher or did not have any work experience
-                      after graduation.</p>
+                    <p id="noexperience">Fresher / No experience after graduation.</p>
                   <?php } else { ?>
                     <div id="fresherContent">
                       <p>Experience is not entered.</p>

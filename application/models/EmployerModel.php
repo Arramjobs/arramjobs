@@ -182,6 +182,7 @@ class EmployerModel extends CI_Model
     $data = array(
       'company_name' => $postData['name'],
       'company_mobile_number' => $postData['phno'],
+      'password' => $postData['password'],
       'company_email' => $postData['email'],
       'street_address' => $postData['addr'],
       'Landmark' => $postData['landmark1'],
@@ -330,10 +331,11 @@ class EmployerModel extends CI_Model
     //   return $result->result_array();
 
     $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(ssk.skill) AS skills,
-     cr.employer_id AS eprid, cr.candidate_id AS cndid, cr.request_status AS rqsts
+     cr.employer_id AS eprid, cr.candidate_id AS cndid, cr.request_status AS rqsts, GROUP_CONCAT(se.workStatus) AS experienceTable
       FROM seeker_profile_form spf 
       INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
-      LEFT JOIN seeker_skill ssk ON ssk.seekerId = spf.id 
+      LEFT JOIN seeker_skill ssk ON ssk.seekerId = spf.id
+      LEFT JOIN seeker_experience se ON se.seekerId = spf.id 
       LEFT JOIN candidate_requests cr ON cr.employer_id = '" . $_SESSION['employerid'] . "' AND cr.candidate_id = spf.id 
       WHERE saoi.other_interst_category = '" . $jobCategory . "' 
       AND spf.identityVerify = '1'

@@ -47,7 +47,9 @@
         #expected_salaryu::-webkit-outer-spin-button,
         #expected_salaryu::-webkit-inner-spin-button,
         #inputPincode::-webkit-outer-spin-button,
-        #inputPincode::-webkit-inner-spin-button{
+        #inputPincode::-webkit-inner-spin-button,
+        #no_of_openings::-webkit-outer-spin-button,
+        #no_of_openings::-webkit-inner-spin-button{
             -webkit-appearance: none;
             margin: 0;
             }
@@ -68,6 +70,10 @@
                 visibility: hidden;
             }
         }
+
+        th {
+    white-space: nowrap;
+}
 
         /* Sidebar changes */
 
@@ -159,7 +165,10 @@
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h6><?php echo $_SESSION['jobProviderUsername']; ?></h6>
-                            <span>Employer</span>
+                            <p class="pt-2">
+                                <?php echo $_SESSION['employerid']; ?>
+                            </p>
+                            <span>Employer</span>                          
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -304,13 +313,13 @@
                                 </ol>
                             </nav>
                         </div><!-- End Page Title -->
-                        <div class="card">
-                            <div class="card-body">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between mb-3">
                                 <h5 class="card-title">Company Details</h5>
-                                <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info mt-4 "> Next  <i class="bi bi-arrow-right pe-2"></i></button></a>
+                                <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info"> Next  <i class="bi bi-arrow-right pe-2"></i></button></a>
                                 </div>
 
+                        <div class="card">
+                            <div class="card-body mt-3">
 
                                 <?php
                                 foreach($this->data['providerDetail'] as $key => $value) {
@@ -783,16 +792,16 @@
                             </nav>
                         </div><!-- End Page Title -->
                         <div class="col-12">
-                            <div class="card recent-sales overflow-auto">
-
-                                <div class="card-body">
-                                <!-- <h5 class="card-title">Jobs</h5> -->
-
                                 <div class="d-flex justify-content-between mt-4">
                                      
                                 <a  href="#addjobs"><button type="button" class="btn btn-success mb-4" onclick="addjob()">+ Add Job Requirements</button></a>
-                                         <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left pe-2"></i>Previous</button></a>
+                                         <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left pe-2"></i> Previous</button></a>
                                         </div>
+                            <div class="card recent-sales overflow-auto">
+
+                                <div class="card-body mt-4">
+                                <!-- <h5 class="card-title">Jobs</h5> -->
+
                                     <?php
                                     if(isset($this->data['providerJobs'][0]['company_name'])) {
                                         ?>
@@ -824,7 +833,7 @@
                                                                     <tr>
                                                                         <td><a ><?php echo $countjobs++; ?>.</a></td>
                                                                         <td><?php echo $twelveHourTime ?></td>
-                                                                        <td><?php echo $value['jobSubCategory'] ?>             <?php echo $value['jobCategory'] ?></td>
+                                                                        <td><?php echo $value['jobCategory'] ?>             <?php echo $value['jobSubCategory'] ?></td>
                                                                         <td><?php echo $value['location'] ?></td>
                                                                         <td><?php echo $value['job_type'] ?></td>
                                                                         <td><?php echo $value['salary'] ?></td>
@@ -954,7 +963,8 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="no_of_openings">No of Openings <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" min="0" required >
+                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" min="0" required 
+                            onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                             <div id="no_of_openings_error" class="error"></div>
                         </div>
                         <div class="col-md-12">
@@ -1247,7 +1257,8 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="no_of_openings">No of Openings </label>
-                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" min="0" required>
+                            <input type="number" class="form-control" id="no_of_openings" name="no_of_openings" min="0" required
+                            onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                             <div id="no_of_openings_error" class="error"></div>
                         </div>
                         <div class="col-md-6">
@@ -1429,16 +1440,16 @@
                             </nav>
                         </div><!-- End Page Title -->
 
+                        <div class="d-flex justify-content-between">
+                        <h5 class="card-title">Jobs</h5>
+        
+                  <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left pe-2"></i> Previous</button></a>
+                 </div>
                         <div class="card recent-sales overflow-auto">
 
-    <div class="card-body">
-    <h5 class="card-title">Jobs</h5>
-
-    <div class="d-flex justify-content-between">
-         
+    <div class="card-body mt-4">
+    
     <a href="<?php echo baseUrl."Employer/jobViewTable" ?>"><button type="button" class="btn btn-success mb-4" >+ Add Job Requirements</button></a>
-             <a  href="<?php echo baseUrl."Employer/updateRegistration" ?>"> <button type="button" class="btn btn-info mb-4 ">Previous</button></a>
-            </div>
         <?php
         if(isset($this->data['providerJobs'][0]['company_name'])) {
             ?>
@@ -1564,8 +1575,8 @@
                                     <div id="preferred_location_error" class="error"></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label" for="preferred_location_url">Location URL: <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="preferred_location_url" value="<?php echo $value['locationUrl']; ?>" name="preferred_location_url" pattern="https?://.+" required>
+                                    <label class="form-label" for="preferred_location_url">Job Location URL:</label>
+                                    <input type="text" class="form-control" id="preferred_location_url" value="<?php echo $value['locationUrl']; ?>" name="preferred_location_url" pattern="https?://.+">
                                     <div id="preferred_location_url_error" class="error"></div>
                                 </div>
                                 <div class="col-md-6">
@@ -1588,7 +1599,8 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label"  for="no_of_openings">No of Openings: <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" id="no_of_openings" value="<?php echo $value['number_of_openings']; ?>" name="no_of_openings" min="0" required>
+                                    <input type="number" class="form-control" id="no_of_openings" value="<?php echo $value['number_of_openings']; ?>" name="no_of_openings" min="0" required
+                                    onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                     <div id="no_of_openings_error" class="error"></div>
                                 </div>
                                 <div class="col-md-12">
@@ -1632,8 +1644,8 @@
                        var preferred_location = document.getElementById("preferred_location");
                        var preferred_locationError = document.getElementById("preferred_location_error");
 
-                       var preferred_location_url = document.getElementById("preferred_location_url");
-                       var preferred_locationurlError = document.getElementById("preferred_location_url_error");
+                    //    var preferred_location_url = document.getElementById("preferred_location_url");
+                    //    var preferred_locationurlError = document.getElementById("preferred_location_url_error");
 
                        var expected_salary = document.getElementById("expected_salary");
                        var expected_salaryError = document.getElementById('expected_salary_error');
@@ -1690,14 +1702,14 @@
                            }
 
 
-                           if (preferred_location_url.value.trim() === "") {
-                                // alert("Please enter a preferred location")
-                                displayError('Location URL must be filled out', 'preferred_location_url_error');
-                                // document.experienceform.preferred_location.focus();
-                                return false;
-                            } else if (preferred_location_url.value !== '') {
-                                preferred_locationurlError.innerHTML = '';
-                            }
+                        //    if (preferred_location_url.value.trim() === "") {
+                        //         alert("Please enter a preferred location")
+                        //         displayError('Location URL must be filled out', 'preferred_location_url_error');
+                        //         document.experienceform.preferred_location.focus();
+                        //         return false;
+                        //     } else if (preferred_location_url.value !== '') {
+                        //         preferred_locationurlError.innerHTML = '';
+                        //     }
 
 
                            if (jobtype.value.trim() === "") {
@@ -1756,7 +1768,9 @@
             </script>
                     <section class="usertable">
                         <div class="pagetitle">
-                            <h1>Job Matched Candidates</h1>
+                            <div class="d-flex justify-content-between mt-4">
+                            <h1>Job Matched Candidates</h1>                            
+                            </div>
                             <nav>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
@@ -1764,15 +1778,17 @@
                                 </ol>
                             </nav>
                         </div><!-- End Page Title -->
-                        <div class="col-12">
-                            <div class="card recent-sales overflow-auto">
 
-                            <div> <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info m-4 "><i class="bi bi-arrow-left pe-2"></i>Back</button></a> </div>
+                        <div class="col-12">
+                            <div class="card recent-sales overflow-auto">            
                                 <div class="card-body">
                                     <?php
                                     if(isset($this->data['response'][0]['name'])) {
                                         ?>
-                                                <h5 class="card-title">Matched Candidates<span></span></h5>
+                                        <div class="d-flex justify-content-between mt-4"> 
+                                                <h5 class="card-title">Matched Candidates</h5>
+                                                <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info m-4 "><i class="bi bi-arrow-left pe-2"></i>Back</button></a>
+                                        </div>
 
                                                 <table class="table mt-4">
                                                     <thead>
@@ -1782,9 +1798,10 @@
                                                             <th scope="col">Name</th>
                                                             <th scope="col">Category</th>
                                                             <th scope="col">Subcategory</th>
+                                                            <th scope="col">Experience</th>
                                                             <th scope="col">Skills</th>
-                                                            <th scope="col">Status</th>
                                                             <th scope="col">Action</th>
+                                                            <th scope="col">Status</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -1798,35 +1815,63 @@
                                                                         <td><?php echo $value['name'] ?> </td>
                                                                         <td><?php echo $value['oic'] ?></td>
                                                                         <td><?php echo $value['oisc'] ?></td>
+                                                                        
+                                                                        <?php if($value['experienceTable']== "1" ){ ?>
+                                                                        <td>Fresher</td>
+                                                                        <?php  } 
+                                                                        else if($value['experienceTable']== "0" ){ ?> 
+                                                                        <td>Experienced</td>
+                                                                        <?php } else { ?>
+                                                                        <td>Not mentioned</td> 
+                                                                        <?php }?>                                                                        
+                                                                        
                                                                         <?php if(isset($value['skills'])){ ?>
                                                                         <td><?php echo $value['skills'] ?></td>
                                                                         <?php } else {?>
                                                                         <td>No skills</td>
                                                                         <?php } ?>
+
+                                                                        <td><a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">Candidate Resume</button></a>
+                                                                        </td>
+
                                                                         <td><?php if($value['rqsts']== 1 && $value['eprid'] == $_SESSION['employerid']){ ?>
-                                                                        <span class="badge bg-secondary">Requested</span></td>
-                                                                           <?php  } else if($value['rqsts']== 3 && $value['eprid']== $_SESSION['employerid']){ ?> 
-                                                                     <span class="badge bg-success">Approved</span></td>
-                                                                     <?php } else {?>
-                                                                     <span class="badge bg-primary">Add request</span></td>
-                                                                    <?php } ?>
-                                                                        <td><a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-warning">Candidate Resume</button></a>
-                                                                    </td>
+                                                                        <span class="badge bg-warning"><i class="bi bi-check"></i> Requested to view</span></td>
+
+                                                                        <td> <?php  } else if($value['rqsts']== 3 && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                        <span class="badge bg-primary"><i class="bi bi-check2"></i> Approved to view</span></td>
+
+                                                                        <td> <?php  } else if($value['rqsts']== 2 && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                        <span class="badge bg-dark"><i class="bi bi-x"></i> Request cancelled</span></td>
+
+                                                                        <td> <?php  } else if($value['rqsts']== 4  && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                        <span class="badge bg-success"><i class="bi bi-check2-all"></i> Interviewed</span></td>
+
+                                                                        <td> <?php  } else if($value['rqsts']== 5 && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                        <span class="badge bg-danger"><i class="bi bi-x-lg"></i> Rejected</span></td>
+
+                                                                        <?php } else {?>
+
+                                                                        <span class="badge bg-info">Request to view</span></td>
+                                                                        <?php } ?>                                                                        
+
                                                                     </tr>
                                                                 <?php
                                                     }
                                                     ?>
                                                     </tbody>
                                                     <div class="d-flex justify-content-between">
-                                            <p>Registered id : <?php echo $employerid = $_SESSION['employerid']; ?></p>
-                                            <p>Category : <?php echo $this->data['category'] ?></p>
-                                            <p>Count : <?php echo $count - 1; ?></p>
+                                            <b><p style="color:#4BBCF0">Registered id : <?php echo $employerid = $_SESSION['employerid']; ?></p></b>
+                                            <b><p style="color:#4BBCF0">Category : <?php echo $this->data['category'] ?></p></b>
+                                            <b><p style="color:#E72868">Count : <?php echo $count - 1; ?></p></b>
                                             </div>
                                                 </table>
                                             <?php
                                     } else {
                                         ?>
-                                                <h5 class="card-title">No Records Found<span></span></h5>
+                                                <div class="d-flex justify-content-between mt-4">
+                                                <h5 class="card-title">No Records Found</h5>
+                                                <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-info "><i class="bi bi-arrow-left"></i> Back </button></a>
+                                                </div>
                                             <?php
                                     }
                                     ?>
@@ -1835,6 +1880,22 @@
                             </div>
                         </div><!-- End Recent Sales -->
                     </section>
+
+                    <script>
+                        <?php
+                    if ($experienceTable[0]['workStatus'] == '0') {
+                        ?>
+                        document.getElementById("expTable").style.display = "block";
+                        document.getElementById("noexperience").style.display = "none";
+
+                    <?php
+                    } else if($experienceTable[0]['workStatus'] == '1'){?>
+                        document.getElementById("expTable").style.display = "none";
+                        document.getElementById("noexperience").style.display = "block";
+
+                    <?php
+                    }  ?>
+                 </script>
 
                     <?php
         } elseif($method == "resume") {
@@ -1851,14 +1912,16 @@
                                     <div class="row">
                                         <div class="col">
                                         </div>
-                                        <div class="pagetitle">
-                                            <h2 class=" text-center py-3 ">Candidate Resume</h2>
+                                        <div class="pagetitle pt-3 d-flex justify-content-between">
+                                            <h2 class=" text-center d-flex">Candidate Resume</h2>
+                                            <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-secondary mb-4 "><i class="bi bi-arrow-left pe-2"></i> Back</button></a>
                                         </div>
                                         <?php
                                         foreach($this->data['basicDetails'] as $nkey => $nvalue) {
                                             ?>
-                                                <p class="d-flex flex-row-reverse">Candidate ID : <?php echo $nvalue['eeid'] ?></p>
+                                                
                                                 <h2 class="h2 text-secondary p-2 text-uppercase text-center pb-3"><?php echo $nvalue['name']; ?></h2>
+                                                <p class="text-center flex-row-reverse pb-3">Candidate ID : <?php echo $nvalue['eeid'] ?></p>
                                                  <?php
                                             foreach($this->data['canReqStatus'] as $key => $value) {
                                                 if (isset($value['request_status']) && $value['request_status'] == '3') {?>
@@ -1869,18 +1932,18 @@
                                             if (isset($value['request_status']) && $value['request_status'] == '3') { ?>
                                             <div class="text-sm-end mt-4" >
                                                <p><?php echo $nvalue['phonenumber'] ?></p>
+                                               <p><?php echo $nvalue['phonenumber1'] ?></p>
                                                 <p><?php echo $nvalue['email'] ?></p>
                                                 <p><?php echo $nvalue['buildingName'] ?>, <?php echo $nvalue['address'] ?></p>
                                                 <p><?php echo $nvalue['district'] ?>, <?php echo $nvalue['pincode'] ?></p>
                                                 </div>
                                             </div>
-                                          <?php
-                                        }            
-                                            if (isset($value['request_status']) && $value['request_status'] == '3') {
-                                                ?>
+                                          
                                     <div class="d-sm-flex justify-content-between" >
                                         <div>
-                                            <p><b>D.O.B :</b> <?php echo $nvalue['dateofbirth'] ?></p>
+                                            <p><b>D.O.B :</b> 
+                                            <?php $formattedDateOfBirth = date('d-m-Y', strtotime($nvalue['dateofbirth'])); ?>
+                                            <?php echo $formattedDateOfBirth; ?></p>
                                             <p><b>Age : </b><?php echo $nvalue['age'] ?></p>
                                         </div>
                                         <div>
@@ -1890,89 +1953,246 @@
                                     </div>
 
                                     <?php
-                                            }
+                                            break;
                                         }
                                         }
+                                        ?>
+                                         <?php
+                                            break;
+                                        }
+                                        
                                         ?>
                                     </div>
                                 </div>
 
                                 <div class="card recent-sales overflow-auto">
                                     <div class="card-body">
-                                        <h5 class="card-title">Educational Qualification</h5>
 
+                                        <h5 class="card-title">Educational Qualification</h5>
+                                        <?php
+                                        if (isset($education[0]['id']) && !empty($education)) {
+                                            ?>
+                                            <!-- Table with stripped rows -->
+
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">S.No</th>
+                                                        <th scope="col">Educational Qualification</th>
+                                                        <th scope="col">Specialiization</th>
+                                                        <th scope="col">Mode of education</th>
+                                                        <th scope="col">Institution Name</th>
+                                                        <th scope="col">Percentage</th>
+                                                        <th scope="col">Year of Passed Out</th>
+                                                        <th scope="col">Certificates</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $loopcount = 1;
+                                                    foreach ($this->data['education'] as $key => $value) {
+                                                        ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $loopcount; ?>.
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $value['educational_qualification'] ?>
+                                                            </td>
+                                                            <?php if (
+                                                                $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                                $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
+                                                            ) { ?>
+                                                                <td>NA</td>
+                                                            <?php } else { ?>
+                                                                <td>
+                                                                    <?php echo $value['department'] ?>
+                                                                </td>
+                                                            <?php }
+                                                            if ($value['educationmode'] == 'Corres') { ?>
+                                                                <td>Correspondance</td>
+                                                            <?php } else { ?>
+                                                                <td>Regular</td>
+                                                            <?php } ?>
+                                                            <td>
+                                                                <?php echo $value['school_college_name'] ?>
+                                                            </td>
+                                                            <?php if (
+                                                                $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                                $value['educational_qualification'] === "11th"
+                                                            ) { ?>
+                                                                <td>NA</td>
+                                                            <?php } else { ?>
+                                                                <td>
+                                                                    <?php echo $value['percentage'] ?>
+                                                                </td>
+                                                            <?php } ?>
+                                                            <td>
+                                                                <?php echo $value['yearOfPassing'] ?>
+                                                            </td>
+                                                            <?php
+                                                            if ($value['educational_qualification'] == '10th/SSLC') {
+                                                                ?>
+                                                                <td><a href="<?php echo $value['tencer_url'] ?>" target="blank">
+                                                                        <?php echo $value['ten_cer'] ?>
+                                                                    </a></td>
+                                                                <?php
+                                                            } else if ($value['educational_qualification'] == '12th/HSC') {
+                                                                ?>
+                                                                    <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank">
+                                                                        <?php echo $value['twelve_cer'] ?>
+                                                                        </a></td>
+                                                                <?php
+                                                            } else if ($value['educational_qualification'] == 'DIPLOMA') {
+                                                                ?>
+                                                                        <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank">
+                                                                        <?php echo $value['diploma_cer'] ?>
+                                                                            </a></td>
+                                                                <?php
+                                                            } else if (
+                                                                $value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
+                                                                $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
+                                                                $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW"
+                                                            ) {
+                                                                ?>
+                                                                            <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
+                                                                        <?php echo $value['ug_cer'] ?>
+                                                                                </a></td>
+                                                                <?php
+                                                            } else if (
+                                                                $value['educational_qualification'] == "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
+                                                                $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
+                                                                $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW"
+                                                            ) {
+                                                                ?>
+                                                                                <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank">
+                                                                        <?php echo $value['pg_cer'] ?>
+                                                                                    </a></td>
+                                                                <?php
+                                                            } else if ($value['educational_qualification'] == 'Ph.D') {
+                                                                ?>
+                                                                                    <td><a href="<?php echo $value['doccer_url'] ?>" target="blank">
+                                                                        <?php echo $value['doc_cer'] ?>
+                                                                                        </a></td>
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                                    <td>NA</a></td>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </tr>
+                                                        <?php
+                                                        $loopcount++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                            <!-- End Table with stripped rows -->
+                                        <?php } else { ?>
+                                            <p>No education qualification </p>
+                                        <?php } ?>
+                                        <!-- End Table with stripped rows -->
+                                    </div>
+                                </div>
+
+                                <div class="card recent-sales overflow-auto">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Experience Details</h5>
+
+                                        <?php
+                                        if (isset($experienceDetails[0]['id']) && !empty($experienceDetails)) {
+                                            ?>
                                         <!-- Table with stripped rows -->
-                                        <table class="table table-striped">
+                                        <table class="table table-striped" id="expTable">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S.No</th>
-                                                    <th scope="col">Educational Qualification</th>
-                                                    <th scope="col">Specialiization</th>
-                                                    <th scope="col">Mode of Education</th>
-                                                    <th scope="col">Institution Name</th>
-                                                    <th scope="col">Percentage</th>
-                                                    <th scope="col">Year of Passed Out</th>
-                                                    <th scope="col">Certificates</th>
+                                                    <th scope="col">Job Category</th>
+                                                    <th scope="col">Job Sub Category</th>
+                                                    <th scope="col">Experience</th>
+                                                    <th scope="col">Company Name</th>
+                                                    <th scope="col">Company Location</th>
+                                                    <th scope="col">Job Role</th>
+                                                    <th scope="col">Previous Employer's Name</th>
+                                                    <th scope="col">Previous Employer's Mobile number</th>
+                                                    <th scope="col">Previous Employer's Email</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php
-                                            $countedu = 1;
-                                            foreach($this->data['education'] as $key => $value) {
+                                                <?php
+                                                $loopcount = 1;
+                                                foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
+                                                    ?>
+                                                    <tr>
+                                                        <td scope="row">
+                                                            <?php echo $loopcount; ?>.
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['other_category'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['other_sub_category'] ?>
+                                                        </td>
+                                                        <td>
+                                                        <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
+                                                        <?php echo $formattedexpYear; ?>  <br> to <br>
+
+                                                        <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
+                                                        <?php echo $formattedexpMonth; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['company_name'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['company_location'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['job_role'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['previous_employer_name'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['previous_employer_mobile'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $ivalue['previous_employer_email'] ?>
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                    $loopcount++;
+                                                }
                                                 ?>
-                                                            <tr>
-                                                                <th ><?php echo $countedu++; ?>.</th>
-                                                                <td><?php echo $value['educational_qualification'] ?></td>
-                                                                <td><?php echo $value['department'] ?></td>
-                                                                <td><?php echo $value['educationmode'] ?> </td>
-                                                                <td><?php echo $value['school_college_name'] ?></td>
-                                                                <td><?php echo $value['percentage'] ?></td>
-                                                                <td><?php echo $value['yearOfPassing'] ?></td>
-                                                                <?php
-                                                                if($value['educational_qualification'] == '10th/SSLC') {
-                                                                    ?>
-                                                                                <td><a href="<?php echo $value['tencer_url'] ?>" target="blank"><?php echo $value['ten_cer'] ?></a></td>
-                                                                <?php
-                                                                } else if($value['educational_qualification'] == '12th/HSC') {
-                                                                    ?>
-                                                                        <td><a href="<?php echo $value['twelvecer_url'] ?>" target="blank"><?php echo $value['twelve_cer'] ?></a></td>
-                                                                    <?php
-                                                                } else if($value['educational_qualification'] == 'DIPLOMA') {
-                                                                    ?>
-                                                                                    <td><a href="<?php echo $value['diplomacer_url'] ?>" target="blank"><?php echo $value['diploma_cer'] ?></a></td>
-                                                                    <?php
-                                                                } else if($value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
-                                                                    $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                                                                    $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW") {
-                                                                    ?>
-                                                                                <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank"><?php echo $value['ug_cer'] ?></a></td>
-                                                                    <?php
-                                                                } else if($value['educational_qualification'] == "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
-                                                                    $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
-                                                                    $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW") {
-                                                                    ?>
-                                                                                <td><a href="<?php echo $value['pgcer_url'] ?>" target="blank"><?php echo $value['pg_cer'] ?></a></td>
-                                                                <?php
-                                                                } else if($value['educational_qualification'] == 'Ph.D') {
-                                                                    ?>
-                                                                                        <td><a href="<?php echo $value['doccer_url'] ?>" target="blank"><?php echo $value['doc_cer'] ?></a></td>
-                                                                    <?php
-                                                                } else {
-                                                                    ?>
-                                                                                        <td>NA</a></td>
-                                                                    <?php
-                                                                }
-                                                                ?>
-                                                            </tr>
-                                                        <?php
-                                            }
-                                            ?>
                                             </tbody>
                                         </table>
                                         <!-- End Table with stripped rows -->
 
-                                    </div>
-                                </div>
+                                        <p id="noexperience">Fresher / No experience after graduation.</p>
+                  <?php } else { ?>
+                    <div id="fresherContent">
+                      <p>Experience is not entered.</p>
+                    </div>
+                  <?php }
+                  ?>
+                </div>
+              </div>
+
+           <script>
+                                    <?php
+                                    if ($experienceDetails[0]['workStatus'] == '0') {
+                                        ?>
+                                        document.getElementById("expTable").style.display = "block";
+                                        document.getElementById("noexperience").style.display = "none";
+
+                                        <?php
+                                    } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
+                                            document.getElementById("expTable").style.display = "none";
+                                            document.getElementById("noexperience").style.display = "block";
+
+                                        <?php
+                                    } ?>
+                                </script>
 
                                 <div class="card recent-sales overflow-auto">
                                     <div class="card-body">
@@ -2005,7 +2225,7 @@
                                             </tbody>
                                         </table>
                                         <?php } else{ ?>
-                                            <p><b>No Skills</b></p>
+                                            <p>No Skills</p>
                                        <?php }?>
                                         <!-- End Table with stripped rows -->
                                     </div>
@@ -2053,71 +2273,10 @@
 
                                     </div>
                                 </div>
-                                <div class="card recent-sales overflow-auto">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Experience Details</h5>
-
-                                        <!-- Table with stripped rows -->
-                                        <table class="table table-striped" id="expTable">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">S.No</th>
-                                                    <th scope="col">Job Category</th>
-                                                    <th scope="col">Job Sub Category</th>
-                                                    <th scope="col">Experience</th>
-                                                    <th scope="col">Company Name</th>
-                                                    <th scope="col">Company Location</th>
-                                                    <th scope="col">Job Role</th>
-                                                    <th scope="col">Previous Employer Name</th>
-                                                    <th scope="col">Previous Employer Mobile</th>
-                                                    <th scope="col">Previous Employer Email</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php
-                                            $countexp = 1;
-                                            foreach($this->data['experienceDetails'] as $ikey => $ivalue) {
-                                                ?>
-                                                            <tr>
-                                                                <th><?php echo $countexp++; ?>.</th>
-                                                                <td><?php echo $ivalue['other_category'] ?></td>
-                                                                <td><?php echo $ivalue['other_sub_category'] ?></td>
-                                                                <td><?php echo $ivalue['expYear'] ?> to <?php echo $ivalue['expMonth'] ?></td>
-                                                                <td><?php echo $ivalue['company_name'] ?></td>
-                                                                <td><?php echo $ivalue['company_location'] ?></td>
-                                                                <td><?php echo $ivalue['job_role'] ?></td>
-                                                                <td><?php echo $ivalue['previous_employer_name'] ?></td>
-                                                                <td><?php echo $ivalue['previous_employer_mobile'] ?></td>
-                                                                <td><?php echo $ivalue['previous_employer_email'] ?></td>
-                                                            </tr>
-                                                        <?php
-                                            }
-                                            ?>
-                                            </tbody>
-                                        </table>
-
-                                        <p id="noexperience">This candidate is a fresher or did not have any work experience after graduation.</p>
-                                        </div>
-                                </div>
-
-                  <script>
-                        <?php
-                    if ($experienceDetails[0]['workStatus'] == '0') {
-                        ?>
-                        document.getElementById("expTable").style.display = "block";
-                        document.getElementById("noexperience").style.display = "none";
-
-                    <?php
-                    } else if($experienceDetails[0]['workStatus'] == '1'){?>
-                        document.getElementById("expTable").style.display = "none";
-                        document.getElementById("noexperience").style.display = "block";
-
-                    <?php
-                    }  ?>
-                 </script>
+                                
 
                                         <!-- End Table with stripped rows -->
-                                        <?php
+                                        <!-- <?php
                                               if (isset($canReqStatus[0]['request_status']) && $canReqStatus[0]['request_status'] == '2') {
                                                   ?>
                                         <div class="card recent-sales overflow-auto">
@@ -2130,10 +2289,8 @@
                                 </div>
                                                  <?php
                                               }
-                                              ?>
-                                    
+                                              ?> -->                                  
 
-                            
                             
                                 <div class="d-flex justify-content-between" id="printdiv">
 
