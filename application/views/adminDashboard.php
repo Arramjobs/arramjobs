@@ -2726,7 +2726,7 @@
                                     <label for="phonenumber1" class="form-label">Emergency Mobile Number</label>
                                     <input type="number" class="form-control" id="phonenumber1"
                                         value="<?php echo $value['phonenumber1']; ?>" name="phonenumber1" pattern="[0-9]{1,15}"
-                                        maxlength="15" oninput="validatePhoneNumber1(this)"
+                                        maxlength="15" oninput="validatePhoneNumber2(this)"
                                         onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                 </div>
 
@@ -2955,6 +2955,21 @@
             <!-- PHONE NUMBER SCRIPTING -->
             <script>
                 function validatePhoneNumber1(input) {
+                    var phoneNumber1 = input.value.replace(/\D/g, '');
+
+                    if (phoneNumber1.length > 15) {
+                        input.value = phoneNumber1.slice(0, 15);
+                    }
+
+                    var phoneNumberError = document.getElementById('phonenumber_error');
+                    if (/[^0-9]/.test(input.value)) {
+                        phoneNumberError.innerHTML = 'Please enter only numeric characters';
+                    } else {
+                        phoneNumberError.innerHTML = '';
+                    }
+                }
+
+                function validatePhoneNumber2(input) {
                     var phoneNumber1 = input.value.replace(/\D/g, '');
 
                     if (phoneNumber1.length > 15) {
@@ -5013,7 +5028,7 @@
                                                 </td>
                                                                         
                                                 <?php
-                                                if ($value['curStatus'] == 6) {
+                                                if ($value['currentStatus'] == 1) {
                                                     ?>
                                                         <td><span class="badge bg-success"><i class="bi bi-check2-circle"></i> Placed </span> </td>
                                                                                            
@@ -5550,12 +5565,11 @@
                                             <!-- End Table with stripped rows -->
                                         <?php 
                                     } else { ?>
-                                        <td>No skills</td>
+                                        <td>Skill is not entered</td>
                                    <?php } ?>
 
                                     </div>
                                 </div>
-
 
                                
                                     <div class="card recent-sales overflow-auto">
@@ -5616,7 +5630,7 @@
 
                                     
                                 <?php } else { ?>
-                                            <p>No details entered</p>
+                                            <p>Area of job interest is not entered</p>
                                         
                                 <?php } ?>
                                 
@@ -6163,7 +6177,7 @@
                                 </script>
 
 
-              <div class="card recent-sales overflow-auto">
+                            <div class="card recent-sales overflow-auto">
                                         <div class="card-body">
                                             <h5 class="card-title">Skills</h5>
                                             <?php
@@ -6208,12 +6222,11 @@
                                             <!-- End Table with stripped rows -->
                                         <?php 
                                     } else { ?>
-                                        <td>No skills</td>
+                                        <td>Skill is not entered</td>
                                    <?php } ?>
 
                                     </div>
                                 </div>
-
                                 
 
                                 <div class="card recent-sales overflow-auto">
@@ -6274,7 +6287,7 @@
 
                                     
                                 <?php } else { ?>
-                                            <p>No details entered</p>
+                                            <p>Area of job interest is not entered</p>
                                         
                                 <?php } ?>
                                 

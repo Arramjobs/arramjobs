@@ -158,7 +158,7 @@
             foreach ($basicDetails as $key => $value) {
               ?>
               <a href="<?php echo $value['photo'] ?>"><img
-                  src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>" alt="profilep" width="30" height="30"
+                  src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>" alt="profile" width="30" height="30"
                   class="rounded-circle"></a>
             <?php }
           } else {
@@ -4933,11 +4933,16 @@
                     foreach ($basicDetails as $key => $value) {
                       ?>
                       <div class="col d-md-flex justify-content-between my-4">
-                        <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>" alt="profilep" width="150"
+                        <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>" alt="profile" width="150"
                           height="150">
-                        <p class="h2 text-secondary p-2 text-uppercase">
-                          <?php echo $value['name']; ?>
+                        <div>
+                        <p class="h2 text-secondary p-2 text-uppercase text-center">
+                          <?php echo $value['name']; ?><br>
                         </p>
+                        <p class="h5 text-secondary p-2 text-uppercase text-center">
+                        <?php echo $value['eeid']; ?>
+                        </p>                        
+                        </div>
                         <div class="text-end mt-2">
                           <p>
                             <?php echo $value['phonenumber'] ?>
@@ -5008,9 +5013,9 @@
                           <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank">
                               <?php echo $value['aadharback_filename'] ?>
                             </a></td>
-                          <td><a href="<?php echo $value['aadharnumber'] ?>">
+                          <td>
                               <?php echo $value['aadharnumber'] ?>
-                            </a></td>
+                          </td>
                         </tr>
                         <?php
                     }
