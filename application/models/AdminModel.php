@@ -500,14 +500,15 @@ class AdminModel extends CI_Model
 
     public function employerChartDetails()
     {
-        $employerchartList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
-            prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, prf.company_name AS compName
-            , pj.jobCategory AS jobsCategory
-             FROM  candidate_requests cr
-             INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id
-             INNER JOIN provider_job pj ON pj.jobProviderId = cr.candidate_id 
-             INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
-             WHERE (cr.request_status = '3' OR cr.request_status = '4' OR cr.request_status = '5' OR cr.request_status = '6');";
+        // $employerchartList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
+        //     prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, prf.company_name AS compName
+        //     , pj.jobCategory AS jobsCategory
+        //      FROM  candidate_requests cr
+        //      INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id
+        //      INNER JOIN provider_job pj ON pj.jobProviderId = cr.candidate_id 
+        //      INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+        //      WHERE (cr.request_status = '3' OR cr.request_status = '4' OR cr.request_status = '5' OR cr.request_status = '6');";
+        $employerchartList = "SELECT * FROM `seeker_profile_form` WHERE placedAtEmployer != ''";
         $response = $this->db->query($employerchartList);
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
     }
@@ -533,34 +534,8 @@ class AdminModel extends CI_Model
         if ($postData['currentStatus'] == '6') {
 
             $currentStatus = array(
-                'currentStatus' => '1'
-            );
-            $this->db->where('id', $postData['seekerId']);
-            $this->db->update('seeker_profile_form', $currentStatus);
-        }
-    }
-
-    public function employerStatus()
-    {
-        $postData = $this->input->post(null, true);
-        $currentStatus = array(
-            'request_status' => $postData['currentStatus']
-        );
-
-        $this->db->where('employer_id', $postData['seekerId']);
-        $this->db->where('employer_id', $postData['employerId']);
-        $this->db->update('employer_requests', $currentStatus);
-    }
-
-
-    // Seeker Profile Form
-    public function currentStatusSpfEmp()
-    {
-        $postData = $this->input->post(null, true);
-        if ($postData['currentStatus'] == '6') {
-
-            $currentStatus = array(
-                'currentStatus' => '0'
+                'currentStatus' => '1',
+                'placedAtEmployer' => $postData['employerId']
             );
             $this->db->where('id', $postData['seekerId']);
             $this->db->update('seeker_profile_form', $currentStatus);
