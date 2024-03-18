@@ -1929,6 +1929,16 @@ label #cancel {
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
+
+  <!-- Event listener to block right-click -->
+<script>
+    function blockRightClick(event) {
+        event.preventDefault(); 
+    }
+
+    document.addEventListener('contextmenu', blockRightClick);
+</script>
+
 </body>
 
 </html>

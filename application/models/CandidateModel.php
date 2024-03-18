@@ -509,6 +509,7 @@ public function get_latest_customer_id()
         $this->db->insert('seeker_experience', $add);
     }
 
+
     public function insertSubmitExp()
     {
         $post = $this->input->post(null, true);

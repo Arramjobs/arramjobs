@@ -54,7 +54,7 @@
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
-                                <a href="<?php echo baseUrl; ?>/#candidate"
+                                <a href="<?php echo baseUrl; ?>"
                                     class="logo d-flex align-items-center w-auto">
                                     <!-- <img src="assets/img/logo.png" alt=""> -->
                                     <span class="d-block">Candidate Login</span>
@@ -211,6 +211,15 @@
 
     <!-- Template Main JS File -->
     <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
+
+    <!-- Event listener to block right-click -->
+<script>
+    function blockRightClick(event) {
+        event.preventDefault(); 
+    }
+
+    document.addEventListener('contextmenu', blockRightClick);
+</script>
 
 </body>
 

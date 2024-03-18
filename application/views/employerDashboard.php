@@ -957,7 +957,8 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="expected_salary">Salary <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="expected_salary" name="expected_salary" required>
+                            <input type="number" class="form-control" id="expected_salary" name="expected_salary" required
+                            onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                             <div id="expected_salary_error" class="error"></div>
                         </div>
 
@@ -1251,7 +1252,8 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="expected_salary">Salary</label>
-                            <input type="number" class="form-control" id="expected_salary" name="expected_salary" required>
+                            <input type="number" class="form-control" id="expected_salary" name="expected_salary" required
+                            onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                             <div id="expected_salary_error" class="error"></div>
                         </div>
 
@@ -1593,7 +1595,8 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label"  for="expected_salary">Salary: <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" id="expected_salaryu" value="<?php echo $value['salary']; ?>" name="expected_salary" required>
+                                    <input type="number" class="form-control" id="expected_salaryu" value="<?php echo $value['salary']; ?>" name="expected_salary" required
+                                    onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                     <div id="expected_salary_error" class="error"></div>
                                 </div>
 
@@ -2390,6 +2393,15 @@
 
     <!-- Template Main JS File -->
     <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
+
+    <!-- Event listener to block right-click -->
+<script>
+    function blockRightClick(event) {
+        event.preventDefault(); 
+    }
+
+    document.addEventListener('contextmenu', blockRightClick);
+</script>
 
 </body>
 

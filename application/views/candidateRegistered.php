@@ -95,6 +95,15 @@
     <!-- Template Main JS File -->
     <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
 
+    <!-- Event listener to block right-click -->
+<script>
+    function blockRightClick(event) {
+        event.preventDefault(); 
+    }
+
+    document.addEventListener('contextmenu', blockRightClick);
+</script>
+
 </body>
 
 </html>

@@ -318,12 +318,17 @@ class Employer extends CI_Controller
     }
 
 
+    // public function logout()
+    // {
+    //     $this->session->unset_userdata('userLoggedIn');
+    //     $this->index();
+    // }
+
     public function logout()
     {
-        $this->session->unset_userdata('userLoggedIn');
+        $this->session->sess_destroy();
         $this->index();
     }
-
 
 
     //     public function filter() {
