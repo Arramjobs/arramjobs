@@ -2459,7 +2459,7 @@
             <div class="card-body">              
 
               <div class="exptableheading" id="fresherExp">
-                <p style="font-size:18px; font-weight: bold; color: #007BFF;">Kindly mention your work experience and work
+                <p style="font-size:18px; font-weight: bold; color: #007BFF; padding-top:20px;">Kindly mention your work experience and work
                   status.</p>
                 <p><b style="color:blue;">Note:</b> Indicate <b>'No Experience'</b> if you are a <b>Fresher</b> or have
                   had <b>no professional experience</b> since graduation.</p>
@@ -3564,6 +3564,7 @@
                               id="form_<?= $value['id']; ?>">
                               <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
                                 onchange="updateDeleteButton2(this)">
+                          </td>   
                           <td>
                             <?php echo $count++ ?>.
                           </td>
@@ -3993,291 +3994,6 @@
           return confirm('Are you sure you want to delete?');
         }
       </script>
-
-      <?php
-    } elseif ($method == "addAreaOfIntrestForm") {
-      ?>
-      <!-- Sidebar Active  -->
-      <script>
-        document.getElementById('areaofinterest').classList.add('active');
-      </script>
-      <section class="Multi Columns Form">
-        <div class="pagetitle">
-          <h1>Area of Job Interest Details</h1>
-          <nav>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-              <li class="breadcrumb-item active">Add Job Interest</li>
-            </ol>
-          </nav>
-        </div><!-- End Page Title -->
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Add Job Interest</h5>
-
-            <!-- Multi Columns Form -->
-            <form class="row g-3 needs-validation" novalidate method="post" onsubmit="return validateAreaForm()"
-              action="<?php echo baseUrl . "Candidate/insertAreaOfIntrest" ?>">
-
-              <div class="col-12">
-                <label class="form-label" for="category">Category <span class="text-danger">*</span></label>
-                <select class="form-control" id="category" name="category" onchange="showHideOtherField()" required>
-                  <option value="">Select a Category</option>
-                  <?php
-                  foreach ($categoryList as $key => $value) {
-                    ?>
-                    <option value="<?php echo $value->categoryName ?>">
-                      <?php echo $value->categoryName ?>
-                    </option>
-                  <?php } ?>
-                  <option value="others">Others</option>
-                </select>
-                <div id="areacat_error" class="error"></div>
-              </div>
-
-              <div class="col-12" id="newcategory_group" style="display: none;">
-                <label for="newcategory" class="form-label">Reason for choosing category as others</label>
-                <input class="form-control" id="newcategory" name="newcategory">
-                <div id="newcategory_error" class="text-danger error"></div>
-                <input id="categoryothers" name="categoryothers" value="1" hidden>
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label" for=" subcategory">Subcategory <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="subcategory" name="subcategory" required>
-                <div id="areasubcat_error" class="error"></div>
-              </div>
-
-              <div class="col-md-6" id="otherCategoryFields" style="display: none;">
-                <label for="customCategoryInput">Custom Category</label>
-                <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
-                <label for="customSubcategoryInput">Custom Subcategory</label>
-                <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
-              </div>
-              <div class="col-md-6" id="customCategory" style="display: none;">
-                <label for="customCategoryInput">Category Name</label>
-                <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
-              </div>
-
-              <div class="col-md-6" id="customSubcategory" style="display: none;">
-                <label for="customSubcategoryInput"> Subcategory Name</label>
-                <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
-              </div>
-
-              <div class="col-md-6">
-                <label for="preferred-location">Preferred Location to work <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="preferred-location" name="preferred-location" required>
-                <div id="arealocation_error" class="error"></div>
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label" for="description">Description</label>
-                <input class="form-control" id="description" name="description" rows="3" required>
-                <div id="areades_error" class="error"></div>
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label" for="jobtype">Job Type <span class="text-danger">*</span></label>
-                <select class="form-control" id="jobtype" name="jobtype" required>
-                  <option value="">Select a Job Type</option>
-                  <option value="parttime">Part Time</option>
-                  <option value="fulltime">Full Time</option>
-                </select>
-                <div id="areajob_error" class="error"></div>
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label" for="expected-salary">Expected Salary <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="expected-salary" name="expected-salary" required>
-                <div id="areasalary_error" class="error"></div>
-              </div>
-
-
-              <input type="number" class="form-control" value="1" name="areasubmit" hidden>
-
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
-              </div>
-
-            </form><!-- End Multi Columns Form -->
-
-          </div>
-        </div>
-      </section>
-
-      <script>
-
-        function showHideOtherField() {
-          var categoryDropdown = document.getElementById('category');
-          var otherCategoryField = document.getElementById('newcategory_group');
-
-          if (categoryDropdown.value === 'others') {
-            otherCategoryField.style.display = 'block';
-          } else {
-            otherCategoryField.style.display = 'none';
-          }
-        }
-
-        function clearFormFields(form) {
-          var fieldsToClear = form.querySelectorAll('input, select');
-          for (var i = 0; i < fieldsToClear.length; i++) {
-            fieldsToClear[i].value = '';
-          }
-        }
-
-        function validateAreaForm() {
-          clearErrorMessages();
-
-          var category = document.getElementById("category").value;
-          var newothercategory = document.getElementById("newcategory_group");
-          var subcategory = document.getElementById("subcategory").value;
-          var preferredLocation = document.getElementById("preferred-location").value;
-          var jobtype = document.getElementById("jobtype").value;
-          // var expYear = document.getElementById("expYear").value;
-          // var expMonth = document.getElementById("expMonth").value;
-          var description = document.getElementById("description").value;
-          var expectedSalary = document.getElementById("expected-salary").value;
-
-          if (category === "") {
-            displayError('Please select a category', 'areacat_error');
-            return false;
-          }
-
-          if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
-            displayError('Please enter newcategory', 'newcategory_error');
-            return false;
-          }
-
-          if (subcategory === "" && category !== "") {
-            displayError('Please select a subcategory', 'areasubcat_error');
-            return false;
-          }
-
-          if (preferredLocation.trim() === "") {
-            displayError('Preferred location must be filled out', 'arealocation_error');
-            return false;
-          }
-
-          // if (expYear.trim() === "") {
-          //   displayError('Year must be filled out', 'areaexp_error');
-          //   return false;
-          // }
-
-          // if (expMonth.trim() === "") {
-          //   displayError('Month must be filled out', 'areaexp_error');
-          //   return false;
-          // }
-
-          if (description.trim() === "") {
-            displayError('Description must be filled out', 'areades_error');
-            return false;
-          }
-
-          if (jobtype.trim() === "") {
-            displayError('Job type must be filled out', 'areajob_error');
-            return false;
-          }
-
-          if (expectedSalary.trim() === "") {
-            displayError('Expected salary must be filled out', 'areasalary_error');
-            return false;
-          }
-
-          return true;
-        }
-
-        function clearErrorMessages() {
-          var errorElements = document.querySelectorAll('.error');
-          errorElements.forEach(function (errorElement) {
-            errorElement.textContent = '';
-          });
-        }
-
-        function displayError(message, elementId) {
-          var errorElement = document.getElementById(elementId);
-          errorElement.innerHTML = message;
-          errorElement.style.color = 'red';
-        }
-      </script>
-
-
-      <?php
-    } elseif ($method == "addSkillForm") {
-      ?>
-      <!-- Sidebar Active  -->
-      <script>
-        document.getElementById('areaofinterest').classList.add('active');
-      </script>
-      <section class="Multi Columns Form">
-        <div class="pagetitle">
-          <h1>Skill Details</h1>
-          <nav>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-              <li class="breadcrumb-item active">Add Skill</li>
-            </ol>
-          </nav>
-        </div><!-- End Page Title -->
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Add New Skill</h5>
-
-            <!-- Multi Columns Form -->
-            <form class="row g-3 needs-validation" novalidate method="post" onsubmit="return validateSkillForm()"
-              action="<?php echo baseUrl . "Candidate/insertSkillForm" ?>">
-
-
-              <div class="col-12">
-                <label class="form-label" for="skillname">Skill Name <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="skillname" name="skillname" required>
-                <div id="sname_error" class="error"></div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="experience-container">
-                  <label for="experience" class="form-label">Experience <span class="text-danger">*</span></label>
-                  <div class="d-flex">
-                    <select class="form-control" id="experience" name="experience" required>
-                      <option value=""> Select year </option>
-                      <?php for ($i = 0; $i <= 20; $i++): ?>
-
-                        <option value="<?php echo $i; ?>">
-                          <?php echo $i; ?> Year
-                          <?php echo $i !== 1 ? 's' : ''; ?>
-                        </option>
-                      <?php endfor; ?>
-                      <option value="20+ years"> 20+ Years </option>
-                    </select>
-
-                  </div>
-                  <div id="sexp_error" class="error"></div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label" for="skillLevel">Skill Level <span class="text-danger">*</span></label>
-                <select class="form-control" name="skilllevel" id="skilllevel" required>
-                  <option value="">Select Skill Level</option>
-                  <option value="beginner">Beginner</option>
-                  <option value="intermediate">Intermediate</option>
-                  <option value="advanced">Advanced</option>
-                </select>
-                <div id="slevel_error" class="error"></div>
-              </div>
-
-              <input type="number" class="form-control" value="1" name="areasubmit" hidden>
-
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
-              </div>
-
-            </form><!-- End Multi Columns Form -->
-
-          </div>
-        </div>
-      </section>
 
       <?php
     } elseif ($method == 'updateAreaOfIntrest') {
@@ -5230,9 +4946,9 @@
                           <th scope="col">Company Location</th>
                           <th scope="col">Job Role</th>
                           <th scope="col">Company Mobile Number</th>
-                          <th scope="col">Previous Job's Reference Name</th>
-                          <th scope="col">Previous Job's Reference Mobile number</th>
-                          <th scope="col">Previous Job's Reference Email</th>
+                          <th scope="col">Previous Employer Name</th>
+                          <th scope="col">Previous Employer Mobile number</th>
+                          <th scope="col">Previous Employer Email</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -5507,6 +5223,15 @@
       }
     }
   </script>
+  <!-- Event listener to block right-click -->
+<script>
+    function blockRightClick(event) {
+        event.preventDefault(); 
+    }
+
+    document.addEventListener('contextmenu', blockRightClick);
+</script>
+
 </body>
 
 </html>

@@ -721,17 +721,23 @@ class Candidate extends CI_Controller
         $this->load->view('candidateDashboard.php', $this->data);
     }
 
-    public function logout()
-    {
-        $this->session->unset_userdata('userLoggedIn');
-        $this->index();
-    }
+    // public function logout()
+    // {
+    //     $this->session->unset_userdata('userLoggedIn');
+    //     $this->index();
+    // }
 
     // public function logout()
     // {
     //     $this->session->sess_destroy();
     //     redirect('candidate'); 
     // }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        $this->index();
+    }
 
 
 }

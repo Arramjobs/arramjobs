@@ -108,7 +108,7 @@
                             </div>
 
                             <!-- <div class="credits">
-                                <!-- All the links in the footer should remain intact. -->
+                                All the links in the footer should remain intact. -->
                             <!-- You can delete the links only if you purchased the pro version. -->
                             <!-- Licensing information: https://bootstrapmade.com/license/ -->
                             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
@@ -157,6 +157,15 @@
 
     <!-- Template Main JS File -->
     <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
+
+    <!-- Event listener to block right-click -->
+<script>
+    function blockRightClick(event) {
+        event.preventDefault(); 
+    }
+
+    document.addEventListener('contextmenu', blockRightClick);
+</script>
 
 </body>
 
