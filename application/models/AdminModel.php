@@ -354,7 +354,7 @@ class AdminModel extends CI_Model
     }
 
     public function overallEmployees()
-    {                          
+
         $overallEmployees = "SELECT * FROM `seeker_profile_form`";
         $response = $this->db->query($overallEmployees);
         return $response->result_array();

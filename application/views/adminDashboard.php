@@ -7973,10 +7973,12 @@
                                                 </tbody>
                                             </table>
                                             <!-- End Table with stripped rows -->
+
                                         <?php
                                         } else { ?>
                                             <td>Skill is not entered</td>
                                         <?php } ?>
+
 
                                     </div>
                                 </div>
@@ -8037,14 +8039,13 @@
                                                 </tbody>
                                             </table>
                                             <!-- End Table with stripped rows -->
-
-
-                                        <?php } else { ?>
+                                    
+                                <?php } else { ?>
                                             <p>Area of job interest is not entered</p>
-
-                                        <?php } ?>
-
-                                    </div>
+                                        
+                                <?php } ?>
+                                
+                                </div>
                                 </div>
 
 
@@ -8634,10 +8635,12 @@
                                                 </tbody>
                                             </table>
                                             <!-- End Table with stripped rows -->
+
                                         <?php
                                         } else { ?>
                                             <td>Skill is not entered</td>
                                         <?php } ?>
+
 
                                     </div>
                                 </div>
@@ -8698,7 +8701,6 @@
                                                 </tbody>
                                             </table>
                                             <!-- End Table with stripped rows -->
-
 
                                         <?php } else { ?>
                                             <p>Area of job interest is not entered</p>
