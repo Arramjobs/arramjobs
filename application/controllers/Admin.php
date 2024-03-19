@@ -808,7 +808,7 @@ class Admin extends CI_Controller
         $id = $this->uri->segment(3);
         $this->data['candidateId'] = $id;
        
-        $experienceTable = $this->CandidateModel->experienceTable();
+        $experienceTable = $this->AdminModel->experienceTable($id);
         $this->data['experienceTable'] = $experienceTable['response'];
 
         $categoryList = $this->CandidateModel->getCategoryList();
@@ -819,26 +819,13 @@ class Admin extends CI_Controller
         $this->load->view('adminDashboard.php', $this->data);
     }
 
-
-    // public function addExperirenceForm()
-    // {
-    //     $basicDetails = $this->CandidateModel->getBasicDetails();
-    //     $this->data['basicDetails'] = $basicDetails;
-
-    //     $categoryList = $this->CandidateModel->getCategoryList();
-    //     $this->data['categoryList'] = $categoryList;
-
-    //     $this->data['method'] = "addExperirenceForm";
-    //     $this->load->view('candidateDashboard.php', $this->data);
-    // }
-
     public function insertExperienceForm()
     {
         $insertExperienceForm = $this->CandidateModel->insertExperienceForm();
         // $insertExperienceForm = $this->CandidateModel->insertSubmitExp();
 
         $this->newCandidateList();
-        echo '<script>alert("Experience details inserted successfully.");</script>';
+        echo '<script>alert("Experience details inserted successfully my admin.");</script>';
     }
 
     public function insertFresherForm()

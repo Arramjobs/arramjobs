@@ -354,7 +354,7 @@ class AdminModel extends CI_Model
     }
 
     public function overallEmployees()
-
+    {
         $overallEmployees = "SELECT * FROM `seeker_profile_form`";
         $response = $this->db->query($overallEmployees);
         return $response->result_array();
@@ -651,49 +651,39 @@ class AdminModel extends CI_Model
     return $areaOfInterest->result_array();
   }
 
-//   public function experienceTable($seekerId)
-//     {
-//         // $seekerId = $_SESSION['seekerId'];
-//         $seekerId = "SELECT * FROM `seeker_experience` Where `seekerId`= $seekerId";
-//         $addtab = $this->db->query($seekerId);
-//         // return $addtab->result_array();
-//         return array('response' => $addtab->result_array(), "totalRows" => $addtab->num_rows());
-//     }
+    public function insertExperienceForm($seekerId)
+    {
+        $post = $this->input->post(null, true);
 
+        $tillNowChecked = isset($post['till_now']);
+        $toDate = $tillNowChecked ? date("Y-m-d") : $post['toDate'];
 
-//     public function insertExperienceForm($seekerId)
-//     {
-//         $post = $this->input->post(null, true);
-
-//         $tillNowChecked = isset($post['till_now']);
-//         $toDate = $tillNowChecked ? date("Y-m-d") : $post['toDate'];
-
-//         if ($post['seekerId'] != NULL) {
-//             $seekerId = $post['seekerId'];
-//          } else {
-//             $seekerId = "SELECT * FROM `seeker_experience` Where `seekerId`= $seekerId";
-//         }
+        if ($post['seekerId'] != NULL) {
+            $seekerId = $post['seekerId'];
+         } else {
+            $seekerId = "SELECT * FROM `seeker_experience` Where `seekerId`= $seekerId";
+        }
         
-//         $add = array(
-//             'seekerId' => $seekerId,
-//             'other_category' => $post['category'],
-//             'other_sub_category' => $post['subcategory'],
-//             'expYear' => $post['fromDate'],
-//             'expMonth' => $toDate,
-//             'company_name' => $post['companyname'],
-//             'company_location' => $post['companylocation'],
-//             'job_role' => $post['role'],
-//             'company_mobilenum' => $post['company_mobilenum'],
-//             // 'profile' => $post['profile'],
-//             'previous_employer_name' => $post['nameofemployer'],
-//             'previous_employer_mobile' => $post['number'],
-//             'previous_employer_email' => $post['emailid'],
-//             'categoryOthers' => isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
-//             'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0",
-//         );
+        $add = array(
+            'seekerId' => $seekerId,
+            'other_category' => $post['category'],
+            'other_sub_category' => $post['subcategory'],
+            'expYear' => $post['fromDate'],
+            'expMonth' => $toDate,
+            'company_name' => $post['companyname'],
+            'company_location' => $post['companylocation'],
+            'job_role' => $post['role'],
+            'company_mobilenum' => $post['company_mobilenum'],
+            // 'profile' => $post['profile'],
+            'previous_employer_name' => $post['nameofemployer'],
+            'previous_employer_mobile' => $post['number'],
+            'previous_employer_email' => $post['emailid'],
+            'categoryOthers' => isset($post['newcategory']) && $post['newcategory'] === "" ? "0" : "1",
+            'newCategory' => isset($post['newcategory']) ? $post['newcategory'] : "0",
+        );
 
-//         $this->db->insert('seeker_experience', $add);
-//     }
+        $this->db->insert('seeker_experience', $add);
+    }
 
 
 public function experienceTable($seekerId)

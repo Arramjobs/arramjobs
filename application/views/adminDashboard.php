@@ -5521,252 +5521,43 @@
             <?php
         } elseif ($method == "experienceTable") {
             ?>
-            <!-- Sidebar Active  -->
-    <script>
-      document.getElementById('experiences').classList.add('active');
-    </script>
-    <section class="usertable">
-      <div class="pagetitle">
-        <h1>Experience Details</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-            <li class="breadcrumb-item active">Table</li>
-          </ol>
-        </nav>
-      </div>
-      <div class="col-12">
-      <div class="d-flex justify-content-between">
-              <h5 class="card-title">Experience Table<span></span></h5>
-            </div>
-        <div class="card recent-sales overflow-auto">
+           <!-- Sidebar Active  -->
+           <script>
+                document.getElementById('experiences').classList.add('active');
+            </script>
+            <section class="usertable">
+                <div class="pagetitle">
+                    <h1>Experience Details</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                            <li class="breadcrumb-item active">Table</li>
+                        </ol>
+                    </nav>
+                </div><!-- End Page Title -->
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
 
-          <div class="card-body">              
-
-            <div class="exptableheading" id="fresherExp">
-              <p style="font-size:18px; font-weight: bold; color: #007BFF; padding-top:20px;">Kindly mention your work experience and work
-                status.</p>
-              <!-- <p><b style="color:blue;">Note:</b> Indicate <b>'No Experience'</b> if you are a <b>Fresher</b> or have
-                had <b>no professional experience</b> since graduation.</p> -->
-              
-                <input type="radio" name="fresherExperience" value="experience" id="exp"
-                onclick="showContent('addexpform')" hidden>
-              <label for="exp" class="btn btn-success">+ Add Experience</label>
-              <!-- <input type="radio" name="fresherExperience" value="fresher" id="fre" onclick="showContent('fresher')"
-                hidden>
-              <label for="fre" class="btn btn-danger"> Fresher / No Experience</label> -->
-            </div>
-
-            <div id="fresher" class="button-content mt-4" style="display: none;">
-              <p>Now you can proceed to the <b>'Area of Job Interest'</b> section to specify your career preferences.
-              </p>
-              <form method="post" action=" <?php echo baseUrl . "Admin/insertFresherForm" ?>">
-                <input name="fresher" value="1" hidden>
-                <button type="submit" class="btn btn-danger">Next</button>
-              </form>
-            </div>
-
-            <div class="d-flex justify-content-between pt-4">
-              <a class="" href="#addexpform">
-                <button id="expAddButton" style="display:none;" type="button" onclick="addexpform()"
-                  class="btn btn-success mb-4">+ Add Experience</button></a>
-            </div>
-
-            <?php
-            if (isset($experienceTable[0]['id'])) {
-              $count = 1;
-              ?>
-              <table class="table" id="exptable">
-                <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">S.No</th>
-                    <th scope="col">Job Category</th>
-                    <th scope="col">Job Subcategory</th>
-                    <th scope="col">Experience</th>
-                    <th scope="col">Company Name</th>
-                    <th scope="col">Company Location</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Company Mobile Number</th>
-                    <th scope="col">Employer Name</th>
-                    <th scope="col">Employer Mobile Number</th>
-                    <th scope="col">Email Id</th>
-                    <!-- <th scope="col">Action</th> -->
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  if (isset($experienceTable[0]['id'])) {
-                    $count = 1;
-                    foreach ($experienceTable as $key => $value) {
-                      $seekerId = $_SESSION['seekerId'];
-                      ?>
-
-                      <tr>
-                        <td>
-                          <form method="post" action="<?php echo baseUrl . 'Admin/deleteExperience'; ?>"
-                            id="form_<?= $value['id']; ?>">
-                            <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
-                              onchange="updateDeleteButton5(this)">
-                        </td>
-                        <td>
-                          <?php echo $count++ ?>.
-                        </td>
-                        <td>
-                          <?php echo $value['other_category'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['other_sub_category'] ?>
-                        </td>
-                        <td>
-                          <?php $formattedexpYear = date('d-m-Y', strtotime($value['expYear'])); ?>
-                          <?php echo $formattedexpYear; ?>  <br> to <br>
-
-                          <?php $formattedexpMonth = date('d-m-Y', strtotime($value['expMonth'])); ?>
-                          <?php echo $formattedexpMonth; ?>
-                        </td>
-                        <td>
-                          <?php echo $value['company_name'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['company_location'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['job_role'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['company_mobilenum'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['previous_employer_name'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['previous_employer_mobile'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['previous_employer_email'] ?>
-                        </td>
-                        <!-- <td>
-                          <div class="d-flex">
-                            <a
-                              href="<?php echo baseUrl . "Admin/updateExperience" ?>/<?php echo $value['id'] ?>#editexpform">
-                              <button type="button" class="btn btn-secondary mx-1 ">Edit</button></a>
-                          </div>
-                        </td> -->
-                      </tr>
-                      <?php
-                    }
-                  }
-                  ?>
-
-                </tbody>
-              </table>
-
-              <button type="submit" name="submit" id="deleteList5" class="btn btn-danger disabled"
-                onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-              </form>
-
-              <div id="fresherNoexp" style="display:none;">
-                <form method="post" action="<?php echo baseUrl . 'Admin/deleteExperience'; ?>"
-                  id="form_<?= $value['id']; ?>">
-                  <div style="display:flex;">
-                    <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
-                      onchange="updateDeleteButton3(this)">
-                    <p style="padding-left:10px; padding-top: 18px;"> Not a Fresher?</p>
-                  </div>
-                  <button type="submit" name="submit" id="deleteList3" class="btn btn-danger disabled"
-                    onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                </form>
-              </div>
-
-              <?php
-            } else {
-              ?>
-              <h5 class="card-title">No Records Found<span></span></h5>
-              <?php
-            }
-            ?>
-          </div>
-
-        </div>
-      </div><!-- End Recent Sales -->
-
-    </section>
-
-    <script>
-      function validateName1(input) {
-        input.value = input.value.replace(/[0-9]/g, '');
-      }
-    </script>
-    <script>
-      function showContent(button) {
-        document.querySelectorAll('.button-content').forEach(function (element) {
-          element.style.display = 'none';
-        });
-        document.getElementById(button).style.display = 'block';
-      }
-
-      function addexpform() {
-        document.getElementById("addexpform").style.display = "block";
-      }
-    </script>
-    <script>
-
-      <?php
-      if (isset($expTotalRows)) {
-        if ($expTotalRows >= "1" && $experienceTable[0]['workStatus'] == '0') {
-          ?>
-          document.getElementById("fresherExp").style.display = "none";
-          document.getElementById("expAddButton").style.display = "block";
-          <?php
-        } else if ($expTotalRows >= "1" && $experienceTable[0]['workStatus'] == '1') { ?>
-            document.getElementById("fresherExp").style.display = "none";
-            document.getElementById("fresherNoexp").style.display = "block";
-            document.getElementById("exptable").style.display = "none";
-            document.getElementById("deleteList5").style.display = "none";
-          <?php
-        }
-      } ?>
-    </script>
-    <script>
-      function updateDeleteButton3(checkbox) {
-        var deleteButton3 = document.getElementById('deleteList3');
-
-        if (checkbox.checked) {
-          deleteButton3.classList.remove('disabled');
-        } else {
-          deleteButton3.classList.add('disabled');
-        }
-      }
-
-      function updateDeleteButton5(checkbox) {
-        var deleteButton5 = document.getElementById('deleteList5');
-
-        if (checkbox.checked) {
-          deleteButton5.classList.remove('disabled');
-        } else {
-          deleteButton5.classList.add('disabled');
-        }
-      }
-    </script>
-
-    <div class="card" id="addexpform" style="display:none">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
-                                <h5 class="card-title">Add Experience Details</h5>
-                                    <a class="" href="<?php echo baseUrl . "Admin/experiencetable" ?>">
-                                    <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+                                <h5 class="card-title">Add Education Details</h5>
+                                <div>
+                                    <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
+                                            class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                                </div>
                             </div>
 
                             <form class="row g-3 needs-validation" novalidate name="experienceform" method="post"
-                                onsubmit="return validateexpForm()" action=" <?php echo baseUrl . "Admin/insertExperienceForm" ?>">
+                                onsubmit="return validateexpForm()"
+                                action=" <?php echo baseUrl . "Admin/insertExperienceForm" ?>">
 
-                                <input type="hidden" class="form-control" id="id" value="" name="seekerId">
+                                <input type="hidden" class="form-control" id="seekerId" value="<?php echo $candidateId; ?>"
+                                    name="seekerId">
 
                                 <div class="col-6">
-                                    <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
+                                    <label for="category" class="form-label">Category </label>
                                     <select class="form-control" id="category" name="category" autocomplete="off"
-                                        onchange="showHideOtherField()" required>
+                                        onchange="showHideOtherField()">
                                         <option value="">Select a Category</option>
                                         <?php
                                         foreach ($categoryList as $key => $value) {
@@ -5781,7 +5572,8 @@
                                 </div>
 
                                 <div class="col-6" id="newcategory_group" style="display: none;">
-                                    <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+                                    <label for="newcategory" class="form-label">Reason for choosing category as
+                                        others</label>
                                     <input class="form-control" id="newcategory" name="newcategory">
                                     <div id="newcategory_error" class="text-danger error"></div>
                                     <input id="categoryothers" name="categoryothers" value="1" hidden>
@@ -5790,28 +5582,28 @@
                                 <div class="col-md-6">
                                     <label for="subcategory" class="form-label">Subcategory </label>
                                     <input class="form-control" id="subcategory" name="subcategory">
+                                    <div id="subcategory_error" class="text-danger error"></div>
                                 </div>
 
                                 <div class="col-md-6">
-                        <label for="company name" class="form-label">Company Name <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="companyname" name="companyname" required>
-            <div id="companyname_error" class="text-danger error"></div>
-          </div>
+                                    <label for="company name" class="form-label">Company Name </label>
+                                    <input type="text" class="form-control" id="companyname" name="companyname">
+                                    <div id="companyname_error" class="text-danger error"></div>
+                                </div>
 
-          <div class="col-md-6">
-            <label for="company location" class="form-label">Company Location <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="companylocation" name="companylocation" required>
-            <div id="companylocation_error" class="text-danger error"></div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="experience-container">
-              <label for="expYear" class="form-label">Experience </label>
-              <div class="d-md-flex">
-                <label for="fromDate" class="pt-1 pe-2">From</label>
-                <div class="col-md-3  me-2">
-                  <input type="date" class="form-control" id="fromDate" name="fromDate">
-                  <div id="experienceexp_error" class="text-danger error"></div>
+                                <div class="col-md-6">
+                                    <label for="company location" class="form-label">Company Location</label>
+                                    <input type="text" class="form-control" id="companylocation" name="companylocation">
+                                    <div id="companylocation_error" class="text-danger error"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="experience-container">
+                                        <label for="expYear" class="form-label">Experience </label>
+                                        <div class="d-md-flex">
+                                            <label for="fromDate" class="pt-1 pe-2">From</label>
+                                            <div class="col-md-3  me-2">
+                                                <input type="date" class="form-control" id="fromDate" name="fromDate">
+                                                <div id="experienceexp_error" class="text-danger error"></div>
                                             </div>
                                             <label for="toDate" class="pt-1 px-2">To</label>
                                             <div class="col-md-3">
@@ -5827,20 +5619,22 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="form-label">Total duration <span class="text-danger">*</span></label>
-                                    <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months</p>
+                                    <label class="form-label">Total duration </label>
+                                    <p class="form-control" id="result"><span id="years"></span> Years & <span id="months">
+                                        </span> Months
+                                    </p>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="role" class="form-label">Role in the Company <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="role" name="role" required>
+                                    <label for="role" class="form-label">Role in the Company </label>
+                                    <input type="text" class="form-control" id="role" name="role">
                                     <div id="role_error" class="text-danger error"></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="mobilenumber" class="form-label">Company Mobile Number <span
-                                        class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" id="company_mobilenum" name="company_mobilenum"
-                                        pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required
+                                    <label for="mobilenumber" class="form-label">Company Mobile Number </label>
+                                    <input type="number" class="form-control" id="company_mobilenum"
+                                        name="company_mobilenum" pattern="[0-9]{1,15}" maxlength="10"
+                                        oninput="validatePhoneNumber(this)"
                                         onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                     <div id="compmobile_error" class="text-danger error"></div>
                                 </div>
@@ -5850,19 +5644,23 @@
                                 <div class="col-md-6">
                                     <label for="Name" class="form-label">Name </label>
                                     <input type="text" class="form-control" id="nameofemployer" name="nameofemployer"
-                                        oninput="validateName1(this)" required>
+                                        oninput="validateName1(this)">
+                                    <div id="name_error" class="text-danger error"></div>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="number" class="form-label">Mobile Number </label>
-                                    <input type="number" class="form-control" id="number" name="number" pattern="[0-9]{1,15}" maxlength="15"
-                                        oninput="validatePhoneNumber(this)" required
+                                    <label for="number" class="form-label">Mobile Number <span
+                                            class="text-danger"></span></label>
+                                    <input type="number" class="form-control" id="number" name="number"
+                                        pattern="[0-9]{1,10}" maxlength="10" oninput="validatePhoneNumber(this)"
                                         onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                                    <div id="mobilenum_error" class="text-danger error"></div>
                                 </div>
 
                                 <div class="col-md-6" class="form-label">
                                     <label for="email">Email-Id </label>
                                     <input type="text" class="form-control" id="emailid" name="emailid">
+                                    <div id="emailid_error" class="text-danger error"></div>
                                 </div>
 
                                 <input type="number" class="form-control" value="1" name="expsubmit" hidden>
@@ -5878,6 +5676,7 @@
 
                 </div><!-- End Recent Sales -->
             </section>
+
             <script>
                 function validateName1(input) {
                     input.value = input.value.replace(/[0-9]/g, '');
@@ -5894,153 +5693,87 @@
                         otherCategoryField.style.display = 'none';
                     }
                 }
-      document.getElementById('fromDate').addEventListener('input', updateDateDifference);
-      document.getElementById('toDate').addEventListener('input', updateDateDifference);
-      document.getElementById('till_now').addEventListener('change', updateToDate);
 
-      function updateDateDifference() {
-        var fromDate = new Date(document.getElementById('fromDate').value);
-        var toDate = new Date(document.getElementById('toDate').value);
+                document.getElementById('fromDate').addEventListener('input', updateDateDifference);
+                document.getElementById('toDate').addEventListener('input', updateDateDifference);
+                document.getElementById('till_now').addEventListener('change', updateToDate);
 
-        var tillNowChecked = document.getElementById('till_now').checked;
+                function updateDateDifference() {
+                    var fromDate = new Date(document.getElementById('fromDate').value);
+                    var toDate = new Date(document.getElementById('toDate').value);
 
-        document.getElementById('toDate').disabled = tillNowChecked;
+                    var tillNowChecked = document.getElementById('till_now').checked;
 
-        if (tillNowChecked) {
-          var today = new Date();
-          var formattedDate = today.toISOString().split('T')[0];
-          document.getElementById('toDate').value = formattedDate;
-        }
+                    document.getElementById('toDate').disabled = tillNowChecked;
 
-        if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
-          var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
+                    if (tillNowChecked) {
+                        var today = new Date();
+                        var formattedDate = today.toISOString().split('T')[0];
+                        document.getElementById('toDate').value = formattedDate;
+                    }
 
-          var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
-          var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
-          var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
+                    if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
+                        var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
 
-          if (daysDiff < 0) {
-            monthsDiff--;
-            daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
-          }
+                        var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
+                        var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
+                        var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
 
-          if (monthsDiff < 0) {
-            yearsDiff--;
-            monthsDiff += 12;
-          }
+                        if (daysDiff < 0) {
+                            monthsDiff--;
+                            daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
+                        }
 
-          document.getElementById('years').textContent = yearsDiff;
-          document.getElementById('months').textContent = monthsDiff;
-        }
-      }
+                        if (monthsDiff < 0) {
+                            yearsDiff--;
+                            monthsDiff += 12;
+                        }
 
-      function updateToDate() {
-        var today = new Date();
+                        document.getElementById('years').textContent = yearsDiff;
+                        document.getElementById('months').textContent = monthsDiff;
+                    }
+                }
 
-        today.setHours(0, 0, 0, 0);
+                function updateToDate() {
+                    var today = new Date();
 
-        var to_date_input = document.getElementById('toDate');
-        var till_now_checkbox = document.getElementById('till_now');
+                    today.setHours(0, 0, 0, 0);
 
-        if (till_now_checkbox.checked) {
+                    var to_date_input = document.getElementById('toDate');
+                    var till_now_checkbox = document.getElementById('till_now');
 
-          var yesterday = new Date(today);
-          yesterday.setDate(today.getDate() - 1);
+                    if (till_now_checkbox.checked) {
 
-          to_date_input.valueAsDate = yesterday;
-        } else {
-          to_date_input.disabled = false;
-        }
+                        var yesterday = new Date(today);
+                        yesterday.setDate(today.getDate() - 1);
 
-        updateDateDifference();
-      }
+                        to_date_input.valueAsDate = yesterday;
+                    } else {
+                        to_date_input.disabled = false;
+                    }
 
-      window.onload = function () {
-        updateDateDifference();
-      };
-    </script>
+                    updateDateDifference();
+                }
 
-    <script>
-      function showHideOtherField() {
-        var categoryDropdown = document.getElementById('category');
-        var otherCategoryField = document.getElementById('newcategory_group');
+                window.onload = function () {
+                    updateDateDifference();
+                };
+            </script>
+            <script>
+                <?php
+                if ($experienceDetails[0]['workStatus'] == '0') {
+                    ?>
+                    document.getElementById("expTable").style.display = "block";
+                    document.getElementById("noexperience").style.display = "none";
 
-        if (categoryDropdown.value === 'others') {
-          otherCategoryField.style.display = 'block';
-        } else {
-          otherCategoryField.style.display = 'none';
-        }
-      }
-    </script>
+                    <?php
+                } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
+                        document.getElementById("expTable").style.display = "none";
+                        document.getElementById("noexperience").style.display = "block";
 
-    <script>
-      function validateexpForm() {
-        clearErrorMessages();
-
-        var category = document.getElementById("category");
-        var newothercategory = document.getElementById("newcategory_group");
-        var subcategory = document.getElementById("subcategory");
-        var companyname = document.getElementById("companyname");
-        var companylocation = document.getElementById("companylocation");
-        var role = document.getElementById("role");
-        var compMobile = document.getElementById("company_mobilenum");
-
-        if (category.value === '') {
-          displayError('Please select a category', 'category_error');
-          return false;
-        }
-
-        if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
-          displayError('Please enter newcategory', 'newcategory_error');
-          return false;
-        }
-
-        if (subcategory.value === '') {
-          displayError('Please select a subcategory', 'subcategory_error');
-          return false;
-        }
-
-
-        if (companyname.value === '') {
-          displayError('Company name must be filled out', 'companyname_error');
-          return false;
-        }
-
-        if (companylocation.value === '') {
-          displayError('Company location must be filled out', 'companylocation_error');
-          return false;
-        }
-
-        if (role.value === '') {
-          displayError('Role must be filled out', 'role_error');
-          return false;
-        }
-
-        if (compMobile.value === '') {
-          displayError('Company mobile number must be filled out', 'compmobile_error');
-          return false;
-        } else if (!/^\d{10}$/.test(compMobile.value)) {
-          displayError('Mobile number must have exactly 10 digits', 'compmobile_error');
-          return false;
-        }
-
-        return true;
-      }
-
-      function displayError(message, elementId) {
-        var errorElement = document.getElementById(elementId);
-        errorElement.innerHTML = message;
-        errorElement.style.color = 'red';
-      }
-
-      function clearErrorMessages() {
-        var errorElements = document.getElementsByClassName('error');
-        Array.from(errorElements).forEach(function (errorElement) {
-          errorElement.textContent = '';
-        });
-      }
-    </script>
-
+                    <?php
+                } ?>
+            </script>
     <?php
  
 
