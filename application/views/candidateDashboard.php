@@ -2696,7 +2696,7 @@
             </div>
 
             <div class="col-6" id="newcategory_group" style="display: none;">
-              <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+              <label for="newcategory" class="form-label">New category</label>
               <input class="form-control" id="newcategory" name="newcategory">
               <div id="newcategory_error" class="text-danger error"></div>
               <input id="categoryothers" name="categoryothers" value="1" hidden>
@@ -3642,7 +3642,7 @@
                 </div>
 
                 <div class="col-12" id="newcategory_group" style="display: none;">
-                  <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+                  <label for="newcategory" class="form-label">New category</label>
                   <input class="form-control" id="newcategory" name="newcategory">
                   <div id="newcategory_error" class="text-danger error"></div>
                   <input id="categoryothers" name="categoryothers" value="1" hidden>

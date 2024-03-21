@@ -330,7 +330,7 @@ class EmployerModel extends CI_Model
     //   $result = $this->db->query($query);
     //   return $result->result_array();
 
-    $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(ssk.skill) AS skills,
+    $query = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, saoi.other_interst_category AS oic, saoi.other_sub_interst_category AS oisc, GROUP_CONCAT(DISTINCT ssk.skill) AS skills,
      cr.employer_id AS eprid, cr.candidate_id AS cndid, cr.request_status AS rqsts, GROUP_CONCAT(se.workStatus) AS experienceTable
       FROM seeker_profile_form spf 
       INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
@@ -343,12 +343,18 @@ class EmployerModel extends CI_Model
         AND spf.employmentVerify = '1'
          AND spf.identityVerify = '1'
           AND spf.deleteStatus = '0'
-          AND spf.currentStatus = '0'
+          AND (spf.currentStatus = '0' OR spf.currentStatus = '1') 
            GROUP BY spf.id, spf.name;";
     $result = $this->db->query($query);
     return $result->result_array();
 
   }
+
+  public function deleteJobList($item_id)
+    {
+        $this->db->where('id', $item_id);
+        $this->db->delete('provider_job');
+    }
 
 
   // public function requestForCandidate()

@@ -418,7 +418,7 @@ class AdminModel extends CI_Model
     // }
     public function candidateRequestDetails()
     {
-        $candidateRequestList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
+        $candidateRequestList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
             prf.id AS providerId, prf.erid AS emprid, prf.company_name AS cname, cr.job_category AS jobCategory
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
@@ -747,7 +747,7 @@ public function experienceTable($seekerId)
 
     public function placedCandidatesList()
     {
-        $candidatechartList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum, spf.position AS position,
+        $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum, spf.position AS position,
             prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, cr.candidate_id AS cid, prf.company_name AS compName
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
@@ -759,7 +759,7 @@ public function experienceTable($seekerId)
 
     public function interviewedCandidatesList()
     {
-        $candidatechartList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
+        $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
             prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, prf.company_name AS compName
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
@@ -771,7 +771,7 @@ public function experienceTable($seekerId)
 
     public function rejectedCandidatesList()
     {
-        $candidatechartList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
+        $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
             prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, prf.company_name AS compName
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
@@ -783,7 +783,7 @@ public function experienceTable($seekerId)
 
     public function candidateChartDetails()
     {
-        $candidatechartList = "SELECT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
+        $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
             prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
@@ -848,7 +848,7 @@ public function experienceTable($seekerId)
         else if ($postData['currentStatus'] == '0') {
 
             $currentStatus = array(
-                'currentStatus' => '2',
+                'currentStatus' => '0',
                 'placedAtEmployer' => $postData['employerId']
             );
             $this->db->where('id', $postData['seekerId']);

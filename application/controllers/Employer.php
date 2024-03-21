@@ -176,6 +176,22 @@ class Employer extends CI_Controller
         $this->load->view('employerDashboard.php', $this->data);
     }
 
+    public function deleteJobList()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
+                $selectedItems = $_POST['selected_items'];
+                foreach ($selectedItems as $itemId) {
+                    $this->EmployerModel->deleteJobList($itemId);
+                }
+                $this->jobViewTable();
+            } else {
+                $this->jobViewTable();
+                echo '<script>alert("Please select the checkbox to delete.");</script>';
+            }
+        }
+    }
+
     public function matchedCandidate()
     {
         $allcandidates = $this->EmployerModel->matchedAllCandidate();

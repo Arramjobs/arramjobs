@@ -810,6 +810,7 @@
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
+                                                            <th scope="col"></th>
                                                             <th scope="col">S.No</th>
                                                             <th scope="col">Date</th>
                                                             <th scope="col">Job Title</th>
@@ -831,6 +832,12 @@
                                                         ?>
 
                                                                     <tr>
+                                                                    <td>
+                                                                        <form method="post" action="<?php echo baseUrl . 'Employer/deleteJobList'; ?>"
+                                                                          id="form_<?= $value['id']; ?>">
+                                                                          <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
+                                                                            onchange="updateDeleteButton(this)">
+                                                                      </td>
                                                                         <td><a ><?php echo $countjobs++; ?>.</a></td>
                                                                         <td><?php echo $twelveHourTime ?></td>
                                                                         <td><?php echo $value['jobCategory'] ?>             <?php echo $value['jobSubCategory'] ?></td>
@@ -856,6 +863,9 @@
                                                     ?>
                                                     </tbody>
                                                 </table>
+                                                <button type="submit" name="submit" id="deleteList" class="btn btn-danger disabled"
+                                                    onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+                                                  </form>
                                             <?php
                                     } else {
                                         ?>
@@ -873,6 +883,18 @@
                         function addjob(){
                         document.getElementById("addjobs").style.display = "block";
                         }
+                    </script>
+
+                    <script>
+                        function updateDeleteButton(checkbox) {
+          var deleteButton = document.getElementById('deleteList');
+
+          if (checkbox.checked) {
+            deleteButton.classList.remove('disabled');
+          } else {
+            deleteButton.classList.add('disabled');
+          }
+        }
                     </script>
 
 
@@ -1852,6 +1874,9 @@
                                                                         <td> <?php  } else if($value['rqsts']== 5 && $value['eprid']== $_SESSION['employerid']){ ?> 
                                                                         <span class="badge bg-danger"><i class="bi bi-x-lg"></i> Rejected</span></td>
 
+                                                                        <td> <?php  } else if($value['rqsts']== 6 && $value['eprid']== $_SESSION['employerid']){ ?> 
+                                                                        <span class="badge bg-secondary"><i class="bi bi-check2-circle"></i> Placed</span></td>
+
                                                                         <?php } else {?>
 
                                                                         <span class="badge bg-info">Request to view</span></td>
@@ -1927,12 +1952,12 @@
                                                 <p class="text-center flex-row-reverse pb-3">Candidate ID : <?php echo $nvalue['eeid'] ?></p>
                                                  <?php
                                             foreach($this->data['canReqStatus'] as $key => $value) {
-                                                if (isset($value['request_status']) && $value['request_status'] == '3') {?>
+                                                if (isset($value['request_status']) && $value['request_status'] == '3' || $value['request_status'] == '4' || $value['request_status'] == '6') {?>
                                                 <div class="d-sm-flex justify-content-between py-4 resumephoto">
                                                 <img  src="<?php echo baseUrl."uploads/".$nvalue['photo_filename'] ?>" class="" width="160" height="160"  alt="profile photo">
                                                  <?php
                                                 }
-                                            if (isset($value['request_status']) && $value['request_status'] == '3') { ?>
+                                            if (isset($value['request_status']) && $value['request_status'] == '3' || $value['request_status'] == '4' || $value['request_status'] == '6') { ?>
                                             <div class="text-sm-end mt-4" >
                                                <p><?php echo $nvalue['phonenumber'] ?></p>
                                                <p><?php echo $nvalue['phonenumber1'] ?></p>

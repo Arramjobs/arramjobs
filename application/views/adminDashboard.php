@@ -2230,7 +2230,7 @@
                         </div>
 
                         <div class="col-12" id="newcategory_group" style="display: none;">
-                            <label for="newcategory" class="form-label">Reason for choosing category as others <span
+                            <label for="newcategory" class="form-label"> New category <span
                                     class="text-danger">*</span></label>
                             <input class="form-control" id="newcategory" name="newcategory">
                             <div id="newcategory_error" class="text-danger error"></div>
@@ -5523,7 +5523,8 @@
             ?>
            <!-- Sidebar Active  -->
            <script>
-                document.getElementById('experiences').classList.add('active');
+                document.getElementById('candidatelist').classList.add('active');
+                document.getElementById('candidateoveralllist').classList.add('active');
             </script>
             <section class="usertable">
                 <div class="pagetitle">
@@ -5540,10 +5541,10 @@
 
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
-                                <h5 class="card-title">Add Education Details</h5>
+                                <h5 class="card-title">Add Experience Details</h5>
                                 <div>
                                     <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
-                                            class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+                                            class="btn btn-info mt-4 "><i class="bi bi-arrow-left"></i></button></a>
                                 </div>
                             </div>
 
@@ -5572,8 +5573,7 @@
                                 </div>
 
                                 <div class="col-6" id="newcategory_group" style="display: none;">
-                                    <label for="newcategory" class="form-label">Reason for choosing category as
-                                        others</label>
+                                    <label for="newcategory" class="form-label">New category</label>
                                     <input class="form-control" id="newcategory" name="newcategory">
                                     <div id="newcategory_error" class="text-danger error"></div>
                                     <input id="categoryothers" name="categoryothers" value="1" hidden>
@@ -6714,7 +6714,9 @@
                                                         <?php echo $value['emprid']; ?>
                                                     </a>
                                                      </td>
-                                                    <!-- <td><?php echo $value['jobCategory'] ?></td> -->
+                                                     <!-- <td>
+                                                    <?php echo $value['position']; ?> 
+                                                     </td> -->
                                                 <td> 
                                                     <?php echo $value['mobilenum']; ?>
                                                 </td>
