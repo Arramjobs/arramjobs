@@ -193,10 +193,10 @@
                 return false;
             }
 
-            if (!validateEmail(email)) {
-                displayError('Please enter a valid email address', 'email_error');
-                return false;
-            }
+            // if (!validateEmail(email)) {
+            //     displayError('Please enter a valid email address', 'email_error');
+            //     return false;
+            // }
 
             if (!phone.trim()) {
                 displayError('Mobile number must be filled out', 'phone_error');
