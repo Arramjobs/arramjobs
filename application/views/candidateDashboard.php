@@ -460,9 +460,8 @@
                   <div id="Name_error" style="color: red;"></div>
                 </div>
                 <div class="col-md-12">
-                  <label for="emailid" class="form-label">Email <span class="text-danger">*</span></label><br>
-                  <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" name="email"
-                    required>
+                  <label for="emailid" class="form-label">Email </label><br>
+                  <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" name="email">
                   <div id="emailid_error" style="color: red;"></div>
                 </div>
                 <div class="col-md-6">
@@ -503,7 +502,7 @@
                   <div id="dob_error" style="color: red;"></div>
                 </div>
                 <div class="col-md-6">
-                  <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                  <label for="age" class="form-label">Age</label>
                   <input type="number" class="form-control" id="age"
                     value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly required>
                   <div id="age_error" style="color: red;"></div>
@@ -554,10 +553,9 @@
                   <div id="streetaddress_error" style="color: red;"></div>
                 </div>
                 <div class="col-md-6">
-                  <label for="landmark" class="form-label">Landmark <span class="text-danger">*</span></label>
+                  <label for="landmark" class="form-label">Landmark </label>
                   <input type="text" class="form-control" id="landmark"
                     value="<?php echo isset($value['landmark']) ? $value['landmark'] : ''; ?>" name="landmark">
-                  <div id="landmark_error" style="color: red;"></div>
                 </div>
                 <div class="col-md-6">
                   <label for="pincode" class="form-label">Pincode <span class="text-danger">*</span></label>
@@ -583,10 +581,7 @@
                       echo 'selected'; ?>>Karur</option>
                   </select>
                   <div id="district_error" style="color: red;"></div>
-                </div>
-
-
-
+                </div>                
                 <h5 class="card-title">Identification Details</h5>
 
                 <div class="col-md-6">
@@ -605,6 +600,8 @@
                     </a>
                   </div>
                   <div id="aadharfrontphoto_error" style="color: red;"></div>
+                  <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF
+                                        Maximum size: 1024KB</p>
                 </div>
 
                 <div class="col-md-6">
@@ -623,6 +620,8 @@
                     </a>
                   </div>
                   <div id="aadharbackphoto_error" style="color: red;"></div>
+                  <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF
+                                        Maximum size: 1024KB</p>
                 </div>
 
                 <div class="col-md-6">
@@ -651,7 +650,7 @@
 
                   <input type="number" class="form-control" value="1" name="bdsubmit" hidden>
 
-                  <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF Maximum size:
+                  <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG Maximum size:
                     1024KB</p>
                 </div>
                 <div class="text-center">
@@ -663,6 +662,7 @@
               <?php
               if ($value['bdsubmited'] == '1') {
                 ?>
+
                 <script>
                   let bds = "data";
                   document.getElementById("existfileaf").style.display = "block";
@@ -906,13 +906,7 @@
             document.getElementById("Name_error").innerHTML = "";
           }
 
-          if (y == "") {
-            var emailsms = "Email must be filled out";
-            // alert("email must be filled out");
-            document.getElementById("emailid_error").innerHTML = emailsms;
-            document.applicationform.email.focus();
-            return false;
-          } else if (y != "") {
+          if (y != "") {
             document.getElementById("emailid_error").innerHTML = "";
             /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
             if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(y)) {
@@ -989,14 +983,14 @@
             document.getElementById("streetaddress_error").innerHTML = "";
           }
 
-          if (l == "") {
-            var namesms2 = "Landmark must be filled out";
-            document.getElementById("landmark_error").innerHTML = namesms2;
-            document.applicationform.landmark.focus();
-            return false;
-          } else {
-            document.getElementById("landmark_error").innerHTML = "";
-          }
+         // if (l == "") {
+          //   var namesms2 = "Landmark must be filled out";
+          //   document.getElementById("landmark_error").innerHTML = namesms2;
+          //   document.applicationform.landmark.focus();
+          //   return false;
+          // } else {
+          //   document.getElementById("landmark_error").innerHTML = "";
+          // }
 
           if (pin != "") {
             if (pin.length !== 6) {
@@ -1169,7 +1163,7 @@
                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
                             $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
                             $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                            $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
+                            $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "BBM" || $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
                             $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
                             $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
                             $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
@@ -1210,7 +1204,7 @@
                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
                             $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
                             $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                            $value['educational_qualification'] === "B.Pharm" ||
+                            $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "BBM" || 
                             $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
                             $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
                             $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
@@ -1257,7 +1251,8 @@
                           } else if (
                             $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                            $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.Pharm"
+                            $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || 
+                            $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "BBM"
                           ) {
                             ?>
                                   <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
@@ -1383,19 +1378,17 @@
             </div>
 
             <div class="col-md-6" id="certificate_10th-group" style="display: none;">
-              <label for="certificate_10th" class="form-label">10th Certificate Upload <span
-                  class="text-danger">*</span></label>
+              <label for="certificate_10th" class="form-label">10th Certificate Upload </label>
               <input type="file" class="form-control" id="certificate_10th" name="certificate_10th"
                 accept="image/png ,image/jpg, image/jpeg, application/pdf">
-              <div id="certificate_10th_error" class="text-danger"></div>
+              <!-- <div id="certificate_10th_error" class="text-danger"></div> -->
             </div>
 
             <div class="col-md-6" id="certificate_12th-group" style="display: none;">
-              <label for="certificate_12th" class="form-label">12th Certificate Upload <span
-                  class="text-danger">*</span></label>
+              <label for="certificate_12th" class="form-label">12th Certificate Upload </label>
               <input type="file" class="form-control" id="certificate_12th" name="certificate_12th"
                 accept="image/png ,image/jpg, image/jpeg, application/pdf">
-              <div id="certificate_12th_error" class="text-danger"></div>
+              <!-- <div id="certificate_12th_error" class="text-danger"></div> -->
             </div>
 
             <div class="col-md-6" id="certificate_dip-group" style="display: none;">
@@ -1672,12 +1665,7 @@
           }
 
 
-          if (per == "" && document.getElementById('percentage-group').style.display !== "none") {
-            var namesms2 = "Percentage must be filled out";
-            document.getElementById("percentage_error").innerHTML = namesms2;
-            document.educationform.percentage.focus();
-            return false;
-          } else if (per > 100) {
+          if (per > 100) {
             var pervalidate = "Please enter valid percentage";
             document.getElementById("percentage_error").innerHTML = pervalidate;
             document.educationform.percentage.focus();
@@ -1699,23 +1687,23 @@
             document.getElementById("year_error").innerHTML = "";
           }
 
-          if (tenth == "" && document.getElementById('certificate_10th-group').style.display !== "none") {
-            var namesms2 = "10 th certificate must be uploaded";
-            document.getElementById("certificate_10th_error").innerHTML = namesms2;
-            document.educationform.certificate_10th.focus();
-            return false;
-          } else {
-            document.getElementById("certificate_10th_error").innerHTML = "";
-          }
+          // if (tenth == "" && document.getElementById('certificate_10th-group').style.display !== "none") {
+          //   var namesms2 = "10 th certificate must be uploaded";
+          //   document.getElementById("certificate_10th_error").innerHTML = namesms2;
+          //   document.educationform.certificate_10th.focus();
+          //   return false;
+          // } else {
+          //   document.getElementById("certificate_10th_error").innerHTML = "";
+          // }
 
-          if (tweleth == "" && document.getElementById('certificate_12th-group').style.display !== "none") {
-            var namesms2 = "12 th certificate must be uploaded";
-            document.getElementById("certificate_12th_error").innerHTML = namesms2;
-            document.educationform.certificate_12th.focus();
-            return false;
-          } else {
-            document.getElementById("certificate_12th_error").innerHTML = "";
-          }
+          // if (tweleth == "" && document.getElementById('certificate_12th-group').style.display !== "none") {
+          //   var namesms2 = "12 th certificate must be uploaded";
+          //   document.getElementById("certificate_12th_error").innerHTML = namesms2;
+          //   document.educationform.certificate_12th.focus();
+          //   return false;
+          // } else {
+          //   document.getElementById("certificate_12th_error").innerHTML = "";
+          // }
 
           if (diploma == "" && document.getElementById('certificate_dip-group').style.display !== "none") {
             var namesms2 = "Diploma certificate must be uploaded";
@@ -1852,7 +1840,7 @@
                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
                             $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
                             $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                            $value['educational_qualification'] === "B.Pharm" ||
+                            $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "BBM" || 
                             $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
                             $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
                             $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
@@ -1900,7 +1888,7 @@
                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
                             $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
                             $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                            $value['educational_qualification'] === "B.Pharm" ||
+                            $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "BBM" ||
                             $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
                             $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
                             $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
@@ -1948,7 +1936,7 @@
                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
                             $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
                             $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                            $value['educational_qualification'] === "B.Pharm"
+                            $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "BBM"
                           ) {
                             ?>
                                   <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
@@ -2041,10 +2029,10 @@
                 </div>
 
                 <div class="col-md-6" id="department-group" style="display: none;">
-                  <label class="form-label" for="department">Department <span class="text-danger">*</span></label>
+                  <label class="form-label" for="department">Specialization <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="department" name="department"
                     value="<?php echo $value['department']; ?>">
-                  <div id="department_error" class="text-danger"></div>
+                  <!-- <div id="department_error" class="text-danger"></div> -->
                 </div>
 
                 <div class="col-md-6" id="course-group" style="display: none;">
@@ -2081,8 +2069,7 @@
                 </div>
 
                 <div class="col-md-6" id="certificate_10th-group" style="display: none;">
-                  <label class="form-label" for="certificate_10th">10th Certificate Upload <span
-                      class="text-danger">*</span></label>
+                  <label class="form-label" for="certificate_10th">10th Certificate Upload </label>
                   <input type="text" class="form-control" name="old10cer" value="<?php echo $value['ten_cer']; ?>" hidden>
                   <div class="uploadedfile" style="display:flex;">
                     <input type="file" class="form-control cer10upload" id="certificate_10th" name="certificate_10th"
@@ -2092,12 +2079,11 @@
                       <?php echo $value['ten_cer']; ?>
                     </a>
                   </div>
-                  <div id="certificate_10th_error" class="text-danger"></div>
+                  <!-- <div id="certificate_10th_error" class="text-danger"></div> -->
                 </div>
 
                 <div class="col-md-6" id="certificate_12th-group" style="display: none;">
-                  <label class="form-label" for="certificate_12th">12th Certificate Upload <span
-                      class="text-danger">*</span></label>
+                  <label class="form-label" for="certificate_12th">12th Certificate Upload </label>
                   <input type="text" class="form-control" name="old12cer" value="<?php echo $value['twelve_cer']; ?>"
                     hidden>
                   <div class="uploadedfile" style="display:flex;">
@@ -2108,7 +2094,7 @@
                       <?php echo $value['twelve_cer']; ?>
                     </a>
                   </div>
-                  <div id="certificate_12th_error" class="text-danger"></div>
+                  <!-- <div id="certificate_12th_error" class="text-danger"></div> -->
                 </div>
 
                 <div class="col-md-6" id="certificate_dip-group" style="display: none;">
@@ -2399,12 +2385,7 @@
           }
 
 
-          if (per == "" && document.getElementById('percentage-group').style.display !== "none") {
-            var namesms2 = "Percentage must be filled out";
-            document.getElementById("percentage_error").innerHTML = namesms2;
-            document.educationform.percentage.focus();
-            return false;
-          } else if (per > 100) {
+          if (per > 100) {
             var pervalidate = "Please enter valid percentage";
             document.getElementById("percentage_error").innerHTML = pervalidate;
             document.educationform.percentage.focus();
@@ -2461,8 +2442,8 @@
               <div class="exptableheading" id="fresherExp">
                 <p style="font-size:18px; font-weight: bold; color: #007BFF; padding-top:20px;">Kindly mention your work experience and work
                   status.</p>
-                <p><b style="color:blue;">Note:</b> Indicate <b>'No Experience'</b> if you are a <b>Fresher</b> or have
-                  had <b>no professional experience</b> since graduation.</p>
+                <!-- <p><b style="color:blue;">Note:</b> Indicate <b>'No Experience'</b> if you are a <b>Fresher</b> or have
+                  had <b>no professional experience</b> since graduation.</p> -->
                 
                   <input type="radio" name="fresherExperience" value="experience" id="exp"
                   onclick="showContent('addexpform')" hidden>
@@ -2473,7 +2454,7 @@
               </div>
 
               <div id="fresher" class="button-content mt-4" style="display: none;">
-                <p>Now you can proceed to the <b>'Area of Job Interest'</b> section to specify your career preferences.
+                <!-- <p>Now you can proceed to the <b>'Area of Job Interest'</b> section to specify your career preferences. -->
                 </p>
                 <form method="post" action=" <?php echo baseUrl . "Candidate/insertFresherForm" ?>">
                   <input name="fresher" value="1" hidden>
@@ -2696,16 +2677,16 @@
             </div>
 
             <div class="col-6" id="newcategory_group" style="display: none;">
-              <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+              <label for="newcategory" class="form-label">New category</label>
               <input class="form-control" id="newcategory" name="newcategory">
               <div id="newcategory_error" class="text-danger error"></div>
               <input id="categoryothers" name="categoryothers" value="1" hidden>
             </div>
 
             <div class="col-md-6">
-              <label for="subcategory" class="form-label">Subcategory <span class="text-danger">*</span></label>
-              <input class="form-control" id="subcategory" name="subcategory" required>
-              <div id="subcategory_error" class="text-danger error"></div>
+              <label for="subcategory" class="form-label">Subcategory </label>
+              <input class="form-control" id="subcategory" name="subcategory">
+              <!-- <div id="subcategory_error" class="text-danger error"></div> -->
             </div>
 
             <div class="col-md-6">
@@ -2724,14 +2705,14 @@
               <div class="experience-container">
                 <label for="expYear" class="form-label">Experience <span class="text-danger">*</span></label>
                 <div class="d-md-flex">
-                  <label for="fromDate" class="pt-1 pe-2">From <span class="text-danger">*</span></label>
+                  <label for="fromDate" class="pt-1 pe-2">From </label>
                   <div class="col-md-3  me-2">
-                    <input type="date" class="form-control" id="fromDate" name="fromDate" required>
+                    <input type="text" class="form-control" id="fromDate" name="fromDate" required>
                     <div id="experienceexp_error" class="text-danger error"></div>
                   </div>
-                  <label for="toDate" class="pt-1 px-2">To <span class="text-danger">*</span></label>
+                  <label for="toDate" class="pt-1 px-2">To </label>
                   <div class="col-md-3">
-                    <input type="date" class="form-control" id="toDate" name="toDate" required>
+                    <input type="text" class="form-control" id="toDate" name="toDate" required>
                     <div id="experienceexpmonth_error" class="text-danger error"></div>
                   </div>
 
@@ -2743,22 +2724,21 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label">Total duration <span class="text-danger">*</span></label>
+              <label class="form-label">Total duration </label>
               <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months</p>
             </div>
 
             <div class="col-md-6">
-              <label for="role" class="form-label">Role in the Company <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" id="role" name="role" required>
-              <div id="role_error" class="text-danger error"></div>
+              <label for="role" class="form-label">Role in the Company </label>
+              <input type="text" class="form-control" id="role" name="role" >
+              <!-- <div id="role_error" class="text-danger error"></div> -->
             </div>
             <div class="col-md-6">
-              <label for="mobilenumber" class="form-label">Company Mobile Number <span
-                  class="text-danger">*</span></label>
+              <label for="mobilenumber" class="form-label">Company Mobile Number</label>
               <input type="number" class="form-control" id="company_mobilenum" name="company_mobilenum"
-                pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required
+                pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" 
                 onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
-              <div id="compmobile_error" class="text-danger error"></div>
+              <!-- <div id="compmobile_error" class="text-danger error"></div> -->
             </div>
             <!-- JOB PROFILE -->
             <!-- <div class="col-md-6">
@@ -2770,23 +2750,23 @@
             <h5 class="card-title">Previous Job's reference details</h5>
 
             <div class="col-md-6">
-              <label for="Name" class="form-label">Name <span class="text-danger">*</span></label>
+              <label for="Name" class="form-label">Name </label>
               <input type="text" class="form-control" id="nameofemployer" name="nameofemployer"
-                oninput="validateName1(this)" required>
-              <div id="name_error" class="text-danger error"></div>
+                oninput="validateName1(this)" >
+              <!-- <div id="name_error" class="text-danger error"></div> -->
             </div>
 
             <div class="col-md-6">
-              <label for="number" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+              <label for="number" class="form-label">Mobile Number </label>
               <input type="number" class="form-control" id="number" name="number" pattern="[0-9]{1,15}" maxlength="15"
-                oninput="validatePhoneNumber(this)" required
+                oninput="validatePhoneNumber(this)" 
                 onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
               <div id="mobilenum_error" class="text-danger error"></div>
             </div>
 
             <div class="col-md-6" class="form-label">
-              <label for="email">Email-Id <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" id="emailid" name="emailid" required>
+              <label for="email">Email-Id </label>
+              <input type="text" class="form-control" id="emailid" name="emailid" >
               <div id="emailid_error" class="text-danger error"></div>
             </div>
 
@@ -2915,10 +2895,10 @@
             return false;
           }
 
-          if (subcategory.value === '') {
-            displayError('Please select a subcategory', 'subcategory_error');
-            return false;
-          }
+          // if (subcategory.value === '') {
+          //   displayError('Please select a subcategory', 'subcategory_error');
+          //   return false;
+          // }
 
           // if (experience.value === '') {
           //   displayError('Please select an experience', 'experienceexp_error');
@@ -2951,15 +2931,12 @@
             return false;
           }
 
-          if (role.value === '') {
-            displayError('Role must be filled out', 'role_error');
-            return false;
-          }
+          // if (role.value === '') {
+          //   displayError('Role must be filled out', 'role_error');
+          //   return false;
+          // }
 
-          if (compMobile.value === '') {
-            displayError('Company mobile number must be filled out', 'compmobile_error');
-            return false;
-          } else if (!/^\d{10}$/.test(compMobile.value)) {
+          if (!/^\d{10}$/.test(compMobile.value)) {
             displayError('Mobile number must have exactly 10 digits', 'compmobile_error');
             return false;
           }
@@ -2970,26 +2947,20 @@
           //   return false;
           // }
 
-          if (ename.value === '') {
-            displayError('Employer name must be filled out', 'name_error');
-            return false;
-          }
+          // if (ename.value === '') {
+          //   displayError('Employer name must be filled out', 'name_error');
+          //   return false;
+          // }
 
-          if (phonenumber1.value === '') {
-            displayError('Mobile number must be filled out', 'mobilenum_error');
-            return false;
-          } else if (!/^\d{10}$/.test(phonenumber1.value)) {
-            displayError('Mobile number must have exactly 10 digits', 'mobilenum_error');
-            return false;
-          }
+          // if (!/^\d{10}$/.test(phonenumber1.value)) {
+          //   displayError('Mobile number must have exactly 10 digits', 'mobilenum_error');
+          //   return false;
+          // }
 
-          if (email1.value === '') {
-            displayError('Email id must be filled out', 'emailid_error');
-            return false;
-          } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email1.value)) {
-            displayError('Invalid email address', 'emailid_error');
-            return false;
-          }
+          // if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email1.value)) {
+          //   displayError('Invalid email address', 'emailid_error');
+          //   return false;
+          // }
 
           return true;
         }
@@ -3178,10 +3149,10 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="subcategory">Subcategory <span class="text-danger">*</span></label>
+                  <label class="form-label" for="subcategory">Subcategory </label>
                   <input class="form-control" id="subcategory" name="subcategory"
-                    value="<?php echo $value['other_sub_category']; ?>" required>
-                  <div id="subcategory_error" class="error"></div>
+                    value="<?php echo $value['other_sub_category']; ?>">
+                  <!-- <div id="subcategory_error" class="error"></div> -->
                 </div>
 
                 <div class="col-md-6">
@@ -3192,11 +3163,10 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="company location">Company Location <span
-                      class="text-danger">*</span></label>
+                  <label class="form-label" for="company location">Company Location </label>
                   <input type="text" class="form-control" value="<?php echo $value['company_location']; ?>"
-                    id="companylocation" name="companylocation" required>
-                  <div id="companylocation_error" class="error"></div>
+                    id="companylocation" name="companylocation">
+                  <!-- <div id="companylocation_error" class="error"></div> -->
                 </div>
 
                 <div class="col-md-6">
@@ -3205,7 +3175,7 @@
 
                     <div class="d-md-flex">
 
-                      <label for="fromDate" class="pt-1 pe-2">From <span class="text-danger">*</span></label>
+                      <label for="fromDate" class="pt-1 pe-2">From </label>
 
                       <div class="col-md-3  me-2">
                         <input type="date" class="form-control" id="fromDate" name="fromDate"
@@ -3214,7 +3184,7 @@
                       </div>
 
 
-                      <label for="toDate" class="pt-1 px-2">To <span class="text-danger">*</span></label>
+                      <label for="toDate" class="pt-1 px-2">To </label>
 
                       <div class="col-md-3">
                         <input type="date" class="form-control" id="toDate" name="toDate"
@@ -3237,18 +3207,17 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="role">Role in the Company <span class="text-danger">*</span></label>
+                  <label class="form-label" for="role">Role in the Company </label>
                   <input type="text" class="form-control" value="<?php echo $value['job_role']; ?>" id="role" name="role"
-                    required>
-                  <div id="role_error" class="error"></div>
+                    >
+                  <!-- <div id="role_error" class="error"></div> -->
                 </div>
 
                 <div class="col-md-6">
-                  <label for="mobilenumber" class="form-label">Company Mobile Number <span
-                      class="text-danger">*</span></label>
+                  <label for="mobilenumber" class="form-label">Company Mobile Number </label>
                   <input type="number" class="form-control" id="company_mobilenum"
                     value="<?php echo $value['company_mobilenum']; ?>" name="company_mobilenum" pattern="[0-9]{1,15}"
-                    maxlength="15" oninput="validatePhoneNumber(this)" required
+                    maxlength="15" oninput="validatePhoneNumber(this)" 
                     onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                   <div id="compmobile_error" class="text-danger error"></div>
                 </div>
@@ -3264,24 +3233,24 @@
                 <h5 class="card-title">Previous Job's Reference Details</h5>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="Name">Name <span class="text-danger">*</span></label>
+                  <label class="form-label" for="Name">Name </label>
                   <input type="text" class="form-control" value="<?php echo $value['previous_employer_name']; ?>"
-                    id="nameofemployer" name="nameofemployer" oninput="validateName1(this)" required>
-                  <div id="name_error" class="error"></div>
+                    id="nameofemployer" name="nameofemployer" oninput="validateName1(this)">
+                  <!-- <div id="name_error" class="error"></div> -->
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="phone number">Mobile Number <span class="text-danger">*</span></label>
+                  <label class="form-label" for="phone number">Mobile Number </label>
                   <input type="number" class="form-control" value="<?php echo $value['previous_employer_mobile']; ?>"
                     id="number" name="number" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)"
-                    required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                    onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                   <div id="mobilenum_error" class="error"></div>
                 </div>
 
                 <div class="col-md-6">
                   <label class="form-label" for="email">Email</label>
                   <input type="text" class="form-control" value="<?php echo $value['previous_employer_email']; ?>"
-                    id="emailid" name="emailid" required>
+                    id="emailid" name="emailid">
                   <div id="emailid_error" class="error"></div>
                 </div>
 
@@ -3377,13 +3346,10 @@
             return false;
           }
 
-          if (compMobile.value === '') {
-            displayError('Company mobile number must be filled out', 'compmobile_error');
-            return false;
-          } else if (!/^\d{10}$/.test(compMobile.value)) {
-            displayError('Mobile number must have exactly 10 digits', 'compmobile_error');
-            return false;
-          }
+          // if (!/^\d{10}$/.test(compMobile.value)) {
+          //   displayError('Mobile number must have exactly 10 digits', 'compmobile_error');
+          //   return false;
+          // }
 
           // JOB PROFILE
           // if (profile.value === '') {
@@ -3391,23 +3357,17 @@
           //   return false;
           // }
 
-          if (ename.value === '') {
-            displayError('Employer name must be filled out', 'name_error');
-            return false;
-          }
+          // if (ename.value === '') {
+          //   displayError('Employer name must be filled out', 'name_error');
+          //   return false;
+          // }
 
-          if (phonenumberu.value === '') {
-            displayError('Mobile number must be filled out', 'mobilenum_error');
-            return false;
-          } else if (!/^\d{10}$/.test(phonenumberu.value)) {
+          if (!/^\d{10}$/.test(phonenumberu.value)) {
             displayError('Mobile number must have exactly 10 digits', 'mobilenum_error');
             return false;
           }
 
-          if (emailu.value === '') {
-            displayError('Email id must be filled out', 'emailid_error');
-            return false;
-          } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(emailu.value)) {
+          if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(emailu.value)) {
             displayError('Invalid email address', 'emailid_error');
             return false;
           }
@@ -3649,8 +3609,8 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for=" subcategory">Subcategory <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="subcategory" name="subcategory" required>
+                  <label class="form-label" for=" subcategory">Subcategory </label>
+                  <input type="text" class="form-control" id="subcategory" name="subcategory">
                   <div id="areasubcat_error" class="error"></div>
                 </div>
 
@@ -3684,8 +3644,8 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="description">Description <span class="text-danger">*</span></label>
-                  <input class="form-control" id="description" name="description" rows="3" required>
+                  <label class="form-label" for="description">Description </label>
+                  <input class="form-control" id="description" name="description" rows="3">
                   <div id="areades_error" class="error"></div>
                 </div>
 
@@ -3775,10 +3735,10 @@
                 return false;
               }
 
-              if (subcategory === "" && category !== "") {
-                displayError('Please select a subcategory', 'areasubcat_error');
-                return false;
-              }
+              // if (subcategory === "" && category !== "") {
+              //   displayError('Please select a subcategory', 'areasubcat_error');
+              //   return false;
+              // }
 
               if (preferredLocation.trim() === "") {
                 displayError('Preferred location must be filled out', 'arealocation_error');
@@ -3795,10 +3755,10 @@
               //   return false;
               // }
 
-              if (description.trim() === "") {
-                displayError('Description must be filled out', 'areades_error');
-                return false;
-              }
+              // if (description.trim() === "") {
+              //   displayError('Description must be filled out', 'areades_error');
+              //   return false;
+              // }
 
               if (jobtype.trim() === "") {
                 displayError('Job type must be filled out', 'areajob_error');
@@ -4148,10 +4108,10 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="subcategory">Subcategory <span class="text-danger">*</span></label>
+                  <label class="form-label" for="subcategory">Subcategory </label>
                   <input type="text" class="form-control" id="subcategory" name="subcategory"
-                    value="<?php echo $value['other_sub_interst_category'] ?>" required>
-                  <div id="areasubcat_error" class="error"></div>
+                    value="<?php echo $value['other_sub_interst_category'] ?>">
+                  <!-- <div id="areasubcat_error" class="error"></div> -->
                 </div>
 
 
@@ -4192,10 +4152,10 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="description">Description <span class="text-danger">*</span></label>
+                  <label class="form-label" for="description">Description </label>
                   <input class="form-control" id="description" name="description"
-                    value="<?php echo $value['description']; ?>" rows="3" required>
-                  <div id="areades_error" class="error"></div>
+                    value="<?php echo $value['description']; ?>" rows="3">
+                  <!-- <div id="areades_error" class="error"></div> -->
                 </div>
 
                 <div class="col-md-6">
@@ -4265,11 +4225,10 @@
             return false;
           }
 
-          if (subcategory === "" && category !== "") {
-            // alert("Please select a subcategory.");
-            displayError('Please select a subcategory', 'areasubcat_error');
-            return false;
-          }
+          // if (subcategory === "" && category !== "") {
+          //   displayError('Please select a subcategory', 'areasubcat_error');
+          //   return false;
+          // }
 
           if (preferredLocation.trim() === "") {
             // alert("Preferred location must be filled out.");
@@ -4283,11 +4242,10 @@
           //   return false;
           // }
 
-          if (description.trim() === "") {
-            // alert("Description must be filled out.");
-            displayError('Description must be filled out', 'areades_error');
-            return false;
-          }
+          // if (description.trim() === "") {
+          //   displayError('Description must be filled out', 'areades_error');
+          //   return false;
+          // }
 
           if (jobtype.trim() === "") {
             // alert("Please select your job type.");    
@@ -4782,7 +4740,7 @@
                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
                             $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
                             $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                            $value['educational_qualification'] === "B.Pharm" ||
+                            $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "BBM" ||
                             $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
                             $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
                             $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
@@ -4828,7 +4786,7 @@
                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
                             $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
                             $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                            $value['educational_qualification'] === "B.Pharm" ||
+                            $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "BBM" ||
                             $value['educational_qualification'] === "DIPLOMA" || $value['educational_qualification'] === "D.Pharm" ||
                             $value['educational_qualification'] === "M.E" || $value['educational_qualification'] === "M.A" || $value['educational_qualification'] === "M.COM" || $value['educational_qualification'] === "M.ED" ||
                             $value['educational_qualification'] === "M.LIT" || $value['educational_qualification'] === "M.TECH" || $value['educational_qualification'] === "MCA" || $value['educational_qualification'] === "MBA" ||
@@ -4879,9 +4837,9 @@
                             $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
                             $value['educational_qualification'] === "BFA" || $value['educational_qualification'] === "B.Arch" || $value['educational_qualification'] === "B.N" || $value['educational_qualification'] === "BCS" ||
                             $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
-                            $value['educational_qualification'] === "B.Pharm"
+                            $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "BBM"
                           ) {
-                            ?>
+                            ?>""
                                   <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
                                 <?php echo $value['ug_cer'] ?>
                                     </a></td>

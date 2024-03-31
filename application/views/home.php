@@ -1168,13 +1168,13 @@ label #cancel {
                 <li><a href="#">Home</a></li>
                   <li><a href="#about">About Us</a></li>
                   <li><a href="#footercontact">Contact</a></li>
-                  <li class="btn2"><a href="<?php echo baseUrl . "Candidate" ?>">Login</a></li>
-                  <li class="btn2"><a href="<?php echo baseUrl . "Candidate/registration" ?>">Register</a></li>
+                  <li class="btn2"><a href="<?php echo baseUrl . "Candidate" ?>">Candidate Login</a></li>
+                  <li class="btn2"><a href="<?php echo baseUrl . "Candidate/registration" ?>">Candidate Register</a></li>
                 
-               <li><a href="#" class="dropdown-toggle">For employers</a>
+               <li><a href="#" class="dropdown-toggle">For Employers</a>
                   <ul class="dropdown">
-                  <li><a href="<?php echo baseUrl . "Employer/login" ?>">Login</a></li>
-                    <li><a href="<?php echo baseUrl . "Employer/registration" ?>">Register</a></li>
+                  <li><a href="<?php echo baseUrl . "Employer/login" ?>">Employer Login</a></li>
+                    <li><a href="<?php echo baseUrl . "Employer/registration" ?>">Employer Register</a></li>
                   </ul></li>
 
               </ul>
