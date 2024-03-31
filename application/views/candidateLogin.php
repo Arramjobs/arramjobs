@@ -199,6 +199,15 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
+            <footer id="footer" class="footer mt-auto py-3">
+  <div class="contact">
+      <p style="padding-left:24%; color:#blue;">Need help? Contact us anytime: <a href="tel:7418334443"><strong>+91 7418334443</strong></a></p>
+    </div>
+    <div class="copyright" style="padding-right:25%;">
+      &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
+    </div>
+  </footer>
+
     <!-- Vendor JS Files -->
     <script src="<?php echo baseUrl; ?>/assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="<?php echo baseUrl; ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

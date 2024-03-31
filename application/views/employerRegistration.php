@@ -78,22 +78,22 @@
                 method="post" >
                     
                     <div class="">
-                    <label for="name" class="form-label">Company Name: <span class="text-danger">*</span></label>
+                    <label for="name" class="form-label">Company Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" onkeypress="return allowOnlyLetters(event, this)" required>
                     <p id="nameerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="phno" class="form-label">Company Number: <span class="text-danger">*</span></label>
+                    <label for="phno" class="form-label">Company Number <span class="text-danger">*</span></label>
                     <input type="number" class="form-control" id="phno" name="mobile" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                     <p id="pherr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="email" class="form-label">Email-ID: <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <label for="email" class="form-label">Email-ID </label>
+                    <input type="email" class="form-control" id="email" name="email">
                     <p id="mailerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="crpassword" class="form-label">Create Password: <span class="text-danger">*</span></label>
+                    <label for="crpassword" class="form-label">Create Password <span class="text-danger">*</span></label>
                     <div class="input-group has-validation">
                     <input type="password" class="form-control" id="crpassword" name="crpassword" required>
                     <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('crpassword', 'visibilityIcon')">
@@ -104,27 +104,27 @@
                 </div>
                     <div class="text-secondary" style="font-size:12px;display:none;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
                 <div class="">
-                    <label for="cmpassword" class="form-label">Confirm Password: <span class="text-danger">*</span></label>
+                    <label for="cmpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="cmpassword" name="cmpassword" required>
                     <p id="cmpassworderr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="addr" class="form-label">Street Address: <span class="text-danger">*</span></label>
+                    <label for="addr" class="form-label">Street Address <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="addr" name="address" required>
                     <p id="adderr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="addr" class="form-label">Landmark: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="landmark" name="landmark" required>
+                    <label for="addr" class="form-label">Landmark </label>
+                    <input type="text" class="form-control" id="landmark" name="landmark">
                     <p id="landerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="addr" class="form-label">City: <span class="text-danger">*</span> </label>
+                    <label for="addr" class="form-label">City <span class="text-danger">*</span> </label>
                     <input type="text" class="form-control" id="city" name="city" required>
                     <p id="cityerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="addr" class="form-label">District: <span class="text-danger">*</span></label>
+                    <label for="addr" class="form-label">District <span class="text-danger">*</span></label>
                         <select class="form-control" id="district" name="district" required>
                                 <option value="">Select district</option>
                                 <option value="Erode">Erode</option>
@@ -135,7 +135,7 @@
                     <p id="diserr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="addr" class="form-label">State: <span class="text-danger">*</span></label>
+                    <label for="addr" class="form-label">State <span class="text-danger">*</span></label>
                     <select class="form-control" id="state" name="state" required>
                                 <option value="">Select state</option>
                                 <option value="Tamilnadu">Tamil Nadu</option>
@@ -144,35 +144,35 @@
                 </div>
 
                 <div class="">
-                    <label for="addr" class="form-label">Pincode: <span class="text-danger">*</span></label>
+                    <label for="addr" class="form-label">Pincode <span class="text-danger">*</span></label>
                     <input type="number" class="form-control" id="pincode" name="pincode" required>
                     <p id="pinerr" style="color: red;"></p>
                 </div>
 
                 <div class="">
-                    <label for="locationUrl" class="form-label">Location URL: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="locationUrl" name="locationUrl" pattern="https?://.+" required>
-                    <p id="lUrlerr" style="color: red;"></p>
+                    <label for="locationUrl" class="form-label">Location URL </label>
+                    <input type="text" class="form-control" id="locationUrl" name="locationUrl" pattern="https?://.+" >
+                    <!-- <p id="lUrlerr" style="color: red;"></p> -->
                 </div>
 
                 <div class="">
-                    <label for="logo" class="form-label">Logo:</label>
+                    <label for="logo" class="form-label">Logo</label>
                     <input type="file" class="form-control" id="logo" name="logo" >
                     <p id="logerr" style="color: red;"></p>
                     <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF Maximum size: 1024KB</p>
                 </div>
                 <div class="">
-                    <label for="cwebsite" class="form-label">Website:</label>
+                    <label for="cwebsite" class="form-label">Website</label>
                     <input type="text" class="form-control" id="cwebsite" name="cwebsite">
                     <p id="weberr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="cpan" class="form-label">Pan Number:</label>
+                    <label for="cpan" class="form-label">Pan Number</label>
                     <input type="text" class="form-control" id="cpan" name="cpan">
                     <p id="panerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="cgst" class="form-label">GST Number:</label>
+                    <label for="cgst" class="form-label">GST Number</label>
                     <input type="text" class="form-control" id="cgst" name="cgst">
                     <p id="gsterr" style="color: red;"></p>
                 </div>
@@ -182,24 +182,24 @@
                 </div>
 
                 <div class="">
-                    <label for="name1" class="form-label">Name: <span class="text-danger">*</span></label>
+                    <label for="name1" class="form-label">Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="name1" name="name1" 
                         onkeypress="return allowOnlyLetters1(event, this)" required>
                     <p id="nameerr1" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="role" class="form-label">Role: <span class="text-danger">*</span></label>
+                    <label for="role" class="form-label">Role <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="role" name="role" required>
                     <p id="rolerr" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="phno1" class="form-label">Mobile Number: <span class="text-danger">*</span></label>
+                    <label for="phno1" class="form-label">Mobile Number <span class="text-danger">*</span></label>
                     <input type="number" class="form-control" id="phno1" name="mobile1" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                     <p id="pherr1" style="color: red;"></p>
                 </div>
                 <div class="">
-                    <label for="mail1" class="form-label">Email-ID: <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="mail1" name="email1" required>
+                    <label for="mail1" class="form-label">Email-ID </label>
+                    <input type="email" class="form-control" id="mail1" name="email1">
                     <p id="mailerr1" style="color: red;"></p>
                 </div>
 
@@ -349,12 +349,7 @@
                 return false;
             }
 
-            if (a == "") {
-                var emailsms = "Email must be filled out";
-                document.getElementById("mailerr").innerHTML = emailsms;
-                document.forms.email.focus();
-                return false;
-            } else if (a != "") {
+            if (a != "") {
                 // document.getElementById("mailerr").innerHTML="";
                 /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
                 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(a)) {
@@ -434,13 +429,7 @@
                 } else {
                     document.getElementById("landerr").innerHTML = "";
                 }
-            } else if (y1 == "") {
-                var landmark = "Landmark must be filled out";
-                document.getElementById("landerr").innerHTML = landmark;
-                document.forms.landmark.focus();
-                return false;
-            }
-
+            
 
             if (y2 != "") {
                 if (y2.length < 2) {
@@ -580,12 +569,7 @@
             }
 
 
-            if (a1 == "") {
-                var emailsms1 = "Mail must be filled out";
-                document.getElementById("mailerr1").innerHTML = emailsms1;
-                document.forms.mail1.focus();
-                return false;
-            } else if (a1 != "") {
+            if (a1 != "") {
                 // document.getElementById("mailerr").innerHTML="";
                 /* var strmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;*/
                 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(a1)) {

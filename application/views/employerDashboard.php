@@ -341,8 +341,8 @@
                                             <p id="pherr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="inputEmail5" class="form-label">Email-Id <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" id="inputEmail5" name="email" value='<?php echo $value['company_email']; ?>' required >
+                                            <label for="inputEmail5" class="form-label">Email-Id </label>
+                                            <input type="email" class="form-control" id="inputEmail5" name="email" value='<?php echo $value['company_email']; ?>' >
                                             <p id="mailerr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
@@ -362,8 +362,8 @@
                                         </div>
                                         <div class="text-secondary" style="font-size:12px;display:none;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
                                         <div class="col-md-6">
-                                            <label for="inputAddress2" class="form-label">Landmark <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="inputAddress2"  value='<?php echo $value['Landmark']; ?>' name="landmark1" required>
+                                            <label for="inputAddress2" class="form-label">Landmark </label>
+                                            <input type="text" class="form-control" id="inputAddress2"  value='<?php echo $value['Landmark']; ?>' name="landmark1">
                                         <p id="landerr1" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
@@ -398,8 +398,8 @@
                                         <p id="pinerr1" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="locationUrl" class="form-label">Location URL <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="locationUrl" name="locationUrl" value='<?php echo $value['companyLocationUrl']; ?>'  pattern="https?://.+" required>
+                                            <label for="locationUrl" class="form-label">Location URL </label>
+                                            <input type="text" class="form-control" id="locationUrl" name="locationUrl" value='<?php echo $value['companyLocationUrl']; ?>'  pattern="https?://.+">
                                             <p id="lUrlerr" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
@@ -444,8 +444,8 @@
                                         <p id="pherr1" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="cpemail" class="form-label">Email-ID <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" id="cpemail" value='<?php echo $value['email']; ?>' name="mail1" required>
+                                            <label for="cpemail" class="form-label">Email-ID </label>
+                                            <input type="email" class="form-control" id="cpemail" value='<?php echo $value['email']; ?>' name="mail1">
                                         <p id="mailerr1" style="color: red;"></p>
                                         </div>
                                         <div class="text-center">
@@ -598,12 +598,7 @@
                                 document.getElementById("pherr").innerHTML = "";
                             }
 
-                        if (mailp == "") {
-                            var emailsms = "Email must be filled out";
-                            document.getElementById("mailerr").innerHTML = emailsms;
-                            document.forms.email.focus();
-                            return false;
-                        } else if (mailp != "") {
+                        if (mailp != "") {
                             document.getElementById("mailerr").innerHTML = "";
                             if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailp)) {
                                 document.getElementById("mailerr").innerHTML = "";
@@ -753,12 +748,7 @@
                                 document.getElementById("pherr1").innerHTML = "";
                             }
 
-                        if (cpmail == "") {
-                            var emailsms1 = "Email must be filled out";
-                            document.getElementById("mailerr1").innerHTML = emailsms1;
-                            document.forms.mail1.focus();
-                            return false;
-                        } else if (cpmail != "") {
+                        if (cpmail != "") {
                             document.getElementById("mailerr1").innerHTML = "";
                             if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(cpmail)) {
                                 document.getElementById("mailerr1").innerHTML = "";
@@ -969,8 +959,8 @@
                             <div id="no_of_openings_error" class="error"></div>
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label" for="jobdescription">Job Description <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="jobdescription" name="description" data-toggle="popover" data-trigger="hover focus" required>
+                            <label class="form-label" for="jobdescription">Job Description </label>
+                            <input type="text" class="form-control" id="jobdescription" name="description" data-toggle="popover" data-trigger="hover focus">
                             <div id="description_error" class="error"></div>
                         </div>
                         <div class="text-center">
@@ -1142,14 +1132,12 @@
                                 no_of_openings_error.innerHTML = '';
                             }
 
-                            if (description.value.trim() === "") {
-                                // alert("Please enter a description")
-                                displayError('Description must be filled out', 'description_error');
-                                // document.experienceform.description.focus();
-                                return false;
-                            } else if (description.value !== '') {
-                                description_error.innerHTML = '';
-                            }
+                            // if (description.value.trim() === "") {
+                            //     displayError('Description must be filled out', 'description_error');
+                            //     return false;
+                            // } else if (description.value !== '') {
+                            //     description_error.innerHTML = '';
+                            // }
 
                             return true;
                         }
@@ -1403,14 +1391,14 @@
                                 no_of_openings_error.innerHTML = '';
                             }
 
-                            if (description.value.trim() === "") {
-                                // alert("Please enter a description")
-                                displayError('Description must be filled out', 'description_error');
-                                // document.experienceform.description.focus();
-                                return false;
-                            } else if (description.value !== '') {
-                                description_error.innerHTML = '';
-                            }
+                            // if (description.value.trim() === "") {
+                            //     // alert("Please enter a description")
+                            //     displayError('Description must be filled out', 'description_error');
+                            //     // document.experienceform.description.focus();
+                            //     return false;
+                            // } else if (description.value !== '') {
+                            //     description_error.innerHTML = '';
+                            // }
 
                             return true;
                         }
@@ -1607,8 +1595,8 @@
                                     <div id="no_of_openings_error" class="error"></div>
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label"  for="description">Job Description: <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="description" value="<?php echo $value['description']; ?>" name="description" required>
+                                    <label class="form-label"  for="description">Job Description: </label>
+                                    <input type="text" class="form-control" id="description" value="<?php echo $value['description']; ?>" name="description">
                                     <div id="description_error" class="error"></div>
                                 </div>
                                 <div class="text-center">
@@ -1742,13 +1730,13 @@
 
 
 
-                           if (description.value.trim() === "") {
-                               // alert("Please enter a description");
-                               displayError('Description must be filled out', 'description_error');
-                               return false;
-                           } else if (description.value !== '') {
-                               description_error.innerHTML = '';
-                           }
+                        //    if (description.value.trim() === "") {
+                        //        // alert("Please enter a description");
+                        //        displayError('Description must be filled out', 'description_error');
+                        //        return false;
+                        //    } else if (description.value !== '') {
+                        //        description_error.innerHTML = '';
+                        //    }
 
                            return true;
                        }

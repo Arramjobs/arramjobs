@@ -550,6 +550,31 @@ class Admin extends CI_Controller
         $this->load->view('adminDashboard.php', $this->data);
     }
 
+    public function resumePrint()
+    {
+        $id = $this->uri->segment(3);
+        $this->data['method'] = "resumePrint";
+
+        $education = $this->EmployerModel->educationalDetails($id);
+        $this->data['education'] = $education;
+
+        $skills = $this->EmployerModel->skills($id);
+        $this->data['skills'] = $skills;
+
+        $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
+        $this->data['areaOfInterest'] = $areaOfInterest;
+
+        $experienceDetails = $this->EmployerModel->experienceDetails($id);
+        $this->data['experienceDetails'] = $experienceDetails;
+
+        $basicDetails = $this->EmployerModel->candidate($id);
+        $this->data['basicDetails'] = $basicDetails;
+
+        $this->setVariable();
+
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
     public function verifyEmployee()
     {
         $postData = $this->input->post(null, true);
@@ -754,6 +779,12 @@ class Admin extends CI_Controller
         $this->index();
     }
 
+    // public function logout()
+    // {
+    //     $this->session->unset_userdata('userLoggedIn');
+    //     $this->index();
+    // }
+
 
     // CANDIDATE FORM
 
@@ -808,8 +839,8 @@ class Admin extends CI_Controller
         $id = $this->uri->segment(3);
         $this->data['candidateId'] = $id;
        
-        $experienceTable = $this->CandidateModel->experienceTable();
-        $this->data['experienceTable'] = $experienceTable['response'];
+        // $experienceTable = $this->CandidateModel->experienceTable();
+        // $this->data['experienceTable'] = $experienceTable['response'];
 
         $categoryList = $this->CandidateModel->getCategoryList();
         $this->data['categoryList'] = $categoryList;
