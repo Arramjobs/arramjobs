@@ -1032,9 +1032,7 @@
                                     </button>
                                     <p id="crpassworderr" style="color: red;"></p>
                                     <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">
-                                        Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1
-                                        number
-                                        and a minimum of 8 characters.</div>
+                                        Passwords must contain atleast 1 uppercase, 1 number and a minimum of 6 characters.</div>
                                 </div>
                             </div>
                             <div class="col-md-6">

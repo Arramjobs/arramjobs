@@ -1034,6 +1034,7 @@ label #cancel {
 .profile-card:hover h4 {
     transform: translateY(-90px);
     color: #3188eb;
+    font-size: 18px;
 }
 .img img {
     position: relative;
@@ -1047,8 +1048,8 @@ label #cancel {
     transform: translateY(-40px);
     opacity: 1;
     transition: .6s;
-    font-size: 20px;
-    padding-top: 20px;
+    font-size: 18px;
+    padding-top: 7px;
     color: white;
 }
 .caption p {
@@ -1217,7 +1218,7 @@ label #cancel {
             <img src="assets/Kiruthika2.png" alt="Mrs. Kirthika Shivkumar">
             </div>
             <div class="caption">
-                <h4>Mrs.Kirthika</h4>
+                <h4>Mrs.Kirthika Shivkumar</h4>
                 <p>Managing Trustee</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/kirthikashivkumarerode" target="_blank"><i class="fab fa-facebook" style="color:#316FF6;"></i></a>

@@ -105,6 +105,7 @@
                                                 <div class="invalid-feedback">Please enter your password.</div>
                                                 <div id="passwordError" class="text-danger"></div>
                                             </div>
+                                            <div class="text-secondary" style="font-size:15px; margin:0px" id="passwordmessage">Enter the password in DDMMYYYY (01051996).</div>
                                         </div>
 
                                         <!-- <div class="col-12">

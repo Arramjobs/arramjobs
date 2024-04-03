@@ -102,7 +102,7 @@
                     <p id="crpassworderr" style="color: red;"></p>
                 </div>
                 </div>
-                    <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase and a minimum of 6 characters.</div>
+                    <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 number and a minimum of 6 characters.</div>
                 <div class="">
                     <label for="cmpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="cmpassword" name="cmpassword" required>

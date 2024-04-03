@@ -110,7 +110,7 @@
                                             <div id="crpassworderr" style="color: red;" class="error" ></div>
                                         </div>
                                         </div>
-                                        <div class="text-secondary" style="font-size:15px;display:none;margin:0px" id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
+                                        <div class="text-secondary" style="font-size:15px; margin:0px" id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
 
                                         <div class="">                                     
                                             <label for="cmpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
