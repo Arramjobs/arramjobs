@@ -52,6 +52,31 @@
       margin: 0;
     }
 
+    /* To print candidate details */
+    @media print {
+            body {
+                visibility: hidden;
+            }
+
+            img {
+                display: block;
+            }
+
+            #resumeprint,
+            {
+                visibility: visible;
+            }
+
+            @page {
+                size: auto;
+                margin: 0;
+            }
+
+            .printhide {
+                visibility: hidden;
+            }
+        }
+
     th {
     white-space: nowrap;
 }
@@ -1306,6 +1331,13 @@
                 <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled"
                   onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                 </form>
+
+                <div id="paginationButtons" class="text-center mt-4">
+                  <button onclick="previousPage()">Previous</button>
+                  <span id="pageInfo"></span>
+                  <button onclick="nextPage()">Next</button>
+                </div>
+
                 <?php
               } else {
                 ?>
@@ -1432,6 +1464,45 @@
 
         </div>
       </div>
+
+      <script>
+    var table = document.getElementById('myTable');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+      </script>
 
       <script>
         function updateDeleteButton2(checkbox) {
@@ -2439,9 +2510,9 @@
 
             <div class="card-body">              
 
-              <div class="exptableheading" id="fresherExp">
-                <p style="font-size:18px; font-weight: bold; color: #007BFF; padding-top:20px;">Kindly mention your work experience and work
-                  status.</p>
+              <div class="exptableheading" id="fresherExp" style=" padding-top:20px;">
+                <!-- <p style="font-size:18px; font-weight: bold; color: #007BFF; padding-top:20px;">Kindly mention your work experience and work
+                  status.</p> -->
                 <!-- <p><b style="color:blue;">Note:</b> Indicate <b>'No Experience'</b> if you are a <b>Fresher</b> or have
                   had <b>no professional experience</b> since graduation.</p> -->
                 
@@ -2515,11 +2586,8 @@
                             <?php echo $value['other_sub_category'] ?>
                           </td>
                           <td>
-                            <?php $formattedexpYear = date('d-m-Y', strtotime($value['expYear'])); ?>
-                            <?php echo $formattedexpYear; ?>  <br> to <br>
-
-                            <?php $formattedexpMonth = date('d-m-Y', strtotime($value['expMonth'])); ?>
-                            <?php echo $formattedexpMonth; ?>
+                            <?php echo $value['expYear'] ?> to 
+                            <?php echo $value['expMonth'] ?>
                           </td>
                           <td>
                             <?php echo $value['company_name'] ?>
@@ -2562,6 +2630,12 @@
                   onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                 </form>
 
+                <div id="paginationButtons" class="text-center mt-4">
+                  <button onclick="previousPage()">Previous</button>
+                  <span id="pageInfo"></span>
+                  <button onclick="nextPage()">Next</button>
+                </div>
+
                 <div id="fresherNoexp" style="display:none;">
                   <form method="post" action="<?php echo baseUrl . 'Candidate/deleteExperience'; ?>"
                     id="form_<?= $value['id']; ?>">
@@ -2578,7 +2652,7 @@
                 <?php
               } else {
                 ?>
-                <h5 class="card-title">No Records Found<span></span></h5>
+                <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                 <?php
               }
               ?>
@@ -2781,6 +2855,47 @@
         </div>
       </div>
       </section>
+
+      <script>
+    var table = document.getElementById('expTable');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+      </script>
+
+
       <script>
         function validateName1(input) {
           input.value = input.value.replace(/[0-9]/g, '');
@@ -3178,21 +3293,16 @@
                       <label for="fromDate" class="pt-1 pe-2">From </label>
 
                       <div class="col-md-3  me-2">
-                        <input type="date" class="form-control" id="fromDate" name="fromDate"
+                        <input type="text" class="form-control" id="fromDate" name="fromDate"
                           value="<?php echo $value['expYear']; ?>" required>
                         <div id="experienceexp_error" class="text-danger error"></div>
                       </div>
-
-
                       <label for="toDate" class="pt-1 px-2">To </label>
-
                       <div class="col-md-3">
-                        <input type="date" class="form-control" id="toDate" name="toDate"
+                        <input type="text" class="form-control" id="toDate" name="toDate"
                           value="<?php echo $value['expMonth']; ?>" required>
                         <div id="experienceexpmonth_error" class="text-danger error"></div>
                       </div>
-
-
                       <input type="checkbox" id="till_now" name="till_now" class="ms-3">
                       <label for="toDate" class="pt-1 px-2">Till now</label>
 
@@ -3496,7 +3606,7 @@
               if (isset($areaOfIntrestTable[0]['id'])) {
                 $count = 1;
                 ?>
-                <table class="table">
+                <table class="table" id="areaTable">
                   <thead>
                     <tr>
                       <th scope="col"></th>
@@ -3565,6 +3675,13 @@
                 <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled"
                   onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                 </form>
+
+                <div id="paginationButtons" class="text-center mt-4">
+                  <button onclick="previousPage()">Previous</button>
+                  <span id="pageInfo"></span>
+                  <button onclick="nextPage()">Next</button>
+                </div>
+
                 <?php
               } else {
                 ?>
@@ -3601,11 +3718,12 @@
                   <div id="areacat_error" class="error"></div>
                 </div>
 
-                <div class="col-12" id="newcategory_group" style="display: none;">
-                  <label for="newcategory" class="form-label">Reason for choosing category as others</label>
+                <div class="col-6" id="newcategory_group" style="display: none;">
+                  <label for="newcategory" class="form-label">New category <span class="text-danger">*</span></label>
                   <input class="form-control" id="newcategory" name="newcategory">
                   <div id="newcategory_error" class="text-danger error"></div>
                   <input id="categoryothers" name="categoryothers" value="1" hidden>
+                  <!-- <div id="newcat_error" class="error"></div> -->
                 </div>
 
                 <div class="col-md-6">
@@ -3653,8 +3771,8 @@
                   <label class="form-label" for="jobtype">Job Type <span class="text-danger">*</span></label>
                   <select class="form-control" id="jobtype" name="jobtype" required>
                     <option value="">Select a Job Type</option>
-                    <option value="fulltime">Full Time</option>
-                    <option value="parttime">Part Time</option>
+                    <option value="Full time">Full Time</option>
+                    <option value="Part time">Part Time</option>
                   </select>
                   <div id="areajob_error" class="error"></div>
                 </div>
@@ -3677,6 +3795,14 @@
 
             </div>
           </div>
+
+          <script>
+            function formatCategoryInput() {
+              var newCategoryInput = document.getElementById("newcategory");
+              newCategoryInput.value = newCategoryInput.value.replace(/\s/g, '-');
+            }
+            document.getElementById("newcategory").addEventListener("input", formatCategoryInput);
+          </script>
 
           <script>
             function updateDeleteButton2(checkbox) {
@@ -3787,6 +3913,46 @@
             }
           </script>
 
+      <script>
+    var table = document.getElementById('areaTable');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+      </script>
+
+
 
           <div class="card recent-sales overflow-auto">
             <div class="card-body">
@@ -3798,7 +3964,7 @@
                   if (isset($skillTable[0]['id'])) {
                     $count = 1;
                     ?>
-                    <table class="table">
+                    <table class="table" id="skillTable">
                       <thead>
                         <tr>
                           <th scope="col"></th>
@@ -3852,6 +4018,13 @@
                     <button type="submit" name="submit" id="deleteList1" class="btn btn-danger disabled"
                       onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                     </form>
+
+                    <div id="paginationButtons" class="text-center mt-4">
+                      <button onclick="previousPage()">Previous</button>
+                      <span id="pageInfo"></span>
+                      <button onclick="nextPage()">Next</button>
+                    </div>
+
                     <?php
                   } else {
                     ?>
@@ -3911,9 +4084,9 @@
               <label class="form-label" for="skillLevel">Skill Level <span class="text-danger">*</span></label>
               <select class="form-control" name="skilllevel" id="skilllevel" required>
                 <option value="">Select Skill Level</option>
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
               </select>
               <div id="slevel_error" class="error"></div>
             </div>
@@ -3929,6 +4102,45 @@
 
         </div>
       </div>
+
+      <script>
+    var table = document.getElementById('skillTable');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+      </script>
 
       <script>
         function addinterestform() {
@@ -4162,10 +4374,10 @@
                   <label class="form-label" for="jobtype">Job Type <span class="text-danger">*</span></label>
                   <select class="form-control" id="jobtype" name="jobtype" value="<?php echo $value['job_type']; ?>"
                     required>
-                    <option value="parttime" <?php if ($value['job_type'] === 'parttime')
+                    <option value="Part time" <?php if ($value['job_type'] === 'Part time')
                       echo ' selected'; ?>>Part Time
                     </option>
-                    <option value="fulltime" <?php if ($value['job_type'] === 'fulltime')
+                    <option value="Full time" <?php if ($value['job_type'] === 'Full time')
                       echo ' selected'; ?>>Full Time
                     </option>
                   </select>
@@ -4424,13 +4636,13 @@
                   <div class="col-md-6">
                     <label class="form-label" for="skillLevel">Skill Level <span class="text-danger">*</span></label>
                     <select class="form-control" name="skilllevel" id="skilllevel" required>
-                      <option value="beginner" <?php if ($value['skill_level'] === 'beginner')
+                      <option value="Beginner" <?php if ($value['skill_level'] === 'Beginner')
                         echo ' selected'; ?>>Beginner
                       </option>
-                      <option value="intermediate" <?php if ($value['skill_level'] === 'intermediate')
+                      <option value="Intermediate" <?php if ($value['skill_level'] === 'Intermediate')
                         echo ' selected'; ?>>
                         Intermediate</option>
-                      <option value="advanced" <?php if ($value['skill_level'] === 'advanced')
+                      <option value="Advanced" <?php if ($value['skill_level'] === 'Advanced')
                         echo ' selected'; ?>>Advanced
                       </option>
                     </select>
@@ -4531,6 +4743,10 @@
               </div>
             </form><!-- End Multi Columns Form -->
 
+          </div>
+          <div style="float:right;">
+            <button onClick="window.print()" type="button"
+                class="btn btn-dark printhide">Print</button>
           </div>
         </div>
       </section>
@@ -4925,13 +5141,8 @@
                               <?php echo $ivalue['other_sub_category'] ?>
                             </td>
                             <td>                            
-
-                              <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
-                              <?php echo $formattedexpYear; ?>  <br> to <br>
-
-                              <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
-                              <?php echo $formattedexpMonth; ?>
-
+                              <?php echo $ivalue['expYear'] ?> to
+                              <?php echo $ivalue['expMonth'] ?>
                             </td>
                             <td>
                               <?php echo $ivalue['company_name'] ?>
@@ -5137,6 +5348,305 @@
         }
       </script> -->
       <?php
+
+} elseif ($method == "resumePrint") {
+  ?>
+  <!-- Sidebar Active  -->
+  <section>
+      <!-- Default Card -->
+      <div id="resumeprint">
+              <div class="container">
+                  <div class="row">
+
+                  <div class="d-flex justify-content-between">
+                      <div></div>
+                      <div class=" text-center mt-4" style="margin-right:15px;">
+                      <h3 style=" letter-spacing: 3px; color:#94b123;"><b>ARRAM CHARITY TRUST</b></h3>
+                      <h4 style="color: #31a5d6;"><b>ARRAM JOBS - CANDIDATE RESUME</b></h4>
+                  </div>
+                  <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" style="height:65px; width:85px; margin-top: 20px;">
+                  </div>
+                  
+                      <div class=" recent-sales overflow-auto mt-1">
+                              <?php
+                              foreach ($this->data['basicDetails'] as $key => $value) {
+                                  ?>
+                                  <div class="d-flex justify-content-between pt-4">
+                                      <div class="">
+                                          <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>"
+                                              alt="Your image" width="100" height="100"><br>
+                                      <!-- </div>
+
+                                      <div class="col"> -->
+                                         <br> <h5>Name :
+                                              <?php echo $value['name']; ?>
+                                          </h5>
+                                          <h5>Candidate ID :
+                                              <?php echo $value['eeid']; ?>
+                                          </h5><br>
+                                      </div>
+                                      <div class="text-end mt-0">
+                                          <p>
+                                              <?php echo $value['phonenumber'] ?>
+                                          </p>
+                                          <p>
+                                              <?php echo $value['email'] ?>
+                                          </p>
+                                          <p>
+                                              <?php echo $value['buildingName'] ?>,
+                                              <?php echo $value['address'] ?>
+                                          </p>
+                                          <p>
+                                              <?php echo $value['district'] ?>,
+                                              <?php echo $value['pincode'] ?>
+                                          </p>
+                                      </div>
+                                  </div>
+                          <?php
+                              }
+                              ?>
+                          </div><br><br>
+                          <div class=" recent-sales overflow-auto">
+                          <div>
+                              <h4><b>Personal Details</b></h4>
+                              <div class="d-flex mt-4">
+                              <?php
+                              foreach ($this->data['basicDetails'] as $key => $value) {
+                                  ?>                                     
+                                          <!-- <p><b>Phone number : </b>
+                                              <?php echo $value['phonenumber1'] ?>
+                                          </p> -->
+                                          <div class="d-flex">
+                                          <div>
+                                          <p style="margin-right: 35px;"><b>D.O.B : </b>
+                                          <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth']));?>
+                                          <?php echo $formattedDateOfBirth; ?></p>  
+                                          <p style="margin-right: 35px;">
+                                          <b>Marital Status :</b>
+                                              <?php echo $value['maritalStatus'] ?>
+                                           </p>                                           
+                                                               
+                                          </div>                      
+                                          <div>
+                                          <p style="margin-right: 35px;">
+                                          <b>Age :</b>
+                                              <?php echo $value['age'] ?>
+                                          </p>                                                                           
+                                          <p style="margin-right: 35px;">
+                                          <b>Aadhaar Number :</b>
+                                          <?php echo $value['aadharnumber'] ?><br>  
+                                          </p> 
+                                          </div>
+                                          <div>
+                                          <p style="margin-right: 35px;">
+                                          <b>Gender :</b>
+                                              <?php echo $value['gender'] ?>
+                                          </p>                                            
+                                          
+                                          </div>
+                                          </div>
+                                  </div>
+                              </div>
+                          </div>  
+
+
+                      <div class=" recent-sales overflow-auto">
+                          <div>
+                              <h4><b>Educational Qualification</b></h4>
+
+                              <?php
+                              if (isset($education[0]['id']) && !empty($education)) {
+                                  ?>                                        
+                                          <div>
+                                          <?php
+                                          $loopcount = 1;
+                                          foreach ($this->data['education'] as $key => $value) {
+                                              ?>
+                                                      <p><b><?php echo $loopcount; ?> .</b>
+
+                                                  <?php echo $value['educational_qualification'] ?>
+                                                    
+                                                  <?php if (
+                                                      $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                      $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
+                                                  ) { ?>
+                                                      
+                                                  <?php } else { ?> - <?php echo $value['department'] ?>
+
+                                                      <?php } ?> - <?php echo $value['school_college_name'] ?>
+
+                                                  <?php if (
+                                                      $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                      $value['educational_qualification'] === "11th"
+                                                  ) { ?>
+                                                      NA
+                                                  <?php } else { ?>  with <?php echo $value['percentage'] ?>%                                   
+                                                  <?php } ?> - <?php echo $value['yearOfPassing'] ?>
+
+                                              <?php
+                                              $loopcount++;
+                                          }
+                                          ?>
+                                          </div><br>
+
+                              <?php } else { ?>
+                                  <p>Education qualification is not entered</p>
+                              <?php } ?>
+                              <!-- End Table with stripped rows -->
+                          </div>
+                      </div>
+                     
+
+                      <div class=" recent-sales overflow-auto">
+            <div>
+              <div id="experiencedContent">
+                <h4><b>Experience Details</b></h4>
+
+                <?php
+                if (isset($experienceTable[0]['id'])) { ?>
+                  
+                      <div id="expTable">
+                      <?php
+                      $loopcount = 1;
+                      foreach ($experienceTable as $key => $ivalue) {
+                        ?>
+                       <p>
+                  <h5><b><?php echo $loopcount ?> . 
+                  <?php echo $ivalue['other_category'] ?> : <?php echo $ivalue['other_sub_category'] ?></h5></b>
+              
+                  *  Worked in <?php echo $ivalue['company_name'] ?>,
+                  <!-- <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
+                      <?php echo $formattedexpYear; ?> to 
+
+                  <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
+                  <?php echo $ivalue['job_role'] ?>
+                      <?php echo $formattedexpMonth; ?>   -->
+
+                      <?php echo $value['expYear'] ?> to 
+                            <?php echo $value['expMonth'] ?>,
+
+                      <?php echo $ivalue['company_location'] ?>                           
+                        <?php
+                        $loopcount++;
+                      } ?>
+                      </p>
+                      </div>
+                      
+                      <p id="noexperience">Fresher / No experience after graduation.</p><br>
+                <?php } else { ?>
+                  <div id="fresherContent">
+                  
+                    <p>Experience is not entered.</p>
+                  </div>
+                <?php }
+                ?>
+              </div>
+            </div>
+          </div>
+
+                      <script>
+                          <?php
+                          if ($experienceTable[0]['workStatus'] == '0') {
+                              ?>
+                              document.getElementById("expTable").style.display = "block";
+                              document.getElementById("noexperience").style.display = "none";
+
+                              <?php
+                          } else if ($experienceTable[0]['workStatus'] == '1') { ?>
+                                  document.getElementById("expTable").style.display = "none";
+                                  document.getElementById("noexperience").style.display = "block";
+
+                              <?php
+                          } ?>
+                      </script>
+
+                      <div class=" recent-sales overflow-auto">
+                          <div>
+                              <h4><b>Skills</b></h4>
+                              <?php
+                              if (isset($skills[0]['id']) && !empty($skills)) { ?>
+                                  
+                                          <?php
+                                          $loopcount = 1;
+                                          foreach ($this->data['skills'] as $skey => $svalue) {
+                                              ?>
+                                                      <b><h5><?php echo $loopcount; ?>. <?php echo $svalue['skill'] ?> skills : </h5></b>  
+                                                      * <?php echo $svalue['experience'] ?> years of experience at
+                                                       <?php echo $svalue['skill_level'] ?> level.
+                                                  
+                                              <?php
+                                              $loopcount++;
+                                          }
+                                          ?><br>
+
+                              <?php
+                              } else { ?>
+                                  <p>Skill is not entered</p>
+                              <?php } ?>
+                          </div>
+                      </div>
+
+                      <div class=" recent-sales overflow-auto">
+                          <div><br>
+                              <h4><b>Area of Job Interest</b></h4>
+
+                              <?php
+                              if (isset($areaOfInterest[0]['id']) && !empty($areaOfInterest)) { ?>                                    
+                                         
+                                          <?php
+                                          $loopcount = 1;
+                                          foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
+                                              ?>
+                                                      <b><h5><?php echo $loopcount; ?>. <?php echo $avalue['other_interst_category'] ?> : <?php echo $avalue['other_sub_interst_category'] ?> </h5></b>
+                                                 <b>* Prefered Location : </b><?php echo $avalue['prefered_location'] ?> <br>
+                                                 <b>* Expected salary :</b> <?php echo $avalue['expected_salary'] ?> <br>
+                                                 <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
+                                                  
+                                                  <b>* Job description : </b>    <?php echo $avalue['description'] ?><br>
+                                                 
+                                              <?php
+                                              $loopcount++;
+                                          }
+                                          ?><br><br>
+
+                              <?php } else { ?>
+                                  <p>Area of job interest is not entered</p><br>
+
+                              <?php } ?>
+
+                          </div>
+                      </div>                        
+
+                          <?php
+                              }
+                              ?>
+                          </div>
+                      </div>
+
+                      <div style="float:right;">
+                          <button onClick="window.print()" type="button"
+                              class="btn btn-dark printhide">Print</button>
+                      </div>
+                  </div>
+  </section>
+  <script>
+      function togglePasswordVisibility(inputId, iconId) {
+          var passwordInput = document.getElementById(inputId);
+          var visibilityIcon = document.getElementById(iconId);
+
+          if (passwordInput.type === "password") {
+              passwordInput.type = "text";
+              visibilityIcon.classList.remove("bi-eye-slash");
+              visibilityIcon.classList.add("bi-eye");
+          } else {
+              passwordInput.type = "password";
+              visibilityIcon.classList.remove("bi-eye");
+              visibilityIcon.classList.add("bi-eye-slash");
+          }
+      }
+  </script>
+
+  <?php
     }
     ?>
 

@@ -354,13 +354,14 @@
                                             </button>
                                             </div>
                                             <p id="passworderr" style="color: red;"></p>
+                                            <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
                                         </div>
                                         <div class="col-md-6">
                                         <label for="inputAddres5s" class="form-label">Street Address <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="inputAddres5s" value='<?php echo $value['street_address']; ?>' name="addr" required>
                                             <p id="adderr" style="color: red;"></p>
                                         </div>
-                                        <div class="text-secondary" style="font-size:12px;display:none;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
+                                        
                                         <div class="col-md-6">
                                             <label for="inputAddress2" class="form-label">Landmark </label>
                                             <input type="text" class="form-control" id="inputAddress2"  value='<?php echo $value['Landmark']; ?>' name="landmark1">
@@ -464,7 +465,7 @@
                             }
 
                             document.getElementById("password").onblur = function() {
-                            document.getElementById("passwordmessage").style.display = "none";
+                            document.getElementById("passwordmessage").style.display = "block";
                             }
 
                          document.getElementById("file-input-label").addEventListener("click", function() {
@@ -797,9 +798,10 @@
                                         ?>
                                   
                                                 <!-- <table class="table table-borderless datatable"> -->
-                                                <table class="table">
+                                                <table class="table" id="jobTable">
                                                     <thead>
                                                         <tr>
+                                                            <th scope="col"></th>
                                                             <th scope="col">S.No</th>
                                                             <th scope="col">Date</th>
                                                             <th scope="col">Job Title</th>
@@ -821,6 +823,12 @@
                                                         ?>
 
                                                                     <tr>
+                                                                        <td>
+                                                                            <form method="post" action="<?php echo baseUrl . 'Employer/deleteAddJob'; ?>"
+                                                                                id="form_<?= $value['id']; ?>">
+                                                                            <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
+                                                                                onchange="updateDeleteButton(this)">
+                                                                        </td>
                                                                         <td><a ><?php echo $countjobs++; ?>.</a></td>
                                                                         <td><?php echo $twelveHourTime ?></td>
                                                                         <td><?php echo $value['jobCategory'] ?>             <?php echo $value['jobSubCategory'] ?></td>
@@ -846,6 +854,15 @@
                                                     ?>
                                                     </tbody>
                                                 </table>
+                                                <button type="submit" name="submit" id="deleteList" class="btn btn-danger disabled"
+                                                    onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+                                                </form>
+
+                                                <div id="paginationButtons" class="text-center mt-4">
+                                                    <button onclick="previousPage()">Previous</button>
+                                                    <span id="pageInfo"></span>
+                                                    <button onclick="nextPage()">Next</button>
+                                                </div>
                                             <?php
                                     } else {
                                         ?>
@@ -865,6 +882,17 @@
                         }
                     </script>
 
+            <script>
+                function updateDeleteButton(checkbox) {
+              var deleteButton = document.getElementById('deleteList');
+
+              if (checkbox.checked) {
+                deleteButton.classList.remove('disabled');
+              } else {
+                deleteButton.classList.add('disabled');
+              }
+            }
+            </script>
 
                     <div class="card" id="addjobs" style="display:none">
                             <div class="card-body">
@@ -994,6 +1022,45 @@
                     });
                     });
                 </script> -->
+
+                <script>
+    var table = document.getElementById('jobTable');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
 
                     <script>
 
@@ -2126,11 +2193,9 @@
                                                             <?php echo $ivalue['other_sub_category'] ?>
                                                         </td>
                                                         <td>
-                                                        <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
-                                                        <?php echo $formattedexpYear; ?>  <br> to <br>
+                                                        <?php echo $ivalue['expYear'] ?> to 
+                                                        <?php echo $ivalue['expMonth'] ?>
 
-                                                        <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
-                                                        <?php echo $formattedexpMonth; ?>
                                                         </td>
                                                         <td>
                                                             <?php echo $ivalue['company_name'] ?>

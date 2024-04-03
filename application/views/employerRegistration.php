@@ -102,7 +102,7 @@
                     <p id="crpassworderr" style="color: red;"></p>
                 </div>
                 </div>
-                    <div class="text-secondary" style="font-size:12px;display:none;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1 number and a minimum of 8 characters.</div>
+                    <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 lowercase and a minimum of 6 characters.</div>
                 <div class="">
                     <label for="cmpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="cmpassword" name="cmpassword" required>
@@ -370,17 +370,18 @@
                 document.getElementById("crpassworderr").innerHTML = emailsms;
                 document.forms.crpassword.focus();
                 return false;
-            } else if (crp != "") {
-                if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(crp)) {
-                    document.getElementById("crpassworderr").innerHTML = "";
-                } else {
-                    document.getElementById("crpassworderr").innerHTML = "Password does not matches the criteria";
-                    document.forms.crpassword.focus();
-                    return false;
-                }
+            } 
+            // else if (crp != "") {
+            //     if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(crp)) {
+            //         document.getElementById("crpassworderr").innerHTML = "";
+            //     } else {
+            //         document.getElementById("crpassworderr").innerHTML = "Password does not matches the criteria";
+            //         document.forms.crpassword.focus();
+            //         return false;
+            //     }
             }  else {
-                    document.getElementById("crpassword").innerHTML = "";
-                }
+                document.getElementById("crpassword").innerHTML = "";
+            }
 
 
                 if (cmp == "") {
