@@ -2857,7 +2857,7 @@
       </section>
 
       <script>
-    var table = document.getElementById('expTable');
+    var table = document.getElementById('exptable');
     var rowsPerPage = 7;
     var currentPage = 1;
     var totalPages = Math.ceil(table.rows.length / rowsPerPage);
@@ -3676,11 +3676,11 @@
                   onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                 </form>
 
-                <div id="paginationButtons" class="text-center mt-4">
+                <!-- <div id="paginationButtons" class="text-center mt-4">
                   <button onclick="previousPage()">Previous</button>
                   <span id="pageInfo"></span>
                   <button onclick="nextPage()">Next</button>
-                </div>
+                </div> -->
 
                 <?php
               } else {
@@ -4019,11 +4019,11 @@
                       onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                     </form>
 
-                    <div id="paginationButtons" class="text-center mt-4">
+                    <!-- <div id="paginationButtons" class="text-center mt-4">
                       <button onclick="previousPage()">Previous</button>
                       <span id="pageInfo"></span>
                       <button onclick="nextPage()">Next</button>
-                    </div>
+                    </div> -->
 
                     <?php
                   } else {

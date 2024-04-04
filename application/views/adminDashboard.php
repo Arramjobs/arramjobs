@@ -7169,15 +7169,15 @@
                                                                         echo 'checked';
                                                                     } ?>
                                                                     required>
-                                                                <label for="interviwed" class="mb-2">Interviewed</label><br>
+                                                                <label for="interviwed" class="mb-2">Reapplied</label><br>
 
                                                                 <input type="radio" id="rejected" name="currentStatus" value="5"
                                                                     required>
-                                                                <label for="rejected" class="mb-2">Rejected</label><br>
+                                                                <label for="rejected" class="mb-2">Relieved</label><br>
 
-                                                                <input type="radio" id="default" name="currentStatus" value="0"
+                                                                <!-- <input type="radio" id="default" name="currentStatus" value="0"
                                                                     required>
-                                                                <label for="default" class="mb-2">Remove</label>
+                                                                <label for="default" class="mb-2">Remove</label> -->
                                                             </div>
 
                                                             <div class="col ms-5">
@@ -7463,9 +7463,9 @@
                                                                     required>
                                                                 <label for="placed" class="mb-2">Placed</label><br>
 
-                                                                <input type="radio" id="default" name="currentStatus" value="0"
+                                                                <!-- <input type="radio" id="default" name="currentStatus" value="0"
                                                                     required>
-                                                                <label for="default" class="mb-2">Remove</label>
+                                                                <label for="default" class="mb-2">Remove</label> -->
                                                             </div>
 
                                                             <div class="col ms-5">
@@ -9768,9 +9768,9 @@
                                                                     required>
                                                                 <label for="placed" class="mb-2">Placed</label><br>
 
-                                                                <input type="radio" id="default" name="currentStatus" value="0"
+                                                                <!-- <input type="radio" id="default" name="currentStatus" value="0"
                                                                     required>
-                                                                <label for="default" class="mb-2">Remove</label>
+                                                                <label for="default" class="mb-2">Remove</label> -->
                                                             </div>
 
                                                             <div class="col ms-5">

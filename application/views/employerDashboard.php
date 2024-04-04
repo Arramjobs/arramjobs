@@ -1859,7 +1859,7 @@
                                                             <th scope="col">Experience</th>
                                                             <th scope="col">Skills</th>
                                                             <th scope="col">Action</th>
-                                                            <th scope="col">Status</th>
+                                                            <!-- <th scope="col">Status</th> -->
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -1889,27 +1889,39 @@
                                                                         <td>No skills</td>
                                                                         <?php } ?>
 
-                                                                        <td><a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">Candidate Resume</button></a>
-                                                                        </td>
+                                                                        <!-- <td><a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">Candidate Resume</button></a>
+                                                                        </td> -->
 
                                                                         <td><?php if($value['rqsts']== 1 && $value['eprid'] == $_SESSION['employerid']){ ?>
-                                                                        <span class="badge bg-warning"><i class="bi bi-check"></i> Requested to view</span></td>
+                                                                            <a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">Requested to Admin to view complete Resume</button></a>
+                                                                        <!-- <span class="badge bg-warning"><i class="bi bi-check"></i> Requested to view</span> -->
+                                                                    </td>
 
                                                                         <td> <?php  } else if($value['rqsts']== 3 && $value['eprid']== $_SESSION['employerid']){ ?> 
-                                                                        <span class="badge bg-primary"><i class="bi bi-check2"></i> Approved to view</span></td>
+                                                                            <a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">Approved to view complete details</button></a>
+                                                                        <!-- <span class="badge bg-primary"><i class="bi bi-check2"></i> Approved to view</span> -->
+                                                                    </td>
 
                                                                         <td> <?php  } else if($value['rqsts']== 2 && $value['eprid']== $_SESSION['employerid']){ ?> 
-                                                                        <span class="badge bg-dark"><i class="bi bi-x"></i> Request cancelled</span></td>
+                                                                            <a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">Request cancelled to view Candidate Resume</button></a>
+                                                                        <!-- <span class="badge bg-dark"><i class="bi bi-x"></i> Request cancelled</span> -->
+                                                                    </td>
 
                                                                         <td> <?php  } else if($value['rqsts']== 4  && $value['eprid']== $_SESSION['employerid']){ ?> 
-                                                                        <span class="badge bg-success"><i class="bi bi-check2-all"></i> Interviewed</span></td>
+                                                                            <a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">Candidate Resume (Interviewed)</button></a>
+                                                                        <!-- <span class="badge bg-success"><i class="bi bi-check2-all"></i> Interviewed</span> -->
+                                                                    </td>
 
                                                                         <td> <?php  } else if($value['rqsts']== 5 && $value['eprid']== $_SESSION['employerid']){ ?> 
-                                                                        <span class="badge bg-danger"><i class="bi bi-x-lg"></i> Rejected</span></td>
+                                                                            <a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">Rejected Candidate Resume</button></a>
+                                                                        <!-- <span class="badge bg-danger"><i class="bi bi-x-lg"></i> Rejected</span> -->
+                                                                    </td>
 
                                                                         <?php } else {?>
-
-                                                                        <span class="badge bg-info">Request to view</span></td>
+                                                                    <td>
+                                                                        <!-- <span class="badge bg-info">Request to view</span> -->
+                                                                        <a class="" href="<?php echo baseUrl."Employer/resumeCard" ?>/<?php echo $value['seekerId'] ?>"><button type="button" class="btn btn-secondary">View Candidate Resume</button></a>
+                                                                    </td>
                                                                         <?php } ?>                                                                        
 
                                                                     </tr>
@@ -1974,6 +1986,19 @@
                                             <h2 class=" text-center d-flex">Candidate Resume</h2>
                                             <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-secondary mb-4 "><i class="bi bi-arrow-left pe-2"></i> Back</button></a>
                                         </div>
+                                        <div class="d-flex justify-content-between" id="printdiv">
+<div></div>
+                                        <form action="<?php echo baseUrl."employer/requestCandidate" ?>" method="post" >
+                                                <input class="form-check-input" type="text" name="employer_id" id="" value="<?php echo $_SESSION['employerid'] ?>" hidden>
+                                                <input class="form-check-input" type="text" name="candidateid" id="" value="<?php echo $this->data['basicDetails'][0]['id']; ?>" hidden>
+                                                    <input class="form-check-input" type="text" name="requestadmin" id="" value="1" hidden>
+
+                                                <button type="submit" id="candidaterequest" class="btn btn-success printhide" onclick="return confirm('Are you sure to send request to view complete details?')">Request to view complete details</button>
+                                            </form>
+                                            <button id="candidaterequested" class="btn btn-success printhide" style="display:none" disabled >Requested to view complete details</button>
+                                    <!-- <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button> -->
+                                    <!-- <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton" style="display:none">Print</button> -->
+                                    </div>
                                         <?php
                                         foreach($this->data['basicDetails'] as $nkey => $nvalue) {
                                             ?>
@@ -2355,9 +2380,9 @@
                                                 <input class="form-check-input" type="text" name="candidateid" id="" value="<?php echo $this->data['basicDetails'][0]['id']; ?>" hidden>
                                                     <input class="form-check-input" type="text" name="requestadmin" id="" value="1" hidden>
 
-                                                <button type="submit" id="candidaterequest" class="btn btn-success printhide" onclick="return confirm('Are you sure you want to send request?')">Request to view details</button>
+                                                <!-- <button type="submit" id="candidaterequest" class="btn btn-success printhide" onclick="return confirm('Are you sure to send request to view complete details?')">Request to view complete details</button> -->
                                             </form>
-                                            <button id="candidaterequested" class="btn btn-success printhide" style="display:none" disabled >Requested to view details</button>
+                                            <!-- <button id="candidaterequested" class="btn btn-success printhide" style="display:none" disabled >Requested to view details</button> -->
                                     <!-- <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button> -->
                                     <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton" style="display:none">Print</button>
                                     </div>
