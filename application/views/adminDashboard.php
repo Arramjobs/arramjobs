@@ -7169,11 +7169,11 @@
                                                                         echo 'checked';
                                                                     } ?>
                                                                     required>
-                                                                <label for="interviwed" class="mb-2">Reapplied</label><br>
+                                                                <label for="interviwed" class="mb-2">Interviewed</label><br>
 
                                                                 <input type="radio" id="rejected" name="currentStatus" value="5"
                                                                     required>
-                                                                <label for="rejected" class="mb-2">Relieved</label><br>
+                                                                <label for="rejected" class="mb-2">Rejected</label><br>
 
                                                                 <!-- <input type="radio" id="default" name="currentStatus" value="0"
                                                                     required>

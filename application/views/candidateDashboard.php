@@ -4744,10 +4744,10 @@
             </form><!-- End Multi Columns Form -->
 
           </div>
-          <div style="float:right;">
+          <!-- <div style="float:right;">
             <button onClick="window.print()" type="button"
                 class="btn btn-dark printhide">Print</button>
-          </div>
+          </div> -->
         </div>
       </section>
 
