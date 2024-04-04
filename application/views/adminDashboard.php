@@ -216,7 +216,11 @@
             background-color: yellow;
         }
 
-        /* End of changes */
+        .paginationButtons.active {
+        background-color: #007bff;
+        color: #fff;
+    }
+
     </style>
 </head>
 
@@ -1028,9 +1032,7 @@
                                     </button>
                                     <p id="crpassworderr" style="color: red;"></p>
                                     <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">
-                                        Passwords must contain atleast 1 uppercase, 1 lowercase, 1 special character, 1
-                                        number
-                                        and a minimum of 8 characters.</div>
+                                        Passwords must contain atleast 1 uppercase, 1 number and a minimum of 6 characters.</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -2894,11 +2896,8 @@
                                                                 <?php echo $ivalue['other_sub_category'] ?>
                                                             </td>
                                                             <td>
-                                                            <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
-                                                            <?php echo $formattedexpYear; ?>  <br> to <br>
-    
-                                                            <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
-                                                            <?php echo $formattedexpMonth; ?>
+                                                            <?php echo $ivalue['expYear'] ?> to 
+                                                            <?php echo $ivalue['expMonth'] ?>
                                                             </td>
                                                             <td>
                                                                 <?php echo $ivalue['company_name'] ?>
@@ -3285,7 +3284,7 @@
                                 <h5 class="card-title">Verified Employers<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="verifyTable">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -3363,6 +3362,13 @@
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
+
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
+
                                 <?php
                             } else {
                                 ?>
@@ -3375,6 +3381,45 @@
                     </div>
                 </div><!-- End Recent Sales -->
             </section>
+
+            <script>
+    var table = document.getElementById('verifyTable');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
 
             <script>
                 function highlightRow(button) {
@@ -3438,7 +3483,7 @@
                                 <h5 class="card-title">Pending List<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="pendingTableEr">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -3514,6 +3559,13 @@
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
+
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
+
                                 <?php
                             } else {
                                 ?>
@@ -3526,6 +3578,45 @@
                     </div>
                 </div><!-- End Recent Sales -->
             </section>
+
+            <script>
+    var table = document.getElementById('pendingTableEr');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
 
             <script>
                 function highlightRow(button) {
@@ -3576,7 +3667,7 @@
                                 <h5 class="card-title">Deleted Employers<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="delTableEr">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -3659,6 +3750,13 @@
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
+
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
+
                                 <?php
                             } else {
                                 ?>
@@ -3671,6 +3769,45 @@
                     </div>
                 </div><!-- End Recent Sales -->
             </section>
+
+            <script>
+    var table = document.getElementById('delTableEr');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
 
             <?php
         } elseif ($method == "overallEmployers") {
@@ -3851,6 +3988,11 @@
                             onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                         </form>
 
+                        <div id="paginationButtons" class="text-center mt-4">
+                            <button onclick="previousPage()">Previous</button>
+                            <span id="pageInfo"></span>
+                            <button onclick="nextPage()">Next</button>
+                        </div>
                         <?php
                     } else {
                         ?>
@@ -3862,6 +4004,45 @@
                 </div>
                 </div><!-- End Recent Sales -->
             </section>
+
+            <script>
+    var table = document.getElementById('myTableEr');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
 
             <script>
                 function filterTableEr() {
@@ -4234,7 +4415,6 @@
                             }
                             ?>
                         </form><!-- End Multi Columns Form -->
-
                     </div>
                 </div>
             </section>
@@ -5506,7 +5686,8 @@
             ?>
             <!-- Sidebar Active  -->
             <script>
-                document.getElementById('experiences').classList.add('active');
+                document.getElementById('candidatelist').classList.add('active');
+                document.getElementById('candidateoveralllist').classList.add('active');
             </script>
             <section class="usertable">
                 <div class="pagetitle">
@@ -6368,7 +6549,7 @@
                                 <h5 class="card-title">Verified List<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="verifyTableCd">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -6440,6 +6621,13 @@
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
+
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
+
                                 <?php
                             } else {
                                 ?>
@@ -6453,6 +6641,45 @@
                 </div><!-- End Recent Sales -->
 
             </section>
+
+            <script>
+    var table = document.getElementById('verifyTableCd');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
 
             <script>
                 function highlightRow(button) {
@@ -6518,7 +6745,7 @@
                                 <h5 class="card-title">Pending List<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="pendingCd">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -6591,6 +6818,13 @@
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
+
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
+
                                 <?php
                             } else {
                                 ?>
@@ -6604,6 +6838,45 @@
                 </div><!-- End Recent Sales -->
 
             </section>
+
+            <script>
+    var table = document.getElementById('pendingCd');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
 
             <script>
                 function highlightRow(button) {
@@ -6667,7 +6940,7 @@
                                 <h5 class="card-title">Deleted List<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="deleteCd">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -6757,6 +7030,11 @@
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
                                 <?php
                             } else {
                                 ?>
@@ -6769,6 +7047,45 @@
                     </div>
                 </div><!-- End Recent Sales -->
             </section>
+
+            <script>
+    var table = document.getElementById('deleteCd');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
 
             <?php
         } elseif ($method == "placedCandidates") {
@@ -6797,7 +7114,7 @@
                                 <h5 class="card-title">Placed Candidate List<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="placedCd">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -6858,9 +7175,9 @@
                                                                     required>
                                                                 <label for="rejected" class="mb-2">Rejected</label><br>
 
-                                                                <input type="radio" id="default" name="currentStatus" value="0"
+                                                                <!-- <input type="radio" id="default" name="currentStatus" value="0"
                                                                     required>
-                                                                <label for="default" class="mb-2">Remove</label>
+                                                                <label for="default" class="mb-2">Remove</label> -->
                                                             </div>
 
                                                             <div class="col ms-5">
@@ -6876,6 +7193,11 @@
                                         ?>
                                     </tbody>
                                 </table>
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
                                 <?php
                             } else {
                                 ?>
@@ -6888,6 +7210,45 @@
                     </div>
                 </div><!-- End Recent Sales -->
             </section>
+            <script>
+    var table = document.getElementById('placedCd');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
+
             <?php
 
         } elseif ($method == "interviewedCandidates") {
@@ -6916,7 +7277,7 @@
                                 <h5 class="card-title">Interviewed Candidate List<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="interviewCd">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -6960,6 +7321,11 @@
                                         ?>
                                     </tbody>
                                 </table>
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
                                 <?php
                             } else {
                                 ?>
@@ -6972,6 +7338,45 @@
                     </div>
                 </div><!-- End Recent Sales -->
             </section>
+
+            <script>
+    var table = document.getElementById('interviewCd');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
             <?php
 
         } elseif ($method == "rejectedCandidate") {
@@ -7000,7 +7405,7 @@
                                 <h5 class="card-title">Rejected Candidate List<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="rejectCd">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -7058,9 +7463,9 @@
                                                                     required>
                                                                 <label for="placed" class="mb-2">Placed</label><br>
 
-                                                                <input type="radio" id="default" name="currentStatus" value="0"
+                                                                <!-- <input type="radio" id="default" name="currentStatus" value="0"
                                                                     required>
-                                                                <label for="default" class="mb-2">Remove</label>
+                                                                <label for="default" class="mb-2">Remove</label> -->
                                                             </div>
 
                                                             <div class="col ms-5">
@@ -7077,6 +7482,11 @@
                                         ?>
                                     </tbody>
                                 </table>
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
                                 <?php
                             } else {
                                 ?>
@@ -7089,7 +7499,47 @@
                     </div>
                 </div><!-- End Recent Sales -->
             </section>
+
+            <script>
+    var table = document.getElementById('rejectCd');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
             <?php
+
         } elseif ($method == "overallEmployees") {
             ?>
             <!-- Sidebar Active  -->
@@ -7303,6 +7753,12 @@
                                     onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                 </form>
 
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
+
                                 <?php
                             } else {
                                 ?>
@@ -7315,6 +7771,46 @@
                     </div>
                 </div><!-- End Recent Sales -->
             </section>
+
+            <script>
+    var table = document.getElementById('myTableCd');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
+            </script>
+
             <script>
                 function filterTableCd() {
                     var fromDateInput = document.getElementById("fromDateCd").value;
@@ -7725,11 +8221,8 @@
                                                                 <?php echo $ivalue['other_sub_category'] ?>
                                                             </td>
                                                             <td>
-                                                                <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
-                                                                <?php echo $formattedexpYear; ?> <br> to <br>
-
-                                                                <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
-                                                                <?php echo $formattedexpMonth; ?>
+                                                                <?php echo $ivalue['expYear'] ?> to 
+                                                                <?php echo $ivalue['expMonth'] ?>
                                                             </td>
                                                             <td>
                                                                 <?php echo $ivalue['company_name'] ?>
@@ -8386,11 +8879,8 @@
                                                                 <?php echo $ivalue['other_sub_category'] ?>
                                                             </td>
                                                             <td>
-                                                                <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
-                                                                <?php echo $formattedexpYear; ?> <br> to <br>
-
-                                                                <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
-                                                                <?php echo $formattedexpMonth; ?>
+                                                                <?php echo $ivalue['expYear'] ?> to 
+                                                                <?php echo $ivalue['expMonth'] ?>
                                                             </td>
                                                             <td>
                                                                 <?php echo $ivalue['company_name'] ?>
@@ -8633,8 +9123,8 @@
                                 <?php
                                 foreach ($this->data['basicDetails'] as $key => $value) {
                                     ?>
-                                    <div class="d-md-flex justify-content-between pt-4">
-                                        <div class="col d-none d-md-block">
+                                    <div class="d-flex justify-content-between pt-4">
+                                        <div class="">
                                             <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>"
                                                 alt="Your image" width="100" height="100"><br>
                                         <!-- </div>
@@ -8703,8 +9193,7 @@
                                             <p style="margin-right: 35px;">
                                             <b>Gender :</b>
                                                 <?php echo $value['gender'] ?>
-                                            </p> 
-                                           
+                                            </p>                                            
                                             
                                             </div>
                                             </div>
@@ -8715,14 +9204,11 @@
 
                         <div class=" recent-sales overflow-auto">
                             <div>
-
                                 <h4><b>Educational Qualification</b></h4>
 
-                                <!-- Table with stripped rows -->
                                 <?php
                                 if (isset($education[0]['id']) && !empty($education)) {
-                                    ?>
-                                        
+                                    ?>                                        
                                             <div>
                                             <?php
                                             $loopcount = 1;
@@ -8761,52 +9247,7 @@
                                 <!-- End Table with stripped rows -->
                             </div>
                         </div>
-
-                        <!-- <div class=" recent-sales overflow-auto">
-                            <div><br>
-                                <h5><b>Experience Details</b></h5>
-
-                                <?php
-                                if (isset($experienceDetails[0]['id']) && !empty($experienceDetails)) {
-                                    ?>
-                                   
-                                            <?php
-                                            $loopcount = 1;
-                                            foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
-                                                ?>
-                                                <p><br>
-                                                <b><?php echo $loopcount; ?>.
-                                                <?php echo $ivalue['other_category'] ?> - 
-                                                        <?php echo $ivalue['other_sub_category'] ?></b>
-                                                        <br>
-                                                <p>
-                                               * Worked in     
-                                                <b><?php echo $ivalue['company_name'] ?></b>
-
-                                                From <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
-                                                        <?php echo $formattedexpYear; ?> to
-                                                        <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
-                                                        <?php echo $formattedexpMonth; ?></p>      
-                                                    
-                                                      * Worked as a <?php echo $ivalue['job_role'] ?>
-                                                       in <?php echo $ivalue['company_location'] ?> <br>
-                                                     
-                                                <?php
-                                                $loopcount++;
-                                            }
-                                            ?>
-
-                                    <p id="noexperience">Fresher / No experience after graduation.</p> 
-                                <?php } else { ?>
-                                     <div id="fresherContent">
-                                        <p>Experience is not entered.</p>
-                                    </div>
-                                <?php }
-                                ?><br><br>
-                            </div>
-                        </div><br> -->
-
-
+                       
 
                         <div class=" recent-sales overflow-auto">
               <div>
@@ -8826,12 +9267,10 @@
                     <?php echo $ivalue['other_category'] ?> : <?php echo $ivalue['other_sub_category'] ?></h5></b>
                 
                     *  Worked in <?php echo $ivalue['company_name'] ?>,
-                    <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
-                        <?php echo $formattedexpYear; ?> to 
-
-                    <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
+                    <?php echo $ivalue['expYear'] ?> to 
+                            <?php echo $ivalue['expMonth'] ?>
                     <?php echo $ivalue['job_role'] ?>
-                        <?php echo $formattedexpMonth; ?> , 
+                        , 
                         <?php echo $ivalue['company_location'] ?>                           
                           <?php
                           $loopcount++;
@@ -8867,7 +9306,6 @@
                             } ?>
                         </script>
 
-
                         <div class=" recent-sales overflow-auto">
                             <div>
                                 <h4><b>Skills</b></h4>
@@ -8894,14 +9332,12 @@
                             </div>
                         </div>
 
-
                         <div class=" recent-sales overflow-auto">
                             <div><br>
                                 <h4><b>Area of Job Interest</b></h4>
 
                                 <?php
-                                if (isset($areaOfInterest[0]['id']) && !empty($areaOfInterest)) { ?>
-                                    
+                                if (isset($areaOfInterest[0]['id']) && !empty($areaOfInterest)) { ?>                                    
                                            
                                             <?php
                                             $loopcount = 1;
@@ -8925,9 +9361,7 @@
                                 <?php } ?>
 
                             </div>
-                        </div>
-
-                        
+                        </div>                        
 
                             <?php
                                 }
@@ -8939,9 +9373,7 @@
                             <button onClick="window.print()" type="button"
                                 class="btn btn-dark printhide">Print</button>
                         </div>
-
                     </div>
-                </div><!-- End Default Card -->
     </section>
     <script>
         function togglePasswordVisibility(inputId, iconId) {
@@ -9336,9 +9768,9 @@
                                                                     required>
                                                                 <label for="placed" class="mb-2">Placed</label><br>
 
-                                                                <input type="radio" id="default" name="currentStatus" value="0"
+                                                                <!-- <input type="radio" id="default" name="currentStatus" value="0"
                                                                     required>
-                                                                <label for="default" class="mb-2">Remove</label>
+                                                                <label for="default" class="mb-2">Remove</label> -->
                                                             </div>
 
                                                             <div class="col ms-5">

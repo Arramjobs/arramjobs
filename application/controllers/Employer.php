@@ -257,15 +257,18 @@ class Employer extends CI_Controller
 
     public function deleteAddJob()
     {
-        $deleteId = $this->uri->segment(3);
-        $delete = $this->EmployerModel->deleteAddJob($deleteId);
-        if ($delete == null) {
-            echo "Record deleted successfully";
-        } else {
-            echo "Error deleting record";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
+                $selectedItems = $_POST['selected_items'];
+                foreach ($selectedItems as $deleteId) {
+                    $this->EmployerModel->deleteAddJob($deleteId);
+                }
+                $this->jobViewTable();
+            } else {
+                $this->jobViewTable();
+                echo '<script>alert("Please select the checkbox to delete.");</script>';
+            }
         }
-
-        $this->jobViewTable();
     }
 
     public function resumeCard()

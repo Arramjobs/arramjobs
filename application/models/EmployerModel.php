@@ -283,9 +283,10 @@ class EmployerModel extends CI_Model
 
   public function deleteAddJob($deleteId)
   {
-    $delete = "DELETE FROM `provider_job` WHERE `id`=$deleteId";
-    $del = $this->db->query($delete);
-    // $this->db->where('id', $deleteId);
+    // $delete = "DELETE FROM `provider_job` WHERE `id`=$deleteId";
+    // $del = $this->db->query($delete);
+    $this->db->where('id', $deleteId);
+    $this->db->delete('provider_job');
   }
 
   public function getCategoryList()

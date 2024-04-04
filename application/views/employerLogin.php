@@ -93,7 +93,8 @@
                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
                                                 </button>
                                                 <div class="invalid-feedback">Please enter your password.</div> </div>
-                                                <div id="passwordError" class="text-danger"></div>                                           
+                                                <div id="passwordError" class="text-danger"></div>   
+                                                <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 number and a minimum of 6 characters.</div>                                        
                                         </div>
                                         <div class="col-12">
                                             <br>

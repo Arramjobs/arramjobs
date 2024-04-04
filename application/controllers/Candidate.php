@@ -244,7 +244,7 @@ class Candidate extends CI_Controller
         $insertExperienceForm = $this->CandidateModel->insertFresherForm();
 
         $this->areaOfIntrestTable();
-        echo '<script>alert("Experience is inserted as No experience.");</script>';
+        // echo '<script>alert("Experience is inserted as No experience.");</script>';
     }
 
     public function updateExperience()
