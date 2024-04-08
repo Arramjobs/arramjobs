@@ -168,7 +168,7 @@ public function get_latest_customer_id()
         $config['upload_path'] = "./uploads/";
         $basepath = base_url() . 'uploads/';
         $config['allowed_types'] = "jpg|png|pdf|jpeg";
-        $config['max_size'] = 1024;
+        $config['max_size'] = 1024 * 1024;
 
         $this->load->library('upload', $config);
 
@@ -356,7 +356,7 @@ public function get_latest_customer_id()
         $basepath = base_url() . 'uploads/';
 
         $config['allowed_types'] = "jpg|png|pdf";
-        $config['max_size'] = 1024;
+        $config['max_size'] = 1024 * 1024;
 
         $this->load->library('upload', $config);
 
@@ -997,7 +997,7 @@ public function get_latest_customer_id()
 
         $config['upload_path'] = "./uploads/";
         $config['allowed_types'] = "jpg|png|pdf";
-        $config['max_size'] = 1024;
+        $config['max_size'] = 1024 * 1024;
 
         $this->load->library('upload', $config);
 

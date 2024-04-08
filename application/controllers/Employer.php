@@ -301,6 +301,67 @@ class Employer extends CI_Controller
         $this->load->view('employerDashboard.php', $this->data);
     }
 
+    public function resumePrint()
+    {
+        $id = $this->uri->segment(3);
+        $this->data['method'] = "resumePrint";
+
+        $education = $this->EmployerModel->educationalDetails($id);
+        $this->data['education'] = $education;
+
+        $skills = $this->EmployerModel->skills($id);
+        $this->data['skills'] = $skills;
+
+        $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
+        $this->data['areaOfInterest'] = $areaOfInterest;
+
+        $experienceDetails = $this->EmployerModel->experienceDetails($id);
+        $this->data['experienceDetails'] = $experienceDetails;
+
+        $basicDetails = $this->EmployerModel->candidate($id);
+        $this->data['basicDetails'] = $basicDetails;
+
+        // $this->setVariable();
+
+        $this->load->view('employerDashboard.php', $this->data);
+    }
+    public function basicDetails()
+    {
+        $id = $this->uri->segment(3);
+        $basicDetails = $this->AdminModel->getBasicDetails($id);
+        $this->data['basicDetails'] = $basicDetails;
+        // $this->setVariable();
+        $this->data['method'] = 'basicdetails';
+        $this->load->view('employerDashboard.php', $this->data);
+    }
+
+    public function educationTable()
+    {
+        $id = $this->uri->segment(3);
+        //  $educationTable = $this->AdminModel->educationTable($id);
+        //  $this->data['educationTable'] = $educationTable;
+        $this->data['candidateId'] = $id;
+        // $this->setVariable();
+        $this->data['method'] = 'educationTable';
+        $this->load->view('employerDashboard.php', $this->data);
+    }
+
+    public function experienceTable()
+    {
+        $id = $this->uri->segment(3);
+        $this->data['candidateId'] = $id;
+       
+        // $experienceTable = $this->CandidateModel->experienceTable();
+        // $this->data['experienceTable'] = $experienceTable['response'];
+
+        $categoryList = $this->CandidateModel->getCategoryList();
+        $this->data['categoryList'] = $categoryList;
+
+        $this->setVariable();
+        $this->data['method'] = "experienceTable";
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+    
     public function filterAllCandidate()
     {
         $postData = $this->input->post(null, true);

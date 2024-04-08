@@ -587,7 +587,7 @@ class AdminModel extends CI_Model
 //       $config['upload_path'] = "./uploads/";
 //       $basepath = base_url() . 'uploads/';
 //       $config['allowed_types'] = "jpg|png|pdf|jpeg";
-//       $config['max_size'] = 1024;
+//       $config['max_size'] = 1024 * 1024;
   
 //       $this->load->library('upload', $config);
   
@@ -946,7 +946,7 @@ public function experienceTable($seekerId)
 
         $config['upload_path'] = "./uploads/";
         $config['allowed_types'] = "jpg|png|pdf|jpeg";
-        $config['max_size'] = 1024; // 1MB
+        $config['max_size'] = 1024 * 1024; // 1MB
         $this->load->library('upload', $config);
         $resumefilename = "No Resume";
         if ($this->upload->do_upload('resumeFile')) {
@@ -973,7 +973,7 @@ public function experienceTable($seekerId)
 
         $config['upload_path'] = "./uploads/";
         $config['allowed_types'] = "jpg|png|pdf";
-        $config['max_size'] = 1024;
+        $config['max_size'] = 1024 * 1024;
 
         $this->load->library('upload', $config);
 

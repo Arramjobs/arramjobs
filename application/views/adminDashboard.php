@@ -2813,7 +2813,7 @@
                                                                 } else if (
                                                                     $value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
                                                                     $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                                                                    $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW"
+                                                                    $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "BBM"
                                                                 ) {
                                                                     ?>
                                                                                 <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
@@ -3413,7 +3413,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -3610,7 +3611,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -3801,7 +3803,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -4036,7 +4039,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -4918,7 +4922,7 @@
                                         name="name" oninput="validateName(this)" required>
                                     <div id="name_error" style="color: red;"></div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label for="emailid" class="form-label">Email</label><br>
                                     <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>"
                                         name="email">
@@ -4955,7 +4959,7 @@
                                     <div id="password_error" style="color: red;"></div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
                                     <?php
                                     $formattedDate = date('dmy', strtotime($value['dateofbirth']));
@@ -4970,7 +4974,22 @@
                                         value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly
                                         onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                     <div id="age_error" style="color: red;"></div>
-                                </div>
+                                </div> -->
+
+                                <div class="col-md-6">
+    <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
+    <input type="text" class="form-control" id="dateofbirth" value="<?php echo date('d-m-Y', strtotime($value['dateofbirth'])); ?>"
+        name="dateofbirth" required>
+    <div id="dob_error" style="color: red;"></div>
+    <p style="color:blue;textalign:center;font-size:small;margin-top:20px">Enter the DOB in DD-MM-YYYY format</p>
+</div>
+<div class="col-md-6">
+    <label for="age" class="form-label">Age</label>
+    <input type="number" class="form-control" id="age"
+        value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly required>
+    <div id="age_error" style="color: red;"></div>
+</div>
+                                
                                 <div class="col-md-6">
                                     <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
                                     <select class="form-control" id="gender" name="gender" required>
@@ -5277,27 +5296,27 @@
             </script>
             <!-- DATE OF BIRTH VALIDATION -->
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    document.getElementById('dateofbirth').addEventListener('input', function () {
-                        var dob = new Date(this.value);
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('dateofbirth').addEventListener('input', function () {
+            var dob = this.value;
+            var age = calculateAge(dob);
+            document.getElementById('age').value = age;
+        });
+    });
 
-                        var age = calculateAge(dob);
-                        document.getElementById('age').value = age;
-                    });
-                });
+    function calculateAge(dob) {
+        var parts = dob.split('-');
+        var birthDate = new Date(parts[2], parts[1] - 1, parts[0]);
+        var today = new Date();
 
-                function calculateAge(dob) {
-                    var today = new Date();
-                    var birthDate = new Date(dob);
-
-                    var age = today.getFullYear() - birthDate.getFullYear();
-                    var monthDiff = today.getMonth() - birthDate.getMonth();
-                    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-                        age--;
-                    }
-                    return age;
-                }
-            </script>
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+</script>
 
             <!-- AADHAR PHOTO UPLOAD -->
             <script>
@@ -5634,7 +5653,7 @@
                         document.getElementById("certificate_dip-group").style.display = 'block';
                         document.getElementById("additionalFieldLabeldip").innerText = "Upload " + selectedValue + " Certificate";
                     }
-                    else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW" || selectedValue === "BFA" || selectedValue === "B.Arch" || selectedValue === "B.N" || selectedValue === "BCS" || selectedValue === "LLB" || selectedValue === "BDS" || selectedValue === "B.Pharm") {
+                    else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW" || selectedValue === "BFA" || selectedValue === "B.Arch" || selectedValue === "B.N" || selectedValue === "BCS" || selectedValue === "LLB" || selectedValue === "BDS" || selectedValue === "B.Pharm" || selectedValue === "BBM") {
                         document.getElementById("department-group").style.display = "block";
                         document.getElementById("course-group").style.display = "block";
                         document.getElementById("school-group").style.display = "block";
@@ -5667,7 +5686,7 @@
 
                 var countries = [
                     "Below_9th", "9th", "10th/SSLC", "11th", "12th/HSC", "DIPLOMA", "D.Pharm",
-                    "B.A", "B.COM", "B.ED", "B.E", "B.LIT", "B.SC", "BBA", "BCA", "B.TECH", "BSW", "BFA", "B.Arch", "B.N", "BCS", "LLB", "BDS", "B.Pharm",
+                    "B.A", "B.COM", "B.ED", "B.E", "B.LIT", "B.SC", "BBA", "BCA", "B.TECH", "BSW", "BFA", "B.Arch", "B.N", "BCS", "LLB", "BDS", "B.Pharm", "BBM",
                     "M.A", "M.COM", "M.ED", "M.E", "M.LIT", "M.SC", "MBA", "MCA", "M.TECH", "MSW", "MFA", "M.Arch", "M.N", "MCS", "LLM", "MBBS", "M.Pharm",
                     "MPhil", "Ph.D", "DBA", "Ed.D", "MD", "DMD", "DVM"];
 
@@ -5855,71 +5874,76 @@
                     }
                 }
 
-                document.getElementById('fromDate').addEventListener('input', updateDateDifference);
-                document.getElementById('toDate').addEventListener('input', updateDateDifference);
-                document.getElementById('till_now').addEventListener('change', updateToDate);
+    document.getElementById('fromDate').addEventListener('input', updateDateDifference);
+    document.getElementById('toDate').addEventListener('input', updateDateDifference);
+    document.getElementById('till_now').addEventListener('change', updateToDate);
 
-                function updateDateDifference() {
-                    var fromDate = new Date(document.getElementById('fromDate').value);
-                    var toDate = new Date(document.getElementById('toDate').value);
+    function updateDateDifference() {
+        var fromDate = new Date(document.getElementById('fromDate').value);
+        var toDate = new Date(document.getElementById('toDate').value);
 
-                    var tillNowChecked = document.getElementById('till_now').checked;
+        var tillNowChecked = document.getElementById('till_now').checked;
 
-                    document.getElementById('toDate').disabled = tillNowChecked;
+        document.getElementById('toDate').disabled = tillNowChecked;
 
-                    if (tillNowChecked) {
-                        var today = new Date();
-                        var formattedDate = today.toISOString().split('T')[0];
-                        document.getElementById('toDate').value = formattedDate;
-                    }
+        if (tillNowChecked) {
+            var today = new Date();
+            var formattedDate = formatDate(today);
+            document.getElementById('toDate').value = formattedDate;
+        }
 
-                    if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
-                        var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
+        if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
+            var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
 
-                        var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
-                        var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
-                        var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
+            var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
+            var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
+            var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
 
-                        if (daysDiff < 0) {
-                            monthsDiff--;
-                            daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
-                        }
+            if (daysDiff < 0) {
+                monthsDiff--;
+                daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
+            }
 
-                        if (monthsDiff < 0) {
-                            yearsDiff--;
-                            monthsDiff += 12;
-                        }
+            if (monthsDiff < 0) {
+                yearsDiff--;
+                monthsDiff += 12;
+            }
 
-                        document.getElementById('years').textContent = yearsDiff;
-                        document.getElementById('months').textContent = monthsDiff;
-                    }
-                }
+            document.getElementById('years').textContent = yearsDiff;
+            document.getElementById('months').textContent = monthsDiff;
+        }
+    }
 
-                function updateToDate() {
-                    var today = new Date();
+    function updateToDate() {
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
 
-                    today.setHours(0, 0, 0, 0);
+        var toDateInput = document.getElementById('toDate');
+        var tillNowCheckbox = document.getElementById('till_now');
 
-                    var to_date_input = document.getElementById('toDate');
-                    var till_now_checkbox = document.getElementById('till_now');
+        if (tillNowCheckbox.checked) {
+            var formattedDate = formatDate(today);
+            toDateInput.value = formattedDate;
+            toDateInput.disabled = true;
+        } else {
+            toDateInput.disabled = false;
+        }
 
-                    if (till_now_checkbox.checked) {
+        updateDateDifference();
+    }
 
-                        var yesterday = new Date(today);
-                        yesterday.setDate(today.getDate() - 1);
+    window.onload = function () {
+        updateDateDifference();
+    };
 
-                        to_date_input.valueAsDate = yesterday;
-                    } else {
-                        to_date_input.disabled = false;
-                    }
+    function formatDate(date) {
+        var dd = String(date.getDate()).padStart(2, '0');
+        var mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+        var yyyy = date.getFullYear();
 
-                    updateDateDifference();
-                }
-
-                window.onload = function () {
-                    updateDateDifference();
-                };
-            </script>
+        return dd + '-' + mm + '-' + yyyy;
+    }
+</script>
             <script>
                 <?php
                 if ($experienceDetails[0]['workStatus'] == '0') {
@@ -6086,11 +6110,13 @@
                         otherCategoryField.style.display = 'none';
                     }
                 }
-      document.getElementById('fromDate').addEventListener('input', updateDateDifference);
-      document.getElementById('toDate').addEventListener('input', updateDateDifference);
-      document.getElementById('till_now').addEventListener('change', updateToDate);
+                </script>
+                <script>
+    document.getElementById('fromDate').addEventListener('input', updateDateDifference);
+    document.getElementById('toDate').addEventListener('input', updateDateDifference);
+    document.getElementById('till_now').addEventListener('change', updateToDate);
 
-      function updateDateDifference() {
+    function updateDateDifference() {
         var fromDate = new Date(document.getElementById('fromDate').value);
         var toDate = new Date(document.getElementById('toDate').value);
 
@@ -6099,58 +6125,63 @@
         document.getElementById('toDate').disabled = tillNowChecked;
 
         if (tillNowChecked) {
-          var today = new Date();
-          var formattedDate = today.toISOString().split('T')[0];
-          document.getElementById('toDate').value = formattedDate;
+            var today = new Date();
+            var formattedDate = formatDate(today);
+            document.getElementById('toDate').value = formattedDate;
         }
 
         if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
-          var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
+            var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
 
-          var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
-          var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
-          var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
+            var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
+            var monthsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12 : toDate.getMonth() - fromDate.getMonth();
+            var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
 
-          if (daysDiff < 0) {
-            monthsDiff--;
-            daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
-          }
+            if (daysDiff < 0) {
+                monthsDiff--;
+                daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
+            }
 
-          if (monthsDiff < 0) {
-            yearsDiff--;
-            monthsDiff += 12;
-          }
+            if (monthsDiff < 0) {
+                yearsDiff--;
+                monthsDiff += 12;
+            }
 
-          document.getElementById('years').textContent = yearsDiff;
-          document.getElementById('months').textContent = monthsDiff;
+            document.getElementById('years').textContent = yearsDiff;
+            document.getElementById('months').textContent = monthsDiff;
         }
-      }
+    }
 
-      function updateToDate() {
+    function updateToDate() {
         var today = new Date();
-
         today.setHours(0, 0, 0, 0);
 
-        var to_date_input = document.getElementById('toDate');
-        var till_now_checkbox = document.getElementById('till_now');
+        var toDateInput = document.getElementById('toDate');
+        var tillNowCheckbox = document.getElementById('till_now');
 
-        if (till_now_checkbox.checked) {
-
-          var yesterday = new Date(today);
-          yesterday.setDate(today.getDate() - 1);
-
-          to_date_input.valueAsDate = yesterday;
+        if (tillNowCheckbox.checked) {
+            var formattedDate = formatDate(today);
+            toDateInput.value = formattedDate;
+            toDateInput.disabled = true;
         } else {
-          to_date_input.disabled = false;
+            toDateInput.disabled = false;
         }
 
         updateDateDifference();
-      }
+    }
 
-      window.onload = function () {
+    window.onload = function () {
         updateDateDifference();
-      };
-    </script>
+    };
+
+    function formatDate(date) {
+        var dd = String(date.getDate()).padStart(2, '0');
+        var mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+        var yyyy = date.getFullYear();
+
+        return dd + '-' + mm + '-' + yyyy;
+    }
+</script>
 
     <script>
       function showHideOtherField() {
@@ -6673,7 +6704,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -6870,7 +6902,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -7079,7 +7112,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -7241,7 +7275,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -7370,7 +7405,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -7531,7 +7567,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -7803,7 +7840,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -8137,7 +8175,7 @@
                                                             } else if (
                                                                 $value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
                                                                 $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                                                                $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW"
+                                                                $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "BBM"
                                                             ) {
                                                                 ?>
                                                                             <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
@@ -8796,7 +8834,7 @@
                                                             } else if (
                                                                 $value['educational_qualification'] == "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
                                                                 $value['educational_qualification'] === "B.LIT" || $value['educational_qualification'] === "B.TECH" || $value['educational_qualification'] === "BCA" || $value['educational_qualification'] === "BBA" ||
-                                                                $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW"
+                                                                $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" || $value['educational_qualification'] === "BBM"
                                                             ) {
                                                                 ?>
                                                                             <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
@@ -9844,6 +9882,9 @@
                                             <tr>
                                                 <td>
                                                     <?php echo $loopcount; ?> .
+                                                </td>
+                                                <td>
+                                                    <?php echo $value['placedAtEmployer']; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $value['placedAtEmployer']; ?>
