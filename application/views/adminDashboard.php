@@ -3320,7 +3320,7 @@
                                                     <p class="d-flex">
                                                         <?php echo $value['company_name']; ?><a
                                                             href="<?php echo $value['companyLocationUrl']; ?>"
-                                                            class="px-2 text-danger"><i class='bx bx-map'></i></a>
+                                                            class="px-2 text-danger" target="blank"><i class='bx bx-map'></i></a>
                                                     </p>
                                                 </td>
                                                 <td><a href="#" class="text-primary">
@@ -5093,7 +5093,7 @@
                                     </div>
                                     <div id="aadharfrontphoto_error" style="color: red;"></div>
                                         <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF
-                                        Maximum size: 1024KB</p>
+                                        Maximum size: 2MB</p>
                                 </div>
 
                                 <div class="col-md-6">
@@ -5113,7 +5113,7 @@
                                     </div>
                                     <div id="aadharbackphoto_error" style="color: red;"></div>
                                         <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF
-                                        Maximum size: 1024KB</p>
+                                        Maximum size: 2MB</p>
                                 </div>
 
                                 <div class="col-md-6">
@@ -5145,7 +5145,7 @@
                                     <input type="number" class="form-control" value="1" name="bdsubmit" hidden>
 
                                     <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG
-                                        Maximum size: 1024KB</p>
+                                        Maximum size: 2MB</p>
                                 </div>
                                 <div class="text-center">
 

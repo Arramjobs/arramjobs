@@ -641,7 +641,7 @@
                   </div>
                   <div id="aadharfrontphoto_error" style="color: red;"></div>
                   <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF
-                                        Maximum size: 1024KB</p>
+                                        Maximum size: 2MB</p>
                 </div>
 
                 <div class="col-md-6">
@@ -661,7 +661,7 @@
                   </div>
                   <div id="aadharbackphoto_error" style="color: red;"></div>
                   <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF
-                                        Maximum size: 1024KB</p>
+                                        Maximum size: 2MB</p>
                 </div>
 
                 <div class="col-md-6">
@@ -691,7 +691,7 @@
                   <input type="number" class="form-control" value="1" name="bdsubmit" hidden>
 
                   <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG Maximum size:
-                    1024KB</p>
+                    2MB</p>
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -1232,7 +1232,7 @@
                             $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
                             $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" ||
                             $value['educational_qualification'] === "LLM" || $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
-                            $value['educational_qualification'] == "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
+                            $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
                             $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
                           ) {
                             ?>
@@ -1379,7 +1379,7 @@
                 <?php
               } else {
                 ?>
-                <h5 class="card-title">No Records Found<span></span></h5>
+                <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                 <?php
               }
               ?>
@@ -1681,7 +1681,7 @@
             document.getElementById("certificate_dip-group").style.display = 'block';
             document.getElementById("additionalFieldLabeldip").innerText = "Upload " + selectedValue + " Certificate";
           }
-          else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW" || selectedValue === "BFA" || selectedValue === "B.Arch" || selectedValue === "B.N" || selectedValue === "BCS" || selectedValue === "LLB" || selectedValue === "BDS" || selectedValue === "B.Pharm") || $value['educational_qualification'] === "BBM" {
+          else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW" || selectedValue === "BFA" || selectedValue === "B.Arch" || selectedValue === "B.N" || selectedValue === "BCS" || selectedValue === "LLB" || selectedValue === "BDS" || selectedValue === "B.Pharm" || selectedValue === "BBM") {
             document.getElementById("department-group").style.display = "block";
             document.getElementById("course-group").style.display = "block";
             document.getElementById("school-group").style.display = "block";
@@ -2100,7 +2100,7 @@
                 <?php
               } else {
                 ?>
-                <h5 class="card-title">No Records Found<span></span></h5>
+                <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                 <?php
               }
               ?>
@@ -2549,7 +2549,7 @@
 
             <div class="card-body">              
 
-              <div class="exptableheading" id="fresherExp" style=" padding-top:20px;">
+              <div class="exptableheading" id="fresherExp" style=" padding-top:20px; padding-bottom:20px;">
                 <!-- <p style="font-size:18px; font-weight: bold; color: #007BFF; padding-top:20px;">Kindly mention your work experience and work
                   status.</p> -->
                 <!-- <p><b style="color:blue;">Note:</b> Indicate <b>'No Experience'</b> if you are a <b>Fresher</b> or have
@@ -2564,8 +2564,8 @@
               </div>
 
               <div id="fresher" class="button-content mt-4" style="display: none;">
-                <!-- <p>Now you can proceed to the <b>'Area of Job Interest'</b> section to specify your career preferences. -->
-                </p>
+                <!-- <p>Now you can proceed to the <b>'Area of Job Interest'</b> section to specify your career preferences.
+                </p> -->
                 <form method="post" action=" <?php echo baseUrl . "Candidate/insertFresherForm" ?>">
                   <input name="fresher" value="1" hidden>
                   <button type="submit" class="btn btn-danger">Next</button>
@@ -2772,9 +2772,9 @@
 
             <input type="hidden" class="form-control" id="id" value="" name="seekerId">
 
-            <div class="col-6">
+            <div class="col-12">
               <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
-              <select class="form-control" id="category" name="category" autocomplete="off"
+              <select class="form-control" id="category" name="category" autocomplete="off" autofocus
                 onchange="showHideOtherField()" required>
                 <option value="">Select a Category</option>
                 <?php
@@ -2789,14 +2789,14 @@
               <div id="category_error" class="text-danger error"></div>
             </div>
 
-            <div class="col-6" id="newcategory_group" style="display: none;">
+            <div class="col-12" id="newcategory_group" style="display: none;">
               <label for="newcategory" class="form-label">New category</label>
               <input class="form-control" id="newcategory" name="newcategory">
               <div id="newcategory_error" class="text-danger error"></div>
               <input id="categoryothers" name="categoryothers" value="1" hidden>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
               <label for="subcategory" class="form-label">Subcategory </label>
               <input class="form-control" id="subcategory" name="subcategory">
               <!-- <div id="subcategory_error" class="text-danger error"></div> -->
@@ -3025,6 +3025,11 @@
             otherCategoryField.style.display = 'none';
           }
         }
+
+        var categorySelect = document.getElementById("category");
+    categorySelect.addEventListener("click", function() {
+        this.focus();
+    });
       </script>
 
       <script>
@@ -3265,7 +3270,7 @@
               <?php
             } else {
               ?>
-              <h5 class="card-title">No Records Found<span></span></h5>
+              <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
               <?php
             }
             ?>
@@ -3735,7 +3740,7 @@
                 <?php
               } else {
                 ?>
-                <h5 class="card-title">No Records Found<span></span></h5>
+                <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                 <?php
               }
               ?>
@@ -4079,7 +4084,7 @@
                     <?php
                   } else {
                     ?>
-                    <h5 class="card-title">No Records Found<span></span></h5>
+                    <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                     <?php
                   }
                   ?>
@@ -4330,7 +4335,7 @@
               <?php
             } else {
               ?>
-              <h5 class="card-title">No Records Found<span></span></h5>
+              <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
               <?php
             }
             ?>
@@ -4630,7 +4635,7 @@
                   <?php
                     } else {
                       ?>
-                  <h5 class="card-title">No Records Found<span></span></h5>
+                  <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                   <?php
                     }
                     ?>

@@ -702,15 +702,15 @@
                                 document.getElementById("pinerr1").innerHTML = "";
                             }
 
-                        if(locurlp =='')
-                        {
-                            var city = "Location Url must be in filled out";
-                            document.getElementById("lUrlerr").innerHTML = city;
-                            document.forms.city1.focus();
-                            return false;
-                        } else {
-                            document.getElementById("lUrlerr").innerHTML = "";
-                        }
+                        // if(locurlp =='')
+                        // {
+                        //     var city = "Location Url must be in filled out";
+                        //     document.getElementById("lUrlerr").innerHTML = city;
+                        //     document.forms.city1.focus();
+                        //     return false;
+                        // } else {
+                        //     document.getElementById("lUrlerr").innerHTML = "";
+                        // }
 
                         // //  if(logop == '' && document.getElementById('existfile').style.display == "none"){
                         // //     var logo = "Logo must be uploaded";
