@@ -6394,7 +6394,7 @@
                                 <h5 class="card-title">New Candidates<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
-                                <table class="table">
+                                <table class="table" id="newList">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
@@ -6502,10 +6502,17 @@
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
+
+                                <div id="paginationButtons" class="text-center mt-4">
+                                    <button onclick="previousPage()">Previous</button>
+                                    <span id="pageInfo"></span>
+                                    <button onclick="nextPage()">Next</button>
+                                </div>
+
                                 <?php
                             } else {
                                 ?>
-                                <h5 class="card-title">No Records Found</h5>
+                                <!-- <h5 class="card-title">No Records Found</h5> -->
                                 <?php
                             }
                             ?>
@@ -6535,6 +6542,46 @@
                         }
                     });
                 }
+            </script>
+
+<script>
+    var table = document.getElementById('newList');
+    var rowsPerPage = 7;
+    var currentPage = 1;
+    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+    showPage(currentPage);
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        for (var i = 0; i < table.rows.length; i++) {
+            if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+            } else {
+                table.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    function updatePaginationButtons() {
+        var buttonsHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
+        }
+        document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+    }
+
+    updatePaginationButtons();
             </script>
 
 

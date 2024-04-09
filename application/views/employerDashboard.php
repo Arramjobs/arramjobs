@@ -609,18 +609,18 @@
                                 document.getElementById("pherr").innerHTML = "";
                             }
 
-                        if (mailp != "") {
-                            document.getElementById("mailerr").innerHTML = "";
-                            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailp)) {
-                                document.getElementById("mailerr").innerHTML = "";
-                            } else {
-                                document.getElementById("mailerr").innerHTML = "You have entered an invalid email address";
-                                document.forms.email.focus();
-                                return false;
-                            }
-                        } else {
-                                document.getElementById("mailerr").innerHTML = "";
-                            }
+                        // if (mailp != "") {
+                        //     document.getElementById("mailerr").innerHTML = "";
+                        //     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailp)) {
+                        //         document.getElementById("mailerr").innerHTML = "";
+                        //     } else {
+                        //         document.getElementById("mailerr").innerHTML = "You have entered an invalid email address";
+                        //         document.forms.email.focus();
+                        //         return false;
+                        //     }
+                        // } else {
+                        //         document.getElementById("mailerr").innerHTML = "";
+                        //     }
 
                         //  if (pswd == "") {
                         //     var emailsms = "Password must be filled out";
@@ -759,18 +759,18 @@
                                 document.getElementById("pherr1").innerHTML = "";
                             }
 
-                        if (cpmail != "") {
-                            document.getElementById("mailerr1").innerHTML = "";
-                            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(cpmail)) {
-                                document.getElementById("mailerr1").innerHTML = "";
-                            } else {
-                                document.getElementById("mailerr1").innerHTML = "You have entered an invalid email address";
-                                document.forms.mail1.focus();
-                                return false;
-                            }
-                        } else {
-                                document.getElementById("mailerr1").innerHTML = "";
-                            }
+                        // if (cpmail != "") {
+                        //     document.getElementById("mailerr1").innerHTML = "";
+                        //     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(cpmail)) {
+                        //         document.getElementById("mailerr1").innerHTML = "";
+                        //     } else {
+                        //         document.getElementById("mailerr1").innerHTML = "You have entered an invalid email address";
+                        //         document.forms.mail1.focus();
+                        //         return false;
+                        //     }
+                        // } else {
+                        //         document.getElementById("mailerr1").innerHTML = "";
+                        //     }
 
                     }
 

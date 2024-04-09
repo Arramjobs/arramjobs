@@ -757,12 +757,13 @@ public function experienceTable($seekerId)
 
     public function placedCandidatesList()
     {
-        $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum, spf.position AS position,
+        $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum, spf.position AS position, spf.dateTime AS dateTime,
             prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, cr.candidate_id AS cid, prf.company_name AS compName
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
              INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
-             WHERE (cr.request_status = '6');";
+             WHERE (cr.request_status = '6') 
+             ORDER BY spf.dateTime DESC;";
         $response = $this->db->query($candidatechartList);
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
     }
