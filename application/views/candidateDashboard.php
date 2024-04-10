@@ -63,7 +63,9 @@
             }
 
             #resumeprint,
-            {
+            #employerprint,
+            #printCandidate,
+            #printEmployer {
                 visibility: visible;
             }
 
@@ -4806,6 +4808,13 @@
                 class="btn btn-dark printhide">Print</button>
           </div> -->
         </div>
+
+        <div>
+                <a class="mx-1" href="<?php echo baseUrl . "candidate/resumePrint/" . $value['id'] ?>">
+                  <button type="button" class="btn btn-primary d-flex"><i
+                    class="bi bi-eye pe-1"></i> View and Print Resume</button></a>
+        </div>
+
       </section>
 
       <script>
@@ -5406,286 +5415,268 @@
       </script> -->
       <?php
 
-} elseif ($method == "resumePrint") {
+    } elseif ($method == "resumePrint") {
   ?>
   <!-- Sidebar Active  -->
   <section>
-      <!-- Default Card -->
-      <div id="resumeprint">
-              <div class="container">
-                  <div class="row">
+        <!-- Default Card -->
+        <div id="resumeprint">
+            <div class="container">
+            <div class="row">
 
-                  <div class="d-flex justify-content-between">
-                      <div></div>
-                      <div class=" text-center mt-4" style="margin-right:15px;">
-                      <h3 style=" letter-spacing: 3px; color:#94b123;"><b>ARRAM CHARITY TRUST</b></h3>
-                      <h4 style="color: #31a5d6;"><b>ARRAM JOBS - CANDIDATE RESUME</b></h4>
-                  </div>
-                  <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" style="height:65px; width:85px; margin-top: 20px;">
-                  </div>
-                  
-                      <div class=" recent-sales overflow-auto mt-1">
-                              <?php
-                              foreach ($this->data['basicDetails'] as $key => $value) {
-                                  ?>
-                                  <div class="d-flex justify-content-between pt-4">
-                                      <div class="">
-                                          <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>"
-                                              alt="Your image" width="100" height="100"><br>
-                                      <!-- </div>
+<div class="d-flex justify-content-between">
+    <div></div>
+    <div class=" text-center mt-4" style="margin-right:15px;">
+    <h3 style=" letter-spacing: 3px; color:#94b123;"><b>ARRAM CHARITY TRUST</b></h3>
+    <h4 style="color: #31a5d6;"><b>ARRAM JOBS - CANDIDATE RESUME</b></h4>
+</div>
+<img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" style="height:65px; width:85px; margin-top: 20px;">
+</div>
 
-                                      <div class="col"> -->
-                                         <br> <h5>Name :
-                                              <?php echo $value['name']; ?>
-                                          </h5>
-                                          <h5>Candidate ID :
-                                              <?php echo $value['eeid']; ?>
-                                          </h5><br>
-                                      </div>
-                                      <div class="text-end mt-0">
-                                          <p>
-                                              <?php echo $value['phonenumber'] ?>
-                                          </p>
-                                          <p>
-                                              <?php echo $value['email'] ?>
-                                          </p>
-                                          <p>
-                                              <?php echo $value['buildingName'] ?>,
-                                              <?php echo $value['address'] ?>
-                                          </p>
-                                          <p>
-                                              <?php echo $value['district'] ?>,
-                                              <?php echo $value['pincode'] ?>
-                                          </p>
-                                      </div>
-                                  </div>
-                          <?php
-                              }
-                              ?>
-                          </div><br><br>
-                          <div class=" recent-sales overflow-auto">
-                          <div>
-                              <h4><b>Personal Details</b></h4>
-                              <div class="d-flex mt-4">
-                              <?php
-                              foreach ($this->data['basicDetails'] as $key => $value) {
-                                  ?>                                     
-                                          <!-- <p><b>Phone number : </b>
-                                              <?php echo $value['phonenumber1'] ?>
-                                          </p> -->
-                                          <div class="d-flex">
-                                          <div>
-                                          <p style="margin-right: 35px;"><b>D.O.B : </b>
-                                          <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth']));?>
-                                          <?php echo $formattedDateOfBirth; ?></p>  
-                                          <p style="margin-right: 35px;">
-                                          <b>Marital Status :</b>
-                                              <?php echo $value['maritalStatus'] ?>
-                                           </p>                                           
-                                                               
-                                          </div>                      
-                                          <div>
-                                          <p style="margin-right: 35px;">
-                                          <b>Age :</b>
-                                              <?php echo $value['age'] ?>
-                                          </p>                                                                           
-                                          <p style="margin-right: 35px;">
-                                          <b>Aadhaar Number :</b>
-                                          <?php echo $value['aadharnumber'] ?><br>  
-                                          </p> 
-                                          </div>
-                                          <div>
-                                          <p style="margin-right: 35px;">
-                                          <b>Gender :</b>
-                                              <?php echo $value['gender'] ?>
-                                          </p>                                            
-                                          
-                                          </div>
-                                          </div>
-                                  </div>
-                              </div>
-                          </div>  
+    <div class=" recent-sales overflow-auto mt-1">
+      
+                  <?php
+                  if (isset($basicDetails)) {
+                    foreach ($basicDetails as $key => $value) {
+                      ?>
+                      <div class="d-flex justify-content-between pt-4">
+                      <div class="">
+                        <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>" alt="profile" width="100" height="100"> <br>
+                          <br> <h5>Name :
+                                                <?php echo $value['name']; ?>
+                                            </h5>
+                                            <h5>Candidate ID :
+                                                <?php echo $value['eeid']; ?>
+                                            </h5><br>
+                                        </div>
+                                        <div class="text-end mt-0">
+                                            <p>
+                                                <?php echo $value['phonenumber'] ?>
+                                            </p>
+                                            <p>
+                                                <?php echo $value['email'] ?>
+                                            </p>
+                                            <p>
+                                                <?php echo $value['buildingName'] ?>,
+                                                <?php echo $value['address'] ?>
+                                            </p>
+                                            <p>
+                                                <?php echo $value['district'] ?>,
+                                                <?php echo $value['pincode'] ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                        <?php
+                    }
+                  }
+                  ?>
+                   <div class="recent-sales overflow-auto">
+                        <div>
+                        <h4><b>Personal Details</b></h4>
+                        <div class="d-flex mt-4">
+                        <div class="d-flex">
+                                            <div>
+                                            <p style="margin-right: 35px;"><b>D.O.B : </b>
+                                            <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth']));?>
+                                            <?php echo $formattedDateOfBirth; ?></p>  
+                                            <p style="margin-right: 35px;">
+                                            <b>Marital Status :</b>
+                                                <?php echo $value['maritalStatus'] ?>
+                                             </p>                                           
+                                                                 
+                                            </div>                      
+                                            <div>
+                                            <p style="margin-right: 35px;">
+                                            <b>Age :</b>
+                                                <?php echo $value['age'] ?>
+                                            </p>                                                                           
+                                            <p style="margin-right: 35px;">
+                                            <b>Aadhaar Number :</b>
+                                            <?php echo $value['aadharnumber'] ?><br>  
+                                            </p> 
+                                            </div>
+                                            <div>
+                                            <p style="margin-right: 35px;">
+                                            <b>Gender :</b>
+                                                <?php echo $value['gender'] ?>
+                                            </p>                                            
+                                            
+                                            </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>  
+
+            <div class="recent-sales overflow-auto"> 
+                <h4><b>Educational Qualification</b></h4>
+                 <?php
+                    if (isset($educationTable[0]['id']) && !empty($educationTable)) {
+                 ?>
+                
+                    <?php
+                    if (isset($educationTable[0]['id'])) {
+                      $count = 1;
+                      foreach ($educationTable as $key => $value) {
+                        ?>
+                            <p><b><?php echo $count; ?> . </b>
+                            <?php echo $value['educational_qualification'] ?>
+                            <?php if (
+                                                        $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                        $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
+                                                    ) { ?>
+                                                        
+                                                    <?php } else { ?> - <?php echo $value['department'] ?>
+
+                                                        <?php } ?> - <?php echo $value['school_college_name'] ?>
+
+                                                    <?php if (
+                                                        $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                        $value['educational_qualification'] === "11th"
+                                                    ) { ?>
+                                                        NA
+                                                    <?php } else { ?>  with <?php echo $value['percentage'] ?>%                                   
+                                                    <?php } ?> - <?php echo $value['yearOfPassing'] ?>
+
+                                                <?php
+                                                $count++;
+                                            }
+                                            ?>
+                                            </div>
+
+                                <?php } else { ?>
+                                    <p>Education qualification is not entered</p>
+                                <?php } 
+                                } ?>
+                                <!-- End Table with stripped rows -->
+                            </div>
+                        </div>
+                          </p>                         
 
 
-                      <div class=" recent-sales overflow-auto">
-                          <div>
-                              <h4><b>Educational Qualification</b></h4>
-
-                              <?php
-                              if (isset($education[0]['id']) && !empty($education)) {
-                                  ?>                                        
-                                          <div>
-                                          <?php
-                                          $loopcount = 1;
-                                          foreach ($this->data['education'] as $key => $value) {
-                                              ?>
-                                                      <p><b><?php echo $loopcount; ?> .</b>
-
-                                                  <?php echo $value['educational_qualification'] ?>
-                                                    
-                                                  <?php if (
-                                                      $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
-                                                      $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
-                                                  ) { ?>
-                                                      
-                                                  <?php } else { ?> - <?php echo $value['department'] ?>
-
-                                                      <?php } ?> - <?php echo $value['school_college_name'] ?>
-
-                                                  <?php if (
-                                                      $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
-                                                      $value['educational_qualification'] === "11th"
-                                                  ) { ?>
-                                                      NA
-                                                  <?php } else { ?>  with <?php echo $value['percentage'] ?>%                                   
-                                                  <?php } ?> - <?php echo $value['yearOfPassing'] ?>
-
-                                              <?php
-                                              $loopcount++;
-                                          }
-                                          ?>
-                                          </div><br>
-
-                              <?php } else { ?>
-                                  <p>Education qualification is not entered</p>
-                              <?php } ?>
-                              <!-- End Table with stripped rows -->
-                          </div>
-                      </div>
-                     
-
-                      <div class=" recent-sales overflow-auto">
-            <div>
-              <div id="experiencedContent">
+            <div class="recent-sales overflow-auto">
+              <div class="">
+                <div id="experiencedContent">
                 <h4><b>Experience Details</b></h4>
+                  <?php
+                  if (isset($experienceTable[0]['id'])) { ?>
+                    <div id="expTable">
+
+                        <?php
+                        $loopcount = 1;
+                        foreach ($experienceTable as $key => $ivalue) {
+                          ?>
+                          <p>
+                    <h5><b><?php echo $loopcount ?> . 
+                    <?php echo $ivalue['other_category'] ?> : <?php echo $ivalue['other_sub_category'] ?></h5></b>
+                
+                    *  Worked in <?php echo $ivalue['company_name'] ?>,
+                    <?php echo $ivalue['expYear'] ?> to 
+                            <?php echo $ivalue['expMonth'] ?>
+                    <?php echo $ivalue['job_role'] ?>
+                        , 
+                        <?php echo $ivalue['company_location'] ?>                           
+                          <?php
+                          $loopcount++;
+                        } ?>
+                        </p>
+                        </div>
+                        
+                        <p id="noexperience">Fresher / No experience after graduation.</p><br>
+                  <?php } else { ?>
+                    <div id="fresherContent">
+                    
+                      <p>Experience is not entered.</p>
+                    </div>
+                  <?php }
+                  ?>
+                </div>
+              </div>
+            </div>
+
+            <script>
+              <?php
+              if ($experienceTable[0]['workStatus'] == '0') {
+                ?>
+                document.getElementById("expTable").style.display = "block";
+                document.getElementById("noexperience").style.display = "none";
 
                 <?php
-                if (isset($experienceTable[0]['id'])) { ?>
-                  
-                      <div id="expTable">
+              } else if ($experienceTable[0]['workStatus'] == '1') { ?>
+                  document.getElementById("expTable").style.display = "none";
+                  document.getElementById("noexperience").style.display = "block";
+
+                <?php
+              } ?>
+            </script>
+
+            <div class="recent-sales overflow-auto">
+              <div class="">
+              <h4><b>Skills</b></h4>
+
+                <?php
+                if (isset($skillTable[0]['id']) && !empty($skillTable)) {
+                  ?>
+                    <div>                      
+                    <?php
+                      $loopcount = 1;
+                      foreach ($skillTable as $key => $svalue) {
+                        ?>
+                       <h5><b><?php echo $loopcount; ?>. <?php echo $svalue['skill'] ?> skills : </b> </h5> 
+                                                        * <?php echo $svalue['experience'] ?> years of experience at
+                                                         <?php echo $svalue['skill_level'] ?> level.<br><br>
+                                                    
+                                                <?php
+                                                $loopcount++;
+                                            }
+                                            ?>
+                    </div>
+
+                                <?php
+                                } else { ?>
+                                    <p>Skill is not entered</p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                        <div class=" recent-sales overflow-auto">
+                            <div>
+                                <h4><b>Area of Job Interest</b></h4>
+
+                <?php
+                if (isset($areaOfIntrestTable[0]['id'])) {
+                  ?>
+
                       <?php
                       $loopcount = 1;
-                      foreach ($experienceTable as $key => $ivalue) {
+                      foreach ($areaOfIntrestTable as $key => $avalue) {
                         ?>
-                       <p>
-                  <h5><b><?php echo $loopcount ?> . 
-                  <?php echo $ivalue['other_category'] ?> : <?php echo $ivalue['other_sub_category'] ?></h5></b>
-              
-                  *  Worked in <?php echo $ivalue['company_name'] ?>,
-                  <!-- <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
-                      <?php echo $formattedexpYear; ?> to 
-
-                  <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
-                  <?php echo $ivalue['job_role'] ?>
-                      <?php echo $formattedexpMonth; ?>   -->
-
-                      <?php echo $value['expYear'] ?> to 
-                            <?php echo $value['expMonth'] ?>,
-
-                      <?php echo $ivalue['company_location'] ?>                           
+                        
+                            <h5><?php echo $loopcount; ?>. 
+                            <?php echo $avalue['other_interst_category'] ?> : <?php echo $avalue['other_sub_interst_category'] ?> </h5>
+                         
+                            <b>* Preferred Location : </b> <?php echo $avalue['prefered_location'] ?> <br>
+                            <b>* Expected salary : </b> <?php echo $avalue['expected_salary'] ?> <br>
+                            <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
+                            <b>* Job description : </b>    <?php echo $avalue['description'] ?><br><br>
+                            
                         <?php
                         $loopcount++;
-                      } ?>
-                      </p>
-                      </div>
-                      
-                      <p id="noexperience">Fresher / No experience after graduation.</p><br>
-                <?php } else { ?>
-                  <div id="fresherContent">
-                  
-                    <p>Experience is not entered.</p>
-                  </div>
-                <?php }
+                      }
+                      ?>
+                  <?php
+                } else {
+                  echo '<p> Areas of job interest is not entered. </p>';
+                }
                 ?>
               </div>
             </div>
           </div>
-
-                      <script>
-                          <?php
-                          if ($experienceTable[0]['workStatus'] == '0') {
-                              ?>
-                              document.getElementById("expTable").style.display = "block";
-                              document.getElementById("noexperience").style.display = "none";
-
-                              <?php
-                          } else if ($experienceTable[0]['workStatus'] == '1') { ?>
-                                  document.getElementById("expTable").style.display = "none";
-                                  document.getElementById("noexperience").style.display = "block";
-
-                              <?php
-                          } ?>
-                      </script>
-
-                      <div class=" recent-sales overflow-auto">
-                          <div>
-                              <h4><b>Skills</b></h4>
-                              <?php
-                              if (isset($skills[0]['id']) && !empty($skills)) { ?>
-                                  
-                                          <?php
-                                          $loopcount = 1;
-                                          foreach ($this->data['skills'] as $skey => $svalue) {
-                                              ?>
-                                                      <b><h5><?php echo $loopcount; ?>. <?php echo $svalue['skill'] ?> skills : </h5></b>  
-                                                      * <?php echo $svalue['experience'] ?> years of experience at
-                                                       <?php echo $svalue['skill_level'] ?> level.
-                                                  
-                                              <?php
-                                              $loopcount++;
-                                          }
-                                          ?><br>
-
-                              <?php
-                              } else { ?>
-                                  <p>Skill is not entered</p>
-                              <?php } ?>
-                          </div>
-                      </div>
-
-                      <div class=" recent-sales overflow-auto">
-                          <div><br>
-                              <h4><b>Area of Job Interest</b></h4>
-
-                              <?php
-                              if (isset($areaOfInterest[0]['id']) && !empty($areaOfInterest)) { ?>                                    
-                                         
-                                          <?php
-                                          $loopcount = 1;
-                                          foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
-                                              ?>
-                                                      <b><h5><?php echo $loopcount; ?>. <?php echo $avalue['other_interst_category'] ?> : <?php echo $avalue['other_sub_interst_category'] ?> </h5></b>
-                                                 <b>* Prefered Location : </b><?php echo $avalue['prefered_location'] ?> <br>
-                                                 <b>* Expected salary :</b> <?php echo $avalue['expected_salary'] ?> <br>
-                                                 <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
-                                                  
-                                                  <b>* Job description : </b>    <?php echo $avalue['description'] ?><br>
-                                                 
-                                              <?php
-                                              $loopcount++;
-                                          }
-                                          ?><br><br>
-
-                              <?php } else { ?>
-                                  <p>Area of job interest is not entered</p><br>
-
-                              <?php } ?>
-
-                          </div>
-                      </div>                        
-
-                          <?php
-                              }
-                              ?>
-                          </div>
-                      </div>
-
-                      <div style="float:right;">
-                          <button onClick="window.print()" type="button"
-                              class="btn btn-dark printhide">Print</button>
-                      </div>
-                  </div>
-  </section>
+          <div style="float:right;">
+                            <button onClick="window.print()" type="button"
+                                class="btn btn-dark printhide">Print</button>
+                        </div>
+        </div>
+      </section>
   <script>
       function togglePasswordVisibility(inputId, iconId) {
           var passwordInput = document.getElementById(inputId);

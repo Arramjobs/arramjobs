@@ -424,6 +424,11 @@
                             <i class="bi bi-circle"></i><span>Rejected List</span>
                         </a>
                     </li>
+                    <!-- <li>
+                        <a id="candidaterelievedlist" href="<?php echo baseUrl . "admin/relievedCandidate" ?>">
+                            <i class="bi bi-circle"></i><span>Relieved List</span>
+                        </a>
+                    </li> -->
                     <li>
                         <a id="candidateoveralllist" href="<?php echo baseUrl . "admin/overallCandidates" ?>">
                             <i class="bi bi-circle"></i><span>Overall List</span>
@@ -4883,22 +4888,13 @@
                 document.getElementById('candidateoveralllist').classList.add('active');
             </script>
             <section class="Multi Columns Form">
-                <div class="pagetitle">
+                <div class="pagetitle" style="padding-bottom:20px; padding-top:15px;">
                     <h1>Candidate Details</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Profile</li>
-                        </ol>
-                    </nav>
                 </div><!-- End Page Title -->
                 <div class="card">
                     <div class="card-body">
-
-
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Basic Details</h5>
-
+                            <h5 class="card-title" style="padding-bottom:20px;">Basic Details</h5>
                             <div>
                                 <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
                                         class="btn btn-info mt-3"><i class="bi bi-arrow-left"></i></button></a>
@@ -5316,7 +5312,7 @@
         }
         return age;
     }
-</script>
+            </script>
 
             <!-- AADHAR PHOTO UPLOAD -->
             <script>
@@ -5401,20 +5397,14 @@
                 document.getElementById('candidateoveralllist').classList.add('active');
             </script>
             <section class="usertable ">
-                <div class="pagetitle">
+                <div class="pagetitle" style="padding-bottom:20px; padding-top:15px;">
                     <h1>Education Details</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Education</li>
-                        </ol>
-                    </nav>
                 </div>
 
                 <div class="card" id="addeduform">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Add Education Details</h5>
+                            <h5 class="card-title" style="padding-bottom:20px;">Add Education Details</h5>
 
                             <div>
                                 <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
@@ -5709,21 +5699,15 @@
                 document.getElementById('candidateoveralllist').classList.add('active');
             </script>
             <section class="usertable">
-                <div class="pagetitle">
+                <div class="pagetitle" style="padding-bottom:20px; padding-top:15px;">
                     <h1>Experience Details</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Table</li>
-                        </ol>
-                    </nav>
                 </div><!-- End Page Title -->
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
 
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
-                                <h5 class="card-title">Add Experience Details</h5>
+                                <h5 class="card-title" style="padding-bottom:20px;">Add Experience Details</h5>
                                 <div>
                                     <a class="" href="<?php echo baseUrl . "Admin/newCandidateList" ?>"> 
                                     <button type="button" class="btn btn-info mt-3 "><i class="bi bi-arrow-left"></i></button></a>
@@ -5966,24 +5950,19 @@
             ?>
             <!-- Sidebar Active  -->
             <script>
-                document.getElementById('areaofinterest').classList.add('active');
+                document.getElementById('candidatelist').classList.add('active');
+                document.getElementById('candidateoveralllist').classList.add('active');
             </script>
             <section class="usertable">
-                <div class="pagetitle">
-                    <h1>Area of Job Interest and Skill Details</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Jod Interest</li>
-                        </ol>
-                    </nav>
+                <div class="pagetitle" style="padding-bottom:20px; padding-top:15px;">
+                    <h1>Area of Job Interest</h1>
                 </div><!-- End Page Title -->
 
 
                 <div class="card" id="addinterestform">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Add Job Interest</h5>
+                            <h5 class="card-title" style="padding-bottom:20px;">Add Job Interest</h5>
                             <div>
                                 <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
                                         class="btn btn-info mt-3 "><i class="bi bi-arrow-left"></i></button></a>
@@ -6275,19 +6254,13 @@
                 document.getElementById('candidateoveralllist').classList.add('active');
             </script>
             <section class="Multi Columns Form">
-                <div class="pagetitle">
+                <div class="pagetitle" style="padding-bottom:20px; padding-top:15px;">
                     <h1>Skill Details</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Add Skill</li>
-                        </ol>
-                    </nav>
                 </div><!-- End Page Title -->
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Add New Skill</h5>
+                            <h5 class="card-title" style="padding-bottom:20px;">Add New Skill</h5>
                             <div>
                                 <a href="<?php echo baseUrl . "admin/newCandidateList" ?>"> <button type="button"
                                         class="btn btn-info mt-3"><i class="bi bi-arrow-left"></i></button></a>
@@ -6362,7 +6335,7 @@
                 document.getElementById('candidatenewlist').classList.add('active');
             </script>
             <section class="usertable">
-                <div class="pagetitle">
+                <div class="pagetitle" style="padding-bottom:10px; padding-top:15px;">
                     <h1>New Candidate List</h1>
                     <nav>
                         <ol class="breadcrumb">
@@ -7623,6 +7596,169 @@
     updatePaginationButtons();
             </script>
             <?php
+
+
+} elseif ($method == "relievedCandidate") {
+    ?>
+    <!-- Sidebar Active  -->
+    <script>
+        document.getElementById('candidatelist').classList.add('active');
+        document.getElementById('candidaterelievedlist').classList.add('active');
+    </script>
+    <section class="usertable">
+        <div class="pagetitle">
+            <h1>Relieved Candidates</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                    <li class="breadcrumb-item active">Candidate</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <?php
+                    if (isset($this->data['rejectedCandidates'][0]['name'])) {
+                        ?>
+                        <h5 class="card-title">Rejected Candidate List<span></span></h5>
+
+                        <!-- <table class="table table-borderless datatable"> -->
+                        <table class="table" id="rejectCd">
+                            <thead>
+                                <tr>
+                                    <th scope="col">S.No</th>
+                                    <th scope="col">Candidate ID</th>
+                                    <th scope="col">Rejected At</th>
+                                    <th scope="col">Candidate Name</th>
+                                    <th scope="col">Candidate Mobile Number</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $loopcount = 1;
+                                foreach ($this->data['rejectedCandidates'] as $key => $value) {
+                                    ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $loopcount; ?>.
+                                        </td>
+
+                                        <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
+                                                <?php echo $value['cdid']; ?>
+                                            </a></td>
+                                        <td>
+                                            <?php echo $value['compName']; ?> / <a
+                                                href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
+                                                <?php echo $value['emprid']; ?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <?php echo $value['name']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $value['mobilenum']; ?>
+                                        </td>
+                                        <td><span class="badge bg-danger">Relieved</span></td>
+
+                                        <td>
+                                            <form class="" action="<?php echo baseUrl . "admin/updateCurrentStatus" ?>"
+                                                method="post">
+                                                <input class="form-check-input" type="text" name="seekerId" id=""
+                                                    value="<?php echo $value['seekerId']; ?>" hidden>
+                                                <input class="form-check-input" type="text" name="employerId" id=""
+                                                    value="<?php echo $value['emprid']; ?>" hidden>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="">
+                                                        <input type="radio" id="interviwed" name="currentStatus" value="4"
+                                                            <?php if ($value['curStatus'] == '4') {
+                                                                echo 'checked';
+                                                            } ?>
+                                                            required>
+                                                        <label for="interviwed" class="mb-2">Interviewed</label><br>
+                                                        <input type="radio" id="placed" name="currentStatus" value="6"
+                                                            required>
+                                                        <label for="placed" class="mb-2">Placed</label><br>
+
+                                                        <!-- <input type="radio" id="default" name="currentStatus" value="0"
+                                                            required>
+                                                        <label for="default" class="mb-2">Remove</label> -->
+                                                    </div>
+
+                                                    <div class="col ms-5">
+                                                        <button type="submit" class="btn btn-success">Save</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </td>
+                                        
+                                    </tr>
+                                    <?php
+                                    $loopcount++;
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                        <div id="paginationButtons" class="text-center mt-4">
+                            <button onclick="previousPage()">Previous</button>
+                            <span id="pageInfo"></span>
+                            <button onclick="nextPage()">Next</button>
+                        </div>
+                        <?php
+                    } else {
+                        ?>
+                        <h5 class="card-title">No Records Found<span></span></h5>
+                        <?php
+                    }
+                    ?>
+                </div>
+
+            </div>
+        </div><!-- End Recent Sales -->
+    </section>
+
+    <script>
+var table = document.getElementById('rejectCd');
+var rowsPerPage = 7;
+var currentPage = 1;
+var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+showPage(currentPage);
+
+function showPage(page) {
+var startIndex = (page - 1) * rowsPerPage;
+var endIndex = startIndex + rowsPerPage;
+for (var i = 0; i < table.rows.length; i++) {
+    if (i >= startIndex && i < endIndex) {
+        table.rows[i].style.display = 'table-row';
+    } else {
+        table.rows[i].style.display = 'none';
+    }
+}
+}
+
+function goToPage(page) {
+if (page < 1) page = 1;
+if (page > totalPages) page = totalPages;
+currentPage = page;
+showPage(currentPage);
+updatePaginationButtons();
+}
+
+function updatePaginationButtons() {
+var buttonsHtml = '';
+for (var i = 1; i <= totalPages; i++) {
+    var activeClass = (i === currentPage) ? 'active' : '';
+    buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
+}
+document.getElementById('paginationButtons').innerHTML = buttonsHtml;
+}
+
+updatePaginationButtons();
+    </script>
+    <?php
 
         } elseif ($method == "overallEmployees") {
             ?>
@@ -9401,7 +9537,7 @@
                                             $loopcount = 1;
                                             foreach ($this->data['skills'] as $skey => $svalue) {
                                                 ?>
-                                                        <b><h5><?php echo $loopcount; ?>. <?php echo $svalue['skill'] ?> skills : </h5></b>  
+                                                        <h5><b><?php echo $loopcount; ?>. <?php echo $svalue['skill'] ?> skills : </b></h5>  
                                                         * <?php echo $svalue['experience'] ?> years of experience at
                                                          <?php echo $svalue['skill_level'] ?> level.
                                                     

@@ -353,7 +353,28 @@ class Candidate extends CI_Controller
     //     }
     // }
 
+    public function resumePrint()
+    {
+        $educationTable = $this->CandidateModel->educationTable();
+        $this->data['educationTable'] = $educationTable['response'];
 
+        $experienceTable = $this->CandidateModel->experienceTable();
+        $this->data['experienceTable'] = $experienceTable['response'];
+
+        $areaOfIntrestTable = $this->CandidateModel->areaOfIntrestTable();
+        $this->data['areaOfIntrestTable'] = $areaOfIntrestTable['response'];
+
+        $skillTable = $this->CandidateModel->skillTable();
+        $this->data['skillTable'] = $skillTable;
+
+        $basicDetails = $this->CandidateModel->getBasicDetails();
+        $this->data['basicDetails'] = $basicDetails;
+
+        $this->setVariable();
+
+        $this->data['method'] = 'resumePrint';
+        $this->load->view('candidateDashboard.php', $this->data);
+    }
 
     // area of interest
 

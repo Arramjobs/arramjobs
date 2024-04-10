@@ -849,8 +849,9 @@
                                                                         <td><?php echo $value['number_of_openings'] ?></td>
                                                                         <td><?php echo $value['description'] ?></td>
                                                                         <td class="d-flex">
-                                                                        <a class="" href="<?php echo baseUrl."Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>"><button type="button" class="btn btn-success">Matched Candidates</button></a>
-                                                                       <div class="filter">
+                                                                        <a class="" href="<?php echo baseUrl."Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>">
+                                                                        <button type="button" class="btn btn-success">Matched Candidates</button></a>
+                                                                        <div class="filter">
                                                                                 <a class="icon mt-5" href="#" data-bs-toggle="dropdown"><p class="p-3"><i class="bi bi-three-dots-vertical"></i></p></a>
                                                                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                                                                     <li><a class="px-1 " href="<?php echo baseUrl."Employer/updateAddNew" ?>/<?php echo $value['id'] ?>#updatejob"><button type="button" class="btn btn-secondary"><i class="bi bi-pencil"></i> Edit</button></a>
@@ -1231,7 +1232,7 @@
 
 
                     <?php
-                } elseif($method == "addnew") {
+        } elseif($method == "addnew") {
             ?>
             <!-- Not in use -->
                 <!-- Sidebar Active  -->
@@ -1999,7 +2000,7 @@
                                             <button type="button" class="btn btn-secondary mb-4 "><i class="bi bi-arrow-left pe-2"></i> Back</button></a>
                                         </div>
                                         <div class="d-flex justify-content-between" id="printdiv">
-<div></div>
+                                        <div></div>
                                         <form action="<?php echo baseUrl."employer/requestCandidate" ?>" method="post" >
                                                 <input class="form-check-input" type="text" name="employer_id" id="" value="<?php echo $_SESSION['employerid'] ?>" hidden>
                                                 <input class="form-check-input" type="text" name="candidateid" id="" value="<?php echo $this->data['basicDetails'][0]['id']; ?>" hidden>
@@ -2271,7 +2272,7 @@
                 </div>
               </div>
 
-           <script>
+                            <script>
                                     <?php
                                     if ($experienceDetails[0]['workStatus'] == '0') {
                                         ?>
@@ -2396,18 +2397,29 @@
                                             </form>
                                             <!-- <button id="candidaterequested" class="btn btn-success printhide" style="display:none" disabled >Requested to view details</button> -->
                                     <!-- <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button> -->
-                                    <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton" style="display:none">Print</button>
+                                    <!-- <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton" style="display:none">Print</button> -->
+
+                                    <?php
+                                              if (isset($canReqStatus[0]['request_status']) && $canReqStatus[0]['request_status'] == '3') {
+                                                  ?>
+                                        <div class="recent-sales overflow-auto">
+                                    <div>
+                                                 <a href="<?php echo baseUrl . "Employer/resumePrint/" . $nvalue['id'] ?>">
+                                                 <button type="button" class="btn btn-primary d-flex"><i
+                                                                class="bi bi-eye pe-1"></i>Resume</button>
+                                                </a>
+                                                </div>
+                                </div>
+                                                 <?php
+                                              }
+                                              ?>
+
                                     </div>
 
                                 </div>
                             </div><!-- End Default Card -->
 
-                            <!-- <div>
-                            <a class="mx-1"
-                                                        href="<?php echo baseUrl . "Employer/resumePrint/" . $nvalue['id'] ?>">
-                                                        <button type="button" class="btn btn-primary d-flex"><i
-                                                                class="bi bi-eye pe-1"></i>Resume</button></a>
-                            </div> -->
+                            
 
                         </section>
                     <?php
@@ -2434,12 +2446,11 @@
 
                     <?php
 
-} elseif ($method == "resumePrint") {
+        } elseif ($method == "resumePrint") {
     ?>
     <!-- Sidebar Active  -->
     <script>
-        document.getElementById('candidatelist').classList.add('active');
-        document.getElementById('candidateoveralllist').classList.add('active');
+       document.getElementById('employerjobs').classList.add('active');
     </script>
     <section>
         <!-- Default Card -->
