@@ -643,7 +643,12 @@ class Admin extends CI_Controller
     {
         $this->data['method'] = "employerChart";
         $employerChartList = $this->AdminModel->employerChartDetails();
-        $this->data['employerChartList'] = $employerChartList["response"];
+        // $this->data['employerChartList'] = $employerChartList["response"];
+        $filteredEmployerChartList = array_filter($employerChartList["response"], function($item) {
+            return $item['currentStatus'] == 1;
+        });
+        
+        $this->data['employerChartList'] = $filteredEmployerChartList;
         $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }
@@ -673,6 +678,25 @@ class Admin extends CI_Controller
         $this->load->view('adminDashboard.php', $this->data);
     }
 
+    // public function placedCandidatesDetails()
+    // {
+    //     $this->data['method'] = "placedCandidatesDetails";
+    //     $candidateplaced = $this->AdminModel->placedCandidatesDetails();
+    //     $this->data['placedCandidatesDetails'] = $candidateplaced;
+    //     $this->setVariable();
+        
+    //     $id = $this->uri->segment(3);
+    //     $basicDetails = $this->EmployerModel->candidate($id);
+    //     $this->data['basicDetails'] = $basicDetails;
+
+    //     $jobCategory = $this->uri->segment(3);
+    //     $response = $this->EmployerModel->candidates($jobCategory);
+    //     $this->data['response'] = $response;
+    //     $this->data['category'] = $jobCategory;
+
+    //     $this->load->view('adminDashboard.php', $this->data);
+    // }
+
     public function interviewedCandidate()
     {
         $this->data['method'] = "interviewedCandidates";
@@ -687,6 +711,15 @@ class Admin extends CI_Controller
         $this->data['method'] = "rejectedCandidate";
         $candidateRejected = $this->AdminModel->rejectedCandidatesList();
         $this->data['rejectedCandidates'] = $candidateRejected["response"];
+        $this->setVariable();
+        $this->load->view('adminDashboard.php', $this->data);
+    }
+
+    public function relievedCandidate()
+    {
+        $this->data['method'] = "relievedCandidate";
+        $candidateRelieved = $this->AdminModel->relievedCandidatesList();
+        $this->data['relievedCandidates'] = $candidateRelieved["response"];
         $this->setVariable();
         $this->load->view('adminDashboard.php', $this->data);
     }

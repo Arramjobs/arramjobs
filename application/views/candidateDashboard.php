@@ -63,7 +63,9 @@
             }
 
             #resumeprint,
-            {
+            #employerprint,
+            #printCandidate,
+            #printEmployer {
                 visibility: visible;
             }
 
@@ -484,7 +486,7 @@
                     oninput="validateName(this)" required>
                   <div id="Name_error" style="color: red;"></div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-6">
                   <label for="emailid" class="form-label">Email </label><br>
                   <input type="text" class="form-control" id="email" value="<?php echo $value['email']; ?>" name="email">
                   <div id="emailid_error" style="color: red;"></div>
@@ -522,16 +524,30 @@
 
                 <div class="col-md-6">
                   <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
-                  <input type="date" class="form-control" id="dateofbirth" value="<?php echo $value['dateofbirth']; ?>"
-                    name="dateofbirth" required>
+                  <input type="text" class="form-control" id="dateofbirth" value="<?php echo $value['dateofbirth']; ?>" name="dateofbirth" required>
+                  <p style="color:grey;textalign:center;font-size:small;margin-top:20px">Enter Date Of Birth in YYYY-MM-DD format</p>
                   <div id="dob_error" style="color: red;"></div>
                 </div>
                 <div class="col-md-6">
-                  <label for="age" class="form-label">Age</label>
-                  <input type="number" class="form-control" id="age"
-                    value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly required>
+                  <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                  <input type="number" class="form-control" id="age" value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly required>
                   <div id="age_error" style="color: red;"></div>
                 </div>
+
+                <!-- <div class="col-md-6">
+    <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
+    <input type="text" class="form-control" id="dateofbirth" value="<?php echo date('d-m-Y', strtotime($value['dateofbirth'])); ?>"
+        name="dateofbirth" required>
+    <div id="dob_error" style="color: red;"></div>
+    <p style="color:grey;textalign:center;font-size:small;margin-top:20px">Enter the DOB in DD-MM-YYYY format</p>
+                </div>
+<div class="col-md-6">
+    <label for="age" class="form-label">Age</label>
+    <input type="number" class="form-control" id="age"
+        value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly required>
+    <div id="age_error" style="color: red;"></div>
+</div> -->
+
                 <div class="col-md-6">
                   <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
                   <select class="form-control" id="gender" name="gender" required>
@@ -626,7 +642,7 @@
                   </div>
                   <div id="aadharfrontphoto_error" style="color: red;"></div>
                   <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF
-                                        Maximum size: 1024KB</p>
+                                        Maximum size: 2MB</p>
                 </div>
 
                 <div class="col-md-6">
@@ -646,7 +662,7 @@
                   </div>
                   <div id="aadharbackphoto_error" style="color: red;"></div>
                   <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG, PDF
-                                        Maximum size: 1024KB</p>
+                                        Maximum size: 2MB</p>
                 </div>
 
                 <div class="col-md-6">
@@ -676,7 +692,7 @@
                   <input type="number" class="form-control" value="1" name="bdsubmit" hidden>
 
                   <p style="color:grey;textalign:center;font-size:small;margin-top:20px">PNG, JPG, JPEG Maximum size:
-                    1024KB</p>
+                    2MB</p>
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -834,6 +850,29 @@
           return age;
         }
       </script>
+
+      <!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('dateofbirth').addEventListener('input', function () {
+            var dob = this.value;
+            var age = calculateAge(dob);
+            document.getElementById('age').value = age;
+        });
+    });
+
+    function calculateAge(dob) {
+        var parts = dob.split('-');
+        var birthDate = new Date(parts[2], parts[1] - 1, parts[0]);
+        var today = new Date();
+
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+      </script> -->
       <!-- AADHAR PHOTO UPLOAD -->
       <script>
         document.getElementById("file-input-labelaf").addEventListener("click", function () {
@@ -1194,7 +1233,7 @@
                             $value['educational_qualification'] === "M.SC" || $value['educational_qualification'] === "MSW" || $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.Arch" ||
                             $value['educational_qualification'] === "MFA" || $value['educational_qualification'] === "M.N" || $value['educational_qualification'] === "MCS" ||
                             $value['educational_qualification'] === "LLM" || $value['educational_qualification'] === "MBBS" || $value['educational_qualification'] === "MPhil" || $value['educational_qualification'] === "M.Pharm" ||
-                            $value['educational_qualification'] == "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
+                            $value['educational_qualification'] === "Ph.D" || $value['educational_qualification'] === "DBA" || $value['educational_qualification'] === "Ed.D" || $value['educational_qualification'] === "MD" ||
                             $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
                           ) {
                             ?>
@@ -1341,7 +1380,7 @@
                 <?php
               } else {
                 ?>
-                <h5 class="card-title">No Records Found<span></span></h5>
+                <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                 <?php
               }
               ?>
@@ -1496,7 +1535,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+          var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -1642,7 +1682,7 @@
             document.getElementById("certificate_dip-group").style.display = 'block';
             document.getElementById("additionalFieldLabeldip").innerText = "Upload " + selectedValue + " Certificate";
           }
-          else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW" || selectedValue === "BFA" || selectedValue === "B.Arch" || selectedValue === "B.N" || selectedValue === "BCS" || selectedValue === "LLB" || selectedValue === "BDS" || selectedValue === "B.Pharm") {
+          else if (selectedValue === "B.E" || selectedValue === "B.A" || selectedValue === "B.COM" || selectedValue === "B.ED" || selectedValue === "B.LIT" || selectedValue === "B.TECH" || selectedValue === "BCA" || selectedValue === "BBA" || selectedValue === "B.SC" || selectedValue === "BSW" || selectedValue === "BFA" || selectedValue === "B.Arch" || selectedValue === "B.N" || selectedValue === "BCS" || selectedValue === "LLB" || selectedValue === "BDS" || selectedValue === "B.Pharm" || selectedValue === "BBM") {
             document.getElementById("department-group").style.display = "block";
             document.getElementById("course-group").style.display = "block";
             document.getElementById("school-group").style.display = "block";
@@ -1675,7 +1715,7 @@
 
         var countries = [
           "Below_9th", "9th", "10th/SSLC", "11th", "12th/HSC", "DIPLOMA", "D.Pharm",
-          "B.A", "B.COM", "B.ED", "B.E", "B.LIT", "B.SC", "BBA", "BCA", "B.TECH", "BSW", "BFA", "B.Arch", "B.N", "BCS", "LLB", "BDS", "B.Pharm",
+          "B.A", "B.COM", "B.ED", "B.E", "B.LIT", "B.SC", "BBA", "BCA", "B.TECH", "BSW", "BFA", "B.Arch", "B.N", "BCS", "LLB", "BDS", "B.Pharm", "BBM",
           "M.A", "M.COM", "M.ED", "M.E", "M.LIT", "M.SC", "MBA", "MCA", "M.TECH", "MSW", "MFA", "M.Arch", "M.N", "MCS", "LLM", "MBBS", "M.Pharm",
           "MPhil", "Ph.D", "DBA", "Ed.D", "MD", "DMD", "DVM"];
 
@@ -2061,7 +2101,7 @@
                 <?php
               } else {
                 ?>
-                <h5 class="card-title">No Records Found<span></span></h5>
+                <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                 <?php
               }
               ?>
@@ -2379,7 +2419,7 @@
           qualify === "BCA" || qualify === "BBA" || qualify === "B.SC" ||
           qualify === "BSW" || qualify === "BFA" || qualify === "B.Arch" ||
           qualify === "B.N" || qualify === "BCS" || qualify === "LLB" ||
-          qualify === "BDS" || qualify === "B.Pharm") {
+          qualify === "BDS" || qualify === "B.Pharm") || qualify === "BBM" {
           document.getElementById('department-group').style.display = 'block';
           document.getElementById('course-group').style.display = 'block';
           document.getElementById('certificate_ug-group').style.display = 'block';
@@ -2510,7 +2550,7 @@
 
             <div class="card-body">              
 
-              <div class="exptableheading" id="fresherExp" style=" padding-top:20px;">
+              <div class="exptableheading" id="fresherExp" style=" padding-top:20px; padding-bottom:20px;">
                 <!-- <p style="font-size:18px; font-weight: bold; color: #007BFF; padding-top:20px;">Kindly mention your work experience and work
                   status.</p> -->
                 <!-- <p><b style="color:blue;">Note:</b> Indicate <b>'No Experience'</b> if you are a <b>Fresher</b> or have
@@ -2525,8 +2565,8 @@
               </div>
 
               <div id="fresher" class="button-content mt-4" style="display: none;">
-                <!-- <p>Now you can proceed to the <b>'Area of Job Interest'</b> section to specify your career preferences. -->
-                </p>
+                <!-- <p>Now you can proceed to the <b>'Area of Job Interest'</b> section to specify your career preferences.
+                </p> -->
                 <form method="post" action=" <?php echo baseUrl . "Candidate/insertFresherForm" ?>">
                   <input name="fresher" value="1" hidden>
                   <button type="submit" class="btn btn-danger">Next</button>
@@ -2586,8 +2626,23 @@
                             <?php echo $value['other_sub_category'] ?>
                           </td>
                           <td>
-                            <?php echo $value['expYear'] ?> to 
-                            <?php echo $value['expMonth'] ?>
+                          <?php  if (is_numeric($value['expYear'])) {
+                                echo $value['expYear'];
+                              } else {
+                                echo date('d-m-Y', strtotime($value['expYear']));
+                                } ?> 
+                                 to <br>
+                            <?php 
+                              if ($value['expMonth'] == 'Till now') {
+                                echo $value['expMonth'];
+                              } else {
+                              if (is_numeric($value['expMonth'])) {
+                                echo $value['expMonth'];
+                              } else {
+                                echo date('d-m-Y', strtotime($value['expMonth']));
+                                }
+                              }
+                            ?>
                           </td>
                           <td>
                             <?php echo $value['company_name'] ?>
@@ -2630,12 +2685,6 @@
                   onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                 </form>
 
-                <div id="paginationButtons" class="text-center mt-4">
-                  <button onclick="previousPage()">Previous</button>
-                  <span id="pageInfo"></span>
-                  <button onclick="nextPage()">Next</button>
-                </div>
-
                 <div id="fresherNoexp" style="display:none;">
                   <form method="post" action="<?php echo baseUrl . 'Candidate/deleteExperience'; ?>"
                     id="form_<?= $value['id']; ?>">
@@ -2647,6 +2696,12 @@
                     <button type="submit" name="submit" id="deleteList3" class="btn btn-danger disabled"
                       onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                   </form>
+                </div>     
+
+                <div id="paginationButtons" class="text-center mt-4">
+                  <button onclick="previousPage()">Previous</button>
+                  <span id="pageInfo"></span>
+                  <button onclick="nextPage()">Next</button>
                 </div>
 
                 <?php
@@ -2733,9 +2788,9 @@
 
             <input type="hidden" class="form-control" id="id" value="" name="seekerId">
 
-            <div class="col-6">
+            <div class="col-12">
               <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
-              <select class="form-control" id="category" name="category" autocomplete="off"
+              <select class="form-control" id="category" name="category" autocomplete="off" autofocus
                 onchange="showHideOtherField()" required>
                 <option value="">Select a Category</option>
                 <?php
@@ -2750,14 +2805,14 @@
               <div id="category_error" class="text-danger error"></div>
             </div>
 
-            <div class="col-6" id="newcategory_group" style="display: none;">
+            <div class="col-12" id="newcategory_group" style="display: none;">
               <label for="newcategory" class="form-label">New category</label>
               <input class="form-control" id="newcategory" name="newcategory">
               <div id="newcategory_error" class="text-danger error"></div>
               <input id="categoryothers" name="categoryothers" value="1" hidden>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
               <label for="subcategory" class="form-label">Subcategory </label>
               <input class="form-control" id="subcategory" name="subcategory">
               <!-- <div id="subcategory_error" class="text-danger error"></div> -->
@@ -2783,16 +2838,18 @@
                   <div class="col-md-3  me-2">
                     <input type="text" class="form-control" id="fromDate" name="fromDate" required>
                     <div id="experienceexp_error" class="text-danger error"></div>
+                    <p style="color:red;textalign:center;font-size:small;margin-top:20px">YYYY-MM-DD or YYYY</p>
                   </div>
                   <label for="toDate" class="pt-1 px-2">To </label>
                   <div class="col-md-3">
                     <input type="text" class="form-control" id="toDate" name="toDate" required>
-                    <div id="experienceexpmonth_error" class="text-danger error"></div>
+                    <div id="experienceexpmonth_error" class="text-danger error"></div>                    
+                    <p style="color:red;textalign:center;font-size:small;margin-top:20px">YYYY-MM-DD or YYYY</p>
                   </div>
-
-                  <input type="checkbox" id="till_now" name="till_now" class="ms-3">
+                  <!-- <div class="col-md-3"> -->
+                  <input type="checkbox" id="till_now" name="till_now" class="ms-3 px-2">
                   <label for="toDate" class="pt-1 px-2">Till now</label>
-
+                  <!-- </div> -->
                 </div>
               </div>
             </div>
@@ -2887,7 +2944,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+          var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -2903,25 +2961,25 @@
       </script>
 
       <script>
-        document.getElementById('fromDate').addEventListener('input', updateDateDifference);
-        document.getElementById('toDate').addEventListener('input', updateDateDifference);
-        document.getElementById('till_now').addEventListener('change', updateToDate);
+    document.getElementById('fromDate').addEventListener('input', updateDateDifference);
+    document.getElementById('toDate').addEventListener('input', updateDateDifference);
+    document.getElementById('till_now').addEventListener('change', updateToDate);
 
-        function updateDateDifference() {
-          var fromDate = new Date(document.getElementById('fromDate').value);
-          var toDate = new Date(document.getElementById('toDate').value);
+    function updateDateDifference() {
+        var fromDate = new Date(document.getElementById('fromDate').value);
+        var toDate = new Date(document.getElementById('toDate').value);
 
-          var tillNowChecked = document.getElementById('till_now').checked;
+        var tillNowChecked = document.getElementById('till_now').checked;
 
-          document.getElementById('toDate').disabled = tillNowChecked;
+        document.getElementById('toDate').disabled = tillNowChecked;
 
-          if (tillNowChecked) {
+        if (tillNowChecked) {
             var today = new Date();
-            var formattedDate = today.toISOString().split('T')[0];
+            var formattedDate = formatDate(today);
             document.getElementById('toDate').value = formattedDate;
-          }
+        }
 
-          if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
+        if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
             var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
 
             var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
@@ -2929,44 +2987,65 @@
             var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
 
             if (daysDiff < 0) {
-              monthsDiff--;
-              daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
+                monthsDiff--;
+                daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
             }
 
             if (monthsDiff < 0) {
-              yearsDiff--;
-              monthsDiff += 12;
+                yearsDiff--;
+                monthsDiff += 12;
             }
 
             document.getElementById('years').textContent = yearsDiff;
             document.getElementById('months').textContent = monthsDiff;
-          }
         }
+    }
 
-        function updateToDate() {
-          var today = new Date();
+    // function updateToDate() {
+    //     var today = new Date();
+    //     today.setHours(0, 0, 0, 0);
 
-          today.setHours(0, 0, 0, 0);
+    //     var toDateInput = document.getElementById('toDate');
+    //     var tillNowCheckbox = document.getElementById('till_now');
 
-          var to_date_input = document.getElementById('toDate');
-          var till_now_checkbox = document.getElementById('till_now');
+    //     if (tillNowCheckbox.checked) {
+    //         var formattedDate = formatDate(today);
+    //         toDateInput.value = formattedDate;
+    //         toDateInput.disabled = true;
+    //     } else {
+    //         toDateInput.disabled = false;
+    //     }
 
-          if (till_now_checkbox.checked) {
+    //     updateDateDifference();
+    // }
 
-            var yesterday = new Date(today);
-            yesterday.setDate(today.getDate() - 1);
+    function updateToDate() {
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-            to_date_input.valueAsDate = yesterday;
-          } else {
-            to_date_input.disabled = false;
-          }
+    var toDateInput = document.getElementById('toDate');
+    var tillNowCheckbox = document.getElementById('till_now');
 
-          updateDateDifference();
-        }
+    if (tillNowCheckbox.checked) {
+        var formattedDate = formatDate(today);
+        toDateInput.value = formattedDate;
+    }
 
-        window.onload = function () {
-          updateDateDifference();
-        };
+    toDateInput.disabled = tillNowCheckbox.checked;
+    updateDateDifference();
+}
+
+    window.onload = function () {
+        updateDateDifference();
+    };
+
+    function formatDate(date) {
+        var dd = String(date.getDate()).padStart(2, '0');
+        var mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+        var yyyy = date.getFullYear();
+
+        return dd + '-' + mm + '-' + yyyy;
+    }
       </script>
 
       <script>
@@ -2980,6 +3059,11 @@
             otherCategoryField.style.display = 'none';
           }
         }
+
+        var categorySelect = document.getElementById("category");
+    categorySelect.addEventListener("click", function() {
+        this.focus();
+    });
       </script>
 
       <script>
@@ -3041,10 +3125,10 @@
             return false;
           }
 
-          if (expYear.value >= expMonth.value) {
-            displayError('To date must be after From date', 'experienceexpmonth_error');
-            return false;
-          }
+          // if (expYear.value >= expMonth.value) {
+          //   displayError('To date must be after From date', 'experienceexpmonth_error');
+          //   return false;
+          // }
 
           // if (role.value === '') {
           //   displayError('Role must be filled out', 'role_error');
@@ -3176,9 +3260,24 @@
                           <?php echo $value['other_sub_category'] ?>
                         </td>
                         <td>
-                          <?php echo $value['expYear'] ?> -
-                          <?php echo $value['expMonth'] ?>
-                        </td>
+                        <?php  if (is_numeric($value['expYear'])) {
+                                echo $value['expYear'];
+                              } else {
+                                echo date('d-m-Y', strtotime($value['expYear']));
+                                } ?> 
+                                 to <br>
+                            <?php 
+                              if ($value['expMonth'] == 'Till now') {
+                                echo $value['expMonth'];
+                              } else {
+                              if (is_numeric($value['expMonth'])) {
+                                echo $value['expMonth'];
+                              } else {
+                                echo date('d-m-Y', strtotime($value['expMonth']));
+                                }
+                              }
+                            ?>
+                          </td>
                         <td>
                           <?php echo $value['company_name'] ?>
                         </td>
@@ -3220,7 +3319,7 @@
               <?php
             } else {
               ?>
-              <h5 class="card-title">No Records Found<span></span></h5>
+              <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
               <?php
             }
             ?>
@@ -3296,16 +3395,19 @@
                         <input type="text" class="form-control" id="fromDate" name="fromDate"
                           value="<?php echo $value['expYear']; ?>" required>
                         <div id="experienceexp_error" class="text-danger error"></div>
+                        <p style="color:red;textalign:center;font-size:small;margin-top:10px">YYYY-MM-DD or YYYY</p>
                       </div>
                       <label for="toDate" class="pt-1 px-2">To </label>
                       <div class="col-md-3">
                         <input type="text" class="form-control" id="toDate" name="toDate"
                           value="<?php echo $value['expMonth']; ?>" required>
                         <div id="experienceexpmonth_error" class="text-danger error"></div>
+                        <p style="color:red; textalign:center; font-size:small; margin-top:10px">YYYY-MM-DD or YYYY</p>
                       </div>
+                      <div class="col-md-3">
                       <input type="checkbox" id="till_now" name="till_now" class="ms-3">
                       <label for="toDate" class="pt-1 px-2">Till now</label>
-
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -3446,10 +3548,10 @@
             return false;
           }
 
-          if (expYear.value >= expMonth.value) {
-            displayError('To date must be after From date', 'experienceexpmonth_error');
-            return false;
-          }
+          // if (expYear.value >= expMonth.value) {
+          //   displayError('To date must be after From date', 'experienceexpmonth_error');
+          //   return false;
+          // }
 
           if (role.value === '') {
             displayError('Role must be filled out', 'role_error');
@@ -3498,26 +3600,26 @@
         }
       </script>
 
-      <script>
-        document.getElementById('fromDate').addEventListener('input', updateDateDifference);
-        document.getElementById('toDate').addEventListener('input', updateDateDifference);
-        document.getElementById('till_now').addEventListener('change', updateToDate);
+<script>
+    document.getElementById('fromDate').addEventListener('input', updateDateDifference);
+    document.getElementById('toDate').addEventListener('input', updateDateDifference);
+    document.getElementById('till_now').addEventListener('change', updateToDate);
 
-        function updateDateDifference() {
-          var fromDate = new Date(document.getElementById('fromDate').value);
-          var toDate = new Date(document.getElementById('toDate').value);
+    function updateDateDifference() {
+        var fromDate = new Date(document.getElementById('fromDate').value);
+        var toDate = new Date(document.getElementById('toDate').value);
 
-          var tillNowChecked = document.getElementById('till_now').checked;
+        var tillNowChecked = document.getElementById('till_now').checked;
 
-          document.getElementById('toDate').disabled = tillNowChecked;
+        document.getElementById('toDate').disabled = tillNowChecked;
 
-          if (tillNowChecked) {
+        if (tillNowChecked) {
             var today = new Date();
-            var formattedDate = today.toISOString().split('T')[0];
+            var formattedDate = formatDate(today);
             document.getElementById('toDate').value = formattedDate;
-          }
+        }
 
-          if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
+        if (!isNaN(fromDate.getTime()) && (!tillNowChecked || !isNaN(toDate.getTime()))) {
             var timeDiff = tillNowChecked ? (new Date() - fromDate) : (toDate - fromDate);
 
             var yearsDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)) : toDate.getFullYear() - fromDate.getFullYear();
@@ -3525,45 +3627,50 @@
             var daysDiff = tillNowChecked ? Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30.44 : toDate.getDate() - fromDate.getDate();
 
             if (daysDiff < 0) {
-              monthsDiff--;
-              daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
+                monthsDiff--;
+                daysDiff += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
             }
 
             if (monthsDiff < 0) {
-              yearsDiff--;
-              monthsDiff += 12;
+                yearsDiff--;
+                monthsDiff += 12;
             }
 
             document.getElementById('years').textContent = yearsDiff;
             document.getElementById('months').textContent = monthsDiff;
-          }
+        }
+    }
+
+    function updateToDate() {
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        var toDateInput = document.getElementById('toDate');
+        var tillNowCheckbox = document.getElementById('till_now');
+
+        if (tillNowCheckbox.checked) {
+            var formattedDate = formatDate(today);
+            toDateInput.value = formattedDate;
+            toDateInput.disabled = true;
+        } else {
+            toDateInput.disabled = false;
         }
 
-        function updateToDate() {
-          var today = new Date();
+        updateDateDifference();
+    }
 
-          today.setHours(0, 0, 0, 0);
+    window.onload = function () {
+        updateDateDifference();
+    };
 
-          var to_date_input = document.getElementById('toDate');
-          var till_now_checkbox = document.getElementById('till_now');
+    function formatDate(date) {
+        var dd = String(date.getDate()).padStart(2, '0');
+        var mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+        var yyyy = date.getFullYear();
 
-          if (till_now_checkbox.checked) {
-            var yesterday = new Date(today);
-            yesterday.setDate(today.getDate() - 1);
-
-            to_date_input.valueAsDate = yesterday;
-          } else {
-
-            to_date_input.disabled = false;
-          }
-
-          updateDateDifference();
-        }
-
-        window.onload = function () {
-          updateDateDifference();
-        };
-      </script>
+        return dd + '-' + mm + '-' + yyyy;
+    }
+</script>
 
       <?php
     } elseif ($method == "areaOfIntrestTable") {
@@ -3685,7 +3792,7 @@
                 <?php
               } else {
                 ?>
-                <h5 class="card-title">No Records Found<span></span></h5>
+                <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                 <?php
               }
               ?>
@@ -3944,7 +4051,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+          var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -4028,7 +4136,7 @@
                     <?php
                   } else {
                     ?>
-                    <h5 class="card-title">No Records Found<span></span></h5>
+                    <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                     <?php
                   }
                   ?>
@@ -4134,7 +4242,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+          var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -4278,7 +4387,7 @@
               <?php
             } else {
               ?>
-              <h5 class="card-title">No Records Found<span></span></h5>
+              <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
               <?php
             }
             ?>
@@ -4578,7 +4687,7 @@
                   <?php
                     } else {
                       ?>
-                  <h5 class="card-title">No Records Found<span></span></h5>
+                  <!-- <h5 class="card-title">No Records Found<span></span></h5> -->
                   <?php
                     }
                     ?>
@@ -4749,6 +4858,13 @@
                 class="btn btn-dark printhide">Print</button>
           </div> -->
         </div>
+
+        <div>
+                <a class="mx-1" href="<?php echo baseUrl . "candidate/resumePrint/" . $value['id'] ?>">
+                  <button type="button" class="btn btn-primary d-flex"><i
+                    class="bi bi-eye pe-1"></i> View and Print Resume</button></a>
+        </div>
+
       </section>
 
       <script>
@@ -5140,10 +5256,25 @@
                             <td>
                               <?php echo $ivalue['other_sub_category'] ?>
                             </td>
-                            <td>                            
-                              <?php echo $ivalue['expYear'] ?> to
-                              <?php echo $ivalue['expMonth'] ?>
-                            </td>
+                            <td>
+                            <?php  if (is_numeric($ivalue['expYear'])) {
+                                echo $ivalue['expYear'];
+                              } else {
+                                echo date('d-m-Y', strtotime($ivalue['expYear']));
+                                } ?> 
+                            to <br>
+                            <?php 
+                              if ($ivalue['expMonth'] == 'Till now') {
+                                echo $ivalue['expMonth'];
+                              } else {
+                              if (is_numeric($ivalue['expMonth'])) {
+                                echo $ivalue['expMonth'];
+                              } else {
+                                echo date('d-m-Y', strtotime($ivalue['expMonth']));
+                                }
+                              }
+                            ?>
+                          </td>
                             <td>
                               <?php echo $ivalue['company_name'] ?>
                             </td>
@@ -5349,286 +5480,294 @@
       </script> -->
       <?php
 
-} elseif ($method == "resumePrint") {
+    } elseif ($method == "resumePrint") {
   ?>
   <!-- Sidebar Active  -->
+  <script>
+        document.getElementById('resumes').classList.add('active');
+      </script>
+
   <section>
-      <!-- Default Card -->
-      <div id="resumeprint">
-              <div class="container">
-                  <div class="row">
+        <!-- Default Card -->
+        <div id="resumeprint">
+            <div class="container">
+            <div class="row">
 
-                  <div class="d-flex justify-content-between">
-                      <div></div>
-                      <div class=" text-center mt-4" style="margin-right:15px;">
-                      <h3 style=" letter-spacing: 3px; color:#94b123;"><b>ARRAM CHARITY TRUST</b></h3>
-                      <h4 style="color: #31a5d6;"><b>ARRAM JOBS - CANDIDATE RESUME</b></h4>
-                  </div>
-                  <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" style="height:65px; width:85px; margin-top: 20px;">
-                  </div>
-                  
-                      <div class=" recent-sales overflow-auto mt-1">
-                              <?php
-                              foreach ($this->data['basicDetails'] as $key => $value) {
-                                  ?>
-                                  <div class="d-flex justify-content-between pt-4">
-                                      <div class="">
-                                          <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>"
-                                              alt="Your image" width="100" height="100"><br>
-                                      <!-- </div>
+<div class="d-flex justify-content-between">
+    <div></div>
+    <div class=" text-center mt-4" style="margin-right:15px;">
+    <h3 style=" letter-spacing: 3px; color:#94b123;"><b>ARRAM CHARITY TRUST</b></h3>
+    <h4 style="color: #31a5d6;"><b>ARRAM JOBS - CANDIDATE RESUME</b></h4>
+</div>
+<img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" style="height:65px; width:85px; margin-top: 20px;">
+</div>
 
-                                      <div class="col"> -->
-                                         <br> <h5>Name :
-                                              <?php echo $value['name']; ?>
-                                          </h5>
-                                          <h5>Candidate ID :
-                                              <?php echo $value['eeid']; ?>
-                                          </h5><br>
-                                      </div>
-                                      <div class="text-end mt-0">
-                                          <p>
-                                              <?php echo $value['phonenumber'] ?>
-                                          </p>
-                                          <p>
-                                              <?php echo $value['email'] ?>
-                                          </p>
-                                          <p>
-                                              <?php echo $value['buildingName'] ?>,
-                                              <?php echo $value['address'] ?>
-                                          </p>
-                                          <p>
-                                              <?php echo $value['district'] ?>,
-                                              <?php echo $value['pincode'] ?>
-                                          </p>
-                                      </div>
-                                  </div>
-                          <?php
-                              }
-                              ?>
-                          </div><br><br>
-                          <div class=" recent-sales overflow-auto">
-                          <div>
-                              <h4><b>Personal Details</b></h4>
-                              <div class="d-flex mt-4">
-                              <?php
-                              foreach ($this->data['basicDetails'] as $key => $value) {
-                                  ?>                                     
-                                          <!-- <p><b>Phone number : </b>
-                                              <?php echo $value['phonenumber1'] ?>
-                                          </p> -->
-                                          <div class="d-flex">
-                                          <div>
-                                          <p style="margin-right: 35px;"><b>D.O.B : </b>
-                                          <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth']));?>
-                                          <?php echo $formattedDateOfBirth; ?></p>  
-                                          <p style="margin-right: 35px;">
-                                          <b>Marital Status :</b>
-                                              <?php echo $value['maritalStatus'] ?>
-                                           </p>                                           
-                                                               
-                                          </div>                      
-                                          <div>
-                                          <p style="margin-right: 35px;">
-                                          <b>Age :</b>
-                                              <?php echo $value['age'] ?>
-                                          </p>                                                                           
-                                          <p style="margin-right: 35px;">
-                                          <b>Aadhaar Number :</b>
-                                          <?php echo $value['aadharnumber'] ?><br>  
-                                          </p> 
-                                          </div>
-                                          <div>
-                                          <p style="margin-right: 35px;">
-                                          <b>Gender :</b>
-                                              <?php echo $value['gender'] ?>
-                                          </p>                                            
-                                          
-                                          </div>
-                                          </div>
-                                  </div>
-                              </div>
-                          </div>  
+    <div class=" recent-sales overflow-auto mt-1">
+      
+                  <?php
+                  if (isset($basicDetails)) {
+                    foreach ($basicDetails as $key => $value) {
+                      ?>
+                      <div class="d-flex justify-content-between pt-4">
+                      <div class="">
+                        <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>" alt="profile" width="100" height="100"> <br>
+                          <br> <h5>Name :
+                                                <?php echo $value['name']; ?>
+                                            </h5>
+                                            <h5>Candidate ID :
+                                                <?php echo $value['eeid']; ?>
+                                            </h5><br>
+                                        </div>
+                                        <div class="text-end mt-0">
+                                            <p>
+                                                <?php echo $value['phonenumber'] ?>
+                                            </p>
+                                            <p>
+                                                <?php echo $value['email'] ?>
+                                            </p>
+                                            <p>
+                                                <?php echo $value['buildingName'] ?>,
+                                                <?php echo $value['address'] ?>
+                                            </p>
+                                            <p>
+                                                <?php echo $value['district'] ?>,
+                                                <?php echo $value['pincode'] ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                        <?php
+                    }
+                  }
+                  ?>
+                   <div class="recent-sales overflow-auto">
+                        <div>
+                        <h4><b>Personal Details</b></h4>
+                        <div class="d-flex mt-4">
+                        <div class="d-flex">
+                                            <div>
+                                            <p style="margin-right: 35px;"><b>D.O.B : </b>
+                                            <?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth']));?>
+                                            <?php echo $formattedDateOfBirth; ?></p>  
+                                            <p style="margin-right: 35px;">
+                                            <b>Marital Status :</b>
+                                                <?php echo $value['maritalStatus'] ?>
+                                             </p>                                           
+                                                                 
+                                            </div>                      
+                                            <div>
+                                            <p style="margin-right: 35px;">
+                                            <b>Age :</b>
+                                                <?php echo $value['age'] ?>
+                                            </p>                                                                           
+                                            <p style="margin-right: 35px;">
+                                            <b>Aadhaar Number :</b>
+                                            <?php echo $value['aadharnumber'] ?><br>  
+                                            </p> 
+                                            </div>
+                                            <div>
+                                            <p style="margin-right: 35px;">
+                                            <b>Gender :</b>
+                                                <?php echo $value['gender'] ?>
+                                            </p>                                            
+                                            
+                                            </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>  
+
+            <div class="recent-sales overflow-auto"> 
+                <h4><b>Educational Qualification</b></h4>
+                 <?php
+                    if (isset($educationTable[0]['id']) && !empty($educationTable)) {
+                 ?>
+                
+                    <?php
+                    if (isset($educationTable[0]['id'])) {
+                      $count = 1;
+                      foreach ($educationTable as $key => $value) {
+                        ?>
+                            <p><b><?php echo $count; ?> . </b>
+                            <?php echo $value['educational_qualification'] ?>
+                            <?php if (
+                                                        $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                        $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
+                                                    ) { ?>
+                                                        
+                                                    <?php } else { ?> - <?php echo $value['department'] ?>
+
+                                                        <?php } ?> - <?php echo $value['school_college_name'] ?>
+
+                                                    <?php if (
+                                                        $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                        $value['educational_qualification'] === "11th"
+                                                    ) { ?>
+                                                        NA
+                                                    <?php } else { ?>  with <?php echo $value['percentage'] ?>%                                   
+                                                    <?php } ?> - <?php echo $value['yearOfPassing'] ?>
+
+                                                <?php
+                                                $count++;
+                                            }
+                                            ?>
+                                            </div>
+
+                                <?php } else { ?>
+                                    <p>Education qualification is not entered</p>
+                                <?php } 
+                                } ?>
+                                <!-- End Table with stripped rows -->
+                            </div>
+                        </div>
+                          </p>                         
 
 
-                      <div class=" recent-sales overflow-auto">
-                          <div>
-                              <h4><b>Educational Qualification</b></h4>
-
-                              <?php
-                              if (isset($education[0]['id']) && !empty($education)) {
-                                  ?>                                        
-                                          <div>
-                                          <?php
-                                          $loopcount = 1;
-                                          foreach ($this->data['education'] as $key => $value) {
-                                              ?>
-                                                      <p><b><?php echo $loopcount; ?> .</b>
-
-                                                  <?php echo $value['educational_qualification'] ?>
-                                                    
-                                                  <?php if (
-                                                      $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
-                                                      $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
-                                                  ) { ?>
-                                                      
-                                                  <?php } else { ?> - <?php echo $value['department'] ?>
-
-                                                      <?php } ?> - <?php echo $value['school_college_name'] ?>
-
-                                                  <?php if (
-                                                      $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
-                                                      $value['educational_qualification'] === "11th"
-                                                  ) { ?>
-                                                      NA
-                                                  <?php } else { ?>  with <?php echo $value['percentage'] ?>%                                   
-                                                  <?php } ?> - <?php echo $value['yearOfPassing'] ?>
-
-                                              <?php
-                                              $loopcount++;
-                                          }
-                                          ?>
-                                          </div><br>
-
-                              <?php } else { ?>
-                                  <p>Education qualification is not entered</p>
-                              <?php } ?>
-                              <!-- End Table with stripped rows -->
-                          </div>
-                      </div>
-                     
-
-                      <div class=" recent-sales overflow-auto">
-            <div>
-              <div id="experiencedContent">
+            <div class="recent-sales overflow-auto">
+              <div class="">
+                <div id="experiencedContent">
                 <h4><b>Experience Details</b></h4>
+                  <?php
+                  if (isset($experienceTable[0]['id'])) { ?>
+                    <div id="expTable">
+
+                        <?php
+                        $loopcount = 1;
+                        foreach ($experienceTable as $key => $ivalue) {
+                          ?>
+                          <p>
+                    <h5><b><?php echo $loopcount ?> . 
+                    <?php echo $ivalue['other_category'] ?> : <?php echo $ivalue['other_sub_category'] ?></h5></b>
+                
+                    *  Worked in <?php echo $ivalue['company_name'] ?>,
+                    <!-- <?php echo $ivalue['expYear'] ?> to 
+                            <?php echo $ivalue['expMonth'] ?> -->
+
+                            <td>
+                            <?php  if (is_numeric($ivalue['expYear'])) {
+                                echo $ivalue['expYear'];
+                              } else {
+                                echo date('d-m-Y', strtotime($ivalue['expYear']));
+                                } ?> 
+                            to 
+                            <?php 
+                              if ($ivalue['expMonth'] == 'Till now') {
+                                echo $ivalue['expMonth'];
+                              } else {
+                              if (is_numeric($ivalue['expMonth'])) {
+                                echo $ivalue['expMonth'];
+                              } else {
+                                echo date('d-m-Y', strtotime($ivalue['expMonth']));
+                                }
+                              }
+                            ?>
+                          </td>
+                    <?php echo $ivalue['job_role'] ?>
+                        , 
+                        <?php echo $ivalue['company_location'] ?>                           
+                          <?php
+                          $loopcount++;
+                        } ?>
+                        </p>
+                        </div>
+                        
+                        <p id="noexperience">Fresher / No experience after graduation.</p><br>
+                  <?php } else { ?>
+                    <div id="fresherContent">
+                    
+                      <p>Experience is not entered.</p>
+                    </div>
+                  <?php }
+                  ?>
+                </div>
+              </div>
+            </div>
+
+            <script>
+              <?php
+              if ($experienceTable[0]['workStatus'] == '0') {
+                ?>
+                document.getElementById("expTable").style.display = "block";
+                document.getElementById("noexperience").style.display = "none";
 
                 <?php
-                if (isset($experienceTable[0]['id'])) { ?>
-                  
-                      <div id="expTable">
+              } else if ($experienceTable[0]['workStatus'] == '1') { ?>
+                  document.getElementById("expTable").style.display = "none";
+                  document.getElementById("noexperience").style.display = "block";
+
+                <?php
+              } ?>
+            </script>
+
+            <div class="recent-sales overflow-auto">
+              <div class="">
+              <h4><b>Skills</b></h4>
+
+                <?php
+                if (isset($skillTable[0]['id']) && !empty($skillTable)) {
+                  ?>
+                    <div>                      
+                    <?php
+                      $loopcount = 1;
+                      foreach ($skillTable as $key => $svalue) {
+                        ?>
+                       <h5><b><?php echo $loopcount; ?>. <?php echo $svalue['skill'] ?> skills : </b> </h5> 
+                                                        * <?php echo $svalue['experience'] ?> years of experience at
+                                                         <?php echo $svalue['skill_level'] ?> level.<br><br>
+                                                    
+                                                <?php
+                                                $loopcount++;
+                                            }
+                                            ?>
+                    </div>
+
+                                <?php
+                                } else { ?>
+                                    <p>Skill is not entered</p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                        <div class=" recent-sales overflow-auto">
+                            <div>
+                                <h4><b>Area of Job Interest</b></h4>
+
+                <?php
+                if (isset($areaOfIntrestTable[0]['id'])) {
+                  ?>
+
                       <?php
                       $loopcount = 1;
-                      foreach ($experienceTable as $key => $ivalue) {
+                      foreach ($areaOfIntrestTable as $key => $avalue) {
                         ?>
-                       <p>
-                  <h5><b><?php echo $loopcount ?> . 
-                  <?php echo $ivalue['other_category'] ?> : <?php echo $ivalue['other_sub_category'] ?></h5></b>
-              
-                  *  Worked in <?php echo $ivalue['company_name'] ?>,
-                  <!-- <?php $formattedexpYear = date('d-m-Y', strtotime($ivalue['expYear'])); ?>
-                      <?php echo $formattedexpYear; ?> to 
-
-                  <?php $formattedexpMonth = date('d-m-Y', strtotime($ivalue['expMonth'])); ?>
-                  <?php echo $ivalue['job_role'] ?>
-                      <?php echo $formattedexpMonth; ?>   -->
-
-                      <?php echo $value['expYear'] ?> to 
-                            <?php echo $value['expMonth'] ?>,
-
-                      <?php echo $ivalue['company_location'] ?>                           
+                        
+                            <h5><?php echo $loopcount; ?>. 
+                            <?php echo $avalue['other_interst_category'] ?> : <?php echo $avalue['other_sub_interst_category'] ?> </h5>
+                         
+                            <b>* Preferred Location : </b> <?php echo $avalue['prefered_location'] ?> <br>
+                            <b>* Expected salary : </b> <?php echo $avalue['expected_salary'] ?> <br>
+                            <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
+                            <?php if (!empty($avalue['description'])) { ?>
+                            <b>* Job description : </b> <?php echo $avalue['description']; ?>
+                            <?php } ?> <br><br>
+                            
                         <?php
                         $loopcount++;
-                      } ?>
-                      </p>
-                      </div>
-                      
-                      <p id="noexperience">Fresher / No experience after graduation.</p><br>
-                <?php } else { ?>
-                  <div id="fresherContent">
-                  
-                    <p>Experience is not entered.</p>
-                  </div>
-                <?php }
+                      }
+                      ?>
+                  <?php
+                } else {
+                  echo '<p> Areas of job interest is not entered. </p>';
+                }
                 ?>
               </div>
             </div>
           </div>
-
-                      <script>
-                          <?php
-                          if ($experienceTable[0]['workStatus'] == '0') {
-                              ?>
-                              document.getElementById("expTable").style.display = "block";
-                              document.getElementById("noexperience").style.display = "none";
-
-                              <?php
-                          } else if ($experienceTable[0]['workStatus'] == '1') { ?>
-                                  document.getElementById("expTable").style.display = "none";
-                                  document.getElementById("noexperience").style.display = "block";
-
-                              <?php
-                          } ?>
-                      </script>
-
-                      <div class=" recent-sales overflow-auto">
-                          <div>
-                              <h4><b>Skills</b></h4>
-                              <?php
-                              if (isset($skills[0]['id']) && !empty($skills)) { ?>
-                                  
-                                          <?php
-                                          $loopcount = 1;
-                                          foreach ($this->data['skills'] as $skey => $svalue) {
-                                              ?>
-                                                      <b><h5><?php echo $loopcount; ?>. <?php echo $svalue['skill'] ?> skills : </h5></b>  
-                                                      * <?php echo $svalue['experience'] ?> years of experience at
-                                                       <?php echo $svalue['skill_level'] ?> level.
-                                                  
-                                              <?php
-                                              $loopcount++;
-                                          }
-                                          ?><br>
-
-                              <?php
-                              } else { ?>
-                                  <p>Skill is not entered</p>
-                              <?php } ?>
-                          </div>
-                      </div>
-
-                      <div class=" recent-sales overflow-auto">
-                          <div><br>
-                              <h4><b>Area of Job Interest</b></h4>
-
-                              <?php
-                              if (isset($areaOfInterest[0]['id']) && !empty($areaOfInterest)) { ?>                                    
-                                         
-                                          <?php
-                                          $loopcount = 1;
-                                          foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
-                                              ?>
-                                                      <b><h5><?php echo $loopcount; ?>. <?php echo $avalue['other_interst_category'] ?> : <?php echo $avalue['other_sub_interst_category'] ?> </h5></b>
-                                                 <b>* Prefered Location : </b><?php echo $avalue['prefered_location'] ?> <br>
-                                                 <b>* Expected salary :</b> <?php echo $avalue['expected_salary'] ?> <br>
-                                                 <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
-                                                  
-                                                  <b>* Job description : </b>    <?php echo $avalue['description'] ?><br>
-                                                 
-                                              <?php
-                                              $loopcount++;
-                                          }
-                                          ?><br><br>
-
-                              <?php } else { ?>
-                                  <p>Area of job interest is not entered</p><br>
-
-                              <?php } ?>
-
-                          </div>
-                      </div>                        
-
-                          <?php
-                              }
-                              ?>
-                          </div>
-                      </div>
-
-                      <div style="float:right;">
-                          <button onClick="window.print()" type="button"
-                              class="btn btn-dark printhide">Print</button>
-                      </div>
-                  </div>
-  </section>
+          <div style="float:right;">
+                            <button onClick="window.print()" type="button"
+                                class="btn btn-dark printhide">Print</button>
+                        </div>
+        </div>
+      </section>
   <script>
       function togglePasswordVisibility(inputId, iconId) {
           var passwordInput = document.getElementById(inputId);

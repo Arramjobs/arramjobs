@@ -178,11 +178,11 @@ function checkMobileNumber() {
                         }
                     }
 
-                    if (password != "") {
-                        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/.test(password)) {
-                            return false;
-                        }
-                    }
+                    // if (password != "") {
+                    //     if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/.test(password)) {
+                    //         return false;
+                    //     }
+                    // }
                 }
 
                 function validatePhoneNumber(input) {
@@ -194,14 +194,14 @@ function checkMobileNumber() {
                     }
                 }
 
-                function validatePassword(input) {
-                    const phoneError = document.getElementById("passwordError");
-                    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(input.value)) {
-                        phoneError.textContent = "Invalid password. Please enter valid password.";
-                    } else {
-                        phoneError.textContent = "";
-                    }
-                }
+                // function validatePassword(input) {
+                //     const phoneError = document.getElementById("passwordError");
+                //     if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(input.value)) {
+                //         phoneError.textContent = "Invalid password. Please enter valid password.";
+                //     } else {
+                //         phoneError.textContent = "";
+                //     }
+                // }
             </script>
 
         </div>

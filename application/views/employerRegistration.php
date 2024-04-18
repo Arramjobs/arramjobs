@@ -584,6 +584,10 @@
             }
         }
 
+        
+    </script>
+
+    <script>
         // View Password
         function togglePasswordVisibility(inputId, iconId) {
             var passwordInput = document.getElementById(inputId);

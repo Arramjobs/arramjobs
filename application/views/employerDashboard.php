@@ -54,18 +54,28 @@
             margin: 0;
             }
 
-
-         /* To print candidate deatils */
-         @media print {
+/* To print candidate details */
+@media print {
             body {
                 visibility: hidden;
             }
 
-            #resumeprint {
+            img {
+                display: block;
+            }
+
+            #resumeprint,
+            #employerprint,
+            #printCandidate,
+            #printEmployer {
                 visibility: visible;
             }
 
-            .printdiv,
+            @page {
+                size: auto;
+                margin: 0;
+            }
+
             .printhide {
                 visibility: hidden;
             }
@@ -365,7 +375,7 @@
                                         <div class="col-md-6">
                                             <label for="inputAddress2" class="form-label">Landmark </label>
                                             <input type="text" class="form-control" id="inputAddress2"  value='<?php echo $value['Landmark']; ?>' name="landmark1">
-                                        <p id="landerr1" style="color: red;"></p>
+                                        <!-- <p id="landerr1" style="color: red;"></p> -->
                                         </div>
                                         <div class="col-md-6">
                                             <label for="inputCity" class="form-label">City <span class="text-danger">*</span></label>
@@ -599,18 +609,18 @@
                                 document.getElementById("pherr").innerHTML = "";
                             }
 
-                        if (mailp != "") {
-                            document.getElementById("mailerr").innerHTML = "";
-                            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailp)) {
-                                document.getElementById("mailerr").innerHTML = "";
-                            } else {
-                                document.getElementById("mailerr").innerHTML = "You have entered an invalid email address";
-                                document.forms.email.focus();
-                                return false;
-                            }
-                        } else {
-                                document.getElementById("mailerr").innerHTML = "";
-                            }
+                        // if (mailp != "") {
+                        //     document.getElementById("mailerr").innerHTML = "";
+                        //     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailp)) {
+                        //         document.getElementById("mailerr").innerHTML = "";
+                        //     } else {
+                        //         document.getElementById("mailerr").innerHTML = "You have entered an invalid email address";
+                        //         document.forms.email.focus();
+                        //         return false;
+                        //     }
+                        // } else {
+                        //         document.getElementById("mailerr").innerHTML = "";
+                        //     }
 
                         //  if (pswd == "") {
                         //     var emailsms = "Password must be filled out";
@@ -692,15 +702,15 @@
                                 document.getElementById("pinerr1").innerHTML = "";
                             }
 
-                        if(locurlp =='')
-                        {
-                            var city = "Location Url must be in filled out";
-                            document.getElementById("lUrlerr").innerHTML = city;
-                            document.forms.city1.focus();
-                            return false;
-                        } else {
-                            document.getElementById("lUrlerr").innerHTML = "";
-                        }
+                        // if(locurlp =='')
+                        // {
+                        //     var city = "Location Url must be in filled out";
+                        //     document.getElementById("lUrlerr").innerHTML = city;
+                        //     document.forms.city1.focus();
+                        //     return false;
+                        // } else {
+                        //     document.getElementById("lUrlerr").innerHTML = "";
+                        // }
 
                         // //  if(logop == '' && document.getElementById('existfile').style.display == "none"){
                         // //     var logo = "Logo must be uploaded";
@@ -749,18 +759,18 @@
                                 document.getElementById("pherr1").innerHTML = "";
                             }
 
-                        if (cpmail != "") {
-                            document.getElementById("mailerr1").innerHTML = "";
-                            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(cpmail)) {
-                                document.getElementById("mailerr1").innerHTML = "";
-                            } else {
-                                document.getElementById("mailerr1").innerHTML = "You have entered an invalid email address";
-                                document.forms.mail1.focus();
-                                return false;
-                            }
-                        } else {
-                                document.getElementById("mailerr1").innerHTML = "";
-                            }
+                        // if (cpmail != "") {
+                        //     document.getElementById("mailerr1").innerHTML = "";
+                        //     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(cpmail)) {
+                        //         document.getElementById("mailerr1").innerHTML = "";
+                        //     } else {
+                        //         document.getElementById("mailerr1").innerHTML = "You have entered an invalid email address";
+                        //         document.forms.mail1.focus();
+                        //         return false;
+                        //     }
+                        // } else {
+                        //         document.getElementById("mailerr1").innerHTML = "";
+                        //     }
 
                     }
 
@@ -831,16 +841,21 @@
                                                                         </td>
                                                                         <td><a ><?php echo $countjobs++; ?>.</a></td>
                                                                         <td><?php echo $twelveHourTime ?></td>
-                                                                        <td><?php echo $value['jobCategory'] ?>             <?php echo $value['jobSubCategory'] ?></td>
-                                                                        <td><?php echo $value['location'] ?></td>
+                                                                        <td><?php echo $value['jobCategory'] ?>             <?php echo $value['jobSubCategory'] ?></td>                                                                        
+                                                                        <td><?php echo $value['location'] ?>
+                                                                            <?php if (!empty($value['locationUrl'])) { ?>            
+                                                                            <a href="<?php echo $value['locationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                                            <?php } ?>
+                                                                        </td>
                                                                         <td><?php echo $value['job_type'] ?></td>
                                                                         <td><?php echo $value['salary'] ?></td>
                                                                         <td><?php echo $value['experience'] ?></td>
                                                                         <td><?php echo $value['number_of_openings'] ?></td>
                                                                         <td><?php echo $value['description'] ?></td>
                                                                         <td class="d-flex">
-                                                                        <a class="" href="<?php echo baseUrl."Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>"><button type="button" class="btn btn-success">Matched Candidates</button></a>
-                                                                       <div class="filter">
+                                                                        <a class="" href="<?php echo baseUrl."Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>">
+                                                                        <button type="button" class="btn btn-success">Matched Candidates</button></a>
+                                                                        <div class="filter">
                                                                                 <a class="icon mt-5" href="#" data-bs-toggle="dropdown"><p class="p-3"><i class="bi bi-three-dots-vertical"></i></p></a>
                                                                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                                                                     <li><a class="px-1 " href="<?php echo baseUrl."Employer/updateAddNew" ?>/<?php echo $value['id'] ?>#updatejob"><button type="button" class="btn btn-secondary"><i class="bi bi-pencil"></i> Edit</button></a>
@@ -1054,7 +1069,8 @@
     function updatePaginationButtons() {
         var buttonsHtml = '';
         for (var i = 1; i <= totalPages; i++) {
-            buttonsHtml += '<button class="btn btn-outline-secondary mx-1" onclick="goToPage(' + i + ')">' + i + '</button>';
+            var activeClass = (i === currentPage) ? 'active' : '';
+            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
         }
         document.getElementById('paginationButtons').innerHTML = buttonsHtml;
     }
@@ -1220,7 +1236,7 @@
 
 
                     <?php
-                } elseif($method == "addnew") {
+        } elseif($method == "addnew") {
             ?>
             <!-- Not in use -->
                 <!-- Sidebar Active  -->
@@ -1541,7 +1557,11 @@
                                             <td><?php echo $twelveHourTime ?></td>
                                             <td><?php echo $value['company_name'] ?></td>
                                             <td><?php echo $value['jobCategory'] ?> <?php echo $value['jobSubCategory'] ?></td>
-                                            <td><?php echo $value['location'] ?></td>
+                                            <td><?php echo $value['location'] ?>
+                                                <?php if (!empty($value['locationUrl'])) { ?>            
+                                                <a href="<?php echo $value['locationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                <?php } ?>
+                                            </td>
                                             <td><?php echo $value['job_type'] ?></td>
                                             <td><?php echo $value['salary'] ?></td>
                                             <td><?php echo $value['experience'] ?></td>
@@ -1984,10 +2004,11 @@
                                         </div>
                                         <div class="pagetitle pt-3 d-flex justify-content-between">
                                             <h2 class=" text-center d-flex">Candidate Resume</h2>
-                                            <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> <button type="button" class="btn btn-secondary mb-4 "><i class="bi bi-arrow-left pe-2"></i> Back</button></a>
+                                            <a  href="<?php echo baseUrl."Employer/jobViewTable" ?>"> 
+                                            <button type="button" class="btn btn-secondary mb-4 "><i class="bi bi-arrow-left pe-2"></i> Back</button></a>
                                         </div>
                                         <div class="d-flex justify-content-between" id="printdiv">
-<div></div>
+                                        <div></div>
                                         <form action="<?php echo baseUrl."employer/requestCandidate" ?>" method="post" >
                                                 <input class="form-check-input" type="text" name="employer_id" id="" value="<?php echo $_SESSION['employerid'] ?>" hidden>
                                                 <input class="form-check-input" type="text" name="candidateid" id="" value="<?php echo $this->data['basicDetails'][0]['id']; ?>" hidden>
@@ -2007,12 +2028,12 @@
                                                 <p class="text-center flex-row-reverse pb-3">Candidate ID : <?php echo $nvalue['eeid'] ?></p>
                                                  <?php
                                             foreach($this->data['canReqStatus'] as $key => $value) {
-                                                if (isset($value['request_status']) && $value['request_status'] == '3') {?>
+                                                if (isset($value['request_status']) && ($value['request_status'] == '3' || $value['request_status'] == '4')) {?>
                                                 <div class="d-sm-flex justify-content-between py-4 resumephoto">
                                                 <img  src="<?php echo baseUrl."uploads/".$nvalue['photo_filename'] ?>" class="" width="160" height="160"  alt="profile photo">
                                                  <?php
                                                 }
-                                            if (isset($value['request_status']) && $value['request_status'] == '3') { ?>
+                                                if (isset($value['request_status']) && ($value['request_status'] == '3' || $value['request_status'] == '4')) { ?>
                                             <div class="text-sm-end mt-4" >
                                                <p><?php echo $nvalue['phonenumber'] ?></p>
                                                <p><?php echo $nvalue['phonenumber1'] ?></p>
@@ -2259,7 +2280,7 @@
                 </div>
               </div>
 
-           <script>
+                            <script>
                                     <?php
                                     if ($experienceDetails[0]['workStatus'] == '0') {
                                         ?>
@@ -2384,11 +2405,30 @@
                                             </form>
                                             <!-- <button id="candidaterequested" class="btn btn-success printhide" style="display:none" disabled >Requested to view details</button> -->
                                     <!-- <button type="button" onclick="generatePDF()" id="view" class="printhide">Export to PDF</button> -->
-                                    <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton" style="display:none">Print</button>
+                                    <!-- <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton" style="display:none">Print</button> -->
+
+                                    <?php
+                                              if (isset($canReqStatus[0]['request_status']) && ($canReqStatus[0]['request_status'] == '3' || $canReqStatus[0]['request_status'] == '4')) {
+                                                  ?>
+                                        <div class="recent-sales overflow-auto">
+                                    <div>
+                                                 <a href="<?php echo baseUrl . "Employer/resumePrint/" . $nvalue['id'] ?>">
+                                                 <button type="button" class="btn btn-primary d-flex"><i
+                                                                class="bi bi-eye pe-1"></i>Resume</button>
+                                                </a>
+                                                </div>
+                                </div>
+                                                 <?php
+                                              }
+                                              ?>
+
                                     </div>
 
                                 </div>
                             </div><!-- End Default Card -->
+
+                            
+
                         </section>
                     <?php
                     if (isset($canReqStatus[0]['request_status']) && $canReqStatus[0]['request_status'] == '1') {
@@ -2410,6 +2450,316 @@
                         <?php
                         }
                         ?>
+                        <?php
+                    if (isset($canReqStatus[0]['request_status']) && $canReqStatus[0]['request_status'] == '4') {
+                        ?>
+                        <script>
+                            document.getElementById("candidaterequest").style.display = "none";
+                            document.getElementById("candidaterequested").style.display = "none";
+                        </script>
+                    <?php
+                    }
+                    ?>
+
+
+                    <?php
+
+        } elseif ($method == "resumePrint") {
+    ?>
+    <!-- Sidebar Active  -->
+    <script>
+       document.getElementById('employerjobs').classList.add('active');
+    </script>
+    <section>
+        <!-- Default Card -->
+        <div id="resumeprint">
+                <div class="container">
+                    <div class="row">
+
+                    <div class="d-flex justify-content-between">
+                        <div></div>
+                        <div class=" text-center mt-4" style="margin-right:15px;">
+                        <h3 style=" letter-spacing: 3px; color:#94b123;"><b>ARRAM CHARITY TRUST</b></h3>
+                        <h4 style="color: #31a5d6;"><b>ARRAM JOBS - CANDIDATE RESUME</b></h4>
+                    </div>
+                    <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" style="height:65px; width:85px; margin-top: 20px;">
+                    </div>
+                    
+                        <div class=" recent-sales overflow-auto mt-1">
+                                <?php
+                                foreach ($this->data['basicDetails'] as $key => $nvalue) {
+                                    ?>
+                                    <div class="d-flex justify-content-between pt-4">
+                                        <div class="">
+                                            <img src="<?php echo baseUrl . "uploads/" . $nvalue['photo_filename'] ?>"
+                                                alt="Your image" width="100" height="100"><br>
+                                        <!-- </div>
+
+                                        <div class="col"> -->
+                                           <br> <h5>Name :
+                                                <?php echo $nvalue['name']; ?>
+                                            </h5>
+                                            <h5>Candidate ID :
+                                                <?php echo $nvalue['eeid']; ?>
+                                            </h5><br>
+                                        </div>
+                                        <div class="text-end mt-0">
+                                            <p>
+                                                <?php echo $nvalue['phonenumber'] ?>
+                                            </p>
+                                            <p>
+                                                <?php echo $nvalue['email'] ?>
+                                            </p>
+                                            <p>
+                                                <?php echo $nvalue['buildingName'] ?>,
+                                                <?php echo $nvalue['address'] ?>
+                                            </p>
+                                            <p>
+                                                <?php echo $nvalue['district'] ?>,
+                                                <?php echo $nvalue['pincode'] ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                            <?php
+                                }
+                                ?>
+                            </div><br><br>
+                            <div class=" recent-sales overflow-auto">
+                            <div>
+                                <h4><b>Personal Details</b></h4>
+                                <div class="d-flex mt-4">
+                                <?php
+                                foreach ($this->data['basicDetails'] as $key => $nvalue) {
+                                    ?>                                     
+                                            <!-- <p><b>Phone number : </b>
+                                                <?php echo $nvalue['phonenumber1'] ?>
+                                            </p> -->
+                                            <div class="d-flex">
+                                            <div>
+                                            <p style="margin-right: 35px;"><b>D.O.B : </b>
+                                            <?php $formattedDateOfBirth = date('d-m-Y', strtotime($nvalue['dateofbirth']));?>
+                                            <?php echo $formattedDateOfBirth; ?></p>  
+                                            <p style="margin-right: 35px;">
+                                            <b>Marital Status :</b>
+                                                <?php echo $nvalue['maritalStatus'] ?>
+                                             </p>                                           
+                                                                 
+                                            </div>                      
+                                            <div>
+                                            <p style="margin-right: 35px;">
+                                            <b>Age :</b>
+                                                <?php echo $nvalue['age'] ?>
+                                            </p>                                                                           
+                                            <p style="margin-right: 35px;">
+                                            <b>Aadhaar Number :</b>
+                                            <?php echo $nvalue['aadharnumber'] ?><br>  
+                                            </p> 
+                                            </div>
+                                            <div>
+                                            <p style="margin-right: 35px;">
+                                            <b>Gender :</b>
+                                                <?php echo $nvalue['gender'] ?>
+                                            </p>                                            
+                                            
+                                            </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                        <div class=" recent-sales overflow-auto">
+                            <div>
+                                <h4><b>Educational Qualification</b></h4>
+
+                                <?php
+                                if (isset($education[0]['id']) && !empty($education)) {
+                                    ?>                                        
+                                            <div>
+                                            <?php
+                                            $loopcount = 1;
+                                            foreach ($this->data['education'] as $key => $value) {
+                                                ?>
+                                                        <p><b><?php echo $loopcount; ?> .</b>
+
+                                                    <?php echo $value['educational_qualification'] ?>
+                                                      
+                                                    <?php if (
+                                                        $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                        $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
+                                                    ) { ?>
+                                                        
+                                                    <?php } else { ?> - <?php echo $value['department'] ?>
+
+                                                        <?php } ?> - <?php echo $value['school_college_name'] ?>
+
+                                                    <?php if (
+                                                        $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
+                                                        $value['educational_qualification'] === "11th"
+                                                    ) { ?>
+                                                        NA
+                                                    <?php } else { ?>  with <?php echo $value['percentage'] ?>%                                   
+                                                    <?php } ?> - <?php echo $value['yearOfPassing'] ?>
+
+                                                <?php
+                                                $loopcount++;
+                                            }
+                                            ?>
+                                            </div><br>
+
+                                <?php } else { ?>
+                                    <p>Education qualification is not entered</p>
+                                <?php } ?>
+                                <!-- End Table with stripped rows -->
+                            </div>
+                        </div>
+                       
+
+                        <div class=" recent-sales overflow-auto">
+              <div>
+                <div id="experiencedContent">
+                  <h4><b>Experience Details</b></h4>
+
+                  <?php
+                  if (isset($experienceDetails[0]['id'])) { ?>
+                    
+                        <div id="expTable">
+                        <?php
+                        $loopcount = 1;
+                        foreach ($experienceDetails as $key => $ivalue) {
+                          ?>
+                         <p>
+                    <h5><b><?php echo $loopcount ?> . 
+                    <?php echo $ivalue['other_category'] ?> : <?php echo $ivalue['other_sub_category'] ?></h5></b>
+                
+                    *  Worked in <?php echo $ivalue['company_name'] ?>,
+                    <?php echo $ivalue['expYear'] ?> to 
+                            <?php echo $ivalue['expMonth'] ?>
+                    <?php echo $ivalue['job_role'] ?>
+                        , 
+                        <?php echo $ivalue['company_location'] ?>                           
+                          <?php
+                          $loopcount++;
+                        } ?>
+                        </p>
+                        </div>
+                        
+                        <p id="noexperience">Fresher / No experience after graduation.</p><br>
+                  <?php } else { ?>
+                    <div id="fresherContent">
+                    
+                      <p>Experience is not entered.</p>
+                    </div>
+                  <?php }
+                  ?>
+                </div>
+              </div>
+            </div>
+
+                        <script>
+                            <?php
+                            if ($experienceDetails[0]['workStatus'] == '0') {
+                                ?>
+                                document.getElementById("expTable").style.display = "block";
+                                document.getElementById("noexperience").style.display = "none";
+
+                                <?php
+                            } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
+                                    document.getElementById("expTable").style.display = "none";
+                                    document.getElementById("noexperience").style.display = "block";
+
+                                <?php
+                            } ?>
+                        </script>
+
+                        <div class=" recent-sales overflow-auto">
+                            <div>
+                                <h4><b>Skills</b></h4>
+                                <?php
+                                if (isset($skills[0]['id']) && !empty($skills)) { ?>
+                                    
+                                            <?php
+                                            $loopcount = 1;
+                                            foreach ($this->data['skills'] as $skey => $svalue) {
+                                                ?>
+                                                        <b><h5><?php echo $loopcount; ?>. <?php echo $svalue['skill'] ?> skills : </h5></b>  
+                                                        * <?php echo $svalue['experience'] ?> years of experience at
+                                                         <?php echo $svalue['skill_level'] ?> level.
+                                                    
+                                                <?php
+                                                $loopcount++;
+                                            }
+                                            ?><br>
+
+                                <?php
+                                } else { ?>
+                                    <p>Skill is not entered</p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                        <div class=" recent-sales overflow-auto">
+                            <div><br>
+                                <h4><b>Area of Job Interest</b></h4>
+
+                                <?php
+                                if (isset($areaOfInterest[0]['id']) && !empty($areaOfInterest)) { ?>                                    
+                                           
+                                            <?php
+                                            $loopcount = 1;
+                                            foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
+                                                ?>
+                                                        <b><h5><?php echo $loopcount; ?>. <?php echo $avalue['other_interst_category'] ?> : <?php echo $avalue['other_sub_interst_category'] ?> </h5></b>
+                                                   <b>* Prefered Location : </b><?php echo $avalue['prefered_location'] ?> <br>
+                                                   <b>* Expected salary :</b> <?php echo $avalue['expected_salary'] ?> <br>
+                                                   <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
+                                                    
+                                                   <?php if (!empty($avalue['description'])) { ?>
+                                                    <b>* Job description : </b> <?php echo $avalue['description']; ?>
+                                                    <?php } ?> <br><br>
+                                                   
+                                                <?php
+                                                $loopcount++;
+                                            }
+                                            ?><br><br>
+
+                                <?php } else { ?>
+                                    <p>Area of job interest is not entered</p><br>
+
+                                <?php } ?>
+
+                            </div>
+                        </div>                        
+
+                            <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+                        <div style="float:right;">
+                            <button onClick="window.print()" type="button"
+                                class="btn btn-dark printhide">Print</button>
+                        </div>
+                    </div>
+    </section>
+    <script>
+        function togglePasswordVisibility(inputId, iconId) {
+            var passwordInput = document.getElementById(inputId);
+            var visibilityIcon = document.getElementById(iconId);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                visibilityIcon.classList.remove("bi-eye-slash");
+                visibilityIcon.classList.add("bi-eye");
+            } else {
+                passwordInput.type = "password";
+                visibilityIcon.classList.remove("bi-eye");
+                visibilityIcon.classList.add("bi-eye-slash");
+            }
+        }
+    </script>
+
             
                <?php
         }

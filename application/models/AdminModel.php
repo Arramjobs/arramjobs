@@ -587,7 +587,7 @@ class AdminModel extends CI_Model
 //       $config['upload_path'] = "./uploads/";
 //       $basepath = base_url() . 'uploads/';
 //       $config['allowed_types'] = "jpg|png|pdf|jpeg";
-//       $config['max_size'] = 1024;
+//       $config['max_size'] = 1024 * 1024;
   
 //       $this->load->library('upload', $config);
   
@@ -757,15 +757,30 @@ public function experienceTable($seekerId)
 
     public function placedCandidatesList()
     {
-        $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum, spf.position AS position,
+        $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum, spf.position AS position, spf.dateTime AS dateTime,
             prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, cr.candidate_id AS cid, prf.company_name AS compName
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
              INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
-             WHERE (cr.request_status = '6');";
+             WHERE (cr.request_status = '6') 
+             ORDER BY spf.dateTime DESC;";
         $response = $this->db->query($candidatechartList);
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
     }
+
+    // public function placedCandidatesDetails()
+    // {
+    //     $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.position AS position,
+    //         prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, cr.candidate_id AS cid, prf.company_name AS compName, cr.employer_id AS eid
+    //          FROM  candidate_requests cr
+    //          INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
+    //          INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+    //          WHERE (cr.request_status = '6') 
+    //          ORDER BY spf.dateTime DESC;";
+    //     $response = $this->db->query($candidatechartList);
+    //     // return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
+    //     return $response->result_array();
+    // }
 
     public function interviewedCandidatesList()
     {
@@ -864,6 +879,15 @@ public function experienceTable($seekerId)
             $this->db->where('id', $postData['seekerId']);
             $this->db->update('seeker_profile_form', $currentStatus);
         }
+        else if ($postData['currentStatus'] == '7') {
+
+            $currentStatus = array(
+                'currentStatus' => '0',
+                'placedAtEmployer' => $postData['employerId']
+            );
+            $this->db->where('id', $postData['seekerId']);
+            $this->db->update('seeker_profile_form', $currentStatus);
+        }
     }
 
 
@@ -946,7 +970,7 @@ public function experienceTable($seekerId)
 
         $config['upload_path'] = "./uploads/";
         $config['allowed_types'] = "jpg|png|pdf|jpeg";
-        $config['max_size'] = 1024; // 1MB
+        $config['max_size'] = 4096; // 1MB
         $this->load->library('upload', $config);
         $resumefilename = "No Resume";
         if ($this->upload->do_upload('resumeFile')) {
@@ -973,7 +997,7 @@ public function experienceTable($seekerId)
 
         $config['upload_path'] = "./uploads/";
         $config['allowed_types'] = "jpg|png|pdf";
-        $config['max_size'] = 1024;
+        $config['max_size'] = 4096;
 
         $this->load->library('upload', $config);
 
