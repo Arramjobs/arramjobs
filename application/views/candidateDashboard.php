@@ -522,32 +522,31 @@
                   <div id="phonenumber_error" style="color: red;"></div>
                 </div>
 
-                <!-- <div class="col-md-6">
+                <div class="col-md-6">
                   <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
-                  <input type="date" class="form-control" id="dateofbirth" value="<?php echo $value['dateofbirth']; ?>"
-                    name="dateofbirth" required>
+                  <input type="text" class="form-control" id="dateofbirth" value="<?php echo $value['dateofbirth']; ?>" name="dateofbirth" required>
+                  <p style="color:grey;textalign:center;font-size:small;margin-top:20px">Enter Date Of Birth in YYYY-MM-DD format</p>
                   <div id="dob_error" style="color: red;"></div>
                 </div>
                 <div class="col-md-6">
-                  <label for="age" class="form-label">Age</label>
-                  <input type="number" class="form-control" id="age"
-                    value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly required>
+                  <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                  <input type="number" class="form-control" id="age" value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly required>
                   <div id="age_error" style="color: red;"></div>
-                </div> -->
+                </div>
 
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
     <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
     <input type="text" class="form-control" id="dateofbirth" value="<?php echo date('d-m-Y', strtotime($value['dateofbirth'])); ?>"
         name="dateofbirth" required>
     <div id="dob_error" style="color: red;"></div>
     <p style="color:grey;textalign:center;font-size:small;margin-top:20px">Enter the DOB in DD-MM-YYYY format</p>
-</div>
+                </div>
 <div class="col-md-6">
     <label for="age" class="form-label">Age</label>
     <input type="number" class="form-control" id="age"
         value="<?php echo ($value['age']) ? $value['age'] : ''; ?>" name="age" readonly required>
     <div id="age_error" style="color: red;"></div>
-</div>
+</div> -->
 
                 <div class="col-md-6">
                   <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
@@ -829,7 +828,7 @@
         }
       </script>
       <!-- DATE OF BIRTH VALIDATION -->
-      <!-- <script>
+      <script>
         document.addEventListener('DOMContentLoaded', function () {
           document.getElementById('dateofbirth').addEventListener('input', function () {
             var dob = new Date(this.value);
@@ -850,9 +849,9 @@
           }
           return age;
         }
-      </script> -->
+      </script>
 
-      <script>
+      <!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('dateofbirth').addEventListener('input', function () {
             var dob = this.value;
@@ -873,7 +872,7 @@
         }
         return age;
     }
-</script>
+      </script> -->
       <!-- AADHAR PHOTO UPLOAD -->
       <script>
         document.getElementById("file-input-labelaf").addEventListener("click", function () {
@@ -2627,8 +2626,23 @@
                             <?php echo $value['other_sub_category'] ?>
                           </td>
                           <td>
-                            <?php echo $value['expYear'] ?> to 
-                            <?php echo $value['expMonth'] ?>
+                          <?php  if (is_numeric($value['expYear'])) {
+                                echo $value['expYear'];
+                              } else {
+                                echo date('d-m-Y', strtotime($value['expYear']));
+                                } ?> 
+                                 to <br>
+                            <?php 
+                              if ($value['expMonth'] == 'Till now') {
+                                echo $value['expMonth'];
+                              } else {
+                              if (is_numeric($value['expMonth'])) {
+                                echo $value['expMonth'];
+                              } else {
+                                echo date('d-m-Y', strtotime($value['expMonth']));
+                                }
+                              }
+                            ?>
                           </td>
                           <td>
                             <?php echo $value['company_name'] ?>
@@ -2824,16 +2838,18 @@
                   <div class="col-md-3  me-2">
                     <input type="text" class="form-control" id="fromDate" name="fromDate" required>
                     <div id="experienceexp_error" class="text-danger error"></div>
+                    <p style="color:red;textalign:center;font-size:small;margin-top:20px">YYYY-MM-DD or YYYY</p>
                   </div>
                   <label for="toDate" class="pt-1 px-2">To </label>
                   <div class="col-md-3">
                     <input type="text" class="form-control" id="toDate" name="toDate" required>
-                    <div id="experienceexpmonth_error" class="text-danger error"></div>
+                    <div id="experienceexpmonth_error" class="text-danger error"></div>                    
+                    <p style="color:red;textalign:center;font-size:small;margin-top:20px">YYYY-MM-DD or YYYY</p>
                   </div>
-
-                  <input type="checkbox" id="till_now" name="till_now" class="ms-3">
+                  <!-- <div class="col-md-3"> -->
+                  <input type="checkbox" id="till_now" name="till_now" class="ms-3 px-2">
                   <label for="toDate" class="pt-1 px-2">Till now</label>
-
+                  <!-- </div> -->
                 </div>
               </div>
             </div>
@@ -2944,7 +2960,7 @@
         }
       </script>
 
-<script>
+      <script>
     document.getElementById('fromDate').addEventListener('input', updateDateDifference);
     document.getElementById('toDate').addEventListener('input', updateDateDifference);
     document.getElementById('till_now').addEventListener('change', updateToDate);
@@ -2985,23 +3001,39 @@
         }
     }
 
+    // function updateToDate() {
+    //     var today = new Date();
+    //     today.setHours(0, 0, 0, 0);
+
+    //     var toDateInput = document.getElementById('toDate');
+    //     var tillNowCheckbox = document.getElementById('till_now');
+
+    //     if (tillNowCheckbox.checked) {
+    //         var formattedDate = formatDate(today);
+    //         toDateInput.value = formattedDate;
+    //         toDateInput.disabled = true;
+    //     } else {
+    //         toDateInput.disabled = false;
+    //     }
+
+    //     updateDateDifference();
+    // }
+
     function updateToDate() {
-        var today = new Date();
-        today.setHours(0, 0, 0, 0);
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-        var toDateInput = document.getElementById('toDate');
-        var tillNowCheckbox = document.getElementById('till_now');
+    var toDateInput = document.getElementById('toDate');
+    var tillNowCheckbox = document.getElementById('till_now');
 
-        if (tillNowCheckbox.checked) {
-            var formattedDate = formatDate(today);
-            toDateInput.value = formattedDate;
-            toDateInput.disabled = true;
-        } else {
-            toDateInput.disabled = false;
-        }
-
-        updateDateDifference();
+    if (tillNowCheckbox.checked) {
+        var formattedDate = formatDate(today);
+        toDateInput.value = formattedDate;
     }
+
+    toDateInput.disabled = tillNowCheckbox.checked;
+    updateDateDifference();
+}
 
     window.onload = function () {
         updateDateDifference();
@@ -3014,7 +3046,7 @@
 
         return dd + '-' + mm + '-' + yyyy;
     }
-</script>
+      </script>
 
       <script>
         function showHideOtherField() {
@@ -3228,9 +3260,24 @@
                           <?php echo $value['other_sub_category'] ?>
                         </td>
                         <td>
-                          <?php echo $value['expYear'] ?> -
-                          <?php echo $value['expMonth'] ?>
-                        </td>
+                        <?php  if (is_numeric($value['expYear'])) {
+                                echo $value['expYear'];
+                              } else {
+                                echo date('d-m-Y', strtotime($value['expYear']));
+                                } ?> 
+                                 to <br>
+                            <?php 
+                              if ($value['expMonth'] == 'Till now') {
+                                echo $value['expMonth'];
+                              } else {
+                              if (is_numeric($value['expMonth'])) {
+                                echo $value['expMonth'];
+                              } else {
+                                echo date('d-m-Y', strtotime($value['expMonth']));
+                                }
+                              }
+                            ?>
+                          </td>
                         <td>
                           <?php echo $value['company_name'] ?>
                         </td>
@@ -3348,16 +3395,19 @@
                         <input type="text" class="form-control" id="fromDate" name="fromDate"
                           value="<?php echo $value['expYear']; ?>" required>
                         <div id="experienceexp_error" class="text-danger error"></div>
+                        <p style="color:red;textalign:center;font-size:small;margin-top:10px">YYYY-MM-DD or YYYY</p>
                       </div>
                       <label for="toDate" class="pt-1 px-2">To </label>
                       <div class="col-md-3">
                         <input type="text" class="form-control" id="toDate" name="toDate"
                           value="<?php echo $value['expMonth']; ?>" required>
                         <div id="experienceexpmonth_error" class="text-danger error"></div>
+                        <p style="color:red; textalign:center; font-size:small; margin-top:10px">YYYY-MM-DD or YYYY</p>
                       </div>
+                      <div class="col-md-3">
                       <input type="checkbox" id="till_now" name="till_now" class="ms-3">
                       <label for="toDate" class="pt-1 px-2">Till now</label>
-
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -5206,10 +5256,25 @@
                             <td>
                               <?php echo $ivalue['other_sub_category'] ?>
                             </td>
-                            <td>                            
-                              <?php echo $ivalue['expYear'] ?> to
-                              <?php echo $ivalue['expMonth'] ?>
-                            </td>
+                            <td>
+                            <?php  if (is_numeric($ivalue['expYear'])) {
+                                echo $ivalue['expYear'];
+                              } else {
+                                echo date('d-m-Y', strtotime($ivalue['expYear']));
+                                } ?> 
+                            to <br>
+                            <?php 
+                              if ($ivalue['expMonth'] == 'Till now') {
+                                echo $ivalue['expMonth'];
+                              } else {
+                              if (is_numeric($ivalue['expMonth'])) {
+                                echo $ivalue['expMonth'];
+                              } else {
+                                echo date('d-m-Y', strtotime($ivalue['expMonth']));
+                                }
+                              }
+                            ?>
+                          </td>
                             <td>
                               <?php echo $ivalue['company_name'] ?>
                             </td>
@@ -5418,6 +5483,10 @@
     } elseif ($method == "resumePrint") {
   ?>
   <!-- Sidebar Active  -->
+  <script>
+        document.getElementById('resumes').classList.add('active');
+      </script>
+
   <section>
         <!-- Default Card -->
         <div id="resumeprint">
@@ -5570,8 +5639,28 @@
                     <?php echo $ivalue['other_category'] ?> : <?php echo $ivalue['other_sub_category'] ?></h5></b>
                 
                     *  Worked in <?php echo $ivalue['company_name'] ?>,
-                    <?php echo $ivalue['expYear'] ?> to 
-                            <?php echo $ivalue['expMonth'] ?>
+                    <!-- <?php echo $ivalue['expYear'] ?> to 
+                            <?php echo $ivalue['expMonth'] ?> -->
+
+                            <td>
+                            <?php  if (is_numeric($ivalue['expYear'])) {
+                                echo $ivalue['expYear'];
+                              } else {
+                                echo date('d-m-Y', strtotime($ivalue['expYear']));
+                                } ?> 
+                            to 
+                            <?php 
+                              if ($ivalue['expMonth'] == 'Till now') {
+                                echo $ivalue['expMonth'];
+                              } else {
+                              if (is_numeric($ivalue['expMonth'])) {
+                                echo $ivalue['expMonth'];
+                              } else {
+                                echo date('d-m-Y', strtotime($ivalue['expMonth']));
+                                }
+                              }
+                            ?>
+                          </td>
                     <?php echo $ivalue['job_role'] ?>
                         , 
                         <?php echo $ivalue['company_location'] ?>                           
@@ -5657,7 +5746,9 @@
                             <b>* Preferred Location : </b> <?php echo $avalue['prefered_location'] ?> <br>
                             <b>* Expected salary : </b> <?php echo $avalue['expected_salary'] ?> <br>
                             <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
-                            <b>* Job description : </b>    <?php echo $avalue['description'] ?><br><br>
+                            <?php if (!empty($avalue['description'])) { ?>
+                            <b>* Job description : </b> <?php echo $avalue['description']; ?>
+                            <?php } ?> <br><br>
                             
                         <?php
                         $loopcount++;

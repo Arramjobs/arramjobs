@@ -421,14 +421,9 @@
                     </li>
                     <li>
                         <a id="candidaterejectedlist" href="<?php echo baseUrl . "admin/rejectedCandidate" ?>">
-                            <i class="bi bi-circle"></i><span>Rejected List</span>
-                        </a>
-                    </li>
-                    <!-- <li>
-                        <a id="candidaterelievedlist" href="<?php echo baseUrl . "admin/relievedCandidate" ?>">
                             <i class="bi bi-circle"></i><span>Relieved List</span>
                         </a>
-                    </li> -->
+                    </li>
                     <li>
                         <a id="candidateoveralllist" href="<?php echo baseUrl . "admin/overallCandidates" ?>">
                             <i class="bi bi-circle"></i><span>Overall List</span>
@@ -2599,7 +2594,7 @@
 
                                                                 <td>
                                                     <?php } else if ($value['rqsts'] == 5 && $value['eprid'] == $_SESSION['employerid']) { ?>
-                                                                        <span class="badge bg-danger"><i class="bi bi-x-lg"></i> Rejected</span>
+                                                                        <span class="badge bg-danger"><i class="bi bi-x-lg"></i> Relieved</span>
                                                                     </td>
 
                                                 <?php } else { ?>
@@ -3171,9 +3166,10 @@
                                                 </td>
                                                 <td>
                                                     <p class="d-flex">
-                                                        <?php echo $value['company_name']; ?><a
-                                                            href="<?php echo $value['companyLocationUrl']; ?>"
-                                                            class="px-2 text-danger" target="blank"><i class='bx bx-map'></i></a>
+                                                        <?php echo $value['company_name']; ?>
+                                                        <?php if (!empty($value['companyLocationUrl'])) { ?>            
+                                                    <a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                <?php } ?>
                                                     </p>
                                                 </td>
                                                 <td><a href="#" class="text-primary">
@@ -3323,9 +3319,10 @@
                                                 </td>
                                                 <td>
                                                     <p class="d-flex">
-                                                        <?php echo $value['company_name']; ?><a
-                                                            href="<?php echo $value['companyLocationUrl']; ?>"
-                                                            class="px-2 text-danger" target="blank"><i class='bx bx-map'></i></a>
+                                                        <?php echo $value['company_name']; ?>
+                                                        <?php if (!empty($value['companyLocationUrl'])) { ?>            
+                                                    <a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                <?php } ?>
                                                     </p>
                                                 </td>
                                                 <td><a href="#" class="text-primary">
@@ -3523,9 +3520,10 @@
                                                 </td>
                                                 <td>
                                                     <p class="d-flex">
-                                                        <?php echo $value['company_name']; ?><a
-                                                            href="<?php echo $value['companyLocationUrl']; ?>"
-                                                            class="px-2 text-danger"><i class='bx bx-map'></i></a>
+                                                        <?php echo $value['company_name']; ?>
+                                                        <?php if (!empty($value['companyLocationUrl'])) { ?>            
+                                                    <a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                <?php } ?>
                                                     </p>
                                                 </td>
                                                 <td><a href="#" class="text-primary">
@@ -3706,9 +3704,10 @@
                                                 </td>
                                                 <td>
                                                     <p class="d-flex">
-                                                        <?php echo $value['company_name']; ?><a
-                                                            href="<?php echo $value['companyLocationUrl']; ?>"
-                                                            class="px-2 text-danger"><i class='bx bx-map'></i></a>
+                                                        <?php echo $value['company_name']; ?>
+                                                        <?php if (!empty($value['companyLocationUrl'])) { ?>            
+                                                    <a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                <?php } ?>
                                                     </p>
                                                 </td>
                                                 <td>
@@ -3946,9 +3945,10 @@
                                         </td>
                                         <td>
                                             <p class="d-flex">
-                                                <?php echo $value['company_name']; ?><a
-                                                    href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" target="blank"><i
-                                                        class='bx bx-map'></i></a>
+                                                <?php echo $value['company_name']; ?>
+                                                <?php if (!empty($value['companyLocationUrl'])) { ?>            
+                                                    <a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                <?php } ?>
                                             </p>
                                         </td>
                                         <td><a href="#" class="text-primary">
@@ -3997,9 +3997,10 @@
                         </form>
 
                         <div id="paginationButtons" class="text-center mt-4">
-                            <button onclick="previousPage()">Previous</button>
+                        <div id="paginationBtnsContainer"></div>
+                            <!-- <button onclick="previousPage()">Previous</button>
                             <span id="pageInfo"></span>
-                            <button onclick="nextPage()">Next</button>
+                            <button onclick="nextPage()">Next</button> -->
                         </div>
                         <?php
                     } else {
@@ -4013,7 +4014,7 @@
                 </div><!-- End Recent Sales -->
             </section>
 
-            <script>
+            <!-- <script>
     var table = document.getElementById('myTableEr');
     var rowsPerPage = 7;
     var currentPage = 1;
@@ -4051,7 +4052,77 @@
     }
 
     updatePaginationButtons();
-            </script>
+            </script> -->
+            <script>
+                    var table = document.getElementById('myTableEr');
+                    var rowsPerPage = 7;
+                    var currentPage = 1;
+                    var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+                    showPage(currentPage);
+
+                    function showPage(page) {
+                        var startIndex = (page - 1) * rowsPerPage;
+                        var endIndex = startIndex + rowsPerPage;
+                        for (var i = 0; i < table.rows.length; i++) {
+                            if (i === 0 || (i >= startIndex && i < endIndex)) {
+                                table.rows[i].style.display = 'table-row';
+                            } else {
+                                table.rows[i].style.display = 'none';
+                            }
+                        }
+                    }
+
+                    function goToPage(page) {
+                        if (page < 1) page = 1;
+                        if (page > totalPages) page = totalPages;
+                        currentPage = page;
+                        showPage(currentPage);
+                        updatePaginationButtons();
+                    }
+
+                    function previousPage() {
+                        if (currentPage > 1) {
+                            currentPage--;
+                            showPage(currentPage);
+                            updatePaginationButtons();
+                        }
+                    }
+
+                    function nextPage() {
+                        if (currentPage < totalPages) {
+                            currentPage++;
+                            showPage(currentPage);
+                            updatePaginationButtons();
+                        }
+                    }
+
+                    function updatePaginationButtons() {
+                        var buttonsHtml = '';
+
+                        var startPage = Math.max(1, currentPage - 1);
+                        var endPage = Math.min(totalPages, currentPage + 1);
+
+                        buttonsHtml += '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>';
+
+                        for (var i = startPage; i <= endPage; i++) {
+                            var activeClass = (i === currentPage) ? 'active' : '';
+                            buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
+                        }
+
+                        buttonsHtml += '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
+
+                        document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
+
+                        var previousBtn = document.getElementById('previousBtn');
+                        var nextBtn = document.getElementById('nextBtn');
+                        previousBtn.style.display = (currentPage === 1) ? 'none' : 'inline-block';
+                        nextBtn.style.display = (currentPage === totalPages) ? 'none' : 'inline-block';
+                    }
+
+                    updatePaginationButtons();
+                </script>
+
 
             <script>
                 function filterTableEr() {
@@ -4332,8 +4403,9 @@
                                                             echo 'checked';
                                                         } ?>>
                                                     <label class="form-check-label" for="gridRadios2"> 2.ADDRESS </label>
-                                                    <a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger"
-                                                        target="blank"><i class='bx bx-map'></i></a>
+                                                    <?php if (!empty($value['companyLocationUrl'])) { ?>            
+                                                        <a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                            <?php } ?>
                                                 </div>
                                             </div>
                                     </fieldset>
@@ -4369,8 +4441,11 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="verificationStatus"
                                                     id="gridRadios" value="2">
-                                                <label class="form-check-label" for="gridRadios3">
+                                                <!-- <label class="form-check-label" for="gridRadios3">
                                                     Rejected
+                                                </label> -->
+                                                <label class="form-check-label" for="gridRadios3">
+                                                    Relieved
                                                 </label>
                                             </div>
                                         </div>
@@ -5768,11 +5843,13 @@
                                             <label for="fromDate" class="pt-1 pe-2">From</label>
                                             <div class="col-md-3  me-2">
                                                 <input type="text" class="form-control" id="fromDate" name="fromDate">
+                                                <p style="color:red;textalign:center;font-size:small;margin-top:20px">YYYY-MM-DD or YYYY</p>
                                                 <div id="experienceexp_error" class="text-danger error"></div>
                                             </div>
                                             <label for="toDate" class="pt-1 px-2">To</label>
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control" id="toDate" name="toDate">
+                                                <p style="color:red;textalign:center;font-size:small;margin-top:20px">YYYY-MM-DD or YYYY</p>
                                                 <div id="experienceexpmonth_error" class="text-danger error"></div>
                                             </div>
 
@@ -5898,23 +5975,39 @@
         }
     }
 
+    // function updateToDate() {
+    //     var today = new Date();
+    //     today.setHours(0, 0, 0, 0);
+
+    //     var toDateInput = document.getElementById('toDate');
+    //     var tillNowCheckbox = document.getElementById('till_now');
+
+    //     if (tillNowCheckbox.checked) {
+    //         var formattedDate = formatDate(today);
+    //         toDateInput.value = formattedDate;
+    //         toDateInput.disabled = true;
+    //     } else {
+    //         toDateInput.disabled = false;
+    //     }
+
+    //     updateDateDifference();
+    // }
+
     function updateToDate() {
-        var today = new Date();
-        today.setHours(0, 0, 0, 0);
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-        var toDateInput = document.getElementById('toDate');
-        var tillNowCheckbox = document.getElementById('till_now');
+    var toDateInput = document.getElementById('toDate');
+    var tillNowCheckbox = document.getElementById('till_now');
 
-        if (tillNowCheckbox.checked) {
-            var formattedDate = formatDate(today);
-            toDateInput.value = formattedDate;
-            toDateInput.disabled = true;
-        } else {
-            toDateInput.disabled = false;
-        }
-
-        updateDateDifference();
+    if (tillNowCheckbox.checked) {
+        var formattedDate = formatDate(today);
+        toDateInput.value = formattedDate;
     }
+
+    toDateInput.disabled = tillNowCheckbox.checked;
+    updateDateDifference();
+}
 
     window.onload = function () {
         updateDateDifference();
@@ -7208,6 +7301,10 @@
                                                     <?php echo $value['mobilenum']; ?>
                                                 </td>
                                                 <td><span class="badge bg-success">Placed</span></td>
+                                                <!-- <td><a class="mx-1"
+                                                        href="<?php echo baseUrl . "admin/placedCandidatesDetails/" . $value['seekerId'] ?>">
+                                                        <button type="button" class="btn btn-success d-flex"><i
+                                                                class="bi bi-eye pe-1"></i>Placed</button></a></td> -->
                                                 
                                                 <td>
                                                     <form class="" action="<?php echo baseUrl . "admin/updateCurrentStatus" ?>"
@@ -7218,16 +7315,16 @@
                                                             value="<?php echo $value['emprid']; ?>" hidden>
                                                         <div class="d-flex align-items-center">
                                                             <div class="">
-                                                                <input type="radio" id="interviwed" name="currentStatus" value="4"
+                                                                <!-- <input type="radio" id="interviwed" name="currentStatus" value="4"
                                                                     <?php if ($value['curStatus'] == '4') {
                                                                         echo 'checked';
                                                                     } ?>
-                                                                    required>
-                                                                <label for="interviwed" class="mb-2">Interviewed</label><br>
+                                                                    required> -->
+                                                                <!-- <label for="interviwed" class="mb-2">Interviewed</label><br> -->
 
                                                                 <input type="radio" id="rejected" name="currentStatus" value="5"
                                                                     required>
-                                                                <label for="rejected" class="mb-2">Rejected</label><br>
+                                                                <label for="rejected" class="mb-2">Relieved</label><br>
 
                                                                 <!-- <input type="radio" id="default" name="currentStatus" value="0"
                                                                     required>
@@ -7305,6 +7402,95 @@
             </script>
 
             <?php
+
+} elseif ($method == "placedCandidatesDetails") {
+    ?>
+    <!-- Sidebar Active  -->
+    <script>
+                document.getElementById('candidatelist').classList.add('active');
+                document.getElementById('candidateplacedlist').classList.add('active');
+            </script>
+  
+    <section>
+          <!-- Default Card -->
+          <div id="resumeprint">
+              <div class="container">
+              <div class="row">
+  
+  <div class="d-flex justify-content-between">
+      <div></div>
+      <div class=" text-center mt-4" style="margin-right:15px;">
+      <h3 style=" letter-spacing: 3px; color:#94b123;"><b>ARRAM CHARITY TRUST</b></h3>
+      <h3 style="letter-spacing: 2px; color: #31a5d6;"><b>ARRAM  JOBS</b></h3>
+  </div>
+  <img src="<?php echo baseUrl . "assets/title logo.png" ?>" alt="ArramJobs" style="height:65px; width:85px; margin-top: 20px;">
+  </div>
+  
+      <div class=" recent-sales overflow-auto mt-1">
+        
+                    <?php
+                    if (isset($basicDetails)) {
+                      foreach ($basicDetails as $key => $value) {
+                        ?>
+                        <div class="d-flex justify-content-between pt-4">
+                        <div class="">
+                            <br> <p style="font-size: 18px;"><b>Name :</b>  
+                                                  <?php echo $value['name']; ?></p>
+                                             
+                                              <p style="font-size: 18px;"><b>Candidate ID : </b>
+                                                  <?php echo $value['eeid']; ?></p>
+                                              <br>
+                                              <?php
+                      }
+                    }
+                    ?>
+                                          </div>
+                                          
+                                          <?php
+                            if (isset($this->data['placedCandidatesDetails'][0]['name'])) {
+                                ?>
+                                        <br>
+                                    <p style="font-size: 18px;"><b>Company name :</b>
+                                    <?php echo $value['compName']; ?></p>
+                                             
+                                              <p style="font-size: 18px;"> <b>Employer Id :  </b>
+                                              <a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
+                                              <?php echo $value['emprid']; ?></p>
+                                                    </a>
+                                              <br>
+                                    </div>
+                                    <?php
+                                        }
+                                        ?>
+                                      </div>
+
+                                      
+                          
+                     
+            <div style="float:right;">
+                              <button onClick="window.print()" type="button"
+                                  class="btn btn-dark printhide">Print</button>
+                          </div>
+          </div>
+        </section>
+    <script>
+        function togglePasswordVisibility(inputId, iconId) {
+            var passwordInput = document.getElementById(inputId);
+            var visibilityIcon = document.getElementById(iconId);
+  
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                visibilityIcon.classList.remove("bi-eye-slash");
+                visibilityIcon.classList.add("bi-eye");
+            } else {
+                passwordInput.type = "password";
+                visibilityIcon.classList.remove("bi-eye");
+                visibilityIcon.classList.add("bi-eye-slash");
+            }
+        }
+    </script>
+  
+    <?php
 
         } elseif ($method == "interviewedCandidates") {
             ?>
@@ -7444,7 +7630,7 @@
             </script>
             <section class="usertable">
                 <div class="pagetitle">
-                    <h1>Rejected Candidates</h1>
+                    <h1>Relieved Candidates</h1>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
@@ -7458,7 +7644,7 @@
                             <?php
                             if (isset($this->data['rejectedCandidates'][0]['name'])) {
                                 ?>
-                                <h5 class="card-title">Rejected Candidate List<span></span></h5>
+                                <h5 class="card-title">Relieved Candidate List<span></span></h5>
 
                                 <!-- <table class="table table-borderless datatable"> -->
                                 <table class="table" id="rejectCd">
@@ -7466,7 +7652,8 @@
                                         <tr>
                                             <th scope="col">S.No</th>
                                             <th scope="col">Candidate ID</th>
-                                            <th scope="col">Rejected At</th>
+                                            <!-- <th scope="col">Rejected At</th> -->
+                                            <th scope="col">Relieved At</th>
                                             <th scope="col">Candidate Name</th>
                                             <th scope="col">Candidate Mobile Number</th>
                                             <th scope="col">Status</th>
@@ -7498,7 +7685,8 @@
                                                 <td>
                                                     <?php echo $value['mobilenum']; ?>
                                                 </td>
-                                                <td><span class="badge bg-danger">Rejected</span></td>
+                                                <!-- <td><span class="badge bg-danger">Rejected</span></td> -->
+                                                <td><span class="badge bg-danger">Relieved</span></td>
 
                                                 <td>
                                                     <form class="" action="<?php echo baseUrl . "admin/updateCurrentStatus" ?>"
@@ -7509,7 +7697,7 @@
                                                             value="<?php echo $value['emprid']; ?>" hidden>
                                                         <div class="d-flex align-items-center">
                                                             <div class="">
-                                                                <input type="radio" id="interviwed" name="currentStatus" value="4"
+                                                                <!-- <input type="radio" id="interviwed" name="currentStatus" value="4"
                                                                     <?php if ($value['curStatus'] == '4') {
                                                                         echo 'checked';
                                                                     } ?>
@@ -7517,7 +7705,11 @@
                                                                 <label for="interviwed" class="mb-2">Interviewed</label><br>
                                                                 <input type="radio" id="placed" name="currentStatus" value="6"
                                                                     required>
-                                                                <label for="placed" class="mb-2">Placed</label><br>
+                                                                <label for="placed" class="mb-2">Placed</label><br> -->
+
+                                                                <input type="radio" id="interviwed" name="currentStatus" value="7"
+                                                                    required>
+                                                                <label for="interviwed" class="mb-2">Reapplied</label><br>
 
                                                                 <!-- <input type="radio" id="default" name="currentStatus" value="0"
                                                                     required>
@@ -7596,169 +7788,6 @@
     updatePaginationButtons();
             </script>
             <?php
-
-
-} elseif ($method == "relievedCandidate") {
-    ?>
-    <!-- Sidebar Active  -->
-    <script>
-        document.getElementById('candidatelist').classList.add('active');
-        document.getElementById('candidaterelievedlist').classList.add('active');
-    </script>
-    <section class="usertable">
-        <div class="pagetitle">
-            <h1>Relieved Candidates</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                    <li class="breadcrumb-item active">Candidate</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-        <div class="col-12">
-            <div class="card recent-sales overflow-auto">
-                <div class="card-body">
-                    <?php
-                    if (isset($this->data['rejectedCandidates'][0]['name'])) {
-                        ?>
-                        <h5 class="card-title">Rejected Candidate List<span></span></h5>
-
-                        <!-- <table class="table table-borderless datatable"> -->
-                        <table class="table" id="rejectCd">
-                            <thead>
-                                <tr>
-                                    <th scope="col">S.No</th>
-                                    <th scope="col">Candidate ID</th>
-                                    <th scope="col">Rejected At</th>
-                                    <th scope="col">Candidate Name</th>
-                                    <th scope="col">Candidate Mobile Number</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $loopcount = 1;
-                                foreach ($this->data['rejectedCandidates'] as $key => $value) {
-                                    ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo $loopcount; ?>.
-                                        </td>
-
-                                        <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
-                                                <?php echo $value['cdid']; ?>
-                                            </a></td>
-                                        <td>
-                                            <?php echo $value['compName']; ?> / <a
-                                                href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
-                                                <?php echo $value['emprid']; ?>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <?php echo $value['name']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $value['mobilenum']; ?>
-                                        </td>
-                                        <td><span class="badge bg-danger">Relieved</span></td>
-
-                                        <td>
-                                            <form class="" action="<?php echo baseUrl . "admin/updateCurrentStatus" ?>"
-                                                method="post">
-                                                <input class="form-check-input" type="text" name="seekerId" id=""
-                                                    value="<?php echo $value['seekerId']; ?>" hidden>
-                                                <input class="form-check-input" type="text" name="employerId" id=""
-                                                    value="<?php echo $value['emprid']; ?>" hidden>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="">
-                                                        <input type="radio" id="interviwed" name="currentStatus" value="4"
-                                                            <?php if ($value['curStatus'] == '4') {
-                                                                echo 'checked';
-                                                            } ?>
-                                                            required>
-                                                        <label for="interviwed" class="mb-2">Interviewed</label><br>
-                                                        <input type="radio" id="placed" name="currentStatus" value="6"
-                                                            required>
-                                                        <label for="placed" class="mb-2">Placed</label><br>
-
-                                                        <!-- <input type="radio" id="default" name="currentStatus" value="0"
-                                                            required>
-                                                        <label for="default" class="mb-2">Remove</label> -->
-                                                    </div>
-
-                                                    <div class="col ms-5">
-                                                        <button type="submit" class="btn btn-success">Save</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </td>
-                                        
-                                    </tr>
-                                    <?php
-                                    $loopcount++;
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                        <div id="paginationButtons" class="text-center mt-4">
-                            <button onclick="previousPage()">Previous</button>
-                            <span id="pageInfo"></span>
-                            <button onclick="nextPage()">Next</button>
-                        </div>
-                        <?php
-                    } else {
-                        ?>
-                        <h5 class="card-title">No Records Found<span></span></h5>
-                        <?php
-                    }
-                    ?>
-                </div>
-
-            </div>
-        </div><!-- End Recent Sales -->
-    </section>
-
-    <script>
-var table = document.getElementById('rejectCd');
-var rowsPerPage = 7;
-var currentPage = 1;
-var totalPages = Math.ceil(table.rows.length / rowsPerPage);
-
-showPage(currentPage);
-
-function showPage(page) {
-var startIndex = (page - 1) * rowsPerPage;
-var endIndex = startIndex + rowsPerPage;
-for (var i = 0; i < table.rows.length; i++) {
-    if (i >= startIndex && i < endIndex) {
-        table.rows[i].style.display = 'table-row';
-    } else {
-        table.rows[i].style.display = 'none';
-    }
-}
-}
-
-function goToPage(page) {
-if (page < 1) page = 1;
-if (page > totalPages) page = totalPages;
-currentPage = page;
-showPage(currentPage);
-updatePaginationButtons();
-}
-
-function updatePaginationButtons() {
-var buttonsHtml = '';
-for (var i = 1; i <= totalPages; i++) {
-    var activeClass = (i === currentPage) ? 'active' : '';
-    buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
-}
-document.getElementById('paginationButtons').innerHTML = buttonsHtml;
-}
-
-updatePaginationButtons();
-    </script>
-    <?php
 
         } elseif ($method == "overallEmployees") {
             ?>
@@ -8730,7 +8759,7 @@ updatePaginationButtons();
                                                 <input class="form-check-input" type="radio" name="verificationStatus"
                                                     id="gridRadios" value="2">
                                                 <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
+                                                    Relieved
                                                 </label>
                                             </div>
                                         </div>
@@ -9569,7 +9598,9 @@ updatePaginationButtons();
                                                    <b>* Expected salary :</b> <?php echo $avalue['expected_salary'] ?> <br>
                                                    <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
                                                     
-                                                    <b>* Job description : </b>    <?php echo $avalue['description'] ?><br>
+                                                   <?php if (!empty($avalue['description'])) { ?>
+                                                    <b>* Job description : </b> <?php echo $avalue['description']; ?>
+                                                    <?php } ?> <br><br>
                                                    
                                                 <?php
                                                 $loopcount++;
@@ -9984,7 +10015,10 @@ updatePaginationButtons();
                                                                 <label for="interviwed" class="mb-2">Interviewed</label><br>
                                                                 <input type="radio" id="rejected" name="currentStatus" value="5"
                                                                     required>
-                                                                <label for="rejected" class="mb-2">Rejected</label><br>
+                                                                <!-- <label for="rejected" class="mb-2">Rejected</label><br>
+                                                                <input type="radio" id="placed" name="currentStatus" value="6"
+                                                                    required> -->
+                                                                <label for="rejected" class="mb-2">Relieved</label><br>
                                                                 <input type="radio" id="placed" name="currentStatus" value="6"
                                                                     required>
                                                                 <label for="placed" class="mb-2">Placed</label><br>
@@ -10069,9 +10103,9 @@ updatePaginationButtons();
                                                 <td>
                                                     <?php echo $value['placedAtEmployer']; ?>
                                                 </td>
-                                                <td>
+                                                <!-- <td>
                                                     <?php echo $value['placedAtEmployer']; ?>
-                                                </td>
+                                                </td> -->
                                                 <td>
                                                     <?php echo $value['name']; ?>
                                                 </td>
@@ -10079,7 +10113,18 @@ updatePaginationButtons();
                                                         target="blank">
                                                         <?php echo $value['eeid']; ?>
                                                     </a></td>
-                                                <td><span class="badge bg-success">Placed</span> </td>
+                                                 <?php
+                                                if ($value['currentStatus'] == 1) {
+                                                    ?>
+                                                    <td><span class="badge bg-success"><i class="bi bi-check2-circle"></i> Placed
+                                                        </span> </td>
+
+                                                <?php } else {
+                                                    ?>
+                                                    <td><span class="badge bg-primary"><i class="bi bi-check2"></i> Available </span>
+                                                    </td>
+                                                <?php
+                                                } ?> 
                                             </tr>
                                             <?php
                                             $loopcount++;

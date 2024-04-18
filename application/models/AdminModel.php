@@ -768,6 +768,20 @@ public function experienceTable($seekerId)
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
     }
 
+    // public function placedCandidatesDetails()
+    // {
+    //     $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.position AS position,
+    //         prf.id AS providerId, prf.erid AS emprid, cr.request_status AS curStatus, cr.candidate_id AS cid, prf.company_name AS compName, cr.employer_id AS eid
+    //          FROM  candidate_requests cr
+    //          INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
+    //          INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
+    //          WHERE (cr.request_status = '6') 
+    //          ORDER BY spf.dateTime DESC;";
+    //     $response = $this->db->query($candidatechartList);
+    //     // return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
+    //     return $response->result_array();
+    // }
+
     public function interviewedCandidatesList()
     {
         $candidatechartList = "SELECT DISTINCT spf.id AS seekerId, spf.eeid AS cdid, spf.name AS name, spf.phonenumber AS mobilenum,
@@ -860,6 +874,15 @@ public function experienceTable($seekerId)
 
             $currentStatus = array(
                 'currentStatus' => '2',
+                'placedAtEmployer' => $postData['employerId']
+            );
+            $this->db->where('id', $postData['seekerId']);
+            $this->db->update('seeker_profile_form', $currentStatus);
+        }
+        else if ($postData['currentStatus'] == '7') {
+
+            $currentStatus = array(
+                'currentStatus' => '0',
                 'placedAtEmployer' => $postData['employerId']
             );
             $this->db->where('id', $postData['seekerId']);

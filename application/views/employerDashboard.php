@@ -375,7 +375,7 @@
                                         <div class="col-md-6">
                                             <label for="inputAddress2" class="form-label">Landmark </label>
                                             <input type="text" class="form-control" id="inputAddress2"  value='<?php echo $value['Landmark']; ?>' name="landmark1">
-                                        <p id="landerr1" style="color: red;"></p>
+                                        <!-- <p id="landerr1" style="color: red;"></p> -->
                                         </div>
                                         <div class="col-md-6">
                                             <label for="inputCity" class="form-label">City <span class="text-danger">*</span></label>
@@ -841,8 +841,12 @@
                                                                         </td>
                                                                         <td><a ><?php echo $countjobs++; ?>.</a></td>
                                                                         <td><?php echo $twelveHourTime ?></td>
-                                                                        <td><?php echo $value['jobCategory'] ?>             <?php echo $value['jobSubCategory'] ?></td>
-                                                                        <td><?php echo $value['location'] ?></td>
+                                                                        <td><?php echo $value['jobCategory'] ?>             <?php echo $value['jobSubCategory'] ?></td>                                                                        
+                                                                        <td><?php echo $value['location'] ?>
+                                                                            <?php if (!empty($value['locationUrl'])) { ?>            
+                                                                            <a href="<?php echo $value['locationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                                            <?php } ?>
+                                                                        </td>
                                                                         <td><?php echo $value['job_type'] ?></td>
                                                                         <td><?php echo $value['salary'] ?></td>
                                                                         <td><?php echo $value['experience'] ?></td>
@@ -1553,7 +1557,11 @@
                                             <td><?php echo $twelveHourTime ?></td>
                                             <td><?php echo $value['company_name'] ?></td>
                                             <td><?php echo $value['jobCategory'] ?> <?php echo $value['jobSubCategory'] ?></td>
-                                            <td><?php echo $value['location'] ?></td>
+                                            <td><?php echo $value['location'] ?>
+                                                <?php if (!empty($value['locationUrl'])) { ?>            
+                                                <a href="<?php echo $value['locationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                <?php } ?>
+                                            </td>
                                             <td><?php echo $value['job_type'] ?></td>
                                             <td><?php echo $value['salary'] ?></td>
                                             <td><?php echo $value['experience'] ?></td>
@@ -2020,12 +2028,12 @@
                                                 <p class="text-center flex-row-reverse pb-3">Candidate ID : <?php echo $nvalue['eeid'] ?></p>
                                                  <?php
                                             foreach($this->data['canReqStatus'] as $key => $value) {
-                                                if (isset($value['request_status']) && $value['request_status'] == '3') {?>
+                                                if (isset($value['request_status']) && ($value['request_status'] == '3' || $value['request_status'] == '4')) {?>
                                                 <div class="d-sm-flex justify-content-between py-4 resumephoto">
                                                 <img  src="<?php echo baseUrl."uploads/".$nvalue['photo_filename'] ?>" class="" width="160" height="160"  alt="profile photo">
                                                  <?php
                                                 }
-                                            if (isset($value['request_status']) && $value['request_status'] == '3') { ?>
+                                                if (isset($value['request_status']) && ($value['request_status'] == '3' || $value['request_status'] == '4')) { ?>
                                             <div class="text-sm-end mt-4" >
                                                <p><?php echo $nvalue['phonenumber'] ?></p>
                                                <p><?php echo $nvalue['phonenumber1'] ?></p>
@@ -2400,7 +2408,7 @@
                                     <!-- <button onClick="window.print()"  type="button" class="btn btn-dark printhide" id="printbutton" style="display:none">Print</button> -->
 
                                     <?php
-                                              if (isset($canReqStatus[0]['request_status']) && $canReqStatus[0]['request_status'] == '3') {
+                                              if (isset($canReqStatus[0]['request_status']) && ($canReqStatus[0]['request_status'] == '3' || $canReqStatus[0]['request_status'] == '4')) {
                                                   ?>
                                         <div class="recent-sales overflow-auto">
                                     <div>
@@ -2442,6 +2450,16 @@
                         <?php
                         }
                         ?>
+                        <?php
+                    if (isset($canReqStatus[0]['request_status']) && $canReqStatus[0]['request_status'] == '4') {
+                        ?>
+                        <script>
+                            document.getElementById("candidaterequest").style.display = "none";
+                            document.getElementById("candidaterequested").style.display = "none";
+                        </script>
+                    <?php
+                    }
+                    ?>
 
 
                     <?php
@@ -2696,7 +2714,9 @@
                                                    <b>* Expected salary :</b> <?php echo $avalue['expected_salary'] ?> <br>
                                                    <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
                                                     
-                                                    <b>* Job description : </b>    <?php echo $avalue['description'] ?><br>
+                                                   <?php if (!empty($avalue['description'])) { ?>
+                                                    <b>* Job description : </b> <?php echo $avalue['description']; ?>
+                                                    <?php } ?> <br><br>
                                                    
                                                 <?php
                                                 $loopcount++;
