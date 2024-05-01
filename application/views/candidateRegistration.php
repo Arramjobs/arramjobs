@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -55,7 +55,8 @@
     <main>
         <div class="container">
 
-            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <section
+                class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
@@ -81,41 +82,52 @@
                                         name="registration_form" method="post">
 
                                         <div class="">
-                                            
 
-                                            <label for="username" class="form-label">Name <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="name" name="name" oninput="validateName(this)" required>
-                                            <div id="username_error"  style="color: red;" class="error"></div>
+
+                                            <label for="username" class="form-label">Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                oninput="validateName(this)" required>
+                                            <div id="username_error" style="color: red;" class="error"></div>
                                         </div>
                                         <div class="">
                                             <label for="email" class="form-label">Email ID</label>
 
-                                            <input type="email" class="form-control" id="email" name="email" >
-                                            <div id="email_error"  style="color: red;" class="error" ></div>
+                                            <input type="email" class="form-control" id="email" name="email">
+                                            <div id="email_error" style="color: red;" class="error"></div>
                                         </div>
                                         <div class="">
 
-                                            <label for="phonenumber" class="form-label">Mobile number <span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" id="phonenumber" name="phonenumber" pattern="[0-9]{1,15}" 
-                                                maxlength="15" oninput="validatePhoneNumber(this)"required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
-                                            <div id="phone_error"  style="color: red;" class="error" ></div>
+                                            <label for="phonenumber" class="form-label">Mobile number <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="phonenumber"
+                                                name="phonenumber" pattern="[0-9]{1,15}" maxlength="15"
+                                                oninput="validatePhoneNumber(this)" required
+                                                onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                                            <div id="phone_error" style="color: red;" class="error"></div>
                                         </div>
                                         <div class="">
-                                            <label for="crpassword" class="form-label">Create Password <span class="text-danger">*</span></label>
+                                            <label for="crpassword" class="form-label">Create Password <span
+                                                    class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
-                                            <input type="password" class="form-control" id="crpassword" name="crpassword" required>
-                                            <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('crpassword', 'visibilityIcon')">
-                                    <i id="visibilityIcon" class="bi bi-eye-slash"></i>
-                                </button>
-                                            <div id="crpassworderr" style="color: red;" class="error" ></div>
+                                                <input type="password" class="form-control" id="crpassword"
+                                                    name="crpassword" required>
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    onclick="togglePasswordVisibility('crpassword', 'visibilityIcon')">
+                                                    <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+                                                </button>
+                                                <div id="crpassworderr" style="color: red;" class="error"></div>
+                                            </div>
                                         </div>
-                                        </div>
-                                        <div class="text-secondary" style="font-size:15px; margin:0px" id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
+                                        <div class="text-secondary" style="font-size:15px; margin:0px"
+                                            id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
 
-                                        <div class="">                                     
-                                            <label for="cmpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="cmpassword" name="cmpassword" required>
-                                            <p id="cmpassworderr" style="color: red;" class="error" ></p>
+                                        <div class="">
+                                            <label for="cmpassword" class="form-label">Confirm Password <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="cmpassword" name="cmpassword"
+                                                required>
+                                            <p id="cmpassworderr" style="color: red;" class="error"></p>
                                         </div>
 
                                         <!-- <div class="col-12">
@@ -129,7 +141,8 @@
                                             <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                         </div>
                                         <div class="col-12">
-                                            <p class="small mb-0">Already have an account? <a href="<?php echo baseUrl . "Candidate" ?>">Login</a></p>
+                                            <p class="small mb-0">Already have an account? <a
+                                                    href="<?php echo baseUrl . "Candidate" ?>">Login</a></p>
                                         </div>
                                     </form>
 
@@ -144,16 +157,17 @@
                 </div>
 
             </section>
-           
+
         </div>
     </main><!-- End #main -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-      
-<!-- NAME CHARACTERS VALIDATION -->
-<script>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- NAME CHARACTERS VALIDATION -->
+    <script>
         function validateName(input) {
-          input.value = input.value.replace(/[0-9]/g, '');
+            input.value = input.value.replace(/[0-9]/g, '');
         }
         function togglePasswordVisibility(inputId, iconId) {
             var passwordInput = document.getElementById(inputId);
@@ -169,17 +183,17 @@
                 visibilityIcon.classList.add("bi-eye-slash");
             }
         }
-</script>
+    </script>
 
     <script>
-       
-            document.getElementById("crpassword").onfocus = function() {
-            document.getElementById("passwordmessage").style.display = "block";
-            }
 
-            document.getElementById("crpassword").onblur = function() {
+        document.getElementById("crpassword").onfocus = function () {
             document.getElementById("passwordmessage").style.display = "block";
-            }
+        }
+
+        document.getElementById("crpassword").onblur = function () {
+            document.getElementById("passwordmessage").style.display = "block";
+        }
 
         function validateForm() {
             var username = document.getElementById('name').value;
@@ -207,7 +221,7 @@
                 return false;
             }
 
-             if (!crpassword.trim()) {
+            if (!crpassword.trim()) {
                 displayError('Password must be filled out', 'crpassworderr');
                 return false;
             } else if (!validatePassword(crpassword)) {
@@ -215,7 +229,7 @@
                 return false;
             }
 
-             if (!cmpassword.trim()) {
+            if (!cmpassword.trim()) {
                 displayError('Confirm password must be filled out', 'cmpassworderr');
                 return false;
             } else if (!(crpassword == cmpassword)) {
@@ -237,7 +251,7 @@
         }
 
         function validatePassword(crpassword) {
-             var regex = /^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])\d{4}$/;
+            var regex = /^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])\d{4}$/;
             return regex.test(crpassword);
         }
 
@@ -254,15 +268,16 @@
         }
     </script>
 
-<footer id="footer" class="footer mt-auto py-3">
-  <div class="contact">
-      <p style="padding-left:24%; color:#blue;">Need help? Contact us anytime: <a href="tel:7418334443"><strong>+91 7418334443</strong></a></p>
-    </div>
-    <div class="copyright" style="padding-right:25%;">
-      &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
-    </div>
-  </footer>
-  
+    <footer id="footer" class="footer mt-auto py-3">
+        <div class="contact">
+            <p style="padding-left:24%; color:#blue;">Need help? Contact us anytime: <a
+                    href="tel:7418334443"><strong>+91 7418334443</strong></a></p>
+        </div>
+        <div class="copyright" style="padding-right:25%;">
+            &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
+        </div>
+    </footer>
+
     <!-- Vendor JS Files -->
     <script src="<?php echo baseUrl; ?>/assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="<?php echo baseUrl; ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -277,13 +292,13 @@
     <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
 
     <!-- Event listener to block right-click -->
-<script>
-    function blockRightClick(event) {
-        event.preventDefault(); 
-    }
+    <script>
+        function blockRightClick(event) {
+            event.preventDefault();
+        }
 
-    document.addEventListener('contextmenu', blockRightClick);
-</script>
+        document.addEventListener('contextmenu', blockRightClick);
+    </script>
 
 </body>
 

@@ -76,7 +76,8 @@
                                             <label for="yourUsername" class="form-label">Username</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="userName" class="form-control" id="yourUsername" required>
+                                                <input type="text" name="userName" class="form-control"
+                                                    id="yourUsername" required>
                                                 <div class="invalid-feedback">Please enter your username.</div>
                                             </div>
                                         </div>
@@ -84,7 +85,8 @@
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
                                             <div class="input-group has-validation">
-                                                <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                                <input type="password" name="password" class="form-control"
+                                                    id="yourPassword" required>
                                                 <button type="button" class="btn btn-outline-secondary"
                                                     onclick="togglePasswordVisibility('yourPassword', 'visibilityIcon')">
                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
@@ -159,13 +161,13 @@
     <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
 
     <!-- Event listener to block right-click -->
-<script>
-    function blockRightClick(event) {
-        event.preventDefault(); 
-    }
+    <script>
+        function blockRightClick(event) {
+            event.preventDefault();
+        }
 
-    document.addEventListener('contextmenu', blockRightClick);
-</script>
+        document.addEventListener('contextmenu', blockRightClick);
+    </script>
 
 </body>
 

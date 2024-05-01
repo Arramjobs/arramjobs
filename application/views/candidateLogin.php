@@ -54,8 +54,7 @@
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
-                                <a href="<?php echo baseUrl; ?>"
-                                    class="logo d-flex align-items-center w-auto">
+                                <a href="<?php echo baseUrl; ?>" class="logo d-flex align-items-center w-auto">
                                     <!-- <img src="assets/img/logo.png" alt=""> -->
                                     <span class="d-block">Candidate Login</span>
                                 </a>
@@ -70,8 +69,9 @@
                                         <p class="text-center small">Enter your mobile number to login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate action="<?php echo baseUrl . "Candidate/candidateLogin" ?>" 
-                                    method="post" onsubmit="return validateform()">
+                                    <form class="row g-3 needs-validation" novalidate
+                                        action="<?php echo baseUrl . "Candidate/candidateLogin" ?>" method="post"
+                                        onsubmit="return validateform()">
 
                                         <!-- <div class="col-12">
                                             <label for="username" class="form-label">Registerd ID</label>
@@ -87,8 +87,9 @@
                                                     class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="number" name="phonenumber" class="form-control" id="phonenumber"
-                                                    oninput="validatePhoneNumber(this)" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                                                <input type="number" name="phonenumber" class="form-control"
+                                                    id="phonenumber" oninput="validatePhoneNumber(this)" required
+                                                    onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                                 <div class="invalid-feedback">Please enter your mobile number.</div>
                                             </div>
                                             <div id="phoneError" class="text-danger"> </div>
@@ -98,14 +99,17 @@
                                             <label for="cdpassword" class="form-label">Password <span
                                                     class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
-                                                <input type="password" name="cdpassword" class="form-control" id="cdpassword" oninput="validatePassword(this)" required />
-                                                <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('cdpassword', 'visibilityIcon')">
+                                                <input type="password" name="cdpassword" class="form-control"
+                                                    id="cdpassword" oninput="validatePassword(this)" required />
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    onclick="togglePasswordVisibility('cdpassword', 'visibilityIcon')">
                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
                                                 </button>
                                                 <div class="invalid-feedback">Please enter your password.</div>
                                                 <div id="passwordError" class="text-danger"></div>
                                             </div>
-                                            <div class="text-secondary" style="font-size:15px; margin:0px" id="passwordmessage">Enter the password in DDMMYYYY (01051996).</div>
+                                            <div class="text-secondary" style="font-size:15px; margin:0px"
+                                                id="passwordmessage">Enter the password in DDMMYYYY (01051996).</div>
                                         </div>
 
                                         <!-- <div class="col-12">
@@ -121,7 +125,7 @@
                                     <div class="col-12">
                                         <br>
                                         <div class="form-check">
-                                            <p>Create an account ? 
+                                            <p>Create an account ?
                                                 <a href="<?php echo baseUrl . "Candidate/registration" ?>">Register</a>
                                             </p>
                                         </div>
@@ -200,14 +204,15 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
-            <footer id="footer" class="footer mt-auto py-3">
-  <div class="contact">
-      <p style="padding-left:24%; color:#blue;">Need help? Contact us anytime: <a href="tel:7418334443"><strong>+91 7418334443</strong></a></p>
-    </div>
-    <div class="copyright" style="padding-right:25%;">
-      &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
-    </div>
-  </footer>
+    <footer id="footer" class="footer mt-auto py-3">
+        <div class="contact">
+            <p style="padding-left:24%; color:#blue;">Need help? Contact us anytime: <a
+                    href="tel:7418334443"><strong>+91 7418334443</strong></a></p>
+        </div>
+        <div class="copyright" style="padding-right:25%;">
+            &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
+        </div>
+    </footer>
 
     <!-- Vendor JS Files -->
     <script src="<?php echo baseUrl; ?>/assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -223,13 +228,13 @@
     <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
 
     <!-- Event listener to block right-click -->
-<script>
-    function blockRightClick(event) {
-        event.preventDefault(); 
-    }
+    <script>
+        function blockRightClick(event) {
+            event.preventDefault();
+        }
 
-    document.addEventListener('contextmenu', blockRightClick);
-</script>
+        document.addEventListener('contextmenu', blockRightClick);
+    </script>
 
 </body>
 

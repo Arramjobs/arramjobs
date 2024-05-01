@@ -54,177 +54,256 @@ class Admin extends CI_Controller
         }
     }
 
+    // Dashboard
     public function dashboard()
     {
-        $admin = $this->AdminModel->admin();
-        $this->data['admin'] = $admin;
-        $employer = $this->AdminModel->employer();
-        $this->data['employer'] = $employer;
-        $employee = $this->AdminModel->employee();
-        $this->data['employee'] = $employee;
-        $this->data['method'] = "dashboard";
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+
+            $admin = $this->AdminModel->admin();
+            $this->data['admin'] = $admin;
+            $employer = $this->AdminModel->employer();
+            $this->data['employer'] = $employer;
+            $employee = $this->AdminModel->employee();
+            $this->data['employee'] = $employee;
+            $this->data['method'] = "dashboard";
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
+
+    // Admin 
 
     public function createAdminUser()
     {
-        $this->data['method'] = "createAdminUser";
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "createAdminUser";
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function insertAdminUser()
     {
-        $postData = $this->input->post(null, true);
-        $register = $this->AdminModel->createAdminUser();
-        $generatedeeid = $this->AdminModel->generate_customer_id();
-        $this->adminUsers();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $register = $this->AdminModel->createAdminUser();
+            $generatedeeid = $this->AdminModel->generate_customer_id();
+            $this->adminUsers();
+        } else {
+            $this->index();
+        }
     }
 
     public function adminUsers()
     {
-        $this->data['method'] = "adminUsers";
-        $adminUsers = $this->AdminModel->adminUsers();
-        $this->data['adminUsers'] = $adminUsers;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
-    }
-
-    public function createEmployer()
-    {
-        $this->data['method'] = "createEmployer";
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "adminUsers";
+            $adminUsers = $this->AdminModel->adminUsers();
+            $this->data['adminUsers'] = $adminUsers;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function deleteAdminuser()
     {
-        $adminId = $this->uri->segment(3);
-        $delete = $this->AdminModel->deleteAdminUser($adminId);
-        if ($delete == null) {
-            $this->adminUsers();
+        if (isset($_SESSION['adminId'])) {
+            $adminId = $this->uri->segment(3);
+            $delete = $this->AdminModel->deleteAdminUser($adminId);
+            if ($delete == null) {
+                $this->adminUsers();
+            } else {
+                echo "Error deleting record";
+            }
         } else {
-            echo "Error deleting record";
+            $this->index();
         }
     }
+
+    // Employer
+
+    public function createEmployer()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "createEmployer";
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
+    }
+
     public function insertEmployer()
     {
-        $postData = $this->input->post(null, true);
-        $responses = $this->EmployerModel->register();
-        $generatedid = $this->EmployerModel->generate_customer_id();
-        $this->newEmployersList();
-        echo '<script>alert("Employer registered successfully.");</script>';
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $responses = $this->EmployerModel->register();
+            $generatedid = $this->EmployerModel->generate_customer_id();
+            $this->newEmployersList();
+            echo '<script>alert("Employer registered successfully.");</script>';
+        } else {
+            $this->index();
+        }
     }
 
     public function newEmployersList()
     {
-        $this->data['method'] = "unVerifiedEmployers";
-        $unVerifiedEmployers = $this->AdminModel->unVerifiedEmployers();
-        $this->data['unVerifiedEmployers'] = $unVerifiedEmployers;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "unVerifiedEmployers";
+            $unVerifiedEmployers = $this->AdminModel->unVerifiedEmployers();
+            $this->data['unVerifiedEmployers'] = $unVerifiedEmployers;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function verifiedEmployers()
     {
-        $this->data['method'] = "verifiedEmployers";
-        $verifiedEmployers = $this->AdminModel->verifiedEmployers();
-        $this->data['verifiedEmployers'] = $verifiedEmployers;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "verifiedEmployers";
+            $verifiedEmployers = $this->AdminModel->verifiedEmployers();
+            $this->data['verifiedEmployers'] = $verifiedEmployers;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function pendingEmployers()
     {
-        $this->data['method'] = "pendingEmployers";
-        $pendingEmployers = $this->AdminModel->pendingEmployers();
-        $this->data['pendingEmployers'] = $pendingEmployers;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "pendingEmployers";
+            $pendingEmployers = $this->AdminModel->pendingEmployers();
+            $this->data['pendingEmployers'] = $pendingEmployers;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function deleteEmployerList()
     {
-        $this->data['method'] = "deleteEmployerList";
-        $deleteEmployerList = $this->AdminModel->deleteEmployerList();
-        $this->data['deleteEmployerList'] = $deleteEmployerList;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "deleteEmployerList";
+            $deleteEmployerList = $this->AdminModel->deleteEmployerList();
+            $this->data['deleteEmployerList'] = $deleteEmployerList;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
     public function overallEmployers()
     {
-        $this->data['method'] = "overallEmployers";
-        $overallEmployers = $this->AdminModel->overallEmployers();
-        $this->data['overallEmployers'] = $overallEmployers;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "overallEmployers";
+            $overallEmployers = $this->AdminModel->overallEmployers();
+            $this->data['overallEmployers'] = $overallEmployers;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function deleteOverallEmployers()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
-                $selectedItems = $_POST['selected_items'];
-                foreach ($selectedItems as $itemId) {
-                    $this->AdminModel->deleteOverallEmployers($itemId);
+        if (isset($_SESSION['adminId'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
+                    $selectedItems = $_POST['selected_items'];
+                    foreach ($selectedItems as $itemId) {
+                        $this->AdminModel->deleteOverallEmployers($itemId);
+                    }
+                    $this->overallEmployers();
+                } else {
+                    $this->overallEmployers();
+                    echo '<script>alert("Please select the checkbox to delete.");</script>';
                 }
-                $this->overallEmployers();
-            } else {
-                $this->overallEmployers();
-                echo '<script>alert("Please select the checkbox to delete.");</script>';
             }
+        } else {
+            $this->index();
         }
     }
 
     public function manageEmployer()
     {
-        $id = $this->uri->segment(3);
+        if (isset($_SESSION['adminId'])) {
+            $id = $this->uri->segment(3);
 
-        $verifyEmployerDetails = $this->AdminModel->verifyEmployerDetails($id);
-        $this->data['manageEmployer'] = $verifyEmployerDetails;
+            $verifyEmployerDetails = $this->AdminModel->verifyEmployerDetails($id);
+            $this->data['manageEmployer'] = $verifyEmployerDetails;
 
-        $this->setVariable();
+            $this->setVariable();
 
-        $this->data['method'] = "manageEmployer";
-        $this->load->view('adminDashboard.php', $this->data);
+            $this->data['method'] = "manageEmployer";
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function viewEmployer()
     {
-        $id = $this->uri->segment(3);
+        if (isset($_SESSION['adminId'])) {
+            $id = $this->uri->segment(3);
 
-        $verifyEmployerDetails = $this->AdminModel->verifyEmployerDetails($id);
-        $this->data['manageEmployer'] = $verifyEmployerDetails;
+            $verifyEmployerDetails = $this->AdminModel->verifyEmployerDetails($id);
+            $this->data['manageEmployer'] = $verifyEmployerDetails;
 
-        $employerJobDetails = $this->AdminModel->employerJobDetails($id);
-        $this->data['jobDetails'] = $employerJobDetails;
+            $employerJobDetails = $this->AdminModel->employerJobDetails($id);
+            $this->data['jobDetails'] = $employerJobDetails;
 
-        $this->setVariable();
+            $this->setVariable();
 
-        $this->data['method'] = "viewEmployer";
-        $this->load->view('adminDashboard.php', $this->data);
+            $this->data['method'] = "viewEmployer";
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function verifyEmployer()
     {
-        $postData = $this->input->post(null, true);
-        $verifyEmployer = $this->AdminModel->verifyEmployer();
-        $this->dashboard();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $verifyEmployer = $this->AdminModel->verifyEmployer();
+            $this->dashboard();
+        } else {
+            $this->index();
+        }
     }
 
     public function deleteEmployerForm()
     {
-        $postData = $this->input->post(null, true);
-        $deleteRequestEmployer = $this->AdminModel->deleteEmployer();
-        $this->dashboard();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $deleteRequestEmployer = $this->AdminModel->deleteEmployer();
+            $this->dashboard();
+        } else {
+            $this->index();
+        }
     }
 
     public function restoreEmployerform()
     {
-        $postData = $this->input->post(null, true);
-        $restoreEmployerDetails = $this->AdminModel->restoreEmployerDetails();
-        $this->deleteEmployerList();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $restoreEmployerDetails = $this->AdminModel->restoreEmployerDetails();
+            $this->deleteEmployerList();
+        } else {
+            $this->index();
+        }
     }
 
     // public function employerApprovel()
@@ -257,38 +336,7 @@ class Admin extends CI_Controller
     // }
 
 
-    public function createCandidates()
-    {
-        $this->data['method'] = "createEmployees";
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
-    }
-
-
-    public function employeeRegistration()
-    {
-        $postData = $this->input->post(null, true);
-        $register = $this->CandidateModel->register();
-        $generatedeeid = $this->CandidateModel->generate_customer_id();
-        $this->newCandidateList();
-        echo '<script>alert("Candidate registered successfully.");</script>';
-    }
-
-    public function createCandidatesAdmin()
-    {
-        $this->data['method'] = "createEmployees1";
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
-    }
-
-    public function employeeRegistrationAdmin()
-    {
-        $postData = $this->input->post(null, true);
-        $register = $this->CandidateModel->register();
-        $generatedeeid = $this->CandidateModel->generate_customer_id();
-        $this->basicDetails();
-        echo '<script>alert("Candidate registered successfully.");</script>';
-    }
+    // EMPLOYER JOB POST BY ADMIN
 
     // public function updateRegistration()
     // {
@@ -428,7 +476,7 @@ class Admin extends CI_Controller
     //     }
 
     // }
-   
+
     // public function requestCandidate()
     // {
     //     $postData = $this->input->post(null, true);
@@ -437,185 +485,422 @@ class Admin extends CI_Controller
     // }
 
 
+    // CANDIDATES
+
+    public function createCandidates()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "createEmployees";
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
+    }
+
+
+    public function employeeRegistration()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $register = $this->CandidateModel->register();
+            $generatedeeid = $this->CandidateModel->generate_customer_id();
+            $this->newCandidateList();
+            echo '<script>alert("Candidate registered successfully.");</script>';
+        } else {
+            $this->index();
+        }
+    }
+
+    public function createCandidatesAdmin()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "createEmployees1";
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
+    }
+
+    public function employeeRegistrationAdmin()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $register = $this->CandidateModel->register();
+            $generatedeeid = $this->CandidateModel->generate_customer_id();
+            $this->basicDetails();
+            echo '<script>alert("Candidate registered successfully.");</script>';
+        } else {
+            $this->index();
+        }
+    }
+
     public function newCandidateList()
     {
-        $this->data['method'] = "unVerifiedEmployees";
-        $unVerifiedEmployees = $this->AdminModel->unVerifiedEmployees();
-        $this->data['unVerifiedEmployees'] = $unVerifiedEmployees;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "unVerifiedEmployees";
+            $unVerifiedEmployees = $this->AdminModel->unVerifiedEmployees();
+            $this->data['unVerifiedEmployees'] = $unVerifiedEmployees;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function verifiedCandidate()
     {
-        $this->data['method'] = "verifiedEmployees";
-        $verifiedEmployees = $this->AdminModel->verifiedEmployees();
-        $this->data['verifiedEmployees'] = $verifiedEmployees;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "verifiedEmployees";
+            $verifiedEmployees = $this->AdminModel->verifiedEmployees();
+            $this->data['verifiedEmployees'] = $verifiedEmployees;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
     public function pendingCandidates()
     {
-        $this->data['method'] = "pendingEmployees";
-        $pendingEmployees = $this->AdminModel->pendingEmployees();
-        $this->data['pendingEmployees'] = $pendingEmployees;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "pendingEmployees";
+            $pendingEmployees = $this->AdminModel->pendingEmployees();
+            $this->data['pendingEmployees'] = $pendingEmployees;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function deleteCandidateList()
     {
-        $this->data['method'] = "deleteEmployeeList";
-        $deleteEmployeeList = $this->AdminModel->deleteEmployeeList();
-        $this->data['deleteEmployeeList'] = $deleteEmployeeList;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "deleteEmployeeList";
+            $deleteEmployeeList = $this->AdminModel->deleteEmployeeList();
+            $this->data['deleteEmployeeList'] = $deleteEmployeeList;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function overallCandidates()
     {
-        $this->data['method'] = "overallEmployees";
-        $overallEmployees = $this->AdminModel->overallEmployees();
-        $this->data['overallEmployees'] = $overallEmployees;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "overallEmployees";
+            $overallEmployees = $this->AdminModel->overallEmployees();
+            $this->data['overallEmployees'] = $overallEmployees;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function deleteOverallEmployees()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
-                $selectedItems = $_POST['selected_items'];
-                foreach ($selectedItems as $itemId) {
-                    $this->AdminModel->deleteOverallEmployees($itemId);
+        if (isset($_SESSION['adminId'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
+                    $selectedItems = $_POST['selected_items'];
+                    foreach ($selectedItems as $itemId) {
+                        $this->AdminModel->deleteOverallEmployees($itemId);
+                    }
+                    $this->overallCandidates();
+                } else {
+                    $this->overallCandidates();
+                    echo '<script>alert("Please select the checkbox to delete.");</script>';
                 }
-                $this->overallCandidates();
-            } else {
-                $this->overallCandidates();
-                echo '<script>alert("Please select the checkbox to delete.");</script>';
             }
+        } else {
+            $this->index();
+        }
+    }
+
+    // CANDIDATE FORM
+
+    public function basicDetails()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $id = $this->uri->segment(3);
+            $basicDetails = $this->AdminModel->getBasicDetails($id);
+            $this->data['basicDetails'] = $basicDetails;
+            $this->setVariable();
+            $this->data['method'] = 'basicdetails';
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
+    }
+
+    public function updateBasicDetails()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $updateBasicDetails = $this->CandidateModel->updateBasicDetails();
+            $this->newCandidateList();
+            echo '<script>alert("Basic details inserted successfully by admin.");</script>';
+        } else {
+            $this->index();
+        }
+    }
+
+    // EDUCATION
+
+    public function educationTable()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $id = $this->uri->segment(3);
+            //  $educationTable = $this->AdminModel->educationTable($id);
+            //  $this->data['educationTable'] = $educationTable;
+            $this->data['candidateId'] = $id;
+            $this->setVariable();
+            $this->data['method'] = 'educationTable';
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
+    }
+
+    public function insertEducationForm()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $insertEducationForm = $this->CandidateModel->insertEducationForm();
+            // $insertEducationForm = $this->CandidateModel->insertSubmit();
+
+            $this->newCandidateList();
+            echo '<script>alert("Education details inserted successfully by admin.");</script>';
+        } else {
+            $this->index();
+        }
+    }
+
+    // EXPERIENCE    
+
+    public function experienceTable()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $id = $this->uri->segment(3);
+            $this->data['candidateId'] = $id;
+
+            $categoryList = $this->CandidateModel->getCategoryList();
+            $this->data['categoryList'] = $categoryList;
+
+            $this->setVariable();
+            $this->data['method'] = "experienceTable";
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
+    }
+
+    public function insertExperienceForm()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $insertExperienceForm = $this->CandidateModel->insertExperienceForm();
+
+            $this->newCandidateList();
+            echo '<script>alert("Experience details inserted successfully.");</script>';
+        } else {
+            $this->index();
+        }
+    }
+
+    public function insertFresherForm()
+    {
+        if (isset($_SESSION['adminId'])) {
+            // $id = $this->uri->segment(3);
+            $insertExperienceForm = $this->CandidateModel->insertFresherForm();
+
+            $this->newCandidateList();
+            echo '<script>alert("Experience is inserted as No experience.");</script>';
+        } else {
+            $this->index();
+        }
+    }
+
+    // AREA OF INTEREST
+
+    public function areaOfIntrestTable()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $id = $this->uri->segment(3);
+            $this->data['candidateId'] = $id;
+
+            $this->data['method'] = "areaOfIntrestTable";
+
+            $categoryList = $this->CandidateModel->getCategoryList();
+            $this->data['categoryList'] = $categoryList;
+
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
+    }
+
+    public function insertAreaOfIntrest()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $insertAreaOfIntrest = $this->AdminModel->jobInterestResume();
+
+            $this->newCandidateList();
+            echo '<script>alert("Area of interest inserted successfully by admin.");</script>';
+        } else {
+            $this->index();
+        }
+    }
+
+    // SKILLS
+
+    public function skillTable()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "addSkillForm";
+            $id = $this->uri->segment(3);
+            $this->data['candidateId'] = $id;
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
+    }
+
+    public function insertSkillForm()
+    {
+        if (isset($_SESSION['adminId'])) {
+            $insertSkillForm = $this->CandidateModel->insertSkillForm();
+            $this->newCandidateList();
+            echo '<script>alert("Skill inserted successfully by admin.");</script>';
+        } else {
+            $this->index();
         }
     }
 
     public function manageCandidate()
     {
-        $id = $this->uri->segment(3);
-        $this->data['method'] = "manageEmployee";
+        if (isset($_SESSION['adminId'])) {
+            $id = $this->uri->segment(3);
+            $this->data['method'] = "manageEmployee";
 
-        $education = $this->EmployerModel->educationalDetails($id);
-        $this->data['education'] = $education;
+            $education = $this->EmployerModel->educationalDetails($id);
+            $this->data['education'] = $education;
 
-        $skills = $this->EmployerModel->skills($id);
-        $this->data['skills'] = $skills;
+            $skills = $this->EmployerModel->skills($id);
+            $this->data['skills'] = $skills;
 
-        // $projectDetails = $this->EmployerModel->projectDetails($id);
-        // $this->data['projectDetails'] = $projectDetails;
+            $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
+            $this->data['areaOfInterest'] = $areaOfInterest;
 
-        $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
-        $this->data['areaOfInterest'] = $areaOfInterest;
+            $experienceDetails = $this->EmployerModel->experienceDetails($id);
+            $this->data['experienceDetails'] = $experienceDetails;
 
-        $experienceDetails = $this->EmployerModel->experienceDetails($id);
-        $this->data['experienceDetails'] = $experienceDetails;
+            $basicDetails = $this->EmployerModel->candidate($id);
+            $this->data['basicDetails'] = $basicDetails;
 
-        $basicDetails = $this->EmployerModel->candidate($id);
-        $this->data['basicDetails'] = $basicDetails;
+            $this->setVariable();
 
-        $this->setVariable();
-
-        $this->load->view('adminDashboard.php', $this->data);
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function viewCandidate()
     {
-        $id = $this->uri->segment(3);
-        $this->data['method'] = "viewEmployee";
+        if (isset($_SESSION['adminId'])) {
+            $id = $this->uri->segment(3);
+            $this->data['method'] = "viewEmployee";
 
-        $education = $this->EmployerModel->educationalDetails($id);
-        $this->data['education'] = $education;
+            $education = $this->EmployerModel->educationalDetails($id);
+            $this->data['education'] = $education;
 
-        $skills = $this->EmployerModel->skills($id);
-        $this->data['skills'] = $skills;
+            $skills = $this->EmployerModel->skills($id);
+            $this->data['skills'] = $skills;
 
-        $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
-        $this->data['areaOfInterest'] = $areaOfInterest;
+            $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
+            $this->data['areaOfInterest'] = $areaOfInterest;
 
-        $experienceDetails = $this->EmployerModel->experienceDetails($id);
-        $this->data['experienceDetails'] = $experienceDetails;
+            $experienceDetails = $this->EmployerModel->experienceDetails($id);
+            $this->data['experienceDetails'] = $experienceDetails;
 
-        $basicDetails = $this->EmployerModel->candidate($id);
-        $this->data['basicDetails'] = $basicDetails;
+            $basicDetails = $this->EmployerModel->candidate($id);
+            $this->data['basicDetails'] = $basicDetails;
 
-        $this->setVariable();
+            $this->setVariable();
 
-        $this->load->view('adminDashboard.php', $this->data);
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function resumePrint()
     {
-        $id = $this->uri->segment(3);
-        $this->data['method'] = "resumePrint";
+        if (isset($_SESSION['adminId'])) {
+            $id = $this->uri->segment(3);
+            $this->data['method'] = "resumePrint";
 
-        $education = $this->EmployerModel->educationalDetails($id);
-        $this->data['education'] = $education;
+            $education = $this->EmployerModel->educationalDetails($id);
+            $this->data['education'] = $education;
 
-        $skills = $this->EmployerModel->skills($id);
-        $this->data['skills'] = $skills;
+            $skills = $this->EmployerModel->skills($id);
+            $this->data['skills'] = $skills;
 
-        $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
-        $this->data['areaOfInterest'] = $areaOfInterest;
+            $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
+            $this->data['areaOfInterest'] = $areaOfInterest;
 
-        $experienceDetails = $this->EmployerModel->experienceDetails($id);
-        $this->data['experienceDetails'] = $experienceDetails;
+            $experienceDetails = $this->EmployerModel->experienceDetails($id);
+            $this->data['experienceDetails'] = $experienceDetails;
 
-        $basicDetails = $this->EmployerModel->candidate($id);
-        $this->data['basicDetails'] = $basicDetails;
+            $basicDetails = $this->EmployerModel->candidate($id);
+            $this->data['basicDetails'] = $basicDetails;
 
-        $this->setVariable();
+            $this->setVariable();
 
-        $this->load->view('adminDashboard.php', $this->data);
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function verifyEmployee()
     {
-        $postData = $this->input->post(null, true);
-        $verifyEmployeeDetails = $this->AdminModel->verifyEmployeeDetails();
-        $this->verifiedCandidate();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $verifyEmployeeDetails = $this->AdminModel->verifyEmployeeDetails();
+            $this->verifiedCandidate();
+        } else {
+            $this->index();
+        }
     }
 
     public function deleteEmployeeform()
     {
-        $postData = $this->input->post(null, true);
-        $deleteEmployeeDetails = $this->AdminModel->deleteEmployeeDetails();
-        $this->deleteCandidateList();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $deleteEmployeeDetails = $this->AdminModel->deleteEmployeeDetails();
+            $this->deleteCandidateList();
+        } else {
+            $this->index();
+        }
     }
 
     public function restoreEmployeeform()
     {
-        $postData = $this->input->post(null, true);
-        $restoreEmployeeDetails = $this->AdminModel->restoreEmployeeDetails();
-        $this->deleteCandidateList();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $restoreEmployeeDetails = $this->AdminModel->restoreEmployeeDetails();
+            $this->deleteCandidateList();
+        } else {
+            $this->index();
+        }
     }
 
     // Delete Employee from Table permanently
-    // public function deleteEmployeeDetails()
-    // {
-    //     $deleteEmployeeId = $this->uri->segment(3);
-    //     $delete = $this->AdminModel->deleteEmployee($deleteEmployeeId);
-    //     if ($delete == null) {
-    //         $this->deleteEmployeeList();
-    //     } else {
-    //         echo "Error deleting record";
-    //     }
-    // }
-
-
-    // public function addNewAdminApprovel()
-    // {
-    // }
-
-    // public function deleteAdminApprovel()
-    // {
-    // }
 
     // public function employerApprovelRequest()
     // {
@@ -630,392 +915,283 @@ class Admin extends CI_Controller
     // }
 
 
+    // CANDIDATE AND EMPLOYER TRACKING CHART
+
     public function candidateChart()
     {
-        $this->data['method'] = "candidateChart";
-        $candidateChartList = $this->AdminModel->candidateChartDetails();
-        $this->data['candidateChartList'] = $candidateChartList["response"];
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "candidateChart";
+            $candidateChartList = $this->AdminModel->candidateChartDetails();
+            $this->data['candidateChartList'] = $candidateChartList["response"];
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
+
+    // public function employerChart()
+    // {
+    //     $this->data['method'] = "employerChart";
+    //     $employerChartList = $this->AdminModel->employerChartDetails();
+    //     $this->data['employerChartList'] = $employerChartList["response"];
+    //     // $filteredEmployerChartList = array_filter($employerChartList["response"], function($item) {
+    //     //     return $item['currentStatus'] == 1;
+    //     // });
+
+    //     // $this->data['employerChartList'] = $filteredEmployerChartList;
+    //     $this->setVariable();
+    //     $this->load->view('adminDashboard.php', $this->data);
+    // }
+
 
     public function employerChart()
     {
-        $this->data['method'] = "employerChart";
-        $employerChartList = $this->AdminModel->employerChartDetails();
-        // $this->data['employerChartList'] = $employerChartList["response"];
-        $filteredEmployerChartList = array_filter($employerChartList["response"], function($item) {
-            return $item['currentStatus'] == 1;
-        });
-        
-        $this->data['employerChartList'] = $filteredEmployerChartList;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "employerChart";
+            $candidateplaced = $this->AdminModel->employerChartDetails();
+            $this->data['employerChart'] = $candidateplaced["response"];
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function updateCurrentStatus()
     {
-        $postData = $this->input->post(null, true);
-        $updateStatus = $this->AdminModel->candidateStatus();
-        $currentStatus = $this->AdminModel->currentStatusSpf();
-        $this->candidateChart();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $updateStatus = $this->AdminModel->candidateStatus();
+            $currentStatus = $this->AdminModel->currentStatusSpf();
+            $this->candidateChart();
+        } else {
+            $this->index();
+        }
     }
 
     public function updateCurrentStatusEmp()
     {
-        $postData = $this->input->post(null, true);
-        $updateStatus = $this->AdminModel->employerStatus();
-        $currentStatus = $this->AdminModel->currentStatusSpfEmp();
-        $this->employerChart();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $updateStatus = $this->AdminModel->employerStatus();
+            $currentStatus = $this->AdminModel->currentStatusSpfEmp();
+            $this->employerChart();
+        } else {
+            $this->index();
+        }
     }
+
+    // CANDIDATE STATUS
 
     public function placedCandidate()
     {
-        $this->data['method'] = "placedCandidates";
-        $candidateplaced = $this->AdminModel->placedCandidatesList();
-        $this->data['placedCandidates'] = $candidateplaced["response"];
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "placedCandidates";
+            $candidateplaced = $this->AdminModel->placedCandidatesList();
+            $this->data['placedCandidates'] = $candidateplaced["response"];
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
+    }
+
+    public function placedCandidatesDetails()
+    {
+        $this->data['method'] = "placedCandidatesDetails";
+        $candidateplaced = $this->AdminModel->placedCandidatesDetails();
+        $this->data['placedCandidatesDetails'] = $candidateplaced;
         $this->setVariable();
+
+        $id = $this->uri->segment(3);
+        $basicDetails = $this->EmployerModel->candidate($id);
+        $this->data['basicDetails'] = $basicDetails;
+
+        $areaOfInterest = $this->EmployerModel->areaOfInterest($id);
+        $this->data['areaOfInterest'] = $areaOfInterest;
+
+        $employerJobDetails = $this->AdminModel->employerJobDetails($id);
+        $this->data['jobDetails'] = $employerJobDetails;
+
         $this->load->view('adminDashboard.php', $this->data);
     }
 
-    // public function placedCandidatesDetails()
-    // {
-    //     $this->data['method'] = "placedCandidatesDetails";
-    //     $candidateplaced = $this->AdminModel->placedCandidatesDetails();
-    //     $this->data['placedCandidatesDetails'] = $candidateplaced;
-    //     $this->setVariable();
-        
-    //     $id = $this->uri->segment(3);
-    //     $basicDetails = $this->EmployerModel->candidate($id);
-    //     $this->data['basicDetails'] = $basicDetails;
-
-    //     $jobCategory = $this->uri->segment(3);
-    //     $response = $this->EmployerModel->candidates($jobCategory);
-    //     $this->data['response'] = $response;
-    //     $this->data['category'] = $jobCategory;
-
-    //     $this->load->view('adminDashboard.php', $this->data);
-    // }
-
     public function interviewedCandidate()
     {
-        $this->data['method'] = "interviewedCandidates";
-        $candidateinterviewed = $this->AdminModel->interviewedCandidatesList();
-        $this->data['interviewedCandidates'] = $candidateinterviewed["response"];
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "interviewedCandidates";
+            $candidateinterviewed = $this->AdminModel->interviewedCandidatesList();
+            $this->data['interviewedCandidates'] = $candidateinterviewed["response"];
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function rejectedCandidate()
     {
-        $this->data['method'] = "rejectedCandidate";
-        $candidateRejected = $this->AdminModel->rejectedCandidatesList();
-        $this->data['rejectedCandidates'] = $candidateRejected["response"];
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "rejectedCandidate";
+            $candidateRejected = $this->AdminModel->rejectedCandidatesList();
+            $this->data['rejectedCandidates'] = $candidateRejected["response"];
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function relievedCandidate()
     {
-        $this->data['method'] = "relievedCandidate";
-        $candidateRelieved = $this->AdminModel->relievedCandidatesList();
-        $this->data['relievedCandidates'] = $candidateRelieved["response"];
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "relievedCandidate";
+            $candidateRelieved = $this->AdminModel->relievedCandidatesList();
+            $this->data['relievedCandidates'] = $candidateRelieved["response"];
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
+
+    // CANDIDATE REQUEST
 
     public function candidateRequestList()
     {
-        $this->data['method'] = "candidateRequestList";
-        $candidateRequestList = $this->AdminModel->candidateRequestDetails();
-        $this->data['candidateRequestList'] = $candidateRequestList["response"];
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "candidateRequestList";
+            $candidateRequestList = $this->AdminModel->candidateRequestDetails();
+            $this->data['candidateRequestList'] = $candidateRequestList["response"];
+            $this->setVariable();
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function approveCandidateRequest()
     {
-        $postData = $this->input->post(null, true);
-        $approveRequest = $this->AdminModel->approveRequest();
-        $this->candidateChart();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $approveRequest = $this->AdminModel->approveRequest();
+            $this->candidateChart();
+        } else {
+            $this->index();
+        }
     }
 
     public function cancelCandidateRequest()
     {
-        $postData = $this->input->post(null, true);
-        $cancelRequest = $this->AdminModel->cancelRequest();
-        $this->candidateRequestList();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $cancelRequest = $this->AdminModel->cancelRequest();
+            $this->candidateRequestList();
+        } else {
+            $this->index();
+        }
     }
+
+    // CATEGORY REQUEST
 
     public function categoryRequest()
     {
-        $this->data['method'] = "categoryRequest";
+        if (isset($_SESSION['adminId'])) {
+            $this->data['method'] = "categoryRequest";
 
-        $candidateNewCategory = $this->AdminModel->candidateNewCategory();
-        $this->data['candidateNewCategory'] = $candidateNewCategory;
+            $candidateNewCategory = $this->AdminModel->candidateNewCategory();
+            $this->data['candidateNewCategory'] = $candidateNewCategory;
 
-        $candidateNewCategoryArea = $this->AdminModel->candidateNewCategoryArea();
-        $this->data['candidateNewCategoryArea'] = $candidateNewCategoryArea;
+            $candidateNewCategoryArea = $this->AdminModel->candidateNewCategoryArea();
+            $this->data['candidateNewCategoryArea'] = $candidateNewCategoryArea;
 
-        $employerNewCategory = $this->AdminModel->employerNewCategory();
-        $this->data['employerNewCategory'] = $employerNewCategory;
+            $employerNewCategory = $this->AdminModel->employerNewCategory();
+            $this->data['employerNewCategory'] = $employerNewCategory;
 
-        $this->setVariable();
+            $this->setVariable();
 
-        $this->load->view('adminDashboard.php', $this->data);
+            $this->load->view('adminDashboard.php', $this->data);
+        } else {
+            $this->index();
+        }
     }
 
     public function addNewCategoryExperience()
     {
-        $postData = $this->input->post(null, true);
-        $newcategory = $this->AdminModel->addcategoryExperience();
-        $this->categoryRequest();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $newcategory = $this->AdminModel->addcategoryExperience();
+            $this->categoryRequest();
+        } else {
+            $this->index();
+        }
     }
 
     public function addNewCategoryArea()
     {
-        $postData = $this->input->post(null, true);
-        $newcategory = $this->AdminModel->addcategoryArea();
-        $this->categoryRequest();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $newcategory = $this->AdminModel->addcategoryArea();
+            $this->categoryRequest();
+        } else {
+            $this->index();
+        }
     }
 
     public function employerNewCategory()
     {
-        $postData = $this->input->post(null, true);
-        $newcategory = $this->AdminModel->addcategoryEmployerJob();
-        $this->categoryRequest();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $newcategory = $this->AdminModel->addcategoryEmployerJob();
+            $this->categoryRequest();
+        } else {
+            $this->index();
+        }
     }
 
     public function cancelNewCategoryExp()
     {
-        $postData = $this->input->post(null, true);
-        $cancelnewcategory = $this->AdminModel->cancelNewCategoryExp();
-        $this->categoryRequest();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $cancelnewcategory = $this->AdminModel->cancelNewCategoryExp();
+            $this->categoryRequest();
+        } else {
+            $this->index();
+        }
     }
 
     public function cancelNewCategoryArea()
     {
-        $postData = $this->input->post(null, true);
-        $cancelnewcategory = $this->AdminModel->cancelNewCategoryArea();
-        $this->categoryRequest();
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $cancelnewcategory = $this->AdminModel->cancelNewCategoryArea();
+            $this->categoryRequest();
+        } else {
+            $this->index();
+        }
     }
 
     public function cancelNewCategoryJob()
     {
-        $postData = $this->input->post(null, true);
-        $cancelnewcategory = $this->AdminModel->cancelNewCategoryJob();
-        $this->categoryRequest();
-    }
-    public function logout()
-    {
-        $this->session->sess_destroy();
-        $this->index();
-    }
-
-    // public function logout()
-    // {
-    //     $this->session->unset_userdata('userLoggedIn');
-    //     $this->index();
-    // }
-
-
-    // CANDIDATE FORM
-
-    public function basicDetails()
-    {
-        $id = $this->uri->segment(3);
-        $basicDetails = $this->AdminModel->getBasicDetails($id);
-        $this->data['basicDetails'] = $basicDetails;
-        $this->setVariable();
-        $this->data['method'] = 'basicdetails';
-        $this->load->view('adminDashboard.php', $this->data);
-    }
-
-    public function updateBasicDetails()
-    {
-        $postData = $this->input->post(null, true);
-        $updateBasicDetails = $this->CandidateModel->updateBasicDetails();
-        $this->newCandidateList();
-        echo '<script>alert("Basic details inserted successfully by admin.");</script>';
-    }
-
-
-    // education
-
-    public function educationTable()
-    {
-        $id = $this->uri->segment(3);
-        //  $educationTable = $this->AdminModel->educationTable($id);
-        //  $this->data['educationTable'] = $educationTable;
-        $this->data['candidateId'] = $id;
-        $this->setVariable();
-        $this->data['method'] = 'educationTable';
-        $this->load->view('adminDashboard.php', $this->data);
-    }
-
-    public function insertEducationForm()
-    {
-        $insertEducationForm = $this->CandidateModel->insertEducationForm();
-        // $insertEducationForm = $this->CandidateModel->insertSubmit();
-
-        $this->newCandidateList();
-        echo '<script>alert("Education details inserted successfully by admin.");</script>';
-
-    }
-
-
-    // experience
-
-   
-    public function experienceTable()
-    {
-        $id = $this->uri->segment(3);
-        $this->data['candidateId'] = $id;
-       
-        // $experienceTable = $this->CandidateModel->experienceTable();
-        // $this->data['experienceTable'] = $experienceTable['response'];
-
-        $categoryList = $this->CandidateModel->getCategoryList();
-        $this->data['categoryList'] = $categoryList;
-
-        $this->setVariable();
-        $this->data['method'] = "experienceTable";
-        $this->load->view('adminDashboard.php', $this->data);
-    }
-
-
-    // public function addExperirenceForm()
-    // {
-    //     $basicDetails = $this->CandidateModel->getBasicDetails();
-    //     $this->data['basicDetails'] = $basicDetails;
-
-    //     $categoryList = $this->CandidateModel->getCategoryList();
-    //     $this->data['categoryList'] = $categoryList;
-
-    //     $this->data['method'] = "addExperirenceForm";
-    //     $this->load->view('candidateDashboard.php', $this->data);
-    // }
-
-    public function insertExperienceForm()
-    {
-        $insertExperienceForm = $this->CandidateModel->insertExperienceForm();
-        // $insertExperienceForm = $this->CandidateModel->insertSubmitExp();
-
-        $this->newCandidateList();
-        echo '<script>alert("Experience details inserted successfully.");</script>';
-    }
-
-    public function insertFresherForm()
-    {
-        // $id = $this->uri->segment(3);
-        $insertExperienceForm = $this->CandidateModel->insertFresherForm();
-
-        $this->newCandidateList();
-        echo '<script>alert("Experience is inserted as No experience.");</script>';
-    }
-
-    public function updateExperience()
-    {
-        $experienceId = $this->uri->segment(3);
-        $this->data['method'] = "updateExperience";
-
-        $experienceTable = $this->CandidateModel->experienceTable();
-        $this->data['experienceTable'] = $experienceTable['response'];
-
-        $updateExperience = $this->CandidateModel->updateExperience($experienceId);
-        $this->data['updateExperience'] = $updateExperience;
-
-        $categoryList = $this->CandidateModel->getCategoryList();
-        $this->data['categoryList'] = $categoryList;
-
-        $this->setVariable();
-
-        $this->load->view('adminDashboard.php', $this->data);
-    }
-
-    public function updateInsertExperience()
-    {
-        $post = $this->input->post(null, true);
-        $updateInsertExperience = $this->CandidateModel->updateInsertExperience();
-        $this->experienceTable();
-        echo '<script>alert("Experience details updated successfully.");</script>';
-    }
-
-    // public function deleteExperience()
-    // {
-    //     $deleteExperienceId = $this->uri->segment(3);
-    //     $delete = $this->CandidateModel->deleteExperience($deleteExperienceId);
-    //     if ($delete == null) {
-    //         $this->experienceTable();
-    //     } else {
-    //         echo "Error deleting record";
-    //     }
-    // }
-
-    public function deleteExperience()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['selected_items']) && is_array($_POST['selected_items'])) {
-                $selectedItems = $_POST['selected_items'];
-                foreach ($selectedItems as $itemId) {
-                    $this->CandidateModel->deleteExp($itemId);
-                }
-                $this->experienceTable();
-            } else {
-                $this->experienceTable();
-                echo '<script>alert("Please select the checkbox to delete.");</script>';
-            }
+        if (isset($_SESSION['adminId'])) {
+            $postData = $this->input->post(null, true);
+            $cancelnewcategory = $this->AdminModel->cancelNewCategoryJob();
+            $this->categoryRequest();
+        } else {
+            $this->index();
         }
     }
 
-    public function areaOfIntrestTable()
+    public function logout()
     {
-        $id = $this->uri->segment(3);
-        $this->data['candidateId'] = $id;
+        $this->session->unset_userdata('adminId');
+        $this->session->unset_userdata('adminName');
+        $this->session->unset_userdata('adminNumber');
+        $this->session->unset_userdata('role');
+        $this->session->unset_userdata('adminid');
 
-        $this->data['method'] = "areaOfIntrestTable";
-
-        // $areaOfIntrestTable = $this->CandidateModel->areaOfIntrestTable();
-        // $this->data['areaOfIntrestTable'] = $areaOfIntrestTable['response'];
-
-        // $skillTable = $this->CandidateModel->skillTable();
-        // $this->data['skillTable'] = $skillTable;
-
-        $categoryList = $this->CandidateModel->getCategoryList();
-        $this->data['categoryList'] = $categoryList;
-
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
+        $this->index();
     }
-
-    public function insertAreaOfIntrest()
-    {
-        $insertAreaOfIntrest = $this->AdminModel->jobInterestResume();
-
-        $this->newCandidateList();
-        echo '<script>alert("Area of interest inserted successfully by admin.");</script>';
-    }
-
-   
-
-    // skills
-    public function skillTable()
-    {
-        $this->data['method'] = "addSkillForm";
-        $id = $this->uri->segment(3);
-        $this->data['candidateId'] = $id;
-        // $skillTable = $this->CandidateModel->skillTable();
-        // $this->data['skillTable'] = $skillTable;
-        $this->setVariable();
-        $this->load->view('adminDashboard.php', $this->data);
-    }
-
-    public function insertSkillForm()
-    {
-        $insertSkillForm = $this->CandidateModel->insertSkillForm();
-        $this->newCandidateList();
-        echo '<script>alert("Skill inserted successfully by admin.");</script>';
-    }
-
 
 }

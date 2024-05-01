@@ -16,7 +16,9 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="<?php echo baseUrl; ?>/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +30,7 @@
     <link href="<?php echo baseUrl; ?>/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet"> 
+    <link href="<?php echo baseUrl; ?>/assets/css/style.css" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -49,7 +51,7 @@
             color: #0F52BA;
             font-size: 20px;
         }
-    </style>  
+    </style>
 </head>
 
 <body>
@@ -57,19 +59,26 @@
     <main>
         <div class="container1 mx-5">
 
-        <section>
-                <div class="my-5 py-md-5 text-center">                                            
-                    <p style=" font-size: 30px;"><b>THANK YOU FOR SIGINING UP WITH <a href="<?php echo baseUrl; ?>"><span style="color:  #7aa12b;">ARRAM JOBS</span></a> !</b></p>
-                        <p style="color: black;">Approval for your login is under process. <span style="color: #0F52BA;">Please wait ... </span></p><br>
-                        <p style="color: black; font-size: 14px;">If you have any doubts, Please contact us : <span style="color: #0F52BA;"><b><a href="tel:7418334443" style="color:#0F52BA ; text-decoration: none; font-size:14px"
-                            onmouseover="this.style.color='#668722'" onmouseout="this.style.color='blue'">+91 7418334443</a></b></span></p>
-                    </div>
-</section>
+            <section>
+                <div class="my-5 py-md-5 text-center">
+                    <p style=" font-size: 30px;"><b>THANK YOU FOR SIGINING UP WITH <a
+                                href="<?php echo baseUrl; ?>"><span style="color:  #7aa12b;">ARRAM JOBS</span></a> !</b>
+                    </p>
+                    <p style="color: black;">Approval for your login is under process. <span
+                            style="color: #0F52BA;">Please wait ... </span></p><br>
+                    <p style="color: black; font-size: 14px;">If you have any doubts, Please contact us : <span
+                            style="color: #0F52BA;"><b><a href="tel:7418334443"
+                                    style="color:#0F52BA ; text-decoration: none; font-size:14px"
+                                    onmouseover="this.style.color='#668722'" onmouseout="this.style.color='blue'">+91
+                                    7418334443</a></b></span></p>
+                </div>
+            </section>
 
         </div>
     </main><!-- End #main -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="<?php echo baseUrl; ?>/assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -85,13 +94,13 @@
     <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
 
     <!-- Event listener to block right-click -->
-<script>
-    function blockRightClick(event) {
-        event.preventDefault(); 
-    }
+    <script>
+        function blockRightClick(event) {
+            event.preventDefault();
+        }
 
-    document.addEventListener('contextmenu', blockRightClick);
-</script>
+        document.addEventListener('contextmenu', blockRightClick);
+    </script>
 
 </body>
 
