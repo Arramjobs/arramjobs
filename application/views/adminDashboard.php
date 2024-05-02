@@ -3306,7 +3306,14 @@
                                 <div class="col-md-6">
                                     <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="dateofbirth"
-                                        value="<?php echo $value['dateofbirth']; ?>" name="dateofbirth" required>
+                                        value="<?php
+                                                        if (!empty($value['dateofbirth'])) {
+                                                            $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth']));
+                                                            echo $formattedDateOfBirth;
+                                                        } else {
+                                                            echo "-";
+                                                        }
+                                                        ?>" name="dateofbirth" required>
                                     <div id="dob_error" style="color: red;"></div>
                                     <p class="text-secondary"
                                         style="color:red;textalign:center;font-size:small;margin-top:20px; display:none;"
