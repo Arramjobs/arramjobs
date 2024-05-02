@@ -62,42 +62,6 @@ class CandidateModel extends CI_Model
         $this->db->insert('seeker_profile_form', $insert);
     }
 
-    // public function generate_customer_id()
-    // {
-    //     $current_year = date('Y');
-
-    //     $latest_customer_id = $this->get_latest_customer_id();
-    //     $incremented_id = str_pad((int) substr($latest_customer_id, -4) + 1, 4, '0', STR_PAD_LEFT);
-
-    //     $customer_id = "AJC" . $current_year . $incremented_id;
-
-    //     $insert = array(
-    //         'eeid' => $customer_id
-    //     );
-
-    //     $phonenumber = $this->input->post('phonenumber');
-
-    //     $this->db->where('phonenumber', $phonenumber);
-    //     $this->db->update('seeker_profile_form', $insert);
-    //     return $customer_id;
-    // }
-
-    // public function get_latest_customer_id()
-    // {
-    //     $this->db->select('eeid');
-    //     $this->db->from('seeker_profile_form');
-    //     $this->db->order_by('eeid', 'DESC');
-    //     $this->db->limit(1);
-
-    //     $query = $this->db->get();
-    //     if ($query->num_rows() > 0) {
-    //         $row = $query->row();
-    //         return $row->eeid;
-    //     } else {
-    //         return 'AJC' . date('Y') . '0000';
-    //     }
-    // }
-
     public function generate_customer_id()
 {
     $current_year = date('Y');
@@ -150,6 +114,11 @@ public function get_latest_customer_id()
         return $userData;
     }
 
+
+// CANDIDATE FORM 
+
+// Basic details
+
     public function getBasicDetails()
     {
         $seekerId = $_SESSION['seekerId'];
@@ -157,8 +126,6 @@ public function get_latest_customer_id()
         $select = $this->db->query($provider);
         return $select->result_array();
     }
-
-
 
     public function updateBasicDetails()
     {
@@ -168,7 +135,6 @@ public function get_latest_customer_id()
         $config['upload_path'] = "./uploads/";
         $basepath = base_url() . 'uploads/';
         $config['allowed_types'] = "jpg|png|pdf|jpeg";
-        // $config['max_size'] = 1024 * 1024;
         $config['max_size'] = 4096;
 
         $this->load->library('upload', $config);
@@ -176,7 +142,6 @@ public function get_latest_customer_id()
         $aadharf = $postData['oldaadharfront'];
         $aadharb = $postData['oldaadharback'];
         $photop = $postData['oldprofilephoto'];
-
 
         if ($this->upload->do_upload('aadharfrontphoto')) {
             $data = $this->upload->data();
@@ -228,6 +193,7 @@ public function get_latest_customer_id()
         $result = $this->db->update('seeker_profile_form', $updateData);
     }
 
+// Education table
 
     public function educationTable()
     {
@@ -254,7 +220,6 @@ public function get_latest_customer_id()
         $config['allowed_types'] = "jpg|png|pdf|jpeg";
         $config['max_size'] = 4096;
 
-
         $this->load->library('upload', $config);
 
         $cer10 = "None";
@@ -263,7 +228,6 @@ public function get_latest_customer_id()
         $cerug = "None";
         $cerpg = "None";
         $cerdoct = "None";
-
 
         if ($this->upload->do_upload('certificate_10th')) {
             $data = $this->upload->data();
@@ -321,7 +285,6 @@ public function get_latest_customer_id()
             'pg_cer' => $cerpg,
             'doc_cer' => $cerdoct
         );
-
 
         $this->db->insert('seeker_educational_details', $add);
     }
@@ -402,7 +365,6 @@ public function get_latest_customer_id()
         $urlpgu = $basepath . $ucerpg;
         $urldocu = $basepath . $ucerdoct;
 
-
         $educationId = $post['id'];
         $updateInsertEducation = array(
             'educational_qualification' => $post['qualification'],
@@ -435,14 +397,13 @@ public function get_latest_customer_id()
     //     $del = $this->db->query($delete);
     // }
 
-
     public function delete_item($item_id)
     {
         $this->db->where('id', $item_id);
         $this->db->delete('seeker_educational_details');
     }
 
-
+    // Experience table
 
     public function experienceTable()
     {
@@ -461,7 +422,6 @@ public function get_latest_customer_id()
         $select = $this->db->query($category);
         return $select->result();
     }
-
 
     public function insertExperienceForm()
     {
@@ -510,7 +470,6 @@ public function get_latest_customer_id()
         $this->db->insert('seeker_experience', $add);
     }
 
-
     public function insertSubmitExp()
     {
         $post = $this->input->post(null, true);
@@ -530,7 +489,6 @@ public function get_latest_customer_id()
         $add = $this->db->query($update);
         return $add->result_array();
     }
-
 
     public function updateInsertExperience()
     {
@@ -572,71 +530,7 @@ public function get_latest_customer_id()
     }
 
 
-
-    // project
-
-    public function projectTable()
-    {
-        $seekerId = $_SESSION['seekerId'];
-        $seekerId = "SELECT * FROM `seeker_projects` Where `seekerId`= $seekerId";
-        $addtab = $this->db->query($seekerId);
-        return $addtab->result_array();
-    }
-
-    public function insertProjectForm()
-    {
-        $seekerId = $_SESSION['seekerId'];
-        $post = $this->input->post(null, true);
-
-        $add = array(
-            'seekerId' => $seekerId,
-            'projectName' => $post['projectname'],
-            'projectDuration' => $post['durationofproject'],
-            'roleInProject' => $post['roleofproject'],
-            'startingDate' => $post['startdate'],
-            'endingDate' => $post['enddate'],
-            'responsibilityInProject' => $post['responsibility'],
-            'skillsUsedInProject' => $post['skillsused'],
-        );
-
-        $this->db->insert('seeker_projects', $add);
-    }
-
-
-    public function updateProject($projectId)
-    {
-        $update = "SELECT * FROM `seeker_projects` Where `id`= $projectId";
-        $add = $this->db->query($update);
-        return $add->result_array();
-    }
-
-    public function updateInsertProject()
-    {
-        $post = $this->input->post(null, true);
-        $projectId = $post['id'];
-        $updateInsertProject = array(
-            'projectName' => $post['projectname'],
-            'projectDuration' => $post['durationofproject'],
-            'roleInProject' => $post['roleofproject'],
-            'startingDate' => $post['startdate'],
-            'endingDate' => $post['enddate'],
-            'responsibilityInProject' => $post['responsibility'],
-            'skillsUsedInProject' => $post['skillsused']
-        );
-
-        $this->db->where('id', $projectId);
-        $this->db->update('seeker_projects', $updateInsertProject);
-    }
-
-    public function deleteProject($deleteProjectId)
-    {
-        $delete = "DELETE FROM `seeker_projects` WHERE `id`=$deleteProjectId";
-        $del = $this->db->query($delete);
-    }
-
-
-
-    //  areaOfIntrest
+    // Area of interest
 
     public function areaOfIntrestTable()
     {
@@ -732,10 +626,8 @@ public function get_latest_customer_id()
         $this->db->delete('seeker_area_of_interst');
     }
 
-
-
-
-    //  skill,
+    //  Skills
+    
     public function skillTable()
     {
         $seekerId = $_SESSION['seekerId'];
@@ -771,8 +663,6 @@ public function get_latest_customer_id()
         $add = $this->db->query($update);
         return $add->result_array();
     }
-
-
 
     public function updateInsertSkill()
     {
@@ -853,7 +743,6 @@ public function get_latest_customer_id()
     //     }
 
 
-
     //     public function getExperienceDetails(){
 
     //         $seekerId=$_SESSION['seekerId'];
@@ -883,49 +772,16 @@ public function get_latest_customer_id()
     //     }
 
 
-    //     public function getProjectDetails(){
-    //         $seekerId=$_SESSION['seekerId'];
-    //         $provider = "SELECT * FROM `seeker_projects` Where `seekerId` = $seekerId";
-    //         $select = $this->db->query($provider);
-    //         return $select->result_array();
-
-    //     }
-
-
-    //     public function updateProjectDetails()
-    //     {
-
-    //         $postData = $this->input->post(null, true);
-
-    //         $updateData = array(
-
-    //             'projectName' => $postData['projectname'],
-    //             'projectDuration' => $postData['durationofproject'],
-    //             'roleInProject' => $postData['roleofproject'],
-    //             'startingDate' => $postData['startdate'],
-    //             'endingDate' => $postData['enddate'],
-    //             'responsibilityInProject' => $postData['responsibility'],
-    //             'skillsUsedInProject' => $postData['skillsused'],
-    //         );
-    //         $this->db->where('seekerId', $postData['seekerId']);
-    //         $result = $this->db->update('seeker_projects', $updateData);
-    //     }
-
-
-
     //     public function getAreaOfInterest(){
 
     //         $seekerId=$_SESSION['seekerId'];
     //         $provider = "SELECT * FROM `seeker_area_of_interst` Where `seekerId` = $seekerId";
     //         $select = $this->db->query($provider);
     //         return $select->result_array();
-
     //     }
-
 
     //     public function updateAreaOfInterest()
     //     {
-
     //         $postData = $this->input->post(null, true);
 
     //             $updateData = array(
@@ -965,8 +821,6 @@ public function get_latest_customer_id()
     // $this->db->where('seekerId', $postData['seekerId']);
     // $this->db->update('seeker_skill', $updateData);
     //     }
-
-
 
     public function updateresumefilename($resumefilename)
     {

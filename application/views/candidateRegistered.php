@@ -66,7 +66,8 @@
                     <p style=" font-size: 30px;"><b>THANK YOU FOR SIGINING UP WITH <span style="color:  #7aa12b;">ARRAM
                                 JOBS</span> !</b>
                     <p>
-                    <p style="color: black;">You now have access to <a><b><a href="<?php echo baseUrl . "Candidate" ?>">LOGIN</a></b></a> with your <span
+                    <p style="color: black;">You now have access to <a><b><a
+                                    href="<?php echo baseUrl . "Candidate" ?>">LOGIN</a></b></a> with your <span
                             style="color: #0F52BA;">mobile number </span>and <span
                             style="color: #0F52BA;">password.</span></p><br>
                     <p style="color: black; font-size: 18px;">If you have any doubts, Please contact us : <span
@@ -96,13 +97,13 @@
     <script src="<?php echo baseUrl; ?>/assets/js/main.js"></script>
 
     <!-- Event listener to block right-click -->
-<script>
-    function blockRightClick(event) {
-        event.preventDefault(); 
-    }
+    <script>
+        function blockRightClick(event) {
+            event.preventDefault();
+        }
 
-    document.addEventListener('contextmenu', blockRightClick);
-</script>
+        document.addEventListener('contextmenu', blockRightClick);
+    </script>
 
 </body>
 
