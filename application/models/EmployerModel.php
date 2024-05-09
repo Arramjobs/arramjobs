@@ -348,6 +348,7 @@ class EmployerModel extends CI_Model
            GROUP BY spf.id, spf.name;";
     $result = $this->db->query($query);
     return $result->result_array();
+    // return array("response" => $result->result_array(), "totalRows" => $result->num_rows());
 
   }
 

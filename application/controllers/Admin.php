@@ -609,7 +609,7 @@ class Admin extends CI_Controller
                     foreach ($selectedItems as $itemId) {
                         $this->AdminModel->deleteOverallEmployees($itemId);
                     }
-                    $this->overallCandidates();
+                    $this->deleteCandidateList();
                 } else {
                     $this->overallCandidates();
                     echo '<script>alert("Please select the checkbox to delete.");</script>';

@@ -24,6 +24,13 @@ class Employer extends CI_Controller
         $this->load->view('employerLogin.php');
     }
 
+    // public function setVariable()
+    // {
+    //     $jobCategory = $this->uri->segment(3);
+    //     $candidateTotalRows = $this->EmployerModel->candidates($jobCategory);
+    //     $this->data['canReqTotalRows'] = $candidateTotalRows["totalRows"];
+    // }
+
     public function employerRegistration()
     {
         $phone_number = $this->input->post('mobile');
@@ -161,15 +168,16 @@ class Employer extends CI_Controller
         }
     }
 
-
     public function jobMatchedTable()
     {
         if (isset($_SESSION['jobProviderId'])) {
             $jobCategory = $this->uri->segment(3);
             $response = $this->EmployerModel->candidates($jobCategory);
             $this->data['method'] = "match";
+            // $this->data['response'] = $response["response"];
             $this->data['response'] = $response;
             $this->data['category'] = $jobCategory;
+            // $this->setVariable();
             $this->load->view('employerDashboard.php', $this->data);
         } else {
             $this->index();

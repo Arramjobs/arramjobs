@@ -850,7 +850,7 @@
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Table</li>
+                            <li class="breadcrumb-item active">Jobs</li>
                         </ol>
                     </nav>
                 </div><!-- End Page Title -->
@@ -917,11 +917,22 @@
                                                 <td><?php echo $value['experience'] ?></td>
                                                 <td><?php echo $value['number_of_openings'] ?></td>
                                                 <td><?php echo $value['description'] ?></td>
+
                                                 <td class="d-flex">
-                                                    <a class=""
+
+                                                    <a class="nav-link collapsed" id="candidatematched"
                                                         href="<?php echo baseUrl . "Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>">
-                                                        <button type="button" class="btn btn-success">Matched
-                                                            Candidates</button></a>
+
+                                                        <button type="button" class="btn btn-success">Matched Candidates</button>
+
+                                                        <!-- <?php if ($canReqTotalRows > 0) { ?>
+                        <div class="border border-success border-2 rounded-circle bg-success text-light"
+                            style="width: 25px; height:25px;background-color:green;text-align:center;">
+                            <?php echo isset($canReqTotalRows) ? $canReqTotalRows : null; ?>
+                        </div>
+                    <?php } ?> -->
+                                                    </a>
+
                                                     <div class="filter">
                                                         <a class="icon mt-5" href="#" data-bs-toggle="dropdown">
                                                             <p class="p-3"><i class="bi bi-three-dots-vertical"></i></p>
@@ -939,6 +950,7 @@
                                                         </ul>
                                                     </div>
                                                 </td>
+
                                             </tr>
                                             <?php
                                         }

@@ -1541,6 +1541,22 @@
                     updatePaginationButtons();
                 }
 
+                function previousPage() {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        showPage(currentPage);
+                        updatePaginationButtons();
+                    }
+                }
+
+                function nextPage() {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        showPage(currentPage);
+                        updatePaginationButtons();
+                    }
+                }
+
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
 
@@ -1578,19 +1594,18 @@
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
 
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
 
                     document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
 
-
                     var previousBtn = document.getElementById('previousBtn');
                     var nextBtn = document.getElementById('nextBtn');
                     previousBtn.style.display = (currentPage === 1) ? 'none' : 'inline-block';
                     nextBtn.style.display = (currentPage === totalPages) ? 'none' : 'inline-block';
                 }
+                updatePaginationButtons();
             </script>
 
             <script>
@@ -8562,12 +8577,12 @@
                                                 <td>
                                                     <?php echo $loopcount; ?>.
                                                 </td>
-                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
+                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>" target="_blank">
                                                         <?php echo $value['emprid']; ?>
                                                     </a> / <br>
                                                     <?php echo $value['cname'] ?>
                                                 </td>
-                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
+                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>" target="_blank">
                                                         <?php echo $value['cdid']; ?>
                                                     </a></td>
                                                 <td>
