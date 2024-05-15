@@ -251,6 +251,34 @@ class EmployerModel extends CI_Model
   }
 
 
+  public function getSeekerCountsByJobCategory($jobProviderId, $employerId)
+  {
+    $query = "
+        WITH JobCategories AS (
+            SELECT jobCategory
+            FROM provider_job
+            WHERE jobProviderId = ?
+        )
+        SELECT saoi.other_interst_category AS jobCategory, COUNT(DISTINCT spf.id) AS canCount
+        FROM seeker_profile_form spf 
+        INNER JOIN seeker_area_of_interst saoi ON saoi.seekerId = spf.id 
+        LEFT JOIN seeker_skill ssk ON ssk.seekerId = spf.id
+        LEFT JOIN seeker_experience se ON se.seekerId = spf.id 
+        LEFT JOIN candidate_requests cr ON cr.employer_id = ? AND cr.candidate_id = spf.id 
+        WHERE saoi.other_interst_category IN (SELECT jobCategory FROM JobCategories)
+          AND spf.identityVerify = '1'
+          AND spf.addressVerify = '1'
+          AND spf.employmentVerify = '1'
+          AND spf.deleteStatus = '0'
+          AND spf.currentStatus = '0'
+        GROUP BY saoi.other_interst_category;
+    ";
+
+    $result = $this->db->query($query, array($jobProviderId, $employerId));
+    return $result->result_array();
+  }
+
+
   public function updatejob($id)
   {
     $update = "SELECT * FROM `provider_job` Where `id`=$id";

@@ -917,22 +917,20 @@
                                                 <td><?php echo $value['experience'] ?></td>
                                                 <td><?php echo $value['number_of_openings'] ?></td>
                                                 <td><?php echo $value['description'] ?></td>
+                                                <?php foreach ($this->data['mcCount'] as $keyJob => $valueJob) { ?>
 
                                                 <td class="d-flex">
-
                                                     <a class="nav-link collapsed" id="candidatematched"
                                                         href="<?php echo baseUrl . "Employer/jobMatchedTable" ?>/<?php echo $value['jobCategory'] ?>">
-
-                                                        <button type="button" class="btn btn-success">Matched Candidates</button>
-
-                                                        <!-- <?php if ($canReqTotalRows > 0) { ?>
-                        <div class="border border-success border-2 rounded-circle bg-success text-light"
-                            style="width: 25px; height:25px;background-color:green;text-align:center;">
-                            <?php echo isset($canReqTotalRows) ? $canReqTotalRows : null; ?>
-                        </div>
-                    <?php } ?> -->
+                                                        <button type="button" class="btn btn-success">Matched Candidates
+                                                            <?php if(isset($valueJob['jobCategory']) && ($valueJob['jobCategory'] == $value['jobCategory'])){ ?>
+                                           <span  class="badge rounded-pill badge-notification bg-light text-success mx-auto my-auto"><?php echo  $valueJob['canCount'] ; ?></span> 
+                                                            <?php } else { ?>
+                                                                <span  class="badge rounded-pill badge-notification bg-light text-success mx-auto my-auto">0</span> 
+                                                            <?php } ?>
+                                                        </button>
                                                     </a>
-
+                                                <?php } ?>
                                                     <div class="filter">
                                                         <a class="icon mt-5" href="#" data-bs-toggle="dropdown">
                                                             <p class="p-3"><i class="bi bi-three-dots-vertical"></i></p>
@@ -2294,19 +2292,18 @@
             </section>
 
             <script>
-                <?php
-                if ($experienceTable[0]['workStatus'] == '0') {
-                    ?>
+                    <?php
+                    if ($experienceTable[0]['workStatus'] == '0') {
+                        ?>
                     document.getElementById("expTable").style.display = "block";
                     document.getElementById("noexperience").style.display = "none";
 
                     <?php
-                } else if ($experienceTable[0]['workStatus'] == '1') { ?>
+                    } else if ($experienceTable[0]['workStatus'] == '1') { ?>
                         document.getElementById("expTable").style.display = "none";
                         document.getElementById("noexperience").style.display = "block";
-
                     <?php
-                } ?>
+                         } ?>
             </script>
 
             <script>
