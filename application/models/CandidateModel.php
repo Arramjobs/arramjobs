@@ -162,7 +162,6 @@ public function get_latest_customer_id()
         $aadharback = $basepath . $aadharb;
         $profilephoto = $basepath . $photop;
 
-
         // Update query to modify the existing user's data
         $updateData = array(
             'name' => $postData['name'],
@@ -849,7 +848,6 @@ public function get_latest_customer_id()
 
     public function do_upload()
     {
-
         $config['upload_path'] = "./uploads/";
         $config['allowed_types'] = "jpg|png|pdf";
         $config['max_size'] = 4096;

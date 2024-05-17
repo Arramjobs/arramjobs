@@ -55,13 +55,11 @@
 
                             <div class="d-flex justify-content-center py-4">
                                 <a href="<?php echo baseUrl; ?>" class="logo d-flex align-items-center w-auto">
-                                    <!-- <img src="assets/img/logo.png" alt=""> -->
                                     <span class="d-block">Candidate Login</span>
                                 </a>
-                            </div><!-- End Logo -->
+                            </div>
 
                             <div class="card mb-3">
-
                                 <div class="card-body">
 
                                     <div class="pt-4 pb-2">
@@ -94,7 +92,6 @@
                                             </div>
                                             <div id="phoneError" class="text-danger"> </div>
                                         </div>
-
                                         <div class="col-12">
                                             <label for="cdpassword" class="form-label">Password <span
                                                     class="text-danger">*</span></label>
@@ -108,10 +105,10 @@
                                                 <div class="invalid-feedback">Please enter your password.</div>
                                                 <div id="passwordError" class="text-danger"></div>
                                             </div>
-                                            <div class="text-secondary" style="font-size:15px; margin:0px"
-                                                id="passwordmessage">Enter the password in DDMMYYYY (01051996).</div>
+                                            <div class="text-secondary"
+                                                style="font-size:15px; margin:0px; display:none;" id="passwordmessage">
+                                                Enter the password in DDMMYYYY (01051996).</div>
                                         </div>
-
                                         <!-- <div class="col-12">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
@@ -141,9 +138,17 @@
             </section>
 
         </div>
-    </main><!-- End #main -->
+    </main>
 
     <script>
+        document.getElementById("cdpassword").onfocus = function () {
+            document.getElementById("passwordmessage").style.display = "block";
+        }
+
+        document.getElementById("cdpassword").onblur = function () {
+            document.getElementById("passwordmessage").style.display = "none";
+        }
+
         function togglePasswordVisibility(inputId, iconId) {
             var passwordInput = document.getElementById(inputId);
             var visibilityIcon = document.getElementById(iconId);
@@ -158,7 +163,7 @@
                 visibilityIcon.classList.add("bi-eye-slash");
             }
         }
-
+        
         function validateform() {
             var phno = document.getElementById("phonenumber").value;
             var password = document.getElementById("cdpassword").value;
@@ -170,14 +175,12 @@
                     return false;
                 }
             }
-
             if (password != "") {
                 if (!/^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])\d{4}$/.test(password)) {
                     return false;
                 }
             }
         }
-
     </script>
 
 
@@ -190,7 +193,6 @@
                 phoneError.textContent = "";
             }
         }
-
         function validatePassword(input) {
             const phoneError = document.getElementById("passwordError");
             if (!/^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])\d{4}$/.test(input.value)) {

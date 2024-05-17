@@ -818,7 +818,7 @@ class AdminModel extends CI_Model
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
              INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
-             WHERE (cr.request_status = '6' AND spf.deleteStatus ='0') 
+             WHERE (cr.request_status IN ('6' , '7') AND spf.deleteStatus ='0')
              ORDER BY spf.dateTime DESC;";
         $response = $this->db->query($candidatechartList);
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());
@@ -888,7 +888,7 @@ class AdminModel extends CI_Model
              FROM  candidate_requests cr
              INNER JOIN provider_registration_form prf ON prf.erid = cr.employer_id 
              INNER JOIN seeker_profile_form spf ON spf.id = cr.candidate_id 
-             WHERE (cr.request_status = '6' AND  spf.deleteStatus ='0') 
+             WHERE (cr.request_status IN ('6' , '7') AND spf.deleteStatus ='0')
              ORDER BY spf.dateTime ASC;";
         $response = $this->db->query($candidatechartList);
         return array("response" => $response->result_array(), "totalRows" => $response->num_rows());

@@ -63,13 +63,11 @@
 
                             <div class="d-flex justify-content-center py-4">
                                 <a href="<?php echo baseUrl; ?>" class="logo d-flex align-items-center w-auto">
-                                    <!-- <img src="assets/img/logo.png" alt=""> -->
                                     <span class="d-none d-lg-block">Employer Registration</span>
                                 </a>
-                            </div><!-- End Logo -->
+                            </div>
 
                             <div class="card mb-3">
-
                                 <div class="card-body">
 
                                     <div class="pt-4 pb-2">
@@ -91,7 +89,7 @@
                                         <div class="">
                                             <label for="phno" class="form-label">Company Number <span
                                                     class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" id="phno" name="mobile" required
+                                            <input type="number" class="form-control" id="phno" pattern="[0-9]{10}" maxlength="10" name="mobile" required 
                                                 onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
                                             <p id="pherr" style="color: red;"></p>
                                         </div>
@@ -110,12 +108,11 @@
                                                     onclick="togglePasswordVisibility('crpassword', 'visibilityIcon')">
                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
                                                 </button>
-                                                <p id="crpassworderr" style="color: red;"></p>
                                             </div>
+                                            <div class="text-secondary" style="font-size:15px; margin:0px;display:none;"
+                                                id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 number and a minimum of 6 characters.</div>
+                                            <div id="crpassworderr" style="color: red;" class="error"></div>
                                         </div>
-                                        <div class="text-secondary" style="font-size:12px;margin-top:0px"
-                                            id="passwordmessage">Passwords must contain atleast 1 uppercase, 1 number
-                                            and a minimum of 6 characters.</div>
                                         <div class="">
                                             <label for="cmpassword" class="form-label">Confirm Password <span
                                                     class="text-danger">*</span></label>
@@ -123,6 +120,7 @@
                                                 required>
                                             <p id="cmpassworderr" style="color: red;"></p>
                                         </div>
+
                                         <div class="">
                                             <label for="addr" class="form-label">Street Address <span
                                                     class="text-danger">*</span></label>
@@ -141,8 +139,7 @@
                                             <p id="cityerr" style="color: red;"></p>
                                         </div>
                                         <div class="">
-                                            <label for="addr" class="form-label">District <span
-                                                    class="text-danger">*</span></label>
+                                            <label for="addr" class="form-label">District <span class="text-danger">*</span></label>
                                             <select class="form-control" id="district" name="district" required>
                                                 <option value="">Select district</option>
                                                 <option value="Erode">Erode</option>
@@ -155,13 +152,10 @@
                                         <div class="">
                                             <label for="addr" class="form-label">State <span
                                                     class="text-danger">*</span></label>
-                                            <select class="form-control" id="state" name="state" required>
-                                                <option value="">Select state</option>
-                                                <option value="Tamilnadu">Tamil Nadu</option>
-                                            </select>
+                                                    <input type="text" class="form-control" id="state" value='<?php echo "Tamil Nadu"; ?>'
+                                        name="state" readonly>
                                             <p id="stateerr" style="color: red;"></p>
                                         </div>
-
                                         <div class="">
                                             <label for="addr" class="form-label">Pincode <span
                                                     class="text-danger">*</span></label>
@@ -169,14 +163,11 @@
                                                 required>
                                             <p id="pinerr" style="color: red;"></p>
                                         </div>
-
                                         <div class="">
                                             <label for="locationUrl" class="form-label">Location URL </label>
                                             <input type="text" class="form-control" id="locationUrl" name="locationUrl"
                                                 pattern="https?://.+">
-                                            <!-- <p id="lUrlerr" style="color: red;"></p> -->
                                         </div>
-
                                         <div class="">
                                             <label for="logo" class="form-label">Logo</label>
                                             <input type="file" class="form-control" id="logo" name="logo">
@@ -200,6 +191,7 @@
                                             <p id="gsterr" style="color: red;"></p>
                                         </div>
                                         <br>
+
                                         <div class="">
                                             <h4 class="mx-auto">Contact Person Details</h4>
                                         </div>
@@ -237,6 +229,7 @@
                         <div class="invalid-feedback">You must agree before submitting.</div>
                       </div>
                     </div> -->
+
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                         </div>
@@ -304,14 +297,6 @@
                 document.forms.name1.focus();
                 return false;
             }
-        }
-
-        document.getElementById("crpassword").onfocus = function () {
-            document.getElementById("passwordmessage").style.display = "block";
-        }
-
-        document.getElementById("crpassword").onblur = function () {
-            document.getElementById("passwordmessage").style.display = "none";
         }
 
         function group() {
@@ -390,7 +375,6 @@
                 document.getElementById("mailerr").innerHTML = "";
             }
 
-
             if (crp == "") {
                 var emailsms = "Password must be filled out";
                 document.getElementById("crpassworderr").innerHTML = emailsms;
@@ -409,7 +393,6 @@
             document.getElementById("crpassword").innerHTML = "";
         }
 
-
         if (cmp == "") {
             var emailsms = "Password must be filled out";
             document.getElementById("cmpassworderr").innerHTML = emailsms;
@@ -422,7 +405,6 @@
             document.forms.cmpassword.focus();
             return false;
         }
-
 
         if (y != "") {
             if (y.length < 4) {
@@ -443,7 +425,6 @@
             return false;
         }
 
-
         if (y1 != "") {
             if (y1.length < 2) {
                 document.getElementById("landerr").innerHTML = "Landmark should be in atleast 2 characters";
@@ -456,7 +437,6 @@
             } else {
                 document.getElementById("landerr").innerHTML = "";
             }
-
 
             if (y2 != "") {
                 if (y2.length < 2) {
@@ -609,6 +589,14 @@
     </script>
 
     <script>
+        document.getElementById("crpassword").onfocus = function () {
+            document.getElementById("passwordmessage").style.display = "block";
+        }
+
+        document.getElementById("crpassword").onblur = function () {
+            document.getElementById("passwordmessage").style.display = "none";
+        }
+
         // View Password
         function togglePasswordVisibility(inputId, iconId) {
             var passwordInput = document.getElementById(inputId);

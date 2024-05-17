@@ -162,6 +162,12 @@ class Employer extends CI_Controller
             $categoryList = $this->EmployerModel->getCategoryList();
             $this->data['categoryList'] = $categoryList;
 
+            $jobProviderId = $_SESSION['jobProviderId'];
+            $employerId = $_SESSION['employerid'];
+
+            $counts = $this->EmployerModel->getSeekerCountsByJobCategory($jobProviderId, $employerId);
+            $this->data['mcCount'] = $counts;
+
             $this->load->view('employerDashboard.php', $this->data);
         } else {
             $this->index();

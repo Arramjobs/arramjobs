@@ -59,13 +59,12 @@
                                     <!-- <img src="assets/img/logo.png" alt=""> -->
                                     <span class="d-block">Employer Login</span>
                                 </a>
-                            </div><!-- End Logo -->
+                            </div>
 
                             <div class="card mb-3">
-
                                 <div class="card-body">
 
-                                    <div class="pt-4 pb-2">
+                                    <div class="pt-4 pb-1">
                                         <div class="my-2 py-md-4 text-center">
                                             <p style=" font-size: 30px;color: #4169E1"><b>WELCOME TO <a
                                                         href="<?php echo baseUrl; ?>"><span
@@ -90,7 +89,9 @@
                                             </div>
                                             <div id="phoneError" class="text-danger"> </div>
                                         </div>
+
                                         <div id="imageContainer"></div>
+
                                         <div class="col-12">
                                             <label for="erpassword" class="form-label">Password </label>
                                             <div class="input-group has-validation">
@@ -101,12 +102,14 @@
                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
                                                 </button>
                                                 <div class="invalid-feedback">Please enter your password.</div>
-                                            </div>
-                                            <div id="passwordError" class="text-danger"></div>
-                                            <div class="text-secondary" style="font-size:12px;margin-top:0px"
+                                            <div class="text-secondary"
+                                                style="font-size:14px;margin-top:6px; display:none"
                                                 id="passwordmessage">Passwords must contain atleast 1 uppercase, 1
                                                 number and a minimum of 6 characters.</div>
+                                            </div>
+                                            <div id="passwordError" class="text-danger"></div>
                                         </div>
+
                                         <div class="col-12">
                                             <br>
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
@@ -120,6 +123,7 @@
                                                 <a href="<?php echo baseUrl . "Employer/registration" ?>">Register</a>
                                             </p>
                                         </div>
+                                        
                                         <p style="color: black; font-size: small;">If you have any doubts, Please
                                             contact us : <span style="color: #0F52BA;"><a href="tel:7418334443"
                                                     style="color:#0F52BA ; text-decoration: none; font-size: small;"
@@ -162,6 +166,14 @@
             </script>
 
             <script>
+                document.getElementById("erpassword").onfocus = function () {
+                    document.getElementById("passwordmessage").style.display = "block";
+                }
+
+                document.getElementById("erpassword").onblur = function () {
+                    document.getElementById("passwordmessage").style.display = "none";
+                }
+
                 function togglePasswordVisibility(inputId, iconId) {
                     var passwordInput = document.getElementById(inputId);
                     var visibilityIcon = document.getElementById(iconId);
@@ -216,7 +228,7 @@
             </script>
 
         </div>
-    </main><!-- End #main -->
+    </main>
 
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i

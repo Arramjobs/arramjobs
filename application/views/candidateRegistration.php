@@ -55,21 +55,18 @@
     <main>
         <div class="container">
 
-            <section
-                class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
                                 <a href="<?php echo baseUrl; ?>" class="logo d-flex align-items-center w-auto">
-                                    <!-- <img src="assets/img/logo.png" alt=""> -->
                                     <span class="d-none d-lg-block">Candidate Registration</span>
                                 </a>
-                            </div><!-- End Logo -->
+                            </div>
 
                             <div class="card mb-3">
-
                                 <div class="card-body">
 
                                     <div class="pt-4 pb-2">
@@ -82,8 +79,6 @@
                                         name="registration_form" method="post">
 
                                         <div class="">
-
-
                                             <label for="username" class="form-label">Name <span
                                                     class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="name" name="name"
@@ -92,12 +87,10 @@
                                         </div>
                                         <div class="">
                                             <label for="email" class="form-label">Email ID</label>
-
                                             <input type="email" class="form-control" id="email" name="email">
                                             <div id="email_error" style="color: red;" class="error"></div>
                                         </div>
                                         <div class="">
-
                                             <label for="phonenumber" class="form-label">Mobile number <span
                                                     class="text-danger">*</span></label>
                                             <input type="number" class="form-control" id="phonenumber"
@@ -110,18 +103,16 @@
                                             <label for="crpassword" class="form-label">Create Password <span
                                                     class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
-                                                <input type="password" class="form-control" id="crpassword"
-                                                    name="crpassword" required>
+                                                <input type="password" class="form-control" id="crpassword" name="crpassword" required>
                                                 <button type="button" class="btn btn-outline-secondary"
                                                     onclick="togglePasswordVisibility('crpassword', 'visibilityIcon')">
                                                     <i id="visibilityIcon" class="bi bi-eye-slash"></i>
                                                 </button>
-                                                <div id="crpassworderr" style="color: red;" class="error"></div>
                                             </div>
-                                        </div>
-                                        <div class="text-secondary" style="font-size:15px; margin:0px"
+                                            <div class="text-secondary" style="font-size:15px; margin:0px;display:none;"
                                             id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
-
+                                                <div id="crpassworderr" style="color: red;" class="error"></div>
+                                        </div>                                     
                                         <div class="">
                                             <label for="cmpassword" class="form-label">Confirm Password <span
                                                     class="text-danger">*</span></label>
@@ -137,6 +128,7 @@
                                                 <div class="invalid-feedback">You must agree before submitting.</div>
                                             </div>
                                             </div> -->
+
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                         </div>
@@ -145,7 +137,6 @@
                                                     href="<?php echo baseUrl . "Candidate" ?>">Login</a></p>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
 
@@ -155,11 +146,9 @@
                         </div>
                     </div>
                 </div>
-
             </section>
-
         </div>
-    </main><!-- End #main -->
+    </main>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
@@ -186,13 +175,12 @@
     </script>
 
     <script>
-
         document.getElementById("crpassword").onfocus = function () {
-            document.getElementById("passwordmessage").style.display = "block";
+          document.getElementById("passwordmessage").style.display = "block";
         }
 
         document.getElementById("crpassword").onblur = function () {
-            document.getElementById("passwordmessage").style.display = "block";
+          document.getElementById("passwordmessage").style.display = "none";
         }
 
         function validateForm() {
