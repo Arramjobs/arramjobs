@@ -14,7 +14,6 @@ class Candidate extends CI_Controller
         $this->load->view('candidateRegistration.php');
     }
 
-
     public function index()
     {
         $this->load->view('candidateLogin.php');
@@ -80,7 +79,6 @@ class Candidate extends CI_Controller
         }
     }
 
-
     public function setVariable()
     {
         $basicDetails = $this->CandidateModel->getBasicDetails();
@@ -99,7 +97,6 @@ class Candidate extends CI_Controller
         $this->data['areaTotalRows'] = $areaTotalRows["totalRows"];
     }
 
-
     public function dash()
     {
         if (isset($_SESSION['seekerId'])) {
@@ -112,7 +109,6 @@ class Candidate extends CI_Controller
             $this->index();
         }
     }
-
 
     public function basicDetails()
     {
@@ -256,8 +252,7 @@ class Candidate extends CI_Controller
         }
     }
 
-
-    public function insertExperienceForm()
+   public function insertExperienceForm()
     {
         if (isset($_SESSION['seekerId'])) {
             $insertExperienceForm = $this->CandidateModel->insertExperienceForm();
@@ -347,7 +342,6 @@ class Candidate extends CI_Controller
             $this->index();
         }
     }
-
 
 
     //    project
@@ -547,7 +541,6 @@ class Candidate extends CI_Controller
         }
     }
 
-
     public function insertSkillForm()
     {
         if (isset($_SESSION['seekerId'])) {
@@ -620,7 +613,6 @@ class Candidate extends CI_Controller
             $this->index();
         }
     }
-
 
     public function myProfile()
     {
@@ -809,7 +801,6 @@ class Candidate extends CI_Controller
             $this->index();
         }
     }
-
 
     public function thank()
     {

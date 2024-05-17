@@ -9,6 +9,8 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link href="<?php echo baseUrl; ?>/assets/title logo.png" rel="icon">
 
     <!-- Favicons -->
@@ -98,9 +100,12 @@
             }
         }
 
-        /* Regular styles for pagination buttons */
         .pagination-btn {
             padding: 5px 10px;
+        }
+
+        th {
+            white-space: nowrap;
         }
 
         @media (max-width: 767px) {
@@ -124,7 +129,7 @@
             white-space: nowrap;
         }
 
-        /* Sidebar css changes */
+        /* Sidebar */
 
         .sidebar ul li a:hover {
             background: #4154f1;
@@ -251,17 +256,12 @@
                 <img src="<?php echo baseUrl . "assets/logo.png" ?>" alt="ArramJobs">
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div><!-- End Logo -->
+        </div>
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
-                <li class="nav-item dropdown">
-
-                </li><!-- End Messages Nav -->
-
                 <li class="nav-item dropdown pe-3">
-
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="<?php echo baseUrl . "assets/profilephoto.png" ?>" alt="Profile"
                             class="rounded-circle">
@@ -281,27 +281,22 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
                         <li>
                             <a class="dropdown-item d-flex align-items-center disabled" href="users-profile.html">
                                 <i class="bi bi-person"></i>
                                 <span>My Profile</span>
                             </a>
                         </li>
-
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
                         <li>
                             <a class="dropdown-item d-flex align-items-center text-danger"
-                                onclick="return confirm('Are you sure to logout?')"
-                                href="<?php echo baseUrl . "admin/logout" ?>">
+                                onclick="return confirm('Are you sure to logout?')" href="<?php echo baseUrl . "admin/logout" ?>">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Log Out</span>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
@@ -506,7 +501,8 @@
                     </ul>
                 </li>End Icons Nav 
 
-        <?php } ?>-->
+        <?php } ?>-->'
+
         </ul>
     </aside><!-- End Sidebar-->
 
@@ -529,15 +525,13 @@
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
 
                 <div class="row">
-                    <!-- Left side columns -->
+                    
                     <div class="col-lg-12">
                         <div class="row">
-
-                            <h5 class="card-title">Verified Users</h5>
-                            <!-- Sales Card -->
+                       
                             <div class="col-xxl-4 col-md-6">
                                 <div class="card info-card sales-card">
 
@@ -556,10 +550,8 @@
 
                                     <div class="card-body">
                                         <h5 class="card-title">Admin Users <span>| Verified</span></h5>
-
                                         <div class="d-flex align-items-center">
-                                            <div
-                                                class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                 <i class="bi bi-cart"></i>
                                             </div>
                                             <div class="ps-3">
@@ -574,31 +566,15 @@
                                     </div>
 
                                 </div>
-                            </div><!-- End Sales Card -->
+                            </div>
 
-                            <!-- Revenue Card -->
                             <div class="col-xxl-4 col-md-6">
                                 <div class="card info-card revenue-card">
 
-                                    <!-- <div class="filter">
-                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                            <li class="dropdown-header text-start">
-                                                <h6>Filter</h6>
-                                            </li>
-
-                                            <li><a class="dropdown-item" href="#">Today</a></li>
-                                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                                        </ul>
-                                    </div> -->
-
                                     <div class="card-body">
                                         <h5 class="card-title">Employers <span>| Verified</span></h5>
-
                                         <div class="d-flex align-items-center">
-                                            <div
-                                                class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                 <i class="bi bi-currency-dollar"></i>
                                             </div>
                                             <div class="ps-3">
@@ -613,31 +589,16 @@
                                     </div>
 
                                 </div>
-                            </div><!-- End Revenue Card -->
+                            </div>
 
-                            <!-- Customers Card -->
-                            <div class="col-xxl-4 col-xl-12">
+                            <div class="col-xxl-4 col-md-6">
                                 <div class="card info-card customers-card">
-
-                                    <!-- <div class="filter">
-                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                            <li class="dropdown-header text-start">
-                                                <h6>Filter</h6>
-                                            </li>
-
-                                            <li><a class="dropdown-item" href="#">Today</a></li>
-                                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                                        </ul>
-                                    </div> -->
 
                                     <div class="card-body">
                                         <h5 class="card-title">Candidates <span>| Verified</span></h5>
 
                                         <div class="d-flex align-items-center">
-                                            <div
-                                                class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                 <i class="bi bi-people"></i>
                                             </div>
                                             <div class="ps-3">
@@ -649,11 +610,32 @@
 
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
+                            </div>
 
-                            </div><!-- End Customers Card -->
+                            <div class="col-xxl-4 col-md-6">
+                                <div class="card info-card customers-card">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title"> Placed Lists <span>| No. of placed candidates</span></h5>
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-people"></i>
+                                            </div>
+                                            <div class="ps-3">
+                                                <h6>
+                                                    <?php echo $this->data['placedCandidatesList']['totalRows']; ?>
+                                                </h6>
+                                                <span class="text-success small pt-1 fw-bold">44%</span> <span
+                                                    class="text-muted small pt-2 ps-1">increase</span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!-- <h5 class="card-title">Unverified Users</h5> -->
                             <!-- Sales Card -->
@@ -784,12 +766,12 @@
                             <li class="breadcrumb-item active">CreateAdminUser</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
+
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Create Admin User</h5>
 
-                        <!-- Multi Columns Form -->
                         <form class="row g-3 needs-validation" novalidate
                             action="<?php echo baseUrl . "admin/insertAdminUser" ?>" method="post">
                             <div class="col-md-6">
@@ -850,19 +832,11 @@
                                 <label for="inputZip" class="form-label">Pincode</label>
                                 <input type="text" class="form-control" id="inputZip" name="pincode">
                             </div>
-                            <!-- <div class="col-12">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">
-                                        Check me out
-                                    </label>
-                                </div>
-                            </div> -->
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
-                        </form><!-- End Multi Columns Form -->
+                        </form>
 
                     </div>
                 </div>
@@ -886,28 +860,13 @@
                             <li class="breadcrumb-item active">User List</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
-                <!-- Recent Sales -->
+                </div>
+
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
-
-                        <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
                         <div class="card-body">
                             <h5 class="card-title">User List<span></span></h5>
 
-                            <!-- <table class="table table-borderless datatable"> -->
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -934,7 +893,8 @@
                                         <tr>
                                             <td><a href="#">
                                                     <?php echo $loopcount; ?>.
-                                                </a></td>
+                                                </a>
+                                            </td>
                                             <td>
                                                 <?php echo $value['admin_id']; ?>
                                             </td>
@@ -943,7 +903,8 @@
                                             </td>
                                             <td><a href="#" class="text-primary">
                                                     <?php echo $value['mobileNumber']; ?>
-                                                </a></td>
+                                                </a>
+                                            </td>
                                             <td>
                                                 <?php echo $value['email']; ?>
                                             </td>
@@ -961,7 +922,8 @@
                                             <td><a href="<?php echo baseUrl . "admin/deleteAdminuser/" . $value['id'] ?>">
                                                     <button type="button" class="btn btn-danger d-flex"
                                                         onclick="return confirm('Are you sure you want to delete?')"><i
-                                                            class="bi bi-trash pe-1"></i> Remove</button></a></td>
+                                                            class="bi bi-trash pe-1"></i> Remove</button></a>
+                                            </td>
                                         </tr>
                                         <?php
                                         $loopcount++;
@@ -971,7 +933,7 @@
                             </table>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <?php
@@ -992,12 +954,11 @@
                             <li class="breadcrumb-item active">Create Employer</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Employer Registration Form</h5>
 
-                        <!-- Multi Columns Form -->
                         <form class="row g-3 " action="<?php echo baseUrl . "admin/insertEmployer" ?>" method="post">
                             <div class="col-md-12">
                                 <label for="inputName5" class="form-label">Company Name <span
@@ -1024,13 +985,10 @@
                                         <i id="visibilityIcon" class="bi bi-eye-slash"></i>
                                     </button>
                                     <p id="crpassworderr" style="color: red;"></p>
-                                    <!-- <div class="text-secondary" style="font-size:12px;margin-top:0px" id="passwordmessage">
-                                        Passwords must contain atleast 1 uppercase, 1 number and a minimum of 6 characters.</div> -->
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="cmpassword" class="form-label">Confirm Password <span
-                                        class="text-danger">*</span></label>
+                                <label for="cmpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="cmpassword" name="cmpassword" required>
                                 <p id="cmpassworderr" style="color: red;"></p>
                             </div>
@@ -1111,7 +1069,7 @@
                                 <button type="submit" class="btn btn-primary">Create Account</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
-                        </form><!-- End Multi Columns Form -->
+                        </form>
 
                     </div>
                 </div>
@@ -1152,30 +1110,17 @@
                             <li class="breadcrumb-item active">New Employers</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
+
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
-
-                        <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
                         <div class="card-body">
+
                             <?php
                             if (isset($this->data['unVerifiedEmployers'][0]['company_name'])) {
                                 ?>
                                 <h5 class="card-title">New Employers<span></span></h5>
 
-                                <!-- <table class="table table-borderless datatable"> -->
                                 <table class="table" id="unverifyTable">
                                     <thead>
                                         <tr>
@@ -1183,7 +1128,7 @@
                                             <th scope="col">Date</th>
                                             <th scope="col">Employer ID</th>
                                             <th scope="col">Company Name</th>
-                                            <th scope="col"> Company Number</th>
+                                            <th scope="col">Company Number</th>
                                             <th scope="col">Contact Person Name</th>
                                             <th scope="col">Contact Person Role</th>
                                             <th scope="col">Contact Person Mobile</th>
@@ -1196,19 +1141,12 @@
                                         $loopcount = 1;
                                         foreach ($this->data['unVerifiedEmployers'] as $key => $value) {
                                             $dateap = $value['dateTime'];
-                                            // $twelveHourTime = date(" F j, Y", strtotime($dateap));
                                             $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                             ?>
                                             <tr>
-                                                <td><a href="#">
-                                                        <?php echo $loopcount; ?>
-                                                    </a>.</td>
-                                                <td>
-                                                    <?php echo $twelveHourTime; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['erid']; ?>
-                                                </td>
+                                                <td> <?php echo $loopcount; ?>. </td>
+                                                <td> <?php echo $twelveHourTime; ?> </td>
+                                                <td> <?php echo $value['erid']; ?> </td>
                                                 <td>
                                                     <p class="d-flex">
                                                         <?php echo $value['company_name']; ?>
@@ -1218,18 +1156,10 @@
                                                         <?php } ?>
                                                     </p>
                                                 </td>
-                                                <td><a href="#" class="text-primary">
-                                                        <?php echo $value['company_mobile_number']; ?>
-                                                    </a></td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['role']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['mobile_number']; ?>
-                                                </td>
+                                                <td class="text-primary"> <?php echo $value['company_mobile_number']; ?> </td>
+                                                <td> <?php echo $value['name']; ?> </td>
+                                                <td> <?php echo $value['role']; ?> </td>
+                                                <td> <?php echo $value['mobile_number']; ?> </td>
                                                 <td><span class="badge bg-danger">Pending</span></td>
                                                 <td class="d-flex"><a class=""
                                                         href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button
@@ -1266,9 +1196,9 @@
                         </div>
 
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
-
+<!-- Pagination -->
             <script>
                 var table = document.getElementById('verifyTable');
                 var rowsPerPage = 7;
@@ -1300,28 +1230,25 @@
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
 
-                    // Ensure that currentPage is within valid range
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
-                    // Determine the startPage and endPage
                     var startPage, endPage;
-                    if (totalPages <= 3) { // If total pages is 3 or less, show all pages
+                    if (totalPages <= 3) { 
                         startPage = 1;
                         endPage = totalPages;
-                    } else { // If total pages is more than 3
-                        if (currentPage <= 2) { // If current page is within first two pages
+                    } else { 
+                        if (currentPage <= 2) { 
                             startPage = 1;
                             endPage = 3;
-                        } else if (currentPage >= totalPages - 1) { // If current page is within last two pages
+                        } else if (currentPage >= totalPages - 1) {
                             startPage = totalPages - 2;
                             endPage = totalPages;
-                        } else { // If current page is in the middle
+                        } else { 
                             startPage = currentPage - 1;
                             endPage = currentPage + 1;
                         }
                     }
 
-                    // Generate buttons for the determined range of pages
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
@@ -1337,15 +1264,12 @@
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
 
-                    // Add previous and next buttons
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
 
-                    // Update the HTML content of pagination buttons container
                     document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
 
-                    // Display or hide previous and next buttons based on currentPage
                     var previousBtn = document.getElementById('previousBtn');
                     var nextBtn = document.getElementById('nextBtn');
                     previousBtn.style.display = (currentPage === 1) ? 'none' : 'inline-block';
@@ -1356,17 +1280,14 @@
             <script>
                 function highlightRow(button) {
                     var row = button.closest('tr');
-
                     var allRows = document.querySelectorAll('.table tbody tr');
                     allRows.forEach(function (row) {
                         row.classList.remove('table-active');
                     });
 
                     row.classList.add('table-active');
-
                     document.body.addEventListener('click', function (event) {
                         var targetElement = event.target;
-
                         if (!row.contains(targetElement)) {
                             row.classList.remove('table-active');
                         }
@@ -1392,28 +1313,50 @@
                             <li class="breadcrumb-item active">Verified List</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
-
-                        <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
                         <div class="card-body">
+                        <div class="d-sm-flex ">
+                        <h5 class="card-title">Verified Employers<span></span></h5>
+                                <div class="filter pt-3 ms-5">
+                                <input type="text" class="form-control" id="searchCompanyNameInput" placeholder="Search by Company Name">
+</div>
+                            </div>
+
+<!-- Search by Company name -->
+<script>
+    $(document).ready(function() {
+        $('#searchCompanyNameInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            var found = false;
+            $('#verifyTable tbody tr').filter(function() {
+                var companyName = $(this).find('td:eq(3)').text().toLowerCase(); // Index 3 is the Company Name column
+                var matches = companyName.indexOf(value) > -1;
+                $(this).toggle(matches);
+                if (matches) {
+                    found = true;
+                }
+            });
+            if (!found) {
+                $('#noRecordsFound').show();
+                $('#verifyTable thead').hide();
+                $('#paginationButtons').hide();
+            } else {
+                $('#noRecordsFound').hide();
+                $('#verifyTable thead').show(); 
+                $('#paginationButtons').show();
+            }
+        });
+    });
+</script>
                             <?php
                             if (isset($this->data['verifiedEmployers'][0]['company_name'])) {
-                                ?>
-                                <h5 class="card-title">Verified Employers<span></span></h5>
+                                ?>                                
+
+<div id="noRecordsFound" style="display: none;">
+    <h5><b>No records found</b></h4>
+</div>
 
                                 <table class="table" id="verifyTable">
                                     <thead>
@@ -1422,7 +1365,7 @@
                                             <th scope="col">Date</th>
                                             <th scope="col">Employer ID</th>
                                             <th scope="col">Company Name</th>
-                                            <th scope="col"> Company Number</th>
+                                            <th scope="col">Company Number</th>
                                             <th scope="col">Contact Person Name</th>
                                             <th scope="col">Contact Person Role</th>
                                             <th scope="col">Contact Person Mobile</th>
@@ -1440,7 +1383,8 @@
                                             <tr>
                                                 <td><a href="#">
                                                         <?php echo $loopcount; ?>.
-                                                    </a></td>
+                                                    </a>
+                                                </td>
                                                 <td>
                                                     <?php echo $twelveHourTime; ?>
                                                 </td>
@@ -1458,7 +1402,8 @@
                                                 </td>
                                                 <td><a href="#" class="text-primary">
                                                         <?php echo $value['company_mobile_number']; ?>
-                                                    </a> </td>
+                                                    </a> 
+                                                </td>
                                                 <td>
                                                     <?php echo $value['name']; ?>
                                                 </td>
@@ -1471,19 +1416,18 @@
                                                 <td>
                                                     <?php echo $value['verifiedBy']; ?>
                                                 </td>
-                                                <td class="d-flex py-3"><a
-                                                        href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button
-                                                            type="button" class="btn btn-success d-flex"><i
-                                                                class="bi bi-eye pe-1"></i>View</button></a>
+                                                <td class="d-flex py-3"><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button
+                                                            type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
                                                     <button type="button" class="btn btn-danger ms-1 d-flex" data-toggle="modal"
-                                                        data-target="#deleteemployer"
-                                                        onclick="(function(id, button) { deleteformvl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)"><i
-                                                            class="bi bi-trash pe-1"></i> Delete</button>
+                                                        data-target="#deleteemployer"  
+                                                        onclick="(function(id, button) { deleteformvl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)">
+                                                        <i class="bi bi-trash pe-1"></i> Delete</button>
+
                                                     <script>
                                                         function deleteformvl(employertid) {
                                                             document.getElementById("EmployerID").value = employertid;
                                                         }
-                                                    </script>
+                                                    </script>                                                    
                                                 </td>
                                             </tr>
                                             <?php
@@ -1491,7 +1435,7 @@
                                         }
                                         ?>
                                     </tbody>
-                                    <p class="text-end " style="margin-top:-40px">Count : <b>
+                                    <p class="text-end " id="verifyCount" style="margin-top:-40px">Count : <b>
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
@@ -1508,11 +1452,11 @@
                             }
                             ?>
                         </div>
-
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
+            <!-- Pagination -->
             <script>
                 var table = document.getElementById('verifyTable');
                 var rowsPerPage = 7;
@@ -1532,7 +1476,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -1540,7 +1483,6 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function previousPage() {
                     if (currentPage > 1) {
                         currentPage--;
@@ -1548,7 +1490,6 @@
                         updatePaginationButtons();
                     }
                 }
-
                 function nextPage() {
                     if (currentPage < totalPages) {
                         currentPage++;
@@ -1556,10 +1497,8 @@
                         updatePaginationButtons();
                     }
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
-
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
                     var startPage, endPage;
@@ -1578,22 +1517,18 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
@@ -1611,14 +1546,12 @@
             <script>
                 function highlightRow(button) {
                     var row = button.closest('tr');
-
                     var allRows = document.querySelectorAll('.table tbody tr');
                     allRows.forEach(function (row) {
                         row.classList.remove('table-active');
                     });
 
                     row.classList.add('table-active');
-
                     document.body.addEventListener('click', function (event) {
                         var targetElement = event.target;
 
@@ -1650,20 +1583,6 @@
                 </div><!-- End Page Title -->
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
-
-                        <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
                         <div class="card-body">
                             <?php
                             if (isset($this->data['pendingEmployers'][0]['company_name'])) {
@@ -1696,7 +1615,8 @@
                                             <tr>
                                                 <td><a href="#">
                                                         <?php echo $loopcount; ?>.
-                                                    </a></td>
+                                                    </a>
+                                                </td>
                                                 <td>
                                                     <?php echo $twelveHourTime; ?>
                                                 </td>
@@ -1707,14 +1627,14 @@
                                                     <p class="d-flex">
                                                         <?php echo $value['company_name']; ?>
                                                         <?php if (!empty($value['companyLocationUrl'])) { ?>
-                                                            <a href="<?php echo $value['companyLocationUrl']; ?>"
-                                                                class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
+                                                            <a href="<?php echo $value['companyLocationUrl']; ?>" class="px-2 text-danger" target="_blank"><i class='bx bx-map'></i></a>
                                                         <?php } ?>
                                                     </p>
                                                 </td>
                                                 <td><a href="#" class="text-primary">
                                                         <?php echo $value['company_mobile_number']; ?>
-                                                    </a></td>
+                                                    </a>
+                                                </td>
                                                 <td>
                                                     <?php echo $value['name']; ?>
                                                 </td>
@@ -1727,8 +1647,7 @@
                                                 <td><span class="badge bg-danger">Pending</span></td>
                                                 <td class="d-flex py-3"><a
                                                         href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button
-                                                            type="button" class="btn btn-success d-flex"><i
-                                                                class="bi bi-eye pe-1"></i>View</button></a>
+                                                            type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
                                                     <button type="button" class="btn btn-danger d-flex ms-1" data-toggle="modal"
                                                         data-target="#deleteemployer"
                                                         onclick="(function(id, button) { deleteformpl(id); highlightRow(button); })(<?php echo $value['id'] ?>, this)"><i
@@ -1764,9 +1683,10 @@
                         </div>
 
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
+            <!-- Pagination -->
             <script>
                 var table = document.getElementById('pendingTableEr');
                 var rowsPerPage = 7;
@@ -1786,7 +1706,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -1794,10 +1713,8 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
-
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
                     var startPage, endPage;
@@ -1816,22 +1733,18 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
@@ -1884,7 +1797,7 @@
                             <li class="breadcrumb-item active">Employer</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
 
@@ -1894,7 +1807,6 @@
                                 ?>
                                 <h5 class="card-title">Deleted Employers<span></span></h5>
 
-                                <!-- <table class="table table-borderless datatable"> -->
                                 <table class="table" id="delTableEr">
                                     <thead>
                                         <tr>
@@ -1967,9 +1879,7 @@
                                                     </form>
                                                     <a class="ms-1"
                                                         href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button
-                                                            type="button" class="btn btn-success d-flex"><i
-                                                                class="bi bi-eye pe-1"></i>View</button></a>
-
+                                                            type="button" class="btn btn-success d-flex"><i class="bi bi-eye pe-1"></i>View</button></a>
                                             </tr>
                                             <?php
                                             $loopcount++;
@@ -1993,11 +1903,11 @@
                             }
                             ?>
                         </div>
-
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
+            <!-- Pagination -->
             <script>
                 var table = document.getElementById('delTableEr');
                 var rowsPerPage = 7;
@@ -2005,7 +1915,6 @@
                 var totalPages = Math.ceil(table.rows.length / rowsPerPage);
 
                 showPage(currentPage);
-
                 function showPage(page) {
                     var startIndex = (page - 1) * rowsPerPage;
                     var endIndex = startIndex + rowsPerPage;
@@ -2017,7 +1926,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -2025,12 +1933,10 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
 
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
-
                     var startPage, endPage;
                     if (totalPages <= 3) {
                         startPage = 1;
@@ -2047,28 +1953,23 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
 
                     document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
-
                     var previousBtn = document.getElementById('previousBtn');
                     var nextBtn = document.getElementById('nextBtn');
                     previousBtn.style.display = (currentPage === 1) ? 'none' : 'inline-block';
@@ -2095,20 +1996,7 @@
                             <li class="breadcrumb-item active">All Employers</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
-
-                <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
+                </div>
 
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
@@ -2122,7 +2010,6 @@
                                     </p>
 
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow p-4 z-3">
-                                        <!-- <li class="mb-2"> <h4>Filter</h4> </li> -->
                                         <li>
                                             <p>Select Year :
                                                 <select id="yearCd" onchange="filterByYearMonth()">
@@ -2160,13 +2047,50 @@
                                     </ul>
 
                                 </div>
+                                <div class="mt-2 ms-5">
+    <input type="text" class="form-control" id="searchCompanyNameInput" placeholder="Search by Company Name">
+</div>
                             </div>
+
+                            <!-- Search option -->
+                            <script>
+    $(document).ready(function() {
+        $('#searchCompanyNameInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            var found = false;
+            $('#myTableEr tbody tr').filter(function() {
+                var companyName = $(this).find('td:eq(4)').text().toLowerCase(); // Index 4 is the Company Name column
+                var matches = companyName.indexOf(value) > -1;
+                $(this).toggle(matches);
+                if (matches) {
+                    found = true;
+                }
+            });
+            if (!found) {
+                $('#noRecordsFound').show();
+                $('#myTableEr thead').hide(); 
+                $('#deleteList2').hide();
+                $('#count1').hide();
+                $('#paginationButtons').hide();
+            } else {
+                $('#noRecordsFound').hide();
+                $('#myTableEr thead').show(); 
+                $('#deleteList2').show();
+                $('#count1').show();
+                $('#paginationButtons').show();
+            }
+        });
+    });
+</script>
 
                             <?php
                             if (isset($this->data['overallEmployers'][0]['company_name'])) {
                                 ?>
 
-                                <!-- <table class="table table-borderless datatable"> -->
+<div id="noRecordsFound" style="display: none;">
+    <h5><b>No records found</b></h4>
+</div>
+
                                 <table class="table" id="myTableEr">
                                     <thead>
                                         <tr>
@@ -2177,7 +2101,6 @@
                                             <th scope="col">Company Name</th>
                                             <th scope="col">Company Number</th>
                                             <th scope="col">Contact Person Name</th>
-                                            <!-- <th scope="col">Contact Person Role</th> -->
                                             <th scope="col">Contact Person Mobile</th>
                                             <th scope="col">Verification Status</th>
                                             <th scope="col">Action</th>
@@ -2222,7 +2145,6 @@
                                                 <td>
                                                     <?php echo $value['name']; ?>
                                                 </td>
-                                                <!-- <td><?php echo $value['role']; ?></td> -->
                                                 <td>
                                                     <?php echo $value['mobile_number']; ?>
                                                 </td>
@@ -2240,27 +2162,31 @@
                                                 }
                                                 ?>
                                                 <td class="d-flex py-3">
-                                                    <!-- <a href="<?php echo baseUrl . "admin/jobViewTable/" . $value['id'] ?>">
-                                                <button type="button" class="btn btn-primary"> Job post</button>
-                                            </a> -->
-
                                                     <a class="mx-1"
                                                         href="<?php echo baseUrl . "admin/viewEmployer/" . $value['id'] ?>">
                                                         <button type="button" class="btn btn-success d-flex"><i
                                                                 class="bi bi-eye pe-1"></i>View</button></a>
+                                                </td>
                                             </tr>
                                             <?php
                                             $loopcount++;
                                         }
                                         ?>
                                     </tbody>
-                                    <p class="text-end " style="margin-top:-40px">Count : <b>
+                                    <p class="text-end " id="count1" style="margin-top:-40px">Count : <b>
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
-                                <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled"
-                                    onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                                </form>
+
+                                <?php
+    if (count($this->data['overallEmployers']) > 0) {
+    ?>
+        <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled"
+            onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+        </form>
+    <?php
+    }
+    ?>
 
                                 <div id="paginationButtons" class="text-center mt-4">
                                     <div id="paginationBtnsContainer"></div>
@@ -2275,9 +2201,10 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
+            <!-- Pagination -->
             <script>
                 var table = document.getElementById('myTableEr');
                 var rowsPerPage = 7;
@@ -2297,7 +2224,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -2305,7 +2231,6 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function previousPage() {
                     if (currentPage > 1) {
                         currentPage--;
@@ -2313,7 +2238,6 @@
                         updatePaginationButtons();
                     }
                 }
-
                 function nextPage() {
                     if (currentPage < totalPages) {
                         currentPage++;
@@ -2321,7 +2245,6 @@
                         updatePaginationButtons();
                     }
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
 
@@ -2343,22 +2266,18 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
@@ -2373,6 +2292,7 @@
                 updatePaginationButtons();
             </script>
 
+<!-- Filter -->
             <script>
                 function filterTableEr() {
                     var fromDateInput = document.getElementById("fromDateEr").value;
@@ -2401,7 +2321,6 @@
                         }
                     }
                 }
-
                 function parseDate(dateString, format) {
                     var parts;
                     if (format === "yyyy-mm-dd") {
@@ -2412,7 +2331,6 @@
                         return new Date(parts[2], parts[1] - 1, parts[0]);
                     }
                 }
-
                 function clearDateFields() {
                     document.getElementById("yearCd").value = "";
                     document.getElementById("monthCd").value = "";
@@ -2420,12 +2338,9 @@
                     document.getElementById("toDateEr").value = "";
                     filterTableEr();
                 }
-
                 document.getElementById("fromDateEr").addEventListener("input", filterTableEr);
                 document.getElementById("toDateEr").addEventListener("input", filterTableEr);
-            </script>
 
-            <script>
                 function filterByYearMonth() {
                     var fromDateInput = document.getElementById("fromDateEr").value;
                     var toDateInput = document.getElementById("toDateEr").value;
@@ -2494,21 +2409,19 @@
                             <li class="breadcrumb-item active">Employer</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="card" id="printEmployer">
                     <div class="card-body">
-                        <h5 class="card-title">Verified Employer Details</h5>
+                        <!-- <h5 class="card-title">Employer Details</h5> -->
 
-                        <!-- Multi Columns Form -->
                         <form class="row g-3 needs-validation" novalidate
                             action="<?php echo baseUrl . "admin/verifyEmployer" ?>" method="post">
                             <?php
                             foreach ($this->data['manageEmployer'] as $key => $value) {
                                 ?>
-                                <p>Employer ID :
-                                    <?php echo $value['erid'] ?>
+                                <p><h5 style="color:blue"><b>Employer ID :
+                                    <?php echo $value['erid'] ?></b></h5>
                                 </p>
-
                                 <div class="col-md-12">
                                     <label for="inputName5" class="form-label">Company Name</label>
                                     <input type="text" class="form-control" id="inputName5"
@@ -2581,7 +2494,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputWebsite" class="form-label">Website</label>
-                                    <!-- <input type="text" class="form-control" id="inputWebsite" value="<?php echo $value['companywebsite'] ?>" readonly name="cwebsite1"> -->
                                     <?php if ($value['companywebsite'] != null) { ?>
                                         <a href="<?php echo $value['companywebsite']; ?>" class=" text-primary form-control"
                                             target="blank">
@@ -2662,6 +2574,7 @@
                                                 </div>
                                             </div>
                                     </fieldset>
+
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
                                             <textarea class="form-control" id="floatingTextarea" name="verificationRemarks"
@@ -2695,15 +2608,13 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="verificationStatus"
                                                     id="gridRadios" value="2">
-                                                <!-- <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label> -->
                                                 <label class="form-check-label" for="gridRadios3">
                                                     Relieved
                                                 </label>
                                             </div>
                                         </div>
                                     </fieldset>
+
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
                                             <textarea class="form-control" id="floatingTextarea" name="verificationRemarks"
@@ -2711,6 +2622,7 @@
                                             <label for="floatingTextarea">Remarks</label>
                                         </div>
                                     </div>
+
                                     <fieldset class="row mb-3">
                                         <legend class="col-form-label col-sm-4 pt-0">Delete Request Status</legend>
                                         <div class="col-sm-8">
@@ -2728,6 +2640,7 @@
                                             </div>
                                         </div>
                                     </fieldset>
+
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
                                             <textarea class="form-control" id="floatingTextarea" name="deleteRequestRemarks"
@@ -2752,7 +2665,7 @@
                                 <?php
                             }
                             ?>
-                        </form><!-- End Multi Columns Form -->
+                        </form>
                     </div>
                 </div>
             </section>
@@ -2761,7 +2674,6 @@
                 function verifyCheckboxes() {
                     var checkbox1 = document.getElementById('ercheckbox1').checked;
                     var checkbox2 = document.getElementById('ercheckbox2').checked;
-
 
                     var verifyButton = document.getElementById('verifyButton');
                     var pendingButton = document.getElementById('pendingButton');
@@ -2803,7 +2715,6 @@
             </script>
 
             <section>
-                <!-- End Page Title -->
                 <div class="card" id="employerprint">
                     <div class="card-body">
                         <div class="col">
@@ -2820,7 +2731,6 @@
                             </div>
 
                         </div><br>
-
                         <h5 style="color:#C6334B">Contact Person Details</h5>
 
                         <table class="table table-striped mt-2">
@@ -2910,16 +2820,10 @@
                                 foreach ($this->data['manageEmployer'] as $key => $value) {
                                     ?>
                                     <tr>
-                                        <td>
-                                            <?php echo $value['City'] ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $value['district'] ?>
-                                        </td>
+                                        <td><?php echo $value['City'] ?></td>
+                                        <td><?php echo $value['district'] ?></td>
                                         <td>Tamil Nadu</td>
-                                        <td>
-                                            <?php echo $value['pincode'] ?>
-                                        </td>
+                                        <td><?php echo $value['pincode'] ?></td>
                                     </tr>
                                     <?php
                                 }
@@ -3004,7 +2908,6 @@
                                     <th scope="col">Job Location</th>
                                     <th scope="col">Job Timing</th>
                                     <th scope="col">Salary</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -3014,7 +2917,6 @@
                                     $dateap = $value['date'];
                                     $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                     ?>
-
                                     <tr>
                                         <td><a>
                                                 <?php echo $countjobs++; ?>.
@@ -3047,10 +2949,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col">S.No</th>
+                                    <th scope="col">Date</th>
                                     <th scope="col">Experience</th>
                                     <th scope="col">Number of Openings</th>
                                     <th scope="col">Job Description</th>
-                                    <th scope="col">Date</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -3060,11 +2962,13 @@
                                     $dateap = $value['date'];
                                     $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                     ?>
-
                                     <tr>
                                         <td><a>
                                                 <?php echo $countjobs++; ?>.
                                             </a>
+                                        </td>
+                                        <td>
+                                            <?php echo $twelveHourTime ?>
                                         </td>
                                         <td>
                                             <?php echo $value['experience'] ?>
@@ -3073,10 +2977,9 @@
                                             <?php echo $value['number_of_openings'] ?>
                                         </td>
                                         <td>
-                                            <?php echo $value['description'] ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $twelveHourTime ?>
+                                        <div class="overflow-auto" style="max-height: 400px; max-width: 300px;">
+                                                    <?php echo $value['description'] ?>
+                                                    </div>
                                         </td>
                                     </tr>
                                     <?php
@@ -3127,7 +3030,7 @@
                             <li class="breadcrumb-item active">Create Candidate</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
 
                 <div class="card mb-3">
                     <div class="card-body">
@@ -3212,6 +3115,7 @@
             </section>
 
             <script>
+                // Password visibility
                 function togglePasswordVisibility(inputId, iconId) {
                     var passwordInput = document.getElementById(inputId);
                     var visibilityIcon = document.getElementById(iconId);
@@ -3226,9 +3130,8 @@
                         visibilityIcon.classList.add("bi-eye-slash");
                     }
                 }
-            </script>
 
-            <script>
+                // Password message
                 document.getElementById("createpassword").onfocus = function () {
                     document.getElementById("passwordmessage").style.display = "block";
                 }
@@ -3250,7 +3153,7 @@
             <section class="Multi Columns Form">
                 <div class="pagetitle" style="padding-bottom:20px; padding-top:15px;">
                     <h1>Candidate Details</h1>
-                </div><!-- End Page Title -->
+                </div>
 
                 <div class="card">
                     <div class="card-body">
@@ -3262,7 +3165,6 @@
                             </div>
                         </div>
 
-                        <!-- Multi Columns Form -->
                         <form class="row g-3 needs-validation" novalidate name="applicationform"
                             enctype="multipart/form-data" method="post" onsubmit="return group()"
                             action='<?php echo baseUrl . "Admin/updateBasicDetails" ?>'>
@@ -3507,7 +3409,7 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                     <button type="reset" class="btn btn-secondary">Reset</button>
                                 </div>
-                            </form><!-- End Multi Columns Form -->
+                            </form>
 
                             <?php
                             if ($value['bdsubmited'] == '1') {
@@ -3686,7 +3588,6 @@
                     if (!dateString) {
                         return null;
                     }
-
                     var parts = dateString.split('-');
                     var firstPart = parseInt(parts[0]);
                     var secondPart = parseInt(parts[1]);
@@ -3698,7 +3599,6 @@
                         return new Date(firstPart, secondPart - 1, thirdPart);
                     }
                 }
-
                 function calculateAge(dob) {
                     var today = new Date();
                     var birthDate = new Date(dob);
@@ -3812,7 +3712,6 @@
                             </div>
                         </div>
 
-                        <!-- Multi Columns Form -->
                         <form class="row g-3" autocomplete="off" novalidate name="educationform" method="post"
                             enctype="multipart/form-data" onsubmit="return validateForm()"
                             action="<?php echo baseUrl . "Admin/insertEducationForm" ?>">
@@ -3922,12 +3821,12 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
-                        </form><!-- End Multi Columns Form -->
-
+                        </form>
                     </div>
                 </div>
             </section>
 
+            <!-- Education autocomplete -->
             <script>
                 function autocomplete(inp, arr) {
                     var currentFocus;
@@ -3950,14 +3849,12 @@
                                 b.addEventListener("click", function (e) {
                                     inp.value = this.getElementsByTagName("input")[0].value;
                                     closeAllLists();
-                                    // Show or hide additional fields based on the selected value
                                     showAdditionalFields(inp.value);
                                 });
                                 a.appendChild(b);
                             }
                         }
                     });
-
                     inp.addEventListener("keydown", function (e) {
                         var x = document.getElementById(this.id + "autocomplete-list");
                         if (x) x = x.getElementsByTagName("div");
@@ -3974,7 +3871,6 @@
                             }
                         }
                     });
-
                     function addActive(x) {
                         if (!x) return false;
                         removeActive(x);
@@ -3982,13 +3878,11 @@
                         if (currentFocus < 0) currentFocus = (x.length - 1);
                         x[currentFocus].classList.add("autocomplete-active");
                     }
-
                     function removeActive(x) {
                         for (var i = 0; i < x.length; i++) {
                             x[i].classList.remove("autocomplete-active");
                         }
                     }
-
                     function closeAllLists(elmnt) {
                         var x = document.getElementsByClassName("autocomplete-items");
                         for (var i = 0; i < x.length; i++) {
@@ -4097,7 +3991,7 @@
             <section class="usertable">
                 <div class="pagetitle" style="padding-bottom:20px; padding-top:15px;">
                     <h1>Experience Details</h1>
-                </div><!-- End Page Title -->
+                </div>
 
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
@@ -4241,9 +4135,9 @@
                             </form>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
 
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <script>
@@ -4332,22 +4226,17 @@
 
             <!-- WORK STATUS -->
             <script>
-                <?php
-                if ($experienceDetails[0]['workStatus'] == '0') {
-                    ?>
-                    document.getElementById("expTable").style.display = "block";
-                    document.getElementById("noexperience").style.display = "none";
+    <?php if ($experienceDetails[0]['workStatus'] == '0') { ?>
+        document.getElementById("expTable").style.display = "block";
+        document.getElementById("noexperience").style.display = "none";
+    <?php } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
+        document.getElementById("expTable").style.display = "none";
+        document.getElementById("noexperience").style.display = "block";
+    <?php } ?>
+</script>
 
-                    <?php
-                } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
-                        document.getElementById("expTable").style.display = "none";
-                        document.getElementById("noexperience").style.display = "block";
-
-                    <?php
-                } ?>
-            </script>
-
-            <script>
+<!-- Total duration calculation -->
+<script>
                 document.getElementById('fromDate').addEventListener('input', updateDateDifference);
                 document.getElementById('toDate').addEventListener('input', updateDateDifference);
                 document.getElementById('till_now').addEventListener('change', updateToDate);
@@ -4462,7 +4351,7 @@
             <section class="usertable">
                 <div class="pagetitle" style="padding-bottom:20px; padding-top:15px;">
                     <h1>Area of Job Interest</h1>
-                </div><!-- End Page Title -->
+                </div>
 
                 <div class="card" id="addinterestform">
                     <div class="card-body">
@@ -4473,7 +4362,7 @@
                                         class="btn btn-info mt-3 "><i class="bi bi-arrow-left"></i></button></a>
                             </div>
                         </div>
-                        <!-- Multi Columns Form -->
+                        
                         <form class="row g-3" novalidate method="post" onsubmit="return validateAreaForm()"
                             enctype="multipart/form-data" action="<?php echo baseUrl . "Admin/insertAreaOfIntrest" ?>">
 
@@ -4573,18 +4462,19 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
-                        </form><!-- End Multi Columns Form -->
-
+                        </form>
                     </div>
                 </div>
             </section>
 
+            <!-- Name validation -->
             <script>
                 function validateName1(input) {
                     input.value = input.value.replace(/[0-9]/g, '');
                 }
             </script>
 
+<!-- Display category -->
             <script>
                 function showHideOtherField() {
                     var categoryDropdown = document.getElementById('category');
@@ -4596,8 +4486,16 @@
                         otherCategoryField.style.display = 'none';
                     }
                 }
+
+                // Saving category format
+                function formatCategoryInput() {
+              var newCategoryInput = document.getElementById("newcategory");
+              newCategoryInput.value = newCategoryInput.value.replace(/\s/g, '-');
+            }
+            document.getElementById("newcategory").addEventListener("input", formatCategoryInput);
             </script>
 
+<!-- Calculate total duration -->
             <script>
                 document.getElementById('fromDate').addEventListener('input', updateDateDifference);
                 document.getElementById('toDate').addEventListener('input', updateDateDifference);
@@ -4606,7 +4504,6 @@
                 function updateDateDifference() {
                     var fromDate = new Date(document.getElementById('fromDate').value);
                     var toDate = new Date(document.getElementById('toDate').value);
-
                     var tillNowChecked = document.getElementById('till_now').checked;
 
                     document.getElementById('toDate').disabled = tillNowChecked;
@@ -4669,7 +4566,6 @@
             <script>
                 function validateexpForm() {
                     clearErrorMessages();
-
                     var category = document.getElementById("category");
                     var newothercategory = document.getElementById("newcategory_group");
                     var subcategory = document.getElementById("subcategory");
@@ -4682,32 +4578,26 @@
                         displayError('Please select a category', 'category_error');
                         return false;
                     }
-
                     if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
                         displayError('Please enter newcategory', 'newcategory_error');
                         return false;
                     }
-
                     if (subcategory.value === '') {
                         displayError('Please select a subcategory', 'subcategory_error');
                         return false;
                     }
-
                     if (companyname.value === '') {
                         displayError('Company name must be filled out', 'companyname_error');
                         return false;
                     }
-
                     if (companylocation.value === '') {
                         displayError('Company location must be filled out', 'companylocation_error');
                         return false;
                     }
-
                     if (role.value === '') {
                         displayError('Role must be filled out', 'role_error');
                         return false;
                     }
-
                     if (compMobile.value === '') {
                         displayError('Company mobile number must be filled out', 'compmobile_error');
                         return false;
@@ -4715,16 +4605,13 @@
                         displayError('Mobile number must have exactly 10 digits', 'compmobile_error');
                         return false;
                     }
-
                     return true;
                 }
-
                 function displayError(message, elementId) {
                     var errorElement = document.getElementById(elementId);
                     errorElement.innerHTML = message;
                     errorElement.style.color = 'red';
                 }
-
                 function clearErrorMessages() {
                     var errorElements = document.getElementsByClassName('error');
                     Array.from(errorElements).forEach(function (errorElement) {
@@ -4732,14 +4619,6 @@
                     });
                 }
             </script>
-
-            <script>
-            function formatCategoryInput() {
-              var newCategoryInput = document.getElementById("newcategory");
-              newCategoryInput.value = newCategoryInput.value.replace(/\s/g, '-');
-            }
-            document.getElementById("newcategory").addEventListener("input", formatCategoryInput);
-          </script>
 
             <?php
         } elseif ($method == "addSkillForm") {
@@ -4754,7 +4633,7 @@
             <section class="Multi Columns Form">
                 <div class="pagetitle" style="padding-bottom:20px; padding-top:15px;">
                     <h1>Skill Details</h1>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
@@ -4765,7 +4644,6 @@
                             </div>
                         </div>
 
-                        <!-- Multi Columns Form -->
                         <form class="row g-3 needs-validation" novalidate method="post"
                             onsubmit="return validateSkillForm()" action="<?php echo baseUrl . "Admin/insertSkillForm" ?>">
 
@@ -4793,7 +4671,6 @@
                                             <?php endfor; ?>
                                             <option value="20+ "> 20+ Years </option>
                                         </select>
-
                                     </div>
                                     <div id="sexp_error" class="error"></div>
                                 </div>
@@ -4816,8 +4693,7 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
-                        </form><!-- End Multi Columns Form -->
-
+                        </form>
                     </div>
                 </div>
             </section>
@@ -4834,7 +4710,6 @@
             </script>
 
             <section class="usertable">
-
                 <div class="pagetitle" style="padding-bottom:10px; padding-top:15px;">
                     <h1>New Candidate List</h1>
                     <nav>
@@ -4843,24 +4718,10 @@
                             <li class="breadcrumb-item active">New Candidate</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
 
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
-
-                        <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
                         <div class="card-body">
 
                             <?php
@@ -4877,7 +4738,7 @@
                                             <th scope="col">Candidate ID</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Mobile Number</th>
-                                            <th scope="col">Email</th>
+                                            <!-- <th scope="col">Email</th> -->
                                             <th scope="col">D.O.B</th>
                                             <th scope="col">Verification Status</th>
                                             <th scope="col">Action</th>
@@ -4891,12 +4752,12 @@
                                             $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                             ?>
                                             <tr>
-                                                <td> <a href="#"><?php echo $loopcount; ?>. </a></td>
+                                                <td> <?php echo $loopcount; ?>. </td>
                                                 <td> <?php echo $twelveHourTime; ?> </td>
                                                 <td> <?php echo $value['eeid']; ?> </td>
                                                 <td> <?php echo $value['name']; ?> </td>
                                                 <td> <?php echo $value['phonenumber']; ?> </td>
-                                                <td><a href="#" class="text-primary"> <?php echo $value['email']; ?> </a> </td>
+                                                <!-- <td><a href="#" class="text-primary"> <?php echo $value['email']; ?> </a> </td> -->
                                                 <td>
                                                     <?php
                                                     if (!empty($value['dateofbirth'])) {
@@ -4911,12 +4772,9 @@
                                                 <td class="d-flex py-3">
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                            id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                                            aria-expanded="false">
-                                                            Add Details
+                                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">  Add Details
                                                         </button>
-                                                        <ul class="dropdown-menu shadow-lg p-3 rounded"
-                                                            style="background-color:#b6bab8;" aria-labelledby="dropdownMenuButton1">
+                                                        <ul class="dropdown-menu shadow-lg p-3 rounded" style="background-color:#b6bab8;" aria-labelledby="dropdownMenuButton1">
                                                             <li><a class="my-1"
                                                                     href="<?php echo baseUrl . "admin/basicdetails/" . $value['id'] ?>">
                                                                     <button type="button" class="btn btn-success  my-1">
@@ -4977,9 +4835,9 @@
                                 </div>
 
                                 <?php
-                            } else {
+                            } else { 
                                 ?>
-                                <!-- <h5 class="card-title">No Records Found</h5> -->
+                                <h5 class="card-title">No Records Found<span></span></h5>
                                 <?php
                             }
                             ?>
@@ -5009,6 +4867,7 @@
                 }
             </script>
 
+<!-- Pagination -->
             <script>
                 var table = document.getElementById('newList');
                 var rowsPerPage = 7;
@@ -5028,7 +4887,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -5036,12 +4894,9 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
-
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
-
 
                     var startPage, endPage;
                     if (totalPages <= 3) {
@@ -5059,28 +4914,21 @@
                             endPage = currentPage + 1;
                         }
                     }
-
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
-
 
                     document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
 
@@ -5113,31 +4961,55 @@
                             <li class="breadcrumb-item active">Verified Candidates</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
 
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
-
-                        <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
                         <div class="card-body">
+                        <div class="d-sm-flex ">
+                        <h5 class="card-title">Verified Candidates<span></span></h5>
+                                <div class="filter pt-3 ms-5">
+                                <input type="text" class="form-control" id="searchNameInput" placeholder="Search by Name">
+</div>
+                            </div>
+
+                            <!-- Search option -->
+                            <script>
+    $(document).ready(function() {
+        $('#searchNameInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            var found = false;
+            $('#verifyTableCd tbody tr').filter(function() {
+                var candidateName = $(this).find('td:eq(3)').text().toLowerCase(); // Index 4 is the Company Name column
+                var matches = candidateName.indexOf(value) > -1;
+                $(this).toggle(matches);
+                if (matches) {
+                    found = true;
+                }
+            });
+            if (!found) {
+                $('#noRecordsFound').show();
+                $('#verifyTableCd thead').hide(); 
+                $('#verifyCountCnd').hide();
+                $('#paginationButtons').hide();
+            } else {
+                $('#noRecordsFound').hide();
+                $('#verifyTableCd thead').show(); 
+                $('#verifyCountCnd').show();
+                $('#paginationButtons').show();
+            }
+        });
+    });
+</script>
+
                             <?php
                             if (isset($this->data['verifiedEmployees'][0]['name'])) {
                                 ?>
-                                <h5 class="card-title">Verified List<span></span></h5>
+                               
+                               <div id="noRecordsFound" style="display: none;">
+    <h5><b>No records found</b></h4>
+</div>
 
-                                <!-- <table class="table table-borderless datatable"> -->
                                 <table class="table" id="verifyTableCd">
                                     <thead>
                                         <tr>
@@ -5146,7 +5018,7 @@
                                             <th scope="col">Candidate ID</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Mobile Number</th>
-                                            <th scope="col">Email</th>
+                                            <!-- <th scope="col">Email</th> -->
                                             <th scope="col">D.O.B</th>
                                             <th scope="col">Verified By</th>
                                             <th scope="col">Action</th>
@@ -5160,26 +5032,12 @@
                                             $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                             ?>
                                             <tr>
-                                                <td><a href="#">
-                                                        <?php echo $loopcount; ?>.
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <?php echo $twelveHourTime; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['eeid']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['phonenumber']; ?>
-                                                </td>
-                                                <td><a href="#" class="text-primary">
-                                                        <?php echo $value['email']; ?>
-                                                    </a>
-                                                </td>
+                                                <td> <?php echo $loopcount; ?>. </td>
+                                                <td> <?php echo $twelveHourTime; ?> </td>
+                                                <td> <?php echo $value['eeid']; ?> </td>
+                                                <td> <?php echo $value['name']; ?> </td>
+                                                <td class="text-primary"> <?php echo $value['phonenumber']; ?> </td>
+                                                <!-- <td><a href="#" class="text-primary"> <?php echo $value['email']; ?> </a> </td> -->
                                                 <td>
                                                     <?php
                                                     if (!empty($value['dateofbirth'])) {
@@ -5190,9 +5048,7 @@
                                                     }
                                                     ?>
                                                 </td>
-                                                <td>
-                                                    <?php echo $value['verifiedBy']; ?>
-                                                </td>
+                                                <td> <?php echo $value['verifiedBy']; ?> </td>
                                                 <td class="d-flex py-3">
                                                     <a class=""
                                                         href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>">
@@ -5216,7 +5072,7 @@
                                         }
                                         ?>
                                     </tbody>
-                                    <p class="text-end " style="margin-top:-40px">Count : <b>
+                                    <p class="text-end " id="verifyCountCnd" style="margin-top:-40px">Count : <b>
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
@@ -5234,7 +5090,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <!-- PAGINATION -->
@@ -5245,7 +5101,6 @@
                 var totalPages = Math.ceil(table.rows.length / rowsPerPage);
 
                 showPage(currentPage);
-
                 function showPage(page) {
                     var startIndex = (page - 1) * rowsPerPage;
                     var endIndex = startIndex + rowsPerPage;
@@ -5257,7 +5112,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -5265,12 +5119,9 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
-
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
-
                     var startPage, endPage;
                     if (totalPages <= 3) {
                         startPage = 1;
@@ -5287,26 +5138,21 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
-
 
                     document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
 
@@ -5321,7 +5167,6 @@
             <script>
                 function highlightRow(button) {
                     var row = button.closest('tr');
-
                     var allRows = document.querySelectorAll('.table tbody tr');
                     allRows.forEach(function (row) {
                         row.classList.remove('table-active');
@@ -5349,7 +5194,6 @@
             </script>
 
             <section class="usertablewithscrool">
-
                 <div class="pagetitle">
                     <h1>Pending Candidates</h1>
                     <nav>
@@ -5358,24 +5202,10 @@
                             <li class="breadcrumb-item active">Pending Candidates</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
 
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
-
-                        <!-- <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-        
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div> -->
-
                         <div class="card-body">
                             <?php
                             if (isset($this->data['pendingEmployees'][0]['name'])) {
@@ -5390,7 +5220,7 @@
                                             <th scope="col">Candidate ID</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Mobile Number</th>
-                                            <th scope="col">Email</th>
+                                            <!-- <th scope="col">Email</th> -->
                                             <th scope="col">D.O.B</th>
                                             <th scope="col">Remarks</th>
                                             <th scope="col">Verification Status</th>
@@ -5405,26 +5235,12 @@
                                             $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                             ?>
                                             <tr>
-                                                <td><a href="#">
-                                                        <?php echo $loopcount; ?>.
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <?php echo $twelveHourTime; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['eeid']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['phonenumber']; ?>
-                                                </td>
-                                                <td><a href="#" class="text-primary">
-                                                        <?php echo $value['email']; ?>
-                                                    </a>
-                                                </td>
+                                                <td> <?php echo $loopcount; ?>. </td>
+                                                <td> <?php echo $twelveHourTime; ?> </td>
+                                                <td> <?php echo $value['eeid']; ?> </td>
+                                                <td> <?php echo $value['name']; ?> </td>
+                                                <td class="text-primary"> <?php echo $value['phonenumber']; ?> </td>
+                                                <!-- <td><a href="#" class="text-primary"> <?php echo $value['email']; ?> </a> </td> -->
                                                 <td>
                                                     <?php
                                                     if (!empty($value['dateofbirth'])) {
@@ -5435,12 +5251,8 @@
                                                     }
                                                     ?>
                                                 </td>
-                                                <td>
-                                                    <?php echo $value['verificationRemarks']; ?>
-                                                </td>
-                                                <td>
-                                                    <span class="badge bg-danger">Pending</span>
-                                                </td>
+                                                <td> <?php echo $value['verificationRemarks']; ?> </td>
+                                                <td> <span class="badge bg-danger">Pending</span> </td>
                                                 <td class="d-flex py-3"><a
                                                         href="<?php echo baseUrl . "admin/manageCandidate/" . $value['id'] ?>"><button
                                                             type="button" class="btn btn-success d-flex"><i
@@ -5479,7 +5291,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <!-- PAGINATION -->
@@ -5488,7 +5300,6 @@
                 var rowsPerPage = 7;
                 var currentPage = 1;
                 var totalPages = Math.ceil(table.rows.length / rowsPerPage);
-
                 showPage(currentPage);
 
                 function showPage(page) {
@@ -5502,7 +5313,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -5510,10 +5320,8 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
-
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
                     var startPage, endPage;
@@ -5532,22 +5340,18 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
 
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
@@ -5573,7 +5377,6 @@
                     });
 
                     row.classList.add('table-active');
-
                     document.body.addEventListener('click', function (event) {
                         var targetElement = event.target;
 
@@ -5602,24 +5405,10 @@
                             <li class="breadcrumb-item active">Candidate</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
 
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
-
-                        <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
                         <div class="card-body">
                             <?php
                             if (isset($this->data['deleteEmployeeList'][0]['name'])) {
@@ -5649,24 +5438,12 @@
                                             $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                             ?>
                                             <tr>
-                                                <td><a href="#">
-                                                        <?php echo $loopcount; ?>.
-                                                    </a></td>
-                                                <td>
-                                                    <?php echo $twelveHourTime; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['eeid']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['phonenumber']; ?>
-                                                </td>
-                                                <td><a href="#" class="text-primary">
-                                                        <?php echo $value['email']; ?>
-                                                    </a></td>
+                                                <td><a href="#"> <?php echo $loopcount; ?>. </a></td>
+                                                <td> <?php echo $twelveHourTime; ?> </td>
+                                                <td> <?php echo $value['eeid']; ?> </td>
+                                                <td> <?php echo $value['name']; ?> </td>
+                                                <td> <?php echo $value['phonenumber']; ?> </td>
+                                                <td><a href="#" class="text-primary"> <?php echo $value['email']; ?> </a></td>
                                                 <td>
                                                     <?php
                                                     if (!empty($value['dateofbirth'])) {
@@ -5677,9 +5454,7 @@
                                                     }
                                                     ?>
                                                 </td>
-                                                <td>
-                                                    <?php echo $value['deleteRemarks']; ?>
-                                                </td>
+                                                <td> <?php echo $value['deleteRemarks']; ?> </td>
                                                 <?php
                                                 if ($value['identityverify'] == 1 && $value['addressverify'] == 1 && $value['employmentverify'] == 1 && $value['educationverify'] == 1) {
                                                     ?>
@@ -5734,7 +5509,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <!-- PAGINATION -->
@@ -5745,7 +5520,6 @@
                 var totalPages = Math.ceil(table.rows.length / rowsPerPage);
 
                 showPage(currentPage);
-
                 function showPage(page) {
                     var startIndex = (page - 1) * rowsPerPage;
                     var endIndex = startIndex + rowsPerPage;
@@ -5757,7 +5531,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -5765,12 +5538,10 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
 
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
-
                     var startPage, endPage;
                     if (totalPages <= 3) {
                         startPage = 1;
@@ -5787,22 +5558,18 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
@@ -5835,16 +5602,54 @@
                             <li class="breadcrumb-item active">Candidate</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
+                <div class="d-sm-flex mb-4">
+                <h5 class="card-title">Placed Candidate List<span></span></h5>           
+                        <div class="mt-2 ms-5">
+    <input type="text" class="form-control" id="searchNameInput" placeholder="Search by Candidate Name">
+        </div>
+                    </div>
+
+                                        <!-- Search option -->
+                                        <script>
+    $(document).ready(function() {
+        $('#searchNameInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            var found = false;
+            $('#placedCd tbody tr').filter(function() {
+                var candidateName = $(this).find('td:eq(2)').text().toLowerCase(); 
+                var matches = candidateName.indexOf(value) > -1;
+                $(this).toggle(matches);
+                if (matches) {
+                    found = true;
+                }
+            });
+            if (!found) {
+                $('#noRecordsFound').show();
+                $('#placedCd thead').hide();
+                $('#count').hide();
+                $('#paginationButtons').hide();
+            } else {
+                $('#noRecordsFound').hide();
+          $('#placedCd thead').show(); 
+          $('#count').show();
+                $('#paginationButtons').show();
+            }
+        });
+    });
+</script>
 
                 <div class="col-12">
+                        
                     <div class="card recent-sales overflow-auto">
-                        <div class="card-body">
+                        <div class="card-body mt-4">
                             <?php
                             if (isset($this->data['placedCandidates'][0]['name'])) {
                                 ?>
-                                <h5 class="card-title">Placed Candidate List<span></span></h5>
-
+                                
+                                <div id="noRecordsFound" style="display: none;">
+    <h5><b>No records found</b></h4>
+</div>
                                 <table class="table" id="placedCd">
                                     <thead>
                                         <tr>
@@ -5864,26 +5669,16 @@
                                         foreach ($this->data['placedCandidates'] as $key => $value) {
                                             ?>
                                             <tr>
-                                                <td>
-                                                    <?php echo $loopcount; ?>.
-                                                </td>
-
-                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
-                                                        <?php echo $value['cdid']; ?>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
+                                                <td> <?php echo $loopcount; ?>. </td>
+                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>" target="_blank"> <?php echo $value['cdid']; ?> </a> </td>
+                                                <td> <?php echo $value['name']; ?> </td>
                                                 <td>
                                                     <?php echo $value['compName']; ?> / <a
-                                                        href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
+                                                        href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>" target="_blank">
                                                         <?php echo $value['emprid']; ?> </a>
                                                 </td>
                                                 <!-- <td><?php echo $value['jobCategory'] ?></td> -->
-                                                <td>
-                                                    <?php echo $value['mobilenum']; ?>
-                                                </td>
+                                                <td> <?php echo $value['mobilenum']; ?> </td>
                                                 <td><span class="badge bg-success">Placed</span></td>
                                                 <!-- <td><a class=""
                                                         href="<?php echo baseUrl . "admin/placedCandidatesDetails/" . $value['seekerId'] ?>">
@@ -5914,6 +5709,9 @@
                                         }
                                         ?>
                                     </tbody>
+                                    <p class="text-end " id="employerStatusCount" style="margin-top:-50px">Count : <b>
+                                            <?php echo $loopcount - 1; ?>
+                                        </b></p>
                                 </table>
 
                                 <div id="paginationButtons" class="text-center mt-4">
@@ -5929,7 +5727,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <!-- PAGINATION -->
@@ -5938,7 +5736,6 @@
                 var rowsPerPage = 12;
                 var currentPage = 1;
                 var totalPages = Math.ceil(table.rows.length / rowsPerPage);
-
                 showPage(currentPage);
 
                 function showPage(page) {
@@ -5952,7 +5749,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -5960,10 +5756,8 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
-
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
                     var startPage, endPage;
@@ -5982,22 +5776,18 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
@@ -6022,7 +5812,6 @@
             </script>
 
             <section>
-                <!-- Default Card -->
                 <div id="resumeprint">
                     <div class="container">
                         <div class="row">
@@ -6131,7 +5920,7 @@
                             <li class="breadcrumb-item active">Candidate</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
@@ -6157,25 +5946,15 @@
                                         foreach ($this->data['interviewedCandidates'] as $key => $value) {
                                             ?>
                                             <tr>
-                                                <td>
-                                                    <?php echo $loopcount; ?>.
-                                                </td>
-
-                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
-                                                        <?php echo $value['cdid']; ?>
-                                                    </a>
-                                                </td>
+                                                <td> <?php echo $loopcount; ?>. </td>
+                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>"> <?php echo $value['cdid']; ?> </a> </td>
                                                 <td>
                                                     <?php echo $value['compName']; ?> / <a
                                                         href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
                                                         <?php echo $value['emprid']; ?> </a>
                                                 </td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['mobilenum']; ?>
-                                                </td>
+                                                <td> <?php echo $value['name']; ?> </td>
+                                                <td> <?php echo $value['mobilenum']; ?> </td>
                                                 <td><span class="badge bg-success">Interviewed</span></td>
                                             </tr>
                                             <?php
@@ -6198,7 +5977,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <!-- PAGINATION -->
@@ -6209,7 +5988,6 @@
                 var totalPages = Math.ceil(table.rows.length / rowsPerPage);
 
                 showPage(currentPage);
-
                 function showPage(page) {
                     var startIndex = (page - 1) * rowsPerPage;
                     var endIndex = startIndex + rowsPerPage;
@@ -6221,7 +5999,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -6229,10 +6006,8 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
-
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
                     var startPage, endPage;
@@ -6251,28 +6026,23 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
 
                     document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
-
                     var previousBtn = document.getElementById('previousBtn');
                     var nextBtn = document.getElementById('nextBtn');
                     previousBtn.style.display = (currentPage === 1) ? 'none' : 'inline-block';
@@ -6299,7 +6069,7 @@
                             <li class="breadcrumb-item active">Candidate</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
@@ -6327,24 +6097,15 @@
                                         foreach ($this->data['rejectedCandidates'] as $key => $value) {
                                             ?>
                                             <tr>
-                                                <td>
-                                                    <?php echo $loopcount; ?>.
-                                                </td>
-                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
-                                                        <?php echo $value['cdid']; ?>
-                                                    </a>
-                                                </td>
+                                                <td> <?php echo $loopcount; ?>. </td>
+                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>" target="_blank"> <?php echo $value['cdid']; ?> </a> </td>
                                                 <td>
                                                     <?php echo $value['compName']; ?> / <a
-                                                        href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
+                                                        href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>" target="_blank">
                                                         <?php echo $value['emprid']; ?> </a>
                                                 </td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['mobilenum']; ?>
-                                                </td>
+                                                <td> <?php echo $value['name']; ?> </td>
+                                                <td> <?php echo $value['mobilenum']; ?> </td>
                                                 <td><span class="badge bg-danger">Relieved</span></td>
                                                 <td>
                                                     <form class="" action="<?php echo baseUrl . "admin/updateCurrentStatus" ?>"
@@ -6359,7 +6120,6 @@
                                                                     required>
                                                                 <label for="interviwed" class="mb-2">Reapplied</label><br>
                                                             </div>
-
                                                             <div class="col ms-5">
                                                                 <button type="submit" class="btn btn-success">Save</button>
                                                             </div>
@@ -6374,6 +6134,7 @@
                                         ?>
                                     </tbody>
                                 </table>
+
                                 <div id="paginationButtons" class="text-center mt-4">
                                     <div id="paginationBtnsContainer"></div>
                                 </div>
@@ -6386,7 +6147,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <!-- PAGINATION -->
@@ -6397,7 +6158,6 @@
                 var totalPages = Math.ceil(table.rows.length / rowsPerPage);
 
                 showPage(currentPage);
-
                 function showPage(page) {
                     var startIndex = (page - 1) * rowsPerPage;
                     var endIndex = startIndex + rowsPerPage;
@@ -6409,7 +6169,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -6417,10 +6176,8 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
-
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
                     var startPage, endPage;
@@ -6439,22 +6196,18 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
@@ -6487,17 +6240,17 @@
                             <li class="breadcrumb-item active">All Candidates</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
-                <!-- Recent Sales -->
+                </div>
+
                 <div class="col-12">
                     <div class="d-sm-flex">
                         <h5 class="card-title me-5">Overall List<span></span></h5>
-                        <div class="filter pt-3 ms-5">
+                        <div class="filter pt-3 ms-5 ">
                             <p class="icon" href="#" data-bs-toggle="dropdown" style="cursor:pointer;"> Filter <i
                                     class="bi bi-chevron-down"></i>
                             </p>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow p-4 z-3">
-                                <!-- <li class="mb-2"> <h4>Filter</h4> </li> -->
+                                
                                 <li>
                                     <p>Select Year :
                                         <select id="yearCd" onchange="filterByYearMonth()">
@@ -6534,14 +6287,53 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="mt-2 ms-5">
+    <input type="text" class="form-control" id="searchNameInput" placeholder="Search by Candidate Name">
+</div>
                     </div>
+
+                    <!-- Search option -->
+                    <script>
+    $(document).ready(function() {
+        $('#searchNameInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            var found = false;
+            $('#myTableCd tbody tr').filter(function() {
+                var candidateName = $(this).find('td:eq(4)').text().toLowerCase(); 
+                var matches = candidateName.indexOf(value) > -1;
+                $(this).toggle(matches);
+                if (matches) {
+                    found = true;
+                }
+            });
+            if (!found) {
+                $('#noRecordsFound').show();
+                $('#myTableCd thead').hide();
+                $('#deleteList3').hide();
+                $('#count').hide();
+                $('#paginationButtons').hide();
+            } else {
+                $('#noRecordsFound').hide();
+          $('#myTableCd thead').show(); 
+          $('#deleteList3').show();
+          $('#count').show();
+                $('#paginationButtons').show();
+            }
+        });
+    });
+</script>
+
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body pt-4">
-
+                       
                             <?php
                             if (isset($this->data['overallEmployees'][0]['name'])) {
                                 ?>
-                                <!-- <table class="table table-borderless datatable"> -->
+
+<div id="noRecordsFound" style="display: none;">
+    <h5><b>No records found</b></h4>
+</div>
+
                                 <table class="table" id="myTableCd">
                                     <thead>
                                         <tr>
@@ -6551,7 +6343,7 @@
                                             <th scope="col">Candidate ID</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Mobile Number</th>
-                                            <th scope="col">Email</th>
+                                            <!-- <th scope="col">Email</th> -->
                                             <th scope="col">Verification by</th>
                                             <!-- <th scope="col">Verification status (Admin)</th> -->
                                             <th scope="col">Action</th>
@@ -6566,7 +6358,7 @@
                                             $dateap = $value['dateTime'];
                                             $twelveHourTime = date("d/m/Y", strtotime($dateap));
                                             ?>
-                                            <tr>
+                                            <tr class="candidate-row">
                                                 <td>
                                                     <form method="post"
                                                         action="<?php echo baseUrl . 'Admin/deleteOverallEmployees'; ?>"
@@ -6574,28 +6366,12 @@
                                                         <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
                                                             onchange="updateDeleteButton3(this)">
                                                 </td>
-                                                <td>
-                                                    <a href="#">
-                                                        <?php echo $loopcount; ?>.
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <?php echo $twelveHourTime; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['eeid']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['phonenumber']; ?>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="text-primary">
-                                                        <?php echo $value['email']; ?>
-                                                    </a>
-                                                </td>
+                                                <td> <?php echo $loopcount; ?>. </td>
+                                                <td> <?php echo $twelveHourTime; ?> </td>
+                                                <td> <?php echo $value['eeid']; ?> </td>
+                                                <td> <?php echo $value['name']; ?> </td>
+                                                <td class="text-primary"> <?php echo $value['phonenumber']; ?> </td>
+                                                <!-- <td> <a href="#" class="text-primary"> <?php echo $value['email']; ?> </a> </td> -->
 
                                                 <?php
                                                 if ($value['identityverify'] == 1 && $value['addressverify'] == 1 && $value['employmentverify'] == 1 && $value['educationverify'] == 1) {
@@ -6611,10 +6387,8 @@
 
                                                 <td class="d-flex py-3">
                                                     <div class="dropdown">
-                                                        <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                            id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                                            aria-expanded="false">
-                                                            Add Details
+                                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                            aria-expanded="false"> Add Details
                                                         </button>
                                                         <ul class="dropdown-menu shadow-lg p-3 rounded"
                                                             style="background-color:#b6bab8;" aria-labelledby="dropdownMenuButton1">
@@ -6654,6 +6428,7 @@
                                                         <button type="button" class="btn btn-primary d-flex"><i
                                                                 class="bi bi-eye pe-1"></i>Resume</button></a>
                                                 </td>
+
                                                 <?php
                                                 if ($value['currentStatus'] == 1) {
                                                     ?>
@@ -6674,14 +6449,20 @@
                                         }
                                         ?>
                                     </tbody>
-                                    <p class="text-end " style="margin-top:-54px">Count : <b>
+                                    <p class="text-end " id="count" style="margin-top:-54px">Count : <b>
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
 
-                                <button type="submit" name="submit" id="deleteList3" class="btn btn-danger disabled"
-                                    onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                                </form>
+                                <?php
+    if (count($this->data['overallEmployees']) > 0) {
+    ?>
+        <button type="submit" name="submit" id="deleteList3" class="btn btn-danger disabled"
+            onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+        </form>
+    <?php
+    }
+    ?>
 
                                 <div id="paginationButtons" class="text-center mt-4">
                                     <div id="paginationBtnsContainer"></div>
@@ -6696,7 +6477,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <!-- PAGINATION -->
@@ -6707,7 +6488,6 @@
                 var totalPages = Math.ceil(table.rows.length / rowsPerPage);
 
                 showPage(currentPage);
-
                 function showPage(page) {
                     var startIndex = (page - 1) * rowsPerPage;
                     var endIndex = startIndex + rowsPerPage;
@@ -6719,7 +6499,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -6727,7 +6506,6 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function previousPage() {
                     if (currentPage > 1) {
                         currentPage--;
@@ -6735,7 +6513,6 @@
                         updatePaginationButtons();
                     }
                 }
-
                 function nextPage() {
                     if (currentPage < totalPages) {
                         currentPage++;
@@ -6743,12 +6520,10 @@
                         updatePaginationButtons();
                     }
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
 
                     currentPage = Math.max(1, Math.min(currentPage, totalPages));
-
                     var startPage, endPage;
                     if (totalPages <= 3) {
                         startPage = 1;
@@ -6765,22 +6540,18 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
@@ -6823,7 +6594,6 @@
                         }
                     }
                 }
-
                 function parseDate(dateString, format) {
                     var parts;
                     if (format === "yyyy-mm-dd") {
@@ -6834,7 +6604,6 @@
                         return new Date(parts[2], parts[1] - 1, parts[0]);
                     }
                 }
-
                 function clearDateFields() {
                     document.getElementById("yearCd").value = "";
                     document.getElementById("monthCd").value = "";
@@ -6842,11 +6611,11 @@
                     document.getElementById("toDateCd").value = "";
                     filterTableCd();
                 }
-
                 document.getElementById("fromDateCd").addEventListener("input", filterTableCd);
                 document.getElementById("toDateCd").addEventListener("input", filterTableCd);
             </script>
 
+<!-- Filter -->
             <script>
                 function filterByYearMonth() {
                     var fromDateInput = document.getElementById("fromDateCd").value;
@@ -6908,7 +6677,6 @@
             </script>
 
             <section>
-                <!-- Default Card -->
                 <div class="card" id="printCandidate">
                     <div class="card-body">
                         <div class="d-flex justify-content-between" style="padding-top:15px;">
@@ -6943,20 +6711,14 @@
                                                     </h5>
                                                 </div>
                                                 <div class="text-end mt-2">
-                                                    <p>
-                                                        <?php echo $value['email'] ?> <i class="bi bi-envelope"> </i>
-                                                    </p>
-                                                    <p>
-                                                        <?php echo $value['phonenumber'] ?> <i class="bi bi-phone"></i>
-                                                    </p>
-                                                    <p>
-                                                        <?php echo !empty($value['phonenumber1']) ? $value['phonenumber1'] : ''; ?>
-                                                    </p>
+                                                    <p> <?php echo $value['email'] ?>  </p>
+                                                    <p> <?php echo $value['phonenumber'] ?> </p>
+                                                    <p> <?php echo !empty($value['phonenumber1']) ? $value['phonenumber1'] : ''; ?> </p>
                                                     <p>
                                                         <?php echo $value['buildingName'] ?>,
-                                                        <?php echo $value['address'] ?> <i class="bi bi-geo-alt"></i>
+                                                        <?php echo $value['address'] ?> 
                                                     </p>
-                                                    <p style="padding-right:20px">
+                                                    <p>
                                                         <?php echo $value['district'] ?>,
                                                         <?php echo $value['pincode'] ?>
                                                     </p>
@@ -7017,30 +6779,17 @@
                                                                 </button>
                                                             </div>
                                                         </td>
-                                                        <td><a href="<?php echo $value['photo'] ?>" target="_blank">
-                                                                <?php echo $value['photo_filename'] ?>
-                                                            </a>
-                                                        </td>
-                                                        <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank">
-                                                                <?php echo $value['aadharfront_filename'] ?>
-                                                            </a>
-                                                        </td>
-                                                        <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank">
-                                                                <?php echo $value['aadharback_filename'] ?>
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $value['aadharnumber'] ?>
-                                                        </td>
+                                                        <td><a href="<?php echo $value['photo'] ?>" target="_blank"> <?php echo $value['photo_filename'] ?> </a> </td>
+                                                        <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank"> <?php echo $value['aadharfront_filename'] ?> </a></td>
+                                                        <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank"> <?php echo $value['aadharback_filename'] ?> </a> </td>
+                                                        <td> <?php echo $value['aadharnumber'] ?> </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-
+                                            <?php } ?>
                                         </div>
                                     </div>
-                                    <?php
-                                        }
-                                        ?>
+                                    
 
                                 <div class="card recent-sales overflow-auto">
                                     <div class="card-body">
@@ -7270,19 +7019,15 @@
                                 </div>
 
                                 <script>
-                                    <?php
-                                    if ($experienceDetails[0]['workStatus'] == '0') {
-                                        ?>
+                                    <?php if ($experienceDetails[0]['workStatus'] == '0') { ?>
                                         document.getElementById("expTable").style.display = "block";
                                         document.getElementById("noexperience").style.display = "none";
 
-                                        <?php
-                                    } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
+                                        <?php  } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
                                             document.getElementById("expTable").style.display = "none";
                                             document.getElementById("noexperience").style.display = "block";
 
-                                        <?php
-                                    } ?>
+                                        <?php } ?>
                                 </script>
 
                                 <div class="card recent-sales overflow-auto">
@@ -7306,18 +7051,10 @@
                                                     foreach ($this->data['skills'] as $skey => $svalue) {
                                                         ?>
                                                         <tr>
-                                                            <td>
-                                                                <?php echo $loopcount; ?>.
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $svalue['skill'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $svalue['experience'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $svalue['skill_level'] ?>
-                                                            </td>
+                                                            <td> <?php echo $loopcount; ?>. </td>
+                                                            <td> <?php echo $svalue['skill'] ?> </td>
+                                                            <td> <?php echo $svalue['experience'] ?> </td>
+                                                            <td> <?php echo $svalue['skill_level'] ?> </td>
                                                         </tr>
                                                         <?php
                                                         $loopcount++;
@@ -7358,27 +7095,13 @@
                                                     foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
                                                         ?>
                                                         <tr>
-                                                            <td scope="row">
-                                                                <?php echo $loopcount; ?>.
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['other_interst_category'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['other_sub_interst_category'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['prefered_location'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['job_type'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['description'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['expected_salary'] ?>
-                                                            </td>
+                                                            <td scope="row"> <?php echo $loopcount; ?>. </td>
+                                                            <td> <?php echo $avalue['other_interst_category'] ?> </td>
+                                                            <td> <?php echo $avalue['other_sub_interst_category'] ?> </td>
+                                                            <td> <?php echo $avalue['prefered_location'] ?> </td>
+                                                            <td> <?php echo $avalue['job_type'] ?> </td>
+                                                            <td> <?php echo $avalue['description'] ?> </td>
+                                                            <td> <?php echo $avalue['expected_salary'] ?> </td>
                                                         </tr>
                                                         <?php
                                                         $loopcount++;
@@ -7391,7 +7114,6 @@
                                             <p>Area of job interest is not entered</p>
 
                                         <?php } ?>
-
                                     </div>
                                 </div>
 
@@ -7502,8 +7224,7 @@
 
                                 </form>
                             </div>
-                        </div><!-- End Default Card -->
-
+                        </div>
                     </div>
                 </div>
             </section>
@@ -7535,7 +7256,6 @@
             </script>
 
             <section>
-                <!-- Default Card -->
                 <div class="card" id="resumeprint">
                     <div class="card-body">
                         <div class="d-flex justify-content-between" style="padding-top:15px;">
@@ -7563,18 +7283,13 @@
                                                 </div>
 
                                                 <div class="col">
-                                                    <h5 class="card-title">Name :
-                                                        <?php echo $value['name']; ?>
-                                                    </h5>
-                                                    <h5 class="card-title">Candidate ID :
-                                                        <?php echo $value['eeid']; ?>
-                                                    </h5>
+                                                    <h5 class="card-title">Name : <?php echo $value['name']; ?> </h5>
+                                                    <h5 class="card-title">Candidate ID : <?php echo $value['eeid']; ?> </h5>
                                                 </div>
 
                                                 <div class="text-end mt-2">
                                                     <p> <?php echo $value['phonenumber'] ?> </p>
-                                                    <p> <?php echo !empty($value['phonenumber1']) ? $value['phonenumber1'] : ''; ?>
-                                                    </p>
+                                                    <p> <?php echo !empty($value['phonenumber1']) ? $value['phonenumber1'] : ''; ?> </p>
                                                     <p> <?php echo $value['email'] ?> </p>
                                                     <p>
                                                         <?php echo $value['buildingName'] ?>,
@@ -7588,7 +7303,6 @@
                                             </div>
 
                                             <div class="d-sm-flex justify-content-between pt-4">
-
                                                 <div>
                                                     <p><b>D.O.B : </b>
                                                         <?php
@@ -7600,17 +7314,11 @@
                                                         }
                                                         ?>
                                                     </p>
-                                                    <p><b>Age :</b>
-                                                        <?php echo $value['age'] ?>
-                                                    </p>
+                                                    <p><b>Age :</b> <?php echo $value['age'] ?> </p>
                                                 </div>
                                                 <div>
-                                                    <p><b>Gender :</b>
-                                                        <?php echo $value['gender'] ?>
-                                                    </p>
-                                                    <p><b>Marital Status :</b>
-                                                        <?php echo $value['maritalStatus'] ?>
-                                                    </p>
+                                                    <p><b>Gender :</b> <?php echo $value['gender'] ?> </p>
+                                                    <p><b>Marital Status :</b> <?php echo $value['maritalStatus'] ?> </p>
                                                 </div>
 
                                             </div>
@@ -7643,27 +7351,18 @@
                                                                 </button>
                                                             </div>
                                                         </td>
-                                                        <td><a href="<?php echo $value['photo'] ?>" target="_blank">
-                                                                <?php echo $value['photo_filename'] ?> </a>
-                                                        </td>
-                                                        <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank">
-                                                                <?php echo $value['aadharfront_filename'] ?> </a>
-                                                        </td>
-                                                        <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank">
-                                                                <?php echo $value['aadharback_filename'] ?> </a>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $value['aadharnumber'] ?>
-                                                        </td>
+                                                        <td><a href="<?php echo $value['photo'] ?>" target="_blank"> <?php echo $value['photo_filename'] ?> </a> </td>
+                                                        <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank"> <?php echo $value['aadharfront_filename'] ?> </a> </td>
+                                                        <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank"> <?php echo $value['aadharback_filename'] ?> </a> </td>
+                                                        <td> <?php echo $value['aadharnumber'] ?> </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
 
+                                            <?php  } ?>
                                         </div>
                                     </div>
-                                    <?php
-                                        }
-                                        ?>
+                                   
 
                                 <div class="card recent-sales overflow-auto">
                                     <div class="card-body">
@@ -7693,43 +7392,31 @@
                                                     foreach ($this->data['education'] as $key => $value) {
                                                         ?>
                                                         <tr>
-                                                            <td>
-                                                                <?php echo $loopcount; ?>.
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $value['educational_qualification'] ?>
-                                                            </td>
+                                                            <td> <?php echo $loopcount; ?>. </td>
+                                                            <td> <?php echo $value['educational_qualification'] ?> </td>
                                                             <?php if (
                                                                 $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
                                                                 $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
                                                             ) { ?>
                                                                 <td>NA</td>
                                                             <?php } else { ?>
-                                                                <td>
-                                                                    <?php echo $value['department'] ?>
-                                                                </td>
+                                                                <td> <?php echo $value['department'] ?> </td>
                                                             <?php }
                                                             if ($value['educationmode'] == 'Corres') { ?>
                                                                 <td>Correspondance</td>
                                                             <?php } else { ?>
                                                                 <td>Regular</td>
                                                             <?php } ?>
-                                                            <td>
-                                                                <?php echo $value['school_college_name'] ?>
-                                                            </td>
+                                                            <td> <?php echo $value['school_college_name'] ?> </td>
                                                             <?php if (
                                                                 $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
                                                                 $value['educational_qualification'] === "11th"
                                                             ) { ?>
                                                                 <td>NA</td>
                                                             <?php } else { ?>
-                                                                <td>
-                                                                    <?php echo $value['percentage'] ?>
-                                                                </td>
+                                                                <td> <?php echo $value['percentage'] ?> </td>
                                                             <?php } ?>
-                                                            <td>
-                                                                <?php echo $value['yearOfPassing'] ?>
-                                                            </td>
+                                                            <td> <?php echo $value['yearOfPassing'] ?> </td>
                                                             <?php
                                                             if ($value['educational_qualification'] == '10th/SSLC') {
                                                                 ?>
@@ -7792,7 +7479,7 @@
                                         <?php } else { ?>
                                             <p>Education qualification is not entered</p>
                                         <?php } ?>
-                                        <!-- End Table with stripped rows -->
+                                        
                                     </div>
                                 </div>
 
@@ -7826,15 +7513,9 @@
                                                     foreach ($this->data['experienceDetails'] as $ikey => $ivalue) {
                                                         ?>
                                                         <tr>
-                                                            <td scope="row">
-                                                                <?php echo $loopcount; ?>.
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $ivalue['other_category'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $ivalue['other_sub_category'] ?>
-                                                            </td>
+                                                            <td scope="row"> <?php echo $loopcount; ?>. </td>
+                                                            <td> <?php echo $ivalue['other_category'] ?> </td>
+                                                            <td> <?php echo $ivalue['other_sub_category'] ?> </td>
                                                             <td>
                                                                 <?php if (is_numeric($ivalue['expYear'])) {
                                                                     echo $ivalue['expYear'];
@@ -7854,27 +7535,13 @@
                                                                 }
                                                                 ?>
                                                             </td>
-                                                            <td>
-                                                                <?php echo $ivalue['company_name'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $ivalue['company_location'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $ivalue['job_role'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $ivalue['company_mobilenum'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $ivalue['previous_employer_name'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $ivalue['previous_employer_mobile'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $ivalue['previous_employer_email'] ?>
-                                                            </td>
+                                                            <td> <?php echo $ivalue['company_name'] ?> </td>
+                                                            <td> <?php echo $ivalue['company_location'] ?>  </td>
+                                                            <td> <?php echo $ivalue['job_role'] ?> </td>
+                                                            <td> <?php echo $ivalue['company_mobilenum'] ?> </td>
+                                                            <td> <?php echo $ivalue['previous_employer_name'] ?> </td>
+                                                            <td> <?php echo $ivalue['previous_employer_mobile'] ?> </td>
+                                                            <td> <?php echo $ivalue['previous_employer_email'] ?> </td>
                                                         </tr>
                                                         <?php
                                                         $loopcount++;
@@ -7894,19 +7561,15 @@
                                 </div>
 
                                 <script>
-                                    <?php
-                                    if ($experienceDetails[0]['workStatus'] == '0') {
-                                        ?>
+                                    <?php if ($experienceDetails[0]['workStatus'] == '0') { ?>
                                         document.getElementById("expTable").style.display = "block";
                                         document.getElementById("noexperience").style.display = "none";
 
-                                        <?php
-                                    } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
+                                        <?php  } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
                                             document.getElementById("expTable").style.display = "none";
                                             document.getElementById("noexperience").style.display = "block";
 
-                                        <?php
-                                    } ?>
+                                        <?php } ?>
                                 </script>
 
                                 <div class="card recent-sales overflow-auto">
@@ -7930,18 +7593,10 @@
                                                     foreach ($this->data['skills'] as $skey => $svalue) {
                                                         ?>
                                                         <tr>
-                                                            <td>
-                                                                <?php echo $loopcount; ?>.
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $svalue['skill'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $svalue['experience'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $svalue['skill_level'] ?>
-                                                            </td>
+                                                            <td> <?php echo $loopcount; ?>. </td>
+                                                            <td> <?php echo $svalue['skill'] ?> </td>
+                                                            <td> <?php echo $svalue['experience'] ?> </td>
+                                                            <td> <?php echo $svalue['skill_level'] ?> </td>
                                                         </tr>
                                                         <?php
                                                         $loopcount++;
@@ -7982,27 +7637,13 @@
                                                     foreach ($this->data['areaOfInterest'] as $akey => $avalue) {
                                                         ?>
                                                         <tr>
-                                                            <td scope="row">
-                                                                <?php echo $loopcount; ?>.
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['other_interst_category'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['other_sub_interst_category'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['prefered_location'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['job_type'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['description'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $avalue['expected_salary'] ?>
-                                                            </td>
+                                                            <td scope="row"> <?php echo $loopcount; ?>.  </td>
+                                                            <td> <?php echo $avalue['other_interst_category'] ?>  </td>
+                                                            <td> <?php echo $avalue['other_sub_interst_category'] ?> </td>
+                                                            <td> <?php echo $avalue['prefered_location'] ?> </td>
+                                                            <td> <?php echo $avalue['job_type'] ?> </td>
+                                                            <td> <?php echo $avalue['description'] ?> </td>
+                                                            <td> <?php echo $avalue['expected_salary'] ?> </td>
                                                         </tr>
                                                         <?php
                                                         $loopcount++;
@@ -8030,7 +7671,6 @@
 
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
@@ -8085,21 +7725,13 @@
                                             <img src="<?php echo baseUrl . "uploads/" . $value['photo_filename'] ?>"
                                                 alt="Your image" width="100" height="100"><br>
                                             <br>
-                                            <h5>Name :
-                                                <?php echo $value['name']; ?>
-                                            </h5>
-                                            <h5>Candidate ID :
-                                                <?php echo $value['eeid']; ?>
-                                            </h5><br>
+                                            <h5>Name : <?php echo $value['name']; ?> </h5>
+                                            <h5>Candidate ID : <?php echo $value['eeid']; ?> </h5><br>
                                         </div>
 
                                         <div class="text-end mt-0">
-                                            <p>
-                                                <?php echo $value['phonenumber'] ?>
-                                            </p>
-                                            <p>
-                                                <?php echo $value['email'] ?>
-                                            </p>
+                                            <p> <?php echo $value['phonenumber'] ?> </p>
+                                            <p> <?php echo $value['email'] ?> </p>
                                             <p>
                                                 <?php echo $value['buildingName'] ?>,
                                                 <?php echo $value['address'] ?>
@@ -8140,17 +7772,11 @@
                                                     </p>
                                                 </div>
                                                 <div>
-                                                    <p style="margin-right: 35px;"> <b>Age :</b>
-                                                        <?php echo $value['age'] ?>
-                                                    </p>
-                                                    <p style="margin-right: 35px;"> <b>Aadhaar Number :</b>
-                                                        <?php echo $value['aadharnumber'] ?><br>
-                                                    </p>
+                                                    <p style="margin-right: 35px;"> <b>Age :</b> <?php echo $value['age'] ?> </p>
+                                                    <p style="margin-right: 35px;"> <b>Aadhaar Number :</b> <?php echo $value['aadharnumber'] ?><br> </p>
                                                 </div>
                                                 <div>
-                                                    <p style="margin-right: 35px;"> <b>Gender :</b>
-                                                        <?php echo $value['gender'] ?>
-                                                    </p>
+                                                    <p style="margin-right: 35px;"> <b>Gender :</b> <?php echo $value['gender'] ?> </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -8199,7 +7825,7 @@
                                         <?php } else { ?>
                                             <p>Education qualification is not entered</p>
                                         <?php } ?>
-                                        <!-- End Table with stripped rows -->
+                                        
                                     </div>
                                 </div>
 
@@ -8245,20 +7871,16 @@
                                     </div>
                                 </div>
 
-                                <script>
-                                    <?php
-                                    if ($experienceDetails[0]['workStatus'] == '0') {
-                                        ?>
+                               <script>
+                                    <?php if ($experienceDetails[0]['workStatus'] == '0') { ?>
                                         document.getElementById("expTable").style.display = "block";
                                         document.getElementById("noexperience").style.display = "none";
 
-                                        <?php
-                                    } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
+                                        <?php  } else if ($experienceDetails[0]['workStatus'] == '1') { ?>
                                             document.getElementById("expTable").style.display = "none";
                                             document.getElementById("noexperience").style.display = "block";
 
-                                        <?php
-                                    } ?>
+                                        <?php } ?>
                                 </script>
 
                                 <div class=" recent-sales overflow-auto">
@@ -8370,7 +7992,7 @@
                             <li class="breadcrumb-item active">Category</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
 
@@ -8396,16 +8018,10 @@
                                         foreach ($this->data['candidateNewCategory'] as $key => $value) {
                                             ?>
                                             <tr>
-                                                <td><a href="#">
-                                                        <?php echo $loopcount++; ?>. </a>
-                                                </td>
+                                                <td> <?php echo $loopcount++; ?>. </td>
                                                 <td>Candidate Experience</td>
-                                                <td>
-                                                    <?php echo $value['other_category'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['newCategory'] ?>
-                                                </td>
+                                                <td> <?php echo $value['other_category'] ?> </td>
+                                                <td> <?php echo $value['newCategory'] ?> </td>
                                                 <td class="d-flex">
                                                     <button type="button" class="btn btn-success d-flex me-1" data-toggle="modal"
                                                         data-target="#newcategoryexp"
@@ -8438,23 +8054,17 @@
                                         foreach ($this->data['candidateNewCategoryArea'] as $key => $value) {
                                             ?>
                                             <tr>
-                                                <td><a href="#">
-                                                        <?php echo $loopcount++; ?>. </a>
-                                                </td>
+                                                <td> <?php echo $loopcount++; ?>. </td>
                                                 <td>Candidate Job Interest</td>
-                                                <td>
-                                                    <?php echo $value['other_interst_category'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['newCategory'] ?>
-                                                </td>
+                                                <td> <?php echo $value['other_interst_category'] ?> </td>
+                                                <td> <?php echo $value['newCategory'] ?> </td>
                                                 <td class="d-flex">
                                                     <button type="button" class="btn btn-success me-1" data-toggle="modal"
                                                         data-target="#newcategoryarea"
                                                         onclick="categoryarea('<?php echo $value['id']; ?>','<?php echo $value['newCategory']; ?>')">Add</button>
                                                     <form action="<?php echo baseUrl . "admin/cancelNewCategoryArea" ?>"
                                                         method="post">
-                                                        <input class="form-check-input" type="text" name="jobTableId" id=""
+                                                        <input class="form-check-input" type="text" name="areaTableId" id=""
                                                             value="<?php echo $value['id'] ?>" hidden>
                                                         <input class="form-check-input" type="text" name="categoryothers" id=""
                                                             value="0" hidden>
@@ -8476,16 +8086,10 @@
                                         foreach ($this->data['employerNewCategory'] as $key => $value) {
                                             ?>
                                             <tr>
-                                                <td><a href="#">
-                                                        <?php echo $loopcount++; ?>. </a>
-                                                </td>
+                                                <td> <?php echo $loopcount++; ?>.  </td>
                                                 <td>Employer Job</td>
-                                                <td>
-                                                    <?php echo $value['jobCategory'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['newCategory'] ?>
-                                                </td>
+                                                <td> <?php echo $value['jobCategory'] ?> </td>
+                                                <td> <?php echo $value['newCategory'] ?> </td>
                                                 <td class="d-flex">
                                                     <button type="button" class="btn btn-success me-1" data-toggle="modal"
                                                         data-target="#employerjobcategory"
@@ -8504,7 +8108,7 @@
                                             </tr>
 
                                             <script>
-                                                function categoryjod(jobtableID, jobcategory) {
+                                                function categoryjob(jobtableID, jobcategory) {
                                                     document.getElementById("jobTableId").value = jobtableID;
                                                     document.getElementById("jobnewcategory").value = jobcategory;
                                                 }
@@ -8526,7 +8130,7 @@
                         </div>
 
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <?php
@@ -8546,7 +8150,7 @@
                             <li class="breadcrumb-item active">Request</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
@@ -8560,6 +8164,7 @@
                                         <tr>
                                             <th scope="col">S.No</th>
                                             <th scope="col">Employer ID</th>
+                                            <th scope="col">Employer Name</th>
                                             <th scope="col">Candidate ID</th>
                                             <th scope="col">Candidate Name</th>
                                             <th scope="col">Candidate Mobile Number</th>
@@ -8574,23 +8179,12 @@
                                         foreach ($this->data['candidateRequestList'] as $key => $value) {
                                             ?>
                                             <tr>
-                                                <td>
-                                                    <?php echo $loopcount; ?>.
-                                                </td>
-                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>" target="_blank">
-                                                        <?php echo $value['emprid']; ?>
-                                                    </a> / <br>
-                                                    <?php echo $value['cname'] ?>
-                                                </td>
-                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>" target="_blank">
-                                                        <?php echo $value['cdid']; ?>
-                                                    </a></td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['mobilenum']; ?>
-                                                </td>
+                                                <td> <?php echo $loopcount; ?>. </td>
+                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>" target="_blank"> <?php echo $value['emprid']; ?> </a> </td>
+                                                <td> <?php echo $value['cname'] ?> </td>
+                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>" target="_blank"> <?php echo $value['cdid']; ?> </a></td>
+                                                <td> <?php echo $value['name']; ?> </td>
+                                                <td> <?php echo $value['mobilenum']; ?> </td>
                                                 <!-- <td><a href="#" class="text-primary"><?php echo $value['email']; ?></a></td> -->
                                                 <!-- <td><?php $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth'])); ?>
                                                     <?php echo $formattedDateOfBirth; ?></td> -->
@@ -8637,7 +8231,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <?php
@@ -8657,7 +8251,7 @@
                             <li class="breadcrumb-item active">Candidate status</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
@@ -8684,24 +8278,15 @@
                                         foreach ($this->data['candidateChartList'] as $key => $value) {
                                             ?>
                                             <tr>
-                                                <td>
-                                                    <?php echo $loopcount; ?>.
+                                                <td> <?php echo $loopcount; ?>. </td>
+                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>" target="blank">
+                                                        <?php echo $value['emprid']; ?> </a> / <?php echo $value['c_name']; ?>
                                                 </td>
-                                                <td><a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>"
-                                                        target="blank">
-                                                        <?php echo $value['emprid']; ?>
-                                                    </a> / <?php echo $value['c_name']; ?>
-                                                </td>
-                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>"
-                                                        target="blank">
+                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>" target="blank">
                                                         <?php echo $value['cdid']; ?> </a>
                                                 </td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['mobilenum']; ?>
-                                                </td>
+                                                <td> <?php echo $value['name']; ?> </td>
+                                                <td> <?php echo $value['mobilenum']; ?> </td>
                                                 <?php
                                                 if ($value['curStatus'] == 3) {
                                                     ?>
@@ -8757,7 +8342,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <?php
@@ -8777,15 +8362,54 @@
                             <li class="breadcrumb-item active">Employer status</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
+
+                        <div class="d-sm-flex ">
+                        <h5 class="card-title">Employer Tracking Chart<span></span></h5>
+                                <div class="filter pt-3 ms-5">
+                                <input type="text" class="form-control" id="searchCompanyNameInput" placeholder="Search by Company Name">
+</div>
+                            </div>
+
+<!-- Search by Company name -->
+<script>
+    $(document).ready(function() {
+        $('#searchCompanyNameInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            var found = false;
+            $('#placedCd tbody tr').filter(function() {
+                var companyName = $(this).find('td:eq(3)').text().toLowerCase(); // Index 3 is the Company Name column
+                var matches = companyName.indexOf(value) > -1;
+                $(this).toggle(matches);
+                if (matches) {
+                    found = true;
+                }
+            });
+            if (!found) {
+                $('#noRecordsFound').show();
+                $('#placedCd thead').hide();
+                $('#paginationButtons').hide();
+                $('#employerStatusCount').hide();
+            } else {
+                $('#noRecordsFound').hide();
+                $('#placedCd thead').show(); 
+                $('#paginationButtons').show();
+                $('#employerStatusCount').show();
+            }
+        });
+    });
+</script>
+
                             <?php
                             if (isset($this->data['employerChart'][0]['name'])) {
-                                ?>
-                                <h5 class="card-title">Employer Tracking Chart<span></span></h5>
+                                ?>                                
 
+<div id="noRecordsFound" style="display: none;">
+    <h5><b>No records found</b></h4>
+</div>
                                 <table class="table" id="placedCd">
                                     <thead>
                                         <tr>
@@ -8805,26 +8429,12 @@
                                         foreach ($this->data['employerChart'] as $key => $value) {
                                             ?>
                                             <tr>
-                                                <td>
-                                                    <?php echo $loopcount; ?>.
-                                                </td>
-                                                <td>
-                                                    <?php echo date('d-m-Y', strtotime($value['dateTime'])); ?>
-                                                </td>
-                                                <td>
-                                                    <a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>">
-                                                        <?php echo $value['emprid']; ?> </a>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['compName']; ?>
-                                                </td>
-                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>">
-                                                        <?php echo $value['cdid']; ?>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['name']; ?>
-                                                </td>
+                                                <td> <?php echo $loopcount; ?>. </td>
+                                                <td> <?php echo date('d-m-Y', strtotime($value['dateTime'])); ?> </td>
+                                                <td> <a href="<?php echo baseUrl . "admin/viewEmployer/" . $value['providerId'] ?>"> <?php echo $value['emprid']; ?> </a> </td>
+                                                <td> <?php echo $value['compName']; ?> </td>
+                                                <td><a href="<?php echo baseUrl . "admin/viewCandidate/" . $value['seekerId'] ?>"> <?php echo $value['cdid']; ?> </a> </td>
+                                                <td> <?php echo $value['name']; ?> </td>
                                                 <td><span class="badge bg-success">Placed</span></td>
                                             </tr>
                                             <?php
@@ -8832,6 +8442,9 @@
                                         }
                                         ?>
                                     </tbody>
+                                    <p class="text-end " id="employerStatusCount" style="margin-top:-40px">Count : <b>
+                                            <?php echo $loopcount - 1; ?>
+                                        </b></p>
                                 </table>
 
                                 <div id="paginationButtons" class="text-center mt-4">
@@ -8847,7 +8460,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <!-- PAGINATION -->
@@ -8870,7 +8483,6 @@
                         }
                     }
                 }
-
                 function goToPage(page) {
                     if (page < 1) page = 1;
                     if (page > totalPages) page = totalPages;
@@ -8878,7 +8490,6 @@
                     showPage(currentPage);
                     updatePaginationButtons();
                 }
-
                 function updatePaginationButtons() {
                     var buttonsHtml = '';
 
@@ -8900,22 +8511,18 @@
                             endPage = currentPage + 1;
                         }
                     }
-
                     if (startPage > 1) {
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                     }
-
                     for (var i = startPage; i <= endPage; i++) {
                         var activeClass = (i === currentPage) ? 'active' : '';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
                     }
-
                     if (endPage < totalPages) {
                         buttonsHtml += '<span class="ellipsis mx-1">...</span>';
                         buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
                     }
-
                     buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
                         buttonsHtml +
                         '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
@@ -9037,19 +8644,6 @@
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
 
-                        <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
-
                         <div class="card-body">
                             <h5 class="card-title">Verified Employers<span></span></h5>
 
@@ -9072,27 +8666,16 @@
                                     foreach ($this->data['verifiedEmployers'] as $key => $value) {
                                         ?>
                                         <tr>
-                                            <td><a href="#">
-                                                    <?php echo $loopcount; ?>
-                                                </a></td>
-                                            <td>
-                                                <?php echo $value['company_name']; ?>
-                                            </td>
-                                            <td><a href="#" class="text-primary">
-                                                    <?php echo $value['company_mobile_number']; ?>
-                                                </a></td>
-                                            <td>
-                                                <?php echo $value['name']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $value['role']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $value['mobile_number']; ?>
-                                            </td>
+                                            <td> <?php echo $loopcount; ?> </td>
+                                            <td> <?php echo $value['company_name']; ?> </td>
+                                            <td><a href="#" class="text-primary"> <?php echo $value['company_mobile_number']; ?> </a></td>
+                                            <td> <?php echo $value['name']; ?> </td>
+                                            <td> <?php echo $value['role']; ?> </td>
+                                            <td> <?php echo $value['mobile_number']; ?> </td>
                                             <td><span class="badge bg-success">Approved</span></td>
-                                            <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>"><button
-                                                        type="button" class="btn btn-success">View</button></a></td>
+                                            <td><a href="<?php echo baseUrl . "admin/manageEmployer/" . $value['id'] ?>">
+                                                <button type="button" class="btn btn-success">View</button></a>
+                                            </td>
                                         </tr>
                                         <?php
                                         $loopcount++;
@@ -9102,7 +8685,7 @@
                             </table>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <?php
@@ -9120,22 +8703,10 @@
                             <li class="breadcrumb-item active">Employer Approval Request</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
 
-                        <!-- <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div> -->
                         <div class="card-body">
                             <?php if ($this->data['addNewEmployerApprovel']['totalRows'] >= 1 || $this->data['deleteEmployerApprovel']['totalRows'] >= 1) {
                                 ?>
@@ -9166,31 +8737,17 @@
                                             foreach ($addNewApprovel as $key => $value) {
                                                 ?>
                                                 <tr>
-                                                    <td><a href="#">
-                                                            <?php echo $loopcount; ?>.
-                                                        </a></td>
-                                                    <td>
-                                                        <?php echo $value['erid']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $value['company_name']; ?>
-                                                    </td>
-                                                    <td><a href="#" class="text-primary">
-                                                            <?php echo $value['company_mobile_number']; ?>
-                                                        </a></td>
-                                                    <td>
-                                                        <?php echo $value['name']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $value['role']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $value['mobile_number']; ?>
-                                                    </td>
+                                                    <td> <?php echo $loopcount; ?>. </td>
+                                                    <td> <?php echo $value['erid']; ?> </td>
+                                                    <td> <?php echo $value['company_name']; ?> </td>
+                                                    <td><a href="#" class="text-primary"> <?php echo $value['company_mobile_number']; ?> </a></td>
+                                                    <td> <?php echo $value['name']; ?> </td>
+                                                    <td> <?php echo $value['role']; ?> </td>
+                                                    <td> <?php echo $value['mobile_number']; ?> </td>
                                                     <td>Add Request</td>
                                                     <td><span class="badge bg-success">Add Request</span></td>
-                                                    <td><a href="<?php echo baseUrl . "admin/employerApprovel/" . $value['id'] ?>"><button
-                                                                type="button" class="btn btn-success">View</button></a></td>
+                                                    <td><a href="<?php echo baseUrl . "admin/employerApprovel/" . $value['id'] ?>">
+                                                        <button type="button" class="btn btn-success">View</button></a></td>
                                                 </tr>
                                                 <?php
                                                 $loopcount++;
@@ -9202,33 +8759,18 @@
                                             foreach ($deleteApprovel as $dkey => $dvalue) {
                                                 ?>
                                                 <tr>
-                                                    <td><a href="#">
-                                                            <?php echo $loopcount++; ?>.
-                                                        </a></td>
-                                                    <td>
-                                                        <?php echo $dvalue['erid']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $dvalue['company_name']; ?>
-                                                    </td>
-                                                    <td><a href="#" class="text-primary">
-                                                            <?php echo $dvalue['company_mobile_number']; ?>
-                                                        </a></td>
-                                                    <td>
-                                                        <?php echo $dvalue['name']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $dvalue['role']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $dvalue['mobile_number']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $dvalue['deleteRequestRemarks']; ?>
-                                                    </td>
+                                                    <td> <?php echo $loopcount++; ?>. </td>
+                                                    <td> <?php echo $dvalue['erid']; ?> </td>
+                                                    <td> <?php echo $dvalue['company_name']; ?> </td>
+                                                    <td> <a href="#" class="text-primary"> <?php echo $dvalue['company_mobile_number']; ?> </a></td>
+                                                    <td> <?php echo $dvalue['name']; ?> </td>
+                                                    <td> <?php echo $dvalue['role']; ?> </td>
+                                                    <td> <?php echo $dvalue['mobile_number']; ?> </td>
+                                                    <td> <?php echo $dvalue['deleteRequestRemarks']; ?> </td>
                                                     <td><span class="badge bg-danger">Delete Request</span></td>
-                                                    <td><a href="<?php echo baseUrl . "admin/employerApprovel/" . $dvalue['id'] ?>"><button
-                                                                type="button" class="btn btn-success">View</button></a></td>
+                                                    <td><a href="<?php echo baseUrl . "admin/employerApprovel/" . $dvalue['id'] ?>">
+                                                        <button type="button" class="btn btn-success">View</button></a>
+                                                    </td>
                                                 </tr>
                                                 <?php
                                             }
@@ -9246,7 +8788,7 @@
                             ?>
                         </div>
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
             </section>
 
             <?php
@@ -9262,12 +8804,11 @@
                             <li class="breadcrumb-item active">Approval</li>
                         </ol>
                     </nav>
-                </div><!-- End Page Title -->
+                </div>
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Approve Employer</h5>
 
-                        <!-- Multi Columns Form -->
                         <form class="row g-3 needs-validation" novalidate
                             action="<?php echo baseUrl . "admin/employerApprovelStatus" ?>" method="post">
                             <?php
@@ -9515,8 +9056,7 @@
                                 <?php
                             }
                             ?>
-                        </form><!-- End Multi Columns Form -->
-
+                        </form>
                     </div>
                 </div>
             </section>
@@ -9611,7 +9151,7 @@
 
                             <div class="col-12">
                                 <label for="expnewcategory">New Category :</label>
-                                <input type="text" id="expnewcategory" value="" name="new_category">
+                                <input type="text" id="expnewcategory" value="<?php echo $value['newCategory'] ?>" name="new_category">
                             </div>
                             <input class="form-check-input" type="text" name="categoryexp" id="" value="0" hidden>
                             <input class="form-check-input" type="text" name="expTableId" id="expTableId" value=""
@@ -9641,7 +9181,7 @@
 
                             <div class="col-12">
                                 <label for="expnewcategory">New Category </label>
-                                <input type="text" id="areanewcategory" value="" name="new_category">
+                                <input type="text" id="areanewcategory" value="<?php echo $value['newCategory'] ?>" name="new_category">
                             </div>
                             <input class="form-check-input" type="text" name="categoryarea" id="" value="0" hidden>
                             <input class="form-check-input" type="text" value="" id="areaTableId" name="areaTableId"
@@ -9671,7 +9211,7 @@
 
                             <div class="col-12">
                                 <label for="expnewcategory">New Category </label>
-                                <input type="text" id="jobnewcategory" value="" name="new_category">
+                                <input type="text" id="jobnewcategory" value="<?php echo $value['newCategory'] ?>" name="new_category">
                             </div>
                             <input class="form-check-input" type="text" name="categoryjob" id="" value="0" hidden>
                             <input class="form-check-input" type="text" name="jobTableId" id="jobTableId" value=""
@@ -9685,14 +9225,14 @@
         </div>
 
 
-    </main><!-- End #main -->
+    </main>
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
             &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
         </div>
-    </footer><!-- End Footer -->
+    </footer>
 
     <!-- bootstrap popup link -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

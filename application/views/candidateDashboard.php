@@ -165,7 +165,7 @@
         <img src="<?php echo baseUrl . "assets/logo.png" ?>" alt="ArramJobs">
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+    </div>
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
@@ -191,7 +191,7 @@
               <?php echo $_SESSION['seekerName']; ?>
             </span>
             <span class="d-block d-md-none dropdown-toggle ps-2"></span>
-          </a><!-- End Profile Iamge Icon -->
+          </a>
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
@@ -223,15 +223,14 @@
                 <span>Log Out</span>
               </a>
             </li>
-          </ul><!-- End Profile Dropdown Items -->
+          </ul>
 
-        </li><!-- End Profile Nav -->
+        </li>
 
       </ul>
     </nav>
-    <!-- End Icons Navigation -->
 
-  </header><!-- End Header -->
+  </header>
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
@@ -243,26 +242,23 @@
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li>
 
       <li class="nav-item" id="basicdetails">
         <a class="nav-link  d-flex justify-content-between" href="<?php echo baseUrl . "Candidate/basicDetails" ?>">
           <div><i class="bi bi-person"></i>
             <span>Basic Details</span>
           </div>
-          <?php
-          if (isset($basicDetails)) {
-            if ($basicDetails[0]['bdsubmited'] === "1") {
-              ?>
+          <?php  if (isset($basicDetails)) {
+            if ($basicDetails[0]['bdsubmited'] === "1") { ?>
               <!-- <div class="border border-success border-5 rounded-circle" style="width: 15px; height:15px;"></div> -->
               <img src="<?php echo baseUrl . "assets/tick.svg" ?>" width="20" height="20" alt="Profile"
                 class="rounded-circle">
             <?php } else { ?>
               <div class="border border-secondary border-5 rounded-circle" style="width: 15px; height:15px;"></div>
-            <?php }
-          } ?>
+            <?php }  } ?>
         </a>
-      </li><!-- End Tables Nav -->
+      </li>
 
       <li class="nav-item" id="educations">
         <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Candidate/educationTable" ?>">
@@ -279,12 +275,9 @@
             } else {
               ?>
               <div class="border border-secondary border-5 rounded-circle" style="width: 15px; height:15px;"></div>
-              <?php
-            }
-          }
-          ?>
+              <?php  } }  ?>
         </a>
-      </li><!-- End Charts Nav -->
+      </li>
 
       <li class="nav-item" id="experiences">
         <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Candidate/experienceTable" ?>">
@@ -300,12 +293,10 @@
             } else {
               ?>
               <div class="border border-secondary border-5 rounded-circle" style="width: 15px; height:15px;"></div>
-              <?php
-            }
-          }
-          ?>
+              <?php  }
+          }  ?>
         </a>
-      </li><!-- End Icons Nav -->
+      </li>
 
       <li class="nav-item" id="areaofinterest">
         <a class="nav-link d-flex justify-content-between"
@@ -325,10 +316,9 @@
               <div class="border border-secondary border-5 rounded-circle" style="width: 15px; height:15px;"></div>
               <?php
             }
-          }
-          ?>
+          } ?>
         </a>
-      </li><!-- End Icons Nav -->
+      </li>
 
       <li class="nav-item" id="resumes">
         <a class="nav-link d-flex justify-content-between" href="<?php echo baseUrl . "Candidate/resume" ?>">
@@ -348,7 +338,7 @@
           }
           ?>
         </a>
-      </li><!-- End Icons Nav -->
+      </li>
 
     </ul>
 
@@ -358,7 +348,7 @@
     <?php
     if ($method == "dash") {
       ?>
-      <!-- Sidebar Active  -->
+      
       <script>
         document.getElementById('dash').classList.add('active');
       </script>
@@ -372,7 +362,7 @@
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </nav>
-        </div><!-- End Page Title -->
+        </div>
 
         <div class="row">
 
@@ -395,10 +385,11 @@
                     We prioritize your aspirations, offering support and solutions tailored to your unique needs.
                   </p>
                   <div class="d-sm-flex justify-content-between">
+
                     <div>
                       <p><b>Note : </b>The following documents are required :</p>
                       <ul>
-                        <li>Aadhaar card [front and back page]</li>
+                        <li>Aadhaar card photo [front and back page], Aadhaar card number</li>
                         <li>Profile photo</li>
                         <li>Educational certificates [10th, 12th, Degree]</li>
                         <li>Resume</li>
@@ -419,7 +410,7 @@
       <?php
     } elseif ($method == "basicdetails") {
       ?>
-      <!-- Sidebar Active  -->
+     
       <script>
         document.getElementById('basicdetails').classList.add('active');
       </script>
@@ -433,7 +424,8 @@
               <li class="breadcrumb-item active">Profile</li>
             </ol>
           </nav>
-        </div><!-- End Page Title -->
+        </div>
+
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Basic Details</h5>
@@ -794,17 +786,19 @@
         }
       </script>
 
+      <!-- DATE OF BIRTH VALIDATION -->
       <script>
-        document.getElementById("dateofbirth").onfocus = function () {
+// DOB format message
+
+document.getElementById("dateofbirth").onfocus = function () {
           document.getElementById("expmesssage1").style.display = "block";
         }
         document.getElementById("dateofbirth").onblur = function () {
           document.getElementById("expmesssage1").style.display = "none";
         }
-      </script>
 
-      <!-- DATE OF BIRTH VALIDATION -->
-      <script>
+        // DOB calculation 
+
         document.addEventListener('DOMContentLoaded', function () {
           document.getElementById('dateofbirth').addEventListener('input', function () {
             var dob = parseDate(this.value);
@@ -813,14 +807,14 @@
               var age = calculateAge(dob);
               document.getElementById('age').value = age;
             } else {
-              document.getElementById('age').value = ''; // Clear age if date of birth is empty
+              document.getElementById('age').value = ''; 
             }
           });
         });
 
         function parseDate(dateString) {
           if (!dateString) {
-            return null; // Return null if dateString is empty
+            return null; 
           }
 
           var parts = dateString.split('-');
@@ -1106,7 +1100,7 @@
       <?php
     } elseif ($method == "educationTable") {
       ?>
-      <!-- Sidebar Active  -->
+      
       <script>
         document.getElementById('educations').classList.add('active');
       </script>
@@ -1120,9 +1114,9 @@
               <li class="breadcrumb-item active">Table</li>
             </ol>
           </nav>
-        </div><!-- End Page Title -->
-        <div class="col-12">
+        </div>
 
+        <div class="col-12">
           <div class="d-flex justify-content-between">
             <h5 class="card-title">Education Table</h5>
             <div>
@@ -1245,6 +1239,7 @@
                             <?php
                           }
                           ?>
+
                           <!-- Certificate -->
                           <?php
                           if ($value['educational_qualification'] == '10th/SSLC') {
@@ -1335,7 +1330,7 @@
               ?>
             </div>
           </div>
-        </div><!-- End Recent Sales -->
+        </div>
       </section>
 
       <div class="card" id="addeduform" style="display:none">
@@ -1346,7 +1341,6 @@
               <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
           </div>
 
-          <!-- Multi Columns Form -->
           <form class="row g-3" autocomplete="off" novalidate name="educationform" method="post"
             enctype="multipart/form-data" onsubmit="return validateForm()"
             action="<?php echo baseUrl . "Candidate/insertEducationForm" ?>">
@@ -1412,7 +1406,7 @@
               <label id="additionalFieldLabeldip" for="certificate_dip" class="form-label">Diploma Certificate Upload
                 <span class="text-danger">*</span></label>
               <input type="file" class="form-control" id="certificate_dip" name="certificate_dip">
-              <div id="certificate_dip_error" class="text-danger"></div>
+              <!-- <div id="certificate_dip_error" class="text-danger"></div> -->
             </div>
 
             <div class="col-md-6" id="certificate_ug-group" style="display: none;">
@@ -1420,7 +1414,7 @@
                 <span class="text-danger">*</span></label>
               <input type="file" class="form-control" id="certificate_ug" name="certificate_ug"
                 accept="image/png ,image/jpg, image/jpeg, application/pdf">
-              <div id="certificate_ug_error" class="text-danger"></div>
+              <!-- <div id="certificate_ug_error" class="text-danger"></div> -->
             </div>
 
             <div class="col-md-6" id="certificate_pg-group" style="display: none;">
@@ -1445,7 +1439,7 @@
               <button type="submit" class="btn btn-primary">Submit</button>
               <button type="reset" class="btn btn-secondary">Reset</button>
             </div>
-          </form><!-- End Multi Columns Form -->
+          </form>
         </div>
       </div>
 
@@ -1823,7 +1817,7 @@
 
     } elseif ($method == "updateEducation") {
       ?>
-      <!-- Sidebar Active  -->
+      
       <script>
         document.getElementById('educations').classList.add('active');
       </script>
@@ -1837,7 +1831,8 @@
               <li class="breadcrumb-item active">Edit Education</li>
             </ol>
           </nav>
-        </div><!-- End Page Title -->
+        </div>
+
         <div class="col-12">
           <div class="d-flex justify-content-between">
             <h5 class="card-title">Education Table</h5>
@@ -1887,13 +1882,9 @@
                               id="form_<?= $value['id']; ?>">
                               <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
                                 onchange="updateDeleteButton2(this)">
-                          <td><a>
-                              <?php echo $count++; ?>. </a>
-                          </td>
-                          <td>
-                            <?php echo $value['educational_qualification'] ?>
-                          </td>
-                          <!-- Department -->
+                          <td> <?php echo $count++; ?>. </td>
+                          <td> <?php echo $value['educational_qualification'] ?> </td>
+                          
                           <?php
                           if (
                             $value['educational_qualification'] === "B.E" || $value['educational_qualification'] === "B.A" || $value['educational_qualification'] === "B.COM" || $value['educational_qualification'] === "B.ED" ||
@@ -1911,9 +1902,8 @@
                             $value['educational_qualification'] === "DMD" || $value['educational_qualification'] === "DVM"
                           ) {
                             ?>
-                            <td>
-                              <?php echo $value['department'] ?>
-                            </td>
+                            
+                            <td> <?php echo $value['department'] ?> </td>
                             <?php
                           } else {
                             ?>
@@ -1934,12 +1924,9 @@
                             <?php
                           }
                           ?>
-                          <td>
-                            <?php echo $value['school_college_name'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['yearOfPassing'] ?>
-                          </td>
+                          <td> <?php echo $value['school_college_name'] ?> </td>
+                          <td> <?php echo $value['yearOfPassing'] ?> </td>
+
                           <!-- Percentage -->
                           <?php
                           if (
@@ -2054,7 +2041,6 @@
               }
               ?>
             </div>
-
           </div>
         </div>
 
@@ -2221,7 +2207,7 @@
                 <?php
               }
               ?>
-            </form><!-- End Multi Columns Form -->
+            </form>
 
           </div>
         </div>
@@ -2341,8 +2327,7 @@
         var qualify = document.getElementById('qualification').value;
 
         if (qualify == 'Below_9th' || qualify == '9th' || qualify == '11th') {
-          document.getElementById('percentage-group').style.display = 'none';
-        }
+          document.getElementById('percentage-group').style.display = 'none'; }
 
         if (qualify === '10th/SSLC') {
           document.getElementById('certificate_10th-group').style.display = 'block';
@@ -2359,23 +2344,14 @@
           document.getElementById("additionalFieldLabeldip").innerText = "Uploaded " + qualify + " Certificate";
         }
 
-        if (qualify === "B.E" || qualify === "B.A" || qualify === "B.COM" ||
-          qualify === "B.ED" || qualify === "B.LIT" || qualify === "B.TECH" ||
-          qualify === "BCA" || qualify === "BBA" || qualify === "B.SC" ||
-          qualify === "BSW" || qualify === "BFA" || qualify === "B.Arch" ||
-          qualify === "B.N" || qualify === "BCS" || qualify === "LLB" ||
-          qualify === "BDS" || qualify === "B.Pharm") || qualify === "BBM" {
+        if (qualify === "B.E" || qualify === "B.A" || qualify === "B.COM" ||  qualify === "B.ED" || qualify === "B.LIT" || qualify === "B.TECH" ||  qualify === "BCA" || qualify === "BBA" || qualify === "B.SC" ||  qualify === "BSW" || qualify === "BFA" || qualify === "B.Arch" ||  qualify === "B.N" || qualify === "BCS" || qualify === "LLB" ||  qualify === "BDS" || qualify === "B.Pharm") || qualify === "BBM" {
           document.getElementById('department-group').style.display = 'block';
           document.getElementById('course-group').style.display = 'block';
           document.getElementById('certificate_ug-group').style.display = 'block';
           document.getElementById("additionalFieldLabelug").innerText = "Uploaded " + qualify + " Certificate";
         }
 
-        if (qualify === "M.E" || qualify === "M.A" || qualify === "M.COM" || qualify === "M.ED"
-          || qualify === "M.LIT" || qualify === "M.TECH" || qualify === "MCA" || qualify === "MBA"
-          || qualify === "M.SC" || qualify === "MSW" || qualify === "MFA" || qualify === "M.Arch" ||
-          qualify === "M.N" || qualify === "MCS" || qualify === "LLM" ||
-          qualify === "MDS" || qualify === "M.Pharm" || qualify === "MPhil") {
+        if (qualify === "M.E" || qualify === "M.A" || qualify === "M.COM" || qualify === "M.ED"  || qualify === "M.LIT" || qualify === "M.TECH" || qualify === "MCA" || qualify === "MBA"  || qualify === "M.SC" || qualify === "MSW" || qualify === "MFA" || qualify === "M.Arch" ||  qualify === "M.N" || qualify === "MCS" || qualify === "LLM" ||  qualify === "MDS" || qualify === "M.Pharm" || qualify === "MPhil") {
           document.getElementById('department-group').style.display = 'block';
           document.getElementById('course-group').style.display = 'block';
           document.getElementById('certificate_pg-group').style.display = 'block';
@@ -2462,7 +2438,7 @@
       <?php
     } elseif ($method == "experienceTable") {
       ?>
-      <!-- Sidebar Active  -->
+      
       <script>
         document.getElementById('experiences').classList.add('active');
       </script>
@@ -2477,8 +2453,8 @@
             </ol>
           </nav>
         </div>
-        <div class="col-12">
 
+        <div class="col-12">
           <div class="d-flex justify-content-between">
             <h5 class="card-title">Experience Table<span></span></h5>
             <div class="pt-10">
@@ -2551,15 +2527,9 @@
                               <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
                                 onchange="updateDeleteButton5(this)">
                           </td>
-                          <td>
-                            <?php echo $count++ ?>.
-                          </td>
-                          <td>
-                            <?php echo $value['other_category'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['other_sub_category'] ?>
-                          </td>
+                          <td> <?php echo $count++ ?>.  </td>
+                          <td> <?php echo $value['other_category'] ?> </td>
+                          <td> <?php echo $value['other_sub_category'] ?> </td>
                           <td>
                             <?php if (is_numeric($value['expYear'])) {
                               echo $value['expYear'];
@@ -2579,27 +2549,13 @@
                             }
                             ?>
                           </td>
-                          <td>
-                            <?php echo $value['company_name'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['company_location'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['job_role'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['company_mobilenum'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['previous_employer_name'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['previous_employer_mobile'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['previous_employer_email'] ?>
-                          </td>
+                          <td> <?php echo $value['company_name'] ?> </td>
+                          <td> <?php echo $value['company_location'] ?> </td>
+                          <td> <?php echo $value['job_role'] ?> </td>
+                          <td> <?php echo $value['company_mobilenum'] ?> </td>
+                          <td> <?php echo $value['previous_employer_name'] ?> </td>
+                          <td> <?php echo $value['previous_employer_mobile'] ?> </td>
+                          <td> <?php echo $value['previous_employer_email'] ?> </td>
                           <td>
                             <div class="d-flex">
                               <a
@@ -2643,7 +2599,7 @@
               ?>
             </div>
           </div>
-        </div><!-- End Recent Sales -->
+        </div>
       </section>
 
       <script>
@@ -2666,21 +2622,15 @@
       </script>
 
       <script>
-        <?php
-        if (isset($expTotalRows)) {
-          if ($expTotalRows >= "1" && $experienceTable[0]['workStatus'] == '0') {
-            ?>
+        <?php if (isset($expTotalRows)) { if ($expTotalRows >= "1" && $experienceTable[0]['workStatus'] == '0') { ?>
             document.getElementById("fresherExp").style.display = "none";
             document.getElementById("expAddButton").style.display = "block";
-            <?php
-          } else if ($expTotalRows >= "1" && $experienceTable[0]['workStatus'] == '1') { ?>
+          <?php } else if ($expTotalRows >= "1" && $experienceTable[0]['workStatus'] == '1') { ?>
               document.getElementById("fresherExp").style.display = "none";
               document.getElementById("fresherNoexp").style.display = "block";
               document.getElementById("exptable").style.display = "none";
               document.getElementById("deleteList5").style.display = "none";
-            <?php
-          }
-        } ?>
+          <?php }  } ?>
       </script>
 
       <script>
@@ -2839,6 +2789,7 @@
         </div>
       </section>
 
+      <!-- Pagination -->
       <script>
         var table = document.getElementById('exptable');
         var rowsPerPage = 7;
@@ -2904,13 +2855,11 @@
             buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
           }
 
-
           buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
             buttonsHtml +
             '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
 
           document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
-
 
           var previousBtn = document.getElementById('previousBtn');
           var nextBtn = document.getElementById('nextBtn');
@@ -2919,12 +2868,7 @@
         }
       </script>
 
-      <script>
-        function validateName1(input) {
-          input.value = input.value.replace(/[0-9]/g, '');
-        }
-      </script>
-
+      <!-- Experience duration calculation -->
       <script>
         document.getElementById('fromDate').addEventListener('input', updateDateDifference);
         document.getElementById('toDate').addEventListener('input', updateDateDifference);
@@ -2988,7 +2932,7 @@
           if (parts.length === 1) {
             // If only year is provided
             var year = parseInt(parts[0], 10);
-            return new Date(year, 0, 1); // Assume January 1st of the year
+            return new Date(year, 0, 1); 
           } else if (parts.length === 3) {
             // If full date is provided
             var year = parseInt(parts[2], 10);
@@ -3010,6 +2954,7 @@
         }
       </script>
 
+      <!-- Experience format message -->
       <script>
         document.getElementById("fromDate").onfocus = function () {
           document.getElementById("expmesssage").style.display = "block";
@@ -3117,7 +3062,7 @@
 
     } elseif ($method == "updateExperience") {
       ?>
-      <!-- Sidebar Active  -->
+      
       <script>
         document.getElementById('experiences').classList.add('active');
       </script>
@@ -3131,7 +3076,7 @@
               <li class="breadcrumb-item active">Edit Experience</li>
             </ol>
           </nav>
-        </div><!-- End Page Title -->
+        </div>
 
         <div class="d-flex justify-content-between">
           <h5 class="card-title">Experience Table<span></span></h5>
@@ -3185,15 +3130,9 @@
                             id="form_<?= $value['id']; ?>">
                             <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
                               onchange="updateDeleteButton5(this)">
-                        <td>
-                          <?php echo $count++ ?>.
-                        </td>
-                        <td>
-                          <?php echo $value['other_category'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['other_sub_category'] ?>
-                        </td>
+                        <td> <?php echo $count++ ?>. </td>
+                        <td> <?php echo $value['other_category'] ?> </td>
+                        <td> <?php echo $value['other_sub_category'] ?> </td>
                         <td>
                           <?php if (is_numeric($value['expYear'])) {
                             echo $value['expYear'];
@@ -3213,27 +3152,13 @@
                           }
                           ?>
                         </td>
-                        <td>
-                          <?php echo $value['company_name'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['company_location'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['job_role'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['company_mobilenum'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['previous_employer_name'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['previous_employer_mobile'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['previous_employer_email'] ?>
-                        </td>
+                        <td> <?php echo $value['company_name'] ?> </td>
+                        <td> <?php echo $value['company_location'] ?> </td>
+                        <td> <?php echo $value['job_role'] ?> </td>
+                        <td> <?php echo $value['company_mobilenum'] ?> </td>
+                        <td> <?php echo $value['previous_employer_name'] ?> </td>
+                        <td> <?php echo $value['previous_employer_mobile'] ?> </td>
+                        <td> <?php echo $value['previous_employer_email'] ?> </td>
                         <td>
                           <div class="d-flex">
                             <a href="<?php echo baseUrl . "Candidate/updateExperience" ?>/<?php echo $value['id'] ?>">
@@ -3347,7 +3272,6 @@
                   </div>
                 </div>
 
-
                 <div class="col-md-6">
                   <label class="form-label">Total duration</label>
                   <p class="form-control" id="result"><span id="years"></span> Years & <span id="months"> </span> Months</p>
@@ -3394,7 +3318,7 @@
                   <button type="submit" class="btn btn-primary">Update</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
                 </div>
-              </form><!-- End Multi Columns Form -->
+              </form>
 
               <?php
               }
@@ -3499,6 +3423,7 @@
         }
       </script>
 
+      <!-- Experience duration calculation -->
       <script>
         document.getElementById('fromDate').addEventListener('input', updateDateDifference);
         document.getElementById('toDate').addEventListener('input', updateDateDifference);
@@ -3562,7 +3487,7 @@
           if (parts.length === 1) {
             // If only year is provided
             var year = parseInt(parts[0], 10);
-            return new Date(year, 0, 1); // Assume January 1st of the year
+            return new Date(year, 0, 1);
           } else if (parts.length === 3) {
             // If full date is provided
             var year = parseInt(parts[2], 10);
@@ -3584,6 +3509,7 @@
         }
       </script>
 
+<!-- Experience format message -->
       <script>
         document.getElementById("fromDate").onfocus = function () {
           document.getElementById("expmesssage").style.display = "block";
@@ -3603,482 +3529,456 @@
       <?php
     } elseif ($method == "areaOfIntrestTable") {
       ?>
-      <!-- Sidebar Active  -->
+      
       <script>
         document.getElementById('areaofinterest').classList.add('active');
       </script>
 
       <section class="usertable">
-        <div class="pagetitle">
-          <h1>Area of Job Interest and Skill Details</h1>
-          <nav>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-              <li class="breadcrumb-item active">Table</li>
-            </ol>
-          </nav>
-        </div><!-- End Page Title -->
-        <div class="col-12">
-          <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mt-3">
+          <div class="pagetitle">
+            <h1>Area of Job Interest and Skill Details</h1>
+            <nav>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                <li class="breadcrumb-item active">Table</li>
+              </ol>
+            </nav>
+          </div>
+
+          <div>
+            <a class="" href="<?php echo baseUrl . "Candidate/experienceTable" ?>">
+              <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+            <a class="" href="<?php echo baseUrl . "Candidate/resume" ?>">
+              <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
+          </div>
+        </div>
+
+        <div class="card recent-sales overflow-auto">
+          <div class="card-body">
             <h5 class="card-title">Area of Job Interest Table<span></span></h5>
-            <div>
-              <a class="" href="<?php echo baseUrl . "Candidate/experienceTable" ?>">
-                <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
-              <a class="" href="<?php echo baseUrl . "Candidate/resume" ?>">
-                <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
+            <div class="mt-3">
+              <a class="" href="#addinterestform">
+                <button type="button" class="btn btn-success mb-4" onclick="addinterestform()">+ Add Area of Job
+                  interest</button></a>
             </div>
-          </div>
-
-          <div class="card recent-sales overflow-auto">
-            <div class="card-body">
-              <div class="mt-3">
-                <a class="" href="#addinterestform">
-                  <button type="button" class="btn btn-success mb-4" onclick="addinterestform()">+ Add Area of Job
-                    interest</button></a>
-              </div>
-              <?php
-              if (isset($areaOfIntrestTable[0]['id'])) {
-                $count = 1;
-                ?>
-                <table class="table" id="areaTable">
-                  <thead>
-                    <tr>
-                      <th scope="col"></th>
-                      <th scope="col">S.No</th>
-                      <th scope="col">Job Category</th>
-                      <th scope="col">Job Subcategory</th>
-                      <th scope="col">Preferred Location</th>
-                      <th scope="col">Job Type</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Expected Salary</th>
-                      <th scope="col">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    if (isset($areaOfIntrestTable[0]['id'])) {
-                      $count = 1;
-                      foreach ($areaOfIntrestTable as $key => $value) {
-                        $seekerId = $_SESSION['seekerId'];
-                        ?>
-                        <tr>
-                          <td>
-                            <form method="post" action="<?php echo baseUrl . 'Candidate/deleteAreaInterest'; ?>"
-                              id="form_<?= $value['id']; ?>">
-                              <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
-                                onchange="updateDeleteButton2(this)">
-                          </td>
-                          <td>
-                            <?php echo $count++ ?>.
-                          </td>
-                          <td>
-                            <?php echo $value['other_interst_category'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['other_sub_interst_category'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['prefered_location'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['job_type'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['description'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['expected_salary'] ?>
-                          </td>
-                          <td>
-                            <div class="d-flex">
-                              <a
-                                href="<?php echo baseUrl . "Candidate/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>#editinterestform">
-                                <button type="button" class="btn btn-secondary mx-1">Edit</button></a>
-                            </div>
-                          </td>
-                        </tr>
-                        <?php
-                      }
-                    }
-                    ?>
-                  </tbody>
-                </table>
-
-                <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled"
-                  onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                </form>
-
-                <div id="paginationButtons" class="text-center mt-4">
-                  <div id="paginationBtnsContainer"></div>
-                </div>
-
-                <?php
-              } else {
-                ?>
-                <?php
-              }
+            <?php
+            if (isset($areaOfIntrestTable[0]['id'])) {
+              $count = 1;
               ?>
-            </div>
-          </div>
-
-          <div class="card" id="addinterestform" style="display:none">
-            <div class="card-body">
-              <div class="d-flex justify-content-between">
-                <h5 class="card-title">Add Job Interest</h5>
-                <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
-                  <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
-              </div>
-
-              <form class="row g-3 needs-validation" novalidate method="post" onsubmit="return validateAreaForm()"
-                action="<?php echo baseUrl . "Candidate/insertAreaOfIntrest" ?>">
-
-                <div class="col-md-6">
-                  <label class="form-label" for="category">Category <span class="text-danger">*</span></label>
-                  <select class="form-control" id="category" name="category" onchange="showHideOtherField()" required>
-                    <option value="">Select a Category</option>
-                    <?php
-                    foreach ($categoryList as $key => $value) { ?>
-                      <option value="<?php echo $value->categoryName ?>">
-                        <?php echo $value->categoryName ?>
-                      </option>
-                    <?php } ?>
-                    <option value="others">Others</option>
-                  </select>
-                  <div id="areacat_error" class="error"></div>
-                </div>
-
-                <div class="col-6" id="newcategory_group" style="display: none;">
-                  <label for="newcategory" class="form-label">New category <span class="text-danger">*</span></label>
-                  <input class="form-control" id="newcategory" name="newcategory">
-                  <div id="newcategory_error" class="text-danger error"></div>
-                  <input id="categoryothers" name="categoryothers" value="1" hidden>
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label" for=" subcategory">Subcategory </label>
-                  <input type="text" class="form-control" id="subcategory" name="subcategory">
-                  <div id="areasubcat_error" class="error"></div>
-                </div>
-
-                <div class="col-md-6" id="otherCategoryFields" style="display: none;">
-                  <label for="customCategoryInput">Custom Category</label>
-                  <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
-                  <label for="customSubcategoryInput">Custom Subcategory</label>
-                  <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
-                </div>
-
-                <div class="col-md-6" id="customCategory" style="display: none;">
-                  <label for="customCategoryInput">Category Name</label>
-                  <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
-                </div>
-
-                <div class="col-md-6" id="customSubcategory" style="display: none;">
-                  <label for="customSubcategoryInput"> Subcategory Name</label>
-                  <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label" for="preferred-location">Preferred Location to work <span
-                      class="text-danger">*</span></label>
-                  <select class="form-control" id="preferred-location" name="preferred-location" required>
-                    <option value="">Select district</option>
-                    <option value="Erode">Erode</option>
-                    <option value="Karur">Karur</option>
-                    <option value="Namakkal">Namakkal</option>
-                    <option value="Tirupur">Tirupur</option>
-                  </select>
-                  <div id="arealocation_error" class="error"></div>
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label" for="description">Description </label>
-                  <input class="form-control" id="description" name="description" rows="3">
-                  <div id="areades_error" class="error"></div>
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label" for="jobtype">Job Type <span class="text-danger">*</span></label>
-                  <select class="form-control" id="jobtype" name="jobtype" required>
-                    <option value="">Select a Job Type</option>
-                    <option value="Full time">Full Time</option>
-                    <option value="Part time">Part Time</option>
-                  </select>
-                  <div id="areajob_error" class="error"></div>
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label" for="expected-salary">Expected Salary <span
-                      class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="expected-salary" name="expected-salary" required>
-                  <div id="areasalary_error" class="error"></div>
-                </div>
-
-                <input type="number" class="form-control" value="1" name="areasubmit" hidden>
-
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-
-              </form><!-- End Multi Columns Form -->
-            </div>
-          </div>
-
-          <script>
-            function formatCategoryInput() {
-              var newCategoryInput = document.getElementById("newcategory");
-              newCategoryInput.value = newCategoryInput.value.replace(/\s/g, '-');
-            }
-            document.getElementById("newcategory").addEventListener("input", formatCategoryInput);
-          </script>
-
-          <script>
-            function updateDeleteButton2(checkbox) {
-              var deleteButton2 = document.getElementById('deleteList2');
-
-              if (checkbox.checked) {
-                deleteButton2.classList.remove('disabled');
-              } else {
-                deleteButton2.classList.add('disabled');
-              }
-            }
-
-            function confirmDelete2() {
-              return confirm('Are you sure you want to delete?');
-            }
-          </script>
-
-          <script>
-            function showHideOtherField() {
-              var categoryDropdown = document.getElementById('category');
-              var otherCategoryField = document.getElementById('newcategory_group');
-
-              if (categoryDropdown.value === 'others') {
-                otherCategoryField.style.display = 'block';
-              } else {
-                otherCategoryField.style.display = 'none';
-              }
-            }
-
-            function clearFormFields(form) {
-              var fieldsToClear = form.querySelectorAll('input, select');
-              for (var i = 0; i < fieldsToClear.length; i++) {
-                fieldsToClear[i].value = '';
-              }
-            }
-
-            function validateAreaForm() {
-              clearErrorMessages();
-
-              var category = document.getElementById("category").value;
-              var newothercategory = document.getElementById("newcategory_group");
-              var subcategory = document.getElementById("subcategory").value;
-              var preferredLocation = document.getElementById("preferred-location").value;
-              var jobtype = document.getElementById("jobtype").value;
-              var description = document.getElementById("description").value;
-              var expectedSalary = document.getElementById("expected-salary").value;
-
-              if (category === "") {
-                displayError('Please select a category', 'areacat_error');
-                return false;
-              }
-
-              if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
-                displayError('Please enter newcategory', 'newcategory_error');
-                return false;
-              }
-
-              if (preferredLocation.trim() === "") {
-                displayError('Preferred location must be filled out', 'arealocation_error');
-                return false;
-              }
-
-              if (jobtype.trim() === "") {
-                displayError('Job type must be filled out', 'areajob_error');
-                return false;
-              }
-
-              if (expectedSalary.trim() === "") {
-                displayError('Expected salary must be filled out', 'areasalary_error');
-                return false;
-              }
-
-              return true;
-            }
-
-            function clearErrorMessages() {
-              var errorElements = document.querySelectorAll('.error');
-              errorElements.forEach(function (errorElement) {
-                errorElement.textContent = '';
-              });
-            }
-
-            function displayError(message, elementId) {
-              var errorElement = document.getElementById(elementId);
-              errorElement.innerHTML = message;
-              errorElement.style.color = 'red';
-            }
-          </script>
-
-          <script>
-            var table = document.getElementById('areaTable');
-            var rowsPerPage = 7;
-            var currentPage = 1;
-            var totalPages = Math.ceil(table.rows.length / rowsPerPage);
-
-            showPage(currentPage);
-
-            function showPage(page) {
-              var startIndex = (page - 1) * rowsPerPage;
-              var endIndex = startIndex + rowsPerPage;
-              for (var i = 0; i < table.rows.length; i++) {
-                if (i >= startIndex && i < endIndex) {
-                  table.rows[i].style.display = 'table-row';
-                } else {
-                  table.rows[i].style.display = 'none';
-                }
-              }
-            }
-
-            function goToPage(page) {
-              if (page < 1) page = 1;
-              if (page > totalPages) page = totalPages;
-              currentPage = page;
-              showPage(currentPage);
-              updatePaginationButtons();
-            }
-
-            function updatePaginationButtons() {
-              var buttonsHtml = '';
-
-              currentPage = Math.max(1, Math.min(currentPage, totalPages));
-
-              var startPage, endPage;
-              if (totalPages <= 3) {
-                startPage = 1;
-                endPage = totalPages;
-              } else {
-                if (currentPage <= 2) {
-                  startPage = 1;
-                  endPage = 3;
-                } else if (currentPage >= totalPages - 1) {
-                  startPage = totalPages - 2;
-                  endPage = totalPages;
-                } else {
-                  startPage = currentPage - 1;
-                  endPage = currentPage + 1;
-                }
-              }
-
-              if (startPage > 1) {
-                buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
-                buttonsHtml += '<span class="ellipsis mx-1">...</span>';
-              }
-
-              for (var i = startPage; i <= endPage; i++) {
-                var activeClass = (i === currentPage) ? 'active' : '';
-                buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
-              }
-
-              if (endPage < totalPages) {
-                buttonsHtml += '<span class="ellipsis mx-1">...</span>';
-                buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
-              }
-
-
-              buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
-                buttonsHtml +
-                '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
-
-              document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
-
-
-              var previousBtn = document.getElementById('previousBtn');
-              var nextBtn = document.getElementById('nextBtn');
-              previousBtn.style.display = (currentPage === 1) ? 'none' : 'inline-block';
-              nextBtn.style.display = (currentPage === totalPages) ? 'none' : 'inline-block';
-            }
-          </script>
-
-          <div class="card recent-sales overflow-auto">
-            <div class="card-body">
-              <h5 class="card-title">Skill Table<span></span></h5>
-              <div>
-                <button type="button" class="btn btn-success mb-4" onclick="addskillform()">+ Add Skill</button>
-                <div>
+              <table class="table" id="areaTable">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Job Category</th>
+                    <th scope="col">Job Subcategory</th>
+                    <th scope="col">Preferred Location</th>
+                    <th scope="col">Job Type</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Expected Salary</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
                   <?php
-                  if (isset($skillTable[0]['id'])) {
+                  if (isset($areaOfIntrestTable[0]['id'])) {
                     $count = 1;
-                    ?>
-                    <table class="table" id="skillTable">
-                      <thead>
-                        <tr>
-                          <th scope="col"></th>
-                          <th scope="col">S.No</th>
-                          <th scope="col">Skill Name</th>
-                          <th scope="col">Skill Experience</th>
-                          <th scope="col">Skill Level</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        if (isset($skillTable[0]['id'])) {
-                          $count = 1;
-                          foreach ($skillTable as $key => $value) {
-                            $seekerId = $_SESSION['seekerId'];
-                            ?>
-                            <tr>
-                              <td>
-                                <form method="post" action="<?php echo baseUrl . 'Candidate/deleteSkill'; ?>"
-                                  id="form_<?= $value['id']; ?>">
-                                  <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
-                                    onchange="updateDeleteButton1(this)">
-                              <td>
-                                <?php echo $count++ ?>.
-                              </td>
-                              <td>
-                                <?php echo $value['skill'] ?>
-                              </td>
-                              <td>
-                                <?php echo $value['experience'] ?> Years
-                              </td>
-                              <td>
-                                <?php echo $value['skill_level'] ?>
-                              </td>
-                              <td>
-                                <div class="d-flex">
-                                  <a class=""
-                                    href="<?php echo baseUrl . "Candidate/updateSkill" ?>/<?php echo $value['id'] ?>#editskillform"><button
-                                      type="button" class="btn btn-secondary mx-1">Edit</button></a>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <?php
-                          }
-                        }
-                        ?>
-                      </tbody>
-                    </table>
-                    <button type="submit" name="submit" id="deleteList1" class="btn btn-danger disabled"
-                      onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                    </form>
-
-                    <div id="paginationButtons" class="text-center mt-4">
-                      <div id="paginationBtnsContainer"></div>
-                    </div>
-
-                    <?php
-                  } else {
-                    ?>
-                    <?php
+                    foreach ($areaOfIntrestTable as $key => $value) {
+                      $seekerId = $_SESSION['seekerId'];
+                      ?>
+                      <tr>
+                        <td>
+                          <form method="post" action="<?php echo baseUrl . 'Candidate/deleteAreaInterest'; ?>"
+                            id="form_<?= $value['id']; ?>">
+                            <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
+                              onchange="updateDeleteButton2(this)">
+                        </td>
+                        <td> <?php echo $count++ ?>. </td>
+                        <td> <?php echo $value['other_interst_category'] ?> </td>
+                        <td> <?php echo $value['other_sub_interst_category'] ?> </td>
+                        <td> <?php echo $value['prefered_location'] ?> </td>
+                        <td> <?php echo $value['job_type'] ?> </td>
+                        <td> <?php echo $value['description'] ?> </td>
+                        <td> <?php echo $value['expected_salary'] ?> </td>
+                        <td>
+                          <div class="d-flex">
+                            <a
+                              href="<?php echo baseUrl . "Candidate/updateAreaOfIntrest" ?>/<?php echo $value['id'] ?>#editinterestform">
+                              <button type="button" class="btn btn-secondary mx-1">Edit</button></a>
+                          </div>
+                        </td>
+                      </tr>
+                      <?php
+                    }
                   }
                   ?>
-                </div>
+                </tbody>
+              </table>
+
+              <button type="submit" name="submit" id="deleteList2" class="btn btn-danger disabled"
+                onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+              </form>
+
+              <div id="paginationButtons" class="text-center mt-4">
+                <div id="paginationBtnsContainer"></div>
+              </div>
+
+              <?php
+            } else {
+              ?>
+              <?php
+            }
+            ?>
+          </div>
+        </div>
+
+        <div class="card" id="addinterestform" style="display:none">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title">Add Job Interest</h5>
+              <a class="" href="<?php echo baseUrl . "Candidate/areaOfIntrestTable" ?>">
+                <button type="button" class="btn btn-danger mt-4 "><i class="bi bi-x"></i></button></a>
+            </div>
+
+            <form class="row g-3 needs-validation" novalidate method="post" onsubmit="return validateAreaForm()"
+              action="<?php echo baseUrl . "Candidate/insertAreaOfIntrest" ?>">
+
+              <div class="col-md-6">
+                <label class="form-label" for="category">Category <span class="text-danger">*</span></label>
+                <select class="form-control" id="category" name="category" onchange="showHideOtherField()" required>
+                  <option value="">Select a Category</option>
+                  <?php
+                  foreach ($categoryList as $key => $value) { ?>
+                    <option value="<?php echo $value->categoryName ?>">
+                      <?php echo $value->categoryName ?>
+                    </option>
+                  <?php } ?>
+                  <option value="others">Others</option>
+                </select>
+                <div id="areacat_error" class="error"></div>
+              </div>
+
+              <div class="col-6" id="newcategory_group" style="display: none;">
+                <label for="newcategory" class="form-label">New category <span class="text-danger">*</span></label>
+                <input class="form-control" id="newcategory" name="newcategory">
+                <div id="newcategory_error" class="text-danger error"></div>
+                <input id="categoryothers" name="categoryothers" value="1" hidden>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for=" subcategory">Subcategory </label>
+                <input type="text" class="form-control" id="subcategory" name="subcategory">
+                <div id="areasubcat_error" class="error"></div>
+              </div>
+
+              <div class="col-md-6" id="otherCategoryFields" style="display: none;">
+                <label for="customCategoryInput">Custom Category</label>
+                <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
+                <label for="customSubcategoryInput">Custom Subcategory</label>
+                <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
+              </div>
+
+              <div class="col-md-6" id="customCategory" style="display: none;">
+                <label for="customCategoryInput">Category Name</label>
+                <input type="text" class="form-control" id="customCategoryInput" name="customCategoryInput">
+              </div>
+
+              <div class="col-md-6" id="customSubcategory" style="display: none;">
+                <label for="customSubcategoryInput"> Subcategory Name</label>
+                <input type="text" class="form-control" id="customSubcategoryInput" name="customSubcategoryInput">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="preferred-location">Preferred Location to work <span
+                    class="text-danger">*</span></label>
+                <select class="form-control" id="preferred-location" name="preferred-location" required>
+                  <option value="">Select district</option>
+                  <option value="Erode">Erode</option>
+                  <option value="Karur">Karur</option>
+                  <option value="Namakkal">Namakkal</option>
+                  <option value="Tirupur">Tirupur</option>
+                </select>
+                <div id="arealocation_error" class="error"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="description">Description </label>
+                <input class="form-control" id="description" name="description" rows="3">
+                <div id="areades_error" class="error"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="jobtype">Job Type <span class="text-danger">*</span></label>
+                <select class="form-control" id="jobtype" name="jobtype" required>
+                  <option value="">Select a Job Type</option>
+                  <option value="Full time">Full Time</option>
+                  <option value="Part time">Part Time</option>
+                </select>
+                <div id="areajob_error" class="error"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="expected-salary">Expected Salary <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="expected-salary" name="expected-salary" required>
+                <div id="areasalary_error" class="error"></div>
+              </div>
+
+              <input type="number" class="form-control" value="1" name="areasubmit" hidden>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <script>
+          function formatCategoryInput() {
+            var newCategoryInput = document.getElementById("newcategory");
+            newCategoryInput.value = newCategoryInput.value.replace(/\s/g, '-');
+          }
+          document.getElementById("newcategory").addEventListener("input", formatCategoryInput);
+        </script>
+
+        <script>
+          function updateDeleteButton2(checkbox) {
+            var deleteButton2 = document.getElementById('deleteList2');
+
+            if (checkbox.checked) {
+              deleteButton2.classList.remove('disabled');
+            } else {
+              deleteButton2.classList.add('disabled');
+            }
+          }
+
+          function confirmDelete2() {
+            return confirm('Are you sure you want to delete?');
+          }
+        </script>
+
+        <script>
+          function showHideOtherField() {
+            var categoryDropdown = document.getElementById('category');
+            var otherCategoryField = document.getElementById('newcategory_group');
+
+            if (categoryDropdown.value === 'others') {
+              otherCategoryField.style.display = 'block';
+            } else {
+              otherCategoryField.style.display = 'none';
+            }
+          }
+
+          function clearFormFields(form) {
+            var fieldsToClear = form.querySelectorAll('input, select');
+            for (var i = 0; i < fieldsToClear.length; i++) {
+              fieldsToClear[i].value = '';
+            }
+          }
+
+          function validateAreaForm() {
+            clearErrorMessages();
+
+            var category = document.getElementById("category").value;
+            var newothercategory = document.getElementById("newcategory_group");
+            var subcategory = document.getElementById("subcategory").value;
+            var preferredLocation = document.getElementById("preferred-location").value;
+            var jobtype = document.getElementById("jobtype").value;
+            var description = document.getElementById("description").value;
+            var expectedSalary = document.getElementById("expected-salary").value;
+
+            if (category === "") {
+              displayError('Please select a category', 'areacat_error');
+              return false;
+            }
+
+            if (newothercategory.value === '' && document.getElementById('newcategory_group').style.display == "block") {
+              displayError('Please enter newcategory', 'newcategory_error');
+              return false;
+            }
+
+            if (preferredLocation.trim() === "") {
+              displayError('Preferred location must be filled out', 'arealocation_error');
+              return false;
+            }
+
+            if (jobtype.trim() === "") {
+              displayError('Job type must be filled out', 'areajob_error');
+              return false;
+            }
+
+            if (expectedSalary.trim() === "") {
+              displayError('Expected salary must be filled out', 'areasalary_error');
+              return false;
+            }
+
+            return true;
+          }
+
+          function clearErrorMessages() {
+            var errorElements = document.querySelectorAll('.error');
+            errorElements.forEach(function (errorElement) {
+              errorElement.textContent = '';
+            });
+          }
+
+          function displayError(message, elementId) {
+            var errorElement = document.getElementById(elementId);
+            errorElement.innerHTML = message;
+            errorElement.style.color = 'red';
+          }
+        </script>
+
+        <script>
+          var table = document.getElementById('areaTable');
+          var rowsPerPage = 7;
+          var currentPage = 1;
+          var totalPages = Math.ceil(table.rows.length / rowsPerPage);
+
+          showPage(currentPage);
+
+          function showPage(page) {
+            var startIndex = (page - 1) * rowsPerPage;
+            var endIndex = startIndex + rowsPerPage;
+            for (var i = 0; i < table.rows.length; i++) {
+              if (i >= startIndex && i < endIndex) {
+                table.rows[i].style.display = 'table-row';
+              } else {
+                table.rows[i].style.display = 'none';
+              }
+            }
+          }
+
+          function goToPage(page) {
+            if (page < 1) page = 1;
+            if (page > totalPages) page = totalPages;
+            currentPage = page;
+            showPage(currentPage);
+            updatePaginationButtons();
+          }
+
+          function updatePaginationButtons() {
+            var buttonsHtml = '';
+
+            currentPage = Math.max(1, Math.min(currentPage, totalPages));
+
+            var startPage, endPage;
+            if (totalPages <= 3) {
+              startPage = 1;
+              endPage = totalPages;
+            } else {
+              if (currentPage <= 2) {
+                startPage = 1;
+                endPage = 3;
+              } else if (currentPage >= totalPages - 1) {
+                startPage = totalPages - 2;
+                endPage = totalPages;
+              } else {
+                startPage = currentPage - 1;
+                endPage = currentPage + 1;
+              }
+            }
+
+            if (startPage > 1) {
+              buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(1)">1</button>';
+              buttonsHtml += '<span class="ellipsis mx-1">...</span>';
+            }
+
+            for (var i = startPage; i <= endPage; i++) {
+              var activeClass = (i === currentPage) ? 'active' : '';
+              buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn ' + activeClass + '" onclick="goToPage(' + i + ')">' + i + '</button>';
+            }
+
+            if (endPage < totalPages) {
+              buttonsHtml += '<span class="ellipsis mx-1">...</span>';
+              buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
+            }
+            buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
+              buttonsHtml +
+              '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
+
+            document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
+
+            var previousBtn = document.getElementById('previousBtn');
+            var nextBtn = document.getElementById('nextBtn');
+            previousBtn.style.display = (currentPage === 1) ? 'none' : 'inline-block';
+            nextBtn.style.display = (currentPage === totalPages) ? 'none' : 'inline-block';
+          }
+        </script>
+
+        <div class="card recent-sales overflow-auto">
+          <div class="card-body">
+            <h5 class="card-title">Skill Table<span></span></h5>
+            <div>
+              <button type="button" class="btn btn-success mb-4" onclick="addskillform()">+ Add Skill</button>
+              <div>
+                <?php
+                if (isset($skillTable[0]['id'])) {
+                  $count = 1;
+                  ?>
+                  <table class="table" id="skillTable">
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Skill Name</th>
+                        <th scope="col">Skill Experience</th>
+                        <th scope="col">Skill Level</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      if (isset($skillTable[0]['id'])) {
+                        $count = 1;
+                        foreach ($skillTable as $key => $value) {
+                          $seekerId = $_SESSION['seekerId'];
+                          ?>
+                          <tr>
+                            <td>
+                              <form method="post" action="<?php echo baseUrl . 'Candidate/deleteSkill'; ?>"
+                                id="form_<?= $value['id']; ?>">
+                                <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
+                                  onchange="updateDeleteButton1(this)">
+                            <td> <?php echo $count++ ?>. </td>
+                            <td> <?php echo $value['skill'] ?> </td>
+                            <td> <?php echo $value['experience'] ?> Years </td>
+                            <td> <?php echo $value['skill_level'] ?> </td>
+                            <td>
+                              <div class="d-flex">
+                                <a class=""
+                                  href="<?php echo baseUrl . "Candidate/updateSkill" ?>/<?php echo $value['id'] ?>#editskillform"><button
+                                    type="button" class="btn btn-secondary mx-1">Edit</button></a>
+
+                              </div>
+                            </td>
+                          </tr>
+                          <?php
+                        }
+                      }
+                      ?>
+                    </tbody>
+                  </table>
+                  <button type="submit" name="submit" id="deleteList1" class="btn btn-danger disabled"
+                    onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+                  </form>
+
+                  <div id="paginationButtons" class="text-center mt-4">
+                    <div id="paginationBtnsContainer"></div>
+                  </div>
+
+                  <?php
+                } else {
+                  ?>
+                  <?php
+                }
+                ?>
               </div>
             </div>
           </div>
+        </div>
       </section>
 
       <div class="card" id="addskillform" style="display:none">
@@ -4137,7 +4037,7 @@
               <button type="reset" class="btn btn-secondary">Reset</button>
             </div>
 
-          </form><!-- End Multi Columns Form -->
+          </form>
         </div>
       </div>
 
@@ -4206,13 +4106,11 @@
             buttonsHtml += '<button class="btn btn-outline-secondary mx-1 pagination-btn" onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
           }
 
-
           buttonsHtml = '<button class="btn btn-outline-secondary me-3" id="previousBtn" onclick="previousPage()">&lt;</button>' +
             buttonsHtml +
             '<button class="btn btn-outline-secondary ms-3" id="nextBtn" onclick="nextPage()">&gt;</button>';
 
           document.getElementById('paginationBtnsContainer').innerHTML = buttonsHtml;
-
 
           var previousBtn = document.getElementById('previousBtn');
           var nextBtn = document.getElementById('nextBtn');
@@ -4250,34 +4148,34 @@
       <?php
     } elseif ($method == 'updateAreaOfIntrest') {
       ?>
-      <!-- Sidebar Active  -->
+     
       <script>
         document.getElementById('areaofinterest').classList.add('active');
       </script>
 
       <section class="Multi Columns Form">
-        <div class="pagetitle">
-          <h1>Area of Job Interest Details</h1>
-          <nav>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-              <li class="breadcrumb-item active">Edit Job Interest</li>
-            </ol>
-          </nav>
-        </div><!-- End Page Title -->
+      <div class="d-flex justify-content-between mt-3">
+          <div class="pagetitle">
+            <h1>Update Area of Job Interest</h1>
+            <nav>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
+                <li class="breadcrumb-item active">Table</li>
+              </ol>
+            </nav>
+          </div>
 
-        <div class="d-flex justify-content-between">
-          <h5 class="card-title">Area of Job Interest Table<span></span></h5>
           <div>
-            <a href="<?php echo baseUrl . "Candidate/experienceTable" ?>"> <button type="button"
-                class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
-            <a href="<?php echo baseUrl . "Candidate/resume" ?>"> <button type="button" class="btn btn-info mb-4 "><i
-                  class="bi bi-arrow-right"></i></button></a>
+            <a class="" href="<?php echo baseUrl . "Candidate/experienceTable" ?>">
+              <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-left"></i></button></a>
+            <a class="" href="<?php echo baseUrl . "Candidate/resume" ?>">
+              <button type="button" class="btn btn-info mb-4 "><i class="bi bi-arrow-right"></i></button></a>
           </div>
         </div>
 
         <div class="card recent-sales overflow-auto">
           <div class="card-body">
+            <h5 class="card-title">Area of Job Interest Table<span></span></h5>
             <div class="mt-3">
               <a class="" href="#addinterestform">
                 <button type="button" class="btn btn-success mb-4" disabled>+ Add Area of Job Interest</button></a>
@@ -4314,27 +4212,13 @@
                             id="form_<?= $value['id']; ?>">
                             <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
                               onchange="updateDeleteButton2(this)">
-                        <td>
-                          <?php echo $count++ ?>.
-                        </td>
-                        <td>
-                          <?php echo $value['other_interst_category'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['other_sub_interst_category'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['prefered_location'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['job_type'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['description'] ?>
-                        </td>
-                        <td>
-                          <?php echo $value['expected_salary'] ?>
-                        </td>
+                        <td> <?php echo $count++ ?>. </td>
+                        <td> <?php echo $value['other_interst_category'] ?> </td>
+                        <td> <?php echo $value['other_sub_interst_category'] ?> </td>
+                        <td> <?php echo $value['prefered_location'] ?> </td>
+                        <td> <?php echo $value['job_type'] ?> </td>
+                        <td> <?php echo $value['description'] ?> </td>
+                        <td> <?php echo $value['expected_salary'] ?> </td>
                         <td>
                           <div class="d-flex">
                             <a
@@ -4399,19 +4283,18 @@
                       </option>
                     <?php } ?>
                     <option value="others" <?php if ($value['other_interst_category'] === 'others')
-                                            echo ' selected'; ?>>
-                                            Others</option>
+                      echo ' selected'; ?>>
+                      Others</option>
                   </select>
                   <div id="areacat_error" class="error"></div>
                 </div>
 
                 <div class="col-6" id="newcategory_group" style="display: none;">
-                            <label for="newcategory" class="form-label">New category <span
-                                    class="text-danger">*</span></label>
-                            <input class="form-control" id="newcategory" name="newcategory">
-                            <div id="newcategory_error" class="text-danger error"></div>
-                            <input id="categoryothers" name="categoryothers" value="1" hidden>
-                        </div>
+                  <label for="newcategory" class="form-label">New category <span class="text-danger">*</span></label>
+                  <input class="form-control" id="newcategory" name="newcategory">
+                  <div id="newcategory_error" class="text-danger error"></div>
+                  <input id="categoryothers" name="categoryothers" value="1" hidden>
+                </div>
 
                 <div class="col-md-6">
                   <label class="form-label" for="subcategory">Subcategory </label>
@@ -4513,17 +4396,17 @@
       </script>
 
       <script>
-            function showHideOtherField() {
-              var categoryDropdown = document.getElementById('category');
-              var otherCategoryField = document.getElementById('newcategory_group');
+        function showHideOtherField() {
+          var categoryDropdown = document.getElementById('category');
+          var otherCategoryField = document.getElementById('newcategory_group');
 
-              if (categoryDropdown.value === 'others') {
-                otherCategoryField.style.display = 'block';
-              } else {
-                otherCategoryField.style.display = 'none';
-              }
-            }
-            
+          if (categoryDropdown.value === 'others') {
+            otherCategoryField.style.display = 'block';
+          } else {
+            otherCategoryField.style.display = 'none';
+          }
+        }
+
         function validateAreaForm() {
           var category = document.getElementById("category").value;
           var newothercategory = document.getElementById("newcategory_group");
@@ -4677,17 +4560,17 @@
       </script>
 
       <script>
-            function formatCategoryInput() {
-              var newCategoryInput = document.getElementById("newcategory");
-              newCategoryInput.value = newCategoryInput.value.replace(/\s/g, '-');
-            }
-            document.getElementById("newcategory").addEventListener("input", formatCategoryInput);
-          </script>
+        function formatCategoryInput() {
+          var newCategoryInput = document.getElementById("newcategory");
+          newCategoryInput.value = newCategoryInput.value.replace(/\s/g, '-');
+        }
+        document.getElementById("newcategory").addEventListener("input", formatCategoryInput);
+      </script>
 
       <?php
     } elseif ($method == "updateSkill") {
       ?>
-      <!-- Sidebar Active  -->
+      
       <script>
         document.getElementById('areaofinterest').classList.add('active');
       </script>
@@ -4698,10 +4581,10 @@
           <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
-              <li class="breadcrumb-item active">Edit Skill</li>
+              <li class="breadcrumb-item active">Edit Skill details</li>
             </ol>
           </nav>
-        </div><!-- End Page Title -->
+        </div>
 
         <div class="card recent-sales overflow-auto">
           <div class="card-body">
@@ -4735,18 +4618,10 @@
                               id="form_<?= $value['id']; ?>">
                               <input type="checkbox" name="selected_items[]" value="<?= $value['id']; ?>"
                                 onchange="updateDeleteButton1(this)">
-                          <td>
-                            <?php echo $count++ ?>.
-                          </td>
-                          <td>
-                            <?php echo $value['skill'] ?>
-                          </td>
-                          <td>
-                            <?php echo $value['experience'] ?> Years
-                          </td>
-                          <td>
-                            <?php echo $value['skill_level'] ?>
-                          </td>
+                          <td> <?php echo $count++ ?>. </td>
+                          <td> <?php echo $value['skill'] ?> </td>
+                          <td> <?php echo $value['experience'] ?> Years </td>
+                          <td> <?php echo $value['skill_level'] ?> </td>
                           <td>
                             <div class="d-flex">
                               <a class=""
@@ -4810,8 +4685,8 @@
                           <?php $selectedValue = $value['experience'];
                           for ($i = 0; $i <= 20; $i++): ?>
                             <option value="<?php echo $i; ?>" <?php echo ($i == $selectedValue) ? 'selected' : ''; ?>>
-                              <?php echo $i; ?> Year
-                              <?php echo ($i !== 1) ? 's' : ''; ?>
+                              <?php echo $i; ?> 
+                              <?php echo ($i !== 1) ? 'years' : 'year'; ?>
                             </option>
                           <?php endfor; ?>
                           <option value="20+" <?php if ($value['experience'] === '20+')
@@ -4845,7 +4720,7 @@
                     <button type="reset" class="btn btn-secondary">Reset</button>
                   </div>
 
-                </form><!-- End Multi Columns Form -->
+                </form>
               </div>
             </div>
           </section>
@@ -4872,7 +4747,7 @@
 
     } elseif ($method == "resume") {
       ?>
-      <!-- Sidebar Active  -->
+      
       <script>
         document.getElementById('resumes').classList.add('active');
       </script>
@@ -4980,8 +4855,8 @@
       <?php
     } elseif ($method == "thank") {
       ?>
-      <?php
-      if (($basicDetails[0]['bdsubmited'] != '1')) { ?>
+
+      <?php if (($basicDetails[0]['bdsubmited'] != '1')) { ?>
         <p>Please enter your Basic Details to complete the process.</p>
       <?php } else if (isset($eduTotalRows) && $eduTotalRows < "1") { ?>
           <p>Please enter your Education Details to complete the process.</p>
@@ -4990,6 +4865,7 @@
       <?php } else if ((isset($wreaTotalRows) && $areaTotalRows < "1")) { ?>
               <p>Please enter your Area of Job Interest to complete the process.</p>
       <?php } else { ?>
+
               <section class="Multi Columns Form" style="padding-bottom: 165px;">
                 <div>
                   <div class="text-center"><br><br><br>
@@ -5005,7 +4881,6 @@
       ?>
 
       <section>
-
         <div class="card">
           <div class="card-body">
             <div class="container">
@@ -5040,82 +4915,128 @@
                             <?php echo $value['email'] ?>
                           </p>
                           <p>
-                            <?php echo $value['buildingName'] ?>,
-                            <?php echo $value['address'] ?>,
-                          </p>
-                          <p>
-                            <?php echo $value['landmark'] ?>,
-                          </p>
-                          <p>
-                            <?php echo $value['district'] ?>,
-                            <?php echo $value['pincode'] ?>
-                          </p>
-                        </div>
-                      </div>
-
-                      <div class="d-sm-flex justify-content-between pt-4">
-                        <div>
-                          <p>D.O.B :
                             <?php
-                            if (!empty($value['dateofbirth'])) {
-                              $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth']));
-                              echo $formattedDateOfBirth;
+                            $buildingName = !empty($value['buildingName']) ? $value['buildingName'] : '';
+                            $address = !empty($value['address']) ? $value['address'] : '';
+
+                            if ($buildingName && $address) {
+                              echo $buildingName . ', ' . $address . ', ';
                             } else {
-                              echo "-";
+                              echo $buildingName . $address;
+                            }
+                            ?>
+                          </p>
+                          <p>
+                            <?php echo !empty($value['landmark']) ? $value['landmark'] : ''; ?>
+                          </p>
+                          <p>
+                            <?php
+                            $district = !empty($value['district']) ? $value['district'] : '';
+                            $pincode = !empty($value['pincode']) ? $value['pincode'] : '';
+
+                            if ($district && $pincode) {
+                              echo $district . ', ' . $pincode;
+                            } else {
+                              echo $district . $pincode;
                             }
                             ?>
                           </p>
 
-                          <p>Age :
-                            <?php echo $value['age'] ?>
-                          </p>
-                        </div>
-                        <div>
-                          <p>Gender :
-                            <?php echo $value['gender'] ?>
-                          </p>
-                          <p>Marital Status :
-                            <?php echo $value['maritalStatus'] ?>
-                          </p>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card recent-sales overflow-auto">
-                  <div class="card-body">
-                    <table class="table table-striped mt-2">
-                      <thead>
-                        <tr>
-                          <th class="col-4" scope="col">Profile Photo</th>
-                          <th class="col-4" scope="col">Aadhaar Front</th>
-                          <th class="col-4" scope="col">Aadhaar Back</th>
-                          <th class="col-4" scope="col">Aadhaar Number</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><a href="<?php echo $value['photo'] ?>" target="_blank">
-                              <?php echo $value['photo_filename'] ?>
-                            </a></td>
-                          <td><a href="<?php echo $value['aadhar_front'] ?>" target="_blank">
-                              <?php echo $value['aadharfront_filename'] ?>
-                            </a></td>
-                          <td><a href="<?php echo $value['aadhar_back'] ?>" target="_blank">
-                              <?php echo $value['aadharback_filename'] ?>
-                            </a></td>
-                          <td>
-                            <?php echo $value['aadharnumber'] ?>
-                          </td>
-                        </tr>
-                        <?php
+                          <?php
                     }
                   }
                   ?>
-                  </tbody>
-                </table>
+                    </div>
+                  </div>
+
+                  <div class="d-sm-flex justify-content-between pt-4">
+                    <div>
+                      <p>D.O.B :
+                        <?php
+                        if (!empty($value['dateofbirth'])) {
+                          $formattedDateOfBirth = date('d-m-Y', strtotime($value['dateofbirth']));
+                          echo $formattedDateOfBirth;
+                        } else {
+                          echo "-";
+                        }
+                        ?>
+                      </p>
+
+                      <p>Age :
+                        <?php echo !empty($value['age']) ? $value['age'] : '-'; ?>
+                      </p>
+                    </div>
+                    <div>
+                      <p>Gender :
+                        <?php echo !empty($value['gender']) ? $value['gender'] : '-'; ?>
+                      </p>
+                      <p>Marital Status :
+                        <?php echo !empty($value['maritalStatus']) ? $value['maritalStatus'] : '-'; ?>
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="card recent-sales overflow-auto">
+              <div class="card-body">
+                <h5 class="card-title">Profile</h5>
+                <?php
+                $hasPhoto = !empty($value['photo']) && !empty($value['photo_filename']);
+                $hasAadhaarFront = !empty($value['aadhar_front']) && !empty($value['aadharfront_filename']);
+                $hasAadhaarBack = !empty($value['aadhar_back']) && !empty($value['aadharback_filename']);
+                $hasAadhaarNumber = !empty($value['aadharnumber']);
+
+                if ($hasPhoto || $hasAadhaarFront || $hasAadhaarBack || $hasAadhaarNumber) {
+                  ?>
+                  <table class="table table-striped mt-2">
+                    <thead>
+                      <tr>
+                        <th class="col-4" scope="col">Profile Photo</th>
+                        <th class="col-4" scope="col">Aadhaar Front</th>
+                        <th class="col-4" scope="col">Aadhaar Back</th>
+                        <th class="col-4" scope="col">Aadhaar Number</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <?php if ($hasPhoto) { ?>
+                            <a href="<?php echo $value['photo']; ?>" target="_blank">
+                              <?php echo $value['photo_filename']; ?>
+                            </a>
+                          <?php } ?>
+                        </td>
+                        <td>
+                          <?php if ($hasAadhaarFront) { ?>
+                            <a href="<?php echo $value['aadhar_front']; ?>" target="_blank">
+                              <?php echo $value['aadharfront_filename']; ?>
+                            </a>
+                          <?php } ?>
+                        </td>
+                        <td>
+                          <?php if ($hasAadhaarBack) { ?>
+                            <a href="<?php echo $value['aadhar_back']; ?>" target="_blank">
+                              <?php echo $value['aadharback_filename']; ?>
+                            </a>
+                          <?php } ?>
+                        </td>
+                        <td>
+                          <?php if ($hasAadhaarNumber) { ?>
+                            <?php echo $value['aadharnumber']; ?>
+                          <?php } ?>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <?php
+                } else {
+                  echo '<p>Profile details is not entered.</p>';
+                }
+                ?>
+
               </div>
             </div>
 
@@ -5255,7 +5176,7 @@
                               $value['educational_qualification'] === "LLB" || $value['educational_qualification'] === "BDS" || $value['educational_qualification'] === "B.SC" || $value['educational_qualification'] === "BSW" ||
                               $value['educational_qualification'] === "B.Pharm" || $value['educational_qualification'] === "BBM"
                             ) {
-                              ?>""
+                              ?>
                                     <td><a href="<?php echo $value['ugcer_url'] ?>" target="blank">
                                   <?php echo $value['ug_cer'] ?>
                                       </a></td>
@@ -5398,19 +5319,13 @@
             </div>
 
             <script>
-              <?php
-              if ($experienceTable[0]['workStatus'] == '0') {
-                ?>
+              <?php if ($experienceTable[0]['workStatus'] == '0') { ?>
                 document.getElementById("expTable").style.display = "block";
                 document.getElementById("noexperience").style.display = "none";
-
-                <?php
-              } else if ($experienceTable[0]['workStatus'] == '1') { ?>
+              <?php } else if ($experienceTable[0]['workStatus'] == '1') { ?>
                   document.getElementById("expTable").style.display = "none";
                   document.getElementById("noexperience").style.display = "block";
-
-                <?php
-              } ?>
+              <?php } ?>
             </script>
 
             <div class="card recent-sales overflow-auto">
@@ -5528,19 +5443,20 @@
               <div class="card-body">
                 <h5 class="card-title">Resume</h5>
                 <?php
-                if (isset($areaOfIntrestTable[0]['id'])) {
+                // Check if the areaOfIntrestTable is set and contains the resume
+                if (isset($areaOfIntrestTable[0]['resume_filename_url']) && !empty($areaOfIntrestTable[0]['resume_filename_url'])) {
                   ?>
-                  <a href="<?php echo $areaOfIntrestTable[0]['resume_filename_url']; ?>" target="blank">
-                    <?php echo $areaOfIntrestTable[0]['resume_filename'] ? $areaOfIntrestTable[0]['resume_filename'] : 'No file'; ?>
+                  <a href="<?php echo $areaOfIntrestTable[0]['resume_filename_url']; ?>" target="_blank">
+                    <?php echo !empty($areaOfIntrestTable[0]['resume_filename']) ? $areaOfIntrestTable[0]['resume_filename'] : 'No file'; ?>
                   </a>
                   <?php
-
                 } else {
                   echo '<p>Resume not uploaded.</p>';
                 }
                 ?>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -5554,7 +5470,6 @@
       </script>
 
       <section>
-
         <div id="resumeprint">
           <div class="container">
             <div class="row">
@@ -5655,193 +5570,187 @@
 
                 <div class="recent-sales overflow-auto">
                   <h4><b>Educational Qualification</b></h4>
+
                   <?php
-                  if (isset($educationTable[0]['id']) && !empty($educationTable)) {
-                    ?>
-
-                    <?php
-                    if (isset($educationTable[0]['id'])) {
-                      $count = 1;
-                      foreach ($educationTable as $key => $value) {
-                        ?>
-                        <p><b><?php echo $count; ?> . </b>
-                          <?php echo $value['educational_qualification'] ?>
-                          <?php if (
-                            $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
-                            $value['educational_qualification'] === "10th/SSLC" || $value['educational_qualification'] === "11th" || $value['educational_qualification'] === "12th/HSC"
-                          ) { ?>
-
-                          <?php } else { ?> - <?php echo $value['department'] ?>
-
-                          <?php } ?> - <?php echo $value['school_college_name'] ?>
-
-                          <?php if (
-                            $value['educational_qualification'] == "Below_9th" || $value['educational_qualification'] === "9th" ||
-                            $value['educational_qualification'] === "11th"
-                          ) { ?>
-                            NA
-                          <?php } else { ?> with <?php echo $value['percentage'] ?>%
-                          <?php } ?> - <?php echo $value['yearOfPassing'] ?>
-
-                          <?php
-                          $count++;
-                      }
+                  if (!empty($educationTable) && isset($educationTable[0]['id'])) {
+                    $count = 1;
+                    foreach ($educationTable as $key => $value) {
                       ?>
-                    </div>
-
-                  <?php } else { ?>
-                    <p>Education qualification is not entered</p>
-
-                  <?php }
-                  } ?>
-              </div>
-            </div>
-
-            <div class="recent-sales overflow-auto">
-              <div class="">
-                <div id="experiencedContent">
-                  <h4><b>Experience Details</b></h4>
-                  <?php
-                  if (isset($experienceTable[0]['id'])) { ?>
-                    <div id="expTable">
-
-                      <?php
-                      $loopcount = 1;
-                      foreach ($experienceTable as $key => $ivalue) {
-                        ?>
-                        <p>
-                        <h5><b><?php echo $loopcount ?> .
-                            <?php echo $ivalue['other_category'] ?> : <?php echo $ivalue['other_sub_category'] ?></h5></b>
-
-                        * Worked in <?php echo $ivalue['company_name'] ?> company,
-                        <!-- <?php echo $ivalue['expYear'] ?> to 
-                            <?php echo $ivalue['expMonth'] ?> -->
-
-                        <td>
-                          <?php if (is_numeric($ivalue['expYear'])) {
-                            echo $ivalue['expYear'];
-                          } else {
-                            echo date('d-m-Y', strtotime($ivalue['expYear']));
-                          } ?>
-                          to
-                          <?php
-                          if ($ivalue['expMonth'] == 'Till now') {
-                            echo $ivalue['expMonth'];
-                          } else {
-                            if (is_numeric($ivalue['expMonth'])) {
-                              echo $ivalue['expMonth'];
-                            } else {
-                              echo date('d-m-Y', strtotime($ivalue['expMonth']));
-                            }
-                          }
-                          ?>
-                        </td>
-                        <?php echo $ivalue['job_role'] ?>
-                        ,
-                        <?php echo $ivalue['company_location'] ?>
-                        <?php
-                        $loopcount++;
-                      } ?>
+                      <p>
+                        <b><?php echo $count; ?>. </b>
+                        <?php echo $value['educational_qualification']; ?>
+                        <?php if (
+                          $value['educational_qualification'] !== "Below_9th" &&
+                          $value['educational_qualification'] !== "9th" &&
+                          $value['educational_qualification'] !== "10th/SSLC" &&
+                          $value['educational_qualification'] !== "11th" &&
+                          $value['educational_qualification'] !== "12th/HSC"
+                        ) { ?>
+                          - <?php echo $value['department']; ?>
+                        <?php } ?>
+                        - <?php echo $value['school_college_name']; ?>
+                        <?php if (
+                          $value['educational_qualification'] === "Below_9th" ||
+                          $value['educational_qualification'] === "9th" ||
+                          $value['educational_qualification'] === "11th"
+                        ) { ?>
+                          NA
+                        <?php } else { ?>
+                          with <?php echo $value['percentage']; ?>%
+                        <?php } ?>
+                        - <?php echo $value['yearOfPassing']; ?>
                       </p>
-                    </div>
-
-                    <p id="noexperience">Fresher / No experience after graduation.</p><br>
-                  <?php } else { ?>
-                    <div id="fresherContent">
-
-                      <p>Experience is not entered.</p>
-                    </div>
-                  <?php }
+                      <?php
+                      $count++;
+                    }
+                  } else {
+                    echo '<p>Education qualification is not entered</p>';
+                  }
                   ?>
                 </div>
-              </div>
-            </div>
 
-            <script>
-              <?php
-              if ($experienceTable[0]['workStatus'] == '0') {
-                ?>
-                document.getElementById("expTable").style.display = "block";
-                document.getElementById("noexperience").style.display = "none";
+                <div class="recent-sales overflow-auto">
+                  <div class="">
+                    <div id="experiencedContent">
+                      <h4><b>Experience Details</b></h4>
+                      <?php
+                      if (isset($experienceTable[0]['id'])) { ?>
+                        <div id="expTable">
 
-                <?php
-              } else if ($experienceTable[0]['workStatus'] == '1') { ?>
-                  document.getElementById("expTable").style.display = "none";
-                  document.getElementById("noexperience").style.display = "block";
+                          <?php
+                          $loopcount = 1;
+                          foreach ($experienceTable as $key => $ivalue) {
+                            ?>
+                            <p>
+                            <h5><b><?php echo $loopcount ?> .
+                                <?php echo $ivalue['other_category'] ?> : <?php echo $ivalue['other_sub_category'] ?></h5></b>
 
-                <?php
-              } ?>
-            </script>
+                            * Worked in <?php echo $ivalue['company_name'] ?> company,
+                            <!-- <?php echo $ivalue['expYear'] ?> to 
+                            <?php echo $ivalue['expMonth'] ?> -->
 
-            <div class="recent-sales overflow-auto">
-              <div class="">
-                <h4><b>Skills</b></h4>
+                            <td>
+                              <?php if (is_numeric($ivalue['expYear'])) {
+                                echo $ivalue['expYear'];
+                              } else {
+                                echo date('d-m-Y', strtotime($ivalue['expYear']));
+                              } ?>
+                              to
+                              <?php
+                              if ($ivalue['expMonth'] == 'Till now') {
+                                echo $ivalue['expMonth'];
+                              } else {
+                                if (is_numeric($ivalue['expMonth'])) {
+                                  echo $ivalue['expMonth'];
+                                } else {
+                                  echo date('d-m-Y', strtotime($ivalue['expMonth']));
+                                }
+                              }
+                              ?>
+                            </td>
+                            <?php echo $ivalue['job_role'] ?>
+                            ,
+                            <?php echo $ivalue['company_location'] ?>
+                            <?php
+                            $loopcount++;
+                          } ?>
+                          </p>
+                        </div>
 
-                <?php
-                if (isset($skillTable[0]['id']) && !empty($skillTable)) {
-                  ?>
-                  <div>
-                    <?php
-                    $loopcount = 1;
-                    foreach ($skillTable as $key => $svalue) {
+                        <p id="noexperience">Fresher / No experience after graduation.</p><br>
+                      <?php } else { ?>
+                        <div id="fresherContent">
+
+                          <p>Experience is not entered.</p>
+                        </div>
+                      <?php }
                       ?>
-                      <h5><b><?php echo $loopcount; ?>. <?php echo $svalue['skill'] ?> skills : </b> </h5>
-                      * <?php echo $svalue['experience'] ?> years of experience at
-                      <?php echo $svalue['skill_level'] ?> level.<br><br>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  <?php if ($experienceTable[0]['workStatus'] == '0') { ?>
+                    document.getElementById("expTable").style.display = "block";
+                    document.getElementById("noexperience").style.display = "none";
+
+                  <?php } else if ($experienceTable[0]['workStatus'] == '1') { ?>
+                      document.getElementById("expTable").style.display = "none";
+                      document.getElementById("noexperience").style.display = "block";
+
+                  <?php } ?>
+                </script>
+
+                <div class="recent-sales overflow-auto">
+                  <div class="">
+                    <h4><b>Skills</b></h4>
+
+                    <?php
+                    if (isset($skillTable[0]['id']) && !empty($skillTable)) {
+                      ?>
+                      <div>
+                        <?php
+                        $loopcount = 1;
+                        foreach ($skillTable as $key => $svalue) {
+                          ?>
+                          <h5><b><?php echo $loopcount; ?>. <?php echo $svalue['skill'] ?> skills : </b> </h5>
+                          * <?php echo $svalue['experience'] ?> years of experience at
+                          <?php echo $svalue['skill_level'] ?> level.<br><br>
+
+                          <?php
+                          $loopcount++;
+                        }
+                        ?>
+                      </div>
 
                       <?php
-                      $loopcount++;
+                    } else { ?>
+                      <p>Skill is not entered</p>
+                    <?php } ?>
+                  </div>
+                </div>
+
+                <div class=" recent-sales overflow-auto">
+                  <div>
+                    <h4><b>Area of Job Interest</b></h4>
+                    <?php
+                    if (isset($areaOfIntrestTable[0]['id'])) {
+                      ?>
+                      <?php
+                      $loopcount = 1;
+                      foreach ($areaOfIntrestTable as $key => $avalue) {
+                        ?>
+
+                        <h5><?php echo $loopcount; ?>.
+                          <?php echo $avalue['other_interst_category'] ?> :
+                          <?php echo $avalue['other_sub_interst_category'] ?>
+                        </h5>
+
+                        <b>* Preferred Location : </b> <?php echo $avalue['prefered_location'] ?> <br>
+                        <b>* Expected salary : </b> <?php echo $avalue['expected_salary'] ?> <br>
+                        <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
+                        <?php if (!empty($avalue['description'])) { ?>
+                          <b>* Job description : </b> <?php echo $avalue['description']; ?>
+                        <?php } ?> <br><br>
+
+                        <?php
+                        $loopcount++;
+                      }
+                      ?>
+                      <?php
+                    } else {
+                      echo '<p> Areas of job interest is not entered. </p>';
                     }
                     ?>
                   </div>
+                </div>
 
-                  <?php
-                } else { ?>
-                  <p>Skill is not entered</p>
-                <?php } ?>
+              </div>
+
+              <div style="float:right;">
+                <button onClick="window.print()" type="button" class="btn btn-dark printhide">Print</button>
               </div>
             </div>
-
-            <div class=" recent-sales overflow-auto">
-              <div>
-                <h4><b>Area of Job Interest</b></h4>
-                <?php
-                if (isset($areaOfIntrestTable[0]['id'])) {
-                  ?>
-                  <?php
-                  $loopcount = 1;
-                  foreach ($areaOfIntrestTable as $key => $avalue) {
-                    ?>
-
-                    <h5><?php echo $loopcount; ?>.
-                      <?php echo $avalue['other_interst_category'] ?> : <?php echo $avalue['other_sub_interst_category'] ?>
-                    </h5>
-
-                    <b>* Preferred Location : </b> <?php echo $avalue['prefered_location'] ?> <br>
-                    <b>* Expected salary : </b> <?php echo $avalue['expected_salary'] ?> <br>
-                    <b>* Job type : </b> <?php echo $avalue['job_type'] ?> <br>
-                    <?php if (!empty($avalue['description'])) { ?>
-                      <b>* Job description : </b> <?php echo $avalue['description']; ?>
-                    <?php } ?> <br><br>
-
-                    <?php
-                    $loopcount++;
-                  }
-                  ?>
-                  <?php
-                } else {
-                  echo '<p> Areas of job interest is not entered. </p>';
-                }
-                ?>
-              </div>
-            </div>
-
-          </div>
-
-          <div style="float:right;">
-            <button onClick="window.print()" type="button" class="btn btn-dark printhide">Print</button>
-          </div>
-        </div>
       </section>
 
       <script>
@@ -5865,7 +5774,7 @@
     }
     ?>
 
-  </main><!-- End #main -->
+  </main>
 
 
   <!-- ======= Footer ======= -->
@@ -5877,8 +5786,7 @@
     <div class="copyright">
       &copy; Copyright <strong><span>ArramJobs</span></strong>. All Rights Reserved
     </div>
-  </footer><!-- End Footer -->
-
+  </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>

@@ -61,10 +61,16 @@ class Admin extends CI_Controller
 
             $admin = $this->AdminModel->admin();
             $this->data['admin'] = $admin;
+
             $employer = $this->AdminModel->employer();
             $this->data['employer'] = $employer;
+
             $employee = $this->AdminModel->employee();
             $this->data['employee'] = $employee;
+
+            $placedCandidatesList = $this->AdminModel->placedCandidatesList();
+            $this->data['placedCandidatesList'] = $placedCandidatesList;
+
             $this->data['method'] = "dashboard";
             $this->setVariable();
             $this->load->view('adminDashboard.php', $this->data);
@@ -641,7 +647,7 @@ class Admin extends CI_Controller
         if (isset($_SESSION['adminId'])) {
             $postData = $this->input->post(null, true);
             $updateBasicDetails = $this->CandidateModel->updateBasicDetails();
-            $this->newCandidateList();
+            $this->overallCandidates();
             echo '<script>alert("Basic details inserted successfully by admin.");</script>';
         } else {
             $this->index();
@@ -671,7 +677,7 @@ class Admin extends CI_Controller
             $insertEducationForm = $this->CandidateModel->insertEducationForm();
             // $insertEducationForm = $this->CandidateModel->insertSubmit();
 
-            $this->newCandidateList();
+            $this->overallCandidates();
             echo '<script>alert("Education details inserted successfully by admin.");</script>';
         } else {
             $this->index();
@@ -702,7 +708,7 @@ class Admin extends CI_Controller
         if (isset($_SESSION['adminId'])) {
             $insertExperienceForm = $this->CandidateModel->insertExperienceForm();
 
-            $this->newCandidateList();
+            $this->overallCandidates();
             echo '<script>alert("Experience details inserted successfully.");</script>';
         } else {
             $this->index();
@@ -715,7 +721,7 @@ class Admin extends CI_Controller
             // $id = $this->uri->segment(3);
             $insertExperienceForm = $this->CandidateModel->insertFresherForm();
 
-            $this->newCandidateList();
+            $this->overallCandidates();
             echo '<script>alert("Experience is inserted as No experience.");</script>';
         } else {
             $this->index();
@@ -747,7 +753,7 @@ class Admin extends CI_Controller
         if (isset($_SESSION['adminId'])) {
             $insertAreaOfIntrest = $this->AdminModel->jobInterestResume();
 
-            $this->newCandidateList();
+            $this->overallCandidates();
             echo '<script>alert("Area of interest inserted successfully by admin.");</script>';
         } else {
             $this->index();
@@ -773,7 +779,7 @@ class Admin extends CI_Controller
     {
         if (isset($_SESSION['adminId'])) {
             $insertSkillForm = $this->CandidateModel->insertSkillForm();
-            $this->newCandidateList();
+            $this->overallCandidates();
             echo '<script>alert("Skill inserted successfully by admin.");</script>';
         } else {
             $this->index();
