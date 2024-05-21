@@ -683,7 +683,7 @@
 
           </div>
         </div>
-      </section>
+      
 
       <!-- NAME CHARACTERS VALIDATION -->
       <script>
@@ -1097,6 +1097,8 @@ document.getElementById("dateofbirth").onfocus = function () {
 
       </script>
 
+</section>
+
       <?php
     } elseif ($method == "educationTable") {
       ?>
@@ -1331,7 +1333,6 @@ document.getElementById("dateofbirth").onfocus = function () {
             </div>
           </div>
         </div>
-      </section>
 
       <div class="card" id="addeduform" style="display:none">
         <div class="card-body">
@@ -1813,6 +1814,8 @@ document.getElementById("dateofbirth").onfocus = function () {
         }
       </script>
 
+</section>
+
       <?php
 
     } elseif ($method == "updateEducation") {
@@ -2211,7 +2214,6 @@ document.getElementById("dateofbirth").onfocus = function () {
 
           </div>
         </div>
-      </section>
 
       <script>
         function updateDeleteButton2(checkbox) {
@@ -2435,6 +2437,8 @@ document.getElementById("dateofbirth").onfocus = function () {
         }
       </script>
 
+</section>
+
       <?php
     } elseif ($method == "experienceTable") {
       ?>
@@ -2600,7 +2604,6 @@ document.getElementById("dateofbirth").onfocus = function () {
             </div>
           </div>
         </div>
-      </section>
 
       <script>
         function validateName1(input) {
@@ -2654,6 +2657,7 @@ document.getElementById("dateofbirth").onfocus = function () {
           }
         }
       </script>
+      </section>
 
       <section>
         <div class="card" id="addexpform" style="display:none">
@@ -2787,7 +2791,6 @@ document.getElementById("dateofbirth").onfocus = function () {
             </form>
           </div>
         </div>
-      </section>
 
       <!-- Pagination -->
       <script>
@@ -3058,6 +3061,8 @@ document.getElementById("dateofbirth").onfocus = function () {
         }
       </script>
 
+</section>
+
       <?php
 
     } elseif ($method == "updateExperience") {
@@ -3325,7 +3330,6 @@ document.getElementById("dateofbirth").onfocus = function () {
               ?>
           </div>
         </div>
-      </section>
 
       <!-- NAME CHARACTERS VALIDATION -->
       <script>
@@ -3525,6 +3529,8 @@ document.getElementById("dateofbirth").onfocus = function () {
           document.getElementById("expmesssage1").style.display = "none";
         }
       </script>
+
+</section>
 
       <?php
     } elseif ($method == "areaOfIntrestTable") {
@@ -3979,7 +3985,6 @@ document.getElementById("dateofbirth").onfocus = function () {
             </div>
           </div>
         </div>
-      </section>
 
       <div class="card" id="addskillform" style="display:none">
         <div class="card-body">
@@ -4144,6 +4149,8 @@ document.getElementById("dateofbirth").onfocus = function () {
           return confirm('Are you sure you want to delete?');
         }
       </script>
+
+</section>
 
       <?php
     } elseif ($method == 'updateAreaOfIntrest') {
@@ -4378,7 +4385,6 @@ document.getElementById("dateofbirth").onfocus = function () {
             </form>
           </div>
         </div>
-      </section>
 
       <script>
         function updateDeleteButton2(checkbox) {
@@ -4567,6 +4573,8 @@ document.getElementById("dateofbirth").onfocus = function () {
         document.getElementById("newcategory").addEventListener("input", formatCategoryInput);
       </script>
 
+</section>
+
       <?php
     } elseif ($method == "updateSkill") {
       ?>
@@ -4723,7 +4731,6 @@ document.getElementById("dateofbirth").onfocus = function () {
                 </form>
               </div>
             </div>
-          </section>
 
           <script>
             function updateDeleteButton1(checkbox) {
@@ -4740,6 +4747,9 @@ document.getElementById("dateofbirth").onfocus = function () {
               return confirm('Are you sure you want to delete?');
             }
           </script>
+
+
+</section>
 
           <?php
                 }
@@ -4820,7 +4830,6 @@ document.getElementById("dateofbirth").onfocus = function () {
             </a>
           </div>
         <?php endif; ?>
-      </section>
 
       <script>
         document.getElementById("file-input-labelresume").addEventListener("click", function () {
@@ -4851,6 +4860,8 @@ document.getElementById("dateofbirth").onfocus = function () {
 
         }
       </script>
+
+</section>
 
       <?php
     } elseif ($method == "thank") {
@@ -5751,7 +5762,6 @@ document.getElementById("dateofbirth").onfocus = function () {
                 <button onClick="window.print()" type="button" class="btn btn-dark printhide">Print</button>
               </div>
             </div>
-      </section>
 
       <script>
         function togglePasswordVisibility(inputId, iconId) {
@@ -5769,6 +5779,8 @@ document.getElementById("dateofbirth").onfocus = function () {
           }
         }
       </script>
+
+</section>
 
       <?php
     }
