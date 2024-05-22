@@ -7,6 +7,8 @@ class Candidate extends CI_Controller
         parent::__construct();
         $this->load->model('CandidateModel');
         $this->load->library('session');
+        $this->load->helper('url');
+        $this->load->helper('form');
     }
 
     public function registration()
@@ -63,6 +65,23 @@ class Candidate extends CI_Controller
     // }
 
 
+    // public function candidateRegistration()
+    // {
+    //     $phone_number = $this->input->post('phonenumber');
+
+    //     if ($this->CandidateModel->checkUserExistence($phone_number)) {
+    //         echo '<script>alert("Phone number already exists. Please use a different number.");</script>';
+    //         $this->load->view('candidateRegistration');
+    //     } else {
+    //         $postData = $this->input->post(null, true);
+    //         $register = $this->CandidateModel->register();
+    //         $generatedeeid = $this->CandidateModel->generate_customer_id();
+    //         // $data['generatedeeid'] = $generatedeeid;
+    //         $this->load->view('candidateRegistered.php');
+    //     }
+    // }
+
+
     public function candidateRegistration()
     {
         $phone_number = $this->input->post('phonenumber');
@@ -71,13 +90,68 @@ class Candidate extends CI_Controller
             echo '<script>alert("Phone number already exists. Please use a different number.");</script>';
             $this->load->view('candidateRegistration');
         } else {
+            $this->sendOtp(); // Send OTP before registering
             $postData = $this->input->post(null, true);
             $register = $this->CandidateModel->register();
             $generatedeeid = $this->CandidateModel->generate_customer_id();
-            // $data['generatedeeid'] = $generatedeeid;
             $this->load->view('candidateRegistered.php');
         }
     }
+
+    public function sendOtp()
+    {
+        $phone_number = $this->input->post('phonenumber');
+        $otp = rand(100000, 999999);
+        $message = "Your OTP for registration is $otp";
+
+        $json_data = json_encode([
+            "keyword" => "DEMO",
+            "timestamp" => date('dmYHis'),
+            "dataSet" => [
+                [
+                    "UNIQUE_ID" => uniqid(),
+                    "MESSAGE" => $message,
+                    "OA" => "ARRAMT",
+                    "MSISDN" => $phone_number,
+                    "CHANNEL" => "SMS",
+                    "CAMPAIGN_NAME" => "aaramt_ht",
+                    "DLT_CT_ID" => "1007754034034930000",
+                    "DLT_PE_ID" => "1001315590809173065",
+                    "DLT_TM_ID" => "1001096933494158",
+                    "CIRCLE_NAME" => "DLT_AGG_SI",
+                    "USER_NAME" => "aaramtsio"
+                ]
+            ]
+        ]);
+
+        $ch = curl_init('https://digimate.airtel.in:44111/BulkPush/InstantJsonPush');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $curl_error = curl_error($ch);
+        curl_close($ch);
+
+        if ($response === false) {
+            log_message('error', 'Curl error: ' . $curl_error);
+            echo json_encode(['success' => false, 'message' => 'Curl error: ' . $curl_error]);
+        } else {
+            $response_data = json_decode($response, true);
+            if ($http_code == 200 && isset($response_data['status']) && $response_data['status'] == 'success') {
+                $this->session->set_userdata('otp', $otp);
+                echo json_encode(['success' => true]);
+            } else {
+                log_message('error', 'API response error: ' . $response);
+                echo json_encode(['success' => false, 'message' => 'API response error: ' . $response]);
+            }
+        }
+    }
+    
+
+
 
     public function setVariable()
     {

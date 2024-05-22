@@ -55,6 +55,12 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 
+$route['Candidate/sendOtp'] = 'Candidate/sendOtp';
+$route['Candidate/candidateRegistration'] = 'Candidate/candidateRegistration';
+
+
+
+
 $route['provider/login'] = 'provider/login';
 $route['viewDashboard']='providerController/viewDashboard';
 $route['registration']='provider/registration';

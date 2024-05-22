@@ -91,13 +91,15 @@
                                             <div id="email_error" style="color: red;" class="error"></div>
                                         </div>
                                         <div class="">
-                                            <label for="phonenumber" class="form-label">Mobile number <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" id="phonenumber"
-                                                name="phonenumber" pattern="[0-9]{1,15}" maxlength="15"
-                                                oninput="validatePhoneNumber(this)" required
-                                                onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                                            <label for="phonenumber" class="form-label">Mobile number <span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="phonenumber" name="phonenumber" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
+                                            <button type="button" class="btn btn-secondary" onclick="sendOtp()">Send OTP</button>
                                             <div id="phone_error" style="color: red;" class="error"></div>
+                                        </div>
+                                        <div class="">
+                                            <label for="otp" class="form-label">OTP <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="otp" name="otp" required>
+                                            <div id="otp_error" style="color: red;" class="error"></div>
                                         </div>
                                         <div class="">
                                             <label for="crpassword" class="form-label">Create Password <span
@@ -182,6 +184,35 @@
         document.getElementById("crpassword").onblur = function () {
           document.getElementById("passwordmessage").style.display = "none";
         }
+
+
+        function sendOtp() {
+    var phoneNumber = document.getElementById('phonenumber').value;
+    if (phoneNumber) {
+        fetch('<?php echo baseUrl; ?>Candidate/sendOtp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ phonenumber: phoneNumber })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('OTP sent successfully!');
+            } else {
+                alert(data.message || 'Failed to send OTP. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    } else {
+        alert('Please enter your mobile number.');
+    }
+}
+
 
         function validateForm() {
             var username = document.getElementById('name').value;
