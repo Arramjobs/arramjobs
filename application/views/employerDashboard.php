@@ -507,7 +507,7 @@
                         <?php } ?>
                     </div>
                 </div>
-            </section>
+            
 
             <script>
                 // Password visibility
@@ -811,6 +811,8 @@
                 }
             </script>
 
+</section>
+
             <?php
         } elseif ($method == "jobview") {
             ?>
@@ -956,8 +958,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
-
+            
             <script>
                 function addjob() {
                     document.getElementById("addjobs").style.display = "block";
@@ -975,6 +976,7 @@
                     }
                 }
             </script>
+
 
                         <!-- Pagination -->
                         <script>
@@ -1352,6 +1354,8 @@
                 document.getElementById("newcategory").addEventListener("input", formatCategoryInput);
             </script>
 
+</section>
+
             <?php
         } elseif ($method == "addnew") {
             ?>
@@ -1469,7 +1473,7 @@
 
                     </div>
                 </div>
-            </section>
+            
 
             <script>
                 function showHideOtherField() {
@@ -1613,6 +1617,8 @@
 
                 }
             </script>
+
+</section>
 
             <?php
         } elseif ($method == "updateaddnew") {
@@ -1867,8 +1873,7 @@
                         </form>
                     </div>
                 </div>
-            </section>
-
+            
             <script>
                 function showHideOtherField() {
                     var categoryDropdown = document.getElementById('category');
@@ -2088,6 +2093,8 @@
                 document.getElementById("newcategory").addEventListener("input", formatCategoryInput);
             </script>
 
+</section>
+
             <?php
         } elseif ($method == "match") {
             ?>
@@ -2245,7 +2252,6 @@
 
                     </div>
                 </div>
-            </section>
 
             <!-- Work status -->
             <script>
@@ -2329,6 +2335,8 @@
                     nextBtn.style.display = (currentPage === totalPages) ? 'none' : 'inline-block';
                 }
             </script>
+
+</section>
 
             <?php
         } elseif ($method == "resume") {

@@ -85,32 +85,37 @@ class Candidate extends CI_Controller
     public function candidateRegistration()
     {
         $phone_number = $this->input->post('phonenumber');
-
+        $entered_otp = $this->input->post('otp');
+        $session_otp = $this->session->userdata('otp');
+    
         if ($this->CandidateModel->checkUserExistence($phone_number)) {
             echo '<script>alert("Phone number already exists. Please use a different number.");</script>';
             $this->load->view('candidateRegistration');
-        } else {
-            $this->sendOtp(); // Send OTP before registering
+        } elseif ($entered_otp && $entered_otp == $session_otp) {
             $postData = $this->input->post(null, true);
             $register = $this->CandidateModel->register();
             $generatedeeid = $this->CandidateModel->generate_customer_id();
+            $this->session->unset_userdata('otp'); // Clear OTP after successful registration
             $this->load->view('candidateRegistered.php');
+        } else {
+            echo '<script>alert("Invalid or missing OTP. Please try again.");</script>';
+            $this->load->view('candidateRegistration');
         }
     }
-
+    
     public function sendOtp()
     {
         $phone_number = $this->input->post('phonenumber');
         $otp = rand(100000, 999999);
         $message = "Your OTP for registration is $otp";
-
+    
         $json_data = json_encode([
             "keyword" => "DEMO",
-            "timestamp" => date('dmYHis'),
+            "timestamp" => "28112022173433",
             "dataSet" => [
                 [
-                    "UNIQUE_ID" => uniqid(),
-                    "MESSAGE" => $message,
+                    "UNIQUE_ID" => "test uid",
+                    "MESSAGE" => "Your OTP is 666666",
                     "OA" => "ARRAMT",
                     "MSISDN" => $phone_number,
                     "CHANNEL" => "SMS",
@@ -123,18 +128,18 @@ class Candidate extends CI_Controller
                 ]
             ]
         ]);
-
+    
         $ch = curl_init('https://digimate.airtel.in:44111/BulkPush/InstantJsonPush');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-
+    
         $response = curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $curl_error = curl_error($ch);
         curl_close($ch);
-
+    
         if ($response === false) {
             log_message('error', 'Curl error: ' . $curl_error);
             echo json_encode(['success' => false, 'message' => 'Curl error: ' . $curl_error]);

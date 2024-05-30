@@ -1103,7 +1103,7 @@
 
             <section class="usertable">
                 <div class="pagetitle">
-                    <h1>New Employers List</h1>
+                    <h1>New Employers</h1>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
@@ -1116,10 +1116,49 @@
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
 
+                        <div class="d-sm-flex ">
+                        <h5 class="card-title">New Employers List<span></span></h5>
+                                <div class="filter pt-3 ms-5">
+                                <input type="text" class="form-control" id="searchNameInput" placeholder="Search by Name">
+</div>
+                            </div>
+
+                                                        <!-- Search option -->
+                                                        <script>
+    $(document).ready(function() {
+        $('#searchNameInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            var found = false;
+            $('#unverifyTable tbody tr').filter(function() {
+                var candidateName = $(this).find('td:eq(3)').text().toLowerCase(); // Index 4 is the Company Name column
+                var matches = candidateName.indexOf(value) > -1;
+                $(this).toggle(matches);
+                if (matches) {
+                    found = true;
+                }
+            });
+            if (!found) {
+                $('#noRecordsFound').show();
+                $('#unverifyTable thead').hide(); 
+                $('#newEmpCount').hide();
+                $('#paginationButtons').hide();
+            } else {
+                $('#noRecordsFound').hide();
+                $('#unverifyTable thead').show(); 
+                $('#newEmpCount').show();
+                $('#paginationButtons').show();
+            }
+        });
+    });
+</script>
+
                             <?php
                             if (isset($this->data['unVerifiedEmployers'][0]['company_name'])) {
                                 ?>
-                                <h5 class="card-title">New Employers<span></span></h5>
+                                
+                                <div id="noRecordsFound" style="display: none;">
+    <h5><b>No records found</b></h4>
+</div>
 
                                 <table class="table" id="unverifyTable">
                                     <thead>
@@ -1182,7 +1221,7 @@
                                         }
                                         ?>
                                     </tbody>
-                                    <p class="text-end " style="margin-top:-40px">Count : <b>
+                                    <p class="text-end " id="newEmpCount" style="margin-top:-40px">Count : <b>
                                             <?php echo $loopcount - 1; ?>
                                         </b></p>
                                 </table>
@@ -4711,7 +4750,7 @@
 
             <section class="usertable">
                 <div class="pagetitle" style="padding-bottom:10px; padding-top:15px;">
-                    <h1>New Candidate List</h1>
+                    <h1>New Candidate</h1>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo baseUrl; ?>">Home</a></li>
@@ -4724,11 +4763,49 @@
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
 
+                        <div class="d-sm-flex ">
+                        <h5 class="card-title">New Candidates List<span></span></h5>
+                                <div class="filter pt-3 ms-5">
+                                <input type="text" class="form-control" id="searchNameInput" placeholder="Search by Name">
+</div>
+                            </div>
+
+                                                        <!-- Search option -->
+                                                        <script>
+    $(document).ready(function() {
+        $('#searchNameInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            var found = false;
+            $('#newList tbody tr').filter(function() {
+                var candidateName = $(this).find('td:eq(3)').text().toLowerCase(); // Index 4 is the Company Name column
+                var matches = candidateName.indexOf(value) > -1;
+                $(this).toggle(matches);
+                if (matches) {
+                    found = true;
+                }
+            });
+            if (!found) {
+                $('#noRecordsFound').show();
+                $('#newList thead').hide(); 
+                $('#newCandCount').hide();
+                $('#paginationButtons').hide();
+            } else {
+                $('#noRecordsFound').hide();
+                $('#newList thead').show(); 
+                $('#newCandCount').show();
+                $('#paginationButtons').show();
+            }
+        });
+    });
+</script>
+
                             <?php
                             if (isset($this->data['unVerifiedEmployees'][0]['name'])) {
-                                ?>
-
-                                <h5 class="card-title">New Candidates<span></span></h5>
+                                ?>    
+                                
+                                <div id="noRecordsFound" style="display: none;">
+    <h5><b>No records found</b></h4>
+</div>
 
                                 <table class="table" id="newList">
                                     <thead>
@@ -4826,7 +4903,7 @@
                                         }
                                         ?>
                                     </tbody>
-                                    <p class="text-end " style="margin-top:-40px">Count : <b>
+                                    <p class="text-end " id="newCandCount" style="margin-top:-40px">Count : <b>
                                             <?php echo $loopcount - 1; ?> </b></p>
                                 </table>
 

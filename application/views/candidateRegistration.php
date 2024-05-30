@@ -75,70 +75,55 @@
                                     </div>
 
                                     <form class="row g-3 needs-validation" novalidate onsubmit="return validateForm()"
-                                        action="<?php echo baseUrl . "Candidate/candidateRegistration" ?>"
-                                        name="registration_form" method="post">
-
-                                        <div class="">
-                                            <label for="username" class="form-label">Name <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                oninput="validateName(this)" required>
-                                            <div id="username_error" style="color: red;" class="error"></div>
-                                        </div>
-                                        <div class="">
-                                            <label for="email" class="form-label">Email ID</label>
-                                            <input type="email" class="form-control" id="email" name="email">
-                                            <div id="email_error" style="color: red;" class="error"></div>
-                                        </div>
-                                        <div class="">
-                                            <label for="phonenumber" class="form-label">Mobile number <span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" id="phonenumber" name="phonenumber" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required onkeydown="return event.keyCode !== 38 && event.keyCode !== 40;">
-                                            <button type="button" class="btn btn-secondary" onclick="sendOtp()">Send OTP</button>
-                                            <div id="phone_error" style="color: red;" class="error"></div>
-                                        </div>
-                                        <div class="">
-                                            <label for="otp" class="form-label">OTP <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="otp" name="otp" required>
-                                            <div id="otp_error" style="color: red;" class="error"></div>
-                                        </div>
-                                        <div class="">
-                                            <label for="crpassword" class="form-label">Create Password <span
-                                                    class="text-danger">*</span></label>
-                                            <div class="input-group has-validation">
-                                                <input type="password" class="form-control" id="crpassword" name="crpassword" required>
-                                                <button type="button" class="btn btn-outline-secondary"
-                                                    onclick="togglePasswordVisibility('crpassword', 'visibilityIcon')">
-                                                    <i id="visibilityIcon" class="bi bi-eye-slash"></i>
-                                                </button>
-                                            </div>
-                                            <div class="text-secondary" style="font-size:15px; margin:0px;display:none;"
-                                            id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
-                                                <div id="crpassworderr" style="color: red;" class="error"></div>
-                                        </div>                                     
-                                        <div class="">
-                                            <label for="cmpassword" class="form-label">Confirm Password <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="cmpassword" name="cmpassword"
-                                                required>
-                                            <p id="cmpassworderr" style="color: red;" class="error"></p>
-                                        </div>
-
-                                        <!-- <div class="col-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                                                <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                                                <div class="invalid-feedback">You must agree before submitting.</div>
-                                            </div>
-                                            </div> -->
-
-                                        <div class="col-12">
-                                            <button class="btn btn-primary w-100" type="submit">Create Account</button>
-                                        </div>
-                                        <div class="col-12">
-                                            <p class="small mb-0">Already have an account? <a
-                                                    href="<?php echo baseUrl . "Candidate" ?>">Login</a></p>
-                                        </div>
-                                    </form>
+      action="<?php echo baseUrl . 'Candidate/candidateRegistration'; ?>"
+      name="registration_form" method="post">
+    
+    <div class="">
+        <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="name" name="name" oninput="validateName(this)" required>
+        <div id="username_error" style="color: red;" class="error"></div>
+    </div>
+    <div class="">
+        <label for="email" class="form-label">Email ID</label>
+        <input type="email" class="form-control" id="email" name="email">
+        <div id="email_error" style="color: red;" class="error"></div>
+    </div>
+       <div class="">
+        <label for="phonenumber" class="form-label">Mobile number <span class="text-danger">*</span></label>
+        <input type="number" class="form-control" id="phonenumber" name="phonenumber" pattern="[0-9]{1,15}" maxlength="15" oninput="validatePhoneNumber(this)" required>
+        <button type="button" class="btn btn-secondary" onclick="sendOtp()">Send OTP</button>
+        <div id="phone_error" style="color: red;" class="error"></div>
+    </div>
+    <div class="">
+        <label for="otp" class="form-label">OTP <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="otp" name="otp" required>
+        <div id="otp_error" style="color: red;" class="error"></div>
+    </div>
+    <div class="">
+        <label for="crpassword" class="form-label">Create Password <span class="text-danger">*</span></label>
+        <div class="input-group has-validation">
+            <input type="password" class="form-control" id="crpassword" name="crpassword" required>
+            <button type="button" class="btn btn-outline-secondary"
+                    onclick="togglePasswordVisibility('crpassword', 'visibilityIcon')">
+                <i id="visibilityIcon" class="bi bi-eye-slash"></i>
+            </button>
+        </div>
+        <div class="text-secondary" style="font-size:15px; margin:0px;display:none;"
+             id="passwordmessage">Enter the date of birth in DDMMYYYY (01051996).</div>
+        <div id="crpassworderr" style="color: red;" class="error"></div>
+    </div>
+    <div class="">
+        <label for="cmpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="cmpassword" name="cmpassword" required>
+        <p id="cmpassworderr" style="color: red;" class="error"></p>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary w-100" type="submit">Create Account</button>
+    </div>
+    <div class="col-12">
+        <p class="small mb-0">Already have an account? <a href="<?php echo baseUrl . 'Candidate'; ?>">Login</a></p>
+    </div>
+</form>
                                 </div>
                             </div>
 
