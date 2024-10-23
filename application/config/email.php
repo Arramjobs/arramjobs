@@ -6,7 +6,7 @@ $config['protocol'] = 'smtp';
 $config['smtp_host'] = 'mail.arramjobs.in';   
 $config['smtp_port'] = 465; 
 $config['smtp_user'] = 'arramjobs@arramjobs.in'; 
-$config['smtp_pass'] = 'Arramjobs@6';
+$config['smtp_pass'] = 'password';
 
 $config['mailtype'] = 'html';
 $config['charset'] = 'utf-8';

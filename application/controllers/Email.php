@@ -22,7 +22,7 @@ class Email extends CI_Controller {
             'smtp_host' => 'mail.arramjobs.in', 
             'smtp_port' => 465,
             'smtp_user' => 'arramjobs@arramjobs.in',
-            'smtp_pass' => 'Arramjobs@6',
+            'smtp_pass' => 'password',
             'mailtype'  => 'text',
             'charset'   => 'utf-8',
             'wordwrap'  => TRUE
